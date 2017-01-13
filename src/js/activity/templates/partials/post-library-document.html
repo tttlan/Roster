@@ -1,0 +1,22 @@
+<div class="post__content">
+    <div class="post__name">
+        <a href="" target="_self" path="network.profile" path-params="post.content.Owner.MemberId">{{ post.content.Owner.FirstName }} {{ post.content.Owner.Surname }} </a>
+        <div class="post__details">uploaded a library documents</div>
+    </div>
+    <div class="file file--block">
+        <div class="file__content" ng-switch on="post.content.ContentType">
+            <i ng-switch-when="Image" class="svg-icon--img"></i>
+            <i ng-switch-when="ProfilePhoto" class="svg-icon--img"></i>
+            <i ng-switch-when="Audio" class="svg-icon--video"></i>
+            <i ng-switch-when="Video" class="svg-icon--video"></i>
+            <i ng-switch-when="Compress" class="svg-icon--zip"></i>
+            <i ng-switch-when="TextNote" class="svg-icon--txt"></i>
+            <i ng-switch-default class="svg-icon--doc"></i>
+            <p class="file__name">{{post.content.FileName}}</p>
+            <ul class="file__meta">
+                <li><a href="{{post.content.DocumentUrl}}" target="_self">download</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,51 @@
+<div class="segment__fieldset">
+    <div class="segment__fieldset-heading">
+        <h2><i class="icon--notebook"></i>Manager Approval</h2>
+
+        <a href=""
+           class="align-right"
+           ng-click="data.onboards[$index].isCollapsedManagerApproval = !data.onboards[$index].isCollapsedManagerApproval">
+            <i ng-class="{
+                'icon--arrow-down': data.onboards[$index].isCollapsedManagerApproval,
+                'icon--arrow-up': !data.onboards[$index].isCollapsedManagerApproval
+            }"></i>
+        </a>
+    </div>
+
+    <div collapse="data.onboards[$index].isCollapsedManagerApproval">
+        <table class="table-form table-form--full-width">
+            <tbody ng-class="{'is--editing': !isOnboardPhaseDocumentation(data.onboards[$index])}">
+                <tr>
+                    <th>Final Instructions</th>
+
+                    <td class="table-form__edit-parent">
+                        <div class="table-form__form-value">
+                            {{onboard.Option.FinalInstruction}}
+                        </div>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field">
+                                <label for="onboarding__FinalInstructionsPrefill"
+                                       class="form__label">Select to pre-fill</label>
+
+                                <input-final-instruction name="onboarding__FinalInstructionsPrefill"
+                                                         ng-model="onboard.Option.FinalInstruction">
+                                </input-final-instruction>
+                            </div>
+
+                            <div class="form__field">
+                                <label for="onboarding__FinalInstructionsText"
+                                       class="form__label">Customise the message or write it from scratch</label>
+
+                                <textarea id="onboarding__FinalInstructionsText"
+                                          name="onboarding__FinalInstructionsText"
+                                          ng-model="onboard.Option.FinalInstruction"
+                                          rows="6"></textarea>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

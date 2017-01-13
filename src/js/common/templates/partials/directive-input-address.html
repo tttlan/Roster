@@ -1,0 +1,139 @@
+<div ng-form name="inputAddressForm" class="form__address-lookup">
+    <table class="table-form table-form--full-width">
+        <tbody class="noborder">
+            <tr>
+                <td class="table-form__edit-parent" colspan="2">
+                    <div class="table-form__form-field" ng-class="{'is--blocked': isBusy}">
+                        <div class="form__field" ng-class="{'is--required': ngRequired}">
+                            <label class="form__label" for="{{::uniqueId + '__Address'}}">Address</label>
+
+                            <input type="text"
+                                   id="{{::uniqueId + '__Address'}}"
+                                   name="{{::uniqueId + '__Address'}}"
+                                   ng-model="ngModel.Address"
+                                   ng-disabled="disabled"
+                                   ng-required="ngRequired">
+
+                            <form-errors input="inputAddressForm[uniqueId + '__Address']">
+                                <form-error error-key="required"
+                                            error-text="'Street Address' is required."></form-error>
+                            </form-errors>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-form__edit-parent">
+                    <div class="table-form__form-field">
+                        <div class="form__field" ng-class="{'is--required': ngRequired}">
+                            <label class="form__label">Country</label>
+
+                            <input-country ng-model="ngModel.CountryId"></input-country>
+                        </div>
+                    </div>
+                </td>
+                <td class="table-form__edit-parent">
+                    <div class="table-form__form-field" style="width:330px;">
+                        <div class="form__field" ng-class="{'is--required': ngRequired}">
+                            <label class="form__label" for="{{::uniqueId + '__Postcode'}}">Postcode</label>
+
+                            <div class="input--loading">
+                                <input type="text"
+                                       id="{{::uniqueId + '__Postcode'}}"
+                                       name="{{::uniqueId + '__Postcode'}}"
+                                       ng-model="ngModel.Postcode"
+                                       ng-disabled="!allowInputPostCode"
+                                       ng-model-options='{debounce: 500}'
+                                       pattern="\d+"
+                                       ng-required="ngRequired">
+                                <loader ng-show="isBusy"></loader>
+                            </div>
+
+                            <p>
+                                <small>Enter a postcode to prefill this address.</small>
+                            </p>
+
+                            <form-errors input="inputAddressForm[uniqueId + '__Postcode']">
+                                <form-error error-key="required"
+                                            error-text="'Postcode' is required."></form-error>
+                            </form-errors>
+                            
+                            <form-errors input="inputAddressForm[uniqueId + '__Postcode']">
+                                <form-error error-key="pattern"
+                                            error-text="'Postcode' is number."></form-error>
+                            </form-errors>
+                            
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-form__edit-parent">
+                    <div class="table-form__form-field" ng-if="locationMatches === true">
+                        <div class="form__field" ng-class="{'is--required': ngRequired}">
+                            <label class="form__label" for="{{::uniqueId + '__Suburb'}}">Suburb</label>
+
+                            <input type="text"
+                                   id="{{::uniqueId + '__Suburb'}}"
+                                   name="{{::uniqueId + '__Suburb'}}"
+                                   ng-model="ngModel.Suburb"
+                                   ng-required="ngRequired"
+                                   ng-disabled="!allowCustomAddressEntry">
+                            
+                            <form-errors input="inputAddressForm[uniqueId + '__Suburb']">
+                                <form-error error-key="required"
+                                            error-text="'Suburb' is required."></form-error>
+                            </form-errors>
+                        </div>
+                    </div>
+                    
+                    <div class="table-form__form-field" ng-if="locationMatches === false">
+                        <label class="form__label" for="{{::uniqueId + '__Suburb'}}">Suburb</label>
+                        <select-box ng-model="ngModel.Suburb">
+                            <select id="{{::uniqueId + '__Suburb'}}"
+                                    ng-model="ngModel.Suburb"
+                                    ng-change="changeSuburb(ngModel.Suburb)"
+                                    ng-options="location as location.label for location in suburbData track by location.id"></select>
+                        </select-box>
+                        
+                        <div class="field__checkbox">
+                            <input id="{{::uniqueId + '__noSuburbMatches'}}" type="checkbox" ng-model="noMatches" ng-change="allowInputAddress()">
+                            <label for="{{::uniqueId + '__noSuburbMatches'}}" class="form__label">None of these suburbs are correct</label>
+                        </div>
+                    </div>
+                </td>
+                <td class="table-form__edit-parent">
+                    <div class="table-form__form-field">
+                        <div class="form__field" ng-class="{'is--required': ngRequired}">
+                            <label class="form__label" for="{{::uniqueId + '__StateName'}}">State</label>
+
+                            <input type="text"
+                                   id="{{::uniqueId + '__StateName'}}"
+                                   name="{{::uniqueId + '__StateName'}}"
+                                   ng-model="ngModel.StateName"
+                                   ng-required="ngRequired"
+                                   ng-disabled="!allowCustomAddressEntry && !allowInputState">
+
+                            <form-errors input="inputAddressForm[uniqueId + '__StateName']">
+                                <form-error error-key="required"
+                                            error-text="'State' is required."></form-error>
+                            </form-errors>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-form__edit-parent">
+                    <div class="table-form__form-field">
+                        <div class="form__field">
+                            <label class="form__label">Country of Origin</label>
+
+                            <input-country ng-model="ngModel.CountryOriginId"></input-country>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    </div>

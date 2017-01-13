@@ -1,0 +1,173 @@
+
+// Grid
+// ------------------------------------------------
+// ref: http://css-tricks.com/dont-overthink-it-grids/
+
+.grid {
+    margin: 0;
+    clearfix();
+
+    .row {
+        clearfix();
+        // placeholder
+    }
+
+}
+
+// Columns 
+[class*='col-'] {
+    display: inline-block;
+    margin-left: -2px !important;
+    margin-right: -2px !important;
+
+    // The form builder removes all white-space using ng-repeat so this hack is not neccessary 
+    .form & ,
+    .form-builder & {
+        margin-left: 0 !important;
+        margin-right: 0 !important;        
+    }
+}
+    
+.col-2-3 {
+    width: 66.66%;
+}
+
+.col-1-3 {
+    width: 33.33%;
+}
+
+.col-1-2 {
+    width: 50%;
+}
+
+
+// 4ths
+
+.col-1-4 {
+    width: 25%;
+}
+
+.col-3-4 {
+    width: 75%;
+}
+
+
+// 6ths
+
+.col-1-6 {
+    width: 16%;
+}
+
+.col-5-6 {
+    width: 84%;
+}
+
+// 8ths
+
+.col-1-8 {
+    width: 12.5%;
+}
+
+.col-7-8 {
+    width: 87.5%;
+}
+
+
+// States
+// ------------------------------------------------
+
+
+// Horizontaly Spaced Grid
+.grid--spaced {
+
+    > [class*='col-'] {
+        padding: 0 (gutter / 2);
+    }
+
+    /*& :first-child {
+        padding-left: 0;
+    }
+
+    & :last-child {
+        padding-right: 0;
+    }*/
+}
+
+// Padded Grid
+.grid--pad {
+
+    > [class*='col-'] {
+        padding: (gutter / 2);
+    }
+
+    /*& :first-child {
+        padding-left: 0;
+    }
+
+    & :last-child {
+        padding-right: 0;
+    }*/
+}
+
+
+// Responsive Columns
+.grid--responsive {
+
+    @media maxTablet {
+        [class*='col-'] {
+            width: 100%;
+        }
+    }
+}
+
+
+/*.grid {
+    margin: 0;
+
+    .row {
+        clearfix();
+    }
+
+}
+
+.grid--pad {
+    
+    padding: gutter 0 0 gutter;
+
+    .row {
+        padding-bottom: gutter
+    }
+
+    [class*='col-'] {
+        padding-right: gutter;
+    }
+}
+
+// Columns
+
+[class*='col-'] {
+    float: left;
+    width: 100%;
+}
+
+@media minTablet {
+    .col-2-3 {
+        width: 66.66%;
+    }
+
+    .col-1-3 {
+        width: 33.33%;
+    }
+
+    .col-1-2 {
+        width: 50%;
+    }
+
+    .col-1-4 {
+        width: 25%;
+    }
+
+    .col-1-8 {
+        width: 12.5%;
+    }
+}*/

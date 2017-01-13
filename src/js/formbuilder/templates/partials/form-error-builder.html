@@ -1,0 +1,29 @@
+<div class="form__errors" ng-show="form.$submitted || (element.dirty && form.$dirty)">
+    <error ng-if="element.validation.required" ng-show="(form.{{element.name}}.$error.required && (form.{{element.name}}.$dirty || form.$submitted )) || (form.{{element.name}}2.$error.required && (form.{{element.name}}2.$dirty || form.$submitted ))">
+        <span ng-if="!ifCustomMessage(element.validation.required)">'{{ element.label }}' is required.</span>
+        <span ng-if="ifCustomMessage(element.validation.required)">{{element.validation.required}}</span>
+    </error>
+
+    <error ng-if="element.validation.minLength" ng-show="form.{{element.name}}.$error.minlength && (form.{{element.name}}.$dirty || form.$submitted )">
+        <span ng-if="!ifCustomMessage(element.validation.minLength)">'{{ element.label }}' requires more than {{ element.validation.minLength }} characters.</span>
+        <span ng-if="!ifCustomMessage(element.validation.minLength)">{{element.validation.minLength}}</span>
+    </error>
+
+    <error ng-if="element.validation.maxLength" ng-show="form.{{element.name}}.$error.maxlength && (form.{{element.name}}.$dirty || form.$submitted )">
+        <span ng-if="!ifCustomMessage(element.validation.maxLength)">'{{ element.label }}' requires less than {{ element.validation.maxLength }} characters.</span>
+        <span ng-if="!ifCustomMessage(element.validation.maxLength)">{{element.validation.maxLength}}</span>
+    </error>
+
+    <error ng-if="element.validation.dateFuture" ng-show="form.{{element.name}}.$error.validateDateFuture && (form.{{element.name}}.$dirty || form.$submitted )">
+        <span ng-if="!ifCustomMessage(element.validation.dateFuture)">You must select a date that is either today or is after today</span>
+        <span ng-if="!ifCustomMessage(element.validation.dateFuture)">{{element.validation.dateFuture}}</span>
+    </error>
+
+    <error ng-if="element.validation.datePast" ng-show="form.{{element.name}}.$error.validateDatePast && (form.{{element.name}}.$dirty || form.$submitted )">
+        <span ng-if="!ifCustomMessage(element.validation.datePast)">You must select a date that is either today or is prior to today</span>
+        <span ng-if="!ifCustomMessage(element.validation.datePast)">{{element.validation.dateFuture}}</span>
+    </error>
+    <error ng-if="element.validation.customErrorMessage" ng-show="!form.{{element.name}}.$valid && (form.{{element.name}}.$dirty || form.$submitted )">
+        {{ element.validation.customErrorMessage }}
+    </error>
+</div>

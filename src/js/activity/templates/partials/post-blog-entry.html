@@ -1,0 +1,11 @@
+<div class="post__content">
+    <div class="post__name">
+        <a href="" target="_self" path="network.profile" path-params="post.content.Owner.MemberId">{{ post.content.Owner.FirstName }} {{ post.content.Owner.Surname }}</a>
+        <div class="post__details">{{ post.isUpdated ? 'updated' : 'posted' }} a news article</div>
+    </div>
+    <div class="post__segment segment">
+        <div class="post__attachment" ng-if="post.attachment.image" ><img ng-src="{{post.attachment.image}}" /></div>
+        <h2 class="post__title"><a href="{{ BASE_URL }}/dashboard/news/{{ post.content.Id }}">{{ post.content.Title }}</a></h2>
+        <p ng-if="post.content.ContentSummary">{{post.content.ContentSummary}} <a href="{{ BASE_URL }}/dashboard/news/{{ post.content.Id }}">Read more</a></p>
+    </div>
+</div>

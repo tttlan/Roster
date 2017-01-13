@@ -1,0 +1,62 @@
+<header class="modal__header">
+    <h3 class="modal__title"><i class="svg-icon--folder1"></i> Create new folder</h3>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+
+<div class="modal__content">
+
+     <ng-form name="form" novalidate validate-form>
+
+        <fieldset class="form">
+
+            <div class="form__fields">
+                
+                <div class="form__field col-1-2">
+                    <label class="form__label" for="input_folderName">Folder Name</label>
+                    <input type="text" id="input_folderName" name="folderName" required ng-model="data.name" maxlength="60">
+                    <span class="form__note form__note--error" ng-show="(form.courseName.$dirty || submitted) && form.courseName.$invalid">A folder name is required</span>
+                </div><!--
+
+                --><div class="form__field col-1-2">
+                    <label for="selectBox" class="form__label">Who can see this folder?</label>
+                    <select-box ng-model="data.permissions">
+                        <select select-i="" ng-model="data.permissions">
+                            <option value="1">Only Me</option>
+                            <option value="2">Just my team (Hawthorn)</option>
+                            <option value="3">Specific people</option>
+                            <option value="4">Everyone</option>
+                        </select>
+                        <!--
+                        <select select-i="" ng-model="form.country" ng-options="c.title for c in data.countries track by c.val"></select>
+                        -->
+                    </select-box> 
+                </div>
+
+            </div>
+            
+            <div class="form__field" ng-show="data.permissions == 3">
+                <label for="groupselector" class="form__label">Choose some members/groups to share with</label>
+                <tag-manager
+                    ng-model="data.selectedGroups"
+                    select-data="groups"
+                    ng-hide="data.allGroups"
+                    ng-class="{'error': !data.selectedGroups.length}"
+                >
+                    <input type="text" placeholder="Enter a group/member" ng-model="typeAheadTag"
+                        typeahead="group as group.label for group in selectData | filter:{label:$viewValue}"
+                        typeahead-on-select="addTag($item, $model, $label)" />
+                </tag-manager>
+            </div>
+    
+            <p class="form__note">* Any files/folders in this folder will inherit its visibility settings</p>
+
+            <hr class="solid" />
+
+            <a href="" class="button button--small" ng-click="cancel()">Cancel</a>
+            <a href="" class="button button--small button--primary" ng-click="ok()">Create folder</a>
+
+        </fieldset>
+
+    </ng-form>
+   
+</div>

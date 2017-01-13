@@ -1,0 +1,50 @@
+<!-- This component usually sits within a modal drawer -->
+
+<div class="vcard">
+    <div class="vcard__avatar">
+        <a href="" target="_self" path="network.profile" path-params="items.MemberId">
+            <avatar size="large" img-src="items.AvatarPhotoLarge"></avatar>
+        </a>
+    </div>
+
+    <a href="" class="vcard__title" target="_self" path="network.profile" path-params="items.MemberId">
+        <h2>{{items.FirstName}} {{items.Surname}} 
+            <span class="status" 
+                ng-class="{'status--offline' : !items.IsOnline, 'status--online' : items.IsOnline }"
+                tooltip="{{ items.IsOnline ? 'Online' : 'Offline' }}"
+                tooltip-placement="right"
+            ></span></h2>
+        <p class="vcard__role">{{items.RoleDescription}} <i class="icon--vcard"></i></p>
+    </a>
+
+    <hr class="solid" />
+    <dl>
+        <dt ng-show="items.Phone || items.OtherPhones">Phone number:</dt>
+        <dd class="vcard__phone" ng-show="items.Phone">
+            <!-- display tel number as link on mobile only -->
+            <a href="tel:{{items.Phone}}">{{items.Phone}}<i class="icon--phone"></i></a>
+        </dd>
+        
+        <dd ng-repeat="otherphone in items.OtherPhones">
+            <!-- display tel number as link on mobile only -->
+            <a href="tel:{{otherphone}}" style="display: block;">{{otherphone}}</a>
+        </dd>
+
+        <!--<dt ng-show="items.Email">Email:</dt>
+        <dd ng-show="items.Email" class="vcard__email"><a href="mailto:{{items.Email}}">{{items.Email}}<i class="icon--mail"></i></a></dd>-->
+
+        <dt>Location</dt>
+        <dd><a ng-if="items.DefaultGroupID != -1" class="label" href="" path="groups.group" path-params="items.DefaultGroupID" ng-click="cancel()">{{items.DefaultGroupName}}</a></dd>
+
+        <!-- Note there is a spelling mistake above 'Defualt instead of Default' -->
+
+        <dt ng-show="items.GroupsList">Other groups</dt>
+        <dd ng-show="items.GroupsList">
+
+            <a href="" path="groups.group" path-params="group.NetworkGroupId" class="label" ng-repeat="group in items.GroupsList | limitTo: groupLimit" ng-click="cancel()">{{group.GroupName}}</a><!-- this comment removes whitespace to help inline block styling
+            --><a href="" ng-click="showAllGroups()" class="button button--basic button--tiny button--icon" ng-hide="items.GroupsList.length <= 3 || hideToggle"><i class="icon--ellipsis"></i></a>
+
+        </dd>
+    </dl>
+
+</div>

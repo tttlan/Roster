@@ -1,0 +1,141 @@
+<form name="addApplicantForm" ng-class="{'is--loading': isLoading}" novalidate>
+    <header class="modal__header">
+        <h2 class="modal__title">Manually Add Applicant</h2>
+        <a href="" class="modal__close" ng-click="cancel()"></a>
+    </header>
+    <div class="modal__content">
+        <div class="well">
+            <i class="icon--round-info well__icon"></i>
+            <span class="well__content">
+                The added applicant <strong>will not</strong> be communicated or prompted to complete assessment items such as questionnaires (if any).<br />
+                Resumes uploaded by you will remain confidential within your company account.
+            </span>
+        </div>
+        <div class="form__fields">
+            <div class="form__field col-1-2 is--required">
+                <label class="form__label" for="name">Name</label>
+                <input type="text"
+                       id="name"
+                       name="firstname"
+                       placeholder="Name"
+                       maxlength="100"
+                       ng-model="newApplicant.firstname"
+                       required
+                />
+                <form-errors input="addApplicantForm.firstname">
+                    <form-error error-key="required" error-text="This field is required."></form-error>
+                </form-errors>
+            </div>
+            <div class="form__field col-1-2 is--required">
+                <label class="form__label" for="surname">Surname</label>
+                <input type="text"
+                       id="surname"
+                       name="surname"
+                       placeholder="Surname"
+                       maxlength="100"
+                       ng-model="newApplicant.surname"
+                       required
+                />
+                <form-errors input="addApplicantForm.surname">
+                    <form-error error-key="required" error-text="This field is required."></form-error>
+                </form-errors>
+            </div>
+        </div>
+        <div class="form__fields">
+            <div class="form__field col-1-2 is--required">
+                <label class="form__label" for="email">Email</label>
+                <input type="email"
+                       id="email"
+                       name="email"
+                       placeholder="yourname@provider.com"
+                       ng-model="newApplicant.email"
+                       required
+                />
+                <form-errors input="addApplicantForm.email">
+                    <form-error error-key="required" error-text="This field is required."></form-error>
+                </form-errors>
+            </div>
+        </div>
+        <div class="form__fields">
+            <div class="form__field col-1-2 is--required">
+                <label class="form__label" for="mobile">Mobile number</label>
+                <input type="tel"
+                       id="mobile"
+                       name="mobile"
+                       maxlength="20"
+                       placeholder="0123456789"
+                       ng-model="newApplicant.mobile"
+                       ng-pattern="/^\+?(\(\d\d\))?(\d? ?)*$/"
+                       required
+                />
+                <form-errors input="addApplicantForm.mobile">
+                    <form-error error-key="required" error-text="This field is required."></form-error>
+                </form-errors>
+            </div>
+            <div class="form__field col-1-2">
+                <label class="form__label" for="landlineNumber">Landline number</label>
+                <input type="tel"
+                       id="landlineNumber"
+                       name="landlineNumber"
+                       maxlength="20"
+                       placeholder="Enter a Phone Number"
+                       ng-model="newApplicant.landline"
+                       ng-pattern="/^\+?(\(\d\d\))?(\d? ?)*$/"
+                />
+            </div>
+        </div>
+        <div class="form__fields">
+            <div class="form__field col-1-2 is--required">
+                <label class="form__label">Country</label>
+                <input-country ng-model="newApplicant.countryId" required="true"></input-country>
+                <form-errors input="addApplicantForm.country">
+                    <form-error error-key="required" error-text="This field is required."></form-error>
+                </form-errors>
+            </div>
+        </div>
+        <div class="form__fields">
+            <div class="form__field">
+                <label class="form__label" for="address">Address</label>
+                <input type="text"
+                       id="address"
+                       name="address"
+                       placeholder="Address"
+                       maxlength="255"
+                       ng-model="newApplicant.address"
+                />
+            </div>
+        </div>
+        <div class="form__fields">
+            <div class="form__field col-1-2">
+                <label class="form__label" for="suburb">Suburb</label>
+                <input type="text"
+                       id="suburb"
+                       name="suburb"
+                       placeholder="Suburb"
+                       maxlength="255"
+                       ng-model="newApplicant.suburb"
+                />
+            </div>
+        </div>
+        <div class="form__fields">
+            <div class="form__field is--required">
+                <label class="form__label">Resume</label>
+                <uploader maxsize="5000 * 1024"
+                          maxfiles="1"
+                          grid="true"
+                          ng-model="resumeIds"
+                          is-uploading="uploadingAttachment"
+                          container-id="7"
+                          file-types="['pdf', 'doc', 'docx', 'rtf']">
+                </uploader>
+            </div>
+        </div>
+    </div>
+    <footer class="modal__footer">
+        <div class="button-group text-right">
+            <button class="button" ng-click="cancel()">Cancel</button>
+            <input type="submit" ng-disabled="addApplicantForm.$invalid || !resumeIds || !resumeIds.length" class="button button--primary" value="Add Applicant" ng-click="addApplicant(newApplicant)" />
+        </div>
+    </footer>
+
+</form>

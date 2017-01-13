@@ -1,0 +1,49 @@
+// wrapper()
+//
+// Wrap pages to center and give a maximum width
+//
+// Styleguide mixins.layout.wrapper
+
+wrapper()
+    max-width: page-width;
+    min-width: 320px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @media maxTablet {
+        padding: 0 15px;
+    }
+
+
+// blockMargins()
+//
+// Gives block content (p,li etc) basic margins
+//
+// Styleguide mixins.layout.blockmargins
+
+blockMargins()
+    margin: 1em 0;
+
+
+// verticalAlignContent()
+//
+// Vertically aligns all sibling content.
+// To align children apply the following styles:
+//
+// display:inline-block;
+//
+// vertical-align:middle;
+//
+// Styleguide mixins.layout.verticalalign
+
+verticalAlignContent()
+    text-align: center;
+
+    &:before {
+        content:'';
+        display:inline-block;
+        height:100%;
+        margin-right:-0.25em;
+        vertical-align:middle;
+        width: 0px;
+    }

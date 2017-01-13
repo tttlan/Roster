@@ -1,0 +1,178 @@
+<div class="page__header">
+    <span class="form__field search-jobs-form__search-field align-left">
+        <label for="beforeAfterInput" class="icon--search field__before field__before--search-icon"></label>
+        <input type="text"
+               id="beforeAfterInput"
+               class="search-jobs-form__text-input"
+               ng-model="ApplicantListControls.searchApplicantName"
+               ng-model-options="{updateOn: 'default', debounce: {'default': 1000}}"
+               ng-change="listenToUser()" />
+        <loader ng-if="ApplicantListControls.performingUserAction" class="typeahead__loading" />
+    </span>
+    <span class="menu--position-relative ellipsis-menu--margin-left ellipsis-menu--alignment-middle align-left status-filter">
+        <a href="#" dropdown-toggle>
+            <span class=" clickable-label label-dropdown--font-size label label--{{ApplicantListControls.statusFilter.selectedFilterItem.color === null ? 'grey' : ApplicantListControls.statusFilter.selectedFilterItem.color}}">
+                {{ApplicantListControls.statusFilter.selectedFilterItem.name}}
+                <span class="inner-label-count-value">{{ApplicantListControls.statusFilter.selectedFilterItem.count}}</span>
+                <span class="label-icon--position icon--down"></span>
+            </span>
+        </a>
+        <ul class="submenu submenu--compact dropdown-menu status-filter__menu">
+            <li class="submenu__item select-status__position" ng-class="{'selected-item': ApplicantListControls.statusFilter.selectedAllApplicants}">
+                <span class="clickable-label label label--grey" ng-click="filterListByStatus()">All Applicants</span>
+                <span class="label-count-value align-right status-filter__count-margin-top">
+                    {{ApplicantListControls.statusFilter.statusFilterData.totalApplicationCount}}
+                </span>
+            </li>
+            <li class="submenu__item select-status__position" ng-repeat="statusItem in ApplicantListControls.statusFilter.statusFilterData.data" ng-class="{'selected-item': statusItem.name == ApplicantListControls.statusFilter.selectedFilterItem.name }" >
+                <span class="clickable-label label label--{{statusItem.color === null ? 'grey' : statusItem.color}}" ng-click="filterListByStatus(statusItem.id)">{{statusItem.name}}</span>
+                <span class="label-count-value align-right status-filter__count-margin-top">{{statusItem.count === 0 ? "-" : statusItem.count}}</span>
+            </li>
+        </ul>
+    </span>
+</div>
+
+<div class="page__content">
+    <div paginate="getApplicantsList"
+         page-size="10"
+         paginate-on-scroll="true">
+        <div ng-show="ApplicantListControls.selectedApplicants.length > 0" class="selected-header">
+            <span class="align-left">
+                <span class="align-left field__checkbox">
+                    <input type="checkbox" class="table__select-all" ng-click="isSelectedAll()" ng-checked="ApplicantListControls.checkboxSelectAll"> <!-- This needs to be here to have the checkbox label overlay to appear, however it is linked with the checkbox within the table. Similar issue with id for checking the same box -->
+                    <label for="selectAll" class="form__label"></label>
+                </span>
+                <span class="align-left selected-header__text-color">{{ApplicantListControls.selectedApplicants.length}} <span class="selected-header--hide-text">Applicant(s) </span>Selected</span>
+            </span>
+            <span class="align-right">
+                <span ng-show="ApplicantListControls.userCan(ApplicantListControls.entityActionType.CanChangeStatusApplication)" class="align-left menu--position-relative">
+                    <a class="selected-header__a--select-styled" href="#" dropdown-toggle>
+                        <span class="selected-header__text-color">Change Status<i class="icon--down a__icon"></i></span>
+                    </a>
+                    <ul class="submenu submenu--compact dropdown-menu ellipsis-submenu--position ellipsis-submenu--font-weight change-status-submenu--position-mobile">
+                        <li class="submenu__item" ng-repeat="statusItem in ApplicantListControls.changeStatusList">
+                            <span class="clickable-label label label--{{statusItem.color}}" ng-click="changeStatus(statusItem.id)">{{statusItem.name}}</span>
+                        </li>
+                    </ul>
+                </span>
+                 <span class="align-left menu--position-relative ellipsis-menu--margin-left">
+                    <a class="" href="" dropdown-toggle>
+                        <span><i class="icon--ellipsis ellipsis-menu__icon--white"></i></span>
+                    </a>
+                    <ul class="submenu submenu--compact dropdown-menu ellipsis-submenu--position ellipsis-submenu--font-weight ellipsis-submenu--position-mobile">
+                        <li class="submenu__item">
+                            <a ng-show="ApplicantListControls.userCan(ApplicantListControls.entityActionType.CanAddComment)" href="" ng-click="openModalAddNote()">Add Note ...</a>
+                            <a ng-show="ApplicantListControls.userCan(ApplicantListControls.entityActionType.CanSendEmail)" ng-click="openModalSendEmail()" href="#">Send Email ...</a>
+                            <!--<a ng-show="ApplicantListControls.userCan(ApplicantListControls.entityActionType.CanOnboardCandidate)" href="#">Onboard ...</a>-->
+                        </li>
+                    </ul>
+                </span>
+            </span>
+        </div>
+        <table class="table table__candidate table--responsive-stacked">
+            <thead class="table__thead">
+                <tr>
+                    <th>
+                        <div class="field__checkbox table__candidate_checkbox--th-alignment">
+                            <input type="checkbox" class="table__select-all" id="selectAll" ng-click="isSelectedAll()">
+                            <label for="selectAll" class="form__label"></label>
+                        </div>
+                    </th>
+                    <th ng-click="orderBy(APPLICANT_LIST_ORDER_BY.APPLICANT)">
+                        <a tooltip="Sort By Applicant" tooltip-placement="bottom">Applicant</a>
+                        <i class='' ng-class="{'icon--down': ApplicantListControls.sortingArrows.applicantSortingArrow, 'icon--up': !ApplicantListControls.sortingArrows.applicantSortingArrow}"></i>
+                    </th>
+                    <th ng-click="orderBy(APPLICANT_LIST_ORDER_BY.STATUS)">
+                        <a tooltip="Sort By Status" tooltip-placement="bottom">Status</a>
+                        <i class='' ng-class="{'icon--down': ApplicantListControls.sortingArrows.statusSortingArrow, 'icon--up': !ApplicantListControls.sortingArrows.statusSortingArrow}"></i>
+                    </th>
+                    <th ng-click="orderBy(APPLICANT_LIST_ORDER_BY.ELAPSE)">
+                        <a tooltip="Sort By Elapsed" tooltip-placement="bottom">Elapsed</a>
+                        <i class='' ng-class="{'icon--down': ApplicantListControls.sortingArrows.elapsedSortingArrow, 'icon--up': !ApplicantListControls.sortingArrows.elapsedSortingArrow}"></i>
+                    </th>
+                    <th ng-click="orderBy(APPLICANT_LIST_ORDER_BY.NOTES)">
+                        <a tooltip="Sort By Notes" tooltip-placement="bottom">Notes</a>
+                        <i class='' ng-class="{'icon--down': ApplicantListControls.sortingArrows.notesSortingArrow, 'icon--up': !ApplicantListControls.sortingArrows.notesSortingArrow}"></i>
+                    </th>
+                    <th>
+                        Application
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-hide="page.loading || page.items.length || page.error">
+                    <td colspan="6">This table is empty.</td>
+                </tr>
+                <tr class="table-mobile-layout__tr" ng-repeat="applicant in page.items">
+                    <td class="table__candidate-checkbox" ng-class="{'table__tbody__tr__td--is-selected': applicant.select}">
+                        <div class="table-mobile-layout__checkbox field__checkbox table__candidate_checkbox--td-alignment">
+                            <input id="checkbox_{{applicant.id}}"
+                                   type="checkbox"
+                                   ng-model="applicant.select"
+                                   ng-click="select(applicant)"
+                            />
+                            <label for="checkbox_{{applicant.id}}" class="form__label"></label>
+                        </div>
+                    </td>
+
+                    <td class="table__candidate-name" ng-class="{'table__tbody__tr__td--is-selected': applicant.select}">
+                        <round-badge class="align-left non-selectable-round-badge--show" name-color-hash-race="applicant.hashedEmail">{{applicant.initials}}</round-badge>
+                        <a href="" path="recruit.jobs.applications.detail" path-params="{{ApplicantListControls.uriParams.jobId}}, {{applicant.id}}, 'application'">
+                            <round-badge class="align-left selectable-round-badge--hide" name-color-hash-race="applicant.hashedEmail">{{applicant.initials}}</round-badge>
+                            <span class="table__candidate-name--name--position">
+                                {{applicant.fullName}}
+                            </span>
+                        </a>
+                    </td>
+
+                    <td class="table__candidate-name status-tooltip--hover" ng-class="{'table__tbody__tr__td--is-selected': applicant.select}">
+                        <div class="table-mobile-layout__status">
+                            <span class="label label--{{applicant.status.currentStatusColor}}">{{applicant.status.currentStatus}}</span>
+                            <span class="label label--pill">{{applicant.applicationStatusChangeCount}}</span>
+                            <status-tooltip
+                                    status-change-count="applicant.applicationStatusChangeCount"
+                                    status="applicant.status"
+                            ></status-tooltip>
+                        </div>
+                    </td>
+
+                    <td class="table__candidate-email" ng-class="{'table__tbody__tr__td--is-selected': applicant.select}">
+                        <span class="table-mobile-layout__elapse-time">{{applicant.applyDate | fromNow:true}}</span>
+                    </td>
+
+                    <td class="table__candidate-label" ng-class="{'table__tbody__tr__td--is-selected': applicant.select}">
+                        <span class="table-mobile-layout__notes">{{applicant.notes}} {{applicant.notes === 1 ? 'note' : 'notes'}}</span>
+                    </td>
+                    <td class="table__candidate-application--hide-mobile" ng-class="{'table__tbody__tr__td--is-selected': applicant.select}">
+                        <a ng-show="applicant.userCan(ApplicantListControls.entityActionType.CanViewPdfResumeDocument)"
+                           href="#"
+                           class="table__candidate-application--display align-center"
+                           ng-click="viewDocument(applicant.userCan(EntityActionType.CanViewPdfResumeDocument).ActionUrl, applicant.attachments.resumeFilename, 'resume')">
+                            <i class="svg-icon--doc table__candidate-application--document-icon--size"></i>
+                            <div class="table__candidate-application--document-name--size">Resume</div>
+                        </a>
+                        <a ng-show="applicant.userCan(ApplicantListControls.entityActionType.CanViewPdfCoverDocument)"
+                           href="#"
+                           class="table__candidate-application--display align-center"
+                           ng-click="viewDocument(applicant.userCan(EntityActionType.CanViewPdfCoverDocument).ActionUrl, applicant.attachments.coverLetterFilename, 'coverletter')">
+                            <i class="svg-icon--ppt table__candidate-application--document-icon--size"></i>
+                            <div class="table__candidate-application--document-name--size">Cover Letter</div>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="align-center">
+            <!--End Table Jobs List -->
+            <small ng-if="page.total > 0 && page.current * page.size < page.total"
+               class="requisition-list--count">
+                Showing {{page.loading ? (page.current-1) * page.size : page.current * page.size }} of {{page.total}}
+            </small>
+            <small ng-if="page.total > 0 && page.current * page.size > page.total"
+               class="requisition-list--count">
+                Showing {{page.loading ? (page.current-1) * page.size : page.total}} of {{page.total}}
+            </small>
+        </div>
+    </div>
+</div>

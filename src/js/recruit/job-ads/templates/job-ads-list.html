@@ -1,0 +1,151 @@
+<div class="page job-ads-list" ng-class="{'is--loading': isLoading}">
+
+    <div class="page__wrapper">
+        <div class="page__header">
+            <div class="form__field">
+                <div class="form__field col-1-2 search__job">
+                    <label for="id__search__job__ads" class="icon--search field__before"></label>
+                    <input id="id__search__job__ads"
+                            type="text"
+                            class="search__job__input"
+                            placeholder="Search"
+                            maxlength="255"
+                            ng-model="jobAdsControls.searchNewJobAds"
+                            ng-change="onSearchStringChanged()"
+                            ng-enter="searchJobs()" />
+                    <a ng-show="jobAdsControls.searchNewJobAds !== '' "
+                       ng-click="removeSearchJobAds()"
+                       for="beforeAfterInput"
+                       tooltip="Clear"
+                       tooltip-placement="top"
+                       class="icon--cross field__after">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="page__content"
+             paginate="getJobAdsList"
+             page-size="10"
+             paginate-on-scroll="false">
+
+            <div class="message message--empty"
+                 ng-hide="page.loading || page.items.length || page.error">
+                <i class="icon--mnuDashboard icon-is-huge"></i>
+                <p>List job ads is empty</p>
+            </div>
+            <table class="table table--responsive-stacked" ng-show="page.items.length > 0">
+                <thead>
+                    <tr>
+                        <th>
+                            <a href="#" ng-click="orderBy('title', 'title')">
+                                JOB NAME
+                                <i ng-if="column === 'title'" ng-class="reverse ? 'icon--down':'icon--up'"></i>
+                            </a>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="orderBy('location', 'location')">
+                                LOCATION
+                                <i ng-if="column === 'location'" ng-class="reverse ? 'icon--down':'icon--up'"></i>
+                            </a>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="orderBy('elapse', 'elapse')">
+                                ELAPSE
+                                <i ng-if="column === 'elapse'" ng-class="reverse ? 'icon--down':'icon--up'"></i>
+                            </a>
+                        </th>
+                        <th>
+                            <div class="job-ads-list-submenu">
+                                <a href="" dropdown-toggle>
+                                    APPLICANTS
+                                    <i ng-if="column === 'applicantsActive' || column === 'totalApplicants'" ng-class="reverse ? 'icon--down':'icon--up'"></i>
+                                </a>
+                                <ul class="submenu submenu--compact dropdown-menu">
+                                    <li class="submenu__item">
+                                        <a href="" ng-click="orderBy('applicantsActive', 'applicantsActive')" ng-class="{'is--active': predicate === 'applicantsActive'}">
+                                            Active Applications
+                                        </a>
+                                    </li>
+                                    <li class="submenu__item">
+                                        <a href="" ng-click="orderBy('totalApplicants', 'totalApplicants')" ng-class="{'is--active': predicate === 'totalApplicants'}">
+                                            Total Applicants
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </th>
+                        <th>
+                            <a href="#" ng-click="orderBy('status',['statusPriority', column === 'status' && !reverse ? 'statusDate' : '-statusDate'])">
+                                STATUS
+                                <i ng-if="column === 'status'" ng-class="reverse ? 'icon--down':'icon--up'"></i>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="job in page.items | limitTo: page.showing | orderBy: predicate: reverse">
+                        <td data-title="JOB NAME">
+                        
+                            <a ng-show="job.userCan(EntityActionType.CanViewJob).ActionUrl && job.status === JOB_STATUS_CONSTANTS.JOB_STATUS_DRAFT" href=""
+                                ng-click="editJob(job.id, job.statusCode.statusTitle, $index)">{{job.title}}
+                            </a>
+
+                            <a ng-show="job.userCan(EntityActionType.CanViewJob).ActionUrl && job.status !== JOB_STATUS_CONSTANTS.JOB_STATUS_DRAFT" href=""
+                                path="recruit.jobs.view" path-params="{{job.id}}, 'details'">{{job.title}}
+                            </a>
+                            
+                            <span ng-show="!job.userCan(EntityActionType.CanViewJob).ActionUrl">{{job.title}}</span>
+                        </td>
+
+                        <td data-title="LOCATION">
+                            <a href="#">{{job.location}}</a>
+                        </td>
+
+                        <td data-title="ELAPSE">
+                            <ng-pluralize count="job.elapse"
+                                            when="{
+                                                    '0': '0 Day',
+                                                    'one': '1 Day',
+                                                    'other': '{} Days'
+                                                }">
+                            </ng-pluralize>
+                        </td>
+
+                        <td data-title="APPLICANTS">
+                            <span ng-if="job.totalApplicants === 0 && job.applicantsActive === 0">-</span>
+                            <a href="#"
+                               ng-if="job.totalApplicants != 0 ||  job.applicantsActive != 0"
+                               tooltip-placement="bottom"
+                               tooltip="Applicants minus rejected/hired (Total Applicants)"><b>{{job.applicantsActive}}</b> ({{job.totalApplicants}})</a>
+                        </td>
+
+                        <td data-title="STATUS">
+                            <span class="label {{job.statusCode.statusStyle}}">{{job.statusCode.statusTitle}}</span>
+                            <br />
+                            <small>{{job.statusDate | dateOnly}}</small>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p ng-if="page.total > 0 && page.current * page.size < page.total"
+               class="align-center">
+                Showing {{page.loading ? (page.current-1) * page.size : page.current * page.size }} of {{page.total}}
+            </p>
+            <p ng-if="page.total > 0 && page.current * page.size > page.total"
+               class="align-center">
+                Showing {{page.loading ? (page.current-1) * page.size : page.total}} of {{page.total}}
+            </p>
+
+
+        </div>
+    </div>
+
+    <div class="page__wrapper" ng-if="jobAdsControls.userCan(EntityActionType.CanAddJob).ActionUrl">
+        <nav mfb-menu position="br" effect=""
+             active-icon="icon--plus" resting-icon="icon--plus"
+             ng-click="createJob()">
+        </nav>
+    </div>
+
+</div>

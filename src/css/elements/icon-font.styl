@@ -1,0 +1,91 @@
+/* Simple Line Icons */
+
+@font-face {
+    font-family: font-icon;
+    src: url('../fonts/sherpa.eot');
+    src: url('../fonts/sherpa.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sherpa.svg#sherpa') format('svg'),
+         url('../fonts/sherpa.woff') format('woff'),
+         url('../fonts/sherpa.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+icon()
+    font-family: font-icon;
+    content: attr(data-icon);
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;  
+
+.ui
+
+    [class*="icon--"] {
+        icon()
+    }  
+
+    // Custom
+    .icon--colour-swatch:after { 
+        content:''; 
+        position:absolute;
+        bottom:0; 
+        right:0; 
+        width:7px; 
+        height:7px; 
+        background:#f00;
+    }
+
+
+    // Icon modifiers
+    //
+    // Various classes to help display icons
+    //
+    // Markup: <i class="icon--birthday {{modifier_class}}"></i>
+    //
+    // .icon-is-disabled - Disabled icon 
+    // .icon-is-inline - To display icons in a row
+    // .icon-is-small - Small icon
+    // .icon-is-large - Large icon
+    // .icon-is-big - Big icon
+    // .icon-is-huge - Huge icon
+    //   
+    // Styleguide elements.icons.modifiers
+
+
+    // Disabled
+
+    .icon-is-disabled {
+        opacity: .3;
+    }
+
+    .icon-is-inline + .icon-is-inline {
+        margin-left: .75em
+    }
+
+
+    // Sizes
+
+    .icon-is-small {
+        font-size: 12px;
+    }
+
+    .icon-is-large {
+        font-size: 20px;
+    }
+
+    .icon-is-big {
+        font-size: 32px;
+    }
+
+    .icon-is-huge {
+        font-size: 50px;
+    }
+
+    .icon-is-massive {
+        font-size: 180px;
+    }

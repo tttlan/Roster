@@ -1,0 +1,26 @@
+<div class="media media--user media--note" ng-click="turnOffNewUpdated();">
+    <div class="note__options">
+        <a href="" dropdown-toggle ng-if="isShowOptions()"><i class='icon--ellipsis'></i></a>
+        <ul class="submenu submenu--compact dropdown-menu">
+            <li class="submenu__item" ng-if="ngModel.userCan.candelete">
+                <a href="" ng-confirm-click="deleteFn()(ngModel)" ng-confirm-message="Are you sure you want to delete this?"><i class="icon--cross"></i>Delete</a>
+            </li>
+            <li class="submenu__item" ng-if="ngModel.userCan.canupdatefeedback || ngModel.userCan.canedit">
+                <a href="" ng-click="updateFn()(ngModel)"><i class="icon--pencil"></i>Edit</a>
+            </li>
+        </ul>
+    </div>
+    <div class="media__image">
+        <avatar img-src="ngModel.Owner.$ref === ngModel.Member.$id ? ngModel.Member.PhotoThumb : ngModel.Owner.PhotoThumb" size="small"></avatar>
+        <span ng-if="ngModel.isNew || ngModel.isUpdated" class="label label--badge align-right" ng-class="{'label--positive': ngModel.isNew, 'label--caution': ngModel.isUpdated }" style="position: absolute; margin-top: -5px; left: 50%; margin-left: -27.5px; display: block; width: 55px;" display-time="10000">{{ngModel.isNew ? 'New' : (ngModel.isUpdated ? 'Updated' : '')}}</span>
+    </div>
+    <div class="media__body">
+        <!--<span ng-class="{'icon--smiling': ngModel.Feedback === 1, 'icon--sad': ngModel.Feedback === 2, 'icon--neutral': ngModel.Feedback === 0}"></span>-->
+        <a href="">{{ngModel.Owner.$ref === ngModel.Member.$id ? (ngModel.Member.FirstName + " " + ngModel.Member.SurName) : (ngModel.Owner.FirstName + " " + ngModel.Owner.SurName)}}</a> <span>wrote on {{ngModel.CreatedDate | utcToLocaleDateTime}}</span> <br />
+        <p read-more words="false" ng-model="ngModel.Description" length="200"></p>
+        <!--<file-viewer ng-show="ngModel.Document && ngModel.Document!=null" ng-hide="ngModel.Document===null" file="{'$id': ngModel.Document.ArtifactId, 'DocumentGetUrl': ngModel.Document.DocumentUrl ,'Visibility': ngModel.Document.Visibility, 'FileSize': ngModel.Document.FileSize,'FileName': ngModel.Document.FileName , 'ContentType': ngModel.Document.ArtifactTypeName ,'ModifiedClass': 'file-viewer--profile-note', 'UploadedDate': ngModel.Document.LastModified }" inline-images="true" block="true"></file-viewer>-->
+        <div ng-repeat="doc in ngModel.DocumentsRelated">
+            <file-viewer file="{'$id': doc.ArtifactId, 'DocumentGetUrl': doc.DocumentUrl ,'Visibility': doc.Visibility, 'FileSize': doc.FileSize,'FileName': doc.FileName , 'ContentType': doc.ArtifactTypeName ,'ModifiedClass': 'file-viewer--profile-note', 'UploadedDate': doc.LastModified, 'FileExtension': doc.FileExtension==='pdf'?'pdf':'' }" inline-images="true" block="true"></file-viewer>
+        </div>
+    </div>
+</div>    

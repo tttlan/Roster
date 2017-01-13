@@ -1,0 +1,23 @@
+<div class="page page--2-1 events-form" ng-class="{'is--loading': parentData.loading}">
+
+    <div class="page__wrapper">
+
+        <header class="page__header">
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="events.index">Events</a></li>
+            </ul>
+
+            <h1 ng-if="!modelData">Create a new event</h1>
+            <h1 ng-if="modelData">Edit event</h1>
+
+        </header>
+
+        
+
+        <form-builder form-id="event" url="/interface/views/newsfeed/forms/events-create-edit.json" template="/interface/views/newsfeed/partials/events-create-edit-form.html" submit="saveEvent" model-data="modelData">
+                    
+        </form-builder>
+        
+    </div>
+
+</div>

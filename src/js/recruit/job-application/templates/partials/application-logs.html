@@ -1,0 +1,28 @@
+<div ng-class="{'is--loading': logsLoading}">
+    <p ng-show="!logsModel.length">
+        No logs found
+    </p>
+    <ul class="timeline">
+        <li class="timeline__item" ng-repeat="log in logsModel">
+            <div class="timeline__item__title">{{ log.actionType | logActionTypeName }}</div>
+            <div class="timeline__item__subtext">
+                <div class="content">{{ log.content }}</div>
+                <div class="note__reaction">
+                    <i ng-if="log.notesReaction === ReactionConstants.REACTION_LIKE" class="icon--smiling is--positive"></i>
+                    <i ng-if="log.notesReaction === ReactionConstants.REACTION_DISLIKE" class="icon--sad is--negative"></i>
+                    <i ng-if="log.notesReaction === ReactionConstants.REACTION_NEUTRAL" class="icon--neutral is--caution"></i>
+                </div>
+            </div>
+            <div ng-if="log.statusHistory">
+                <span class="label label--{{ log.statusHistory.previousStatusColor }}">{{ log.statusHistory.previousStatus }}</span>
+                <span class="icon--right"></span>
+                <span class="label label--{{ log.statusHistory.currentStatusColor }} status-tooltip__current-status">{{ log.statusHistory.currentStatus }}</span>
+            </div>
+            <div class="timeline__item__details">
+                <avatar class="timeline__item__avatar" img-src="log.avatarMiniLink" size="tiny"></avatar>
+                <span class="timeline__item__author">{{ log.firstName }} {{ log.surname }}</span>
+                <span class="timeline__item__date">{{ log.actionDate | dateTime }}</span>
+            </div>
+        </li>
+    </ul>
+</div>

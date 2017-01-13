@@ -1,0 +1,41 @@
+<fieldset class="form" ng-controller="FormCtrl">
+                        
+    <label class="form__label" for="auto_complete">Auto Complete</label>
+    <div class="form__field">
+        <label for="auto_complete" class="icon--search field__before"></label>
+        <input type="text" id="auto_complete" placeholder="Search..."
+            ng-model="asyncSelected" typeahead="result as result.name for result in results | filter:$viewValue | limitTo:6" />
+    </div>
+
+    <label class="form__label" for="auto_complete2">Auto Complete ( $http )</label>
+    <div class="form__field">
+        <label for="auto_complete2" class="icon--search field__before"></label>
+        <input type="text" id="auto_complete2" placeholder="Search Location..."
+           ng-model="input.locations"
+           typeahead="address for address in getLocation($viewValue) | filter:$viewValue"
+           typeahead-loading="loadingLocations"
+           typeahead-min-length="3"
+           typeahead-on-select="optionSelected" />
+        <loader ng-show="loadingLocations" class="typeahead__loading" />
+    </div>
+
+    
+    <div class="form__field">
+        <label class="form__label" for="input_courseName">Tags</label>
+        <tag-manager ng-model="someTag">
+            <input type="text" placeholder="Enter a group/location" />    
+        </tag-manager>
+    </div>
+    
+    <div class="form__field">
+        <label class="form__label" for="input_courseName">Auto Complete &amp; Tags</label>
+        <tag-manager ng-model="coolTag" select-data="results">
+            <input type="text" id="auto_complete" placeholder="Search..."
+                ng-model="typeAheadTag"
+                typeahead="result as result.name for result in selectData | filter:{name: $viewValue} | limitTo:6"
+                typeahead-on-select="addTag($item, $model, $label)"
+            />
+        </tag-manager>
+    </div>
+
+</fieldset>

@@ -1,0 +1,16 @@
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+    <label 
+    ng-if="element.label" 
+    class="form__label" 
+    for="{{ element.formName + '__' + element.name }}">{{ element.label }}</label>
+    <select-role id="{{ element.formName + '__' + element.name }}"
+                 name="{{element.name}}"
+                 ng-model="element.val"
+                 from-set="element.options"
+                 ng-change="{{element.onchange}}"
+                 ng-required="element.validation.required">
+    </select-role>
+    
+    <error-builder></error-builder>
+
+</div>

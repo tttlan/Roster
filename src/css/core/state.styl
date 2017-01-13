@@ -1,0 +1,188 @@
+// Globally applicable state styles only!
+// Module-specific states belong with their module as a regular modifier class.
+// e.g .my-module--is-loading
+
+// Visibility
+//
+// .is-hidden - Hidden
+// .no-js .is-hidden--no-js - Hidden when JS is disabled
+// .js .is-hidden--js - Hidden when JS is enabled
+// .is-visually-hidden - Visually hidden without the use of display none.  Useful for accessibility
+// .is--blocked - Disable a block of content with an overlayed half transparent block
+//
+// Styleguide core.state.visibility
+
+.is-hidden {
+    display: none
+}
+
+.no-js .is-hidden--no-js {
+    display: none
+}
+
+.js .is-hidden--js {
+    display: none
+}
+
+.is-visually-hidden {
+    // Hide only visually, but have it available for screenreaders: h5bp.com/v
+    border: 0
+    clip: rect(0 0 0 0)
+    height: 1px
+    margin: -1px
+    overflow: hidden
+    padding: 0
+    position: absolute
+    width: 1px
+}
+
+.is--blocked {
+    position:relative;
+    &:after {
+        position:absolute;
+        display:block;
+        content:'';
+        width:100%;
+        height:100%;
+        top:0;
+        left:0;
+        background:rgba(255,255,255,0.35);
+        z-index: 10;
+    }
+}
+
+// Styleguide core.state.visibility
+
+
+// Media Query based show/hide
+//
+// Show / hide for certain media queries
+//
+// .lt-phablet-hide - Less than Phablet size, then hide it
+// .lt-tablet-hide - Less than the tablet size - hide it
+// .lt-desktop-hide - Less than the desktop - hide it
+// .lt-widescreen-hide - Less than widescreen - hide it
+//
+// Styleguide core.state.mediaquery
+
+@media maxPhablet {
+    // Less than Phablet size, then hide it
+    .lt-phablet-hide {
+        display: none !important;
+    }
+}
+@media minPhablet {
+    // Less than Phablet size, then hide it
+    .lt-phablet-show {
+        display: none !important;
+    }
+}
+
+@media maxTablet {
+    // Less than tablet size, then hide it
+    .lt-tablet-hide {
+        display: none !important;
+    }
+}
+@media minTablet {
+    // Less than tablet size, then hide it
+    .lt-tablet-show {
+        display: none !important;
+    }
+}
+
+@media maxDesktop {
+    // Less than Desktop size, then hide it
+    .lt-desktop-hide {
+        display: none !important;
+    }
+}
+@media minDesktop {
+    // Less than Desktop size, then hide it
+    .lt-desktop-show {
+        display: none !important;
+    }
+}
+
+@media maxWidescreen {
+    // Less than Widescreen size, then hide it
+    .lt-widescreen-hide {
+        display: none !important;
+    }
+}
+@media minWidescreen {
+    // Less than Widescreen size, then hide it
+    .lt-widescreen-show {
+        display: none !important;
+    }
+}
+
+
+@media maxNavDesktop {
+    // Less than Desktop size, then hide it
+    .lt-nav-desktop-hide {
+        display: none !important;
+    }
+}
+@media minNavDesktop {
+    // Less than Desktop size, then hide it
+    .lt-nav-desktop-show {
+        display: none !important;
+    }
+}
+
+// Attention colours
+//
+// Use these with any type of element
+//
+// Markup:
+// <p class="{{modifier_class}}">Sample text</p>
+//
+// .is--disabled - Disabled element
+// .is--positive - Use for positive things
+// .is--success - Use for successful things (same style as positive, different name)
+// .is--negative - Use for negative things
+// .is--error - Use for errored things (same style as negative, different name)
+// .is--caution - Use for things you should be concerned about
+// .is--warning - Use for displaying a warning (same style as caution, different name)
+//
+// Styleguide core.state.attention
+
+//.is--active ,
+//.is--primary {
+//    color: primary;
+//}
+
+.is--disabled {
+    color: disabled !important;
+}
+
+.is--positive ,
+.is--success {
+    color: positive;
+}
+
+.is--negative ,
+.is--error {
+    color: negative;
+}
+
+.is--caution ,
+.is--warning {
+    color: caution;
+}
+
+.is--primary{
+    color: primary;
+}
+
+// Clickable state
+// ------------------------------------------------
+
+.is--clickable{
+    transition:background-color linear 150ms;
+    &:hover {
+        cursor:pointer;
+        .ui .table & {background-color:grey8;}
+    }
+}

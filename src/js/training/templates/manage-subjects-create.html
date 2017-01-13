@@ -1,0 +1,151 @@
+<div class="page page--2-1">
+
+    <div class="page__wrapper">
+
+        <header class="page__header">
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="training.manage.subjects">Manage Subjects</a></li>
+            </ul>
+            <h1>{{ page.action }} subject</h1>
+        </header>
+
+        <!-- content component -->
+
+        <div class="page__content">
+            <ng-form
+                validate-form
+                name="form"
+                id="primaryForm"
+                ng-disabled="subject.$loading"
+            >
+                <fieldset class="form segment">
+
+                    <div class="form__field">
+                        <label class="form__label" for="input_courseName">Subject Name<em>*</em></label>
+                        <input type="text" id="input_courseName" placeholder="ie. 'Training module part 1'" name="fName" required ng-model="subject.Title" maxlength="250">
+                        <span class="form__note form__note--error" ng-show="(form.fName.$dirty || submitted) && form.fName.$invalid">A subject name is required</span>
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label" for="input_overview">Description</label>
+                        <textarea rows="3" id="input_overview" ng-model="subject.Description" maxlength="250"></textarea>
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label" for="input_duration">Duration <small>(in minutes)</small></label>
+                        <input only-numbers type="text" id="input_duration" placeholder="ie. '15'" name="duration" ng-model="subject.Duration" maxlength="3">
+                    </div>
+
+                    <div class="form__field">
+                        <!-- angular tabs -->
+                        
+                        <tabs selected="activeFileIndex">
+                            <ul class="nav nav--tabs nav--tabs-flush">
+                                <li tab-link ng-class="{'is--disabled': subject.Uri}"><a href="">Upload</a></li>
+                                <li tab-link ng-class="{'is--disabled': subject.FileStoreId.length || isUploading }"><a href="">Link <span class="lt-tablet-hide">to course </span>/ Video</a></li>
+                            </ul>
+                            <div class="tab-group">
+                                <div tab-content class="tab-group__tab tab-group__tab--spaced">
+                                    <div class="uploader-container">
+                                        <uploader maxsize="52428800" maxfiles="1" ng-model="subject.FileStoreId" either-required="subject.Uri" name="filestore" 
+                                            existing="subject.FileStore" is-uploading="isUploading" container-id="5"></uploader>
+                                        <span class="form__note form__note--error" ng-show="(form.filestore.$dirty || submitted) && form.filestore.$error.eitherRequired">
+                                           An uploaded file or an external link is required
+                                        </span>
+                                        <p><small>
+                                            Max file size is 50MB<br />
+                                            Supported file types: doc, docx, ppt, pptx, pdf, jpg, png, mp4</small>
+                                        </p>
+                                    </div>
+                                    
+
+                                </div>
+                                <div tab-content class="tab-group__tab tab-group__tab--spaced">
+                                    <div class="form__field">
+                                        <input type="text" id="input_courseName" placeholder="http:// (Path to course)" ng-model="subject.Uri" name="uri"  maxlength="100" either-required="subject.FileStoreId">
+                                        <span class="form__note form__note--error" ng-show="(form.filestore.$dirty || submitted) && form.filestore.$error.eitherRequired">
+                                            An external link or an uploaded file is required
+                                        </span>
+                                        <p><small>Enter the path to the course here.<br />For Example: You can input the URL to a Youtube video</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </tabs>
+                        <!-- end angular tabs -->
+                    </div>
+
+                    <div class="form__field">
+                        <div class="field__checkbox">
+                            <input type="checkbox" ng-model="subject.Active" id="form_checkbox_active" />
+                                <label class="form__label" for="form_checkbox_active"> This subject is active
+                                <div class="form__note">Deselecting this will archive the subject.</div>
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="button-group">
+                    <a href="" ng-click="cancel()" class="button">Cancel</a>
+                    <button class="button button--positive"
+                        ng-click="saveSubject( isFormValid(form.$valid), subject)"
+                        ng-disabled="!form.$valid || subject.$loading"
+                    >
+                        Save Subject
+                    </button>
+                </div>
+                <p class="form__note form__note--error" ng-show="serverError">
+                    {{ serverError }}
+                </p>
+            </ng-form>
+
+        </div>
+
+        <!-- END content component -->
+
+        <!-- aside component -->
+
+        <div class="page__aside lt-tablet-hide">
+            <div class="panels">
+                <div class="panel" ng-if="page.action === 'Create'">
+                    <h4 class="panel__heading">Tips &amp; Help</h4>
+                    <p>Subjects are modules/chapters of a course.</p>
+                    <p>A subject must be part of a course in order to be published.</p>
+                    <p>You should <a href="" path="training.manage.courses.create">create a course</a> now, if you haven't already.</p>
+                </div>
+                <div class="panel" ng-if="page.action === 'Edit'">
+                    <h4 class="panel__heading">Training Courses</h4>
+                    <p  ng-hide="subject.TrainingCourses">This subject has not been assigned to a Training Course yet.<br />
+                        You should <a href="" path="training.manage.courses.create">create a course</a> now, if you haven't already.</p>
+                    <div ng-show="subject.TrainingCourses">
+                        <p>This subject is attached to the following courses:</p>
+                        <ul class="list-of-links">
+                            <li ng-repeat="course in subject.TrainingCourses"><i class="icon--folder"></i> <a href="" path="training.manage.courses.edit" path-params="course.TrainingCourseId">{{ course.Title }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel" ng-if="page.action === 'Edit'">
+                    <h4 class="panel__heading">Reset Subject</h4>
+                    <p>Resetting this subject, will clear all user's progress on courses that contain this subject.</p>
+                    <a href=""
+                        ng-disabled="subject.$isResetting" 
+                        ng-confirm-click="subject.$reset()"
+                        ng-confirm-message="Are you sure you want to reset this?"
+                        class="button"
+                        ng-class="{'button--positive': subject.$isReset, 'button--caution': !subject.$isReset}">
+                        <span ng-hide="subject.$isReset">
+                            <i ng-hide="subject.$isResetting" class="icon--warning"></i>
+                            <span ng-show="subject.$isResetting" class="disable-toggle__loader"></span>
+                            Reset Subject
+                        </span>
+                        <span ng-show="subject.$isReset">
+                            <i class="icon--check"></i> Reset complete
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- end aside component -->
+
+    </div>
+</div>

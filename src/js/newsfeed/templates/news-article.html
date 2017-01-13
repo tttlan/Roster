@@ -1,0 +1,111 @@
+<div class="page page--1-c page--white">
+
+    <div class="page__wrapper">
+
+        <div class="page__content">  
+            
+            <loader align="center" size="large" ng-show="loading"></loader>
+            
+            <a href="" path="dashboard.news.index" class="page-return" ng-hide="blackout" title="Back to news"><i class="icon--arrow-left icon-is-huge"></i><span class="page-return__text">Back to news</span></a>
+            
+            <div class="blog blog--single">                        
+
+                <h1 class="blog__title">{{ blog.Title }}</h1>
+
+                <div class="blog__details" ng-show="!loading">
+
+                    <div class="blog-owner">
+
+                        <div class="blog-owner__image">
+                            <avatar img-src="blog.Owner.PhotoThumb" size="small"></avatar>
+                        </div>
+
+                        <div class="blog-owner__text">
+                            <strong>By {{blog.Owner.FirstName}} {{blog.Owner.Surname}}</strong>
+                            <small>{{blog.DatePublish | fromNow}}<!-- &nbsp; &bull; &nbsp; {{blog.ViewCount}} views &nbsp; &bull; &nbsp; {{blog.LikeCount}} likes--></small>
+                        </div>
+
+                    </div>
+
+                    <div class="blog-likes" ng-show="blog.Likes.length">
+                        <div class="blog-likes__like" ng-repeat="like in blog.Likes" tooltip="{{like.MemberSummary.FirstName}} {{like.MemberSummary.Surname}}">
+                            <avatar img-src="like.MemberSummary.PhotoThumb" size="small"></avatar>
+                            <i class="icon--like"></i>
+                        </div>
+                    </div>
+
+                    <likes
+                        resource-type="blog" 
+                        resource-id="blog.Id" 
+                        like-count="blog.LikeCount" 
+                        liked="blog.HasLiked"
+                        button="true"
+                    ></likes>
+
+                    <div class="blog__more-details" ng-if="!blackout">
+                        <a href="" class="button button--basic button--small button--icon"  dropdown-toggle>
+                            <i class="icon--ellipsis"></i>
+                        </a>
+                        <ul class="submenu submenu--compact dropdown-menu">
+                            <li class="submenu__item">
+                                <a href="" ng-click="showViews(blog)">See views</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" ng-click="showLikes(blog)">See likes</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <span class="blog__content" ng-bind-html="blog.Content | unsafe"></span>
+
+                <!-- 
+                <likes resource-type="blog" resource-id="blog.Id" like-count="blog.likeCount" liked="blog.liked"></likes>
+                -->
+
+                <div class="blog__attachment" ng-show="blog.Attachments">
+
+                    <file-viewer file="file" ng-repeat="file in blog.Attachments" block="true" is-inline="false"></file-viewer>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="page page--1-c" ng-show="!loading">
+
+    <div class="page__wrapper">
+
+        <div class="blog-read-receipt" ng-if="blackout">
+            <a href="" disable-toggle="postingReceipt" ng-click="readReceipt(blog.ActivityId, 6)" class="button--caution button">I have read this</a>
+        </div>
+
+        <div class="page__content" ng-if="!blackout"> 
+
+            <div class="blog-comments">
+                
+                <h1>Comments</h1>
+
+                <post-comments
+                    resource-type="blog"
+                    resource-id="blog.Id"
+                    comment-count="blog.CommentCount"
+                    current-user="currentUser"
+                    show-add-comment="true" 
+                    ps="20"
+                >
+                </post-comments>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

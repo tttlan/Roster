@@ -1,0 +1,66 @@
+<div class="roster-mini">
+
+    <header class="roster__header">
+
+        <span>{{ selectedDay.date | date:'dd' }}</span> 
+        {{ selectedDay.date | date:'EEEE, MMM' }}
+
+        <a href="" ng-click="prevDay()" ng-class="{'is--disabled': dayCount < 1}" class="roster__nav roster__nav--prev"><i class="icon--arrow-left"></i></a>
+        <a href="" ng-click="nextDay()" ng-class="{'is--disabled': selectedDayIndex == dayCount}" class="roster__nav roster__nav--next"><i class="icon--arrow-right"></i></a>
+
+    </header>
+
+
+    <div class="roster__shifts">
+        <div class="roster__shifts-container">
+
+            <div class="message message--empty" ng-if="!selectedDay.shifts.length">
+                <i class="icon--mnuRosters icon-is-huge"></i>
+                <p>It doesn't look like you have any shifts today.</p>
+            </div>
+
+            <div ng-class="{'is--active': shift.active }" class="shift shift--{{ shift.Status }}" ng-repeat="shift in selectedDay.shifts"
+                ng-style="{top: (shift.pos.top * 2/3 + 'px'), height: (shift.pos.bottom * 2/3 + 'px')}" shift-overflow>
+                <div class="shift__detail">
+                    <span class="shift__duration" ng-style="{ height: (shift.pos.bottom * 2/3 + 'px') }"></span>
+                    <div class="shift__content">
+                        <div class="shift__location">{{ shift.Location }}</div>
+                        <div class="shift__times">{{ shift.StartTime | date : 'h:mma' }} - {{ shift.EndTime | date : 'h:mma' }}</div>
+                        <span ng-if="shift.Status === 'confirmed'" class="label label--icon label--positive"><i class="icon--check"></i> {{ shift.Status }}</span>
+                        <span ng-if="shift.Status === 'rejected'" class="label label--icon label--negative"><i class="icon--cross"></i> {{ shift.Status }}</span>
+                        <div class="shift__meta" ng-if="shift.Status === 'notified'">
+                            <a href="" class="button button--small button--positive" ng-click="updateShift(true, shift)">Accept</a> &nbsp; 
+                            <a href="" class="button button--small button--negative" ng-click="updateShift(false, shift)">Decline</a>
+                        </div>
+
+                        <div class="shift__additional-content">
+                            <div class="shift__working-with" ng-if="shift.EmployeesWorkingSameShift.length">
+                                <h5>Who else is working:</h5>
+                                <ul ng-if="shift.EmployeesWorkingSameShift.length" class="shift__co-workers list--inline">
+                                    <li ng-repeat="member in shift.EmployeesWorkingSameShift | limitTo:5">
+                                        <a href="" tooltip="{{ member.FirstName }} {{ member.Surname }}" tooltip-append-to-body="true" target="_self" path="network.profile" path-params="member.MemberId">
+                                            <avatar size="small" img-src="member.PhotoThumb"></avatar>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="shift__comments" ng-if="shift.Comments.length">
+                                <h5>Additional notes</h5>
+                                <p>{{ shift.Comments }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <span ng-if="shift.breakmins" class="shift__break" style="top:{{ shift.topPosition * 2/3 }}px; height:{{ shift.breakmins * 2/3 }}px;" tooltip="{{ shift.breakmins }} minute break" tooltip-append-to-body="true" tooltip-placement="left">
+                    </span>
+
+                </div>
+                <a href="" ng-click="shift.active = !shift.active" class="shift__toggle">&hellip;</a>
+            </div>
+        </div>
+        <div class="roster__grid">
+            <div class="grid__hour" ng-repeat="hour in selectedDay.hoursInDay">{{ hour }}</div>
+        </div>
+
+    </div>
+
+</div>

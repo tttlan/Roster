@@ -1,0 +1,22 @@
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+
+    <label
+    ng-if="element.label"
+    class="form__label"
+    for="{{ element.formName + '__' + element.name }}">{{ element.label }}</label>
+    <input id="{{ element.formName + '__' + element.name }}"
+           type="tel"
+           placeholder="{{ element.placeholder }}"
+           ng-model="element.val"
+           name="{{element.name}}"
+           ng-change="{{element.onchange}}"
+           ng-minlength="{{element.validation.minLength || 0}}"
+           ng-maxlength="{{element.validation.maxLength || 20}}"
+           ng-pattern="/^\+?(\(\d\d\))?(\d? ?)*$/"
+           ng-required="true" />
+
+    <p ng-if="element.note"><small>{{ element.note }}</small></p>
+
+    <error-builder></error-builder>
+
+</div>

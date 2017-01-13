@@ -1,0 +1,284 @@
+<table class="table-form" ng-if="parentData.$globalPermission.viewprofileemploymentdetail" ng-class="{'table-form__edit-all' : parentData.$editing === 'all'}">
+
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'role' || parentData.$editing === 'all' }">
+        <th>Role</th>
+        <td>
+            <span class="table-form__form-value">{{form.Role.$viewValue.label}}</span>
+            <table-form-edit edit-name="role" ng-if="parentData.$globalPermission.caneditemployeedetail"></table-form-edit>
+            <div class="table-form__form-field">
+                <div class="form__field {{ formData.elements[1].class }}" ng-class="{'is--required': formData.elements[1].validation.required}">
+                    <label ng-if="element.label"
+                           class="form__label"
+                           for="{{ formData.elements[1].formName + '__' + formData.elements[1].name }}">{{ formData.elements[1].label }}</label>
+
+                    <select-role id="{{ formData.elements[1].formName + '__' + formData.elements[1].name }}"
+                                 name="{{formData.elements[1].name}}"
+                                 ng-model="formData.elements[1].val"
+                                 ng-change="{{formData.elements[1].onchange}}"
+                                 excludes="[-1]"
+                                 from-set="$parent.$parent.employeeDetails.employeeData.Roles"
+                                 ng-required="formData.elements[1].validation.required">
+                    </select-role>
+                    </div>
+            </div>
+            <table-form-buttons edit-name="role"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'primaryGroup' || parentData.$editing === 'all' }">
+        <th>Location</th>
+        <td>
+            <span class="table-form__form-value">{{form.Group.$viewValue.Label}}</span>
+            <table-form-edit edit-name="primaryGroup" ng-if="parentData.$globalPermission.caneditemployeedetail"></table-form-edit>
+            <div class="table-form__form-field">
+                [[Group]]
+            </div>
+            <table-form-buttons edit-name="primaryGroup"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'employmentType' || parentData.$editing === 'all' }">
+        <th>Employment type</th>
+        <td>
+            <span class="table-form__form-value">{{ parentData.selectData.EmploymentTypeIdObj[form.EmploymentTypeId.$viewValue] }}</span>
+            <table-form-edit edit-name="employmentType" ng-if="parentData.$globalPermission.caneditemployeedetail"></table-form-edit>
+            <div class="table-form__form-field">
+                [[EmploymentTypeId]]
+            </div>
+            <table-form-buttons edit-name="employmentType"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'minimumHours' || parentData.$editing === 'all' }">
+        <th>Minimum hours</th>
+        <td>
+            <span class="table-form__form-value">{{form.MinimumHours.$viewValue}}</span>
+            <table-form-edit edit-name="minimumHours" ng-if="parentData.$globalPermission.caneditemployeedetail"></table-form-edit>
+            <div class="table-form__form-field">
+                [[MinimumHours]]
+            </div>
+            <table-form-buttons edit-name="minimumHours"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'registerKey' || parentData.$editing === 'all' }">
+
+        <th>Register key</th>
+        <td>
+            <span class="table-form__form-value">{{form.RegisterKey.$viewValue ? 'Yes' : 'No'}}</span>
+            <table-form-edit edit-name="registerKey" ng-if="parentData.$globalPermission.caneditemployeedetail"></table-form-edit>
+            <div class="table-form__form-field">
+                [[RegisterKey]]
+            </div>
+            <table-form-buttons edit-name="registerKey"></table-form-buttons>
+        </td>
+    </tr>
+    
+    <tr ng-if="parentData.staticValues.DisplayStoreKey"
+        ng-class="{ 'is--editing' : parentData.$editing === 'storeKey' || parentData.$editing === 'all' }">
+        <th>Has a store key</th>
+        <td>
+            <span class="table-form__form-value">{{form.StoreKeyRequired.$viewValue ? 'Yes' : 'No'}}</span>
+            <table-form-edit edit-name="storeKey" ng-if="parentData.$globalPermission.caneditemployeedetail"></table-form-edit>
+            <div class="table-form__form-field">
+                [[StoreKeyRequired]]
+            </div>
+            <table-form-buttons edit-name="storeKey"></table-form-buttons>
+        </td>
+    </tr>
+    
+    <tr ng-if="parentData.staticValues.DisplayAlarmCode"
+        ng-class="{ 'is--editing' : parentData.$editing === 'alarmCode' || parentData.$editing === 'all' }">
+        <th>Has an alarm code</th>
+        <td>
+            <span class="table-form__form-value">{{form.AlarmCodeRequired.$viewValue ? 'Yes' : 'No'}}</span>
+            <table-form-edit edit-name="alarmCode" ng-if="parentData.$globalPermission.caneditemployeedetail"></table-form-edit>
+            <div class="table-form__form-field">
+                [[AlarmCodeRequired]]
+            </div>
+            <table-form-buttons edit-name="alarmCode"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-class="{ 'is--editing' : (parentData.$editing === 'commencementDate' || parentData.$editing === 'all') &&  parentData.$globalPermission.isadmin}">
+
+        <th>Commencement date</th>
+        <td>
+            <span class="table-form__form-value">{{form.CommencementDate.$viewValue | date}}</span>
+            <table-form-edit edit-name="commencementDate" ng-if="parentData.$globalPermission.isadmin"></table-form-edit>
+            <div class="table-form__form-field">
+                [[CommencementDate]]
+            </div>
+            <table-form-buttons edit-name="commencementDate" ng-if="parentData.$globalPermission.isadmin"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-class="{ 'is--editing' : (parentData.$editing === 'performanceAssessmentForm' || parentData.$editing === 'all') && parentData.$globalPermission.viewperformanceassessments }">
+
+        <th>Performance assessment form</th>
+        <td>
+            <span class="table-form__form-value">{{ parentData.selectData.PerformanceAssessmentFormIDObj[form.PerformanceAssessmentFormID.$viewValue] }}</span>
+            <table-form-edit edit-name="performanceAssessmentForm" ng-if="parentData.$globalPermission.viewperformanceassessments"></table-form-edit>
+            <div class="table-form__form-field">
+                [[PerformanceAssessmentFormID]]
+            </div>
+            <table-form-buttons edit-name="performanceAssessmentForm"></table-form-buttons>
+        </td>
+    </tr>
+    <tr>
+        <th>Tenure</th>
+        <td><span ng-show="form.CommencementDate.$viewValue">{{form.CommencementDate.$viewValue | fromNow | replace:'ago':''}}</span></td>
+    </tr>
+    <tr>
+        <th>Member ID</th>
+        <td>
+            {{parentData.staticValues.MemberId}}
+        </td>
+    </tr>
+    <tr ng-if="parentData.staticValues.DisplayStoreKey">
+        <th>Requires a store key</th>
+        <td>
+            {{parentData.staticValues.StoreKeyRequired ? 'Yes' : 'No'}}
+        </td>
+    </tr>
+    <tr ng-if="parentData.staticValues.DisplayAlarmCode">
+        <th>Requires an alarm code</th>
+        <td>
+            {{parentData.staticValues.AlarmCodeRequired ? 'Yes' : 'No'}}
+        </td>
+    </tr>
+</table>
+
+<div class="segment__fieldset-heading" ng-if="parentData.$globalPermission.canviewpayrolldetails">
+    <h2><i class="icon--notebook"></i>Payroll details</h2>
+</div>
+
+<table class="table-form" ng-if="parentData.$globalPermission.canviewpayrolldetails" ng-class="{'table-form__edit-all' :  parentData.editAll}">
+
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'payRate' || parentData.$editing === 'all' }">
+        <th>Pay rate</th>
+        <td>
+            <div class="table-form__form-value" ng-bind-html="parentData.selectData.RosterRoleIdObj[form.RosterRoleId.$viewValue]"></div>
+            <table-form-edit edit-name="payRate" ng-if="parentData.$globalPermission.caneditpayrolldetails"></table-form-edit>
+            <div class="table-form__form-field">
+                [[RosterRoleId]]
+            </div>
+            <table-form-buttons edit-name="payRate"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-if="parentData.staticValues.DisplaySalaryClassification"
+        ng-class="{ 'is--editing' : parentData.$editing === 'salaryClassification' || parentData.$editing === 'all' }">
+        <th>Salary classification</th>
+        <td>
+            <div class="table-form__form-value">{{parentData.selectData.SalaryClassificationIdObj[form.SalaryClassificationId.$viewValue] }}</div>
+            <table-form-edit edit-name="salaryClassification" ng-if="parentData.$globalPermission.caneditpayrolldetails"></table-form-edit>
+            <div class="table-form__form-field">
+                [[SalaryClassificationId]]
+            </div>
+            <table-form-buttons edit-name="salaryClassification"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-if="parentData.staticValues.DisplayDesiredSalary"
+        ng-class="{ 'is--editing' : parentData.$editing === 'desiredSalary' || parentData.$editing === 'all' }">
+        <th>Desired salary</th>
+        <td>
+            <div class="table-form__form-value">{{form.DesiredSalary.$viewValue | currency}}</div>
+            <table-form-edit edit-name="desiredSalary" ng-if="parentData.$globalPermission.caneditpayrolldetails"></table-form-edit>
+            <div class="table-form__form-field">
+                [[DesiredSalary]]
+            </div>
+            <table-form-buttons edit-name="desiredSalary"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-if="parentData.customLabels.PayrollMemberIdentifierDesc"
+        ng-class="{ 'is--editing' : parentData.$editing === 'payrollMemberIdentifier' || parentData.$editing === 'all' }">
+        <th>{{parentData.customLabels.PayrollMemberIdentifierDesc}}</th>
+        <td>
+            <span class="table-form__form-value">{{form.PayrollMemberIdentifier.$viewValue}}</span>
+            <table-form-edit edit-name="payrollMemberIdentifier" ng-if="parentData.$globalPermission.caneditpayrolldetails"></table-form-edit>
+            <div class="table-form__form-field">
+                [[PayrollMemberIdentifier]]
+            </div>
+            <table-form-buttons edit-name="payrollMemberIdentifier"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-if="parentData.customLabels.PayrollLocationIdentifierDesc"
+        ng-class="{ 'is--editing' : parentData.$editing === 'payrollLocationIdentifier' || parentData.$editing === 'all' }">
+        <th>{{parentData.customLabels.PayrollLocationIdentifierDesc}}</th>
+        <td>
+            <span class="table-form__form-value">{{form.PayrollLocationIdentifier.$viewValue}}</span>
+            <table-form-edit edit-name="payrollLocationIdentifier" ng-if="parentData.$globalPermission.caneditpayrolldetails"></table-form-edit>
+            <div class="table-form__form-field">
+                [[PayrollLocationIdentifier]]
+            </div>
+            <table-form-buttons edit-name="payrollLocationIdentifier"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-if="parentData.customLabels.OperatorIdDesc"
+        ng-class="{ 'is--editing' : parentData.$editing === 'operatorId' || parentData.$editing === 'all' }">
+        <th>{{parentData.customLabels.OperatorIdDesc}}</th>
+        <td>
+            <span class="table-form__form-value">{{form.OperatorId.$viewValue}}</span>
+            <table-form-edit edit-name="operatorId" ng-if="parentData.$globalPermission.caneditpayrolldetails"></table-form-edit>
+            <div class="table-form__form-field">
+                [[OperatorId]]
+            </div>
+            <table-form-buttons edit-name="operatorId"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-if="parentData.customLabels.DebtorIdDesc"
+        ng-class="{ 'is--editing' : parentData.$editing === 'debtorId' || parentData.$editing === 'all' }">
+
+        <th>{{ parentData.customLabels.DebtorIdDesc }}</th>
+        <td>
+            <span class="table-form__form-value">{{form.DebtorId.$viewValue}}</span>
+            <table-form-edit edit-name="debtorId" ng-if="parentData.$globalPermission.caneditpayrolldetails"></table-form-edit>
+            <div class="table-form__form-field">
+                [[DebtorId]]
+            </div>
+            <table-form-buttons edit-name="debtorId"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr ng-if="parentData.staticValues.DisplayClockInPin"
+        ng-class="{ 'is--editing' : parentData.$editing === 'clockInPin' || parentData.$editing === 'all' }">
+        <th>Clock in pin</th>
+        <td>
+            <span class="table-form__form-value">{{form.ClockInPin.$viewValue}}</span>
+            <table-form-edit edit-name="clockInPin" ng-if="parentData.$globalPermission.caneditpayrolldetails"></table-form-edit>
+            <div class="table-form__form-field">
+                [[ClockInPin]]
+            </div>
+            <table-form-buttons edit-name="clockInPin"></table-form-buttons>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Employee discount</th>
+        <td>
+            {{parentData.staticValues.Discount / 100 | percentage:2 }}
+        </td>
+    </tr>
+
+    <tr>
+        <th>Allowance</th>
+        <td>
+            {{parentData.staticValues.Allowance | currency}}
+        </td>
+    </tr>
+
+    <tr ng-show="parentData.$editing === 'all'">
+        <th></th>
+        <td>
+            <table-form-buttons edit-name="all"></table-form-buttons>
+
+        </td>
+    </tr>
+
+</table>

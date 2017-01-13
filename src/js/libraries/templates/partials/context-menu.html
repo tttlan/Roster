@@ -1,0 +1,47 @@
+﻿<div class="pane__options context--menu--trigger" id="context-menu-{{$index}}" style="display: none">
+    <a href="" dropdown-toggle id="link-{{$index}}"></a>
+    
+    <!--Item type normal file-->
+    <ul ng-if="item.ArtifactTypeId != null" class="submenu submenu--compact dropdown-menu context-menu" id="context-menu-content-{{$index}}">
+        <li class="submenu__item" ng-if="item.Permissions.viewartifact === true">
+            <a href="" ng-click="openLightbox(item)"><i class="icon--views context--menu--icon"></i>  View</a>
+        </li>
+        <li class="submenu__item" ng-if="item.Permissions.updateartifact === true">
+            <a href="" ng-click="addTags(item)"><i class="icon--tag context--menu--icon"></i>  Tag</a>
+        </li>
+        <li class="submenu__item">
+            <a href="" ng-if="item.Permissions.updateartifact === true" ng-click="shareFile(item)"><i class="icon--share context--menu--icon"></i>  Share</a>
+        </li>
+        <li class="submenu__item">
+            <a href="" ng-click="openLightbox(item, true)"><i class="icon--comment context--menu--icon"></i>  Comment</a>
+        </li>
+        <li class="submenu__item" ng-if="item.Permissions.downloadartifactfile === true && item.ArtifactTypeId !== 8 && item.ArtifactTypeId !== 9">
+            <a href="" ng-click="downloadFile(item)"><i class="icon--download context--menu--icon"></i>  Download</a>
+        </li>
+        <li class="submenu__item">
+            <a href="" ng-click="showRelatedFilePanel(item)"><i class="icon--link-2 context--menu--icon"></i>  Link</a>
+        </li>
+        <li class="submenu__item" ng-if="item.Permissions.updateartifact === true">
+            <a href="" ng-click="changeTitle(item)"><i class="icon--change-title context--menu--icon"></i>  Change title</a>
+        </li>
+        <li class="submenu__item" ng-if="item.Permissions.viewartifactinfo === true">
+            <a href="" ng-click="showFileInfo(item)"><i class="icon--round-info context--menu--icon"></i>  File Info</a>
+        </li>
+        <li class="submenu__item" ng-if="item.Permissions.deleteartifact === true">
+            <a ng-confirm-click="deleteArtifact(item)" ng-confirm-message="Are you sure you want to delete this file?" class="link-icon" href=""><i class="icon--bin context--menu--icon"></i>  Delete</a>
+        </li>
+    </ul>
+
+    <!--Item type folder-->
+    <ul ng-if="item.ArtifactTypeId == null" class="submenu submenu--compact dropdown-menu context-menu" id="context-menu-content-{{$index}}">
+        <li class="submenu__item" ng-if="item.Permissions.updateusercontainer === true">
+            <a href="" ng-click="changeTitle(item)"><i class="icon--change-title context--menu--icon"></i>  Change title</a>
+        </li>
+        <li class="submenu__item" ng-if="item.Permissions.updateusercontainer === true">
+            <a href="" ng-click="shareFile(item)"><i class="icon--share context--menu--icon"></i>  Share</a>
+        </li>
+        <li class="submenu__item" ng-if="item.Permissions.deleteusercontainer === true">
+            <a ng-confirm-click="deleteUserContainer(item)" ng-confirm-message="Are you sure you want to delete this folder?" class="link-icon" href=""><i class="icon--bin context--menu--icon"></i>  Delete</a>
+        </li>
+    </ul>
+</div>

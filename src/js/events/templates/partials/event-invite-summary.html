@@ -1,0 +1,13 @@
+<span ng-if="!invitees.Groups.length && !invitees.Members.length && !invitees.Network">Add invitees</span>
+
+<span ng-if="invitees.Network">Entire network</span>
+
+<ng-pluralize ng-if="invitees.Groups.length && !invitees.Network" count="invitees.Groups.length" 
+    when="{'one': '1 group',
+           'other': '{} groups'}">
+</ng-pluralize>{{ (invitees.Groups.length && invitees.Members.length) && !invitees.Network ? ', ' : ''}}
+
+<ng-pluralize ng-if="invitees.Members.length && !invitees.Network" count="invitees.Members.length" 
+    when="{'one': '1 individual',
+           'other': '{} individuals'}">
+</ng-pluralize>

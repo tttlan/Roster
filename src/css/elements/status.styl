@@ -1,0 +1,35 @@
+
+.ui 
+
+    // Status variations
+    //
+    // Used to show a users online / offline / away status
+    //
+    // Markup: <h2 class="vcard__title">Peter Scarfington<span class="status {{modifier_class}}"></span></h2>
+    //
+    // .status--online - Online
+    // .status--offline - Offline
+    // .status--away - Away
+    //
+    // Styleguide elements.status.variations
+
+    .status {
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        background-color: grey7;
+        border: solid 1px white;
+    }
+
+    .status--online {
+        background-color: positive
+    }
+
+    .status--offline {
+        background-color: negative
+    }
+
+    .status--away {
+        background-color: caution
+    }

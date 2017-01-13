@@ -1,0 +1,170 @@
+<div class="page page--1-2 survey" ng-init="GetListTags(1, null)">
+    <div class="page__wrapper">
+    <ul class="nav nav--breadcrumb ng-scope">
+          <li>
+              <a href="survey/manage" class="is--active"><i class="icon--left"></i>List Questionnaire</a>
+        </li>
+    </ul>
+        <h1 ng-show="!questionnaireInfo.id">Create Questionnaires</h1>
+        <h1 ng-show="questionnaireInfo.id">Questionnaires Details</h1>
+        <div class="page__aside">
+            <div class="lt-tablet-hide" ng-include src="'/interface/views/survey/partials/__survey-aside.html'"></div>
+        </div>
+        <div class="page__content" ng-class="{'is--loading': loading}">
+            <div align="right">
+            <div class="top--right--button" style="height: 34px;margin-top: -45px;margin-bottom: 10px;">
+                <a href="" class="button button--primary lt-tablet-show" ng-click="showSidebar()">ADD</a>
+                <a href="" class="button button--primary" ng-click="showPreview()">PREVIEW</a>
+            </div>
+        </div>
+            <!--Questionnaire Details-->
+            <form name="questionnaireForm" validate-form>
+                <fieldset class="segment">
+                    <ul class="accordion">
+                        <li>
+                            <h3>
+                                <a href="" ng-click="isOpenQuestionnaire = !isOpenQuestionnaire ">
+                                    <i ng-class="(isOpenQuestionnaire ) ? 'icon--up' : 'icon--down'" class="icon--down"></i>
+                                    <span>Questionnaires Details</span>
+                                </a>
+                            </h3>
+                            <div class="description collapse in" collapse="!isOpenQuestionnaire">
+                                <br />
+                                <div class="form__field ">
+                                    <label class="form__label">Domain Type</label>
+                                    <select ng-options="d.Value as d.Name for d in DomainTypes" ng-init="questionnaireInfo.domainType = DomainTypes[0].Value" ng-model="questionnaireInfo.domainType"></select>
+                                </div>
+
+                                <div class="form__field ">
+                                    <label class="form__label">Questionnaire Title</label>
+                                    <input type="text" name="questionnaireTeamplateTitle" ng-model="questionnaireInfo.name" required="" ng-maxlength="500">
+                                    <span ng-show="(questionnaireForm.questionnaireTeamplateTitle.$dirty || submitted) &amp;&amp; questionnaireForm.questionnaireTeamplateTitle.$invalid && !questionnaireForm.questionnaireTeamplateTitle.$error.maxlength;" class="form__note form__note--error ng-hide">Title is required</span>
+                                    <span ng-show="questionnaireForm.questionnaireTeamplateTitle.$error.maxlength" class="form__note form__note--error">Questionnaire Title too long</span>
+
+                                </div>
+                                <div class="form__field">
+                                    <label class="form__label" for="questionnaireTeamplateDescription">Please write description for this questionnaire</label>
+                                    <textarea name="questionnaireTeamplateDescription" ng-model="questionnaireInfo.description"></textarea>
+                                </div>
+                                <div class="form__field">
+                                    <label class="form__label" for="questionnaireTeamplateInstruction">Instruction for responding to questionnaire</label>
+                                    <textarea name="questionnaireTeamplateInstruction" ng-model="questionnaireInfo.instructions"></textarea>
+                                </div>
+                                <div class="field__checkbox">
+                                    <input type="checkbox" id="tickToDelete" name="input" ng-model="questionnaireInfo.isPrivacy">
+                                    <label class="form__label is--required" for="tickToDelete" ng-class="{'is--required': element.validation.required}">
+                                        Tick this box to delete responses to question if application applicant is unsuccessful and job ad is closed
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </fieldset>
+            </form>
+            <br />
+        <!--Questions Details-->
+            <ng-form name="ajaxForm" class="survey__sidebar">
+                <div class="segment" style="padding-left:0px;padding-right:0px">
+                    <ul dnd-list="questionnaireInfo.questionGroup"
+                        dnd-allowed-types="['containerType']" class="questionGroup">
+                        <li ng-repeat="group in questionnaireInfo.questionGroup"
+                            dnd-draggable="group"
+                            dnd-effect-allowed="copyMove"
+                            dnd-moved="questionnaireInfo.questionGroup.splice($index, 1)"
+                            dnd-type="'containerType'">
+                            <ul class="accordion as-draggable">
+                                <li class="ng-isolate-scope">
+                                    <div class="grid as-draggable-item" style="border:none;background-color:white">
+                                        <div style="float: right;">
+                                            <a ng-confirm-click="deleteGroup($index)" href="" ng-confirm-message="Are you sure you want to delete this group?">
+                                                <i class="icon--bin"></i>
+                                            </a>
+                                        </div>
+                                        <h3>
+                                            <a href="" ng-click="isOpenGroup = !isOpenGroup ">
+                                                <i ng-class="(isOpenGroup ) ? 'icon--up' : 'icon--down'" class="icon--down"></i>
+                                                <span>{{group.tag.name}}</span>
+                                            </a>
+                                        </h3>
+                                        <div class="description collapse in description_questionGroup" collapse="!isOpenGroup">
+                                            <ul class="as-draggable" dnd-list="group.questions"
+                                                dnd-allowed-types="['itemType']"
+                                                dnd-drop="showQuestionPicker(event, index, item, group, $index)">
+                                                <li ng-repeat="item in group.questions"
+                                                    dnd-type="'itemType'"
+                                                    dnd-draggable="item"
+                                                    dnd-effect-allowed="move"
+                                                    dnd-moved="group.questions.splice($index, 1)"
+                                                    dnd-selected="group.questions.selected = item"
+                                                    ng-class="{selected: group.questions.selected === item}">
+                                                    <div class="grid as-draggable-item">
+                                                        <div class="notification__close lt-tablet-hide">
+                                                            <a ng-click="copyQuestion(event, $index, item, true, $parent.$index)">
+                                                                <i class="icon--copy"></i>
+                                                            </a>
+                                                            <a ng-click="showQuestionPicker(event, $index, item, null, questionnaireInfo.questionGroup.indexOfObject('tag', 'name' ,group.tag.name), true)">
+                                                                <i class="icon--edit"></i>
+                                                            </a>
+                                                            <a ng-confirm-click="group.questions.splice($index,1); item.id ? deletedQuestions.push(item.id):''" ng-confirm-message="Are you sure you want to delete this question?">
+                                                                <i class="icon--bin"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="dropdown lt-tablet-show" style="position:relative;text-align:right">
+                                                            <a class="dropdown-toggle" title="Open user menu" href="javascript:void(0)" style="opacity:0.5">
+                                                                <i class="icon--ellipsis"></i>
+                                                            </a>
+                                                            <ul class="submenu submenu--right submenu--compact dropdown-menu" style="text-align:left">
+                                                                <li>
+                                                                    <a ng-click="copyQuestion(event, $index, item, true, $parent.$index)">
+                                                                        <i class="icon--copy"></i>
+                                                                        Copy
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a ng-click="showQuestionPicker(event, $index, item, null, questionnaireInfo.questionGroup.indexOfObject('tag', 'name' ,group.tag.name), true)">
+                                                                        <i class="icon--edit"></i>
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a ng-confirm-click="group.questions.splice($index,1); item.id ? deletedQuestions.push(item.id):''" ng-confirm-message="Are you sure you want to delete this question?">
+                                                                        <i class="icon--bin"></i>
+                                                                        Delete
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <question-item
+                                                                item="item" index="{{$index}}"
+                                                                question-prefix="question-{{$index}}"
+                                                                group="group">
+                                                        </question-item>
+                                                    </div>
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                          <div class="clearfix"></div>
+                        </li>
+                        <ul dnd-list="drophere"
+                            dnd-allowed-types="['itemType']"
+                            dnd-drop="showQuestionPicker(event, null, item, null, null)">
+                            <div class="drap__drop__ho">
+                                <p>DROP & DRAG QUESTION HERE</p>
+                            </div>
+                        </ul>
+                    </ul>
+                </div>
+            </ng-form>
+            <br />
+            <div  class="button-group align-center">
+                <a href="survey/manage" class="button">CANCEL</a>
+                <a href="" class="button button--primary" ng-click="saveQuetionnaires(isFormValid(questionnaireForm.$valid),questionnaireInfo)">SAVE</a>
+                <a href="" class="button button--primary" ng-click="showQuestionnaireTmpl(questionnaireInfo)">SAVE AS QUESTIONNAIRE TEMPLATE</a>
+            </div>
+        </div>
+    </div>
+</div>

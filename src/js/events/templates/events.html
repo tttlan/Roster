@@ -1,0 +1,106 @@
+<div class="page page--1-4 events">
+
+    <div class="page__wrapper">
+
+        <div class="page__aside">
+
+            <div class="sidebar">
+
+                <h1>Events</h1>
+
+                <span ng-click="showCats = !showCats" class="sidebar__toggle">Change category <i class="icon--down"></i></span>
+                
+                <ul class="sidebar__categories" ng-show="showCats">
+                    <li>
+                        <a href="" ng-click="setEventType(1)" ng-class="{'is--active': eventType === 1}">Upcoming <i class="icon--right"></i></a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="setEventType(0)" ng-class="{'is--active': eventType === 0}">Past <i class="icon--right"></i></a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="setEventType(2)" ng-class="{'is--active': eventType === 2}">Cancelled <i class="icon--right"></i></a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="setEventType(4)" ng-class="{'is--active': eventType === 4}">All <i class="icon--right"></i></a>
+                    </li>
+                </ul>
+
+                <div class="align-center events__create" ng-if="$userCan.add">
+                    <a href="" path="events.create" class="button button--positive button--small"><i class="icon--events"></i> New event</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="page__content">
+                                          
+            <div ng-if="eventType === 1"
+                 class="cards cards--2-columns cards--left-gutter cards--events" 
+                 paginate="getEvents" 
+                 page-size="9"
+                 filter-by="1"
+                 paginate-on-scroll="true">
+                 
+                 <div class="message message--empty" ng-hide="page.loading || page.items.length || page.error || page.Status == 1">
+                     <i class="icon--events icon-is-huge"></i>
+                     <p>There are currently no upcoming events</p>
+                 </div>
+                                 
+                <div masonry="page.items" card-ctrl="cardCtrl" template-url="/interface/views/events/partials/event-card.html" limit-to="page.showing"></div>   
+
+            </div>
+            
+            <div ng-if="eventType === 0"
+                 class="cards cards--2-columns cards--left-gutter cards--events"
+                 paginate="getEvents" 
+                 page-size="9"
+                 filter-by="0"
+                 paginate-on-scroll="true">
+                        
+                 <div class="message message--empty" ng-hide="page.loading || page.items.length || page.error || page.Status == 1">
+                     <i class="icon--events icon-is-huge"></i>
+                     <p>There are currently no past events</p>
+                 </div>
+                                 
+                <div masonry="page.items"  card-ctrl="cardCtrl" template-url="/interface/views/events/partials/event-card.html" limit-to="page.showing"></div>   
+
+            </div>
+            
+            <div ng-if="eventType === 2"
+                 class="cards cards--2-columns cards--left-gutter cards--events"
+                 paginate="getEvents" 
+                 page-size="9"
+                 filter-by="2"
+                 paginate-on-scroll="true">
+                 
+                 <div class="message message--empty" ng-hide="page.loading || page.items.length || page.error || page.Status == 1">
+                     <i class="icon--events icon-is-huge"></i>
+                     <p>There are currently no cancelled events</p>
+                 </div>
+                                 
+                <div masonry="page.items" card-ctrl="cardCtrl" template-url="/interface/views/events/partials/event-card.html" limit-to="page.showing"></div>   
+
+            </div>
+            
+            <div ng-if="eventType === 4"
+                 class="cards cards--2-columns cards--left-gutter cards--events"
+                 paginate="getEvents" 
+                 page-size="9"
+                 filter-by="4"
+                 paginate-on-scroll="true">
+                 
+                 <div class="message message--empty" ng-hide="page.loading || page.items.length || page.error || page.Status == 1">
+                     <i class="icon--events icon-is-huge"></i>
+                     <p>There are currently no events</p>
+                 </div>
+                                 
+                <div masonry="page.items" card-ctrl="cardCtrl" template-url="/interface/views/events/partials/event-card.html" limit-to="page.showing"></div>   
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,710 @@
+<h3>BOARDS</h3>
+
+<div class="table-responsive table-boards">
+    <table class="table table--no-outside-borders table-boards">
+        <!-- SHERPA INTERNAL -->
+        <tbody ng-if="boards.hasSherpaInternal" ng-init="boards.IsSIOpening = false">
+        <tr>
+            <td>
+                <img ng-src="{{internalLogoUrl}}" alt="Description" class="job-ads-image" />
+            </td>
+            <td>
+                <div class="ad-note">
+                    Internal
+                </div>
+            </td>
+            <td>
+                <div class="form__field toggle-button">
+                    <div class="field__toggle">
+                        <input type="checkbox" name="SiActive"
+                               id="SiActive"
+                               ng-model="boards.siActive"
+                               ng-change="boards.siActive ? boards.IsSIOpening = true : boards.IsSIOpening = false">
+                        <label class="form__label" for="SiActive"></label>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a ng-click="boards.siActive ? boards.IsSIOpening = !boards.IsSIOpening : boards.IsSIOpening" href="" class="" style="">
+                    <i ng-class="{'icon--arrow-up' : boards.IsSIOpening, 'icon--arrow-down': !boards.IsSIOpening}"
+                       class="icon--arrow-down" style=""></i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div ng-if="boards.siActive" ng-show="boards.IsSIOpening">
+                    <div class="form__field">
+                        <div class="form__field">
+                            <label class="form__label"><strong>Advertisement duration</strong></label>
+                            <div class="field__radio">
+                                <div class="col-1-1">
+                                    <input type="radio" name="selectTypeExpireInternal"
+                                           ng-click="turnOnDefaultAd('siExpiredDateCustomDate', 'siExpiredDateDefaultDate', 'siExpiredDateDefaultViewDate')"
+                                           id="siDefaultExpire" value="default" ng-model="boards.siExpiredDateType">
+                                    <label for="siDefaultExpire" class="form__label">
+                                        30 days from opening
+                                        <small ng-if="boards.siExpiredDateType === 'default'">
+                                            (Expires on {{boards.siExpiredDateDefaultViewDate}} if opened today)
+                                        </small>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="field__radio">
+                                <div class="col-1-6">
+                                    <input type="radio" name="selectTypeExpireInternal" id="customExpire" value="custom"
+                                           ng-model="boards.siExpiredDateType">
+                                    <label for="customExpire" class="form__label">Expire on </label>
+                                </div>
+                                <div class="col-2-3">
+                                    <div class="relative col-1-3">
+                                        <label for="sherpaInternalExpired" class="icon--calendar field__after">
+                                            <span class="is-visually-hidden">Date {{boards.siExpiredDateCustomDate}} - {{boards.siExpiredDateCustomViewDate}}</span>
+                                        </label>
+                                        <input type="text"
+                                               id="sherpaInternalExpired"
+                                               name="SherpaInternalExpired"
+                                               ng-model="boards.siExpiredDateCustomDate"
+                                               ng-model-options="{ allowInvalid: true }"
+                                               ng-change="updateViewExpiredDate('siExpiredDateCustomDate', 'siExpiredDateCustomViewDate')"
+                                               ng-disabled="boards.siExpiredDateType !== 'custom'"
+                                               validate-date-future="true"
+                                               datepicker-append-to-body="true"
+                                               datepick datepicker-popup="d MMM yyyy" date-format="MM/DD/YYYY" />
+                                    </div>
+                                    <div class="col-1-2"
+                                         ng-if="boards.siExpiredDateType === 'custom' && boards.siExpiredDateCustomDate && !form.$error.validateDateFuture[0].SherpaInternalExpired">
+                                        <small class="expired-date-val">
+                                            <ng-pluralize count="boards.siExpiredDateCustomViewDate"
+                                                          when="{
+'0': '({} day from today)',
+'one': '({} day from today)',
+'other': '({} days from today)'}">
+                                            </ng-pluralize>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form__field">
+                            <label class="form__label"><strong>User Capabilities</strong></label>
+                            <div class="field__checkbox checkAdd">
+                                <input type="checkbox" id="shrInternalReferFriend" ng-model="boards.siReferFriend">
+                                <label for="shrInternalReferFriend" class="form__label">
+                                    Allow users to refer
+                                    friends
+                                </label>
+                            </div>
+
+                            <div class="form__fields">
+                                <div class="field__checkbox checkAdd">
+                                    <input type="checkbox" id="shrInternalApp" ng-model="boards.siInterApplications">
+                                    <label for="shrInternalApp" class="form__label">
+                                        Allow internal users to
+                                        apply
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label" for="ads-sherpaInternal"><strong>Internal Message</strong></label>
+                        <div class="textarea">
+                            <text-angular ng-model="boards.siInternalMessage"
+                                          id="ads-sherpaInternal"
+                                          ta-toolbar="[['bold', 'italics', 'underline'],['ul', 'ol'], ['quote']]"
+                                          ta-text-editor-class="form__job--editor-content"
+                                          ta-html-editor-class="form__job--editor-content">
+                            </text-angular>
+                        </div>
+                    </div>
+                    <!--autocomplete add person-->
+                    <div class="form__field">
+                        <label class="form__label"
+                               for="keyContact"><strong>Key Contact</strong></label>
+                        <div class="relative">
+                            <input type="text" placeholder="Select KeyContact"
+                                   id="selectKeycontact"
+                                   ng-model="boards.siKeyContact.Label"
+                                   ng-change="onChangeInput(boards.siKeyContact.Label)"
+                                   class="autocomplete"
+                                   ng-focus="onFocusOrOnBlurDropdown('KeyContact', boards.siKeyContact.Label)"
+                                   ng-blur="onFocusOrOnBlurDropdown('')"
+                                   autocomplete="off" />
+                            <span class="icon--down field__after icon-down-internal-board"></span>
+                            <ul ng-show="showDropdownFor === 'KeyContact'" class="typeahead__list popout"
+                                role="listbox">
+                                <li class="typeahead__item" role="option"
+                                    ng-repeat="item in boards.siSelectKeyContacts | filter: { Label: isChangedInput ? boards.siKeyContact.Label : '' } ">
+                                    <a class="typeahead__link"
+                                       ng-mousedown="selectKeyContact(item, 'KeyContact');">{{item.Label}}</a>
+                                </li>
+                                <li ng-if="List.length === 0" class="typeahead__item" role="option">
+                                    <a class="typeahead__link">No results match "{{boards.siKeyContact.Label}}"</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label"><strong>Posting Option</strong></label>
+                        <div class="field__radio">
+                            <input type="radio" ng-model="boards.siAllOrSelectedGroup" name="salaryRangeOrAmount"
+                                   id="post-all"
+                                   value="all">
+                            <label for="post-all" class="form__label">Everyone</label>
+                        </div>
+                        <div class="field__radio">
+                            <input type="radio" ng-model="boards.siAllOrSelectedGroup" name="salaryRangeOrAmount"
+                                   id="post-selected" value="selected">
+                            <label for="post-selected" class="form__label">Selected groups</label>
+                        </div>
+                        <!--autocomplete select groups-->
+                        <div class="form__field " ng-show="boards.siAllOrSelectedGroup==='selected'">
+                            <autocomplete-groups
+                                    name="AutocompleteGroups"
+                                    ng-model="boards.siSelectGroups"
+                                    id="autocompleteGroups"
+                                    data="boards.siNetworkGrousGroupIds"
+                                    ids="boards.siSelectGroupIds"
+                                    hide="boards.siAllOrSelectedGroup !== 'selected'"
+                                    ng-required="false">
+                            </autocomplete-groups>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+
+        <!-- SHERPA WEBISTE -->
+        <tbody ng-if="boards.hasSherpaWebSite" ng-init="boards.IsSWOpening = false">
+        <tr>
+            <td>
+                <img ng-src="{{internalLogoUrl}}" alt="Description" class="job-ads-image" />
+            </td>
+            <td>
+                <div class="ad-note">
+                    Website
+                </div>
+            </td>
+            <td>
+                <div class="form__field toggle-button">
+                    <div class="field__toggle">
+                        <input type="checkbox" name="SwActive"
+                               id="SwActive"
+                               ng-model="boards.swActive"
+                               ng-change="boards.swActive ? boards.IsSWOpening = true : boards.IsSWOpening = false">
+                        <label class="form__label" for="SwActive"></label>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a ng-click="boards.swActive ? boards.IsSWOpening = !boards.IsSWOpening : boards.IsSWOpening" href="" class="" style="">
+                    <i ng-class="{'icon--arrow-up' : boards.IsSWOpening, 'icon--arrow-down': !boards.IsSWOpening}"
+                       class="icon--arrow-down" style=""></i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div class="form__field" ng-if="boards.swActive" ng-show="boards.IsSWOpening">
+                    <div class="form__field">
+                        <label class="form__label"><strong>Advertisement duration</strong></label>
+                        <div class="field__radio col-2-3">
+                            <input type="radio" name="selectTypeExpireWebsite"
+                                   ng-click="turnOnDefaultAd('swExpiredDateCustomDate', 'swExpiredDateDefaultDate', 'swExpiredDateDefaultViewDate')"
+                                   id="swDefaultExpire" value="default" ng-model="boards.swExpiredDateType">
+                            <label for="swDefaultExpire" class="form__label">
+                                30 days from opening
+                                <small ng-if="boards.swExpiredDateType === 'default'">
+                                    (Expires on {{boards.swExpiredDateDefaultViewDate}} if opened today)
+                                </small>
+                            </label>
+                        </div>
+                        <div class="field__radio">
+                            <div class="col-1-6">
+                                <input type="radio" name="selectTypeExpireWebsite" id="swCustomExpire" value="custom"
+                                       ng-model="boards.swExpiredDateType">
+                                <label for="swCustomExpire" class="form__label">Expire on </label>
+                            </div>
+                            <div class="col-2-3">
+                                <div class="relative col-1-3">
+                                    <label for="sherpaInternalExpired" class="icon--calendar field__after">
+                                        <span class="is-visually-hidden">Date</span>
+                                    </label>
+                                    <input type="text"
+                                           id="sherpaWebsiteExpired"
+                                           name="SherpaWebsiteExpired"
+                                           ng-model="boards.swExpiredDateCustomDate"
+                                           ng-model-options="{ allowInvalid: true }"
+                                           ng-change="updateViewExpiredDate('swExpiredDateCustomDate', 'swExpiredDateCustomViewDate')"
+                                           ng-disabled="boards.swExpiredDateType !== 'custom'"
+                                           validate-date-future="true"
+                                           datepicker-append-to-body="true"
+                                           datepick datepicker-popup="d MMM yyyy" />
+                                </div>
+                                <div class="col-1-2"
+                                     ng-if="boards.swExpiredDateType === 'custom' && boards.swExpiredDateCustomDate && !form.$error.validateDateFuture[0].SherpaWebsiteExpired">
+                                    <small class="expired-date-val">
+                                        <ng-pluralize count="boards.swExpiredDateCustomViewDate"
+                                                      when="{
+'0': '({} day from today)',
+'one': '({} day from today)',
+'other': '({} days from today)'}">
+                                        </ng-pluralize>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+
+        <!--SEEK-->
+        <tbody ng-if="boards.hasSeek" ng-init="boards.IsSeekOpening = false">
+        <tr>
+            <td colspan="2">
+                <img ng-src="/interface/images/seek-left.png" alt="Description" class="job-ads-image" />
+            </td>
+
+            <td>
+                <div class="form__field toggle-button">
+                    <div class="field__toggle">
+                        <input type="checkbox" name="optionsCheckToggleSherpaWebsite"
+                               id="optionsCheckToggleSeek"
+                               ng-model="boards.seActive"
+                               ng-change="boards.seActive ? boards.IsSeekOpening = true: boards.IsSeekOpening = false">
+                        <label class="form__label" for="optionsCheckToggleSeek"></label>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a ng-click="boards.seActive ? boards.IsSeekOpening = !boards.IsSeekOpening : boards.IsSeekOpening" href="" class="" style="">
+                    <i ng-class="{'icon--arrow-up' : boards.IsSeekOpening, 'icon--arrow-down': !boards.IsSeekOpening}"
+                       class="icon--arrow-down" style=""></i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div ng-if="boards.seActive"  ng-show="boards.IsSeekOpening">
+                    <div class="form__fields">
+                        <div class="form__field seek-expired-date">
+                            <label class="form__label"><strong>Advertisement duration</strong> </label>
+                            <label class="form__label">Advertisement displayed for 30 Days from job opening</label>
+                            <small>
+                                (Expires on {{boards.seExpiredDateDefaultViewDate}} if opened today)
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form__field is--required">
+                        <label class="form__label"><strong>Market</strong> </label>
+                        <div class="col-1-2">
+                            <select-recruit-market id="seek-market"
+                                                   name="Seek-market"
+                                                   data="boards.seMarketSegmentDetails"
+                                                   ng-model="boards.seMarket"
+                                                   ng-required="true">
+                            </select-recruit-market>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form__field is--required">
+                        <label class="form__label"><strong>Region</strong> </label>
+                        <div class="col-1-2">
+                            <select-recruit-seek-region id="seRegion"
+                                                        name="SeRegion"
+                                                        data="boards.seRegionDetails"
+                                                        ng-model="boards.seRegion"
+                                                        ng-required="true">
+                            </select-recruit-seek-region>
+                        </div>
+                        <br /><br />
+                        <label class="form__label"><strong>Location</strong> </label>
+                        <div class="col-1-2">
+                            <select-recruit-seek-location-by-region id="seLocation"
+                                                                    name="SeLocation"
+                                                                    region-value="boards.seRegion"
+                                                                    ng-model="boards.seLocation"
+                                                                    data="boards.seRegionDetails">
+                            </select-recruit-seek-location-by-region>
+                        </div>
+                        <br /><br />
+                        <label class="form__label non-required"><strong>Area</strong> </label>
+                        <div class="col-1-2">
+                            <select-recruit-seek-area-by-location id="seArea"
+                                                                  name="SeArea"
+                                                                  location-value="boards.seLocation"
+                                                                  ng-model="boards.seArea"
+                                                                  data="boards.seRegionDetails">
+                            </select-recruit-seek-area-by-location>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form__field is--required">
+                        <label class="form__label"><strong>Classification</strong> </label>
+                        <div class="col-1-2">
+                            <select-recruit-classification id="seek-classification"
+                                                           name="Seek-Classification"
+                                                           data="boards.seClassificationDetails"
+                                                           ng-model="boards.seClassification"
+                                                           ng-required="true">
+                            </select-recruit-classification>
+                        </div>
+                        <br /><br />
+                        <label class="form__label"><strong>Sub-Classification</strong> </label>
+
+                        <div class="col-1-2">
+                            <select-recruit-sub-classification id="seek-sub-classification"
+                                                               name="Seek-Sub-Classification"
+                                                               data="boards.seClassificationDetails"
+                                                               classification-value="boards.seClassification"
+                                                               ng-model="boards.seSubClassification"
+                                                               ng-required="true">
+                            </select-recruit-sub-classification>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form__field">
+                        <label class="form__label"><strong>Add video to job post</strong> </label>
+                        <input type="text"
+                               id="seVideoLink"
+                               placeholder="Type or paste URL here..."
+                               name="seVideoLink"
+                               ng-model="boards.seVideoLink"
+                               ng-maxlength="255" />
+                    </div>
+                    <div class="form__field">
+                        <div class="field__checkbox checkAdd">
+                            <input type="checkbox" id="seListingStandouts" ng-model="boards.seListingStandouts">
+                            <label for="seListingStandouts" class="form__label">
+                                <strong>
+                                    Listing
+                                    Standouts
+                                </strong>
+                            </label>
+                        </div>
+                        <div ng-if="boards.seListingStandouts" class="seek-list-input-content">
+                            <input type="text"
+                                   id="seek-lstingStandOutB1"
+                                   placeholder="Type here ..."
+                                   name="Seek-ListingStandOutB1"
+                                   maxlength="80"
+                                   ng-model="boards.seListingStandOutB1"
+                                   ng-maxlength="80" />
+                            <small class="align-right">Maximum 80 Characters</small>
+                            <input type="text"
+                                   id="seek-listingStandOutB2"
+                                   placeholder="Type here ..."
+                                   name="Seek-ListingStandOutB2"
+                                   maxlength="80"
+                                   ng-model="boards.seListingStandOutB2"
+                                   ng-maxlength="80" />
+                            <small class="align-right">Maximum 80 Characters</small>
+                            <input type="text"
+                                   id="seek-listingStandOutB3"
+                                   placeholder="Type here ..."
+                                   name="Seek-ListingStandOutB3"
+                                   maxlength="80"
+                                   ng-model="boards.seListingStandOutB3"
+                                   ng-maxlength="80" />
+                            <small class="align-right">Maximum 80 Characters</small>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+
+        <!-- CAREER ONE -->
+        <tbody ng-if="boards.hasCareerOne" ng-init="boards.IsCAOpening = false">
+        <tr>
+            <td colspan="2">
+                <img ng-src="/interface/images/careerone-left.png" alt="Description" class="job-ads-image" />
+            </td>
+
+            <td>
+                <div class="form__field toggle-button">
+                    <div class="field__toggle">
+                        <input type="checkbox" name="OptionsCheckToggleCareerOne"
+                               id="optionsCheckToggleCareerOne"
+                               ng-model="boards.caActive"
+                               ng-change="boards.caActive ? boards.IsCAOpening = true : boards.IsCAOpening= false">
+                        <label class="form__label" for="optionsCheckToggleCareerOne"></label>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a ng-click="boards.caActive ? boards.IsCAOpening = !boards.IsCAOpening : boards.IsCAOpening" href="" class="" style="">
+                    <i ng-class="{'icon--arrow-up' : boards.IsCAOpening, 'icon--arrow-down': !boards.IsCAOpening}" class="icon--arrow-down"
+                       style=""></i>
+                </a>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div ng-if="boards.caActive" ng-show="boards.IsCAOpening">
+                    <div class="form__fields">
+                        <div class="form__field seek-expired-date">
+                            <label class="form__label"><strong>Advertisement duration</strong> </label>
+                            <label class="form__label">Advertisement displayed for 30 Days from job opening</label>
+                            <small>
+                                (Expires on {{boards.seExpiredDateDefaultViewDate}} if opened today)
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label"><strong>Industry</strong></label>
+                        <div class="col-1-2">
+                            <select-recruit-careerone-industry id="ca-industry"
+                                                               name="Ca-Industry"
+                                                               data="boards.caIndustryDetails"
+                                                               ng-model="boards.caIndustry">
+                            </select-recruit-careerone-industry>
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form__field">
+                        <label class="form__label"><strong>Location</strong></label>
+                        <div class="col-1-2">
+                            <select-recruit-careerone-area id="ca-location"
+                                                           name="Ca-Location"
+                                                           data="boards.caAreaDetails"
+                                                           ng-model="boards.caLocation">
+                            </select-recruit-careerone-area>
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form__field">
+                        <label class="form__label"><strong>Category</strong></label>
+                        <div class="col-1-2">
+                            <select-recruit-careerone-category id="ca-category"
+                                                               name="Ca-Category"
+                                                               data="boards.caCategoryDetails"
+                                                               ng-model="boards.caCategory">
+                            </select-recruit-careerone-category>
+                        </div>
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label"><strong>Occupation</strong></label>
+                        <div class="col-1-2">
+                            <select-recruit-careerone-occupation id="ca-occupation"
+                                                                 name="Ca-Occupation"
+                                                                 data="boards.caOccupationDetails"
+                                                                 category="boards.caCategory"
+                                                                 ng-model="boards.caOccupation">
+                            </select-recruit-careerone-occupation>
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form__field">
+                        <label class="form__label"><strong>Template</strong></label>
+                        <div class="col-1-2">
+                            <select-recruit-careerone-template id="ca-template"
+                                                               name="Ca-Template"
+                                                               data="boards.caTemplateDetails"
+                                                               ng-model="boards.caTemplate">
+                            </select-recruit-careerone-template>
+                        </div>
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label"><strong>Company Name</strong></label>
+                        <div class="col-1-2">
+                            <select-recruit-career-one-company-name id="ca-companyname"
+                                                                    name="Ca-Companyname"
+                                                                    ng-model="boards.caCompanyName"
+                                                                    data="boards.caCompanyNames">
+                            </select-recruit-career-one-company-name>
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form__field">
+                        <label class="form__label"><strong>Job ad duration</strong></label>
+                        <div class="col-1-2">
+                            <input type="text"
+                                   id="ca-jobAdDuration"
+                                   name="Ca-JobAdDuration"
+                                   ng-model="boards.caJobAdDuration"
+                                   ng-maxlength="255" />
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+
+        <!-- ONE SHIFT -->
+        <tbody ng-if="boards.hasOneShift" ng-init="boards.IsONOpneing = false">
+        <tr>
+            <td colspan="2">
+                <img ng-src="/interface/images/oneshift-left.png" alt="Description" class="job-ads-image" />
+            </td>
+
+            <td>
+                <div class="form__field toggle-button">
+                    <div class="field__toggle">
+                        <input type="checkbox" name="OptionsCheckToggleOneShift"
+                               id="optionsCheckToggleOneShift"
+                               ng-model="boards.onActive"
+                               ng-change="boards.onActive ? boards.IsONOpneing = true : boards.IsONOpneing = false">
+                        <label class="form__label" for="optionsCheckToggleOneShift"></label>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a ng-click="boards.onActive ? boards.IsONOpneing = !boards.IsONOpneing : boards.IsONOpneing" href="" class="" style="">
+                    <i ng-class="{'icon--arrow-up' : boards.IsONOpneing, 'icon--arrow-down': !boards.IsONOpneing}" class="icon--arrow-down"
+                       style=""></i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div ng-if="boards.onActive" ng-show="boards.IsONOpneing">
+                    <div class="form__fields">
+                        <div class="form__field seek-expired-date">
+                            <label class="form__label"><strong>Advertisement duration</strong> </label>
+                            <label class="form__label">Advertisement displayed for 30 Days from job opening</label>
+                            <small>
+                                (Expires on {{boards.onExpiredDateDefaultViewDate}} if opened today)
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form__field is--required">
+                        <label class="form__label"><strong>Region</strong> </label>
+                        <div class="col-1-2">
+                            <select-recruit-oneshift-region id="onRegion"
+                                                            name="OnRegion"
+                                                            data="boards.onRegionDetails"
+                                                            ng-model="boards.onRegion"
+                                                            ng-required="true">
+                            </select-recruit-oneshift-region>
+                        </div>
+                        <br /><br />
+                        <label class="form__label"><strong>Area</strong> </label>
+                        <div class="col-1-2">
+                            <select-recruit-oneshift-area id="onArea"
+                                                          name="OnArea"
+                                                          data="boards.onAreaDetails"
+                                                          region="boards.onRegion"
+                                                          ng-model="boards.onArea"
+                                                          ng-required="true">
+                            </select-recruit-oneshift-area>
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form__field is--required">
+                        <label class="form__label"><strong>Category</strong> </label>
+                        <div class="col-1-2">
+                            <select-recruit-oneshift-category id="onCategory"
+                                                              name="OnCategory"
+                                                              data="boards.onCategoryDetails"
+                                                              ng-model="boards.onCategory"
+                                                              ng-required="true">
+                            </select-recruit-oneshift-category>
+                        </div>
+                        <br /><br />
+                        <label class="form__label"><strong>Profession</strong> </label>
+                        <div class="col-1-2">
+                            <select-recruit-oneshift-profession id="onProfession"
+                                                                name="OnProfession"
+                                                                data="boards.onProfessionDetails"
+                                                                category="boards.onCategory"
+                                                                ng-model="boards.onProfession"
+                                                                ng-required="true">
+                            </select-recruit-oneshift-profession>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+
+        <!-- Twitter -->
+        <tbody ng-if="boards.hasTwitter" ng-init="boards.IsTWOpening = false">
+        <tr>
+            <td colspan="2">
+                <img ng-src="/interface/images/twitter-left.png" alt="Description" class="job-ads-image" />
+            </td>
+
+            <td>
+                <div class="form__field toggle-button">
+                    <div class="field__toggle">
+                        <input type="checkbox" name="OptionsCheckToggleTwitter"
+                               id="optionsCheckToggleTwitter"
+                               ng-model="boards.twActive"
+                               ng-change="boards.twActive ? boards.IsTWOpening = true : boards.IsTWOpening = false">
+                        <label class="form__label" for="optionsCheckToggleTwitter"></label>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a ng-click="boards.twActive ? boards.IsTWOpening = !boards.IsTWOpening : boards.IsTWOpening" href="" class="" style="">
+                    <i ng-class="{'icon--arrow-up' : boards.IsTWOpening, 'icon--arrow-down': !boards.IsTWOpening}" class="icon--arrow-down"
+                       style=""></i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div class="form__field seek-expired-date" ng-if="boards.twActive" ng-show="boards.IsTWOpening">
+                    <label class="form__label"><strong>Advertisement duration</strong> </label>
+                    <label class="form__label">Advertisement in Twitter won't have expire date</label>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+
+        <!-- FACEBOOK -->
+        <tbody ng-if="boards.hasFacebook" ng-init="boards.IsFBOpening = false">
+        <tr>
+            <td colspan="2">
+                <img ng-src="/interface/images/facebook-left.png" alt="Description" class="job-ads-image" />
+            </td>
+
+            <td>
+                <div class="form__field toggle-button">
+                    <div class="field__toggle">
+                        <input type="checkbox" name="OptionsCheckToggleFacebook"
+                               id="optionsCheckToggleFacebook"
+                               ng-model="boards.fbActive"
+                               ng-change="boards.fbActive ? boards.IsFBOpening = true : boards.IsFBOpening = false">
+
+                        <label class="form__label" for="optionsCheckToggleFacebook"></label>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a ng-click="boards.fbActive ? boards.IsFBOpening= !boards.IsFBOpening : boards.IsFBOpening" href="" class="" style="">
+                    <i ng-class="{'icon--arrow-up' : boards.IsFBOpening, 'icon--arrow-down': !boards.IsFBOpening}" class="icon--arrow-down"
+                       style=""></i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div class="form__field seek-expired-date" ng-if="boards.fbActive" ng-show="boards.IsFBOpening">
+                    <label class="form__label"><strong>Advertisement duration</strong> </label>
+                    <label class="form__label">Advertisement in Facebook won't have expire date</label>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

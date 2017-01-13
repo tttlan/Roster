@@ -1,0 +1,31 @@
+<div class="people-list">
+    <h3 class="people-list__title">
+        <strong>
+            <ng-pluralize count="count"
+                when="{'0': 'No one ' + (titleSyntax.verb.singular || titleSyntax.verb),
+                    'one': '1 person ' + (titleSyntax.verb.singular || titleSyntax.verb),
+                    'other': '{} people ' + (titleSyntax.verb.plural || titleSyntax.verb)}">
+            </ng-pluralize>
+        </strong>
+        {{ titleSyntax.noun }}
+    </h3>
+
+    <div class="people-list__person" ng-repeat="person in items">
+
+        <a class="media" target="_self" path="network.profile" path-params="person.MemberId">
+            <div class="media__image" path="network.profile" path-params="person.MemberId">
+                <avatar img-src="person.PhotoThumb" size="small"></avatar>
+            </div>
+            <div class="media__body">
+                <p>
+                    {{person.FirstName}} {{person.Surname}}
+                    <small>{{ person.body }}</small>
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="people-list__load-more">
+        <loader align="center" ng-show="loading"></loader>
+        <a ng-hide="loading || !canLoadMore" href="" class="button button--tiny button--basic" ng-click="getItems()">Load more</a>
+    </div>
+</div>

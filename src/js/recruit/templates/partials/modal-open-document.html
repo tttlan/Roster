@@ -1,0 +1,18 @@
+﻿
+    <div class="drawer__wrapper">
+
+        <div class="drawer__content" ng-class="{'is--loading': isLoading}">
+
+            <div id="docContent" class="onboarding__docs" ng-bind-html="trustedHtml" ng-if="FieldType === 'doc'"></div>
+            <div id="docContent" class="onboarding__docs" ng-if="FieldType === 'img'">
+                <img ng-src="{{trustedHtml}}">
+            </div>
+            <div id="docContent" class="onboarding__docs" ng-if="FieldType === 'pdf'">
+                <iframe class="" ng-src="{{trustedHtml}}" style="width: 100%; min-height: 500px;"></iframe>
+            </div>
+        </div>
+        <div class="align-center">
+            <a href="#" class="button button--positive drawer__button" ng-click="close()">Close document</a>
+        </div>
+
+    </div>

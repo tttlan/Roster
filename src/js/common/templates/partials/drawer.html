@@ -1,0 +1,13 @@
+<div class="drawer fade" ng-class="{in: animate}">
+    <div class="drawer__dialog" ng-class="{'drawer--lg': size == 'lg'}">
+        <div class="drawer__header">
+            <a href="" class="drawer__close" ng-click="close($event)"></a>
+            <h2 ng-if="title" class="drawer__title" id="drawer__title">{{ title }}</h2>
+            <h4 ng-if="subTitle" class="drawer__subtitle" id="drawer__subtitle">{{ subTitle }}</h4>
+        </div>
+        <div class="drawer__wrapper">
+            <div class="drawer__content" modal-transclude></div>
+        </div>
+    </div>
+    <div ng-hide="!backdrop" class="drawer__cover" ng-mousedown="close($event)"></div>
+</div>

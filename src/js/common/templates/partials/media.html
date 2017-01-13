@@ -1,0 +1,36 @@
+<div class="media-item" ng-hide="error">
+    <img ng-src="{{ file.url }}" ng-if=" file.type === 'image' && file.loaded " />
+    
+    <div class="video" ng-if=" file.type === 'video' && file.loaded " ng-class="{'is--playing': videoPlayer.isPlaying}">
+        <a href="" class="video__play" ng-click="videoPlayer.play()">Play</a>
+        <video controls>
+            <source src="{{ file.url }}" type="video/mp4">
+            <object type="application/x-shockwave-flash" data="\\vjs.zencdn.net/4.6/video-js.swf" width="100%" height="100%">
+                <param name="allowfullscreen" value="true">
+                <param name="allowscriptaccess" value="always">
+                <param name="flashvars" value="file={{ file.url }}">
+                <!--[if IE]><param name="movie" value="{{ file.url }}"><![endif]-->
+                <p>Your browser can't play this video 
+                    <a class="link" href="{{ file.url }}" target="_blank">click here to download it</a>
+                </p>
+            </object>
+        </video>
+    </div>
+
+    <!-- <pdf src="{{ file.url }}"></pdf> -->
+
+    <pdf-canvas-container src="{{ file.url }}"
+        allow-expand="true"
+        height="500px"
+        ng-if=" file.type === 'pdf' && file.loaded"
+    ></pdf-canvas-container>
+
+
+    <a class="button-hitarea" ng-href="{{ file.url | absoluteUrl }}" target="_blank" ng-if=" file.type === 'other' && file.loaded ">
+        <i class="icon--mnuTraining icon-is-huge"></i>
+        <h2>Click to download your training course</h2>
+        <p>(you will need to have the correct software to view it)</p>
+    </a>
+    
+    <loader ng-hide="file.loaded || hideLoader" align="center" size="large"></loader>
+</div>

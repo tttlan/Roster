@@ -1,0 +1,51 @@
+.ui
+
+    .panel-list {
+        margin-bottom: 0;
+
+        .panel-list__item {
+            font-size: 13px;
+            color: black;
+            display: block;
+            margin-bottom: .5em;
+
+            [class*="icon--"] {
+                color: primary;
+                margin-right: .35em;
+                vertical-align: middle;
+                position: relative;
+                top: -1px;
+            }
+
+            span {
+                color: grey5;
+                text-transform: uppercase;
+                font-size: 11px;
+                float: right;
+            }
+
+            &:hover {
+                color: primary;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .panel-list__more {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: grey5;
+
+            [class*="icon--"] {
+                position: relative;
+                top: 1px;
+            }
+
+            &:hover {
+                color: primary
+            }
+        }
+
+    }

@@ -1,0 +1,35 @@
+<div class="post__content">
+
+    <div class="post__name">
+        <a href="" target="_self" path="network.profile" path-params="post.content.Owner.MemberId">{{ post.content.Owner.FirstName }} {{ post.content.Owner.Surname }}</a>
+        <div class="post__details">{{post.isUpdated ? 'has updated this event' : 'created a new event'}}</div>
+    </div>
+    
+    <div class="post__segment segment">
+        <h3 class="post__title"><a href="" target="_self" path="events.details" path-params="post.content.EventId">{{ post.content.Title }}</a></h3>
+
+        <p ng-if="post.content.MemberInviteStatus === 1"><strong>You are attending</strong></p>
+        <p ng-if="post.content.MemberInviteStatus === 2"><strong>You might be attending</strong></p>
+        <p ng-if="post.content.MemberInviteStatus === 3"><strong>You are not attending</strong></p>
+        
+        <p>
+            <span ng-bind="post.content.Description | unsafe | htmlToPlainText | removeTrailingSpace"></span><span ng-if="post.content.Description.length >= 100">... <a href="" path="events.details" path-params="post.content.EventId">Read more</a></span>
+        </p>
+        
+        <dl>
+            <dt>When</dt>
+            <dd ng-if="(post.content.StartDate | date) == (post.content.EndDate | date)">{{post.content.EndDate | amUtc | amLocal | amDateFormat:'MMM D, YYYY'}}, {{post.content.StartDate | amUtc | amLocal | amDateFormat:'h:MM A'}} - {{post.content.EndDate | amUtc | amLocal | amDateFormat:'h:MM A'}}</dd>
+            <dd ng-if="(post.content.StartDate | date) != (post.content.EndDate | date)">{{post.content.StartDate | amUtc | amLocal | amDateFormat:'Do MMM YYYY'}} - <span style="display: inline-block">{{post.content.EndDate | amUtc | amLocal | amDateFormat:'Do MMM YYYY'}}</span></dd>
+        </dl>
+
+        <dl>
+            <dt>Location</dt>
+            <dd>{{post.content.Location}}<br />
+            {{post.content.Address}}</dd>
+        </dl>
+
+        <event-rsvp ng-if="post.content.MemberInviteStatus === 0 && post.userCan.canrsvpevent" current-rsvp="post.content.MemberInviteStatus" event-id="{{post.content.EventId}}" event-title="{{post.content.Title}}"></event-rsvp>        
+
+    </div>
+
+</div> 

@@ -1,0 +1,104 @@
+        <div class="page page--2-1" ng-cloak ng-class="{'is--loading': loading}">
+
+            <div class="page__wrapper">
+
+                <!-- content component -->
+
+                <div class="page__content" >
+                    
+                    <div class="training training--subject">
+
+                        <div class="training__header">
+                            <ul class="nav nav--breadcrumb">
+                                <li><a href="" path="training.index"><i class="icon--training"></i> My training</a></li>
+                                <li><a href="" path="training.course" path-params="course.TrainingCourseId">{{ course.Title }}</a></li>
+                            </ul>
+                            <h1 class="training__title">{{ subject.Title }}</h1>
+                        </div>
+
+                        <div class="training__content">
+
+                            <!-- Show a link out to the module  -->
+                            <external url="{{ subject.Uri }}"
+                                title="Click to access your training course"
+                                ng-if="subject.TrainingSubjectContentTypeId === 'Uri'"ng-show="subject.Uri"
+                                click-func="reloadPage()"
+                            />
+
+                            <media file="subject.FileStore" ng-if="subject.TrainingSubjectContentTypeId === 'FileStore'"  ng-show="subject.FileStore"></media>
+                            
+                            <span ng-if="subject.Description">
+                                <h4>Description</h4>
+                                <p>{{ subject.Description }}</p>
+                            </span>
+                        </div>
+                        
+                        <div class="training__footer">
+    
+                            <div class="training__footer-details">
+                                <dl ng-if="!subject.IsThirdParty">
+                                    <dt>Est. Duration:</dt>
+                                    <dd>{{ subject.Duration }} Minutes</dd>
+                                </dl>
+                            </div>
+                            
+                            <div class="training__footer-button" ng-hide="loading">
+                                
+                                <a href="" ng-hide="currentSubjectIsComplete" 
+                                    ng-disabled="subject.FileStore.type==='video' && !subject.FileStore.finished && !currentSubjectIsComplete" 
+                                    ng-confirm-click="completeSubject(subject.TrainingSubjectId);" ng-confirm-message="Are you sure you have completed this subject?" ng-confirm-bypass="subject.IsThirdParty"
+                                    class="button button--positive">
+                                    {{ nextAction }} <i class="icon--right"></i>
+                                </a>
+
+                                <a href="" ng-show="currentSubjectIsComplete" class="button button--positive" ng-click="completeSubject(subject.TrainingSubjectId);">{{ nextAction }} <i class="icon--right"></i></a>
+
+                                <ng-form name="form" ng-if="subject.FileStore.type === 'video'">
+                                    <input type="hidden" ng-model="subject.FileStore.finished" name="videoFinished" ng-required="true" />
+                                    <p class="form__note form__note--error" ng-show="!$scope.subject.FileStore.finished && formSubmitted">You need to finish watching the video first</p>
+                                </ng-form>
+
+                                <div ng-show="thirdPartyNotCompleteError">
+                                    <p class="form__note form__note--error">Our records indicate you have not completed this subject yet.<br /><a href="{{ subject.Uri }}" target="_blank" ng-click="reloadPage()">Continue this subject</a></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- END content component -->
+
+                <!-- nav component -->
+
+                <div class="page__aside">
+
+                    <div class="panel panel--noPadding">
+                        <ul class="progress-list">
+                            <li class="progress__title">Your progress</li>
+                            <li class="progress__step" ng-repeat="sub in course.subjectsForMember"
+                                ng-class="{ 'progress__step--complete': sub.TrainingSubjectMemberProgressStatusId == 'Passed',
+                                'progress__step--active': sub.TrainingSubjectId === subject.TrainingSubjectId, 'progress__step--next': nextSubject === sub.TrainingSubjectId }">
+                                <a ng-if="sub.TrainingSubjectMemberProgressStatusId == 'Passed' || (nextSubject === sub.TrainingSubjectId && currentSubjectIsComplete)" href="" path="training.subject" path-params="course.TrainingCourseId,sub.TrainingSubjectId" class="step__item">
+                                    <div class="step__number" data-text="{{ $index + 1 }}"></div>
+                                    <div class="step__title">{{ sub.Title }} </div>
+                                    <div class="step__description">{{ sub.Description | textLimit:65 }}</div>
+                                </a>
+                                <div ng-if="sub.TrainingSubjectMemberProgressStatusId != 'Passed' && (nextSubject != sub.TrainingSubjectId || !currentSubjectIsComplete )" class="step__item">
+                                    <div class="step__number" data-text="{{ $index + 1 }}"></div>
+                                    <div class="step__title">{{ sub.Title }} </div>
+                                    <div class="step__description">{{ sub.Description | textLimit:65 }}</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- END nav component -->
+
+            </div>
+        </div>

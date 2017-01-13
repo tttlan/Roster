@@ -1,0 +1,19 @@
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+    <label 
+        ng-if="element.label"
+        class="form__label"
+        for="{{ formData.name + '__' + element.name }}"
+    >
+        {{ element.label }}
+    </label>
+    
+    <phone-numbers
+        max="{{element.validation.maxLength || 5}}"
+        allow-duplicate="{{element.validation.allowDuplication}}"
+        min="{{element.validation.minLength || 0}}"
+        ng-required="element.validation.required"
+        ng-model="element.val"
+        name="{{element.name}}"
+    ></phone-numbers>
+    <p ng-if="element.note"><small>* {{ element.note }}</small></p>
+</div>

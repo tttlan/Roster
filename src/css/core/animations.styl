@@ -1,0 +1,91 @@
+
+// Animations
+// ------------------------------------------------
+
+.ui 
+
+    .fade {
+        opacity: 0;
+        transition: opacity .3s linear;
+    }
+
+    .fade.in {
+        opacity: 1;
+    }
+    
+    .fadeUp {
+        opacity: 0;
+        transform-style: preserve-3d;
+        transform: translate(0, 40px);
+        transition: transform 250ms , opacity 125ms;
+        transition-delay: 125ms;
+        
+        &.in {
+            transform: translate(0, 0);
+            opacity:1;
+        }
+    }
+
+    .fadeScale > * {
+        transform: scale(0.7);
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    .fadeScale.in > *,
+    .fadeScale.open > * {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .flipHorizontal {
+        perspective: 1300px;
+    }
+
+    .flipHorizontal > * {
+        transform-style: preserve-3d;
+        transform: rotateY(-70deg);
+        transition: all 0.3s;
+        opacity: 0;
+    }
+
+    .flipHorizontal.in > *,
+    .flipHorizontal.open > * {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+
+    .flipVertical {
+        perspective: 1300px;
+    }
+
+    .flipVertical > * {
+        transform-style: preserve-3d;
+        transform: rotateX(-70deg);
+        transition: all 0.3s;
+        opacity: 0;
+    }
+
+    .flipVertical.in > *
+    .flipVertical.open > * {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+
+    .sign {
+        perspective: 1300px;
+    }
+
+    .sign > * {
+        transform-style: preserve-3d;
+        transform: rotateX(-60deg);
+        transform-origin: 50% 0;
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .sign.in > *,
+    .sign.open > * {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }

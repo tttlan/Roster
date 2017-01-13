@@ -1,0 +1,85 @@
+<div class="page">
+
+    <div class="page__wrapper">
+
+        <div class="page__header page__header--stats">
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="training.manage.index">Manage courses</a></li>
+            </ul>
+            <h1>{{ course.Title }}</h1>
+        </div>
+
+        <!-- content component -->
+
+        <div class="page__content"
+            paginate="getProgress"
+            page-size="20"
+            order-by="FirstName"
+            ng-class="{'is--loading': page.loading}"
+            disable-paging="true">
+
+            <!-- Attrs to allow pagination on scroll
+
+                paginate-scroll="true"
+                when-scrolled="page.next()"
+
+            -->
+
+            <div class="message message--empty" ng-hide="page.items.length || page.loading || page.error">
+                <i class="icon--mnuTraining icon-is-huge"></i>
+                <p>There are currently no members assigned to this course.</p>
+            </div>
+
+            <div class="table-responsive" ng-show="page.items">
+                <table class="table">
+                    <thead toggle-set>
+                        <tr>
+                            <th><a href="" toggle-active="page.setOrderBy('FirstName')">Name</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('RoleTitle')">Role</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('NetworkGroupTitle')">Location</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('SubjectsCompleted')">Progress</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('CommencedDate')">Start Date</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('LastUpdatedDate')">Last Updated</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="member in page.items">
+                            <td>{{ member.FirstName }} {{ member.SurName }}</td>
+                            <td>{{ member.RoleTitle }}</td>
+                            <td>{{ member.NetworkGroupTitle }}</td>
+                            <td>
+                                <small ng-if="!member.SubjectsCompleted">No Progress</small>
+                                <progress-bar ng-if="member.SubjectsCompleted"
+                                    value="member.SubjectsCompleted / course.subjectCount * 100"
+                                    label="{{ member.SubjectsCompleted }}/{{ course.subjectCount }} subjects"
+                                ></progress-bar>
+                            </td>
+                            <td>{{ member.CommencedDate | date }}</td>
+                            <td>{{ member.LastUpdatedDate | date }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="paging" ng-show="page.total > 0 && !page.loading && !page.error">
+            
+            <div class="paging__menu dropdown" ng-if="csvUrl">
+                <a href="" class="dropdown-toggle"><i class="icon--options"></i></a>
+                <ul class="dropdown-menu submenu submenu--right submenu--top">
+                    <li class="submenu__item">
+                        <a href="{{ csvUrl }}" target="_blank">
+                            <i class="icon--download"></i>Download CSV
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <pagination page="page.current" total-items="page.total" items-per-page="page.size" max-size="5"
+                direction-links="true"
+                ng-show="page.loaded && !page.error && page.totalPages > 0"
+                ng-class="{'is--disabled-pagination': paginationDisabled}">
+            </pagination>
+
+        </div>
+    </div>
+</div>

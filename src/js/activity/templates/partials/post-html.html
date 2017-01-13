@@ -1,0 +1,7 @@
+<div class="post__content">
+    <div class="post__name" ng-hide="post.content.HtmlContent">
+        <a href="" path="network.profile" path-params="post.content.Owner.MemberId" target="_self">{{ post.content.Owner.FirstName }} {{ post.content.Owner.Surname }}</a>
+    </div>
+
+    <div class="post__html" ng-bind-html="(post.content.HtmlContent || post.content.ContentText) | unsafe"></div>
+</div>

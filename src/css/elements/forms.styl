@@ -1,0 +1,623 @@
+
+// Forms
+// ------------------------------------------------
+
+.ui
+    
+    // Basic form
+    // 
+    // Markup: markup/forms/basic-form.hbs
+    //
+    // Styleguide elements.forms.basic
+    
+    .form {
+        max-width: 640px;
+    }
+
+    .form--categories {
+        max-height: 164px;
+        overflow: auto;
+        clear: both;
+    }
+
+
+    // Textarea
+    // ------------------------------------------------
+
+    .autogrow {
+        overflow:hidden;
+        resize: none;
+        word-wrap: break-word;
+        min-height:44px;
+    }
+
+    // Fieldset
+    // ------------------------------------------------
+
+    fieldset {
+
+        + fieldset {
+            margin-top: 50px;
+        }
+
+        .form__field--boxBottom {
+            margin: -20px -20px 0 -20px;
+        }
+
+        legend {
+            margin: 0 0 0.8em 0;
+        }
+    }
+
+    // Fieldset style for page content area only
+    .page__content fieldset legend {
+        margin: 0 auto 30px auto;
+        text-align: center;
+        display: block;
+        font-weight: 600;
+        font-size: 1.1em;
+
+        @media minTablet {
+            position: relative;
+            max-width: 280px;    
+
+            &:before, &:after {
+                width: 150px;
+                height: 1px;
+                content: '';
+                display: block;
+                position: absolute; 
+                top: 50%;
+                margin-top: -1px;
+            }
+
+            &:before {
+                left: -170px;
+                background: linear-gradient(to right, #fff 0%, grey7 100%)
+            }
+            &:after {
+                right: -170px;
+                background: linear-gradient(to right, grey7 0%, #fff 100%)
+            }
+        }
+    }
+
+    .segment fieldset
+    .segment fieldset:first-child {
+        margin-top: 20px;
+    }
+
+
+    // Labels
+    // ------------------------------------------------
+
+    .form__label,
+    .form__field .form__label {
+        margin: 0em 0em 0.5em;
+        display: block;
+        color: grey3;
+        line-height: normal;
+        font-size: 14px;
+
+        em { color: caution; }
+    }
+    
+    // Hide a label if there is other text that describes it's field
+    .form__label--invisible > .form__label {
+        position: absolute;
+        left: -999em;
+    }
+
+    a.link {
+        color: darken(primary, 10%);
+    }
+
+    // Fields 
+    // ------------------------------------------------
+
+    // single
+    .form__field {
+        position: relative;
+        margin: 0em;
+        clear: both;
+        vertical-align: top;
+
+        .form__field {
+            margin: 0;
+        }
+
+        .form-label {
+            font-size: 0.8em;
+            color: grey5;
+            text-transform: uppercase;
+            margin: 0 0 0.8em 0;
+        }
+
+        p {
+            margin: 0.2em 0;
+            line-height: 1;
+            text-align: left;
+
+            small {
+                font-size: 12px;
+                line-height: 1;
+                display: block;
+            }
+        }
+
+        &.is--error {
+            background: negative;
+            color: white;
+        }
+
+        &.is--success {
+            background: positive;
+            color: white;
+        }
+
+    }
+
+    .form__field,
+    .form__editor {
+              
+        &.is--required .form__label:after {
+            color: negative;
+            content: '*';
+            margin-left: 0.5em;
+        }
+    }
+    .form__label.is--required:after {
+        color: negative;
+        content: '*';
+        margin-left: 0.5em;
+    }
+    // Form field spacing 
+    fieldset, form, .form {
+        .form__field {
+            margin-bottom: 20px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .form__field {
+                margin-bottom: 0;
+            }
+
+            // Reset the margin on <hr>'s to avoid double margin
+            + hr {
+                margin-top: 0;
+                margin-bottom: 1em;
+            }
+        }
+
+        .form__fields:last-child,
+        .form__fields:last-child .form__field {
+            margin-bottom: 0;
+        }
+    }
+
+    .drawer {
+        fieldset, form, .form {
+            .form__field {
+                margin-bottom: 20px;
+            }
+        }
+    }
+    
+    // Inline field form
+    // 
+    // Markup: markup/forms/field-inline.hbs
+    //
+    // Styleguide elements.forms.fieldinline
+
+    .form__field--inline {
+
+        div {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+
+            @media maxTablet {
+                display: block;
+                margin-bottom: 0.5em;
+            }
+        }
+
+        .button {
+            vertical-align: middle;
+            margin: 0;
+            margin-left: 2em;
+
+            @media maxTablet {
+                margin-left: 24px;
+            }
+        }
+        
+        .field__checkbox,
+        .field__radio {
+            margin: .35em 0 .5em .35em;
+            
+            label {
+                margin-bottom: 0;
+            }
+        }
+    }
+    
+    // Form with a checkbox on the bottom
+    // 
+    // Markup: markup/forms/bottom-checkbox.hbs
+    //
+    // Styleguide elements.forms.bottomcheckbox
+
+    .form__field--boxBottom
+    form .form__field--boxBottom {
+        background: #fbfbfb;
+        margin: -20px -20px 0 -20px;
+        border-top: solid 1px #dfe0e1;
+        bottom: -20px;
+        padding: 15px !important;
+        float: none !important;
+        border-radius: 0 0 base-border-radius base-border-radius;
+        width: auto !important;
+
+        div, span {
+            margin: 0;
+        }
+
+        label ,
+        .form__label {
+            margin-bottom: 0;
+        }
+    }
+
+    // Submit button with wapper <div class="button"><input type="submit"
+    // ------------------------------------------------    
+    .form__loader-wrapper {
+        
+        display: inline-block;
+        
+        .loading-spinner__container--inline {
+            margin-left: 0.5em;
+        }
+
+        .loading-spinner__container,
+        .loading-spinner__icon {
+            vertical-align: middle;
+        }
+    }
+
+
+    // Groups of fields
+    // 
+    // Markup: markup/forms/groups.hbs
+    //
+    // Styleguide elements.forms.groups
+    
+    .form__fields {
+
+        clearfix();        
+        margin-bottom: 15px;
+
+        @media minTablet {
+            margin-bottom: 30px;
+        }
+
+        div.col-1-2, // Class may be applied directly to an input by FB, ensure style is restricted to divs
+        div.col-1-3,
+        div.col-2-3,
+        > .form__field {
+            padding-right:(gutter / 2);
+            vertical-align: top;
+            
+            &:last-child:not(.button) {
+                padding-right: 0;
+            }
+            
+            @media maxTablet {
+                padding: 0;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+
+        .col-gap {
+            width:49%;
+        }
+
+        + .form__field {
+            margin-top: 30px;
+        }
+
+        > p {
+            margin: 0 0 0.5em 0;
+        }
+
+        p + .col-1-2,
+        p + .col-1-2 + .col-1-2 {
+            
+            label:not([class*="icon--"]) {
+                position: absolute;
+                left: -999em;
+            }
+        }
+
+        @media minTablet {
+
+            .col-1-2 ,
+            .col-1-3 {
+                clear: none;
+            }
+
+            .col-1-2.clear ,
+            .col-1-3.clear {
+                clear: left;
+            }
+
+            .col-1-2:nth-last-child(2),
+            .col-1-2:nth-last-child(1) {
+                margin-bottom: 0;
+            }
+
+            // Reset the above rule if the 2nd last child element is followed by a full width form field
+            .col-1-2:nth-last-child(2) + .form__field:not(.col-1-2) {
+                margin-top: 30px;
+                float: left;
+            }
+
+            .col-1-3:nth-last-child(3)
+            .col-1-3:nth-last-child(2),
+            .col-1-3:nth-last-child(1) {
+                margin-bottom: 0;
+            }
+
+            // Reset the above rule if the 3rd last and 2nd last child elements are followed by a full width form field
+            .col-1-3:nth-last-child(3) + .form__field:not(.col-1-3)
+            .col-1-3:nth-last-child(3) + .form__field:not(.col-1-3) + .form__field:not(.col-1-3) {
+                margin-top: 30px;
+                float: left;
+            }
+
+        }
+
+    }
+
+
+    // when using a wrapped text editor
+    .form__editor {
+        margin: 0 0 30px 0;
+        
+        .textarea,
+        textarea {
+            padding: 0;
+        }
+
+        .ta-scroll-window.form-control {
+            min-height: 0px;
+        }
+
+        .ta-scroll-window .ta-bind {
+            min-height: 200px;
+            padding: 10px 12px;
+        }
+    }
+
+    // assistive text
+    .form__note {
+        display:block;
+        font-size: 12px;
+        color: grey5;
+
+        &.form__note--error {
+            color: negative;
+        }
+    }
+
+    .form__note-inline,
+    .form__fields > .form__note-inline {
+
+        font-size: 14px;
+        display: inline-block;
+        vertical-align: bottom;
+        margin-bottom: 0.7em;
+
+        a {
+            color: primary;
+        }
+    }
+
+    // form hint
+    .form__text-action {
+        font-size:13px;
+        padding:5px 10px;
+
+        color:primary;
+    }
+    
+    /*TFN declaration form*/
+    .declaration-form__number {
+        vertical-align:top;
+        width: 10%;
+        text-align: center;
+    }
+
+    #declaration-form tr>td:nth-child(2) {
+        width: 70%;
+    }
+    .width-100pc {
+        width: 100%;
+    }
+
+    .declaration-form__subtitle {
+        text-align: left;
+        vertical-align: bottom;
+        width:720px;
+    }
+
+    .bottom-border {
+        border-bottom: 1px solid black;
+    }
+
+    .declaration-input {
+        width: 100%;
+        height: 45px;
+    }
+    #declaration-form [type="RadioButton"]
+    {
+        margin-left: 5px;
+    }
+
+    .table-cell__middle{
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .declaration-two-row {
+        width: 50%;
+    }
+    .declaration-three-row {
+        width: 33%;
+    }
+    .display-block {
+        display: block;
+    }
+
+    #tfnSignatureForm input[disabled]{
+        background-color:#fdfdfd;
+    }
+
+    // Date / time picker
+    // 
+    // Markup: markup/forms/date-time.hbs
+    //
+    // Styleguide elements.forms.datetimepicker
+
+    // Datetime
+    .form__datetime {
+        clearfix();
+
+        @media minDesktop {
+
+            .form__field {
+
+                float: left;
+                clear: none;
+                width: 45%;                
+
+                &:first-of-type {
+                    width: 55%;
+
+                    input {
+                        border-radius: input_border_radius 0 0 input_border_radius;
+                        position: relative;
+
+                        &:focus {
+                            z-index: 2;
+                        }
+                    }
+                }
+
+                &:last-child input {
+                    position: relative;
+                    left: -1px;
+                    border-radius: 0 input_border_radius input_border_radius 0;
+                }
+
+                .timepicker {
+                    
+                    button {
+                        padding-right: 6px;
+                    }
+                    input {
+                        border-radius: input_border_radius;   
+                    }
+                }
+            }
+
+        }
+
+        @media maxDesktop {
+
+            .form__field {
+
+                &:first-of-type input {
+                    border-radius: input_border_radius input_border_radius 0 0;
+
+                    &:focus {
+                        position: relative;
+                        z-index: 2;
+                    }                    
+                }
+
+                &:last-child input {
+                    position: relative;
+                    top: -1px;
+                    border-radius: 0 0 input_border_radius input_border_radius;
+                }
+            }
+        }
+    }
+
+    // Form Variations 
+    // ------------------------------------------------
+
+    // Aligned form - labels and elements side by side
+    // 
+    // Markup: markup/forms/form-aligned.hbs
+    //
+    // Styleguide elements.forms.formaligned
+    
+    .form--aligned {
+            
+        @media minTablet {
+            .form__field label {
+                text-align: right;
+                display: inline-block;
+                width: 20%;
+                margin-right: 1.5%;
+                vertical-align: middle;
+            }
+
+            textarea ,
+            input {
+                width: 77%;
+                display: inline-block;
+            }
+
+            .field--aligned {
+                margin-left: 22%;
+            }
+        }
+    }
+    
+
+    /* Smaller input
+    *
+    * Makes all inputs and form__fields smaller.
+    * Used in the login forms
+    *
+    */
+    .form--small {
+       font-size: 16px;
+
+       .form__field { margin-bottom: 20px; }
+       .button { font-size: 13px; }
+
+        @media minTablet {
+            font-size: 13px;
+            .button { font-size: 14px; }
+        }
+
+    }
+
+    div.email-template-dropdown {
+        margin: 0 0 10px;
+    }
+
+    // Autocomplete and tags 
+    // 
+    // Weight: 10
+    //
+    // Markup: markup/forms/autocomplete-and-tags.hbs
+    //
+    // Styleguide elements.forms.autocompletetags

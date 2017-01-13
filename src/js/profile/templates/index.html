@@ -1,0 +1,56 @@
+<div class="page page--1-2 profile" ng-controller="profileCommon">
+
+    <div class="page__wrapper">
+
+        <ng-include src="'/interface/views/profile/partials/lhs-panel.html'"></ng-include>
+
+        <div class="page__content profile-details" ng-if="(!profile.Deleted && profile.Active !== false) || profile.$userCan.isadmin">
+
+            <loader size="large" align="center" ng-hide="profile.$loaded"></loader>
+
+            <tabs selected="profile.activeTabIndex">
+
+                <ul class="nav nav--tabs nav--tabs-flush" ng-if="profile.$tabData.length" overflow>
+                    <li tab-link ng-repeat="tab in profile.$tabData"><a ng-click="profile.updateUrl($index)" href="">{{ tab.title }}</a></li>
+                </ul>
+
+                <div class="tab-group">
+                    <div tab-content
+                         tab-content-url="/interface/views/profile/partials/tab-wall.html" class="tab-group__tab">
+                    </div>
+
+                    <div tab-content class="tab-group__tab"
+                         tab-content-url="/interface/views/profile/partials/tab-about.html" ng-if="profile.$userCan.canviewcontact">
+                    </div>
+
+                    <div tab-content class="tab-group__tab" ng-if="profile.$userCan.viewprofileemploymentdetail"
+                         tab-content-url="/interface/views/profile/partials/tab-employment-details.html">
+                    </div>
+
+                    <div tab-content class="tab-group__tab" ng-if="profile.$userCan.canviewemploymenthistory || profile.$userCan.canviewtraining || profile.$userCan.viewperformanceassessments"
+                         tab-content-url="/interface/views/profile/partials/tab-history.html">
+                    </div>
+
+                    <div tab-content class="tab-group__tab" ng-if="profile.$userCan.canviewdocumentation"
+                         tab-content-url="/interface/views/profile/partials/tab-documentation.html">
+                    </div>
+
+                    <div tab-content class="tab-group__tab" ng-if="profile.$userCan.canviewnotes"
+                         tab-content-url="/interface/views/profile/partials/tab-notes.html">
+                    </div>
+                    <div tab-content class="tab-group__tab" ng-if="profile.$userCan.canviewsysteminformation"
+                         tab-content-url="/interface/views/profile/partials/tab-system-settings.html">
+                    </div>
+
+                    <div tab-content class="tab-group__tab" ng-if="profile.$userCan.viewonboardworkflow || profile.$userCan.viewjobadworkflow"
+                         tab-content-url="/interface/views/profile/partials/tab-workflows.html">
+                    </div>
+                </div>
+
+            </tabs>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,199 @@
+
+progress-size-default = 100%;
+progress-size-small = 60px;
+
+// Progress Elements
+// ------------------------------------------------
+
+.ui
+
+    // Progress bar variations
+    //
+    // Markup:
+    // <div class="progress-bar {{modifier_class}}">
+    //    <div class="progress-bar__range" style="width:50%"></div>
+    // </div>
+    //
+    // .is--negative - Negative coloured
+    // .is--caution - Caution coloured
+    // .is--info - Info coloured
+    // .is--dark - Dark coloured
+    // .is--white - White coloured
+    // .progress-bar--wide - Wide progress bar
+    //
+    // Styleguide elements.progress.variations
+
+    .progress-bar {
+        width: progress-size-default;
+        padding-bottom: 2%;
+        min-height: 3px;
+        min-width: 100px;
+        position: relative;
+        margin: 0px auto;
+        background: grey7;
+    }
+
+
+    // Bar
+
+    .progress-bar__range {
+        height: 100%;
+        width: 0%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: positive;
+
+        transition: width 150ms linear, background-color 250ms ease-out;
+    }
+
+
+    // Label (used in tables)
+
+    .progress-bar-label {
+        display: block;
+        font-size: 10px;
+        line-height: 12px;
+        color: grey3;
+    }
+
+    // States
+    // ------------------------------------------------
+
+    .progress-bar.is--positive {
+        .progress-bar__range {
+            background-color: positive;
+        }
+    }
+
+    .progress-bar.is--negative {
+        .progress-bar__range {
+            background-color: negative;
+        }
+    }
+
+    .progress-bar.is--caution {
+        .progress-bar__range {
+            background-color: caution;
+        }
+    }
+
+    .progress-bar.is--info {
+        .progress-bar__range {
+            background-color: info;
+        }
+    }
+
+    .progress-bar.is--dark {
+        .progress-bar__range {
+            background-color: grey3;
+        }
+    }
+
+    .progress-bar.is--white {
+        .progress-bar__range {
+            background-color: white;
+        }
+    }
+
+    .progress-bar.is--primary {
+        .progress-bar__range {
+            background-color: primary;
+        }
+    }
+
+
+
+    // Variations
+    // ------------------------------------------------
+
+    .progress-bar--wide {
+        padding-bottom: 0;
+        min-height: 6px;
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+    }
+
+    .password-strength {
+
+        margin-top: 8px;
+
+        &--1 {
+            .progress-bar--password-strength__block:nth-child(1) {
+                background-color: negative;
+            }
+            p {
+                color: negative;
+            }
+        }
+
+        &--2 {
+            .progress-bar--password-strength__block {
+                &:nth-child(1), &:nth-child(2) {
+                    background-color: negative;
+                }
+            }
+            p {
+                color: negative;
+            }
+        }
+
+        &--3 {
+            .progress-bar--password-strength__block {
+                &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+                    background-color: caution;
+                }
+            }
+            p {
+                color: caution;
+            }
+        }
+
+        &--4 {
+            .progress-bar--password-strength__block {
+                &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+                    background-color: positive;
+                }
+            }
+            p {
+                color: positive;
+            }
+        }
+
+        &--5 {
+            .progress-bar--password-strength__block {
+                background-color: positive;
+            }
+            p {
+                color: positive;
+            }
+        }
+    }
+
+    .password-strength__description,
+    .form__field .password-strength__description {
+        font-size: 0.7em;
+        font-weight: 600;
+        text-align: right;
+        margin-top: 0.5em;
+    }
+
+    .progress-bar--password-strength {
+
+        padding-bottom: 1%;
+        background: transparent;
+    }
+
+    .progress-bar--password-strength__block {
+
+        width: 19.6%;
+        margin-right: 0.5%;
+        padding-bottom: 1%;
+        float: left;
+        background: grey7;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }

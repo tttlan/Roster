@@ -1,0 +1,51 @@
+<div class="selectList" ng-class="{'is--loading': !loaded}">
+    <div class="selectList__list">
+        <div class="selectList__title h4">{{ unselectedTitle }}</div>
+        <div class="selectList__search">
+            <label for="input_search" class="icon--search field__before"></label>
+            <input type="text" id="input_search" placeholder="Search {{ listItemNames }}" ng-model="searchItems">
+        </div>
+        <div class="selectList__content selectList__content--has-search">
+            <ul>
+                <li ng-repeat="item in items | filter:{title: searchItems}" ng-hide="item.selected || (hideInactiveItems && !item.active)">
+                    <a ng-click="selectThis(item.id)" class="subject" ng-class="{ 'is--disabled': !item.active }">
+                        {{ item.title }}
+                        <span class="subject__action">
+                            <i class="icon--right" ng-show="item.active"></i>
+                            <i class="icon--warning" ng-hide="item.active" tooltip="Inactive {{ itemsName }}" tooltip-append-to-body="true"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <span ng-hide="items.length" class="selectList__note">No existing {{ itemsName }}</span>
+        </div>
+    </div>
+
+    <div class="selectList__list">
+        <div class="selectList__title h4">{{ selectedTitle }}</div>
+        <div class="selectList__content">
+            
+            <ul sortable="selectedItems" ng-show="isSortable">
+                <li ng-repeat="selectedItem in selectedItems" data-pos="{{$index}}" ng-hide="hideInactiveItems && !selectedItem.active" >
+                    <a href="" ng-click="unSelectThis(selectedItem.id)" class="subject subject--removeable" ng-class="{ 'is--disabled': !selectedItem.active }">
+                        {{selectedItem.title}} <span class="subject__action"><i class="icon--cross"></i></span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul ng-hide="isSortable">
+                <li ng-repeat="selectedItem in selectedItems" data-pos="{{$index}}" ng-hide="hideInactiveItems && !selectedItem.active" >
+                    <a href="" ng-click="unSelectThis(selectedItem.id)" class="subject subject--removeable" ng-class="{ 'is--disabled': !selectedItem.active }">
+                        {{selectedItem.title}} <span class="subject__action"><i class="icon--cross"></i></span>
+                    </a>
+                </li>
+            </ul>
+
+            <span ng-hide="selectedItems.length" class="selectList__note">No {{ itemsName }} added yet.</span>
+        </div>
+    </div>
+    <div class="field__checkbox" ng-show="toggleInactive">
+        <input type="checkbox" id="form_checbox_hideinactive" ng-model="hideInactiveItems">
+        <label class="form__label" for="form_checbox_hideinactive"> Hide Inactive {{ itemsName }}</label>
+    </div>
+</div>

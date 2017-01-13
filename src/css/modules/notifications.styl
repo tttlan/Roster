@@ -1,0 +1,218 @@
+
+notification_size = 48px
+
+
+// Notifications
+//
+// Adding the class notifications--fixed to the ul element positions the notificaions to the bottom right of the screen
+//
+// Markup:
+// <ul class="notifications">
+//     <li class="notification {{modifier_class}}">
+//         <a class="notification__close"><i class="icon--cross"></i></a>
+//         <div class="notification__icon"><i class="icon--help"></i></div>
+//         <p class="notification__message">I'm a notification message with <a href="">a link</a></p>
+//     </li>
+// </ul>
+//
+// .notification--success - Success notification, use this to convey come good news
+// .notification--warning - Warning notification, use this to warn of a potential problem
+// .notification--error - Error notification, use this to explain an error
+// .notification--info - Info notification, use this to notice information
+// .notification--delete - Delete notification, use this to notice deleted something
+// Styleguide modules.notifications.standard
+
+.ui
+
+    .notifications {
+        list-style: none;
+        padding: 0;
+        width: 260px;
+        margin: 0 auto;
+
+        &.notifications--fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1500
+        }
+
+        @media print {
+            display: none;
+        }
+    }
+
+    .page .notifications {
+        width: auto;
+        max-width: 260px;
+    }
+
+    .notification {
+        clearfix();
+
+        background: white;
+        margin: 5px 0 0 0;
+        border-radius: base-border-radius;
+        position: relative;
+        padding: 0 10px 0 (notification_size - 4);
+        border: solid 1px grey6;
+        overflow: hidden;
+        max-width: 260px;
+
+        transition: all ease-in 250ms;
+        opacity:1;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.ng-hide {
+            opacity: 0;
+        }
+
+        &.ng-enter {
+            opacity: 0;
+            transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 125ms;
+            transform: translate(100px, 0);
+        }
+
+        &.ng-enter.ng-enter-active {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    }
+
+    .notification__close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 12px;
+        color: grey7;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 24px;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .notification__message {
+        margin: 14px 0;
+        line-height: 16px;
+        font-size: 13px;
+    }
+
+    .notification__icon {
+        color: grey4;
+        position: absolute;
+        font-size: 16px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: notification_size;
+        text-align: center;
+        padding: 11px 0;
+    }
+
+
+
+    // Notifications States
+    // ------------------------------------------------
+
+    .notification--error {
+        border-color: negative;
+
+        .notification__icon {
+            color: negative
+        }
+    }
+
+    .notification--success {
+        border-color:  positive;
+
+        .notification__icon {
+            color: positive
+        }
+    }
+
+    .notification--warning {
+        border-color: caution;
+
+        .notification__icon {
+            color: caution
+        }
+    }
+
+    .notification--info {
+        border-color: info;
+
+        .notification__icon {
+             color: info;
+        }
+    }
+
+    .notification--delete {
+        border-color: black;
+
+        .notification__icon {
+            color: black
+        }
+    }
+
+
+    // Offline notification
+    //
+    // Use this to notify the user that they are currently offline
+    //
+    // Markup:
+    // <div class="notification notification--offline" style="position: relative;">
+    //     <div class="notification__icon"><i class="icon--wifi"></i></div>
+    //     <p class="notification__message">No internet connection</p>
+    // </div>
+    //
+    // Styleguide modules.notifications.offline
+
+
+    .notification--offline {
+        background-color: negative;
+        border: none;
+        width: 230px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        z-index: 1010;
+        top: 80%;
+        left: 50%;
+        position: fixed;
+        margin-left: -115px;
+        opacity: 1;
+
+        transition: 100ms linear all;
+
+        @media minTablet {
+            top: 90%;
+        }
+
+        .notification__icon {
+            color: white
+        }
+
+        .notification__message {
+            color: white;
+            text-transform: uppercase;
+        }
+
+        &.ng-hide {
+            opacity:0;
+        }
+
+        &.ng-hide-add,
+        &.ng-hide-remove {
+          /* this needs to be here to make it visible during the animation
+             since the .ng-hide class is already on the element rendering
+             it as hidden. */
+            display: block!important;
+        }
+
+    }

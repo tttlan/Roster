@@ -1,0 +1,39 @@
+<header class="modal__header">
+    <h2 class="modal__title">Add note</h2>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+<div class="modal__content modal__send-email" ng-loading="loading">
+    <div class="well">
+        <i class="icon--round-info well__icon"></i>
+        <span class="well__content">
+            A note will be added to each applicant, appearing as part of their 'Notes' section.
+        </span>
+    </div>
+    <accordion-segment>
+        <accordion-segment-group>
+            <accordion-heading>Applicants {{selectedApplicants.length}}</accordion-heading>
+            <div class="form__field col-1-2">
+                <applicant-search-select
+                    selected-list="selectedApplicants"
+                    job-id="jobId">
+                </applicant-search-select>
+            </div>
+            <!-- TODO add list of applicants to choose from -->
+        </accordion-segment-group>
+        <accordion-segment-group>
+            <accordion-heading>Note</accordion-heading>
+            <applicant-notes-multiple model="newNote">
+            </applicant-notes-multiple> 
+        </accordion-segment-group>
+    </accordion-segment>
+</div>
+<hr class="solid" />
+<footer class="modal__footer">
+    <div class="button-group text-right">
+        <button class="button button--cancel" ng-click="cancel()">Cancel</button>
+        <button class="button button--primary" 
+            ng-click="submit()" 
+            ng-disabled="loading || !selectedApplicants.length || !newNote.commentString.length">
+        Add Notes</button>
+    </div>
+</footer>

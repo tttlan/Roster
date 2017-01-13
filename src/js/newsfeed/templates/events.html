@@ -1,0 +1,65 @@
+<div class="page events">
+
+    <div class="page__wrapper">
+
+        <div class="page__content">
+            
+            <h1>Events</h1>
+
+            <div class="event-tiles" 
+                 paginate="getEvents" 
+                 page-size="9">
+
+                <div class="event-tile event-tile--create" ng-show="eventTileHeight" ng-style="{height: eventTileHeight + 'px'}">
+                    
+                    <a href="" path="events.create" class="event-tile--create__content">
+                        <i class="icon--plus"></i>
+                        <p>Create event</p>
+                    </a>
+
+                </div>
+
+                <div class="event-tile" ng-repeat="event in page.items">
+
+                    <a href="" path="events.details" path-params="{{ event.$id }}" class="event-tile__image-wrapper">
+
+                        <img ng-if="event.Image" file-link="{{event.Image[0].FileStoreId}}" alt="{{event.Name}}" />
+                        <static-map ng-if="!event.Image" address="{{ event.Address }}" width="{{mapWidth}}" height="{{mapHeight}}"></static-map>
+
+                        <p class="event-date">
+                            <span class="event-date__day">{{event.EventStart | day}}
+                                <span ng-if="(event.EventStart | day) !== (event.EventEnd | day)  && event.EventEnd">- {{event.EventEnd | day}}</span>
+                            </span>
+                            <span ng-if="(event.EventStart | month) !== (event.EventEnd | month) && event.EventEnd">{{event.EventStart | monthAbbrv}} - {{event.EventEnd | monthAbbrv}}</span>
+                            <span ng-if="(event.EventStart | month) === (event.EventEnd | month) || !event.EventEnd">{{event.EventStart | month}}</span>
+                        </p>
+
+                    </a>
+
+                    <div class="event-tile__details">
+
+                        <h2><a href="" path="events.details" path-params="{{ event.$id }}">{{ event.Name | cut:true:82 }}</a></h2>
+
+                        <p>{{event.EventStart | time}}<span ng-if="event.EventEnd"> - {{event.EventEnd | time}}</span>
+                        <span ng-if="event.Location"><br />{{event.Location}}</span></p>
+                        
+                    </div>
+                    
+                    <span ng-switch on="event.Attendance">
+                        <p ng-switch-when="Yes" ng-click="joinEvent(event)" class="button button--small button--positive" href=""><i class="icon--check"></i>Attending</p>
+                        <p ng-switch-when="Maybe" ng-click="joinEvent(event)" class="button button--small button--caution" href="" tooltip="{{event.SpotsAvailable}} place(s) left" tooltip-placement="right">Maybe attending</p>
+                        <p ng-switch-when="No" ng-click="joinEvent(event)" class="button button--small button--negative" href="">Not attending</p>
+                        <a ng-switch-default ng-click="joinEvent(event)" class="button button--small button--basic" href="" tooltip="{{event.SpotsAvailable}} place(s) left" ng-show="event.SpotsAvailable >= 1 && event.Attendance === ''" tooltip-placement="right">Join event</a>
+                    </span>
+
+                    <a href="" path="events.details" path-params="{{ event.$id }}" class="event-tile__arrow">→</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

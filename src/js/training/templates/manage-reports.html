@@ -1,0 +1,333 @@
+<div class="page">
+
+    <div class="page__wrapper">
+
+        <div class="page__header">
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="training.manage.index">Manage courses</a></li>
+            </ul>
+            <h1>Training Reports</h1>
+            <div class="segment training__report-form">
+
+                <div ng-if="stats.display" class="training__report-form__stats">
+
+                    <div class="grid">
+                        <div class="col-1-2 pieChart" ng-class="{'is--loading': !stats.coursesLoaded}">
+                            <donut-chart class="pieChart__chart" id="trainingCourseStats" data="stats.courses" title="'Course Completion'"></donut-chart>
+                        </div>
+                        <div class="col-1-2 pieChart" ng-class="{'is--loading': !stats.subjectsLoaded}">
+                            <donut-chart class="pieChart__chart" id="trainingSubjectStats" data="stats.subjects" title="'Subject Completion'"></donut-chart>
+                        </div>
+                    </div>
+
+                    <div class="lineChart" ng-class="{'is--loading': !stats.dailyLoaded}">
+                        <h4 class="lineChart__title">Subjects Completed over Time</h4>
+                        <select-box ng-model="data.dateRange" class="lineChart__rangeSelect" type="compact">
+                            <select ng-model="data.dateRange" ng-options="obj.title for obj in dateRanges track by obj.val" ng-change="getDailyStats(data.dateRange)"></select>
+                        </select-box>
+                        <div class="lineChart__container">
+                            <line-graph data="stats.daily" class="lineChart__chart"></line-graph>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                </div>
+                <h4>Generate a new report</h4>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-3">
+                        <label for="reportType" class="form__label">Report on:</label>
+                        <select-box ng-model="data.reportType">
+                            <select id="reportType" ng-model="data.reportType" ng-options="obj.title for obj in reportTypes track by obj.val"></select>
+                        </select-box>
+                    </div>
+                    <div class="form__field col-1-3">
+                        <label for="reportLocation" class="form__label">Limit to these locations</label>
+                        <network-groups ids="data.selectedGroupIds" ng-model="data.selectedTagGroups"></network-groups>
+                    </div>
+                    <div class="form__field col-1-3">
+                        <label for="reportRole" class="form__label">Limit to these roles</label>
+                        <network-roles ids="data.selectedRoleIds" ng-model="data.selectedTagRoles"></network-roles>
+                    </div>
+                </div>
+                <div class="training__report-form-button">
+
+                    <div class="button-group">
+
+                        <button ng-disabled="page.loading || !data.reportType" class="button button--primary" ng-click="generateUrl({data:data})">Generate Report</button>
+                        <form ng-if="downloadUrl" method="post" action="{{downloadUrl}}" class="button-form">
+                            <span ng-repeat="id in data.selectedGroupIds">
+                                <input type="hidden" name="NetworkGroupIds[]" value="{{id}}"/>
+                            </span>
+                            <span ng-repeat="id in data.selectedRoleIds">
+                                <input type="hidden" name="RoleIds[]" value="{{id}}"/>
+                            </span>
+                            <input ng-if="downloadUrl" ng-disabled="!downloadUrl" type="submit" class="button button--primary" name="submit" value="Download Report">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        <!-- content component -->
+        <div class="page__content"
+            paginate="getReport"
+            page-size="20"
+            ng-class="{'is--loading': page.loading || loadingBreadcrumbs}"
+            >
+
+            <ul class="nav nav--breadcrumb--padded">
+                <li ng-repeat="crumb in breadcrumbs" ng-if="!page.loading && !loadingBreadcrumbs">
+                    <a ng-if="!$last" href="{{crumb.text}}">{{crumb.val}}</a>
+                    <a ng-if="$last">{{crumb.val}}</a>
+                </li>
+            </ul>
+
+
+            <div class="message message--empty" ng-hide="page.items.length || page.loading || !page.loaded">
+                <i class="icon--mnuTraining icon-is-huge"></i>
+                <p>No Training history has been generated yet</p>
+            </div>
+
+            <div class="table-responsive training__report-table" ng-show="page.items.length">
+
+                <!-- Course based report -->
+                <table class="table" ng-if="reportTemplate == 'courses' && !byMember" >
+                    <thead toggle-set>
+                        <tr>
+                            <th><a>Course</a></th>
+                            <th><a>Staff</a></th>
+                            <th><a>Completion (%)</a></th>
+                            <th><a tooltip="Completed"><i class="icon--check"></i></a></th>
+                            <th><a tooltip="Failed"><i class="icon--cross"></i></a></th>
+                            <th><a tooltip="Not Attempted"><i class="icon--help"></i></a></th>
+                            <th><a tooltip="In Progress"><i class="icon--clock"></i></a></th>
+                            <th class="cell--icon"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="is--clickable" ng-click="generateUrl({data:data, type:'courses', id:item.TrainingCourseId})" ng-repeat="item in page.items">
+                            <td>{{item.TrainingCourseName}}</td>
+                            <td>{{item.RegistrationCount}}</td>
+                            <td>
+                                <progress-bar value="item.RegistrationsCompletePercent"
+                                    label="{{ item.RegistrationsCompletePercent }}%"
+                                ></progress-bar>
+                            </td>
+                            <td>{{item.RegistrationsCompletedCount}}</td>
+                            <td>{{item.RegistrationsFailedCount}}</td>
+                            <td>{{item.RegistrationsNotAttemptedCount}}</td>
+                            <td>{{item.RegistrationsInProgressCount}}</td>
+                            <td class="cell--icon">
+                                <span tooltip="View" tooltip-placement="left">
+                                    <a>
+                                        <i class="icon--stats"></i>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Subject based report -->
+                <table class="table" ng-if="reportTemplate == 'subjects' && !byMember" >
+                    <thead toggle-set>
+                        <tr>
+                            <th><a>Subject</a></th>
+                            <th><a>Staff</a></th>
+                            <th><a>Completion (%)</a></th>
+                            <th><a tooltip="Completed"><i class="icon--check"></i></a></th>
+                            <th><a tooltip="Failed"><i class="icon--cross"></i></a></th>
+                            <th><a tooltip="Not Attempted"><i class="icon--help"></i></a></th>
+                            <th><a tooltip="In Progress"><i class="icon--clock"></i></a></th>
+                            <th class="cell--icon"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="is--clickable" ng-click="generateUrl({data:data, type:'subjects', id:item.TrainingSubjectId})" ng-repeat="item in page.items">
+                            <td>{{item.TrainingSubjectName}}</td>
+                            <td>{{item.SubjectCount}}</td>
+                            <td>
+                                <progress-bar value="item.SubjectsCompletePercent"
+                                    label="{{ item.SubjectsCompletePercent }}%"
+                                ></progress-bar>
+                            </td>
+                            <td>{{item.SubjectsCompletedCount}}</td>
+                            <td>{{item.SubjectsFailedCount}}</td>
+                            <td>{{item.SubjectsNotAttemptedCount}}</td>
+                            <td>{{item.SubjectsInProgressCount}}</td>
+                            <td class="cell--icon">
+                                <span tooltip="View" tooltip-placement="left">
+                                    <a>
+                                        <i class="icon--stats"></i>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Member-based report -->
+                <table class="table" ng-if="reportTemplate == 'members'">
+                    <thead toggle-set>
+                        <tr>
+                            <th><a>Member name</a></th>
+                            <th><a>Group</a></th>
+                            <th><a>Courses</a></th>
+                            <th><a>Completion (%)</a></th>
+                            <th><a tooltip="Completed"><i class="icon--check"></i></a></th>
+                            <th><a tooltip="Failed"><i class="icon--cross"></i></a></th>
+                            <th><a tooltip="Not Attempted"><i class="icon--help"></i></a></th>
+                            <th><a tooltip="In Progress"><i class="icon--clock"></i></a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in page.items">
+                            <td>{{item.FirstName}} {{item.SurName}}<small>{{item.RoleName}}</small></td>
+                            <td>{{item.NetworkGroupName}}</td>
+                            <td>{{item.RegistrationCount}}</td>
+                            <td>
+                                <progress-bar value="item.RegistrationsCompletePercent"
+                                    label="{{ item.RegistrationsCompletePercent }}%"
+                                ></progress-bar>
+                            </td>
+                            <td>{{item.RegistrationsCompletedCount}}</td>
+                            <td>{{item.RegistrationsFailedCount}}</td>
+                            <td>{{item.RegistrationsNotAttemptedCount}}</td>
+                            <td>{{item.RegistrationsInProgressCount}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <!-- Member-based report -->
+                <table class="table" ng-if="reportTemplate == 'courses' && byMember">
+                    <thead toggle-set>
+                        <tr>
+                            <th><a>Member name</a></th>
+                            <th><a>Group</a></th>
+                            <th><a>Completion (%)</a></th>
+                            <th><a>Date Commenced</a></th>
+                            <th><a>Date Last Updated</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in page.items">
+                            <td>{{item.FirstName}} {{item.SurName}}<small>{{item.RoleName}}</small></td>
+                            <td>{{item.NetworkGroupTitle}}</td>
+                            <td>
+                                <progress-bar value="item.SubjectsCompletedPercent"
+                                    label="{{ item.SubjectsCompletedPercent }}%"
+                                ></progress-bar>
+                            </td>
+                            <td>{{item.CommencedDate | date }}</td>
+                            <td>{{item.LastUpdatedDate | date }}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <!-- Member-based report -->
+                <table class="table" ng-if="reportTemplate == 'subjects' && byMember">
+                    <thead toggle-set>
+                        <tr>
+                            <th><a>Member name</a></th>
+                            <th><a>Group</a></th>
+                            <th><a>Date Commenced</a></th>
+                            <th><a>Date Updated</a></th>
+                            <th><a>Progress</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in page.items">
+                            <td>{{item.FirstName}} {{item.SurName}}<small>{{item.RoleName}}</small></td>
+                            <td>{{item.NetworkGroupTitle}}</td>
+                            <td>{{item.CommencedDate | date }}</td>
+                            <td>{{item.LastUpdatedDate | date }}</td>
+                            <td>{{item.TrainingSubjectMemberProgressStatusId}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <!-- Roles based report -->
+                <table class="table" ng-if="reportTemplate == 'roles'" >
+                    <thead toggle-set>
+                        <tr>
+                            <th><a>Roles</a></th>
+                            <th><a>Registrations</a></th>
+                            <th><a>Completion (%)</a></th>
+                            <th><a tooltip="Completed"><i class="icon--check"></i></a></th>
+                            <th><a tooltip="Failed"><i class="icon--cross"></i></a></th>
+                            <th><a tooltip="Not Attempted"><i class="icon--help"></i></a></th>
+                            <th><a tooltip="In Progress"><i class="icon--clock"></i></a></th>
+                            <th class="cell--icon"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="is--clickable" ng-repeat="item in page.items" ng-click="generateUrl({data:data, type:'members', roleId:item.RoleId})" >
+                            <td>{{item.RoleName}}</td>
+                            <td>{{item.RegistrationCount}}</td>
+                            <td>
+                                <progress-bar value="item.RegistrationsCompletePercent"
+                                    label="{{ item.RegistrationsCompletePercent }}%"
+                                ></progress-bar>
+                            </td>
+                            <td>{{item.RegistrationsCompletedCount}}</td>
+                            <td>{{item.RegistrationsFailedCount}}</td>
+                            <td>{{item.RegistrationsNotAttemptedCount}}</td>
+                            <td>{{item.RegistrationsInProgressCount}}</td>
+                            <td class="cell--icon">
+                                <span tooltip="View" tooltip-placement="left">
+                                    <a>
+                                        <i class="icon--stats"></i>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Groups based report -->
+                <table class="table" ng-if="reportTemplate == 'networkgroups'" >
+                    <thead toggle-set>
+                        <tr>
+                            <th><a>Group</a></th>
+                            <th><a>Registrations</a></th>
+                            <th><a>Completion (%)</a></th>
+                            <th><a tooltip="Completed"><i class="icon--check"></i></a></th>
+                            <th><a tooltip="Failed"><i class="icon--cross"></i></a></th>
+                            <th><a tooltip="Not Attempted"><i class="icon--help"></i></a></th>
+                            <th><a tooltip="In Progress"><i class="icon--clock"></i></a></th>
+                            <th class="cell--icon"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="is--clickable" ng-repeat="item in page.items" ng-click="generateUrl({data:data, type:'members', networkGroupId:item.NetworkGroupId})">
+                            <td>{{item.NetworkGroupName}}</td>
+                            <td>{{item.RegistrationCount}}</td>
+                            <td>
+                                <progress-bar value="item.RegistrationsCompletePercent"
+                                    label="{{ item.RegistrationsCompletePercent }}%"
+                                ></progress-bar>
+                            </td>
+                            <td>{{item.RegistrationsCompletedCount}}</td>
+                            <td>{{item.RegistrationsFailedCount}}</td>
+                            <td>{{item.RegistrationsNotAttemptedCount}}</td>
+                            <td>{{item.RegistrationsInProgressCount}}</td>
+                            <td class="cell--icon">
+                                <span tooltip="View" tooltip-placement="left">
+                                    <a>
+                                        <i class="icon--stats"></i>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</div>

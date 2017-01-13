@@ -1,0 +1,9 @@
+<div class="event__rsvp">
+
+    <a ng-if="true" ng-click="setRsvp(1)" ng-class="currentRsvp == 1 ? 'button--default-cursor button--positive' : 'button--basic'" href="" class="button button--small"><i class="icon--check" ng-if="true"></i>{{currentRsvp == 1 ? 'Attending' : 'Attend Event'}}</a>
+    
+    <a ng-if="true" ng-click="setRsvp(2)" ng-class="currentRsvp == 2 ? 'button--default-cursor button--caution' : 'button--basic'" href="" class="button button--small">{{currentMemberRSVP == 2 ? 'Might be attending' : 'Maybe'}}</a>
+
+    <a ng-if="true" ng-click="setRsvp(3)" ng-class="currentRsvp == 3 ? 'button--default-cursor button--negative' : 'button--basic'" href="" class="button button--small"><i class="icon--cross" ng-if="true"></i>{{currentRsvp == 3 ? 'Not attending' : 'No'}}</a>
+
+</div>

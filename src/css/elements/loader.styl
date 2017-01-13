@@ -1,0 +1,173 @@
+
+// Loading
+// ------------------------------------------------
+
+loader(size = 14px, spincolor = primary) {
+    width: size;
+    height: size;
+    display:inline-block;
+
+    border:  solid 2px transparent;
+    border-top-color: spincolor;
+    border-left-color: spincolor;
+    border-radius: 50%;
+    animation: loading-bar-spinner 400ms linear infinite;
+}
+
+@keyframes loading-bar-spinner {
+    0%   { transform: rotate(0deg);   transform: rotate(0deg); }
+    100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+
+.ui
+    
+    // Basic loader in different sizes
+    //
+    // Markup: <loader size="{{modifier_class}}"></loader>   
+    // 
+    // large - optional size attribute, can be set to large
+    //
+    // Styleguide elements.loader.basic
+    
+    .loading-spinner {
+        display: inline-block;
+    }
+
+    .loading-spinner__icon {
+        loader()
+    }
+
+    .loading-spinner__icon--large {
+        loader(40px);
+    }
+
+    // Basic loader in with varying alignments sizes
+    //
+    // Markup: <loader align="{{modifier_class}}"></loader>   
+    // 
+    // left - left aligned loader
+    // center - center aligned loader
+    // right - right aligned loader
+    //
+    // Styleguide elements.loader.alignment
+
+    // Is used for when you want to have a center aligned loading spinner with some text 
+    .loading-spinner__container {
+
+        clear: both;
+
+        .loading-spinner {
+            margin: 0;
+        }
+
+        .loading-spinner__text { 
+            margin-left: (gutter/2); 
+        }
+
+    }
+
+    .loading-spinner__container--inline {
+        display: inline;
+    }
+
+
+    // Full loading overlay
+    // 
+    // Markup: 
+    // <div class="segment is--loading">
+    //     <h1>Heading</h1>
+    //     <p>Some stuff</p>
+    // </div>
+    //
+    // Styleguide elements.loader.full
+
+    .is--loading {
+        position: relative;
+        min-height: 160px;
+
+        &:before {
+            content: '';
+            display: block !important; //Needs to overwrite the clearfix =/
+            background: default-body-color; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 10;
+            opacity:.75;
+        }
+        &:after {
+            loader(40px);
+
+            content: '';
+            margin: -20px 0 0 -20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 11;
+
+        }
+
+        &.table:before ,
+        &.table-large:before {
+            top: -1px;
+            left: -1px;
+            bottom:-1px;
+            right:-1px;
+        }
+    }
+    
+    // Avatar loader
+    //
+    // Show a roatating ring around an avatar image
+    //
+    // Markup: 
+    // <div class="avatar-loader is">
+    //     <avatar></avatar>
+    // </div>
+    //
+    // Styleguide elements.loader.avatar
+
+    .avatar-loader {
+        position: relative;
+        height: 44px;
+        width: 44px;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        &:before,
+        &:after {
+            opacity: 0;
+            visibility: hidden;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all ease 125ms;
+        }
+
+        &:before {
+            border: solid 2px white;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.35)
+        }
+
+        &.is {
+            &:after {
+                loader(100%);
+            }
+        
+            &:before ,
+            &:after {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }

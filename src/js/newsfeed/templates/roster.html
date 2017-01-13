@@ -1,0 +1,110 @@
+        <div class="page page--2-1">
+        
+            <div class="page__wrapper">
+
+                <!-- content component -->
+
+                <div class="page__content">
+
+                    <div class="calendar" ng-class="{'is--loading': calendar.loading, 'calendar--weekly': calendar.weeklyMode, 'calendar__matrix': !calendar.weeklyMode}">
+                        <!-- Month Controls -->
+                        <div class="calendar__month-controls">
+                            <a href="" ng-click="calendar.getPrevMonth()" class="calendar__month-"><i class="icon--left"></i></a>
+                            <a href="" ng-click="calendar.getNextMonth()" class="align-right"><i class="icon--right"></i></a>
+                            <h3 class="calendar__current-month">{{ calendar.currentMonth }}</h3>
+                        </div>
+                        
+                        <!-- Weekly Controls -->
+                        <div class="calendar__day-controls">
+                            <a href="" ng-click="calendar.getPrevWeek()" class="align-left">
+                                <i class="icon--left"></i>
+                            </a>
+                            <a href="" ng-click="calendar.getNextWeek()" class="align-right">
+                                <i class="icon--right"></i>
+                            </a>
+                        </div>
+
+                        <!-- Days of the week headings -->
+                        <ul class="calendar__days--header">
+                            <li class="calendar__heading-wrapper" ng-repeat="day in calendar.daysOfWeek">
+                                <div class="calendar__heading">{{ day | limitTo:1 }}</div>
+                            </li>
+                        </ul>
+
+                        <div class="calendar__days-wrapper">
+                            <!-- Calendar for the Month view -->
+                            <ul class="calendar__days">
+                                <li class="calendar__day-wrapper"
+                                    ng-repeat="day in calendar.days"
+                                    ng-class="{'has-shift': day.shifts.length, 'is-active': day.date === calendar.selectedDays[0].day}"
+                                    ng-if="!calendar.weeklyMode || ($index > calendar.limitedPageSize * calendar.currentLimitedPage - 1 && $index < calendar.limitedPageSize * (calendar.currentLimitedPage + 1))">
+                                    <div class="calendar__day">
+                                        <a href="" ng-click="calendar.select(day)" class="calendar__title">
+                                            <abbr title="{{ day.date | date }}">{{ day.date | date:'d' }}<abbr>
+                                        </a>
+                                        <span class="calendar__month" ng-if="day.month">{{ day.month | limitTo:3 }}</span>
+                                        <ul ng-if="day.shifts" class="calendar__shifts">
+                                            <li ng-repeat="shift in day.shifts" class="calendar__shift">
+                                                <span class="calendar__shift-status">{{ shift.Status }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <a class="calendar__toggle" href="" ng-click="calendar.toggleWeeklyMode()">
+                            <i ng-class="{'icon--down': calendar.weeklyMode, 'icon--up': !calendar.weeklyMode}"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- END content component -->
+
+                <!-- aside component -->
+
+                <div class="page__aside">
+                    <ul class="selected-days">
+                        <li class="selected-day" ng-repeat="selectedDay in calendar.selectedDays">
+                            <h3 class="selected-day__date">
+                                <span>{{ selectedDay.date | date:'dd' }}</span>
+                                <small>{{ selectedDay.date | date:'EEE' }}</small>
+                            </h3>
+                            <ul class="selected-day__shifts">
+
+                                <li ng-repeat="shift in selectedDay.shifts"
+                                    class="shift__details shift__details--{{shift.Status}}"
+                                    ng-class="{'is-loading': shift.loading}">
+                                    <a href="" ng-click="shift.getAdditionalData()" class="shift__preview">
+                                        <span>{{ shift.StartTime | date:'H:mm' }} - {{ shift.EndTime | date:'H:mm' }}</span>
+                                        <small>{{ shift.Location }}</small>
+
+                                        <i class="shift__icon" ng-class="{'icon--right': !shift.hasAdditionalInfo, 'icon--down': shift.hasAdditionalInfo}"></i>
+                                    </a>
+                                    <div class="shift__additional-content" ng-show="shift.hasAdditionalInfo">
+                                        <div class="shift__working-with" ng-if="shift.EmployeesWorkingSameShift.length">
+                                            <h5>Who else is working:</h5>
+                                            <ul ng-if="shift.EmployeesWorkingSameShift.length" class="shift__co-workers list--inline">
+                                                <li ng-repeat="member in shift.EmployeesWorkingSameShift | limitTo:5">
+                                                    <a href="" target="_self" tooltip="{{ member.FirstName }} {{ member.Surname }}" tooltip-append-to-body="true" path="network.profile" path-params="member.MemberId">
+                                                        <avatar size="small" img-src="member.PhotoThumb"></avatar>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="shift__comments" ng-if="shift.Comments.length">
+                                            <h5>Additional notes</h5>
+                                            <p>{{ shift.Comments }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                                <li ng-hide="calendar.selectedDay.shifts">You have no shifts for this day</li>
+                            </ul>   
+                        </li>
+                    </ul>
+                    <pre>{{ calendar.selectedDay.shifts | json }}</pre>
+                </div>
+
+                <!-- END aside component -->
+        </div>

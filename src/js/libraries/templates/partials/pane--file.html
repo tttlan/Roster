@@ -1,0 +1,58 @@
+<div class="pane__wrapper">
+
+    <a href="" class="pane__back" ng-click="closePane( paneindex )"><i class="icon--left"></i></a>
+
+    <a href="" class="pane__file-preview" ng-click="openLightbox()">
+        <i class="svg-icon--{{ file.File[0].FileExtension }}"></i>
+
+        <!--  <img src="/interface/images/grumpy_cat_.png" /> -->
+    </a>
+    
+    <div class="pane__loader" ng-show="pane.loading">
+        <loader align="center"></loader>
+    </div>
+
+    <div class="pane__content" ng-hide="pane.loading">
+
+        <div class="media media--user">
+            <div class="media__image"><avatar img-src="" size="small"></avatar></div>
+            <div class="media__body"><a href="">{{ file.Owner.Firstname }} {{ file.Owner.Surname }}</a> <span>uploaded this file</span></div>
+        </div>
+
+        <dl>
+            <dt>File name</dt>
+            <dd>{{ file.Name }}</dd>
+        </dl>
+
+        <dl>
+            <dt>File size</dt>
+            <dd>{{ file.File[0].FileSize | toBytes }}</dd>
+        </dl>
+        
+        <dl>
+            <dt>Uploaded</dt>
+            <dd>{{ file.DateCreated | date }} ({{ file.DateCreated | fromNow }})</dd>
+        </dl>
+        
+        <dl>
+            <dt>Link to share</dt>
+            <dd><input class="input--compact" type="text" select-on-click value="http://localhost/libraries" /></dd>
+        </dl>
+
+        <a href="" class="button button--tiny button--primary">Download file</a>
+
+        <div class="pane__options">
+            <a href="" dropdown-toggle><i class="icon--ellipsis"></i></a>
+            <ul class="submenu submenu--compact dropdown-menu">
+                <li class="submenu__item">
+                    <a href="" ng-click="editFile(file)">Edit file</a>
+                </li>
+                <li class="submenu__item">
+                    <a href="" ng-confirm-click="deleteFile();" ng-confirm-message="Are you sure you want to delete this?">Delete</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,4 @@
+<div class="form__fields {{ element.class }}">
+    <p ng-if="element.title" ng-class="{'is--required': element.validation.required}">{{ element.title }}</p>        
+    <form-element class="col-1-2 {{ element.class }}" element="element" form-data="formData" ng-repeat="element in element.children"></form-element>
+</div>

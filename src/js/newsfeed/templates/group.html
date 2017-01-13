@@ -1,0 +1,72 @@
+<div class="page page--2-1">
+<div class="page__wrapper">
+
+    <!-- aside component -->
+
+    <div class="page__aside">
+        
+        <div class="panels">
+            <div class="panel panel--profile">
+                <avatar size="large" img-src="groupBio.PhotoLarge" type="group"></avatar>
+                <h1>{{ groupBio.GroupName }}</h1>
+            </div>
+
+            <div class="panel">
+                        
+                <dl ng-show="groupBio.LinePhone1 || groupBio.MobilePhone">
+                    <dt>Phone</dt>
+                    <dd>{{ groupBio.LinePhone1 || groupBio.MobilePhone }}</dd>
+                </dl>
+                    
+                <dl ng-show="groupBio.Address || groupBio.Suburb || groupBio.Country">
+                    <dt>Location</dt>
+                    <dd>{{ groupBio.Address }} <br />{{ groupBio.Suburb}}, {{ groupBio.Country}}</dd>
+                </dl>
+                    
+                <dl>
+                    <dt>Group Members</dt>
+                    <dd>
+                        <ul class="avatars">
+                            <li ng-repeat="member in members.list | limitTo: (members.count > 12 ? 11 : 12)">
+                                <span tooltip="{{member.FirstName}} {{member.Surname}}"><a href="{{ member.url }}" target="_self">
+                                                                                            <avatar size="small" img-src="member.AvatarPhotoThumb"></avatar>
+                                                                                        </a></span>
+                            </li><li ng-show="members.count > 12" ng-click="showAllMembers()"><a href="" class="avatar avatar--small additional-members">+{{ members.count - 11 }}</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+
+            </div>
+
+            <div class="panel" ng-show="myGroups.length">
+                            
+                <h4 class="panel__heading">Your other groups</h4>
+
+                <div class="panel-list">
+                    <a href="" class="panel-list__item" ng-repeat="group in myGroups | orderBy : 'NetworkGroupDetail.GroupName' | limitTo : groupLimit" path="groups.group" path-params="group.NetworkGroupDetail.NetworkGroupId" >
+                        {{ group.NetworkGroupDetail.GroupName }}
+                    </a>
+
+                    <a href="" class="panel-list__more" ng-show="groupLimit < myGroups.length" ng-click="showAllGroups()"><i class="icon--down"></i> SEE MORE</a>
+                </div>
+
+            </div>
+
+        </div>
+        
+    </div>
+
+    <!-- END aside component -->
+
+    <!-- content component -->
+
+    <div class="page__content">
+        <!--  -->
+        <activity-feed type="group" typeid="groupId"></activity-feed>
+
+    </div>
+
+    <!-- END content component -->
+
+</div>
+</div>

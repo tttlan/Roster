@@ -1,0 +1,55 @@
+﻿<header class="modal__header">
+    <h2 class="modal__title survey-questionnaire-title">QUESTIONNAIRE TEMPLATE DETAILS</h2>    
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+
+<form class="modal__content survey-standard-margin" name="questionnaireForm" validate-form>   
+    <div class="form__field">
+        <label class="form__label">Questionnaire teamplate title</label>
+        <input type="text" name="txtName" ng-model="questionnaireTemplateInfo.Name" required>
+        <span ng-show="(questionnaireForm.txtName.$dirty || submitted) &amp;&amp; questionnaireForm.txtName.$invalid" class="form__note form__note--error ng-hide">Name is required</span>
+    </div>
+
+    <div class="form__field survey-padding-top">
+        <label class="form__label">Please write description for this questionnaire</label>
+        <textarea ng-model="questionnaireTemplateInfo.Description" name="txtDescription"></textarea>
+    </div>
+
+    <div class="form__field survey-padding-top">
+        <label class="form__label">Instruction for responding to questionnaire</label>
+        <textarea ng-model="questionnaireTemplateInfo.Instructions" name="txtInstructions"></textarea>
+    </div>
+
+    <div class="field__checkbox survey-padding-top">
+        <input type="checkbox" id="autoAttach" ng-model="questionnaireTemplateInfo.Global" >
+        <label class="form__label" for="autoAttach">
+            Automatically attach to all jobs
+        </label>
+    </div>
+
+    <div class="field__checkbox">
+        <input type="radio" id="showOnExternal" ng-model="questionnaireTemplateInfo.IsPrivacy"name="isPrivacy" value="true">
+        <label class="form__label" for="showOnExternal">
+            Only show this template on external applications
+        </label>
+        <input type="radio" id="showOnInternal" ng-model="questionnaireTemplateInfo.IsPrivacy" name="isPrivacy" value="false">
+        <label class="form__label" for="showOnInternal" >
+            Only show this template on internal applications
+        </label>
+    </div>
+
+
+    <div class="field__checkbox">
+        <input type="checkbox" id="tickToDelete1" ng-model="questionnaireTemplateInfo.Status">
+        <label class="form__label ng-binding is--required" for="tickToDelete1">
+            Tick this box to delete responses to question if application applicant is unsuccessful and job ad is closed
+        </label>
+    </div>
+
+</form>
+<footer class="modal__footer align-center">
+    <div class="button-group">
+        <button class="button" ng-click="close()">CANCEL</button>
+        <button class="button button--negative" ng-click="createQuestionnaireTmplManual(isFormValid(questionnaireForm.$valid))" ng-style="{'button--disabled' : !questionnaireForm.$valid }">SAVE</button>
+    </div>
+</footer>

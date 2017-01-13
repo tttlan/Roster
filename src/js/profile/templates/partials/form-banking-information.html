@@ -1,0 +1,116 @@
+<div class="segment__fieldset-heading">
+    <h2><i class="icon--notebook"></i>Banking, Superannuation and Taxation information</h2>
+    <table-form-edit edit-name="all" ng-if="parentData.$globalPermission.caneditbanking && parentData.$userCan.caneditbanking"></table-form-edit>
+    <a href="" class="table-form__edit table-form__edit--cancel"
+        ng-click="parentData.$cancelEdit(); resetForm();"
+        ng-show="parentData.$editing === 'all'"        
+    >
+        <span>Cancel</span>
+    </a>
+</div>
+
+<h3 class="profile-details__compact-heading" ng-if="parentData.$userCan.canviewbankingdetails">Banking information</h3>
+
+<table class="table-form" ng-class="{'table-form__edit-all' : parentData.$editing === 'all'}" ng-if="parentData.$userCan.canviewbankingdetails">
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'BankName' || parentData.$editing === 'all' }">
+        <th>Bank name</th>
+        <td>
+            <span class="table-form__form-value">{{form.BankName.$viewValue}}</span>
+            <table-form-edit ng-if="parentData.$globalPermission.caneditbanking" edit-name="BankName"></table-form-edit>
+            <div class="table-form__form-field">
+                [[BankName]]
+            </div>
+            <table-form-buttons edit-name="BankName"></table-form-buttons>
+        </td>
+    </tr>
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'AccountName' || parentData.$editing === 'all' }">
+        <th>Account name</th>
+        <td>
+            <span class="table-form__form-value">{{form.AccountName.$viewValue}}</span>    
+            <table-form-edit ng-if="parentData.$globalPermission.caneditbanking" edit-name="AccountName"></table-form-edit>
+            <div class="table-form__form-field">
+                [[AccountName]]
+            </div>
+            <table-form-buttons edit-name="AccountName"></table-form-buttons>
+        </td>
+    </tr>
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'BSB' || parentData.$editing === 'all' }">
+        <th>BSB</th>
+        <td>
+            <span class="table-form__form-value">{{form.BSB.$viewValue | space:[3]}}</span>
+            <table-form-edit edit-name="BSB" ng-if="parentData.$globalPermission.caneditbanking"></table-form-edit>
+            <div class="table-form__form-field">
+                [[BSB]]
+            </div>
+            <table-form-buttons edit-name="BSB"></table-form-buttons>
+        </td>
+    </tr>
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'AccountNo' || parentData.$editing === 'all' }">
+        <th>Account number</th>
+        <td>
+            <span class="table-form__form-value">{{form.AccountNo.$viewValue | space:[2,5]}}</span>
+            <table-form-edit edit-name="AccountNo" ng-if="parentData.$globalPermission.caneditbanking"></table-form-edit>
+            <div class="table-form__form-field">
+                [[AccountNo]]
+            </div>
+            <table-form-buttons edit-name="AccountNo"></table-form-buttons>
+        </td>
+    </tr>
+
+</table>
+
+<h3 class="profile-details__compact-heading">Superannuation information</h3>
+
+<table class="table-form" ng-class="{'table-form__edit-all' : parentData.$editing === 'all'}" ng-if="parentData.$userCan.canviewbankingdetails">
+
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'SuperFund' || parentData.$editing === 'all' }">
+        <th>Nominated Superannuation fund</th>
+        <td>
+            <span class="table-form__form-value">{{form.SuperFund.$viewValue}}</span>
+            <table-form-edit edit-name="SuperFund" ng-if="parentData.$globalPermission.caneditbanking"></table-form-edit>
+            <div class="table-form__form-field">
+                [[SuperFund]]
+            </div>
+            <table-form-buttons edit-name="SuperFund"></table-form-buttons>
+        </td>
+    </tr>
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'SuperNo' || parentData.$editing === 'all' }">
+        <th>
+            Superannuation membership member
+        </th>
+        <td>
+            <span class="table-form__form-value">{{form.SuperNo.$viewValue | space:[3,6]}}</span>
+            <span class="infoText">If you have an existing Super number please enter here</span>
+            <table-form-edit edit-name="SuperNo" ng-if="parentData.$globalPermission.caneditbanking"></table-form-edit>
+            <div class="table-form__form-field">
+                [[SuperNo]]
+            </div>
+            <table-form-buttons edit-name="SuperNo"></table-form-buttons>
+        </td>
+    </tr>
+
+</table>
+
+<h3 class="profile-details__compact-heading">Taxation information</h3>
+
+<table class="table-form" ng-class="{'table-form__edit-all' : parentData.$editing === 'all'}" ng-if="parentData.$userCan.canviewbankingdetails">
+
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'TaxFileNumber' || parentData.$editing === 'all' }">
+        <th>Tax file number</th>
+        <td>
+            <span class="table-form__form-value">{{form.TaxFileNumber.$viewValue | space:[3,6]}}</span>
+            <table-form-edit edit-name="TaxFileNumber" ng-if="parentData.$globalPermission.caneditbanking"></table-form-edit>
+            <div class="table-form__form-field">
+                [[TaxFileNumber]]
+            </div>
+            <table-form-buttons edit-name="TaxFileNumber"></table-form-buttons>
+        </td>
+    </tr>
+    <tr ng-show="parentData.$editing === 'all'">
+        <th></th>
+        <td>
+            <table-form-buttons edit-name="all"></table-form-buttons>
+        </td>
+    </tr>
+
+</table>

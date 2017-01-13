@@ -1,0 +1,25 @@
+<div class="form__field {{ element.class }}" ng-class="data[element.name] ? 'is--active' : ''">
+   
+   <div class="field__toggle {{ element.class }}">
+        
+        <input type="checkbox"
+            id="{{ element.formName + '__' + element.name }}"
+            name="{{element.name}}"
+            ng-model="element.val"
+            ng-required="element.validation.required"
+            />
+
+        <label 
+        class="form__label"
+        for="{{ element.formName + '__' + element.name }}">                
+            {{ element.label }}
+            <span class="is--required" ng-if="element.validation.required"></span>
+        </label>
+
+        <p ng-if="element.note"><small>* {{ element.note }}</small></p>
+        
+        <error-builder></error-builder>
+
+    </div>
+    
+</div>

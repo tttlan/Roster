@@ -1,0 +1,100 @@
+<div class="segment__fieldset recruit" ng-if="OnSettings.IsPaperDocumentShow === true">
+    <div class="segment__fieldset-heading">
+        <h2><i class="icon--document"></i>DOCUMENTS</h2>
+        
+        <a href=""
+           class="align-right"
+           ng-click="onboard.state.isCollapsedDocumentCandidate = !onboard.state.isCollapsedDocumentCandidate; loadCandidateDocument(onboard)">
+            <i ng-class="{
+                'icon--arrow-down': onboard.state.isCollapsedDocumentCandidate,
+                'icon--arrow-up': !onboard.state.isCollapsedDocumentCandidate
+            }"></i>
+        </a>
+        
+    </div>
+
+    <table class="table documentation__info padding__35" collapse="onboard.state.isCollapsedDocumentCandidate">
+        <tbody>
+            <tr>
+                <td>                
+                <div class="default__documents show__document--onboard">
+                               
+                <div>
+                    <div class="acceptance__document--title" ng-if="onboard.CandidateHasAcceptedAllDocs === true">
+                            <span class="is--positive"><i class="icon--check"></i></span>MEMBER HAS READ AND ACCEPTED DOCUMENTS</div>
+                    <hr class="solid"/>
+                    <h4 class="is--disabled aligned--left">DOCUMENTS FROM CANDIDATE</h4>
+                    
+                    <div ng-form="confirmDocumentForm">
+                        <div class="segments segment--grey-bg show__document--onboard" ng-class="{'is--loading' : inboundDocLoading}">
+                            <div class="col-1-2" ng-repeat="doc in onboard.InboundRequirementListForCandidate.OnboardDocumentItemResults | filter: {InboundRequirement: {IsLodged: true}}">
+                                <div class="file file--block aligned--left" ng-if="doc.InboundRequirement.InboundDocument.OnboardDocumentRecord !== null">
+                                    <div class="file__content aligned--left" style="width:90%">
+                                        <div class="icon__extra--document">
+                                        <i class="svg-icon--{{doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileExt}}"></i>
+                                    </div>
+                                    <div class="info__extra--document">
+                                        <label class="file__name">{{::doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileName}}</label>
+                                        <small class="file__name align-right" ng-if="doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.ExpireDate !== null">
+                                            Exp. on {{::doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.ExpireDate | dateOnly}}
+                                        </small>
+                                        <ul class="file__meta">
+                                            <li ng-if="doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileSize !== null && doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileSize !== 0">{{::doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileSize | toBytes}}</li>
+                                            <li ng-if="doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileExt === 'pdf' 
+                                            || doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileExt === 'img'
+                                            || doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileExt === 'doc'
+                                            || doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileExt === 'docx'"> - <a href="" ng-click="viewDocumentOnboard(doc.InboundRequirement.InboundDocument)">view</a></li>
+                                            <li ng-if="doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileExt !== 'pdf' 
+                                            && doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileExt !== 'img'
+                                            && doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileExt !== 'doc'
+                                            && doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.FileExt !== 'docx'"> - <a href="" ng-click="downloadDocumentOnboard(doc.InboundRequirement.InboundDocument)">download</a></li>
+                                        </ul>
+                                        <a href=""  ng-if="doc.InboundRequirement.InboundDocument.permission.acceptinbounddocument"
+                                            class="align-right" tooltip="Approve document" ng-click="acceptInboundDocOnboard(onboard, doc.InboundRequirement)">
+                                            <i ng-class="{'is--disabled' : !doc.InboundRequirement.IsAccepted}" class="icon--round-check icon-is-large"></i>
+                                            <input type="checkbox" style="display: none" 
+                                                ng-model="doc.InboundRequirement.IsAccepted" 
+                                                ng-required="!doc.InboundRequirement.IsAccepted" 
+                                                ng-if="isAwaitingConfirmation(onboard)"
+                                                id="inbound_document_{{doc.InboundRequirement.InboundDocument.OnboardDocumentRecord.LibraryDocumentId}}">
+                                        </a>
+                                        <a href="" class="align-right" tooltip="Resend document" ng-click="openResendDocNotesOnboard(onboard, doc.InboundRequirement)"
+                                           ng-if="doc.InboundRequirement.InboundDocument.permission.rejectinbounddocument">
+                                            <i ng-class="{'is--disabled' : !doc.InboundRequirement.IsRejected}" class="icon--clockwise icon-is-large"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action__inbound_document--candidate">
+                        <button type="button"
+                                ng-if="onboard.Permissions.resendonboard"
+                                class="button button--positive"
+                                ng-click="rejectForResendOnboard(onboard, true)" ng-show="resendBtnEnabledOnboard(onboard.InboundRequirementListForCandidate.OnboardDocumentItemResults)"
+                                ng-disabled="!resendBtnEnabledOnboard(onboard.InboundRequirementListForCandidate.OnboardDocumentItemResults)">
+                            Resend
+                        </button>
+                        <button type="button"
+                                class="button button--negative"
+                                ng-if="onboard.Permissions.rejectonboardpermanent"
+                                ng-disabled="onboard.isSubmitting"
+                                ng-click="rejectOnboard(onboard, true)">
+                            REJECT
+                        </button>
+                        <button type="button"
+                                class="button button--positive btn__confirm--document"
+                                ng-if="!onboard.isResendDocRequired && onboard.Permissions.confirmonboard"
+                                ng-disabled="onboard.isSubmitting || confirmDocumentForm.$invalid"
+                                ng-click="progressOnboard(onboard, true)">
+                            CONFIRM DOCUMENTS
+                        </button>
+                  </div>
+                </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

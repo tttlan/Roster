@@ -1,0 +1,34 @@
+﻿<div class="page page--1-c recruit">
+    <div class="page__wrapper onboarding__welcome">
+        <div class="page__content onboarding">
+            <div class="segment align__center" ng-class="{'is--loading': isLoading}">
+                <img src="{{clientLogo}}" class="login-section__logo login-section__logo--new" />
+
+                <p class="welcome">Welcome</p>
+                <h2>{{currentUser.fullname}}</h2>
+                <div class="welcome__conditions">
+                    <p>
+                        To get you started we just need to go through the following information and then we'll be good to go.
+                    </p>
+                </div>
+                
+                <div class="welcome__general">
+                    <ul>
+                        <li>Agree to Terms and Conditions</li>
+                        <li>Review your Contract and Company documents</li>
+                        <li>Upload personal documents</li>
+                        <li>Declare and sign TFN form</li>
+                        <li>Fill out your employee profile</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="recruit button-footer">
+    <div class="button-withtext">
+        <button class="button button--primary toggle-loading" 
+            ng-disabled="isLoading"
+            ng-click="onboarding_welcome()">Get Started!</button>
+    </div>
+</div>

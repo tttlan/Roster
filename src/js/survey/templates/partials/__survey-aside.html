@@ -1,0 +1,97 @@
+<div class="survey__sidebar" ng-controller="surveySidebarCtrl">
+    <accordion-survey close-others="true">
+        <accordion-group-survey>
+            <accordion-heading><i class="icon--add-question"></i>Add Question</accordion-heading>
+            <div>
+                <div class="survey-mainNav">
+                    <div class="survey-mainNavInner" menu-arrow is-sync="true">
+                        <ul class="submenu submenu--strip">
+                            <li class="submenu__item" menu-arrow-child ng-class="{'is--active': !$root.isOpen}">
+                                <a href="javascript:void(0);" target="_self" ng-click="$root.isOpen = false; items.active = 0;">From scratch</a>
+                            </li>
+                            <li class="submenu__item" menu-arrow-child ng-class="{'is--active': $root.isOpen}">
+                                <a href="javascript:void(0);" target="_self" ng-click="$root.isOpen = true; items.active = 1;">From template</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="segment segment--question-type" ng-show="!$root.isOpen" style="border:none">
+                    <ul class="as-draggable" ng-class="{'is--loading': questionType.loading}" ng-hide="questionType.error">
+                        <li class="as-draggable-item" ng-repeat-end ng-repeat-start="item in questionType.items track by $index"
+                            dnd-draggable="item"
+                            dnd-type="'itemType'"
+                            dnd-effect-allowed="copy">
+                            <div class="notification__close">
+                                <a ng-click="showQuestionPicker(event, null, item)"><i class="icon--plus"></i></a>
+                            </div>
+                            <div class="notification__icon">
+                                <i ng-class="item.icon"></i>
+                            </div>
+                            <p class="notification__message">{{item.name}}</p>
+                        </li>
+                    </ul>
+                    <reload action="loadQuestionType()" ng-show="questionType.error && !questionType.loading" />
+                </div>
+                <div class="segment form segment--search" ng-show="$root.isOpen" style="border:none!important">
+                    <div class="form__field">
+                        <label for="input_search" class="icon--search field__before"></label>
+                        <input type="text" id="input_search" placeholder="Search questions from templates" ng-model="questionPage.searchTerm">
+                    </div>
+                    <div class="segment segment--no-padding" ng-class="{'is--loading': questionPage.loading}" style="border:none!important">
+                        <!--<button popover="<h1>where are you</h1>" type="button" class="btn btn-default">Popover With Template</button>-->
+
+                        <ul class="as-draggable" ng-show="questionPage.hasData">
+                            <li class="as-draggable-item repeat-modify" popoverq="Question" popoverq-placement="right"
+                                popoverq-append-to-body="true" popoverq-trigger="mouseenter" ng-repeat="item in questionPage.items"
+                                dnd-draggable="item"
+                                dnd-type="'itemType'"
+                                dnd-effect-allowed="copy" popoverq-model="{{item}}">
+                                <div class="notification__close">
+                                    <a ng-click="showQuestionPicker(event, null, item)"><i class="icon--plus"></i></a>
+                                </div>
+                                <div class="notification__icon"></div>
+                                <p class="notification__message word-break">
+                                    <span style="float: right; margin-right: -10px; height: 1px; padding-left: 24px;"></span>{{item.content}}
+                                </p>
+                            </li>
+                        </ul>
+                        <div class="message message--empty" ng-hide="questionPage.loading || questionPage.hasData || questionPage.error">
+                            <p>No questions found</p>
+                        </div>
+                        <pager-breadcrumb ng-show="questionPage.hasData && !questionPage.error" on-select-page="onSelectQuestionPage(page)"
+                                          page="questionPage.current" items-per-page="questionPage.itemsPerPage" total-items="questionPage.totalItems"></pager-breadcrumb>
+                    </div>
+                </div>
+            </div>
+        </accordion-group-survey>
+        <accordion-group-survey>
+            <accordion-heading><i class="icon--import-template"></i>Import a Questionnaire</accordion-heading>
+            <div class="segment form segment--search" style="border:none">
+                <div class="form__field">
+                    <label for="input_search" class="icon--search field__before"></label>
+                    <input type="text" id="input_search" placeholder="Search questionnaire to import" ng-model="templatePage.searchTerm">
+                </div>
+                <div class="segment segment--no-padding" ng-class="{'is--loading': templatePage.loading}" style="border:none">
+                    <ul class="as-draggable" ng-show="templatePage.hasData">
+                        <li dnd-draggable="item"
+                            dnd-type="'itemType'"
+                            dnd-effect-allowed="copy" class="as-draggable-item repeat-modify" ng-repeat="item in templatePage.items">
+                            <div class="notification__close">
+                                <a ng-click="previewQuestionnaire(item.id)"><i class="icon--views"></i></a>
+                                <a ng-click="importQuestionnaire(item.id)"><i class="icon--plus"></i></a>
+                            </div>
+                            <p class="notification__message word-break">
+                                <span style="float: right; margin-right: -10px; height: 1px; padding-left: 50px;"></span>{{item.name}}
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="message message--empty" ng-hide="templatePage.loading || templatePage.hasData || templatePage.error">
+                        <p>No templates found</p>
+                    </div>
+                    <pager-breadcrumb ng-show="templatePage.hasData && !templatePage.error" on-select-page="onSelectTemplatePage(page)"
+                                      page="templatePage.current" items-per-page="templatePage.itemsPerPage" total-items="templatePage.totalItems"></pager-breadcrumb>
+                </div>
+            </div>
+        </accordion-group-survey>
+    </accordion-survey>
+</div>

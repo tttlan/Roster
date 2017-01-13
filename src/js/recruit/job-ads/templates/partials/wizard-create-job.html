@@ -1,0 +1,73 @@
+<div class="wizard" ng-cloak>
+
+    <ul class="job-progress-steps" ng-class="'progress-steps--'+(steps.length | number)">
+        <li ng-repeat="step in steps"
+            class="progress__step"
+            ng-class="[
+                {'progress__step--complete': step.isComplete()},
+                {'progress__step--active': step.isActive()},
+                {'progress__step--previous': step.isPrevious()},
+            ]">
+
+            <div class="step__item">
+                <span class="step__number" data-text="{{$index + 1}}" ng-click="jumpToStep($index)"></span>
+                <span class="step__title">
+                    <strong>{{step.title}} {{getStepState(step)}}</strong>
+                </span>
+            </div>
+        </li>
+    </ul>
+
+    <div class="wizard__main">
+        <div class="wizard-step-container" ng-transclude></div>
+    </div>
+
+    <div class="wizard__actions">
+        <div class="col-1-4">
+            <a ng-show="jobAdId && $parent.jobAdDetailsFormModel.userCan(EntityActionType.CanDeleteJob).ActionUrl"
+               ng-confirm-click="deleteJob()"
+               ng-confirm-message="Do you want to delete this job?">
+               <i class="icon--trash icon-is-large"></i>
+            </a>
+            <button class="button button--icon-left"
+                    ng-hide="!hasPrevious()"
+                    ng-click="goToPrevious()"
+                    type="button">
+                BACK
+            </button>
+        </div>
+
+        <div class="col-3-4 aligned--right">
+            <button class="button button--icon-right"
+                    ng-hide="!hasNext()"
+                    ng-disabled="!canGoToNext() || !$parent.jobAdDetailsFormModel.isValid()"
+                    ng-click="save(true)"
+                    type="button">
+                SAVE AND CLOSE
+            </button>
+
+            <button class="button button--positive button--icon-right"
+                    ng-hide="!hasNext()"
+                    ng-disabled="!canGoToNext() || !$parent.jobAdDetailsFormModel.isValid()"
+                    ng-click="saveAndNext()"
+                    type="button">
+                SAVE AND CONTINUE
+            </button>
+
+            <button class="button button--icon-right"
+                    ng-show="currentStepNumber === 4"
+                    ng-click="$parent.cancel()"
+                    type="button">
+                SAVE AND CLOSE
+            </button>
+
+            <button class="button button--positive"
+                    ng-show="currentStepNumber === 4 && $parent.jobAdDetailsFormModel.userCan(EntityActionType.CanPublishJobPost).ActionUrl"
+                    ng-click="publishJob()"
+                    type="button">
+                PUBLISH
+            </button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,77 @@
+
+events_widget_size = 65px;
+events_widget_border = #eee;
+
+// events modules
+
+.ui
+
+    .events-list {
+        margin-bottom: 0;
+
+        .event {
+            background-color: white;
+            border: solid 1px events_widget_border;
+            border-bottom-width: 0;
+            position: relative;
+            display: block;
+
+            &:first-of-type {
+                border-radius: base-border-radius base-border-radius 0 0;
+            }
+
+            &:last-child {
+                border-bottom-width: 1px;
+                border-radius: 0 0 base-border-radius base-border-radius;
+            }
+
+            &:hover {
+                border-color: grey7;
+            }
+        }
+
+        .event__date {
+            border-right: solid 2px positive;
+            width: events_widget_size;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 2;
+            font-weight: light;
+            line-height: 1;
+            padding-top: 10px;
+
+            .event__date-day {
+                font-size: 30px;
+                display: block;
+            }
+
+            .event__date-month {
+                font-size: 10px;
+                color: grey5;
+                text-transform: uppercase;
+                position: relative;
+                top: -4px;
+            }
+        }
+
+        .event__description {
+            font-size: 14px;
+            padding-left: (events_widget_size + 15);
+            min-height: events_widget_size;
+            display: table-cell;
+            vertical-align: middle;
+
+            p {
+                font-size: 14px;
+                line-height: 1.3;
+            }
+
+            small {
+                display: block;
+                font-size: 11px;
+            }
+        }
+    }

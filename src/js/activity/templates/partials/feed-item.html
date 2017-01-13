@@ -1,0 +1,80 @@
+<div class="post">
+    <a class="post__image" path="network.profile" path-params="post.content.Owner.MemberId" target="_self">
+        <div class="avatar-loader" ng-class="{ 'is' : post.loading }">
+            <avatar img-src="post.content.Owner.PhotoThumb"></avatar>
+        </div>
+        <div ng-if="post.feedGroup && post.feedGroup != 'text' && post.feedGroup != 'richText'" class="post__icon"><i class="icon--{{ ::post.feedGroup }}"></i></div>
+    </a>
+
+    <div class="post__body post--type-{{ ::post.feedType }}" 
+         ng-switch on="post.feedType" 
+         data-type="{{post.feedType}}">
+        <!-- Text switches -->
+        <div class="post__date" title="{{ post.published | dateTime }}">{{post.published | fromNow:true}}</div>
+
+        <post-content type="{{ ::post.feedType }}"></post-content>
+                
+        <!-- Attachments
+            todo: We need to remove the isInline librarydocument when we are able to display the image inline
+            -->
+
+        <attachments ng-if="post.feedType !== 'BlogEntry' && post.feedType !== 'LibraryDocument'"
+            resource-type="news"
+            resource-id="post.id"
+            count="post.attachmentCount"
+            medias="post.content.media"
+            attachments="post.attachments"
+            is-inline="true"
+            class="post__attachment"
+            ng-show="post.hasAttachment() && !post.isDeleted">
+        </attachments>
+        <!-- END Text switches -->
+            
+        <post-comments
+            ng-if="post.userCan.cancomment"
+            resource-type="news"
+            resource-id="post.id"
+            comment-count="post.commentCount"
+            current-user="currentUser"
+            show-add-comment="post.showAddComment"
+            >
+        </post-comments>
+        
+        <div class="post__options" ng-if="post.userCan.view">
+            <a href="" dropdown-toggle><i ng-class="post.failed ? 'icon--warning' : 'icon--ellipsis' "></i></a>
+            <ul class="submenu submenu--compact dropdown-menu">
+                <li class="submenu__item" ng-hide="!post.failed">
+                    <a href="" ng-click="post.sync(feedType);">Post failed, try again</a>
+                </li>
+                <li class="submenu__item" ng-if="post.userCan.like">
+                    <a href="" ng-click="post.showLikes()">View likes</a>
+                </li>
+                <li class="submenu__item" ng-if="post.userCan.delete">
+                    <a href="" ng-confirm-click="post.delete();" ng-confirm-message="Are you sure you want to delete this?">Delete Post</a>
+                </li>
+                <li class="submenu__item" ng-show="post.id"><a href="" path="activity.item" path-params="post.id">Permalink</a></li>
+            </ul>
+        </div>
+        
+        <footer class="post__footer" ng-if="post.userCan.cancomment || post.userCan.like">
+            <div class="post__footer-item" ng-if="!post.failed && !post.loading && post.userCan.like">
+                <likes 
+                    resource-type="news" 
+                    resource-id="post.id" 
+                    like-count="post.likeCount" 
+                    liked="post.liked"
+                    ></likes>
+            </div>
+            <div class="post__footer-item" ng-if="!post.failed && !post.loading && post.userCan.cancomment">
+                <a href="" class="is--active" ng-click="post.showAddComment = !post.showAddComment">
+                    <i class="icon--comment"></i>
+                    <ng-pluralize count="post.commentCount"
+                                  when="{'0': 'Write comment',
+                            'one': '1 comment',
+                            'other': '{} comments'}">
+                    </ng-pluralize>
+                </a>
+            </div>
+        </footer>
+    </div>
+</div>

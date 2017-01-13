@@ -1,0 +1,29 @@
+﻿<div class="page page--1-c recruit">
+    <div class="page__wrapper">
+        <div class="page__content onboarding">
+            <div class="page__content onboarding">
+                <div class="segment" ng-class="{'is--loading': isLoading}">
+                    <div class="align__center">
+                        <h1>Terms and Conditions</h1>
+                        <p>In order to use this platform you must read and accept the following terms and conditions listed below</p>
+                    </div>
+                    <iframe class="onboarding__t-and-c" ng-src="{{terms.path}}"></iframe>
+                    <div class="form__field form__field--boxBottom">
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="termsAndConditions" ng-model="terms.isAccepted" ng-click="!terms.isAccepted" />
+                            <label class="form__label" for="termsAndConditions">I accept these terms and conditions</label>
+                            <div class="form__note form__note--error terms-conditions-error" ng-hide="terms.isAccepted">Please check the box to confirm you agree to the terms and conditions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="recruit button-footer">
+    <div class="button-withtext">
+        <button class="button button--positive button--icon-right toggle-loading" 
+            ng-disabled="isLoading || !terms.isAccepted"
+            ng-click="onboarding_terms()">Continue <i class="icon--right"></i></button>
+    </div>
+</div>

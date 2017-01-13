@@ -1,0 +1,217 @@
+[
+    {
+        "id": "employeeDetailsForm",
+        "name": "employeeDetailsForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "EmploymentTypeId",
+                "label": "Employment type",
+                "placeholder": "",
+                "value": "",
+                "type": "select",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "Role",
+                "label": "Role",
+                "placeholder": "",
+                "value": "",
+                "type": "select-role",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "Group",
+                "label": "Location",
+                "placeholder": "",
+                "value": "",
+                "type": "select-group",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "MinimumHours",
+                "label": "Minimum hours",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "RegisterKey",
+                "label": "Has a register key",
+                "placeholder": "",
+                "value": "",
+                "type": "checkbox",
+                "class": "",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "AlarmCodeRequired",
+                "label": "Has an alarm code",
+                "placeholder": "",
+                "value": "",
+                "type": "checkbox",
+                "class": "",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "StoreKeyRequired",
+                "label": "Has a store key",
+                "placeholder": "",
+                "value": "",
+                "type": "checkbox",
+                "class": "",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "CommencementDate",
+                "label": "Commencement date",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "date",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "PerformanceAssessmentFormID",
+                "label": "Performance assessment form",
+                "placeholder": "",
+                "value": "",
+                "type": "select",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "SalaryTypeId",
+                "label": "Pay type",
+                "placeholder": "",
+                "value": "",
+                "type": "select",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "RosterRoleId",
+                "label": "Pay rate",
+                "placeholder": "",
+                "value": "",
+                "type": "radio-list",
+                "class": "form__label--invisible",
+                "filter": {
+                    "label": "Type to search Pay rates..."
+                },            
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "SalaryClassificationId",
+                "label": "Salary classification",
+                "placeholder": "",
+                "value": "",
+                "type": "select",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "DesiredSalary",
+                "label": "Desired Salary",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "ClockInPin",
+                "label": "Clock in pin",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "OperatorId",
+                "label": "Operator Id",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "DebtorId",
+                "label": "Debtor Id",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "PayrollLocationIdentifier",
+                "label": "",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "PayrollMemberIdentifier",
+                "label": "",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "submitForm",
+                "value": "Save changes",
+                "type": "submit-button",
+                "class": "button--small"
+            }
+        ]
+    }
+]

@@ -1,0 +1,53 @@
+<article class="card fadeUp" ng-repeat="blog in cards | limitTo:cardLimit" masonry-brick ng-style="blog.position" ng-class="{'in': isVisible}">
+
+    <div class="card__inner">
+
+        <a href="" path="dashboard.news.article" path-params="::blog.Id" class="card__feature-image-container" ng-if="blog.FileStoreId">
+
+            <div class="card__feature-image-overflow-wrapper">
+                <img class="card__feature-image" file-link="{{ ::blog.FileStoreId }}" alt="{{ ::blog.Title }}" />
+            </div>
+
+            <card-date start-date="blog.DatePublish"></card-date>
+
+            <avatar size="small" img-src="blog.Owner.PhotoThumb" class="card__avatar" tooltip="Written by {{blog.Owner.FirstName}} {{blog.Owner.Surname}}" tooltip-placement="right"></avatar>
+
+        </a>
+
+        <card-date ng-if="!blog.FileStoreId" start-date="blog.DatePublish"></card-date>
+
+        <avatar ng-if="!blog.FileStoreId" size="small" img-src="blog.Owner.PhotoThumb" class="card__avatar" tooltip="Written by {{blog.Owner.FirstName}} {{blog.Owner.Surname}}" tooltip-placement="right"></avatar>
+
+        <div class="card__content">
+
+            <h2><a href="" path="dashboard.news.article" path-params="::blog.Id">{{ ::blog.Title }}</a></h2>
+            <small>{{blog.DatePublish | fromNow}}</small>
+            <p ng-bind-html="::blog.ContentSummary | unsafe"></p>
+
+        </div>
+
+        <footer class="card__footer">
+            <!-- <likes
+                resource-type="blog"
+                resource-id="blog.Id"
+                like-count="blog.LikeCount"
+                liked="blog.HasLiked"
+            ></likes> -->
+
+            <p>
+                <a href="" path="dashboard.news.article" path-params="::blog.Id" path-anchor="comments">
+                    <ng-pluralize count="::blog.CommentCount"
+                                  when="{'0': 'No comments',
+                       'one': '1 comment',
+                       'other': '{} comments'}">
+                    </ng-pluralize>
+                </a>
+            </p>
+
+            <a href="" class="card__arrow" path="dashboard.news.article" path-params="::blog.Id">&rarr;</a>
+
+        </footer>
+
+    </div>
+
+</article>

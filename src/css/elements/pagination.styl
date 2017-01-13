@@ -1,0 +1,191 @@
+
+pagination_color = grey5;
+
+// Pagination directive
+//
+// Not much to see here but the markup is useful in getting pagination up and running
+//
+// Markup: 
+// <div ng-controller="PageCtrl" class="page__content segment"
+//     paginate="getSubjects"
+//     page-size="20"
+//     when-scrolled="page.next"
+//     ng-class="{'is--loading': page.loading}">
+// </div>
+//
+// Styleguide elements.pagination.directive
+
+.ui
+    
+    .paging {
+
+        display:inline-block;
+        margin: 0 0 (gutter * 1.5);
+        border:1px solid grey7;
+        background:white;
+        border-radius:3px;
+
+        @media minTablet {
+            width:100%;
+            padding-right:20px;
+        }
+    }
+    
+    // Prev / next pagination
+    //
+    // No page numbers, just prev / next buttons
+    //
+    // Markup: 
+    // <div class="pagination">
+    //     <ul class="pagination__pages">
+    //       <li><a href=""><i class="icon--left"></i></a></li>
+    //       <li><a href=""><i class="icon--right"></i></a></li>
+    //     </ul>
+    // </div>
+    //
+    // Styleguide elements.pagination.prevnext
+    
+    // Full pagination
+    //
+    // Here's the lot
+    //
+    // Markup: 
+    // <div class="pagination">
+    //     <ul class="pagination__pages">
+    //         <li class="pagination__page"><a href=""><i class="icon--left"></i></a></li>
+    //         <li class="pagination__page"><a href="">1</a></li>         
+    //         <li class="pagination__page"><a href="" class="is--active">2</a></li>
+    //         <li class="pagination__page"><a href="" class="is--disabled">3</a></li> 
+    //         <li class="pagination__page"><a href=""><i class="icon--right"></i></a></li>
+    //     </ul>
+    //     <div class="pagination__count">Displaying 1 of 4</div>
+    // </div>
+    //
+    // Styleguide elements.pagination.full
+
+    .pagination {
+        clearfix();
+        
+        display:inline-block;
+
+        font-size: 14px;
+        color: pagination_color;
+        text-align: center;
+
+        @media minTablet {
+            display:block;
+            text-align: left;
+        }
+    }
+
+    .pagination__pages {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        @media minTablet {
+            float: left;
+        }
+
+        li {
+            display: none;
+            text-align: center;
+
+            @media minTablet {
+                display:inline-block;
+            }
+
+            &.is--prev,
+            &.is--next {
+                display:inline-block;
+            }
+
+            &.is--next {
+                @media maxTablet {
+                    border-right:none;
+                }
+            }
+
+            a {
+                padding: 12px 20px;
+                min-width: 45px;
+                border-right:1px solid grey7;
+                display: block;
+                color: pagination_color;
+                position: relative;
+                transition: color linear 150ms;
+
+                @media minTablet {
+                    padding:12px 0;
+                }
+
+                &:hover {
+                    text-decoration: none;
+                    background: white;
+                }
+
+                &.is--active {
+                    color: primary;
+                    background: white;
+                    font-weight: bold;
+                }
+
+                &.is--disabled {
+                    @media minTablet {
+                        display:none;
+                    }
+                }
+
+                i {
+                    @media maxTablet {
+                        position:relative;
+                        top:1px;
+                    }
+                }
+                em { 
+                    font-style:normal;   
+                    @media minTablet {
+                        display:none;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .pagination__count {
+        
+        display: none;
+
+        @media minTablet {
+            display:block;
+            float: right;
+            padding: 15px 0 15px 20px;
+            font-size:11px;
+            text-transform:uppercase;
+            height:46px;
+        }
+    }
+    
+    .is--disabled-pagination {
+        .pagination__count  { display:none !important; }
+    }
+
+    .paging__menu {
+        
+        display:none;
+        
+        @media minTablet {
+            display:block;
+            float:right;
+            margin-right:-20px;
+            position:relative;
+
+            a {
+                display:inline-block;
+                padding:11px 17px;
+                color:grey3;
+            }
+        }
+
+    }

@@ -1,0 +1,50 @@
+{
+  "data": {
+    "$id": "1",
+    "JobRequisitionDetail": {
+      "$id": "2",
+      "JobAdRequisitionId": 1921,
+      "CreatedDateTime": "2016-05-18T04:30:40.373",
+      "LastModifiedDateTime": "2016-05-20T01:51:27.017",
+      "ContactPerson": null,
+      "ContactNumber": null,
+      "ExecutedJobId": 7777,
+      "State": "Executed",
+      "SubState": "",
+      "NetworkGroup": {
+        "$id": "3",
+        "NetworkGroupId": 11073,
+        "GroupName": "Fountain Gate",
+        "Type": null,
+        "LookupUrl": "http://localhost:56828/Api/",
+        "IsTrainingLocation": null
+      },
+      "Role": {
+        "$id": "4",
+        "RoleId": 776,
+        "Description": "3rd Party Supplier",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "Owner": {
+        "$id": "5",
+        "MemberId": 247682,
+        "FirstName": "Sherpa",
+        "Surname": "Admin",
+        "PreferredName": null,
+        "Title": "FIN - Systems Administrator",
+        "PhotoLarge": "/networkrepository/957/member/247682/profile_large.png",
+        "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.png",
+        "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+        "RoleTitle": "FIN - Systems Administrator",
+        "DefaultNetworkGroupId": 11038,
+        "Birthday": null,
+        "Sex": "m",
+        "Salutation": null
+      }
+    },
+    "EntityActions": [],
+    "Status": 0
+  },
+  "status": 200,
+  "config": {}
+}

@@ -1,0 +1,30 @@
+<div class="file {{file.ModifiedClass}}" ng-show="file.FileName" ng-class="{'file--block' : block, 'file--loading': loading}">
+    <iframe id="downloadContainer" style="display: none;"></iframe>
+    <div ng-if="!isImage || !inlineImages" class="file__content" ng-switch on="file.ContentType">
+        <i ng-if="file.ContentType && !file.FileExtension" ng-switch-when="Image" class="svg-icon--img"></i>
+        <i ng-if="file.ContentType && !file.FileExtension"  ng-switch-when="ProfilePhoto" class="svg-icon--img"></i>
+        <i ng-if="file.ContentType && !file.FileExtension"  ng-switch-when="Audio" class="svg-icon--video"></i>
+        <i ng-if="file.ContentType && !file.FileExtension"  ng-switch-when="Video" class="svg-icon--video"></i>
+        <i ng-if="file.ContentType && !file.FileExtension"  ng-switch-when="Compress" class="svg-icon--zip"></i>
+        <i ng-if="file.ContentType && !file.FileExtension" ng-switch-when="TextNote" class="svg-icon--txt"></i>
+        <i ng-if="file.ContentType && !file.FileExtension" ng-switch-default class="svg-icon--doc"></i>
+
+        <i ng-if="(!file.FileExtension && !file.ContentType) || file.FileExtension" class="svg-icon--{{file.FileExtension}}"></i>
+        <p class="file__name">{{ file.FileName }}</p>
+        <ul class="file__meta">
+            <li>{{ file.FileSize | toBytes }}</li>
+            <li ng-if="file.UploadedDate"> - at {{ file.UploadedDate | utcToLocaleDateTime  }}</li>
+            <li>
+                <span ng-show="isDownloadable">
+                    <a href="{{ file.DocumentGetUrl ? 'javascript:void(0)' : url }}" ng-click="downloadFile($event);" target="_self">download</a>
+                </span>
+                <span ng-if="isPreviewable"><span>-</span> <a href="" ng-click="previewFile()">preview</a></span>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-click="previewFile()" class="file__image file__image--zoomable" ng-if="isImage && inlineImages">
+        <img ng-src="{{ url }}" />
+    </div>
+
+</div>

@@ -1,0 +1,90 @@
+[
+    {
+        "id": "contactInformationForm",
+        "name": "contactInformationForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "Address",
+                "label": "Street address",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "Suburb",
+                "label": "Suburb",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "City",
+                "label": "City",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "StateName",
+                "label": "State",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "Postcode",
+                "label": "Postcode",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "note": "Enter a postcode to prefill this address",
+                "validation": {
+                    "required": true,
+                    "maxLength": 5,
+                    "onlyNumber": true
+                },
+                "loader": true
+            },
+            {
+                "name": "CountryId",
+                "label": "Country",
+                "placeholder": "",
+                "value": "",
+                "type": "select-country",
+                "class": "",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "submitForm",
+                "value": "Save changes",
+                "type": "submit-button",
+                "class": "button--small"
+            }
+        ]
+    }
+]

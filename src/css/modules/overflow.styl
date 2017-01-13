@@ -1,0 +1,41 @@
+// Overflow module
+// ------------------------------------------------
+
+.ui
+    .overflow__container {
+        position:relative;
+    }
+    
+    .overflow__list {}
+    .overflow__item {}
+
+    .overflow__toggle {
+        verticalAlignContent();
+
+        background: #f6f6f6;
+        border-left: solid 1px #eee;
+        cursor: pointer;
+        
+        width: 40px;
+        height: 90%;
+        position: absolute;
+        bottom: 1px;
+        right: 0;
+        font-size: 16px;
+        color: grey5;
+        z-index: 5;
+
+        &:before {
+            margin-right: 0;
+        }
+
+        i { 
+            vertical-align:middle;
+        }
+
+        &:hover {
+            i { color: primary }
+        }
+
+    }
+    .overflow__excess {}

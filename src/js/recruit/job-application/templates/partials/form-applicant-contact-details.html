@@ -1,0 +1,207 @@
+<strong>Personal Details</strong>
+<div class="align-right" ng-show="applicantDetails.userCan(EntityActionType.CanUpdateApplicantInformation)">
+    <a href="" tooltip="Edit" tooltip-placement="top" ng-click="toggleEditing()" ng-show="!editing"><i class="icon--pencil"></i></a>
+    <span ng-show="editing" class="application-details__cancel-button" ng-click="toggleEditing()">Cancel</span>
+</div>
+<hr>
+<form name="updateApplicantForm" novalidate ng-submit="updateApplicant(updateApplicantForm)">
+    <table class="table-form align-left application-details__contact-view--table__margin" ng-class="{'table-form__edit-all' :  editing }">
+        <tbody>
+            <tr ng-class="{ 'is--editing' : editing }">
+                <th>Name</th>
+                <td>
+                    <span class="table-form__form-value">
+                        {{applicantDetails.Information.FirstName}} {{applicantDetails.Information.Surname}}
+                    </span>
+                    <table-form-edit edit-name="name"></table-form-edit>
+                    <div class="table-form__form-field">
+                        <div class="form__field is--required">
+                            <label class="form__label" for="FirstName">First Name</label>
+                            <input type="text"
+                                   id="FirstName"
+                                   name="FirstName"
+                                   placeholder="FirstName"
+                                   ng-model="editingModel.Information.FirstName"
+                                   required />
+                        </div>
+                        <div class="form__field is--required">
+                            <label class="form__label" for="Surname">Surname</label>
+                            <input type="text"
+                                   id="Surname"
+                                   name="Surname"
+                                   placeholder="Surname"
+                                   ng-model="editingModel.Information.Surname"
+                                   required />
+                        </div>
+                    </div>
+                    <table-form-buttons edit-name="name"></table-form-buttons>
+                </td>
+            </tr>
+            <tr ng-class="{ 'is--editing' : editing }">
+                <th>Address</th>
+                <td class="table-form--wordwrap">
+                    <div class="table-form__form-value">
+                        <div ng-show="applicantDetails.Address.Address">
+                            {{ applicantDetails.Address.Address }},
+                        </div>
+                        <div>
+                            <span ng-show="applicantDetails.Address.Suburb">{{ applicantDetails.Address.Suburb}} </span>
+                            <span ng-show="applicantDetails.Address.StateName">{{applicantDetails.Address.StateName}}, </span>
+                            <span ng-show="applicantDetails.Address.Postcode">{{applicantDetails.Address.Postcode}}</span>
+                        </div>
+                        <div ng-show="applicantDetails.Address.CountryName">
+                            {{ applicantDetails.Address.CountryName }}
+                        </div>
+                    </div>
+                    <table-form-edit edit-name="address"></table-form-edit>
+                    <div class="table-form__form-field">
+                        <div class="form__field is--required">
+                            <label class="form__label">Country</label>
+                            <input-country ng-model="editingModel.Address.CountryId"></input-country>
+                        </div>
+                        <div class="form__field is--required">
+                            <label class="form__label" for="Postcode">Postcode</label>
+                            <input type="text"
+                                   id="Postcode"
+                                   name="Postcode"
+                                   placeholder="Postcode"
+                                   ng-model="editingModel.Address.Postcode"
+                                   minlength=0
+                                   maxlength=5
+                                   required />
+                        </div>
+                        <div class="form__field">
+                            <label class="form__label" for="Address">Street address</label>
+                            <input type="text"
+                                   id="Address"
+                                   name="Address"
+                                   placeholder="Street address"
+                                   ng-model="editingModel.Address.Address"
+                                   minLength=0
+                                   maxlength=1000
+                            />
+                        </div>
+                        <div class="form__field" >
+                            <label class="form__label" for="Suburb">Suburb</label>
+                            <input type="text"
+                                   id="Suburb"
+                                   name="Suburb"
+                                   placeholder="Suburb"
+                                   ng-model="editingModel.Address.Suburb"
+                                   minLength=0
+                                   maxlength=1000
+                            />
+                        </div>
+                        <div class="form__field is--required">
+                            <label class="form__label" for="State">State</label>
+                            <input type="text"
+                                   id="State"
+                                   name="State"
+                                   placeholder="State"
+                                   minLength=0
+                                   maxlength=1000
+                                   required=true
+                                   ng-model="editingModel.Address.StateName"/>
+                        </div>
+                    </div>
+                    <table-form-buttons edit-name="address"></table-form-buttons>
+                </td>
+            </tr>
+
+            <tr ng-class="{ 'is--editing' : editing }">
+                <th>Phone</th>
+                <td>
+                    <div class="table-form__form-value">
+                        <div class="form-value">
+                            {{ applicantDetails.HomePhoneContact.MobilePhone }} <label ng-if="applicantDetails.HomePhoneContact.MobilePhone">(home)</label>
+                        </div>
+                        <div class="form-value">
+                            {{ applicantDetails.MobilePhoneContact.MobilePhone }} <label ng-if="applicantDetails.MobilePhoneContact.MobilePhone">(mobile)</label>
+                        </div>
+                    </div>
+                    <table-form-edit edit-name="phone"></table-form-edit>
+                    <div class="table-form__form-field">
+                        <div class="form__field">
+                            <label class="form__label" for="HomePhone">Home Phone</label>
+                            <input type="text"
+                                   id="HomePhone"
+                                   name="HomePhone"
+                                   minlength=0
+                                   maxlength=20
+                                   onlyNumber=true
+                                   ng-pattern="/^\+?(\(\d\d\))?(\d? ?)*$/"
+                                   ng-model="editingModel.HomePhoneContact.MobilePhone"
+                            />
+                        </div>
+                        <div class="form__field is--required">
+                            <label class="form__label" for="MobilePhone">Mobile Phone</label>
+                            <input type="text"
+                                   id="MobilePhone"
+                                   name="MobilePhone"
+                                   minlength=0
+                                   maxlength=50
+                                   onlyNumber=true
+                                   ng-model="editingModel.MobilePhoneContact.MobilePhone"
+                                   required />
+                        </div>
+                    </div>
+                    <table-form-buttons edit-name="phone"></table-form-buttons>
+                </td>
+            </tr>
+            <tr class="table-form__single-field" ng-class="{ 'is--editing' : editing }">
+                <th>Email address</th>
+                <td>
+                    <span class="table-form__form-value">
+                        {{applicantDetails.EmailContact.Email}}
+                    </span>
+                    <table-form-edit edit-name="email"></table-form-edit>
+                    <div class="table-form__form-field">
+                        <div class="form__field is--required">
+                            <label class="form__label" for="Email">Email</label>
+                            <input type="email"
+                                   id="Email"
+                                   name="Email"
+                                   minlength=0
+                                   maxlength=100
+                                   ng-model="editingModel.EmailContact.Email"
+                                   required />
+                        </div>
+                    </div>
+                    <table-form-buttons edit-name="email"></table-form-buttons>
+                </td>
+            </tr>
+            <tr class="table-form__single-field" ng-class="{ 'is--editing' : editing }">
+                <th>Birthday</th>
+                <td>
+                    <span ng-show="applicantDetails.Information.Birthday" class="table-form__form-value">
+                        {{applicantDetails.Information.Birthday | dateOnly}}
+                    </span>
+                    <table-form-edit edit-name="Birthday"></table-form-edit>
+                    <div class="table-form__form-field">
+                        <div class="form__field">
+                            <label class="form__label" for="Birthday">Date of birth</label>
+                            <input type="text"
+                                   id="Birthday"
+                                   name="Birthday"
+                                   datePast=true
+                                   validate-date="applicantDetails.Information.Birthday"
+                                   datepick=""
+                                   datepicker-popup="d MMM yyyy"
+                                   ng-model="editingModel.Information.Birthday"/>
+                        </div>
+                    </div>
+                    <table-form-buttons edit-name="Birthday"></table-form-buttons>
+                </td>
+            </tr>
+            <tr ng-show="editing">
+                <th></th>
+                <td>
+                    <div class="button-group" ng-show="editing">
+                        <a class="button button--small" href="" ng-click="toggleEditing()">Cancel</a>
+                        <input type="submit" ng-disabled="updateApplicantForm.$invalid" class="button button--positive button--small" value="Save" disable-toggle="isSaving"/>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>

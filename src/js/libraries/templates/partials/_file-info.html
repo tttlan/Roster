@@ -1,0 +1,101 @@
+<div class="file-info-wrapper" ng-style="isShowRightPane === true ? {} : {'transform': 'translateX(100%)'}">
+    <div class="file-info" ng-if="isShowFileInfo" ng-class="{'is--loading': isLoading}">
+        <div class="media media--user">
+            <a class="align-right" href="" tooltip="hide" tooltip-placement="bottom" ng-click="showFileInfo('')"><i class="icon--cross"></i></a>
+            <div class="media__image"><img alt="Avatar" class="avatar" ng-src="{{CurrentFileInfo.Thumbnail}}"></div>
+            <div class="media__body">
+                <a tooltip-placement="top" tooltip="{{CurrentFileInfo.FileName.length > 22 ? CurrentFileInfo.FileName :''}}" href="">{{CurrentFileInfo.FileName | limitTo: 22}}{{CurrentFileInfo.FileName.length > 22 ? '...' : ''}}</a>
+                <span>uploaded by <b>{{CurrentFileInfo.Author}}</b></span>
+            </div>
+            <div class="group__icon">
+                <span>{{CurrentFileInfo.ViewCount || 0}} &nbsp;<i class="icon--views"></i></span>&nbsp;&nbsp;
+                <span>{{CurrentFileInfo.DownloadCount || 0}} &nbsp;<i class="icon--download"></i></span>
+            </div>
+        </div>
+        <hr />
+        <table class="table table--noborders table--cozy table--file-info">
+            <tr>
+                <td>File size</td>
+                <td>{{CurrentFileInfo.FormatedFileSize}}</td>
+            </tr>
+            <tr> <td>Lasted Update</td> <td>{{CurrentFileInfo.LastModified | date: 'MMM d, yyyy'}}</td> </tr>
+            <tr>
+                <td>Tags</td>
+                <td>
+                    <div class="tags">
+                        <a class="tag" ng-repeat="tag in CurrentFileInfo.TagNames">{{tag.TagName}}</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="100">
+                    <a class="align-right" ng-click="addTags(CurrentFileInfo)">{{CurrentFileInfo.TagNames.length? 'Edit tag' : 'Add tag'}}</a>
+                </td>
+            </tr>
+        </table>
+        <hr ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 0" />
+
+        <span style="text-transform: uppercase" ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 0">share with</span>
+        <ul class="avatars" ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 0">
+            <li ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 4" ng-repeat="item in CurrentFileInfo.sharedUnitsPaneInfo | limitTo: expanseAll ? Number.MAX_VALUE : 4">
+                <a tooltip={{item.Name}} tooltip-placement="bottom">
+                    <img ng-if="item.Type == 'u'" alt="Avatar" class="avatar " src="">
+                    <img ng-if="item.Type == 'g'" ng-src="/interface/images/default-group.png" alt="Avatar" class="avatar " src="/interface/images/default-group.png">
+                    <img ng-if="item.Type == 'r'" ng-src="/interface/images/default-role.png" alt="Avatar" class="avatar " src="/interface/images/default-role.png">
+                </a>
+            </li>
+            <li ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 0 && CurrentFileInfo.sharedUnitsPaneInfo.length <= 4" ng-repeat="item in CurrentFileInfo.sharedUnitsPaneInfo">
+                <a tooltip={{item.Name}} tooltip-placement="bottom">
+                    <img ng-if="item.Type == 'u'" alt="Avatar" class="avatar">
+                    <img ng-if="item.Type == 'g'" ng-src="/interface/images/default-group.png" alt="Avatar" class="avatar " src="/interface/images/default-group.png">
+                    <img ng-if="item.Type == 'r'" ng-src="/interface/images/default-role.png" alt="Avatar" class="avatar " src="/interface/images/default-role.png">
+                </a>
+            </li>
+            <li ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 4 && !expanseAll" ng-click="$parent.$parent.expanseAll = true"><a href="" class="avatar additional-members">{{expanseAll? '' : '+' + (CurrentFileInfo.sharedUnitsPaneInfo.length - 4)}}</a></li>
+        </ul>
+        <hr ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 0" />
+
+        <!--Need for furture-->
+        <!--<span style="text-transform: uppercase">relatived</span>
+        <div ng-repeat="item in artifact.relatived" style="padding: 10px 0">
+            <a style="color: #2774b1; " href="">{{item.fileName}}</a><br />
+            <span><small>{{item.uploader}}</small></span>
+        </div>-->
+    </div>
+    <div class="file-info" ng-if="isShowLinkedFiles" ng-class="{'is--loading': isLoading}">
+        <a class="align-right" href="" ng-click="showRelatedFilePanel(null)" tooltip="hide" tooltip-placement="bottom"><i class="icon--cross"></i></a>
+        <div class="fileTitle">
+            <i style="font-size:22px" ng-if="CurrentRelatedFile.MainArtifact.ArtifactTypeId == 1" class="svg-icon--{{CurrentRelatedFile.MainArtifact.Extension}}"></></i>
+            <i style="font-size:22px" ng-if="CurrentRelatedFile.MainArtifact.ArtifactTypeId == 10" class="svg-icon--zip"></i>
+            <i style="font-size:22px" ng-if="CurrentRelatedFile.MainArtifact.ArtifactTypeId == 2" class="svg-icon--img"></i>
+            <i style="font-size:22px" ng-if="CurrentRelatedFile.MainArtifact.ArtifactTypeId == null" class="svg-icon--folder1"></i>
+            <i style="font-size:22px" ng-if="CurrentRelatedFile.MainArtifact.ArtifactTypeId == 9" class="svg-icon--video"></i>
+            <span style="vertical-align:top" tooltip-placement="top">{{CurrentRelatedFile.MainArtifact.FileName | limitTo: 22}}{{CurrentRelatedFile.MainArtifact.FileName.length > 22 ? '...' : ''}}</span>
+        </div>
+        <div class="form__field">
+            <label for="auto_complete" class="icon--search field__before"></label>
+            <input type="text" id="auto_complete_related" placeholder="Search file to link" dropdown-toggle ng-model="searchLinkKeyword" ng-change="onChangeSearchRelatedArtifact(searchLinkKeyword)" />
+            <loader ng-if="isSearchingRelatedArtifact" class="typeahead__loading" style="top:8px" />
+            <ul class="autocompleteSearchArtifact submenu submenu--compact dropdown-menu" style="width:99.8%;max-height:250px;overflow-y:auto">
+                <li class="submenu__item" ng-repeat="file in RelatedFileList" ng-click="addLinkedFile(file)">
+                    <div class="media" style="padding: 5px; margin: 0px;">
+                        <div class="media__body">
+                            <p>
+                                <strong>{{file.FileName}}</strong>
+                            </p>
+                            <small>{{file.Author}}</small>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--<span><small>or drag to following list</small></span><br /> <br />-->
+        <br />
+        <span style="text-transform: uppercase">linked with</span>
+        <div ng-repeat="item in CurrentRelatedFile.RelatedFiles" style="padding: 10px 0" ng-mouseover="showRemoveLink($index)" ng-mouseout="hideRemoveLink($index)">
+            <a style="color: #2774b1; " href="">{{item.FileName}}</a>
+            <a href="" ng-if="item.Permissions.deleterelatedartifact == true" ng-show="removeLink && $index === removeLinkIndex" class="table-form__edit item--remove--related" ng-click="deleteLinkedArtifact(item)">remove</a><br />
+            <span><small>{{item.Author}}</small></span>
+        </div>
+    </div>
+</div>

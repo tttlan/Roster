@@ -1,0 +1,76 @@
+<div class="page recruit">
+    <div class="page__wrapper">
+        <form name="onboardingDetailsForm" novalidate>
+            <div ng-class="{'is--loading' : isGetOnboardDetail}">
+                <fieldset ng-disabled="isOnboardPhaseDeclined(data.onboards[0])">
+
+                    <div ng-if="!isOnboardPhaseUndefined(data.onboards[0]) || isSingle === false"
+                         ng-include="'/interface/views/recruit/onboard-details-header.html'">
+                    </div>
+
+
+                    <h2 class="title__new--onboard" ng-if="isOnboardPhaseNew(data.onboards[0]) || isOnboardPhaseUndefined(data.onboards[0])">
+                        <span ng-if="isSingle">NEW ONBOARD</span>
+                        <span ng-if="isSingle === false">NEW BULK ONBOARD</span>
+                    </h2>
+
+                    <div ng-if="data.onboards[0].Status == 'New'">
+                        <div class="segment wells">
+                            <div class="well">
+                                <i class="icon--round-info well__icon"></i>
+                                <span class="well__content">
+                                    <b>New Onboard</b>
+                                    <p>Provide role and candidate information to progress the onboard to the next step.</p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-form">
+                        <div class="segment onboard">
+                            <div ng-class="{'is--loading': commonOnboard.isSubmitting}"
+                                        ng-include="'/interface/views/recruit/onboard-details-proposed-role-common.html'">
+                            </div>
+                        </div>
+
+                        <candidates sub-items="data.onboards"
+                                    upload-csv-bulk-onboard="data.uploadCsvBulkOnboard"
+                                    add-new-candidate-after-upload-csv="data.addNewCandidateAfterUploadCsv"
+                                    is-single="isSingle"
+                                    is-creating="isCreating"
+                                    get-onboarding-setting="getOnboardingSetting"
+                                    check-salary-type-default="checkSalaryTypeDefault"
+                                    update-onboard="updateOnboard"
+                                    view-document="viewDocument"
+                                    accept-inbound-doc="acceptInboundDoc"
+                                    open-resend-doc-notes="openResendDocNotes"
+                                    resend-btn-enabled="resendBtnEnabled"
+                                    reject-for-resend="rejectForResend"
+                                    download-document="DownloadDocument"
+                                    progress="progress"
+                                    select-other-group="selectOtherGroup"
+                                    select-other-store="selectOtherStore"
+                                    common-onboard="commonOnboard"
+                                    reject="reject"
+                                    remove-tag="removeTag">
+                        </candidates>
+
+                        <div class="segment"
+                            ng-if="!isOnboardPhaseNew(data.onboards[0]) && !isOnboardPhaseAwaitingApproval(data.onboards[0]) && !isOnboardPhaseUndefined(data.onboards[0])">
+                            <div ng-class="{'is--loading': commonOnboard.isSubmitting}"
+                                        ng-include="'/interface/views/recruit/onboard-details-documentation.html'"></div>
+                        </div>
+
+                        <div class="segment" style="margin-bottom: 50px;">
+                            <div ng-class="{'is--loading': commonOnboard.isSubmitting}"
+                                        ng-include="'/interface/views/recruit/onboard-details-sourcing-information.html'"></div>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div ng-include="'/interface/views/recruit/onboard-details-actions.html'"></div>

@@ -1,0 +1,8 @@
+{
+	"DateOfBirth": "1992-11-08",
+	"ResidencyStatus": true,
+	"BasisOfPaymentCode": "123465",
+	"TaxFreeThresholdClaimed": false,
+	"SeniorAustraliansTaxOffsetClaimed": true,
+	"ZoneRebateClaimed": true
+}

@@ -1,0 +1,167 @@
+<div class="page page--2-1">
+
+    <div class="page__wrapper">
+
+        <header class="page__header">
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="training.manage.index">Manage Courses</a></li>
+            </ul>
+
+            <h1>{{ page.action }} course</h1>
+            <p>{{ page.action }} a training course and publish to your staff in minutes. Make sure you have the training material ready before you proceed.</p>
+        </header>
+
+        <!-- content component -->
+
+        <div class="page__content">
+
+            <ng-form name="form" id="primaryForm" novalidate validate-form ng-disabled="data.$loading">
+            
+                <fieldset class="form segment">
+                    
+                    <!-- Hidden values -->
+                    <input type="hidden" ng-model="data.Published" />
+                    <!-- End of Hidden Values -->
+                    
+                    <div class="form__field">
+                        <label class="form__label" for="input_courseName">Course Name<em>*</em></label>
+                        <input type="text" id="input_courseName" placeholder="Enter a course name or title" name="courseName" required ng-model="data.Title" maxlength="60">
+                        <span class="form__note form__note--error" ng-show="(form.courseName.$dirty || submitted) && form.courseName.$invalid">A course name is required</span>
+                    </div>
+
+                    <div class="form__field">
+                        <label class="form__label" for="input_overview">Overview</label>
+                        <textarea wrap="hard" rows="5" id="input_overview" ng-model="data.Overview"  maxlength="250" placeholder="Enter a course overview"></textarea>
+                    </div>
+
+                    <div class="form__editor">
+                        <label class="form__label" for="input_objectives">Objectives</label>
+                        <div class="textarea">
+                            <text-angular 
+                                ng-model="data.Objectives"
+                                placeholder="Define some course objectives..." 
+                                ta-toolbar="[['bold', 'italics', 'underline'],['ul', 'ol']]" 
+                                name="objectives"
+                                container-id="5"
+                                old-uploader="true"
+                            ></text-angular>
+                        </div>
+                    </div>
+
+                    <div class="form__fields">
+                        
+                        <div class="col-1-2 form__field">
+                            <label class="form__label" for="input_startDate">Start Date<em>*</em></label>
+                            <div class="form__field">
+                                <label class="icon--calendar field__after" for="input_startDate"></label>
+                                <input type="text" id="input_startDate" placeholder="Start Date" required ng-model="data.StartDate"
+                                 datepicker-popup="d MMM yyyy" >
+                            </div>
+                            <span class="form__note form__note--error" ng-show="(form.startDate.$dirty || submitted) && form.startDate.$invalid">A start date is required</span>
+                        </div><!--
+                        
+                        --><div class="col-1-2 form__field">
+                            <label class="form__label" for="input_startDate">Due Date<em>*</em></label>
+                            <div class="form__field">
+                                <label class="icon--calendar field__after" for="input_endDate"></label>
+                                <input type="text" id="input_endDate" placeholder="End Date" name="endDate" required ng-model="data.EndDate"
+                                    datepicker-popup="d MMM yyyy" later-than="StartDate" min="data.StartDate" datepicker-localdate>
+                            </div>
+                            <span class="form__note form__note--error" ng-show="(form.endDate.$dirty || submitted) && form.endDate.$empty">
+                                An end date is required
+                            </span>
+                            <span class="form__note form__note--error" ng-show="(form.endDate.$dirty || submitted) && form.endDate.$error.greaterThan">
+                                You need to choose an end date, after the starting date
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="form__field">
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="form_checkbox_open" ng-model="data.Active"> 
+                            <label class="form__label" for="form_checkbox_open">This course is open
+                                <div class="form__note">Deselecting this will close this course to all members.</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form__field">
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="form_checkbox_compulsory" ng-model="data.Compulsory">
+                            <label class="form__label" for="form_checkbox_compulsory">This course is compulsory
+                                <div class="form__note">Do members have to complete this course?</div>
+                            </label>
+                        </div>
+                    </div>
+<!--
+                    <div class="form__field">
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="form_checkbox_login" ng-model="data.PromptAtLogin">
+                            <label class="form__label" for="form_checkbox_login" >This course should prompt Users at Login</label>
+                        </div>
+                    </div>
+
+                    <div class="form__field">
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="form_checkbox_onboarding" ng-model="data.AvailableDuringOnboarding">
+                            <label class="form__label" for="form_checkbox_onboarding">This course should be availible to Users during Onboarding</label>
+                        </div>
+                    </div>
+-->
+                </fieldset>
+
+                <p class="form__note form__note--error" ng-show="serverError">
+                    {{ serverError }}
+                </p>
+
+                <div class="button-group">
+                    <a href="" path="training.manage.index" class="button">Cancel</a>
+                    <div class="button-withtext">
+                        <button class="button button--positive button--icon-right" disable-toggle="data.$loading" ng-click="saveCourse(isFormValid(form.$valid), data, true)">Save and Continue <i class="icon--right"></i></button>
+                        <a href="" ng-click="saveCourse( isFormValid(form.$valid) , data)" class="button-text">or save and exit</a>
+                    </div>
+                </div>
+            </ng-form>
+
+        </div>
+
+        <!-- END content component -->
+
+        <!-- nav component -->
+
+        <div class="page__aside lt-tablet-hide">
+
+            <div class="panel panel--noPadding">
+                <ul class="progress-list">
+                    <li class="progress__title">Create a new course</li>
+                    <li class="progress__step progress__step--active">
+                        <a href="{{ data.TrainingCourseId ? BASE_URL + '/training/manage/' + data.TrainingCourseId : BASE_URL + '/training/manage/create'}}" class="step__item">
+                            <div class="step__number" data-text="1"></div>
+                            <div class="step__title">{{ page.action }}</div>
+                            <div class="step__description">{{ page.action }} your course</div>
+                        </a>
+                    </li>
+                    <li class="progress__step">
+                        <span class="step__item">
+                            <div class="step__number" data-text="2"></div>
+                            <div class="step__title">Add Subjects</div>
+                            <div class="step__description">Choose from or create a new subject</div>
+                        </span>
+                    </li>
+                    <li class="progress__step">
+                        <span class="step__item">
+                            <div class="step__number" data-text="3"></div>
+                            <div class="step__title">Publish</div>
+                            <div class="step__description">Who has to do this course?</div>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- END nav component -->
+
+    </div>
+</div>

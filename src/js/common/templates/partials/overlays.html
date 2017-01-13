@@ -1,0 +1,11 @@
+<div class="overlays overlays--fixed">
+    <div ng-repeat="overlay in overlays | reverse" class="overlay overlay--{{ overlay.type }}" ng-show="overlay.visible">
+        <div class="overlay__background"></div>
+        <div class="overlay__content">
+            <a ng-click="overlay.visible = false" class="overlay__close"></a>
+            <div class="overlay__icon"><i class="icon--{{ overlay.type }} icon--check"></i></div>
+            <h1 class="overlay__title">{{overlay.title}}</h1>
+            <div class="overlay__message">{{ overlay.message }}</div>
+        </div>
+    </div>
+</div>

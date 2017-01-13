@@ -1,0 +1,119 @@
+﻿<table class="table-form table-form--full-width"
+       ng-class="{'table-form__edit-all' :  parentData.$editing === 'all'}">
+
+    <tbody>
+        
+        <tr ng-class="{ 'is--editing' : parentData.$editing === 'employmentType' || parentData.$editing === 'all' }">
+            <th>Type</th>
+            <td>
+                <span class="table-form__form-value">{{ parentData.selectData.EmploymentTypeIdObj[form.EmploymentTypeId.$viewValue] }}</span>
+                <table-form-edit edit-name="employmentType"></table-form-edit>
+                <div class="table-form__form-field">
+                    [[EmploymentTypeId]]
+                </div>
+                <table-form-buttons edit-name="employmentType"></table-form-buttons>
+            </td>
+        </tr>
+
+        <tr ng-class="{ 'is--editing' : (parentData.$editing === 'commencementDate' || parentData.$editing === 'all') &&  parentData.$globalPermission.isadmin}">
+
+            <th>Commencement date</th>
+            <td>
+                <span class="table-form__form-value">{{form.CommencementDate.$viewValue | date}}</span>
+                <table-form-edit edit-name="commencementDate"></table-form-edit>
+                <div class="table-form__form-field">
+                    [[CommencementDate]]
+                </div>
+                <table-form-buttons edit-name="commencementDate" ng-if="parentData.$globalPermission.isadmin"></table-form-buttons>
+            </td>
+        </tr>
+
+        <tr ng-class="{ 'is--editing' : parentData.$editing === 'name' || parentData.$editing === 'all' }">
+            <th>Full name</th>
+            <td>
+                <span class="table-form__form-value">
+                    {{form.FirstName.$viewValue}} {{form.SurName.$viewValue}}
+                </span>
+                <table-form-edit edit-name="name"></table-form-edit>
+                <div class="table-form__form-field">
+                    [[FirstName]]
+                    [[SurName]]
+                </div>
+                <table-form-buttons edit-name="name"></table-form-buttons>
+            </td>
+        </tr>
+        
+        <tr class="table-form__single-field" ng-class="{ 'is--editing' : parentData.$editing === 'mobile' || parentData.$editing === 'all' }">
+            <th>Phone Numbers</th>
+            <td>
+                <span class="table-form__form-value">
+                    {{form.MobilePhone.$viewValue | tel}}
+                </span>
+                <table-form-edit edit-name="mobile"></table-form-edit>
+                <div class="table-form__form-field">
+                    [[MobilePhone]]
+                </div>
+                <table-form-buttons edit-name="mobile"></table-form-buttons>
+            </td>
+        </tr>
+
+        <tr class="table-form__single-field" ng-class="{ 'is--editing' : parentData.$editing === 'email' || parentData.$editing === 'all' }">
+            <th>Email address</th>
+            <td>
+                <span class="table-form__form-value">
+                    {{form.Email.$viewValue}}
+                </span>
+                <table-form-edit edit-name="email"></table-form-edit>
+                <div class="table-form__form-field">
+                    [[Email]]
+                </div>
+                <table-form-buttons edit-name="email"></table-form-buttons>
+            </td>
+        </tr>
+
+        <tr ng-class="{ 'is--editing' : parentData.$editing === 'address' || parentData.$editing === 'all' }">
+            <th>Address</th>
+            <td>
+                <div class="table-form__form-value">
+                    <div ng-show="form.Address.$viewValue">
+                        {{ form.Address.$viewValue }},
+                    </div>
+                    <div>
+                        <span ng-show="form.Suburb.$viewValue">{{ form.Suburb.$viewValue }} </span>
+                        <span ng-show="form.StateRegionId.$viewValue == state.Value" ng-repeat="state in parentData.selectData.StateRegionId">{{state.Label}}, </span>
+                        <span ng-show="form.Postcode.$viewValue">{{form.Postcode.$viewValue}}</span>
+                    </div>
+                    <div ng-show="form.Country.$viewValue">
+                        {{ form.Country.$viewValue }}
+                    </div>
+                </div>
+                <table-form-edit edit-name="address"></table-form-edit>
+                <div class="table-form__form-field">
+                    <address-lookup>
+                        [[Postcode]]
+                        <address-lookup-suburb></address-lookup-suburb>
+                        <div class="form__field" ng-class="{'is--blocked' : !form.$locationLookupResolved}">
+                            [[Address]]
+                            <div class="form__field" ng-show="form.$locationLookupResolved">
+                                [[Suburb]]
+                            </div>
+                            [[StateName]]
+                            <div class="form__field" ng-show="form.$noLocationMatches">
+                                [[City]]
+                            </div>
+                            [[CountryId]]
+                        </div>
+                    </address-lookup>
+                </div>
+                <table-form-buttons edit-name="address"></table-form-buttons>
+            </td>
+        </tr>
+        <tr ng-show="parentData.$editing === 'all'">
+            <th></th>
+            <td>
+                <table-form-buttons edit-name="all"></table-form-buttons>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

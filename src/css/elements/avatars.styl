@@ -1,0 +1,118 @@
+
+.ui
+    
+// Basic avatar
+//
+// Add an avatar image.  Default size is 44px x 44px
+//
+// Markup:
+// <avatar size="{{modifier_class}}"></avatar>
+//
+// tiny - Tiny sized avatar (pass into size attribute)
+// small - Small sized avatar (pass into size attribute)
+// med - Med sized avatar (pass into size attribute)
+// large - Large sized avatar (pass into size attribute)
+//
+// Styleguide elements.avatar.basic
+
+
+// Group avatar
+//
+// Use the image for a users primary group.  The type attribute can be set to either 'group' or 'single'.  Single is the default value
+//
+// Markup:
+// <avatar type="group"></avatar>
+//
+// Styleguide elements.avatar.group
+
+
+// Current user avatar
+//
+// Use the image for the current user.  The current-user attribute can be set to true
+//
+// Markup:
+// <avatar current-user="true"></avatar>
+//
+// Styleguide elements.avatar.currentuser
+
+    .avatar {
+        display: inline-block;
+        vertical-align: top
+        border-radius: 500px;
+        width: 44px;
+        height: 44px;
+        overflow: hidden;
+        background-color: #ececec;
+    }
+
+    .avatar--tiny {
+        width: 20px;
+        height: 20px;
+    }
+
+    .avatar--small {
+        width: 34px;
+        height: 34px;
+    }
+    .avatar--med {
+        width: 70px;
+        height: 70px;
+    }
+    .avatar--large {
+        width: 160px;
+        height: 160px;
+    }
+
+    // Multiple avatars
+    //
+    // Display multiple avatars in a grid
+    //
+    // Markup:
+    // <ul class="avatars">
+    //     <li ng-repeat="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+    //         <a href="#" target="_self">
+    //             <avatar size="small"></avatar>
+    //         </a>
+    //     </li>
+    //     <li><a href="" class="avatar avatar--small additional-members">+12</a></li>
+    // </ul>
+    //  
+    // Styleguide elements.avatar.multiple
+
+    .avatars {
+        margin: 10px 0 0 0;
+        padding: 0;
+        font-size: 0;
+
+        li {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        a {
+            font-size: 14px;
+            display: block;
+            margin: 0 7px 7px 0;
+
+        }
+
+        .avatar {
+            display: block;
+        }
+    }
+
+
+    //Pill for showing additional members, comes in the size of the small avatar
+    .additional-members {
+        line-height: 34px;
+        text-align: center;
+        background-color: grey8;
+        color: grey3;
+        transition: background 125ms ease, color 125ms ease;
+
+        &:hover {
+            text-decoration: none;
+            background-color: primary;
+            color: white;
+        }
+    }

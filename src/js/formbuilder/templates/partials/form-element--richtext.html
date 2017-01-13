@@ -1,0 +1,26 @@
+<div class="form__editor {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+
+    <label
+    ng-if="element.label"
+    class="form__label"
+    for="{{ element.formName + '__' + element.name }}">{{ element.label }}</label>
+
+    <div class="textarea">
+        <text-angular
+            ng-model="element.val"
+            id="{{ element.formName + '__' + element.name }}"
+            ng-required="element.validation.required"
+            ng-minLength="{{element.validation.minLength || 0}}"
+            ng-maxLength="{{element.validation.maxLength || 9999}}"
+            ng-pattern="element.validation.pattern"
+            placeholder="{{ element.placeholder }}"
+            ta-toolbar="{{ element.richTextConfig }}"
+            name="{{element.name}}"
+        ></text-angular>
+    </div>
+
+    <span class="form_note" ng-if="element.note">{{ element.note }}</span>
+
+    <error-builder></error-builder>
+
+</div>

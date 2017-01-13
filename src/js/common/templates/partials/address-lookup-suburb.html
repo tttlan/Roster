@@ -1,0 +1,17 @@
+<div class="form__field {{suburbClasses}}" ng-show="form[modelNameBinding].data.length">
+    <div class="form__field">
+        <label class="form__label" for="selectSuburb">Suburb</label>
+        <select-box ng-model="form[modelNameBinding].selected">
+            <select id="selectSuburb"
+                    ng-model="form[modelNameBinding].selected"
+                    ng-change="{{ngChangeNameBinding}}"
+                    ng-options="location as location.label for location in form[modelNameBinding].data track by location.id"></select>
+        </select-box>
+    </div>
+    <div class="form__field">
+        <div class="field__checkbox">
+            <input id="noSuburbMatches{{$id}}" type="checkbox" ng-model="form[modelNameBinding].noMatches" ng-change="{{ngChangeNameBinding}}">
+            <label for="noSuburbMatches{{$id}}" class="form__label">None of these suburbs are correct</label>
+        </div>
+    </div>
+</div>

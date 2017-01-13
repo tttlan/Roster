@@ -1,0 +1,39 @@
+<div class="text-editor">
+    <div class="text-editor__toolbar">
+
+        <ul class="text-editor__toolbar-group">
+            <li ng-if="buttons.bold">
+                <button tabindex="-1" ng-click="action('bold', $event)" tooltip="Bold" tooltip-append-to-body="true">B</button>
+            </li>
+            <li ng-if="buttons.italic">
+                <button tabindex="-1" ng-click="action('italic', $event)" tooltip="Italic" tooltip-append-to-body="true"><i>I</i></button>
+            </li>
+            <li ng-if="buttons.underline">
+                <button tabindex="-1" ng-click="action('underline', $event)" tooltip="Underline" tooltip-append-to-body="true"><u>U</u></button>
+            </li>
+        </ul>
+        <ul class="text-editor__toolbar-group">
+            <li ng-if="buttons.heading1">
+                <button tabindex="-1" ng-click="action('append-h2', $event)" tooltip="Heading 1" tooltip-append-to-body="true">H1</button>
+            </li>
+            <li ng-if="buttons.heading2">
+                <button tabindex="-1" ng-click="action('append-h3', $event)" tooltip="Heading 2" tooltip-append-to-body="true">H2</button>
+            </li>
+            <li ng-if="buttons.unorderedlist">
+                <button tabindex="-1" ng-click="action('insertunorderedlist', $event)" tooltip="Bullet List" tooltip-append-to-body="true"><i class="icon--list-ul"></i></button>
+            </li>
+            <li ng-if="buttons.orderedlist">
+                <button tabindex="-1" ng-click="action('insertorderedlist', $event)" tooltip="Number List" tooltip-append-to-body="true"><i class="icon--list-ol"></i></button>
+            </li>
+        </ul>
+        <ul class="text-editor__toolbar-group" ng-if="buttons.image">
+            <li ng-if="buttons.image">
+                <button tabindex="-1" ng-click="browse()" tooltip="Insert Image" tooltip-append-to-body="true"><i class="icon--picture"></i></button>
+            </li>
+        </ul>
+    </div>
+    <div class="is-visually-hidden">
+        <input type="file" class="text-editor__fileinput" name="text-editor__fileinput" />
+    </div>
+    <div wrap="hard" class="text-editor__content" contenteditable="true" data-placeholder="{{placeholder}}" ng-class="{'content--placeholder' : showPlaceholder}"></div>
+</div>

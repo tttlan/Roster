@@ -1,0 +1,38 @@
+<div class="feed-posts">
+    <div class="post post--create" ng-show="userCan.add">
+        <div class="post__image">
+            <avatar current-user="true" ng-if="feedType !== 'profile'"></avatar>
+        </div>
+        <div class="post__body">
+            <div ng-form class="new-post" name="form" ng-submit="addPost(newPost)" ng-class="{'is--active' : postExpanded}">
+                <a href="" ng-click="triggerUploader()" class="new-post__upload"><i class="icon--camera"></i></a>
+
+                <textarea class="new-post__input" placeholder="Write or share something..." rows="1"
+                autogrow ng-focus="postExpanded = true" ng-model="newPost.content"></textarea>
+                
+                <uploader ng-maxsize="5000 * 1024" maxfiles="1" grid="true" ng-model="newPost.files" is-uploading="uploadingAttachment" container-id="7" module-upload="dashboard"></uploader>
+
+                <div class="new-post__footer">
+                    <i class="icon--help" style="position: absolute;right: 80px;top: 12px; color: #cacaca;" tooltip="Max upload size 5MB" tooltip-placement="left" tooltip-append-to-body="true"></i>
+                    <button class="button button--primary button--small" type="button" ng-disabled="disabledPost()" ng-click="addPost(newPost)">Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div paginate="getNewsFeed"
+        page-size="5"
+        paginate-on-scroll="true">
+        <div class="message message--empty" ng-hide="page.loading || page.items.length || page.error">
+            <i class="icon--mnuDashboard icon-is-huge"></i>
+            <p>Your newsfeed is empty</p>
+        </div>
+        
+        <feed-item 
+            ng-repeat="post in page.items | limitTo:page.showing"
+            date-break="post.published" 
+            date-break-bypass="post.content.PostDestination"
+            ng-class="{ 'post--is-sticky' : post.content.PostDestination > 3 && $first, 'post--deleted': post.isDeleted }"
+            ></feed-item>
+
+    </div>
+</div>

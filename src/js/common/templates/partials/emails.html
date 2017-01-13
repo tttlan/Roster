@@ -1,0 +1,70 @@
+<div class="directive__email">
+    <form class="form" name="$emailForm">
+
+        <div class="form__field" ng-repeat="email in emails">
+
+            <div class="form__field">
+                <a href=""
+                    class="field__after button--icon"
+                    ng-confirm-click="onRemove($index)"
+                    ng-confirm-message="Are you sure you want to remove this email?"
+                    ng-show="emailData.allowRemove">
+                    <i class="icon--round-minus"
+                        tooltip="REMOVE"
+                        tooltip-placement="right"
+                    ></i>
+                </a>
+
+                <!--<label for="emailAddress{{$index}}" class="off-screen">Email address</label>-->
+
+                <input
+                    id="emailAddress{{$index}}"
+                    type="email"
+                    placeholder="Enter an email address"
+                    ng-model="email.value" />
+            </div>
+
+            <div class="form__field--inline">
+                <div class="field__checkbox field__checkbox--small">
+                    <input type="checkbox"
+                        ng-model="email.isPublic"
+                        id="emailIsPublic_{{emailData.id}}_{{ $index }}" />
+                    <label class="form__label__public" for="emailIsPublic_{{emailData.id}}_{{ $index }}"></label>
+                    <!--<label class="form__label" for="emailIsPublic_{{emailData.id}}_{{ $index }}">-->
+                        Public
+                    </label>
+                </div>
+                <div class="field__radio field__radio--small">
+                    <input type="radio"
+                        id="emailIsNotified_{{emailData.id}}_{{ $index }}"
+                        ng-model="email.isPrimary"
+                        ng-value="$index"
+                        ng-change="setPrimary($index)"
+                        ng-attr-name="selectedPrimary" />
+                    <label class="form__label__receive" for="emailIsNotified_{{emailData.id}}_{{ $index }}"></label>
+                    <label class="form__label" for="emailIsNotified_{{emailData.id}}_{{ $index }}">
+                        Receive email notifications
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <a href="" ng-show="emailData.allowAdd" ng-click="emailData.$add()" class="button-text">+ add email address</a>
+
+        <input type="hidden" name="emailModel" ng-model="emails" />
+
+        <div class="form__errors" ng-show="!$emailForm.emailModel.$valid && $emailForm.emailModel.$viewValue.length">
+            <error ng-show="$emailForm.emailModel.$error.hasPrimary">
+                You need to select an email address to recieve notifications.
+            </error>
+            <error ng-show="$emailForm.emailModel.$error.overMin">
+                You need to have at least {{ emailData.min }} email.
+            </error>
+            <error ng-show="$emailForm.emailModel.$error.underMax">
+                You can't have more than {{ emailData.max }} email addresses.
+            </error>
+        </div>
+
+    </form>
+</div>

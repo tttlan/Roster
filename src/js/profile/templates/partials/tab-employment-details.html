@@ -1,0 +1,111 @@
+<div class="segment" ng-controller="profileEmployeeDetails" ng-if="profile.$userCan.viewprofileemploymentdetail">
+    
+    <div class="segment__fieldset" ng-class="{'is--loading': employeeDetailsForm.$submitting}">
+
+        <a href="" class="profile__onboardingPending" ng-if="employeeDetailsForm.staticValues.OnboardingStatus">
+            <p><i class="icon--round-info"></i>Changes pending<span ng-if="employeeDetailsForm.staticValues.OnboardingCommencementDate"> - {{ employeeDetailsForm.staticValues.OnboardingCommencementDate | date }}</span></p>
+            <span ng-click="employeeDetails.viewPendingChanges()" class="profile__onboardingPendingViewBtn">View</span>
+        </a>
+
+        <div class="segment__fieldset-heading">
+            
+            <h2><i class="icon--notebook"></i>Employment summary</h2>
+            
+            <table-form-edit edit-name="all" parent-data="employeeDetailsForm" ng-if="profile.$userCan.caneditemployeedetail" ng-show="employeeDetailsForm.$loaded"></table-form-edit>
+            
+            <a href="" class="table-form__edit table-form__edit--cancel"
+                ng-click="employeeDetailsForm.$cancelEdit(); resetForm();"
+                ng-show="employeeDetailsForm.$editing === 'all'"
+            >
+                <span>Cancel</span>
+            </a>
+            
+        </div>
+        
+        <loading-placeholder ng-hide="employeeDetailsForm.$loaded"></loading-placeholder>
+        
+        <div ng-show="employeeDetailsForm.$loaded && !profile.$userCan.viewprofileemploymentdetail" class="message message--small">
+            <p>You do not have permission to view the employment details</p>
+        </div>
+
+        <form-builder
+            form-id="employeeDetailsForm"
+            form-data-url="/interface/views/profile/form-data/employment-details.json"
+            template="/interface/views/profile/partials/form-employee-details.html"
+            submit="employeeDetailsFormSave"
+            model-data="employeeDetailsForm.$promise"
+            parent-data="employeeDetailsForm"
+            before-submit="employeeDetails.confirmChanges"
+            ng-show="profile.$userCan.viewprofileemploymentdetail"
+        ></form-builder>
+
+    </div>
+    
+</div>
+
+
+<div class="segment" ng-controller="profileBanking" ng-if="profile.$userCan.canviewbankingdetails">
+
+    <div class="segment__fieldset" ng-if="banking.$authenticated" ng-class="{'is--loading': banking.bankingInformation.$submitting}">
+
+        <form-builder 
+            form-id="bankingInformationForm" 
+            form-data-url="/interface/views/profile/form-data/banking-information.json" 
+            template="/interface/views/profile/partials/form-banking-information.html" 
+            submit="bankingInformationSave" 
+            model-data="banking.bankingInformation.$promise"
+            parent-data="banking.bankingInformation">
+        </form-builder>
+
+    </div>
+
+    <div ng-if="!banking.$authenticated">
+    
+        <div class="segment__fieldset-heading">
+            <h2><i class="icon--notebook"></i>Banking details</h2>
+        </div>
+
+        <form-builder
+            ng-if="banking.$ownProfile && profile.MemberId"
+            form-id="accessOwnBankingInformationForm"
+            form-data-url="/interface/views/profile/form-data/access-banking-information.json"
+            submit="accessBankingInformationSave">
+        </form-builder>
+        
+        <form-builder
+            ng-if="!banking.$ownProfile"
+            form-id="accessBankingInformationForm"
+            form-data-url="/interface/views/profile/form-data/access-banking-information.json"
+            submit="accessBankingInformationSave">
+        </form-builder>
+        
+    </div>
+
+    <!-- <h3 class="profile-details__compact-heading">Access history</h3>
+
+    <table class="table table--cozy">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Peters</td>
+                <td>HR</td>
+                <td>12 Oct 2014</td>
+            </tr>
+            <tr>
+                <td>Jacquie Smith</td>
+                <td>Regional Manager</td>
+                <td>07 Jul 2013</td>
+            </tr>
+            <tr>
+                <td class="no-padding" colspan="3"><a href="" ng-click="toggleSomeShit()" class="table__show-more"><i class="icon--ellipsis"></i></a></td>
+            </tr>
+        </tbody>
+    </table> -->
+
+</div>

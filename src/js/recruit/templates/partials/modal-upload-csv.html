@@ -1,0 +1,22 @@
+﻿<ng-form name="uploadCsvForm" id="uploadCsvForm" enctype="multipart/form-data">
+    <header class="modal__header">
+        <h3 class="modal__title">Upload a csv file with onboarding details</h3>
+        <a href="" class="modal__close" ng-click="close()"></a>
+    </header>
+    <div class="uploader-container" style="width:80%;margin-left:10%;margin-top:10px;">
+        <uploader maxsize="52428800" maxfiles="1" ng-model="data.FileStoreId" name="filestore" container-id="2" cta="Browse for a csv file"></uploader>
+        <span class="form__note form__note--error" ng-show="form.filestore.$dirty">
+            An uploaded file or an external link is required
+        </span>
+        <p>
+            <small>
+                Max file size is 50MB<br />
+                Supported file types: csv
+            </small>
+        </p>
+    </div>
+    <footer class="modal__footer">
+        <button href="" class="button button--small" ng-click="cancel()">Cancel</button>
+        <button type="submit" class="button button--positive button--small" ng-click="updateCandidates(data.FileStoreId[0])" ng-disabled="!data.FileStoreId">Update candidates</button>
+    </footer>
+</ng-form>

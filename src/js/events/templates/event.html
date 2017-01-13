@@ -1,0 +1,285 @@
+<div class="page page--2-1 event">
+
+    <div class="page__wrapper">
+        
+        <loader align="center" size="large" ng-if="!event.$loaded"></loader>
+
+        <div class="message message--empty" ng-show="event.$loaded && !event.$userCan.eventFound">
+            <i class="icon--events icon-is-huge"></i>
+            <p>Event not found</p>
+        </div>
+
+        <div class="message message--empty" ng-show="event.$loaded && !event.$userCan.view">
+            <i class="icon--events icon-is-huge"></i>
+            <p>You do not have permission to view this event</p>
+        </div>
+
+        <div class="page__content" ng-if="event.$loaded && event.$userCan.view && event.$userCan.eventFound">
+            
+            <div class="segment segment--no-padding">
+                
+                <div ng-if="event.PhotoLrgId" class="event__image">
+                    
+                    <div class="event__image-content">
+                        <a href="/interfaceTemplates/dashboard.html#dashboard/news" path="events.index" class="page-return" ng-show="event.$loaded && event.$userCan.view" title="Back to events"><i class="icon--arrow-left icon-is-huge"></i><span class="page-return__text">Back to events</span></a>
+
+                        <h1>{{event.Title}}</h1>
+                    </div>
+                    
+                    <div class="event__image-wrapper">
+                        <img file-link="{{event.PhotoLrgId}}" alt="{{event.Name}}" />
+                    </div>
+                </div>
+
+                <div class="event__inner" ng-class="{'event__inner--extra-padding': event.$userCan.cancelevent || event.$userCan.delete || event.$userCan.edit}">
+
+                    <a 
+                        id="eventDelete" 
+                        ng-if="event.$userCan.delete" 
+                        href="" 
+                        ng-confirm-click="event.delete();" 
+                        ng-confirm-message="Are you sure you want to delete this event?  This action cannot be undone and your data will permanently deleted" 
+                        ng-confirm-button-text="Delete event" 
+                        ng-confirm-button-classes="button--negative" 
+                        class="event__delete button button--tiny button--primary" path-params="::event.EventId">Delete event</a>
+
+                    <a 
+                        id="eventCancel" 
+                        ng-if="event.$userCan.cancelevent" 
+                        href="" 
+                        ng-confirm-click="event.cancel();" 
+                        ng-confirm-message="Are you sure you want to cancel this event?  This action cannot be undone however it will still be possible to view the event in it's cancelled state" 
+                        ng-confirm-button-text="Cancel event" 
+                        ng-confirm-button-classes="button--negative" 
+                        class="event__cancel button button--tiny button--primary" path-params="::event.EventId">Cancel event</a>
+                    
+                    <a id="eventEdit" ng-if="event.$userCan.edit" path="events.edit" class="event__edit button button--primary button--tiny" path-params="::event.EventId">Edit event</a>
+                    
+                    <a ng-if="!event.PhotoLrgId" href="/interfaceTemplates/dashboard.html#dashboard/news" path="events.index" class="page-return" ng-show="event.$loaded && event.$userCan.view" title="Back to events"><i class="icon--arrow-left icon-is-huge"></i><span class="page-return__text">Back to events</span></a>
+
+                    <h1 ng-if="!event.PhotoLrgId">{{event.Title}}</h1>
+                        
+                    <div class="event__details">
+                        
+                        <dl class="event__detail">
+                            <dt>Starting at</dt>
+                            <dd>{{event.StartDate | amUtc | amLocal | amDateFormat:'MMM D YYYY, hh:mm A'}}</dd>
+                        </dl>
+
+                        <dl class="event__detail" ng-if="event.EndDate">
+                            <dt>Ending at</dt>
+                            <dd>{{event.EndDate | amUtc | amLocal | amDateFormat:'MMM D YYYY, hh:mm A'}}</dd>
+                        </dl>
+
+                        <dl class="event__detail" ng-if="event.RsvpDate">
+                            <dt>RSVP by</dt>
+                            <dd>{{event.RsvpDate | dateTime}}</dd>
+                        </dl>
+
+                        <dl class="event__detail" ng-if="event.MaxAttending">
+                            <dt>Event capacity</dt>
+                            <dd>
+                                <ng-pluralize count="event.MaxAttending"
+                                    when="{'one': '1 person',
+                                           'other': '{} people'}">
+                                </ng-pluralize>
+                            </dd>
+                        </dl>
+
+                    </div>
+
+                    <div class="event__rsvp" ng-show="event.$userCan.canrsvpevent || event.$hasStarted && (event.$userCan.edit || event.$userCan.delete)">
+                        
+                        <span ng-show="event.$userCan.canrsvpevent">
+                            <a ng-if="event.invitees" id="eventRsvpYes" ng-click="event.setRsvp(1)" ng-class="event.MemberInviteStatus == 1 ? 'button--default-cursor button--positive' : 'button--basic'" href="" class="button button--small"><i class="icon--check" ng-if="event.MemberInviteStatus == 1"></i>{{event.MemberInviteStatus == 1 ? 'Attending' : 'Attend Event'}}</a>
+                            <a ng-if="event.invitees" id="eventRsvpMaybe" ng-click="event.setRsvp(2)" ng-class="event.MemberInviteStatus == 2 ? 'button--default-cursor button--caution' : 'button--basic'" href="" class="button button--small">{{event.MemberInviteStatus == 2 ? 'Might be attending' : 'Maybe'}}</a>
+                            <a ng-if="event.invitees" id="eventRsvpNo" ng-click="event.setRsvp(3)" ng-class="event.MemberInviteStatus == 3 ? 'button--default-cursor button--negative' : 'button--basic'" href="" class="button button--small"><i class="icon--cross" ng-if="event.MemberInviteStatus == 3"></i>{{event.MemberInviteStatus == 3 ? 'Not attending' : 'No'}}</a>
+                        
+                            <div class="event__add-to-cal">
+                                <a class="button button--small button--primary" target="_blank" href="/components/network/Events/EventSaveCalendar.ashx?eventid={{ ::event.EventId }}"><i class="icon--calendar"></i>Add to calendar</a>
+                            </div>
+                        </span>
+                                                
+                    </div>
+
+                    <ul class="notifications">
+                        <li class="notification notification--warning" ng-show="!event.$userCan.canrsvpevent && event.invitees.attending.count === event.MaxAttending">
+                            <div class="notification__icon"><i class="icon--help"></i></div>
+                            <p class="notification__message">This event only has capacity for {{event.MaxAttending}} people and currently has no available spots</p>
+                        </li>
+                        <li class="notification notification--warning" ng-show="!event.$userCan.canrsvpevent && event.$rsvpPast">
+                            <div class="notification__icon"><i class="icon--help"></i></div>
+                            <p class="notification__message">RSVP's for this event have now closed</p>
+                        </li>
+                        <li class="notification notification--warning" ng-show="event.EventStatus === 2">
+                            <div class="notification__icon"><i class="icon--help"></i></div>
+                            <p class="notification__message">This event has been cancelled</p>
+                        </li>
+                    </ul>
+
+                    <hr class="solid" />
+
+                    <h2 class="h5">Location</h2>
+                    <p>{{event.Location}}<br />
+                        {{event.Address}}</p>
+
+                    <h2 class="h5">Details</h2>
+
+                    <div class="event__description" ng-bind-html="event.Description">
+                        
+                    </div>
+
+                </div>               
+
+            </div>
+
+             <div class="comments-grey-bg" ng-if="event.ShowComments" id="comments">
+                        
+                <h1>Comments</h1>
+
+                <post-comments
+                    resource-type="event"
+                    resource-id="event.EventId"
+                    comment-count="event.CommentCount"
+                    current-user="event.$currentUser"
+                    show-add-comment="true" 
+                    ps="20"
+                >
+                </post-comments>
+
+            </div>            
+
+        </div>
+
+        <div class="page__aside" ng-if="event.$loaded && event.$userCan.view && event.$userCan.eventFound">
+
+            <div class="segment segment--no-padding">
+                <a href="" ng-click="event.showMap()" title="View interactive map">
+                    <static-map address="{{ event.Address }}" width="{{ event.$mapWidth }}" height="205"></static-map>
+                </a>
+                
+                <p>{{ event.Address }}</p>
+            </div>
+            
+            <tabs ng-if="event.ShowGuestList && event.$loaded">
+
+                <!-- ng-ifs here keep the tabs rendering nicely - makes sure all elements get rendered in the same digest cycle -->
+                <ul class="nav nav--tabs" overflow>
+                    <li tab-link active ng-if="event.$hasStarted"><a href="">Confirmed attendees</a></li>
+                    <li tab-link active ng-if="event.$loaded"><a href="">Attending</a></li>
+                    <li tab-link ng-if="event.$loaded"><a href="" ng-click="event.loadInvitees('maybe', 'initial')">Maybe</a></li>
+                    <li tab-link ng-if="event.$loaded"><a href="" ng-click="event.loadInvitees('not', 'initial')">Not</a></li>
+                    <li tab-link ng-if="event.$loaded"><a href="" ng-click="event.loadInvitees('invited', 'initial')">No RSVP</a></li>
+                </ul>
+
+                <div class="tab-group segment">
+
+                    <div class="event__confirm-attendance" id="confirmAttendees" ng-show="event.$hasStarted && tabs.index === 1 && (event.$userCan.edit || event.$userCan.delete)">
+                        <a id="eventConfirmAttendance" path="events.attendance" path-params="event.EventId" class="button button--primary button--small">Confirm event attendees</a>
+                    </div>
+                    
+                    <loader align="center" size="small" ng-show="event.$showInviteeLoaderInitial"></loader>                   
+                    <div tab-content ng-if="event.$hasStarted" ng-init="event.loadInvitees('confirmedAttendance', 'initial')" class="tab-group__tab" ng-class="{'tab-group__tab--overflow-hidden' : event.invitees.confirmedAttendance.people.length > 8 && !isMobile}">
+                                                                        
+                        <p><strong>
+                        <ng-pluralize ng-show="event.invitees.confirmedAttendance.people != null" count="event.invitees.confirmedAttendance.count"
+                            when="{'0': 'There are no confimed attendees',
+                                   'one': 'There is one confirmed attendee',
+                                   'other': 'There are {} confirmed attendees'}">
+                        </ng-pluralize></strong></p>
+                        
+                        <div class="people-list__person" event-invitee="person" ng-repeat="person in event.invitees.confirmedAttendance.people" ng-class="{'last':$last}"></div>
+
+                        <loader align="center" size="small" ng-show="event.$showInviteeLoaderIncremental"></loader>
+
+                        <div class="people-list__load-more" ng-show="event.invitees.confirmedAttendance.people.length !== 0 && event.invitees.confirmedAttendance.people.length !== event.ConfirmedAttendCount && event.invitees.confirmedAttendance.people.length % 10 === 0 && !event.$showInviteeLoaderIncremental">
+                            <a href="" class="button button--tiny button--basic" ng-click="event.loadInvitees('confirmedAttendance')">Load more</a>
+                        </div>
+
+                    </div>
+
+                    <div tab-content ng-if="event.$loaded" class="tab-group__tab" ng-class="{'tab-group__tab--overflow-hidden' : event.invitees.attending.people.length > 8 && !isMobile}">
+
+                        <p><strong>
+                        <ng-pluralize ng-show="event.invitees.attending.people != null" count="event.invitees.attending.count"
+                            when="{'0': 'No one is attending',
+                                   'one': '1 person will be attending',
+                                   'other': '{} people will be attending'}">
+                        </ng-pluralize></strong></p>
+                        
+                        <div class="people-list__person" event-invitee="person" ng-repeat="person in event.invitees.attending.people" ng-class="{'last':$last}"></div>
+
+                        <loader align="center" size="small" ng-show="event.$showInviteeLoaderIncremental"></loader>
+
+                        <div class="people-list__load-more" ng-show="event.invitees.attending.people.length !== 0 && event.invitees.attending.people.length !== event.AttendCount && event.invitees.attending.people.length % 10 === 0 && !event.$showInviteeLoaderIncremental">
+                            <a href="" class="button button--tiny button--basic" ng-click="event.loadInvitees('attending')">Load more</a>
+                        </div>
+
+                    </div>
+                    
+                    <div tab-content ng-if="event.$loaded" class="tab-group__tab" ng-class="{'tab-group__tab--overflow-hidden' : event.invitees.maybe.people.length > 8 && !isMobile}">
+
+                        <p><strong>
+                        <ng-pluralize ng-show="event.invitees.maybe.people != null" count="event.invitees.maybe.count"
+                            when="{'0': '0 people may be attending',
+                                   'one': '1 person may be attending',
+                                   'other': '{} people may be attending'}">
+                        </ng-pluralize></strong></p>
+
+                        <div class="people-list__person" event-invitee="person" ng-repeat="person in event.invitees.maybe.people" ng-class="{'last':$last}"></div>
+
+                        <loader align="center" size="small" ng-show="event.$showInviteeLoaderIncremental"></loader>
+
+                        <div class="people-list__load-more" ng-show="event.invitees.maybe.people.length !== 0 && event.invitees.maybe.people.length !== event.MaybeCount && event.invitees.maybe.people.length % 10 === 0 && !event.$showInviteeLoaderIncremental">
+                            <a href="" class="button button--tiny button--basic" ng-click="event.loadInvitees('maybe')">Load more</a>
+                        </div>
+
+                    </div>
+
+                    <div tab-content ng-if="event.$loaded" class="tab-group__tab" ng-class="{'tab-group__tab--overflow-hidden' : event.invitees.not.people.length > 8 && !isMobile}">
+
+                        <p><strong>
+                        <ng-pluralize ng-show="event.invitees.not.people != null" count="event.invitees.not.count"
+                            when="{'0': '0 people are not attending',
+                                   'one': '1 person is not attending',
+                                   'other': '{} people are not attending'}">
+                        </ng-pluralize></strong></p>
+                        
+                        <div class="people-list__person" event-invitee="person" ng-repeat="person in event.invitees.not.people" ng-class="{'last':$last}"></div>
+
+                        <loader align="center" size="small" ng-show="event.$showInviteeLoaderIncremental"></loader>
+
+                        <div class="people-list__load-more" ng-show="event.invitees.not.people.length !== 0 && event.invitees.not.people.length !== event.DeclineCount && event.invitees.not.people.length % 10 === 0 && !event.$showInviteeLoaderIncremental">
+                            <a href="" class="button button--tiny button--basic" ng-click="event.loadInvitees('not')">Load more</a>
+                        </div>
+
+                    </div>
+
+                    <div tab-content ng-if="event.$loaded" class="tab-group__tab" ng-class="{'tab-group__tab--overflow-hidden' : event.invitees.invited.people.length > 8 && !isMobile}">
+                                                
+                        <p><strong>
+                        <ng-pluralize ng-show="event.invitees.invited.people != null" count="event.invitees.invited.count"
+                            when="{'0': '0 people have not set an RSVP',
+                                   'one': '1 person has not set an RSVP',
+                                   'other': '{} people have not set an RSVP'}">
+                        </ng-pluralize></strong></p>
+
+                        <div class="people-list__person" event-invitee="person" ng-repeat="person in event.invitees.invited.people" ng-class="{'last':$last}"></div>
+
+                        <loader align="center" size="small" ng-show="event.$showInviteeLoaderIncremental"></loader>
+
+                        <div class="people-list__load-more" ng-show="event.invitees.invited.people.length !== 0 && event.invitees.invited.people.length !== event.InviteCount && event.invitees.invited.people.length % 10 === 0 && !event.$showInviteeLoaderIncremental">
+                            <a href="" class="button button--tiny button--basic" ng-click="event.loadInvitees('invited')">Load more</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </tabs>
+
+        </div>
+
+    </div>
+
+</div>

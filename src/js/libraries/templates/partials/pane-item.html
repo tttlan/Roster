@@ -1,0 +1,15 @@
+<div class="pane__item">
+    <a ng-if="item.Type == 'Folder'" href="" ng-click="openPane(item)" class="pane__block" ng-class="{'is--active' : pane.activeItemId == item.Id}">
+        <div class="pane__item-handle" data-as-sortable-item-handle></div>
+        <i class="svg-icon--folder1"></i>
+        <span class="pane__item-title">{{ item.Name }}</span>
+        <span class="pane__item-subtitle">{{ item.SubTitle || '0 files' }}</span>
+    </a>
+
+    <a ng-if="item.Type == 'File'" href="" ng-click="openPane(item)" class="pane__block" ng-class="{'is--active' : pane.activeItemId == item.Id}">
+        <div class="pane__item-handle" data-as-sortable-item-handle></div>
+        <i class="svg-icon--{{item.File.Type}}"></i>
+        <span class="pane__item-title">{{ item.Name }}</span>
+        <span class="pane__item-subtitle">{{ item.File.Size | toBytes }}</span>
+    </a>
+</div>

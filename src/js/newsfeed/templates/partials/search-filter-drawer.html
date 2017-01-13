@@ -1,0 +1,45 @@
+ <form class="directory__search-options">
+
+    <div class="form__field">
+        <label for="advancedSearch" class="icon--search field__before"><span class="is-visually-hidden">Search</span></label>
+        <input type="text" id="advancedSearch" placeholder="Search..." ng-model="searchTerm"><!-- ngIf: isOpen() -->
+    </div>
+
+    <hr class="solid" />
+
+    <div class="form__field">
+        <p class="form-label">Search by</p>
+        <div class="field__radio">
+            <input type="radio" name="optionsRadios1" id="optionsRadios1" value="2" ng-model="searchOpts">
+            <label class="form__label" for="optionsRadios1">Name</label>
+        </div>
+        <div class="field__radio">
+            <input type="radio" name="optionsRadios1" id="optionsRadios2" value="5" ng-model="searchOpts">
+            <label class="form__label" for="optionsRadios2">Role</label>
+        </div>
+        <div class="field__radio">
+            <input type="radio" name="optionsRadios1" id="optionsRadios3" value="1" ng-model="searchOpts">
+            <label class="form__label" for="optionsRadios3">Group</label>
+        </div>
+    </div>
+
+    <!--<div class="form__field">
+        <p class="form-label">Organise</p>
+        <div class="field__radio">
+            <label class="form__label" for="optionsRadios4">
+                <input type="radio" name="optionsRadios2" id="optionsRadios4" value="option4"> A - Z
+            </label>
+        </div>
+        <div class="field__radio">
+            <label class="form__label" for="optionsRadios5">
+                <input type="radio" name="optionsRadios2" id="optionsRadios5" value="option5"> Who's Online
+            </label>
+        </div>
+    </div>-->
+
+
+    <hr class="solid" />
+
+    <a href="" ng-click="ok()" class="button button--positive">Search</a>
+
+</form>

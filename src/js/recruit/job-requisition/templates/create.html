@@ -1,0 +1,117 @@
+﻿<div class="page job-requisition" ng-init="init()">
+    <!--Page Wrapper-->
+    <div class="page__wrapper">
+
+        <!--Page Header-->
+        <div class="page__header">
+            <h1>New Requisition</h1>
+        </div>
+        <!--End Page Header-->
+        <!--Page Content-->
+        <div class="page__content">
+
+
+            <!--New layout-->
+            <div class="segments" ng-class="{'is--loading': IsLoading}">
+
+                <div class="segment">
+                    <div class="media media--user">
+                        <div class="media__image">
+                            <avatar img-src="ownerInfo.AvatarPhotoThumb" size="small"></avatar>
+                        </div>
+                        <div class="media__body">
+                            <a href="">{{ownerInfo.FirstName}} {{ownerInfo.Surname}}</a>
+                            <span class="media__body-date">{{today | date}}</span>
+                            <span>{{ownerInfo.RoleDescription}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="segment segment--borderTop">
+                    <form name="createRequisition">
+                        <table class="table-form no-borderCollapse">
+                            <tr>
+                                <th>Role</th>
+                                <td class="table-form__edit-parent">
+                                    <div class="relative">
+                                        <input type="text" placeholder="Select role"
+                                               id="selectRole"
+                                               ng-model="Requisition.Role.Description"
+                                               ng-change="onChangeInput(Requisition.Role.Description)"
+                                               class="autocomplete"
+                                               ng-focus="onFocusOrOnBlurDropdown('Role', Requisition.Role.Description)"
+                                               ng-blur="onFocusOrOnBlurDropdown(''); resetLabel('Role')"
+                                               autocomplete="off" />
+                                        <span class="icon--down field__after"></span>
+                                        <ul ng-show="showDropdownFor === 'Role'" class="typeahead__list popout"
+                                            role="listbox">
+                                            <li class="typeahead__item" role="option"
+                                                ng-repeat="role in List = (roleList | filter: { Description: isChangedInput ? Requisition.Role.Description : '' }) ">
+                                                <a class="typeahead__link"
+                                                   ng-mousedown="selectRoleOrLocation(role, 'ROLE');">{{role.Description}}</a>
+                                            </li>
+                                            <li ng-if="List.length === 0" class="typeahead__item" role="option">
+                                                <a class="typeahead__link">No results match "{{Requisition.Role.Description}}"</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Location</th>
+                                <td class="table-form__edit-parent">
+                                    <div class="relative">
+                                        <input type="text" placeholder="Select location"
+                                               id="selectLocation"
+                                               ng-model="Requisition.Group.GroupName"
+                                               ng-change="onChangeInput(Requisition.Group.GroupName)"
+                                               class="autocomplete"
+                                               ng-focus="onFocusOrOnBlurDropdown('Location', Requisition.Group.GroupName)"
+                                               ng-blur="onFocusOrOnBlurDropdown(''); resetLabel('Location')"
+                                               autocomplete="off" />
+                                        <span class="icon--down field__after"></span>
+                                        <ul ng-show="showDropdownFor === 'Location'" class="typeahead__list popout" role="listbox">
+                                            <li class="typeahead__item" role="option"
+                                                ng-repeat="location in List = (locationList | filter: { GroupName: isChangedInput ? Requisition.Group.GroupName : '' })">
+                                                <a class="typeahead__link"
+                                                   ng-mousedown="selectRoleOrLocation(location, 'LOCATION');">{{location.GroupName}}</a>
+                                            </li>
+                                            <li ng-if="List.length === 0" class="typeahead__item" role="option">
+                                                <a class="typeahead__link">No results match "{{Requisition.Group.GroupName}}"</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <!--End of New layout-->
+        </div>
+        <!--End Page Content-->
+    </div>
+
+    <div class="footer-action">
+        <div class="content">
+
+            <div class="button-group align-right">
+
+                <a href=""
+                   ng-click="backToList(Requisition)"
+                   class="button button--uppercase button--transparent">Back to list</a>
+
+                <button class="button button--uppercase button--transparent"
+                        ng-click="createJobRequisition(Requisition)"
+                        ng-disabled="IsLoading || !Requisition.IsValid()">
+                    Save and close
+                </button>
+                <button class="button button--uppercase button--positive"
+                        ng-click="submitJobRequisition(Requisition)"
+                        ng-disabled="IsLoading || !Requisition.IsValid()">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

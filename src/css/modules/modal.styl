@@ -1,0 +1,237 @@
+modal_border_radius = 5px;
+
+// Modal types
+//
+// Markup:
+// <div ng-controller="modalCtrl">
+// <a href="" ng-click="showModalDefault()" class="button">Open default modal</a>
+// <hr />
+// <a href="" ng-click="showModalLocked()" class="button">Locked modal</a>
+// <hr />
+// <a href="" ng-click="showModalFade()" class="button">Fade in modal</a>
+// <a href="" ng-click="showModalFlipHorizontal()" class="button">Flip horizontal modal</a>
+// <a href="" ng-click="showModalFlipVertical()" class="button">Flip vertical modal</a>
+// <a href="" ng-click="showModalSign()" class="button">Signpost modal</a>
+// <hr />
+// <a href="" ng-click="showModalSmall()" class="button">Small modal</a>
+// <a href="" ng-click="showModalLarge()" class="button">Large modal</a>
+// <hr />
+// <a href="" ng-click="showDrawer()" class="button">Drawer modal</a>
+// <a href="" ng-click="showDrawerLarge()" class="button">Wide drawer modal</a>
+// </div>
+//
+// Styleguide modules.modal.examples
+
+.ui
+
+    // Container that the modal scrolls within
+    .modal {
+        display: none;
+        /*overflow: auto;
+        overflow-y: scroll;*/
+        overflow: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width:100%;
+        height:100%;
+        z-index: 850;
+        -webkit-overflow-scrolling: touch;
+        backface-visibility: hidden;
+        cursor: pointer;
+
+        // Prevent Chrome on Windows from adding a focus outline. For details, see
+        // https://github.com/twbs/bootstrap/pull/10951.
+        outline: 0;
+    }
+
+    // Locked modal should not have a clickable backdrop as it can't be closed
+    .modal--locked {
+        cursor: default;
+    }
+
+    // Shell div to position the modal with bottom padding
+    .modal__dialog {
+        min-width:280px;
+        max-width:90%;
+        width: auto;
+        margin: 20px auto;
+        backface-visibility: hidden;
+        position:relative;
+        /*margin-top: 150px;*/
+        top:50%;
+        cursor: default;
+
+        @media minTablet {
+            width: 600px;
+
+            &.modal--sm {
+                width: 400px;
+            }
+
+            &.modal--lg {
+                width: 800px;
+            }
+
+        }
+
+        @media print {
+            background: #fff !important;
+            border: solid 2px grey7;
+        }
+    }
+
+    // Actual modal
+    .modal__main {
+        background-color: white;
+        box-shadow: 0 0px 18px rgba(0,0,0,.2);
+        border-radius: modal_border_radius;
+        background-clip: padding-box;
+
+        // Remove focus outline from opened modal
+        outline: 0;
+        z-index: 900;
+    }
+
+
+
+    // Modal Internals
+    // ------------------------------------------------
+
+    modal_padding = 20px 15px;
+    modal_padding_tablet = 25px 30px;
+
+    .modal__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        background: url(/interface/images/button--close-x.png) center no-repeat;
+        z-index: 2;
+
+        @media minTablet {
+            top: 15px;
+            right: 20px;
+        }
+    }
+
+    .modal__header {
+        padding: modal_padding;
+        overflow: hidden;
+        border-bottom: solid 1px grey7;
+
+        @media minTablet {
+            padding: modal_padding_tablet;
+        }
+
+        .modal__title {
+            margin: 0;
+            line-height: 1;
+            font-size: 20px;
+            padding-right: 30px;
+
+            em {
+                color: grey5;
+                font-style: normal;
+                font-size: .9em;
+            }
+        }
+
+        [class*="svg-icon--"] {
+            font-size: 24px;
+            vertical-align: bottom;
+            margin-right: 10px;
+        }
+    }
+
+    .modal__footer {
+        padding: modal_padding;
+        padding-top: 0;
+
+        @media minTablet {
+            padding: modal_padding_tablet;
+            padding-top: 0;
+        }
+
+        .button {
+            margin-bottom: 0;
+        }
+    }
+
+
+    .modal__content {
+        padding: modal_padding;
+        
+        > :first-child {
+            margin-top: 0;
+        }
+
+        @media minTablet {
+            padding: modal_padding_tablet;
+        }
+
+        &.modal__content--center {
+            text-align: center;
+        }
+
+        hr {
+            margin: 1.35em 0
+        }
+    }
+
+
+    // Uploaders
+
+    .modal__uploader {
+        
+        .uploader {
+            border: 0;
+            border-radius: 0;
+
+            .file {
+                padding: 10px 30px;
+            }
+        }
+
+    }
+
+    .modal__reminder {
+        background: loud-color;
+        color: white;
+        font-size: 11px;
+        line-height: 20px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    // uploader + modal__footer
+
+    .modal__uploader + .modal__footer {
+        border-top: solid 1px grey7;
+        padding-top: 20px;
+    }
+
+    // send email modal__content
+
+    .modal__send-email {
+        .accordion--segment {
+            li {
+                padding: 6px;
+                padding-bottom: 0px;
+
+                h3 a {
+                    color: black;
+
+                }
+            }
+
+        }
+        .form-email-subject__padding {
+            margin-bottom: 2em;
+        }
+        ::-ms-clear {
+            width : 0px;
+            height: 0px;
+        }
+    }

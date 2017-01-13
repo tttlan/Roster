@@ -1,0 +1,499 @@
+
+// Core Typography
+// ------------------------------------------------
+
+// this is a start of this pattern
+// http://thesassway.com/advanced/modular-css-typography/
+
+.ui
+
+    // reset to counter old Sherpa css
+    font-size: base-font-pixel-size;
+    
+    ::selection {
+        background: primary;
+        color: white;
+    }
+
+    html,
+    body,
+    input,
+    button,
+    select,
+    textarea,
+    address,
+    blockquote {
+        font-family: base-font-family;
+        font-size: base-font-size;
+        font-weight: base-font-weight;
+        line-height: base-line-height;
+        color: base-font-color;
+    }
+
+    // Alignment
+    // 
+    // .aligned--left - Align left
+    // .aligned--right - Align right
+    // .aligned--center - Align center
+    //
+    // Styleguide core.typography.alignment
+
+    .aligned--left {
+        text-align: left;
+    }
+
+    .aligned--right {
+        text-align: right;
+    }
+
+    .aligned--center {
+        text-align: center;
+    }
+
+
+    // Heading Mixins
+    // ------------------------------------------------
+
+    heading-defaults()
+        font-family: heading-font-family
+        font-weight: heading-font-weight
+        margin: 1em 0 0.5em 
+
+
+    h1()
+        heading-defaults()
+
+        line-height: 1.1
+        font-weight: bold
+        font-size: 200%
+        letter-spacing: -2px
+        margin-top: 0
+        margin-bottom: 40px
+
+
+    h2()
+        heading-defaults()
+
+        line-height: 1.1
+        font-weight: regular
+        font-size: 170%
+        letter-spacing: -1px
+
+
+    h3()
+        heading-defaults()
+
+        line-height: 1.3;
+        font-size: 150%;
+        letter-spacing: 0;
+
+
+    h4()
+        heading-defaults()
+
+        line-height: 1.3;
+        font-size: 120%;
+        letter-spacing: 0;
+
+
+    h5()
+        heading-defaults()
+
+        font-size: 11px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: grey5;
+        margin: 0;
+        letter-spacing: 0;
+
+
+    // Headings
+    // 
+    // Markup:
+    // <h1>Heading 1</h1>
+    // <h2>Heading 2</h2>
+    // <h3>Heading 3</h3>
+    // <h4>Heading 4</h4>
+    // <h5>Heading 5</h5>
+    //
+    // Styleguide core.typography.headings
+    
+    h1 , 
+    .h1 { 
+        h1() 
+    }
+
+    h2 ,
+    .h2 { 
+        h2() 
+    }
+
+    h3 ,
+    .h3 { 
+        h3() 
+    }
+
+    h4 ,
+    .h4 { 
+        h4() 
+    }
+
+    h5 ,
+    .h5 { 
+        h5()
+    }
+    
+    // Basic text
+    // 
+    // Markup:
+    // <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit libero ut sapien auctor pulvinar. <a href="#">Mauris dapibus malesuada</a> est id convallis. Mauris eu eleifend elit. Vestibulum posuere, est vitae viverra convallis, elit diam commodo enim, in pulvinar dui nibh a justo.</p>
+    // <small>Small text</small>
+    // <pre>Preformatted text</pre>
+    // <p class="large">Large text</p>
+    // <p class="is--bold">Bold text</p>
+    // <p><strong>Bold text with a strong tag</strong></p>
+    // <p class="is--uppercase">Uppercase text</p>
+    // 
+    // Styleguide core.typography.basictext
+    
+    p, ul, ol, pre, dl, blockquote { 
+        blockMargins();
+        line-height: 1.6;
+    }
+
+    small {
+        color: grey5;
+        line-height: 1.6;
+    }
+
+    .large {
+        font-size: 1.1em;
+        color: grey4;
+    }
+    
+    .is--bold {
+        font-weight: bold;
+    }
+    
+    .is--uppercase {
+        text-transform: uppercase;
+    }
+    
+    // Basic list Items
+    // 
+    // Markup:
+    // <h4>Unordered list</h4>
+    // <ul>
+    //    <li>list item 1</li>
+    //    <li>list item 1
+    //         <ul>
+    //             <li>list item 2</li>
+    //             <li>list item 2
+    //                 <ul>
+    //                     <li>list item 3</li>
+    //                     <li>list item 3</li>
+    //                 </ul>
+    //             </li>
+    //             <li>list item 2</li>
+    //             <li>list item 2</li>
+    //         </ul>
+    //     </li>
+    //     <li>list item <a href="#">with link</a></li>
+    //     <li>list item 1</li>
+    // </ul>
+    // <h4>Ordered List</h4>
+    // <ol>
+    //     <li>list item 1</li>
+    //     <li>list item 1
+    //         <ol>
+    //             <li>list item 2</li>
+    //             <li>list item 2
+    //                 <ol>
+    //                     <li>list item 3</li>
+    //                     <li>list item 3</li>
+    //                 </ol>
+    //             </li>
+    //             <li>list item 2</li>
+    //             <li>list item 2</li>
+    //         </ol>
+    //     </li>
+    //     <li>list item 1</li>
+    //     <li>list item 1</li>
+    // </ol>
+    //
+    // Styleguide core.typography.basiclists
+
+    ul ul,
+    ol ul,
+    ul ol,
+    ol ol {
+        margin: 0;
+    }
+    
+    // Fancy lists
+    // 
+    // Markup:
+    // <ul class="{{modifier_class}}">
+    //     <li>list item 1</li>
+    //     <li>list item 2</li>
+    //     <li><a href="#">List item 3</a></li>
+    //     <li><a href="#">List item 4</a></li>
+    //     <li>list item 1</li>
+    // </ul>
+    //
+    // .list--unstyled - Unstyled list
+    // .list--inline - Inline list
+    // .list--inline-stacked - Stacked inline list
+    // .list-of-links - List of links
+    //
+    // Styleguide core.typography.fancylists
+
+    .list--unstyled {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .list--inline {
+        padding-left: 0;
+        list-style: none;
+
+        & > li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    }
+
+    .list--inline-stacked {
+        padding-left: 0;
+        list-style: none;
+
+        & > li {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .list-of-links {
+        padding-left: 0;
+        list-style: none;
+        margin-top: 0.5em;
+        
+        li {
+            margin-bottom: 0.25em;
+            color: grey3;
+        }
+
+        a {
+            color: link-color;
+
+        }
+    }
+
+
+    // Definition Lists
+    // 
+    // <dl>
+    //     <dt>Definition term</dt>
+    //     <dd>Definition description</dd>
+    //     <dt>Definition term</dt>
+    //     <dd>Definition description</dd>
+    //     <dt>Definition term</dt>
+    //     <dd>Definition description</dd>
+    // </dl>
+    //
+    // Styleguide core.typography.definitionlists
+
+    dl {
+        // placeholder
+    }
+
+    dt {
+        font-size: 11px;
+        color: grey5;
+        text-transform: uppercase;
+    }
+
+    dd {
+        margin-left: 0;
+        font-size: 14px;
+    
+        + dt {
+            margin-top: 1.3em;
+        }
+
+        .label, .button--tiny, input{
+            margin-top: 0.3em;
+            margin-bottom: 0;
+        }
+    }
+
+
+    // Anchors
+    // 
+    // Markup:
+    // <a href="#" class="{{modifier_class}}"><i class="icon--pdf"></i>I'm a link</a>
+    //
+    // .link - give me an underline and a nice hover style
+    // .link-icon - use me if you have an icon
+    //
+    // Styleguide core.typography.anchors
+
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+
+        &:focus {
+            outline: thin dotted link-color-outline;
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+        }
+    }
+
+    a.link {
+        border-bottom: dashed 1px grey8;
+
+        &:hover {
+            border-color: lighten(primary, 80%)
+        }
+    }
+
+    a.link-icon {
+        padding: 10px;
+    }
+
+    // Hover styles
+    // ------------------------------------------------
+
+    p ,
+    li,
+    dd {
+
+        a {
+            color: link-color;
+        }
+
+        a:hover {
+            color: link-color-hover;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: link-color;
+        }
+
+    }
+
+    a.h5:hover {
+        color: link-color-hover;
+    }
+
+
+    // KBD
+    // 
+    // Markup:
+    // <kbd>I'm the KBD element</kbd>
+    //
+    // Styleguide core.typography.kbd
+
+    kbd {
+        padding: 0.1em 0.5em;
+        border: 1px solid grey6;
+        font-size: 11px;
+        background-color: grey9;
+        color: black;
+        display: inline-block;
+        margin: 0 0.1em;
+        text-shadow: 0 1px 0 white;
+        line-height: 1.4;
+        white-space: nowrap;
+        vertical-align: text-top;
+
+        box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px white inset;
+        border-radius: 3px;
+    }
+
+
+    // Blockquote
+    // 
+    // Markup:
+    // <blockquote>I'm a blockquote blah blah blah more text something something</blockquote>
+    //
+    // Styleguide core.typography.blockquote
+
+    blockquote {
+        border-left: 3px solid primary;
+        /*margin-left: -18px;*/
+        padding-left: 15px;
+        margin-right: 0px;
+        margin-left: -15px;
+
+        @media minTablet {
+            margin-left: 0;
+        }
+    }
+
+
+    // Horizontal Rule
+    // 
+    // Markup:
+    // <hr class="{{modifier_class}}" />
+    //
+    // .solid - I'm not a dashed line
+    //
+    // Styleguide core.typography.hr
+
+    hr {
+        border: 0;
+        height: 0;
+        margin: 2em 0;
+        border-top: 1px dashed rgba(0, 0, 0, 0.1);
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        clear: both;
+
+        &.solid {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    .drawer hr {
+        margin: 20px 0;
+    } 
+    
+    // Inline styles
+    //
+    // Markup:
+    // <p>
+    //     <cite>cite element</cite> example<br>
+    //     The <code>code element</code> example<br>
+    //     The <del>del element</del> example<br>
+    //     The <dfn>dfn element</dfn> and <dfn title="Title text">dfn element with title</dfn> examples<br>
+    //     The <em>em element</em> example<br>
+    //     The <i>i element</i> example<br>
+    //     The img element <img src="http://lorempixel.com/24/24" alt=""> example<br>
+    //     The <ins>ins element</ins> example<br>
+    //     The <kbd>k</kbd> kbd element<br>
+    //     The <mark>mark element</mark> example
+    // </p>
+    // <p>
+    //     The <q>q element <q>inside</q> a q element</q> example<br>
+    //     The <s>s element</s> example<br>
+    //     The <samp>samp element</samp> example<br>
+    //     The <small>small element</small> example<br>
+    //     The <span>span element</span> example<br>
+    //     The <strong>strong element</strong> example<br>
+    //     The <sub>sub element</sub> example<br>
+    //     The <sup>sup element</sup> example<br>
+    //     The <u>u element</u> example<br>
+    //     The <var>var element</var> example
+    // </p> 
+    //
+    // Styleguide core.typography.inline
+
+    

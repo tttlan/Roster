@@ -1,0 +1,108 @@
+like-default-color = grey5;
+like-link-color = link-color;
+like-border-color = default-border-color;
+ 
+// Likes - default
+// 
+// Weight: 0
+//
+// Markup:
+// <likes
+//     resource-type="news" 
+//     resource-id="1" 
+//     like-count="0" 
+//     liked="false"
+// ></likes>
+//
+// Styleguide modules.likes.default
+
+
+// Likes with a count more than 0
+// 
+// Markup:
+// <likes
+//     resource-type="news" 
+//     resource-id="1" 
+//     like-count="10" 
+//     liked="true"
+// ></likes>
+//
+// Styleguide modules.likes.liked
+
+
+// Like button
+// 
+// Weight: 1
+//
+// Markup:
+// <likes
+//     resource-type="news" 
+//     resource-id="1" 
+//     like-count="1" 
+//     liked="true" 
+//     button="true"
+// ></likes>
+//
+// Styleguide modules.likes.button
+
+.ui
+
+    .likes {
+        font-size: 12px;
+
+        @media minTablet {
+            font-size: 13px;
+        }
+
+        a {
+            display: block;
+            color: like-link-color;
+            padding: 0 11px;
+            line-height: 19px;
+
+            [class*="icon--"] {
+                position: relative;
+                font-size: 14px;
+                margin-right: .35em;
+                color: like-default-color;
+                top: 2px;
+                transition: color 125ms linear;
+            }
+
+            .icon--like {
+                top: 1px;
+            }
+
+            &:hover ,
+            &.is--active {
+                [class*="icon--"] {
+                    color: like-link-color;
+                }
+            }
+
+            @media minTablet {
+                padding: 0 16px;
+            }
+
+        }
+
+        // Does it look like a button?
+
+        &.likes--button {
+            border: solid 1px like-border-color;
+            border-radius: 0.35em;
+            background: white;
+            display: inline-block;
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,0.03)
+
+            a {
+                padding: 0 8px;
+                line-height: 25px;
+            }
+
+            &:hover {
+                border-color: grey6
+            }
+        }
+
+    }

@@ -1,0 +1,251 @@
+<div class="segment" ng-controller="profileContactDetails">
+    
+    <div class="segment__fieldset" ng-class="{'is--loading': personalInformation.$submitting}">
+        
+        <div class="segment__fieldset-heading">
+            
+            <h2><i class="icon--vcard"></i>Personal information</h2>
+            
+            <table-form-edit ng-if="profile.$userCan.caneditcontact" edit-name="all" parent-data="personalInformation" ng-show="personalInformation.$loaded"></table-form-edit>
+            
+            <a href="" class="table-form__edit table-form__edit--cancel"
+                ng-click="personalInformation.$cancelEdit(); resetForm();"
+                ng-show="personalInformation.$editing === 'all'"
+            >
+                <span>Cancel</span>
+            </a>
+            
+        </div>
+        
+        <div class="message message--empty" ng-show="">
+            <i class="icon--user icon-is-huge"></i>
+            <p>This profile is not active</p>
+            <a href="#" back class="button button--icon-left button--primary"><i class="icon--left"></i>Back</a>
+        </div>
+
+        <loading-placeholder ng-hide="personalInformation.$loaded"></loading-placeholder>
+
+        <form-builder
+            form-id="personalInformationForm"
+            form-data-url="/interface/views/profile/form-data/personal-information.json"
+            template="/interface/views/profile/partials/form-personal-information.html"
+            submit="personalInfoSave"
+            model-data="personalInformation.$promise"
+            parent-data="personalInformation"
+        ></form-builder>
+
+    </div>
+
+    <!-- contact details -->
+    <div class="segment__fieldset" ng-class="{'is--loading': contactDetails.phones.$submitting || contactDetails.emails.$submitting || contactDetails.addresses.$submitting  || memberAddress.$submitting }"
+         ng-if="profile.$userCan.canviewcontact">
+
+        <div class="segment__fieldset-heading">
+            <h2><i class="icon--notebook"></i>Contact Details</h2>
+        </div>
+
+        <loading-placeholder ng-show="contactDetails.$loading || memberAddress.$loading"></loading-placeholder>
+
+        <table class="table-form" ng-hide="contactDetails.$loading || memberAddress.$loading">
+
+            <tbody>
+
+                <tr ng-class="{ 'is--editing' : contactDetails.$editing === 'phone' }">
+
+                    <th>Telephone</th>
+
+                    <td class="table-form__edit-parent">
+
+                        <div class="table-form__form-value">
+                            <div class="form-value" ng-repeat="phone in contactDetails.data.phones">
+                                {{phone.value | tel}}
+                                <i ng-if="!phone.isPublic && phone.value" title="Private" class="icon--lock"></i>
+                                <i title="Primary phone number" ng-if="phone.isPrimary && phone.value" class="icon--like"></i>
+                            </div>
+                        </div>
+
+                        <table-form-edit ng-if="profile.$userCan.caneditcontact"
+                                         ng-show="profile.$userCan.caneditcontact"
+                                         parent-data="contactDetails"
+                                         edit-name="phone"
+                                         cancel-edit="memberAddress">
+                        </table-form-edit>
+
+                        <div class="table-form__form-field"
+                             ng-class="{'is--blocked': contactDetails.phones.$submitting}">
+
+                            <div class="form__field">
+
+                                <phone-numbers max="5"
+                                               min="0"
+                                               ng-required="true"
+                                               ng-model="contactDetails.data.phones"
+                                               allow-duplicate="false"
+                                               name="details__phone"
+                                               custom-remove="contactDetails.$remove(arg1, arg2)"></phone-numbers>
+
+                            </div>
+
+                            <div class="button-group">
+                                <a class="button button--small" href="" ng-click="contactDetails.$cancel('phones');">Cancel</a>
+                                <input type="submit" class="button button--positive button--small" value="Save" ng-click="contactDetails.$save('phones')" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr ng-class="{ 'is--editing' : memberAddress.$editing === 'address' }">
+
+                    <th>Address</th>
+
+                    <td class="table-form__edit-parent">
+
+                        <table-form-edit ng-if="profile.$userCan.caneditcontact"
+                                         ng-show="profile.$userCan.caneditcontact"
+                                         parent-data="memberAddress"
+                                         edit-name="address"
+                                         cancel-edit="contactDetails">
+                        </table-form-edit>
+
+                        <form-builder form-id="contactInformationForm"
+                                      form-data-url="/interface/views/profile/form-data/contact-information.json"
+                                      template="/interface/views/profile/partials/form-contact-information.html"
+                                      submit="memberAddressSave"
+                                      model-data="memberAddress.$promise"
+                                      parent-data="memberAddress">
+                        </form-builder>
+
+                    </td>
+
+                </tr>
+                
+                <tr ng-class="{ 'is--editing' : contactDetails.$editing === 'countryOfOrigin' }">
+                    <th>Country of Origin</th>
+
+                    <td class="table-form__edit-parent">
+                        <span class="table-form__form-value" ng-if="contactDetails.data.addresses[0].CountryOriginId.Label">
+                             {{ contactDetails.data.addresses[0].CountryOriginId.Label }}
+                        </span>
+                        
+                        <table-form-edit ng-if="profile.$userCan.caneditcontact"
+                                         ng-show="profile.$userCan.caneditcontact"
+                                         parent-data="contactDetails"
+                                         edit-name="countryOfOrigin"
+                                         cancel-edit="memberAddress">
+                        </table-form-edit>
+                        
+                        <div class="table-form__form-field" 
+                            ng-class="{'is--blocked': contactDetails.addresses.$submitting}">
+                            <div class="form__field">
+                                <select-country
+                                    id="CountryOriginId"
+                                    name="CountryOriginId"
+                                    ng-model="contactDetails.data.addresses[0].CountryOriginId"
+                                    ng-required="false">
+                                </select-country>
+                            </div>
+                            <div class="button-group">
+                                <a class="button button--small" href="" ng-click="contactDetails.$cancel('addresses');">Cancel</a>
+                                <input type="submit" class="button button--positive button--small" value="Save" ng-click="contactDetails.$save('addresses')" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr ng-class="{ 'is--editing' : contactDetails.$editing === 'email' }">
+
+                    <th>Email address</th>
+
+                    <td class="table-form__edit-parent">
+
+                        <div class="table-form__form-value">
+                            <div class="form-value" ng-repeat="email in contactDetails.data.emails">
+                                <a href="mailto:{{email.value}}">{{email.value}}</a>
+                                <i ng-if="!email.isPublic && email.value" title="Private" class="icon--lock"></i>
+                                <i ng-if="email.isPrimary && email.value" title="Primary email" class="icon--like"></i>
+                            </div>
+                        </div>
+
+                        <table-form-edit ng-if="profile.$userCan.caneditcontact"
+                                         ng-show="profile.$userCan.caneditcontact"
+                                         parent-data="contactDetails"
+                                         edit-name="email"
+                                         cancel-edit="memberAddress">
+                        </table-form-edit>
+
+                        <div class="table-form__form-field"
+                             ng-class="{'is--blocked': contactDetails.emails.$submitting}">
+                            <div class="form__field">
+                                <emails max="5"
+                                        min="0"
+                                        ng-required="true"
+                                        ng-model="contactDetails.data.emails"
+                                        name="contact-emails"
+                                        custom-remove="contactDetails.$remove(arg1, arg2)"></emails>
+                            </div>
+                            <div class="button-group">
+                                <a class="button button--small" href="" ng-click="contactDetails.$cancel('emails');">Cancel</a>
+                                <input type="submit" class="button button--positive button--small" value="Save" ng-click="contactDetails.$save('emails')" />
+                            </div>
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+    <!-- end contact details -->
+
+    <div class="segment__fieldset" ng-class="{'is--loading': emergencyContactInformation.$submitting}" ng-if="profile.$userCan.canviewcontact">
+
+        <div class="segment__fieldset-heading">
+
+            <h2><i class="icon--warning"></i>Emergency contact information</h2>
+
+            <table-form-edit edit-name="all"
+                             parent-data="emergencyContactInformation"
+                             ng-if="profile.$userCan.caneditcontact"
+                             ng-show="emergencyContactInformation.$loaded && profile.$userCan.caneditcontact">
+            </table-form-edit>
+
+            <a href="" class="table-form__edit table-form__edit--cancel"
+               ng-click="emergencyContactInformation.$cancelEdit(); resetForm();"
+               ng-show="emergencyContactInformation.$editing === 'all'">
+                <span>Cancel</span>
+            </a>
+
+        </div>
+
+        <!--<div ng-show="emergencyContactInformation.$loaded &&
+                      !emergencyContactInformation.$userCan.canviewprofileemergencycontact &&
+                      emergencyContactInformation.$userCan.canviewprofileemergencycontact != null" class="message message--small">
+            <p>You do not have permission to view this information</p>
+        </div>-->
+
+        <loading-placeholder ng-hide="emergencyContactInformation.$loaded"></loading-placeholder>
+
+        <div ng-show="emergencyContactInformation.$loaded &&
+                      !profile.$userCan.canviewcontact && profile.$userCan.canviewcontact != null" class="message message--small">
+            <p>You do not have permission to view emergency contact information</p>
+        </div>
+
+        <div ng-show="profile.$userCan.canviewcontact == null" class="message message--small">
+            <p>No emergency contact to show</p>
+        </div>
+
+        <form-builder form-id="emergencyContactInformationForm"
+                      form-data-url="/interface/views/profile/form-data/emergency-contact-information.json"
+                      template="/interface/views/profile/partials/form-emergency-contact-information.html"
+                      submit="emergencyContactInfoSave"
+                      model-data="emergencyContactInformation.$promise"
+                      parent-data="emergencyContactInformation"
+                      ng-show="profile.$userCan.canviewcontact">
+        </form-builder>
+
+    </div>
+
+</div>

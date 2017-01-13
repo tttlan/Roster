@@ -1,0 +1,529 @@
+﻿<form name="profileForm" novalidate>
+    <div class="form__profile">
+        <div class="page page--1-c-wide recruit">
+
+            <div class="page__wrapper">
+
+                <div class="page__content onboarding">
+                
+                    <div class="segment">
+                                                
+                    <div collapse="isCollapsedPersonalInfo">
+                    <div class="align__center">
+                        <h1>Your Profile</h1>
+                        <p>
+                            <small>
+                                This information also will be available on your profile for you to update at anytime.<br />
+                                <span class="is--error">*</span> All fields marked with an asterisk are required.
+                            </small>
+                        </p>
+                    </div>
+                    
+                    <div id="onboarding_profile" class="segment asp-error-list " style="color:Red;" ng-if="profileForm.$invalid && profileForm.$dirty">
+                        Please confirm all details.
+                        <ul>
+                            <li ng-if="profileForm.onboarding__Salutation.$error.required && profileForm.onboarding__Salutation.$dirty">
+                                <form-errors input="profileForm.onboarding__Salutation">
+                                    <form-error error-key="required" error-text="Salutation is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__FirstName.$error.required && profileForm.onboarding__FirstName.$dirty">
+                                <form-errors input="profileForm.onboarding__FirstName">
+                                    <form-error error-key="required" error-text="First name is required"></form-error>
+                                </form-errors>
+
+                            </li>
+                            <li ng-if="profileForm.onboarding__Surname.$error.required && profileForm.onboarding__Surname.$dirty">
+                                <form-errors input="profileForm.onboarding__Surname">
+                                    <form-error error-key="required" error-text="Surname is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__Birthday.$error.required && profileForm.onboarding__Birthday.$dirty">
+                                <form-errors input="profileForm.onboarding__Birthday">
+                                    <form-error error-key="required" error-text="Birthday is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__Suburb.$error.required && profileForm.onboarding__Suburb.$dirty">
+                                <form-errors input="profileForm.onboarding__Suburb">
+                                    <form-error error-key="required" error-text="Suburb is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__Address.$error.required && profileForm.onboarding__Address.$dirty">
+                                <form-errors input="profileForm.onboarding__Address">
+                                    <form-error error-key="required" error-text="Address is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__Postcode.$error.required && profileForm.onboarding__Postcode.$dirty">
+                                <form-errors input="profileForm.onboarding__Postcode">
+                                    <form-error error-key="required" error-text="PostCode is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__Postcode.$error.pattern && profileForm.onboarding__Postcode.$dirty">
+                                <form-errors input="profileForm.onboarding__Postcode">
+                                    <form-error error-key="pattern" error-text="PostCode is number"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__Mobile.$error.required && profileForm.onboarding__Mobile.$dirty">
+                                <form-errors input="profileForm.onboarding__Mobile">
+                                    <form-error error-key="required" error-text="The contact mobile is required"></form-error>
+                                </form-errors>
+
+                            </li>
+                            <li ng-if="profileForm.onboarding__Email.$error.required && profileForm.onboarding__Email.$dirty">
+                                <form-errors input="profileForm.onboarding__Email">
+                                    <form-error error-key="required" error-text="Email is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__ConfirmPI.$error.required && profileForm.onboarding__ConfirmPI.$dirty">
+                                <form-errors input="profileForm.onboarding__ConfirmPI">
+                                    <form-error error-key="required" error-text="Please confirm the contact infomation"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__EmergencyFirstname.$error.required && profileForm.onboarding__EmergencyFirstname.$dirty">
+                                <form-errors input="profileForm.onboarding__EmergencyFirstname">
+                                    <form-error error-key="required" error-text="Emergency contact first name is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__EmergencySurname.$error.required && profileForm.onboarding__EmergencySurname.$dirty">
+                                <form-errors input="profileForm.onboarding__EmergencySurname">
+                                    <form-error error-key="required" error-text="Emergency contact surname is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__emergencySuburb.$error.required && profileForm.onboarding__emergencySuburb.$dirty">
+                                <form-errors input="profileForm.onboarding__emergencySuburb">
+                                    <form-error error-key="required" error-text="Emergency contact surburb is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__EmergencyAddress.$error.required && profileForm.onboarding__EmergencyAddress.$dirty">
+                                <form-errors input="profileForm.onboarding__EmergencyAddress">
+                                    <form-error error-key="required" error-text="Emergency contact address is required"></form-error>
+                                </form-errors>
+
+                            </li>
+                            <li ng-if="profileForm.onboarding__EmergencyEmail.$error.required && profileForm.onboarding__EmergencyEmail.$dirty">
+                                <form-errors input="profileForm.onboarding__EmergencyEmail">
+                                    <form-error error-key="required" error-text="Emergency contact email address is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__EmergencyMobile.$error.required && profileForm.onboarding__EmergencyMobile.$dirty">
+                                <form-errors input="profileForm.onboarding__EmergencyMobile">
+                                    <form-error error-key="required" error-text="Emergency contact mobile phone number is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__EmergencyPostcode.$error.required && profileForm.onboarding__EmergencyPostcode.$dirty">
+                                <form-errors input="profileForm.onboarding__EmergencyPostcode">
+                                    <form-error error-key="required" error-text="Emergency contact post code is required"></form-error>
+                                    <form-error error-key="pattern" error-text="Emergency contact post code must be number between 0 to 9"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__EmergencyFax.$error.required && profileForm.onboarding__EmergencyFax.$dirty">
+                                <form-errors input="profileForm.onboarding__EmergencyFax">
+                                    <form-error error-key="required" error-text="Emergency contact fax number is required"></form-error>
+                                    <form-error error-key="pattern" error-text="Emergency contact fax number must be number between 0 to 9"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__EmergencyPhone.$error.requiredd && profileForm.onboarding__EmergencyPhone.$dirty">
+                                <form-errors input="profileForm.onboarding__EmergencyPhone">
+                                    <form-error error-key="required" error-text="Emergency contact phone number is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__EmergencyRelatioship.$error.required && profileForm.onboarding__EmergencyRelatioship.$dirty">
+                                <form-errors input="profileForm.onboarding__EmergencyRelatioship">
+                                    <form-error error-key="required" error-text="Emergency contact relationship to you is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__ConfirmEmergency.$error.required && profileForm.onboarding__ConfirmEmergency.$dirty">
+                                <form-errors input="profileForm.onboarding__ConfirmEmergency">
+                                    <form-error error-key="required" error-text="Please confirm the emergency contact infomation"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__BankName.$error.required && profileForm.onboarding__BankName.$dirty">
+                                <form-errors input="profileForm.onboarding__BankName">
+                                    <form-error error-key="required" error-text="Bank name is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__AccountName.$error.required && profileForm.onboarding__AccountName.$dirty">
+                                <form-errors input="profileForm.onboarding__AccountName">
+                                    <form-error error-key="required" error-text="Account name is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="(profileForm.onboarding__Bsb.$error.required || profileForm.onboarding__Bsb.$error.minlength || profileForm.onboarding__Bsb.$error.maxlength) && profileForm.onboarding__Bsb.$dirty">
+                                <form-errors input="profileForm.onboarding__Bsb">
+                                    <form-error error-key="required" error-text="BSB is required"></form-error>
+                                    <form-error error-key="minlength" error-text="BSB must be 6 digits long"></form-error>
+                                    <form-error error-key="maxlength" error-text="BSB must be 6 digits long"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__AccountNo.$error.required && profileForm.onboarding__AccountNo.$dirty">
+                                <form-errors input="profileForm.onboarding__AccountNo">
+                                    <form-error error-key="required" error-text="Account number is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__SuperName.$error.required && profileForm.onboarding__SuperName.$dirty">
+                                <form-errors input="profileForm.onboarding__SuperName">
+                                    <form-error error-key="required" error-text="Superannuation fund is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__SuperMember.$error.required && profileForm.onboarding__SuperMember.$dirty">
+                                <form-errors input="profileForm.onboarding__SuperMember">
+                                    <form-error error-key="required" error-text="Superannuation membership number is required"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="profileForm.onboarding__ConfirmBank.$error.required && profileForm.onboarding__ConfirmBank.$dirty">
+                                <form-errors input="profileForm.onboarding__ConfirmBank">
+                                    <form-error error-key="required" error-text="Please confirm the bank infomation"></form-error>
+                                </form-errors>
+                            </li>
+                            <li ng-if="(profileForm.onboarding__TaxFileNumber.$error.required || profileForm.onboarding__TaxFileNumber.$error.minlength || profileForm.onboarding__TaxFileNumber.$error.maxlength) && profileForm.onboarding__TaxFileNumber.$dirty">
+                                <form-errors input="profileForm.onboarding__TaxFileNumber">
+                                    <form-error error-key="required" error-text="Tax File Number is required"></form-error>
+                                    <form-error error-key="minlength" error-text="Tax File Number must be 9 digits long"></form-error>
+                                    <form-error error-key="maxlength" error-text="Tax File Number must be 9 digits long"></form-error>
+                                </form-errors>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="onboardComponents" ng-class="{'is--loading': isLoading}">
+                        
+
+                        <div class="segment">
+                          <div>
+                                <div class="segment__fieldset-heading">
+                                    <h2>
+                                        <i class="icon--reports"></i>Personal Information
+                                    </h2>
+
+                                    <a href=""
+                                    class="align-right"
+                                    ng-click="togglePersonalCollapsed()">
+                                        <i ng-class="{'icon--arrow-down': isCollapsedPersonalInfo,
+                                                            'icon--arrow-up': !isCollapsedPersonalInfo }"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div collapse="isCollapsedPersonalInfo">
+                                <fieldset class="form">
+
+                                    <div class="form__fields">
+                                        <div class="form__field col-1-2 ">
+                                            <label class="form__label is--required" for="onboarding__Salutation">Salutation</label>
+                                            <input-salutation name="onboarding__Salutation" ng-model="details.CandidatePersonalInfo.Salutation" ng-required="true"></input-salutation>
+                                        </div>
+                                    </div>
+
+                                    <div class="form__fields">
+                                        <div class="form__field col-1-2">
+                                            <label class="form__label is--required" for="onboarding__FirstName">Name</label>
+                                            <input name="onboarding__FirstName" type="text" ng-model="details.CandidatePersonalInfo.FirstName" id="onboarding__FirstName" required />
+                                        </div><!--                                       
+                                --><div class="form__field col-1-2">
+                                            <label class="form__label is--required" for="onboarding__Surname">Surname</label>
+                                            <input name="onboarding__Surname" type="text" ng-model="details.CandidatePersonalInfo.Surname" id="onboarding__Surname" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="form__fields">
+                                        <div class="form__field col-1-2 col-gap">
+                                            <label for="onboarding__Birthday" class="form__label is--required">Date of birth</label>
+
+                                            <div class="relative">
+                                                <input type="text"
+                                                       id="onboarding__Birthday"
+                                                       name="onboarding__Birthday"
+                                                       ng-model="details.CandidatePersonalInfo.BirthDay"
+                                                       required
+                                                       datepick datepicker-popup="d MMM yyyy">
+                                                <span class="icon--calendar field__after"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form__field col-1-2 col-gap">
+                                            <label for="onboarding__Sex"
+                                                   class="form__label is--required">Gender</label>
+                                            <div class="field__radio" style="display: inline-block">
+                                                <input type="radio"
+                                                       id="onboarding__Sex__1"
+                                                       name="onboarding__Sex"
+                                                       value="m"
+                                                       ng-model="details.CandidatePersonalInfo.Sex">
+                                                <label for="onboarding__Sex__1"
+                                                       class="form__label">Male</label>
+                                            </div>
+                                            <div class="field__radio" style="display: inline-block">
+                                                <input type="radio"
+                                                       id="onboarding__Sex__2"
+                                                       name="onboarding__Sex"
+                                                       value="f"
+                                                       ng-model="details.CandidatePersonalInfo.Sex">
+                                                <label for="onboarding__Sex__2"
+                                                       class="form__label">Female</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form__fields">
+                                        <label class="form__label is--required">Address</label>
+                                        <div class="form__field is--required">
+                                            <input name="onboarding__Address" type="text" ng-model="details.CandidateContact.Address" id="onboarding__Address" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="form__fields">
+                                        <div class="form__field col-1-2">
+                                            <label class="form__label is--required">Country</label>
+                                            <input-country name="onboarding__Country-contact" 
+                                            ng-model="details.CandidateContact.CountryId" 
+                                            ng-required="true"></input-country>
+                                        </div><!--                                       
+                                --><div class="form__field col-1-2">
+                                            <label class="form__label is--required">Post code</label>
+                                            <div class="input--loading">
+                                                <input name="onboarding__Postcode" type="text" 
+                                                    ng-model="details.CandidateContact.Postcode" 
+                                                    ng-disabled="!allowInputPostCode"
+                                                    pattern="\d+"
+                                                    id="onboarding__Postcode" required />
+                                                <loader ng-show="isBusy"></loader>
+                                            </div>
+                                        </div>
+                                    <div class="form__fields">
+                                        <div class="form__field col-1-2">
+                                        <div ng-if="locationMatches === true">
+                                            <label class="form__label is--required">Suburb</label>
+                                            <input name="onboarding__Suburb" type="text" 
+                                                   ng-model="details.CandidateContact.Suburb" 
+                                                   id="onboarding__Suburb" class="txtSuburb formInput" required 
+                                                   ng-disabled="!allowCustomAddressEntry"/>
+                                        </div>
+                                        
+                                        <div ng-if="locationMatches === false">
+                                            <label class="form__label is--required" for="onboarding__Suburb">Suburb</label>
+                                            <select-box ng-model="details.CandidateContact.Suburb">
+                                                <select id="onboarding__Suburb"
+                                                        ng-model="details.CandidateContact.Suburb"
+                                                        ng-change="changeSuburb(details.CandidateContact.Suburb)"
+                                                        ng-options="location as location.label for location in suburbData track by location.id"></select>
+                                            </select-box>
+                                            
+                                            <div class="field__checkbox">
+                                                <input id="noSuburbMatches" type="checkbox" ng-model="noMatches" ng-change="allowInputAddress()">
+                                                <label for="noSuburbMatches" class="form__label">None of these suburbs are correct</label>
+                                            </div>
+                                        </div>
+                                    </div><!--                                       
+                                --><div class="form__field col-1-2">
+                                            <label class="form__label">Country of Origin</label>
+                                            <input-country name="onboarding__CountryOrigin-contact" ng-model="details.CandidateContact.CountryOriginId"></input-country>
+                                        </div>
+                                    </div>
+
+                                    <div class="form__fields">
+                                        <div class="form__field col-1-2">
+                                            <label class="form__label is--required" for="onboarding__Mobile">Mobile</label>
+                                            <input name="onboarding__Mobile" type="text" ng-model="details.CandidateContact.MobilePhone" id="onboarding__Mobile" required />
+                                        </div><!--                                       
+                                --><div id="onboarding__PhoneInfo-public" class="form__field col-1-2">
+                                            <label class="form__label is--required" for="onboarding__Phone-public">Home number</label>
+                                            <input name="onboarding__Phone-public" type="text" ng-model="details.CandidateContact.Phone" id="onboarding__Phone-public" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form__fields">
+                                        <div class="form__field col-1-2">
+                                            <label class="form__label is--required" for="onboarding__Email">Email address</label>
+                                            <input name="onboarding__Email" type="text" ng-model="details.CandidateContact.Email" id="onboarding__Email" required />
+                                        </div>
+                                    </div>
+
+                                    <div id="onboarding__ConfirmInfo" class="form__field form__field--boxBottom">
+
+                                        <span class="field__checkbox">
+                                            <input id="onboarding__ConfirmPI" type="checkbox" name="onboarding__ConfirmPI" required ng-model="details.IsPIConfirmed" ng-click="!details.IsPIConfirmed" />
+                                            <label for="onboarding__ConfirmPI" class="is--required">I confirm that this information is correct</label>
+                                        </span>
+
+                                    </div>
+
+                                </fieldset>
+                            </div>
+                        </div>
+                   </div>
+                   
+                        <div class="segment">
+                            <div>
+                                <div class="segment__fieldset-heading">
+                                    <h2>
+                                        <i class="icon--reports"></i>Emergency Contact Information
+                                    </h2>
+
+                                    <a href=""
+                                    class="align-right"
+                                    ng-click="toggleEmergencyCollapsed()">
+                                        <i ng-class="{'icon--arrow-down': isCollapsedEmergency,
+                                                            'icon--arrow-up': !isCollapsedEmergency }"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                          <div collapse="isCollapsedEmergency">
+                            <fieldset class="form">                              
+                                <div class="form__fields">
+                                    <div class="form__field col-1-2">
+                                        <label class="form__label is--required" for="onboarding__FirstName">Name</label>
+                                        <input name="onboarding__EmergencyFirstname" type="text" ng-model="details.CandidateEmergencyInfo.FirstName" id="onboarding__EmergencyFirstname" required />
+                                    </div><!--                                       
+                                --><div class="form__field col-1-2">
+                                        <label class="form__label is--required" for="onboarding__Surname">Surname</label>
+                                        <input name="onboarding__EmergencySurname" type="text" ng-model="details.CandidateEmergencyInfo.SurName" id="onboarding__EmergencySurname" required />
+                                    </div>                            
+                                </div>
+                                
+                                <div class="form__fields">
+                                    <div class="form__field col-1-2">
+                                        <label class="form__label is--required" for="onboarding__EmergencyRelatioship">Relationship</label>
+                                        <input name="onboarding__EmergencyRelatioship" type="text" ng-model="details.CandidateEmergencyInfo.Relationship" id="onboarding__EmergencyRelatioship" required />
+                                    </div>                            
+                                 </div>
+                                 
+                                <div class="form__fields">
+                                    <div class="form__field col-1-2">
+                                        <label class="form__label is--required" for="onboarding__EmergencyMobile">Mobile</label>
+                                            <input name="onboarding__EmergencyMobile" type="text" ng-model="details.CandidateEmergencyInfo.MobilePhone" id="onboarding__EmergencyMobile" required />
+                                    </div><!--                                       
+                                --><div class="form__field col-1-2">
+                                        <label class="form__label is--required" for="onboarding__EmergencyPhone">Phone number</label>
+                                            <input name="onboarding__EmergencyPhone" type="text" ng-model="details.CandidateEmergencyInfo.LinePhone1" id="onboarding__EmergencyPhone" required />
+                                    </div>      
+                                 </div>
+                                <div class="form__fields">
+                                    <div class="form__field col-1-2">
+                                        <label class="form__label is--required" for="onboarding__EmergencyAddress">Address</label>
+                                        <input name="onboarding__EmergencyAddress" type="text" ng-model="details.CandidateEmergencyInfo.Address" id="onboarding__EmergencyAddress" required />
+                                    </div><!--                                       
+                                --><div class="form__field col-1-2">
+                                        <label class="form__label is--required" for="onboarding__emergencySuburb">Suburb</label>
+                                        <input name="onboarding__emergencySuburb" type="text" ng-model="details.CandidateEmergencyInfo.Suburb" id="onboarding__emergencySuburb" class="txtSuburbEm formInput" required />
+                                    </div>                        
+                                </div>
+                                
+                                <div class="form__fields">
+                                    <div class="form__field col-1-2 ">
+                                        <label class="form__label is--required" for="onboarding__EmergencyEmail">Email</label>
+                                        <input name="onboarding__EmergencyEmail" type="text" ng-model="details.CandidateEmergencyInfo.Email" id="onboarding__EmergencyEmail" required />
+                                    </div>                            
+                               </div>
+   
+                                <div id="onboarding__ConfirmInfo" class="form__field form__field--boxBottom">
+
+                                    <span class="field__checkbox">
+                                        <input id="onboarding__ConfirmEmergency" type="checkbox" name="onboarding__ConfirmEmergency" required ng-model="details.IsEmergencyConfirmed" ng-click="!details.IsEmergencyConfirmed" />
+                                        <label for="onboarding__ConfirmEmergency" class="is--required">I confirm that this information is correct</label>
+                                    </span>
+
+                                </div>
+                            </fieldset>
+                         </div>
+                        </div>
+
+                        <div class="segment" ng-if="onboardSetting.IsBankingAndSuperannuationRequired === true">
+                            <div>
+                                <div class="segment__fieldset-heading">
+                                    <h2>
+                                        <i class="icon--reports"></i>Banking and Superanuation Information
+                                    </h2>
+
+                                    <a href=""
+                                    class="align-right"
+                                    ng-click="toggleBankingCollapsed()">
+                                        <i ng-class="{'icon--arrow-down': isCollapsedBanking,
+                                                            'icon--arrow-up': !isCollapsedBanking }"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                          <div collapse="isCollapsedBanking">
+                            <fieldset class="form">
+
+                                <div class="form__fields grid">
+
+                                    <div class="form__field col-1-2 col-gap">
+                                        <label class="form__label is--required" for="onboarding__BankName">Bank name</label>
+                                        <input name="onboarding__BankName" type="text" ng-model="details.CandidateBankInfo.BankName" id="onboarding__BankName" required />
+                                    </div>
+
+                                    <div class="form__field col-1-2 col-gap">
+                                        <label class="form__label is--required" for="onboarding__AccountName">Account Name</label>
+                                        <input name="onboarding__AccountName" type="text" ng-model="details.CandidateBankInfo.AccountName" id="onboarding__AccountName" required />
+                                    </div>
+                                    
+                                    <div class="form__field col-1-2 col-gap">
+                                        <label class="form__label is--required" for="onboarding__Bsb">BSB number</label>
+                                        <input name="onboarding__Bsb" type="text" id="onboarding__Bsb" ng-model="details.CandidateBankInfo.BSB" required minlength="6" maxlength="6" />
+                                    </div>
+
+                                    <div class="form__field col-1-2 col-gap">
+                                        <label class="form__label is--required" for="onboarding__AccountNo">Account number</label>
+                                        <input name="onboarding__AccountNo" type="text" ng-model="details.CandidateBankInfo.AccountNo" id="onboarding__AccountNo" required />
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="form__field col-1-2 col-gap">
+                                        <label class="form__label is--required" for="onboarding__SuperName">Nominated Superannuation Fund </label>
+                                        <input name="onboarding__SuperName" type="text" 
+                                               ng-model="details.CandidateBankInfo.SuperFund" 
+                                               id="onboarding__SuperName" 
+                                               ng-disabled="onboardSetting.IsSuperannuationFundReadOnly === true"
+                                               required />
+                                    </div>
+
+                                    <div class="form__field col-1-2 col-gap">
+                                        <label class="form__label" for="onboarding__SuperMember" ng-class="{'is--required': onboardSetting.IsSuperannuationMembershipOptional !== true}">Superannuation Member Number </label>
+                                        <input name="onboarding__SuperMember" type="text" ng-model="details.CandidateBankInfo.SuperNo" id="onboarding__SuperMember" required />
+                                        <p><small>If you have an existing Super number please enter here</small></p>
+                                    </div>
+                                    <div class="form__field col-1-2 col-gap" ng-if="onboardSetting.IsTaxCodeFieldVisible === true">
+                                        <label class="form__label" for="onboarding__TaxFileNumber">Tax File Number </label>
+                                        <input name="onboarding__TaxFileNumber" 
+                                               type="text"
+                                               maxlength="9" 
+                                               minlength="9"
+                                               ng-model="details.CandidateBankInfo.TaxFileNumber" 
+                                               id="onboarding__TaxFileNumber"/>
+                                    </div>
+                                    
+                                    <hr />
+
+                                    <div id="onboarding__bank-ConfirmInfo" class="form__field form__field--boxBottom">
+
+                                        <span class="field__checkbox">
+                                            <input id="onboarding__ConfirmBank" type="checkbox" name="onboarding__ConfirmBank" required ng-model="details.IsBankConfirmed" ng-click="!details.IsBankConfirmed" />
+                                            <label class=" is--required" for="onboarding__ConfirmBank">I confirm that this information is correct</label>
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </fieldset>
+                          </div>
+                        </div>
+
+
+                    </div>
+                    <br />
+
+                </div>
+</div>
+            </div>
+
+        </div>
+    </div>
+</form>
+<div class="recruit button-footer">
+    <div class="button-withtext">
+        <button class="button button--positive button--icon-right toggle-loading" 
+            ng-disabled="isLoading"
+            ng-click="onboarding_profile()">Continue <i class="icon--right"></i></button>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="segments">
+    <div class="segment">
+        <div class="job-ads-create-preview-info">
+            <div class="job-ads-create-preview-info-title">
+                <h4 class="is--bold">{{jobDetail.jobTitle}}</h4>
+            </div>
+            <div class="job-ads-create-preview-info-subtitle">
+                <small>{{jobDetail.employmentTypeTitle}}</small>
+                <small ng-if="jobDetail.employmentType">{{jobDetail.employmentType.Label}}</small>
+            </div>
+        </div>
+
+        <div class="job-ads-create-preview-subinfo">
+            <div class="job-ads-create-preview-subinfo-location">
+                    <span ng-if="jobDetail.locationOrRegion === jobLocation.LOCATION"
+                          ng-repeat="location in jobDetail.selectedLocations">{{location.label}}{{ $last ? '' : ', ' }}</span>
+                    <span ng-if="jobDetail.locationOrRegion === jobLocation.REGION">
+                        {{jobDetail.area.Label + ', ' + jobDetail.state.Label}}
+                    </span>
+            </div>
+
+            <div ng-if="jobDetail.salaryRangeOrAmount === salaryType.RANGE && jobDetail.salaryMin.Label.substr(1) && jobDetail.salaryMax.Label.substr(1)">
+                <span class="is--disabled">{{jobDetail.salaryCurrency.Label}}$ </span> {{jobDetail.salaryMin.Label.substr(1)}} to {{jobDetail.salaryMax.Label.substr(1)}} including super
+            </div>
+            <div ng-if="jobDetail.salaryRangeOrAmount === salaryType.AMOUNT && jobDetail.amount">
+                <span class="is--disabled">{{jobDetail.salaryCurrency.Label}}$ </span> {{jobDetail.amount}} including super
+            </div>
+
+        </div>
+
+        <div class="job-ads-create-preview-post">
+            <div class="job-ads-create-preview-post-date">
+                <small class="is--disabled">POSTED: {{jobDetail.lastJobHistory.DateCreated | date:'dd MMMM yyyy'}}</small>
+            </div>
+            <div class="job-ads-create-preview-post-reference">
+                <small class="is--disabled">REFERENCE NUMBER: {{jobDetail.refNumber}}</small>
+            </div>
+        </div>
+
+    </div>
+    <div ng-if="isShowJobSummary" class="segment word-break" ng-bind-html="jobDetail.jobSummary"></div>
+    <div ng-if="isShowJobBody" class="segment word-break" ng-bind-html="jobDetail.jobBody"></div>
+</div>

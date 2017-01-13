@@ -1,0 +1,77 @@
+<div ng-form="contactForm_{{onboard.OnboardId}}" class="candidate_segment">
+    <table class="table-form table-form--full-width contact__info">
+        <tbody ng-class="{'is--editing': isOnboardPhaseNew(subItems[0]) || isOnboardPhaseUndefined(subItems[0]) || onboard.state.isEditable }" class="noborder">
+            <tr>
+                <td class="table-form__edit-parent no__padding--right">
+                    <span class="table-form__form-value" ng-repeat="p in onboard.phones">
+                        <div class="form_field form__label--style">Phone number</div>
+                        <div>{{p.value}}</div>
+                    </span>
+
+                    <div class="table-form__form-field" ng-form="phoneNumbersSubForm">
+                        <div class="form__field is--required">
+                            <label for="onboarding__phoneNumber"
+                                   class="form__label form__label--style">Phone number</label>
+                            <phone-numbers max="5" min="1" ng-model="onboard.phones"></phone-numbers>
+
+                            <form-errors input="phoneNumbersSubForm">
+                                <form-error error-key="required"
+                                            error-text="At least one phone number is required"></form-error>
+                            </form-errors>
+                        </div>
+                    </div>
+                </td>
+                <td class="table-form__edit-parent no-padding--right">
+                    <div class="table-form__form-value"
+                         ng-repeat="p in onboard.emails">
+
+                        <div class="form__label--style">E-mail address</div>
+                        <div>{{p.value}}</div>
+                    </div>
+
+                    <div class="table-form__form-field" ng-form="emailsSubForm">
+                        <div class="form__field is--required">
+                            <label for="onboarding__email"
+                                   class="form__label form__label--style">Email</label>
+                            <emails max="5" min="1" ng-model="onboard.emails"></emails>
+
+                            <form-errors input="emailsSubForm">
+                                <form-error error-key="required"
+                                            error-text="At least one email address is required"></form-error>
+                            </form-errors>
+                        </div>
+                    </div>
+                </td>
+             </tr>
+            <tr ng-if="OnSettings.IsRequireAddress === true">
+                <td class="table-form__edit-parent" colspan="2">
+                    <span class="table-form__form-value">
+                        <div class="form__field form__label--style">Address</div>
+                        <div>{{onboard.address.Address}} {{onboard.address.Suburb}} {{onboard.address.Postcode}} {{onboard.address.StateName}}, {{onboard.address.Country.Label}}</div>
+                    </span>
+
+                    <span class="table-form__form-value country-label--padding-top">
+                        <div class="form__label--style">Country of Origin</div>
+                        <div>{{onboard.address.CountryOrigin.Label}}</div>
+                    </span>
+
+                    <div class="table-form__form-field is--required">
+                        <input-address ng-model="onboard.address" ng-required="true">
+                        </input-address>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="button-withtext align-right" ng-if="(isSingle && onboard.state.isEditable)">
+        <a ng-click="cancelUpdateCandidate($index)"
+           class="button">Cancel</a>
+        <button class="button button--positive"
+                type="button"
+                ng-disabled="onboard.isSubmitting || onboardingForm{{onboard.OnboardId}}.personalForm_{{onboard.OnboardId}}.$invalid || onboardingForm{{onboard.OnboardId}}.contactForm_{{onboard.OnboardId}}.$invalid"
+                ng-click="saveSingleCandidateInfo(onboard)">
+            Save
+        </button>
+    </div>
+</div>

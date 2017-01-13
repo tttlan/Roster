@@ -1,0 +1,28 @@
+ <div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+
+    <label 
+    ng-if="element.label"
+    class="form__label"
+    for="{{ element.formName + '__' + element.name }}">{{ element.label }}</label>
+
+    <tag-manager
+        ng-model="element.val"
+        select-data="element.options"
+        ng-class="{'error': !element.val.length}"
+        element="element"
+        name="{{element.name}}">
+
+        <input 
+        type="text" 
+        placeholder="{{ element.placeholder }}"
+        ng-model="typeAheadTag"
+        id="{{ element.formName + '__' + element.name }}"
+        typeahead="tag as tag.label for tag in selectData | filter:{label:$viewValue}"
+        typeahead-on-select="addTag($item, $model, $label)" />
+    </tag-manager>
+
+    <p ng-if="element.note"><small>* {{ element.note }}</small></p>
+
+    <error-builder></error-builder>
+
+</div>

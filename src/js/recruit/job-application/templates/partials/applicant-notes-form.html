@@ -1,0 +1,72 @@
+<div ng-class="{'is--loading': notesLoading, 'list--viewport__editing' : editing}" class="notes__edit-form list--viewport">
+    <p ng-show="!notesModel.notes.length">
+        No notes found
+    </p>
+    <ul class="list--unstyled" ng-if="notesModel.notes.length">
+        <li ng-repeat="comment in notesModel.notes" >
+            <article ng-hide="isEditing(comment)">
+                <div class="notes__header">
+                    <div class="notes__author">
+                        <div class="avatar-loader" ng-class="{ 'is' : comment.loading }">
+                            <avatar size="tiny" img-src="comment.avatarMiniLink"></avatar>
+                        </div>
+                        <b class="is--primary">{{ comment.firstName }} {{ comment.surname }}</b>
+                        <small>{{ comment.commentDate | dateOnly }}</small>
+                    </div>
+                    <div class="notes__menu">
+                        <a ng-hide="!comment.userCan(EntityActionType.CanEditComment) && !comment.userCan(EntityActionType.CanDeleteComment)" href="#" dropdown-toggle><i class="icon--ellipsis icon-is-small icon-is-disabled"></i></a>
+                        <ul class="submenu submenu--compact dropdown-menu">
+                            <li class="submenu__item" ng-show="comment.userCan(EntityActionType.CanEditComment)">
+                                <a ng-click="enableEditing(comment)" href="#">Edit</a>
+                            </li>
+                            <li class="submenu__item" ng-show="comment.userCan(EntityActionType.CanDeleteComment)">
+                                <a ng-confirm-click="deleteNote(comment, $index)"  ng-confirm-message="Are you sure you want to delete this?" href="#"><span class="is--negative">Delete</span></a>
+                            </li>
+                        </ul>
+                        <i ng-if="comment.reaction === ReactionConstants.REACTION_LIKE" class="icon--smiling is--positive"></i>
+                        <i ng-if="comment.reaction === ReactionConstants.REACTION_DISLIKE" class="icon--sad is--negative"></i>
+                        <i ng-if="comment.reaction === ReactionConstants.REACTION_NEUTRAL" class="icon--neutral is--caution"></i>
+                    </div>
+                </div>
+                <div ng-if="comment.failed && !comment.loading" class="comment__error">
+                    Failed to save note.
+                </div>
+                <div ng-if="comment.deleteFailed && !comment.loading" class="comment__error">
+                    Failed to delete note.
+                </div>
+                <div class="notes__body">
+                    <p>{{ comment.commentString }}</p>
+                </div>
+            </article>
+
+            <div ng-show="isEditing(comment)" class="form__add__notes">
+                <avatar size="tiny" img-src="comment.avatarMiniLink"></avatar>
+                <form name="editNoteForm" ng-submit="disableEditing()">
+                    <div class="form__field form__field--inline">
+                        <textarea required rows="5" ng-model="comment.commentString" id="fieldInline"></textarea>
+                        <span class="table__table-menu">
+                            <i ng-if="comment.reaction === ReactionConstants.REACTION_LIKE" class="icon--smiling is--positive"></i>
+                            <i ng-if="comment.reaction === ReactionConstants.REACTION_DISLIKE" class="icon--sad is--negative"></i>
+                            <i ng-if="comment.reaction === ReactionConstants.REACTION_NEUTRAL" class="icon--neutral is--caution"></i>
+                            <a class="table__a--select-styled" href="#" dropdown-toggle>
+                                <span class="table__thead--is-selected--text-color"><i class="icon--down icon-is-disabled icon-is-small"></i></span>
+                            </a>
+                            <ul class="submenu submenu--compact dropdown-menu table__ellipsis-submenu--position ellipsis-submenu--font-weight">
+                                <li class="submenu__item align-left">
+                                    <a href="#"><i ng-click="comment.reaction = ReactionConstants.REACTION_NEUTRAL" class="icon--neutral is--caution"></i></a>
+                                    <a href="#"><i ng-click="comment.reaction = ReactionConstants.REACTION_LIKE" class="icon--smiling is--positive"></i></a>
+                                    <a href="#"><i ng-click="comment.reaction = ReactionConstants.REACTION_DISLIKE" class="icon--sad is--negative"></i></a>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div class="button-group align-right">
+                        <button ng-click="disableEditing(comment, $index)" class="button button--white button--small">Cancel</button>
+                        <button class="button button--primary button--small" ng-click="updateNote(editNoteForm.$valid, comment)">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+            <hr ng-if="!$last" class="solid"/>
+        </li>
+    </ul>
+</div>

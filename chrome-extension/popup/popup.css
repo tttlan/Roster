@@ -1,0 +1,14 @@
+.ui body {
+    background: #fff;
+    min-height: 0;
+    height: auto;
+}
+
+.wrapper {
+    width: 250px;
+    padding: 10px;
+}
+
+.login-form {
+    margin-top: 20px;
+}

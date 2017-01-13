@@ -1,0 +1,5 @@
+<div>
+    <external-embed ng-if="!attachments.length" ng-repeat="media in medias | limitTo : 1" src="media"></external-embed>
+    <file-viewer file="file" inline-images="{{isInline}}" block="true" ng-repeat="file in attachments"></file-viewer>
+    <loader align="center" ng-show="gettingAttachments"></loader>
+</div>

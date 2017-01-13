@@ -1,0 +1,48 @@
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+    
+    <p class="form__label">{{ element.label }}</p>
+    
+    <div class="form__datetime">
+
+        <div class="form__field">
+            <label 
+            for="{{ element.formName + '__date-' + element.name }}"
+            class="icon--calendar field__after">
+                <span class="is-visually-hidden">Date</span>
+            </label>
+
+            <input type="text"
+            id="{{ element.formName + '__date-' + element.name }}"
+            placeholder="Date"
+            name="{{element.name}}"
+            ng-model="element.val"
+            ng-required="element.validation.required"
+            validate-date="{{element.validation.date}}"
+            datepick datepicker-popup="d MMM yyyy" />
+
+        </div>
+
+        <div class="form__field">
+            <label
+            class="icon--clock field__after" 
+            for="{{ element.formName + '__time-' + element.name }}">
+                <span class="is-visually-hidden">Time</span>
+            </label>
+            <input
+            type="text"
+            id="{{ element.formName + '__time-' + element.name }}"
+            placeholder="Time"
+            ng-model="element.val"
+            name="{{element.name}}2"
+            ng-required="element.validation.required"
+            timepicker
+            />
+        </div>
+
+    </div>
+
+    <span class="form_note" ng-if="element.note">{{ element.note }}</span>
+
+    <error-builder></error-builder>
+
+</div>

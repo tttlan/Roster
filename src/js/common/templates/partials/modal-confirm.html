@@ -1,0 +1,7 @@
+<div class="modal__content align-center">
+    <h4>{{message ? message : 'Are you sure?'}}</h4>
+</div>
+<footer class="modal__footer align-center">
+    <a href="" class="button" ng-click="cancel()">Cancel</a>
+    <a href="" class="button {{buttonClasses ? buttonClasses : 'button--positive'}}" ng-click="ok()">{{buttonText ? buttonText : 'Confirm'}}</a>
+</footer>

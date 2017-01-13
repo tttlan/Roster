@@ -1,0 +1,42 @@
+<div class="page page--2-1 events-form" ng-class="{'is--loading': eventForm.$submitting}">
+
+    <div class="page__wrapper">
+
+        <header class="page__header">
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="events.index">Events</a></li>
+            </ul>
+
+            <h1 ng-if="!eventForm.$editing">Create a new event</h1>
+            <h1 ng-if="eventForm.$editing">Edit event</h1>
+
+        </header>
+
+        <div class="message message--empty" ng-if="!eventForm.$userCan.edit && eventForm.$editing && eventForm.$loaded">
+            <i class="icon--events icon-is-huge"></i>
+            <p>You do not have permission to edit this event</p>
+        </div>
+
+        <div class="message message--empty" ng-if="!eventForm.$userCan.add && !eventForm.$editing && eventForm.$loaded">
+            <i class="icon--events icon-is-huge"></i>
+            <p>You do not have permission to create events</p>
+        </div>
+
+        <div class="message message--empty" ng-if="!eventForm.$userCan.eventFound && eventForm.$loaded">
+            <i class="icon--events icon-is-huge"></i>
+            <p>The event could not be found</p>
+        </div>
+
+        <form-builder 
+            form-id="event" 
+            form-data-url="/interface/views/events/form-data/create-edit.json" 
+            template="/interface/views/events/partials/form-create-edit.html" 
+            submit="eventSave" 
+            model-data="eventForm.$promise" 
+            parent-data="eventForm"
+            ng-show="eventForm.$userCan.add || eventForm.$userCan.edit">                   
+        </form-builder>
+        
+    </div>
+
+</div>

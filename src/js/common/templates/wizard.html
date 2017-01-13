@@ -1,0 +1,98 @@
+<div class="wizard" ng-if="uiStyle == 1" ng-cloak>
+    <ul ng-class="'progress-steps--'+(steps.length | number)" class="progress-steps">
+        <li ng-repeat="step in steps"
+            ng-class="[{'progress__step--complete': step.isComplete()},
+            {'progress__step--active': step.isActive()},
+            {'progress__step--previous': step.isPrevious()},
+            'progress__step']"
+            ng-disabled="getStepState(step) == stepStatesEnum.disabled">
+            <div class="step__item">
+                <span class="step__number" data-text="{{$index + 1}}"></span>
+                <span class="step__title">{{step.title}} {{getStepState(step)}}</span>
+            </div>
+        </li>
+    </ul>
+    <div class="wizard__main">
+        <div class="wizard-step-container" ng-transclude></div>
+    </div>
+    <div class="wizard__actions">
+        <button class="button button--positive button--icon-left"
+                ng-hide="!hasPrevious()"
+                ng-click="goToPrevious()"
+                type="button"><i
+                class="icon--left"></i>Previous</button>
+        <button class="button button--positive button--icon-right"
+                ng-hide="!hasNext()"
+                ng-disabled="!canGoToNext()"
+                ng-click="goToNext()"
+                type="button">Next<i
+                class="icon--right"></i></button>
+        <button class="button button--positive"
+                ng-hide="!isSubmittable()"
+                ng-click="onSubmitClicked()"
+                ng-disabled="submitting"
+                type="button">{{submitButtonText}}</button>
+    </div>
+</div>
+
+<div class="wizard" ng-if="uiStyle == 2" ng-cloak>
+
+    <ul class="job-progress-steps"  ng-class="'progress-steps--'+(steps.length | number)">
+        <li ng-repeat="step in steps"
+            class="progress__step"
+            ng-class="[
+                {'progress__step--complete': step.isComplete()},
+                {'progress__step--active': step.isActive()},
+                {'progress__step--previous': step.isPrevious()},
+            ]">
+
+            <div class="step__item">
+                <span class="step__number" data-text="{{$index + 1}}"></span>
+                <span class="step__title">
+                    <strong>{{step.title}} {{getStepState(step)}}</strong>
+                </span>
+            </div>
+        </li>
+    </ul>
+
+    <div class="wizard__main">
+        <div class="wizard-step-container" ng-transclude></div>
+    </div>
+
+    <div class="wizard__actions">
+        <div class="col-1-4">
+            <a  ng-show="jobId"><i class="icon--trash icon-is-large"></i></a>
+            <button class="button button--icon-left"
+                    ng-hide="!hasPrevious()"
+                    ng-click="goToPrevious()"
+                    type="button">
+                BACK
+            </button>
+        </div>
+
+        <div class="col-3-4 aligned--right">
+            <button class="button button--icon-right"
+                    ng-hide="!hasNext()"
+                    ng-disabled="!canGoToNext()"
+                    ng-click="goToNext()"
+                    type="button">
+                SAVE AND CLOSE
+            </button>
+
+            <button class="button button--positive button--icon-right"
+                    ng-hide="!hasNext()"
+                    ng-disabled="!canGoToNext()"
+                    ng-click="goToNext()"
+                    type="button">
+                SAVE AND CONTINUE
+            </button>
+
+            <button class="button button--positive"
+                    ng-show="currentStepNumber === 4"
+                    type="button">
+                OPEN JOB
+            </button>
+        </div>
+    </div>
+
+</div>

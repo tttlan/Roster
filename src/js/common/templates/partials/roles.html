@@ -1,0 +1,14 @@
+<div ng-hide="allToggle">
+    <tag-manager
+        ng-model="ngModel"
+        select-data="roles.data"
+        ng-class="{'error': !ngModel.length}"
+    >
+        <input type="text" placeholder="Enter roles"
+            ng-model="typeAheadTag"
+            typeahead="role as role.label for role in selectData | filter:{label:$viewValue}"
+            typeahead-on-select="addTag($item, $model, $label)"
+            ng-disabled="roles.loading"
+        />
+    </tag-manager>
+</div>

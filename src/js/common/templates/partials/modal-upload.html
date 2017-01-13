@@ -1,0 +1,22 @@
+<header class="modal__header">
+    <h3 class="modal__title">Insert an image</h3>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+
+<div class="modal__uploader">
+    <uploader maxsize="5000 * 1024"
+              maxfiles="1"
+              ng-model="items"
+              cta="Browse for images"
+              start-open="true"
+              only-images="true"
+              module-upload="{{moduleUpload}}"
+              old-uploader="isOldUploader"
+              container-id="containerId">
+    </uploader>
+</div>
+
+<footer class="modal__footer">
+    <button href="" class="button button--small" ng-click="cancel()">Cancel</button>
+    <button class="button button--positive button--small" ng-click="ok()" ng-disabled="!items.length">Insert image</button>
+</footer>

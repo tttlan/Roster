@@ -1,0 +1,26 @@
+﻿<div class="panel-add--filter">
+    <ul class="nav nav--horz text-center">
+        <li><a href="#" class="is--active">Available filters</a></li>
+        <li><a href="#">Presets</a></li>
+    </ul>
+    <!-- filter region for 'Available filers' -->
+    <div ng-repeat="obj in filterOptions track by $index">
+        <h5>{{obj.Header}}</h5>
+        <ul class="list--unstyled">
+            <li ng-style="opt.Selected.length > 0 ? {'color':'#c7c7c7'}:{}"
+                ng-repeat="opt in obj.Options">
+                <span ng-if="opt.Title !== 'Tags'">{{opt.Selected.length === 0 ? opt.Title : opt.Selected[0]}}</span>
+                <span ng-if="opt.Title === 'Tags'">{{opt.Title}}</span>
+                <a ng-if="opt.Selected.length > 0" class="status status--online"></a>
+                <a href="#" ng-click="openSubFilterModal(opt)"><i class="icon--arrow-right icon-is-small"></i></a>
+            </li>
+        </ul>
+        <br />
+    </div>
+    <!-- end filter region for 'Available filters' -->
+    <!-- filter region for 'Presets' -->
+    <div>
+
+    </div>
+    <!-- end filter region for 'Presets'-->
+</div>

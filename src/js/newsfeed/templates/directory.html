@@ -1,0 +1,74 @@
+<div class="page directory">
+    <div class="page__wrapper">
+        
+        <div class="page__header">
+
+            <div class="form__field directory-search">
+                <label for="searchDirectory" class="icon--search directory-search__label"></label>
+                <input type="text" id="searchDirectory" class="h1" placeholder="Type to search people" ng-model="searchVal" ng-change="searchQuery(searchVal)" autocomplete="off" />
+
+                <div class="directory-search__search-by">
+                    <p><span>Search by <strong>{{page.searchOptsName}}</strong>: </span><a href="" ng-click="openSearchFilters()" title="Search by a different field"><strong>change</strong><i class="icon--right"></i></a></p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- content component -->
+
+        <div class="page__content" when-scrolled="fetchNext()">
+
+            <div class="directory__alphabet">
+                <ul class="alphabet">
+                    <li><a href="" ng-class="{'is--active': page.searchTerm.length > 1 || !page.searchTerm}" ng-click="setSearchQuery('',2)"><i class="icon--search"></i></a></li>
+                    <li ng-repeat="char in chars"><a href="" ng-class="{'is--active': char == page.searchTerm}" ng-click="setSearchQuery(char,2)">{{char}}</a></li>
+                </ul>
+            </div>
+            <div class="directory__table">
+                <table class="table">
+                    <tr ng-repeat="member in page.items | filter: {Fullname: filterBy.name, RoleDescription: filterBy.role, DefaultGroupName: filterBy.group }">
+                        <td class="is--required">
+                            <a href="" class="directory__member" ng-click="showDetails(member)">
+                                <div class="member__image">
+                                    <span class="status" 
+                                        ng-class="{'status--offline' : !member.IsOnline, 'status--online' : member.IsOnline }"
+                                        tooltip="{{ member.IsOnline ? 'Online' : 'Offline' }}"
+                                        tooltip-placement="right"
+                                    ></span>
+                                    <avatar img-src="member.AvatarPhotoThumb" size="small"></avatar>
+                                </div>
+                                <div class="member__details"><strong>{{ ::member.FirstName }}</strong> {{ ::member.Surname }} <small>{{ ::member.RoleDescription }}</small></div>
+                            </a>
+                        </td>
+                        <td class="row--optional" data-title="Location">
+
+                            <a ng-if="::member.DefaultGroupID != -1" href="" path="groups.group" path-params="::member.DefaultGroupID" target="_self" class="button button--basic button--tiny">{{ ::member.DefaultGroupName }}</a>
+                        </td>
+                        <td class="row--optional" data-title="Phone"><a href="tel:{{ member.PhoneMobile || member.PhoneLine1 }}">{{ member.PhoneMobile || member.PhoneLine1 }}</a></td>
+                        <td class="row--optional">
+                            <a href="" class="link-icon" ng-click="showDetails(member)" tooltip="More info" tooltip-placement="left"><i class="icon--ellipsis"></i></a>
+                        </td>
+                    </tr>
+                </table>
+
+<!--                 <span ng-show="(page.items | filter:{Fullname: filterBy.name, RoleDescription: filterBy.role, DefaultGroupName: filterBy.group }).length == 0">No results</span> -->
+
+                <div class="message message--empty" ng-hide="page.loading || page.hasData || page.error">
+                    <p>No members found</p>
+                </div>
+                
+                <loader ng-show="page.loading" size="large" align="center"></loader>
+
+            </div>
+
+            <div class="directory__next" ng-show="!!nextChar && page.end">
+                <a href="" ng-click="setSearchQuery(nextChar,'name')">
+                    <h2>{{ nextChar }}</h2>
+                    <p>Load next page</p>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>

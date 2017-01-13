@@ -1,0 +1,29 @@
+﻿<table class="table-form" ng-class="{'table-form__edit-all' : parentData.$editing === 'all'}">
+
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'role' || parentData.$editing === 'all' }">
+        <th>Roles</th>
+        <td style="position: relative">
+            <span class="table-form__form-value">{{form.Role.$viewValue.label}}</span>
+            <table-form-edit edit-name="role" ></table-form-edit>
+
+            <div class="table-form__form-field">
+                [[Role]]
+            </div>
+            <table-form-buttons edit-name="role"></table-form-buttons>
+        </td>
+    </tr>
+    
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'notification' || parentData.$editing === 'all' }">
+        <th>Notifcations</th>
+        <td style="position: relative">
+            <span class="table-form__form-value">{{form.Notification.$viewValue ? form.Notification.$viewValue : ''}}</span>
+            <table-form-edit edit-name="notification"></table-form-edit>
+
+            <div class="table-form__form-field">
+                [[Notification]]
+            </div>
+            <table-form-buttons edit-name="notification"></table-form-buttons>
+        </td>
+    </tr>
+
+</table>

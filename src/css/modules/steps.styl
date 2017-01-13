@@ -1,0 +1,541 @@
+.ui
+
+    step_bg = #f6f6f6;
+    step_bg_active = positive;
+    step_height = gutter;
+    step_border_color = rgba(0,0,0,0.08);
+
+    // 3 horizontal progress steps
+    //
+    // Weight: 1
+    //
+    // Markup:
+    // <ul class="progress-steps progress-steps--3">
+    //     <li class="progress__step progress__step--active">
+    //         <a href="#" class="step__item">
+    //             <span class="step__number" data-text="1"></span>
+    //             <span class="step__title">Review Terms</span>
+    //         </a>
+    //     </li>
+    //     <li class="progress__step">
+    //         <a href="#" class="step__item">
+    //             <span class="step__number" data-text="2"></span>
+    //             <span class="step__title">Review Contract</span>
+    //         </a>
+    //     </li>
+    //     <li class="progress__step">
+    //         <a href="#" class="step__item">
+    //             <span class="step__number" data-text="3"></span>
+    //             <span class="step__title">Complete Profile</span>
+    //         </a>
+    //     </li>
+    // </ul>
+    //
+    // Styleguide modules.steps.progress1
+
+    // 4 horizontal progress steps
+    //
+    // Weight: 2
+    //
+    // Markup:
+    // <ul class="progress-steps progress-steps--4">
+    //     <li class="progress__step progress__step--complete">
+    //         <a href="#" class="step__item">
+    //             <span class="step__number" data-text="1"></span>
+    //             <span class="step__title">Review Terms</span>
+    //         </a>
+    //     </li>
+    //     <li class="progress__step progress__step--previous">
+    //         <a href="#" class="step__item">
+    //             <span class="step__number" data-text="2"></span>
+    //             <span class="step__title">Review Contract</span>
+    //         </a>
+    //     </li>
+    //     <li class="progress__step progress__step--active">
+    //         <a href="#" class="step__item">
+    //             <span class="step__number" data-text="3"></span>
+    //             <span class="step__title">Complete Profile</span>
+    //         </a>
+    //     </li>
+    //     <li class="progress__step">
+    //         <a href="#" class="step__item">
+    //             <span class="step__number" data-text="4"></span>
+    //             <span class="step__title">Activate Account</span>
+    //         </a>
+    //     </li>
+    // </ul>
+    //
+    // Styleguide modules.steps.progress2
+
+    .progress-steps {
+        clearfix();
+
+        list-style: none;
+        padding: 0;
+        margin: 0 0 gutter 0;
+        position: relative;
+        z-index: 2;
+        background-color: step_bg;
+        border: solid 1px grey8;
+        border-radius: base-border-radius;
+
+        .progress__step {
+            float: left;
+            height: step_height;
+
+            &:last-child .step__item:before ,
+            &:last-child .step__item:after {
+                display: none;
+            }
+
+            &:first-child {
+                .step__item {
+                    border-top-left-radius: base-border-radius;
+                    border-bottom-left-radius: base-border-radius;
+                }
+            }
+
+            &:last-child {
+                .step__item {
+                    border-top-right-radius: base-border-radius;
+                    border-bottom-right-radius: base-border-radius;
+                }
+            }
+        }
+
+        .step__item {
+            line-height: 24px;
+            display: block;
+            font-size: 13px;
+            text-align: center;
+            color: grey4;
+            position: relative;
+            padding: 8px 0;
+            height: step_height;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            &:before ,
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                border-top: 20px solid transparent;
+                border-bottom: 20px solid transparent;
+                border-left: 15px solid;
+                right: -7px;
+            }
+
+            &:after{
+                z-index: 2;
+                border-left-color: step_bg;
+            }
+
+            &:before{
+                border-left-color: step_border_color;
+                right: -8px;
+                z-index: 1;
+            }
+
+        }
+
+        .step__title ,
+        .step__description {
+            display: none;
+        }
+
+        .step__number {
+            display: inline-block;
+            text-align: center;
+            border-radius 24px;
+            background-color: rgba(0,0,0,0.05);
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            margin-right: 3px;
+            font-size: 14px;
+
+            &:before {
+                content: attr(data-text);
+            }
+
+        }
+
+    }
+
+    .progress-step--2 {
+        .progress__step {
+            width: 50%;
+        }
+    }
+
+    .progress-steps--3 {
+        .progress__step {
+            width: 33.3%;
+        }
+    }
+
+    .progress-steps--4 {
+        .progress__step {
+            width: 25%;
+        }
+    }
+
+    .progress-steps--5 {
+        .progress__step {
+            width: 20%;
+        }
+    }
+
+    // Tablet and upwards
+
+    @media minTablet {
+
+        .progress-steps {
+            .progress__step .step__title {
+                display: inline;
+            }
+        }
+
+    }
+
+
+    // Progress States
+    // ------------------------------------------------
+
+    tick-icon()
+        icon();
+        text-align: center;
+        line-height: 24px;
+        &:before { content: icon-check; }
+
+
+    .progress-steps {
+
+        .progress__step--active {
+            .step__item {
+                background-color: white;
+                color: base-font-color;
+
+                &:after{
+                    border-left-color: white;
+                }
+
+                &:before{
+                    border-width: 20px 0 20px 15px;
+                    border-color: step_bg step_bg step_bg transparent;
+                    right: -7px;
+                }
+            }
+        }
+
+        .progress__step--complete {
+            .step__item {
+                background-color: step_bg_active;
+                color: white;
+
+                &:after{
+                    border-left-color: step_bg_active;
+                }
+
+                .step__number {
+                    tick-icon()
+                }
+            }
+        }
+
+        .progress__step--previous {
+            .step__item {
+                background-color: step_bg_active;
+                color: white;
+
+                &:after{
+                    border-left-color: step_bg_active;
+                }
+
+                &:before{
+                    border-width: 20px 0 20px 15px;
+                    border-color: white white white transparent;
+                    right: -7px;
+                }
+
+                .step__number {
+                    tick-icon()
+                }
+            }
+        }
+
+    }
+
+
+    // Listing steps
+    //
+    // Weight: 3
+    //
+    // Markup:
+    // <ul class="progress-list">
+    //     <li class="progress__step progress__step--complete">
+    //         <a href="#" class="step__item">
+    //             <span class="step__number" data-text="1"></span>
+    //             <span class="step__title">Review Terms</span>
+    //             <span class="step__description">This is a description</span>
+    //         </a>
+    //     </li>
+    //     <li class="progress__step progress__step--active">
+    //         <a href="#" class="step__item">
+    //             <span class="step__number" data-text="2"></span>
+    //             <span class="step__title">Review Contract</span>
+    //             <span class="step__description">This is another longer description</span>
+    //         </a>
+    //     </li>
+    //     <li class="progress__step">
+    //         <a href="#" class="step__item">
+    //             <span class="step__number" data-text="3"></span>
+    //             <span class="step__title">Complete Profile</span>
+    //             <span class="step__description">This is a description</span>
+    //         </a>
+    //     </li>
+    // </ul>
+    //
+    // Styleguide modules.steps.listing1
+
+    // Listing steps with panel and heading
+    //
+    // Weight: 4
+    //
+    // Markup:
+    // <div class="panel panel--noPadding" style="max-width: 280px;">
+    //     <ul class="progress-list">
+    //         <li class="progress__title">Your progress</li>
+    //         <li class="progress__step progress__step--complete">
+    //             <a href="#" class="step__item">
+    //                 <span class="step__number" data-text="1"></span>
+    //                 <span class="step__title">Review Terms</span>
+    //                 <span class="step__description">This is a description</span>
+    //             </a>
+    //         </li>
+    //         <li class="progress__step progress__step--complete">
+    //             <a href="#" class="step__item">
+    //                 <span class="step__number" data-text="2"></span>
+    //                 <span class="step__title">Review Contract</span>
+    //                 <span class="step__description">This is a description</span>
+    //             </a>
+    //         </li>
+    //         <li class="progress__step progress__step--active">
+    //             <a href="#" class="step__item">
+    //                 <span class="step__number" data-text="3"></span>
+    //                 <span class="step__title">Complete Profile</span>
+    //                 <span class="step__description">This is a description</span>
+    //             </a>
+    //         </li>
+    //         <li class="progress__step">
+    //             <a href="#" class="step__item">
+    //                 <span class="step__number" data-text="4"></span>
+    //                 <span class="step__title">Activate Account with a title that wraps</span>
+    //             <span class="step__description">This is a description</span>
+    //             </a>
+    //         </li>
+    //         <li class="progress__step">
+    //             <a href="#" class="step__item">
+    //                 <span class="step__number" data-text="4"></span>
+    //                 <span class="step__title">Confirm email</span>
+    //             <span class="step__description">Really long trainig subject description that is being really annoying and long</span>
+    //             </a>
+    //         </li>
+    //         <li class="progress__step">
+    //             <a href="#" class="step__item">
+    //                 <span class="step__number" data-text="4"></span>
+    //                 <span class="step__title">Update details</span>
+    //             </a>
+    //         </li>
+    //     </ul>
+    // </div>
+    //
+    // Styleguide modules.steps.listing2
+
+    .progress-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        .progress__title {
+            font-size: 13px;
+            line-height: 1;
+            color: grey5;
+            position: relative;
+            text-transform: uppercase;
+            border-bottom: solid 1px grey8;
+            padding: 15px 20px;
+            background-color: grey10;
+            border-radius: 2px 2px 0 0;
+        }
+
+        .progress__step {
+            width: 100%;
+            height: auto;
+            border-bottom: solid 1px grey8;
+
+            &:last-child {
+                border-bottom: 0px;
+            }
+
+            .step__item {
+                display: block;
+                padding: 20px 20px 20px 70px;
+                font-size: 16px;
+                line-height: 20px;
+                min-height: 52px;
+                position: relative;
+                color: grey3;
+
+                @media print {
+                    padding-left: 20px;
+                }
+            }
+
+            a.step__item:hover {
+                text-decoration: none;
+                background-color: grey9;
+            }
+
+            .step__title ,
+            .step__description {
+                display: block;
+                word-wrap: break-word;
+            }
+
+            .step__title {
+                font-weight: normal;
+                font-size: 16px;
+            }
+
+            .step__description {
+                font-size: 13px;
+                line-height: 1.4;
+                color: grey5;
+                margin-top: 2px;
+            }
+
+            .step__number {
+                position: relative;
+                display: block;
+                absolute: top 50% left 20px;
+                background-color: grey8;
+                margin-top: -16px;
+                width: 32px;
+                height: 32px;
+                border-radius 32px;
+                z-index: 3;
+
+                @media print {
+                    display: none;
+                }
+
+                box-shadow: inset 1px 1px 1px rgba(0,0,0,0.05);
+
+                &:after {
+                    content: '';
+                    width: 12px;
+                    height: 12px;
+                    background: grey7;
+                    border-radius: 12px;
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    opacity: 0;
+                }
+            }
+
+        }
+
+
+        // States
+        // ------------------------------------------------
+
+        .progress__step--complete {
+            .step__item {
+                color: black;
+            }
+            .step__number {
+                tick-icon()
+
+                background: positive;
+                color: white;
+                line-height: 32px;
+
+                box-shadow: inset 0px 0px 0px rgba(0,0,0,0);
+
+            }
+        }
+
+        .progress__step--active {
+
+            .step__number:after {
+                opacity: 1;
+                background:positive;
+            }
+        }
+
+        .progress__step--next {
+
+            .step__number:after {
+                opacity: 1;
+            }
+        }
+
+        .progress__step--complete.progress__step--active {
+            .step__number:after {
+                opacity: 0;
+            }
+        }
+
+    }
+
+
+    .progress-list--collapsed {
+        position: relative;
+        top: -20px;
+        left: -20px
+
+        .progress__title {
+            display: none;
+        }
+
+        .progress__step {
+
+            .step__item {
+                display: block;
+                padding: 0;
+                margin: 0 13px;
+                height: 60px;
+            }
+
+            .step__title ,
+            .step__description {
+                display: none;
+            }
+        }
+    }
+
+    .edit--job {
+        .progress-steps {    
+            .progress__step {
+                .step__number {
+                    border: 1px solid;
+                    background-color:none;
+                }
+            }
+            .progress__step--active {
+                .step__item {
+                    background-color: primary;
+                    color: white;
+
+                    &:after{
+                        border-left-color: primary;  
+                    }
+                }
+            }
+        }
+    }

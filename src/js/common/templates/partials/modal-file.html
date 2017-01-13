@@ -1,0 +1,5 @@
+<div tabindex="-1" role="dialog" class="modal--file" ng-style="{'z-index': 1050 + index*10, display: 'block'}" ng-click="close($event)">
+    <div class="modal--file__dialog {{ animationType }}" ng-class="{'modal--sm': size == 'sm', 'modal--lg': size == 'lg', in: animate}">
+        <div class="modal--file__main" modal-transclude></div>
+    </div>
+</div>

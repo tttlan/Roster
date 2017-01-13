@@ -1,0 +1,473 @@
+{
+    "$id": "1",
+    "JobRequisitionSummaryItemResult": [
+        {
+            "$id": "2",
+            "JobRequisitionSummary": {
+                "$id": "3",
+                "JobAdRequisitionId": 2932,
+                "NetworkGroupId": 11038,
+                "CreatedDateTime": "2016-05-17T07:00:47.967",
+                "LastModifiedDateTime": "2016-05-17T07:00:47.967",
+                "Owner": {
+                    "$id": "4",
+                    "MemberId": 247682,
+                    "FirstName": "Sherpa",
+                    "Surname": "Admin",
+                    "PhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+                    "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+                    "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg",
+                    "RoleTitle": "FIN - Systems Administrator",
+                    "DefaultNetworkGroupId": 0,
+                    "Birthday": "1979-08-08T01:00:00"
+                },
+                "RoleTitle": "FIN - Systems Administrator",
+                "NetworkGroup": {
+                    "$id": "5",
+                    "NetworkGroupId": 11038,
+                    "GroupName": "Support Office",
+                    "Type": null,
+                    "LookupUrl": "http://localhost:56828/Api/",
+                    "IsTrainingLocation": null
+                },
+                "State": "Draft"
+            },
+            "EntityActions": [
+                {
+                    "$id": "6",
+                    "Id": "2932",
+                    "Code": 3700,
+                    "Caption": "CanViewJobAdRequisitionDetail",
+                    "Description": "CanViewJobAdRequisitionDetail",
+                    "ActionUrl": "/recruitments/JobRequisitions/2932",
+                    "Children": null
+                }
+            ],
+            "Status": 0
+        },
+        {
+            "$id": "7",
+            "JobRequisitionSummary": {
+                "$id": "8",
+                "JobAdRequisitionId": 2931,
+                "NetworkGroupId": 11088,
+                "CreatedDateTime": "2016-05-17T05:56:18.247",
+                "LastModifiedDateTime": "2016-05-17T05:56:18.247",
+                "Owner": {
+                    "$id": "9",
+                    "MemberId": 247682,
+                    "FirstName": "Sherpa",
+                    "Surname": "Admin",
+                    "PhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+                    "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+                    "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg",
+                    "RoleTitle": "FIN - Systems Administrator",
+                    "DefaultNetworkGroupId": 0,
+                    "Birthday": "1979-08-08T01:00:00"
+                },
+                "RoleTitle": "HR - Office / Training Coordinator",
+                "NetworkGroup": {
+                    "$id": "10",
+                    "NetworkGroupId": 11088,
+                    "GroupName": "Degraves Street",
+                    "Type": null,
+                    "LookupUrl": "http://localhost:56828/Api/",
+                    "IsTrainingLocation": null
+                },
+                "State": "Pending"
+            },
+            "EntityActions": [
+                {
+                    "$id": "11",
+                    "Id": "2931",
+                    "Code": 3700,
+                    "Caption": "CanViewJobAdRequisitionDetail",
+                    "Description": "CanViewJobAdRequisitionDetail",
+                    "ActionUrl": "/recruitments/JobRequisitions/2931",
+                    "Children": null
+                }
+            ],
+            "Status": 0
+        },
+        {
+            "$id": "12",
+            "JobRequisitionSummary": {
+                "$id": "13",
+                "JobAdRequisitionId": 2930,
+                "NetworkGroupId": 11064,
+                "CreatedDateTime": "2016-05-17T05:53:14.687",
+                "LastModifiedDateTime": "2016-05-17T05:53:14.687",
+                "Owner": {
+                    "$id": "14",
+                    "MemberId": 247682,
+                    "FirstName": "Sherpa",
+                    "Surname": "Admin",
+                    "PhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+                    "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+                    "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg",
+                    "RoleTitle": "FIN - Systems Administrator",
+                    "DefaultNetworkGroupId": 0,
+                    "Birthday": "1979-08-08T01:00:00"
+                },
+                "RoleTitle": "D&D - Development Coordinator",
+                "NetworkGroup": {
+                    "$id": "15",
+                    "NetworkGroupId": 11064,
+                    "GroupName": "Fitzroy",
+                    "Type": null,
+                    "LookupUrl": "http://localhost:56828/Api/",
+                    "IsTrainingLocation": null
+                },
+                "State": "Draft"
+            },
+            "EntityActions": [
+                {
+                    "$id": "16",
+                    "Id": "2930",
+                    "Code": 3700,
+                    "Caption": "CanViewJobAdRequisitionDetail",
+                    "Description": "CanViewJobAdRequisitionDetail",
+                    "ActionUrl": "/recruitments/JobRequisitions/2930",
+                    "Children": null
+                }
+            ],
+            "Status": 0
+        },
+        {
+            "$id": "17",
+            "JobRequisitionSummary": {
+                "$id": "18",
+                "JobAdRequisitionId": 2929,
+                "NetworkGroupId": 11064,
+                "CreatedDateTime": "2016-05-17T05:52:27.407",
+                "LastModifiedDateTime": "2016-05-17T05:52:27.407",
+                "Owner": {
+                    "$id": "19",
+                    "MemberId": 247682,
+                    "FirstName": "Sherpa",
+                    "Surname": "Admin",
+                    "PhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+                    "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+                    "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg",
+                    "RoleTitle": "FIN - Systems Administrator",
+                    "DefaultNetworkGroupId": 0,
+                    "Birthday": "1979-08-08T01:00:00"
+                },
+                "RoleTitle": "3rd Party Supplier",
+                "NetworkGroup": {
+                    "$id": "20",
+                    "NetworkGroupId": 11064,
+                    "GroupName": "Fitzroy",
+                    "Type": null,
+                    "LookupUrl": "http://localhost:56828/Api/",
+                    "IsTrainingLocation": null
+                },
+                "State": "Draft"
+            },
+            "EntityActions": [
+                {
+                    "$id": "21",
+                    "Id": "2929",
+                    "Code": 3700,
+                    "Caption": "CanViewJobAdRequisitionDetail",
+                    "Description": "CanViewJobAdRequisitionDetail",
+                    "ActionUrl": "/recruitments/JobRequisitions/2929",
+                    "Children": null
+                }
+            ],
+            "Status": 0
+        },
+        {
+            "$id": "22",
+            "JobRequisitionSummary": {
+                "$id": "23",
+                "JobAdRequisitionId": 2928,
+                "NetworkGroupId": 11038,
+                "CreatedDateTime": "2016-05-17T03:35:25.233",
+                "LastModifiedDateTime": "2016-05-17T03:35:25.233",
+                "Owner": {
+                    "$id": "24",
+                    "MemberId": 247682,
+                    "FirstName": "Sherpa",
+                    "Surname": "Admin",
+                    "PhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+                    "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+                    "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg",
+                    "RoleTitle": "FIN - Systems Administrator",
+                    "DefaultNetworkGroupId": 0,
+                    "Birthday": "1979-08-08T01:00:00"
+                },
+                "RoleTitle": "FIN - Systems Administrator",
+                "NetworkGroup": {
+                    "$id": "25",
+                    "NetworkGroupId": 11038,
+                    "GroupName": "Support Office",
+                    "Type": null,
+                    "LookupUrl": "http://localhost:56828/Api/",
+                    "IsTrainingLocation": null
+                },
+                "State": "Draft"
+            },
+            "EntityActions": [
+                {
+                    "$id": "26",
+                    "Id": "2928",
+                    "Code": 3700,
+                    "Caption": "CanViewJobAdRequisitionDetail",
+                    "Description": "CanViewJobAdRequisitionDetail",
+                    "ActionUrl": "/recruitments/JobRequisitions/2928",
+                    "Children": null
+                }
+            ],
+            "Status": 0
+        },
+        {
+            "$id": "27",
+            "JobRequisitionSummary": {
+                "$id": "28",
+                "JobAdRequisitionId": 2927,
+                "NetworkGroupId": 11150,
+                "CreatedDateTime": "2016-05-17T03:34:21.28",
+                "LastModifiedDateTime": "2016-05-17T03:34:21.28",
+                "Owner": {
+                    "$id": "29",
+                    "MemberId": 247682,
+                    "FirstName": "Sherpa",
+                    "Surname": "Admin",
+                    "PhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+                    "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+                    "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg",
+                    "RoleTitle": "FIN - Systems Administrator",
+                    "DefaultNetworkGroupId": 0,
+                    "Birthday": "1979-08-08T01:00:00"
+                },
+                "RoleTitle": "ADMIN - Director",
+                "NetworkGroup": {
+                    "$id": "30",
+                    "NetworkGroupId": 11150,
+                    "GroupName": "Brookfield Place ",
+                    "Type": null,
+                    "LookupUrl": "http://localhost:56828/Api/",
+                    "IsTrainingLocation": null
+                },
+                "State": "Pending"
+            },
+            "EntityActions": [
+                {
+                    "$id": "31",
+                    "Id": "2927",
+                    "Code": 3700,
+                    "Caption": "CanViewJobAdRequisitionDetail",
+                    "Description": "CanViewJobAdRequisitionDetail",
+                    "ActionUrl": "/recruitments/JobRequisitions/2927",
+                    "Children": null
+                }
+            ],
+            "Status": 0
+        },
+        {
+            "$id": "32",
+            "JobRequisitionSummary": {
+                "$id": "33",
+                "JobAdRequisitionId": 2926,
+                "NetworkGroupId": 11064,
+                "CreatedDateTime": "2016-05-17T03:33:52.597",
+                "LastModifiedDateTime": "2016-05-17T03:33:52.597",
+                "Owner": {
+                    "$id": "34",
+                    "MemberId": 247682,
+                    "FirstName": "Sherpa",
+                    "Surname": "Admin",
+                    "PhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+                    "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+                    "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg",
+                    "RoleTitle": "FIN - Systems Administrator",
+                    "DefaultNetworkGroupId": 0,
+                    "Birthday": "1979-08-08T01:00:00"
+                },
+                "RoleTitle": "3rd Party Supplier",
+                "NetworkGroup": {
+                    "$id": "35",
+                    "NetworkGroupId": 11064,
+                    "GroupName": "Fitzroy",
+                    "Type": null,
+                    "LookupUrl": "http://localhost:56828/Api/",
+                    "IsTrainingLocation": null
+                },
+                "State": "Draft"
+            },
+            "EntityActions": [
+                {
+                    "$id": "36",
+                    "Id": "2926",
+                    "Code": 3700,
+                    "Caption": "CanViewJobAdRequisitionDetail",
+                    "Description": "CanViewJobAdRequisitionDetail",
+                    "ActionUrl": "/recruitments/JobRequisitions/2926",
+                    "Children": null
+                }
+            ],
+            "Status": 0
+        },
+        {
+            "$id": "37",
+            "JobRequisitionSummary": {
+                "$id": "38",
+                "JobAdRequisitionId": 2925,
+                "NetworkGroupId": 11064,
+                "CreatedDateTime": "2016-05-17T03:32:47.223",
+                "LastModifiedDateTime": "2016-05-17T03:32:47.223",
+                "Owner": {
+                    "$id": "39",
+                    "MemberId": 247682,
+                    "FirstName": "Sherpa",
+                    "Surname": "Admin",
+                    "PhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+                    "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+                    "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg",
+                    "RoleTitle": "FIN - Systems Administrator",
+                    "DefaultNetworkGroupId": 0,
+                    "Birthday": "1979-08-08T01:00:00"
+                },
+                "RoleTitle": "FIN - Assistant Accountant",
+                "NetworkGroup": {
+                    "$id": "40",
+                    "NetworkGroupId": 11064,
+                    "GroupName": "Fitzroy",
+                    "Type": null,
+                    "LookupUrl": "http://localhost:56828/Api/",
+                    "IsTrainingLocation": null
+                },
+                "State": "Draft"
+            },
+            "EntityActions": [
+                {
+                    "$id": "41",
+                    "Id": "2925",
+                    "Code": 3700,
+                    "Caption": "CanViewJobAdRequisitionDetail",
+                    "Description": "CanViewJobAdRequisitionDetail",
+                    "ActionUrl": "/recruitments/JobRequisitions/2925",
+                    "Children": null
+                }
+            ],
+            "Status": 0
+        },
+        {
+            "$id": "42",
+            "JobRequisitionSummary": {
+                "$id": "43",
+                "JobAdRequisitionId": 2924,
+                "NetworkGroupId": 11064,
+                "CreatedDateTime": "2016-05-17T03:30:57.43",
+                "LastModifiedDateTime": "2016-05-17T03:30:57.43",
+                "Owner": {
+                    "$id": "44",
+                    "MemberId": 247682,
+                    "FirstName": "Sherpa",
+                    "Surname": "Admin",
+                    "PhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+                    "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+                    "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg",
+                    "RoleTitle": "FIN - Systems Administrator",
+                    "DefaultNetworkGroupId": 0,
+                    "Birthday": "1979-08-08T01:00:00"
+                },
+                "RoleTitle": "3rd Party Agency",
+                "NetworkGroup": {
+                    "$id": "45",
+                    "NetworkGroupId": 11064,
+                    "GroupName": "Fitzroy",
+                    "Type": null,
+                    "LookupUrl": "http://localhost:56828/Api/",
+                    "IsTrainingLocation": null
+                },
+                "State": "Draft"
+            },
+            "EntityActions": [
+                {
+                    "$id": "46",
+                    "Id": "2924",
+                    "Code": 3700,
+                    "Caption": "CanViewJobAdRequisitionDetail",
+                    "Description": "CanViewJobAdRequisitionDetail",
+                    "ActionUrl": "/recruitments/JobRequisitions/2924",
+                    "Children": null
+                }
+            ],
+            "Status": 0
+        },
+        {
+            "$id": "47",
+            "JobRequisitionSummary": {
+                "$id": "48",
+                "JobAdRequisitionId": 2923,
+                "NetworkGroupId": 11075,
+                "CreatedDateTime": "2016-05-17T03:30:39.75",
+                "LastModifiedDateTime": "2016-05-17T03:30:39.75",
+                "Owner": {
+                    "$id": "49",
+                    "MemberId": 247682,
+                    "FirstName": "Sherpa",
+                    "Surname": "Admin",
+                    "PhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+                    "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+                    "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg",
+                    "RoleTitle": "FIN - Systems Administrator",
+                    "DefaultNetworkGroupId": 0,
+                    "Birthday": "1979-08-08T01:00:00"
+                },
+                "RoleTitle": "3rd Party Supplier",
+                "NetworkGroup": {
+                    "$id": "50",
+                    "NetworkGroupId": 11075,
+                    "GroupName": "Fortitude Valley",
+                    "Type": null,
+                    "LookupUrl": "http://localhost:56828/Api/",
+                    "IsTrainingLocation": null
+                },
+                "State": "Draft"
+            },
+            "EntityActions": [
+                {
+                    "$id": "51",
+                    "Id": "2923",
+                    "Code": 3700,
+                    "Caption": "CanViewJobAdRequisitionDetail",
+                    "Description": "CanViewJobAdRequisitionDetail",
+                    "ActionUrl": "/recruitments/JobRequisitions/2923",
+                    "Children": null
+                }
+            ],
+            "Status": 0
+        }
+    ],
+    "EntityActions": [
+        {
+            "$id": "52",
+            "Id": "ea0cddad-b1ce-4357-a114-856826455cc5",
+            "Code": 3710,
+            "Caption": "CanCreateNewJobAdRequisition",
+            "Description": "CanCreateNewJobAdRequisition",
+            "ActionUrl": "/JobRequisitions/New",
+            "Children": null
+        },
+        {
+            "$id": "53",
+            "Id": "26ca4bfd-18fd-4de0-bf11-255b950def09",
+            "Code": 3711,
+            "Caption": "CanExportJobRequisition",
+            "Description": "CanExportJobRequisition",
+            "ActionUrl": "/JobRequisitions/exportCSV",
+            "Children": null
+        }
+    ],
+    "Pagination": {
+        "$id": "54",
+        "TotalCount": 117,
+        "TotalPages": 12,
+        "PageSize": 10,
+        "Page": 1
+    },
+    "Status": 0
+}

@@ -1,0 +1,157 @@
+
+training_border_color = #eee;
+
+// Training listing
+// ------------------------------------------------
+
+
+.training-courses {
+    margin: gutter 0;
+}
+
+
+// Training content
+// ------------------------------------------------
+
+.training {
+
+    @extends .ui .segment;
+    padding: 15px;
+
+    @media minTablet {
+        padding: 25px 30px;
+    }
+
+}
+
+.training__header {
+    border-bottom: solid 1px training_border_color;
+
+    .training__title {
+        font-size: 34px;
+        margin-bottom: 25px;
+        margin-top: 4px;
+    }
+}
+
+
+.training__content {
+    font-size: 14px;
+    
+    p {
+        font-size: 14px;
+    }
+
+    ul,
+    ol {
+        padding-left: 20px;
+    }
+
+    h4 {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 1.35em
+    }
+
+    .download {
+        font-size: 13px;
+        color: primary;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+.training__footer {
+    clearfix();
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: solid 1px training_border_color;
+
+    .training__footer-details {
+        margin-bottom: 20px;
+
+        @media minDesktop {
+            float: left;
+            margin-bottom: 0;
+        }
+    }
+
+    .training__footer-button {
+        @media minDesktop {
+            float: right;
+            text-align:right;
+        }
+    }
+
+    dl {
+        display: inline-block;
+        margin: 0;
+    }
+
+    dl + dl {
+        border-left: solid 1px training_border_color;
+        margin-left: 30px;
+        padding-left: 30px;
+    }
+}
+
+
+// Training subjects
+// ------------------------------------------------
+
+.training--subject {
+    .training__header {
+        border-bottom: 0px;
+    }
+}
+
+// Training stats
+// ------------------------------------------------
+.page__header--stats {
+    
+    margin-bottom:20px;
+
+    h1 {
+        display:inline-block;
+        margin:0 0 20px;
+    }
+    .button {
+        float:right;
+        margin:0 0 20px; 
+    }
+}
+
+
+// Training report form generator
+// --------------------------------------------------
+.segment.training__report-form {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.training__report-form-button {
+    border-top: dashed 1px #ddd;
+    padding-top: 20px;
+}
+
+.training__report-footer {
+    text-align: center;
+    font-size: 12px;
+}
+
+.training__report-table {
+    
+    small {
+        display: block;
+        margin-top: -3px;
+    }
+}
+
+.training__report-form__stats {
+     @media maxTablet {
+        display: none;
+    }   
+}

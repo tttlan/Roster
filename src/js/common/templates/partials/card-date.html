@@ -1,0 +1,7 @@
+<p class="labels card__date">
+    <span class="label label--dark label--solid">{{startDate | day}}
+        <span ng-if="(startDate | day) !== (endDate | day) && endDate">&ndash; {{endDate | day}}</span>
+    </span>
+    <span class="label" ng-if="(startDate | month) !== (endDate | month) && endDate">{{startDate | monthAbbrv}} &ndash; {{endDate | monthAbbrv}}</span>
+    <span class="label" ng-if="(startDate | month) === (endDate | month) || !endDate">{{startDate | month}}</span>
+</p>

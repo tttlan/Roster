@@ -1,0 +1,61 @@
+﻿{
+  "data": {
+    "$id": "1",
+    "JobRequisitionDetail": {
+      "$id": "2",
+      "JobAdRequisitionId": 1953,
+      "CreatedDateTime": "2016-05-20T03:54:22.457",
+      "LastModifiedDateTime": "2016-05-20T06:29:26.84",
+      "ContactPerson": null,
+      "ContactNumber": null,
+      "State": "Approved",
+      "SubState": "",
+      "NetworkGroup": {
+        "$id": "3",
+        "NetworkGroupId": 11064,
+        "GroupName": "Fitzroy",
+        "Type": null,
+        "LookupUrl": "http://localhost:56828/Api/",
+        "IsTrainingLocation": null
+      },
+      "Role": {
+        "$id": "4",
+        "RoleId": 657,
+        "Description": "HR - Franchise Recruitment & HR Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "Owner": {
+        "$id": "5",
+        "MemberId": 247682,
+        "FirstName": "Sherpa",
+        "Surname": "Admin",
+        "PreferredName": null,
+        "Title": "FIN - Systems Administrator",
+        "PhotoLarge": "/networkrepository/957/member/247682/profile_large.png",
+        "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.png",
+        "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+        "RoleTitle": "FIN - Systems Administrator",
+        "DefaultNetworkGroupId": 11038,
+        "Birthday": null,
+        "Sex": "m",
+        "Salutation": null
+      }
+    },
+    "EntityActions": [
+      {
+        "$id": "6",
+        "Id": "1953",
+        "Code": 3704,
+        "Caption": "CanExecuteJobRequisition",
+        "Description": "CanExecuteJobRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1953/execute",
+        "Children": null
+      }
+    ],
+    "Status": 0
+  },
+  "status": 200,
+  "config": {}
+}
+
+

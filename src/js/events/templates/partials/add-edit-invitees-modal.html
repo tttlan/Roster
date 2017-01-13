@@ -1,0 +1,68 @@
+<header class="modal__header">
+    <h2 class="modal__title">Who do you want to invite to the event?</h2>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+
+<div class="modal__content">
+    
+    <div class="form">
+
+        <div class="form__field" ng-show="!selectedInvitees.Network">
+
+            <label 
+            class="form__label"
+            for="__InviteesGroup">Invite groups</label>
+
+            <tag-manager
+                ng-model="selectedInvitees.Groups"
+                select-data="eventForm.tagData.groups"
+                element="element">
+
+                <input 
+                type="text" 
+                placeholder="Enter some group names"
+                ng-model="typeAheadTag"
+                id="__InviteesGroup"
+                typeahead="group as group.label for group in selectData | filter:{label:$viewValue}"
+                typeahead-on-select="addTag($item, $model, $label)" />
+            </tag-manager>
+
+        </div>
+
+        <div class="form__field" ng-show="!selectedInvitees.Network">
+
+            <label 
+            class="form__label"
+            for="__InviteesIndividual">Invite individuals</label>
+
+            <tag-manager
+                ng-model="selectedInvitees.Members"                  
+                element="element"
+                >
+
+                <input type="text"
+                       placeholder="Enter some people's names"
+                       ng-model="typeAheadTag"
+                       id="__InviteesIndividual"
+                       member-search="typeAheadTag"
+                       typeahead="member as member.label for member in members"
+                       typeahead-on-select="addTag($item, $model, $label)" />
+                
+            </tag-manager>
+        </div>
+
+        <div class="field__checkbox">
+            <input type="checkbox" id="allMembers" ng-model="selectedInvitees.Network" ng-click="relocateModal()" />
+            <label for="allMembers" class="form__label">Invite all members in my network</label>
+        </div>
+
+    </div>
+        
+</div>
+
+<footer class="modal__footer">
+    <div class="button-group">
+        <a href="" class="button" ng-click="cancel()">Cancel</a>
+        <a href="" class="button button--positive" ng-click="ok()">Save changes</a>
+    </div>
+</footer>

@@ -1,0 +1,206 @@
+
+tab_border_color = default-border-color;
+tab_active_background = white;
+tab_background = grey9;
+
+// Tabs
+//
+// Basic tabbed content panels
+//
+// Markup: 
+// <ul class="nav nav--tabs {{modifier_class}}">
+//     <li><a href="" class="is--active">Dashboard</a></li>
+//     <li><a href="">Roster</a></li>
+//     <li><a href="">Training</a></li>
+//     <li><a href="">Settings</a></li>
+// </ul>
+//
+// .nav--tabs-flush - Remove margin from the bottom of the tabs
+//
+// Styleguide elements.tabs.basic
+
+.ui
+    
+    .nav--tabs {
+        font-size: 0;
+        padding-top: 5px;
+        border-bottom: solid 1px tab_border_color;
+        
+        li {
+            line-height: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            border: solid 1px tab_border_color;
+            border-right: 0px;
+            border-bottom: 0px;
+            margin-right: 0;
+
+            &:first-child {
+                border-top-left-radius: base-border-radius;
+
+                a {
+                    border-top-left-radius: base-border-radius;
+                }
+            }
+
+            &:last-of-type, 
+            &.last-visible-child {
+
+                border-top-right-radius: base-border-radius;
+                border-right: 1px solid tab_border_color;
+
+                a {
+                    border-top-right-radius: base-border-radius;
+                }
+            }
+            
+            &.is--disabled {
+                opacity:0.5;
+
+                a { cursor:not-allowed; }
+            }
+
+            a {
+                padding: 10px 15px;
+                margin: 0;
+                position: relative;
+                transition: background ease 200ms;
+                color: grey4;
+                background: tab_background;
+                cursor: pointer;
+
+                &:hover {
+                    background: white;
+                }
+
+            }
+
+            a.is--active {
+                border-color: tab_border_color;
+                background: tab_active_background;
+                color: black;
+
+                &:after {
+                    height: 2px;
+                    content: '';
+                    position: absolute;
+                    bottom: -1px;
+                    left: 0;
+                    right: 0;
+                    background: tab_active_background;
+                }
+
+                &:before {
+                    content: '';
+                    height: 5px;
+                    border: solid 1px tab_border_color;
+                    border-width: 1px 1px 0 1px;
+                    background: tab_active_background;
+                    position: absolute;
+                    top: -4px;
+                    left: -1px;
+                    right: -1px;
+                    border-radius: base-border-radius base-border-radius 0 0;
+                }
+
+            }
+
+            [class*="icon--"] {
+                font-size: 16px;
+            }
+        }
+
+        .overflow__toggle {
+            border-top-right-radius: base-border-radius;
+            border: 1px solid tab_border_color;
+            border-width: 1px 1px 0 0;
+            color: grey4;
+            background: grey8;
+            position: static;
+            display: inline-block;
+            vertical-align: bottom;
+            line-height: 1.4;
+
+            // Fixes an angular 1.2 bug whereby this element has block display when it shouldn't
+            &.ng-hide-remove {
+                display: inline-block !important;
+            }
+        }
+
+    }
+
+    .nav--tabs-flush {
+        
+        margin-bottom: 0;
+    }
+
+    // Uses the 'nav tab' element with additional of some angular directives
+    //
+    // Markup:
+    // <tabs>
+    //     <ul class="nav nav--tabs" overflow>
+    //         <li tab-link active><a href="">first one yea!</a></li>
+    //         <li tab-link><a href="">second one yea!</a></li>
+    //         <li tab-link><a href="">third one yea!</a></li>
+    //         <li tab-link><a href="">fourth one yea!</a></li>
+    //     </ul>
+    //     <div class="tab-group {{modifier_class}}">
+    //         <div tab-content class="tab-group__tab">
+    //             <p>This is nice 1</p>
+    //         </div>
+    //         <div tab-content class="tab-group__tab">
+    //             <p>This is nice 2</p>
+    //         </div>
+    //         <div tab-content class="tab-group__tab">
+    //             <p>This is nice 3</p>
+    //         </div>
+    //         <div tab-content class="tab-group__tab">
+    //             <p>This is nice 4</p>
+    //         </div>
+    //     </div>
+    // </tabs>
+    //
+    // .segment - Place a segment class with the tab-group class to use segements in the tab panels
+    //
+    // Styleguide elements.tabs.dynamic
+
+    .tabs {
+        
+        .nav--tabs {
+        
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .segment {
+            margin-top: -1px;
+        }
+    }
+
+
+    // Tab group element
+
+    .tab-group {
+        clearfix();
+        margin: 0;
+    }
+
+    .tab-group__tab {
+        
+        display: none;
+
+        &.is--active {
+            display: block;
+        }
+
+        > h1, > h2, > h3, > h4, > h5 {
+            &:first-child {
+                margin: 0 0 1em 0;
+            }
+        }
+
+        &.tab-group__tab--spaced {
+            margin-top: (gutter/2);
+        }
+    }

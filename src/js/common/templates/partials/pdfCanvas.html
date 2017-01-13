@@ -1,0 +1,60 @@
+<div class="pdf__container" ng-class="{ 'is--expanded': doc.isExpanded, 'pdf__container--can-expand': doc.canExpand }" ng-style="getStyles()">
+    
+    <div class="pdf__toolbar" ng-class="{ 'is-loaded': pages.loaded }">
+        
+        <div title="{{ doc.name }}" class="pdf__doc-name">
+            <i class="svg-icon--pdf"></i>
+            <span>{{ doc.name }}</span>
+        </div>
+
+        <div class="pdf__tools">
+            <a class="pdf__tools-icon" ng-click="doc.$expand()" ng-if="doc.canExpand" tooltip="Fullscreen">
+                <i ng-show="doc.isExpanded" class="icon--minimise"></i>
+                <i ng-hide="doc.isExpanded" class="icon--maximise"></i>
+            </a>
+            <!-- <a class="pdf__tools-icon" ng-click="doc.$print()" tooltip="Print">
+                <i class="icon--print"></i>
+            </a> -->
+            <a href="" class="button button--tiny button--primary" ng-click="downloadFile(src)">Save offline</a>
+        </div>
+
+        <div class="pdf__nav">
+            <a class="link--icon" ng-click="pages.$prev()" ng-disabled="!pages.$isPrev()">
+                <i class="icon--arrow-up"></i>
+            </a>
+        
+            <div class="pdf__pages-range lt-tablet-hide">
+                <!-- <select-box ng-model="pages.current">
+                    <select ng-model="pages.current">
+                        <option
+                            ng-repeat="n in pages.range"
+                            value="{{ $index + 1 }}"
+                        >
+                            {{ $index + 1 }}
+                        </option>
+                    </select>
+                </select-box> -->
+                {{ pages.current }}
+                / {{ pages.total }}
+            </div>
+            
+            <a class="link--icon" ng-click="pages.$next()" ng-disabled="!pages.$isNext()">
+                <i class="icon--arrow-down"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="notification notification--error pdf__error-notification" ng-if="doc.docError">
+        <div class="notification__icon"><i class="icon--cross"></i></div>
+        <p class="notification__message">This file could not be opened.<br />
+            <a href="{{src}}" target="_blank">Try downloading it instead</a>
+        </p>
+    </div>
+
+    <div class="pdf__canvas-wrapper">
+        <div class="pdf__canvas-container">
+            <div class="pdf__canvas-inner"></div>
+        </div>
+    </div>
+    
+</div>

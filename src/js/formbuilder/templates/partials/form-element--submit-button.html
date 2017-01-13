@@ -1,0 +1,21 @@
+<div class="form__loader-wrapper" ng-if="element.loader">
+    <input
+    type="submit"
+    ng-disabled="form.$submitting" 
+    class="button {{ element.class }}"
+    ng-class="{'button--loading': submitting, 'button--positive': !element.class}"
+    value="{{ element.value }}"
+    id="{{ element.formName + '__' + element.name }}" />
+    <loader ng-show="form.$submitting"></loader>
+</div>
+
+<input
+ng-if="!element.loader"
+type="submit"
+ng-disabled="form.$submitting"
+class="button {{ element.class }}"
+ng-class="{'button--loading': submitting, 'button--positive': !element.class}"
+value="{{ element.value }}"
+id="{{ element.formName + '__' + element.name }}" />
+
+<error ng-show="serverError">{{ serverError }}</error>

@@ -1,0 +1,89 @@
+<div class="segment__fieldset">
+    <div class="segment__fieldset-heading">
+        <h2><i class="icon--notebook"></i>Payroll Details</h2>
+
+        <a href=""
+           class="align-right"
+           ng-click="onboard.isCollapsedPayrollDetails = !onboard.isCollapsedPayrollDetails">
+            <i ng-class="{
+                'icon--arrow-down': onboard.isCollapsedPayrollDetails,
+                'icon--arrow-up': !onboard.isCollapsedPayrollDetails
+            }"></i>
+        </a>
+    </div>
+
+    <div collapse="onboard.isCollapsedPayrollDetails" ng-form="payrollForm">
+        <table class="table-form table-form--full-width">
+            <tbody ng-class="{'is--editing': !isOnboardPhaseDocumentation(data.onboards[$index])}">
+                <tr>
+                    <th>
+                        <label for="onboarding__PayRate">Pay Rate</label>
+                    </th>
+
+                    <td class="table-form__edit-parent">
+                        <div class="table-form__form-value"
+                             ng-bind-html="data.payRate.Label"></div>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field"
+                                 ng-class="{'is--required': !isCreating($index) && !isOnboardPhaseNew(data.onboards[$index])}">
+                                <input-pay-rate name="onboarding__PayRate"
+                                                object="data.payRate"
+                                                member-id="onboard.CandidatePersonalInfo.MemberId"
+                                                ng-model="onboard.SalaryPayRate.SalaryPayRateId"
+                                                ng-required="!isCreating($index) && !isOnboardPhaseNew(data.onboards[$index])"></input-pay-rate>
+
+                                <form-errors input="payrollForm.onboarding__PayRate">
+                                    <form-error error-key="required"
+                                                error-text="'Pay Rate' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="onboarding__OperatorId">Operator ID</label>
+                    </th>
+
+                    <td class="table-form__edit-parent">
+                        <div class="table-form__form-value">
+                            {{onboard.Payroll.OperatorId}}
+                        </div>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field">
+                                <input type="text"
+                                       id="onboarding__OperatorId"
+                                       name="onboarding__OperatorId"
+                                       ng-model="onboard.Payroll.OperatorId">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="onboarding__DebtorId">Debtor ID</label>
+                    </th>
+
+                    <td class="table-form__edit-parent">
+                        <div class="table-form__form-value">
+                            {{onboard.Payroll.DebtorId}}
+                        </div>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field">
+                                <input type="text"
+                                       id="onboarding__DebtorId"
+                                       name="onboarding__DebtorId"
+                                       ng-model="onboard.Payroll.DebtorId">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

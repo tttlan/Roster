@@ -1,0 +1,6 @@
+<p>Icons are <i class="icon--list-block"></i> inline-block elements that can be used in almost any situation <i class="icon--heart"></i>. They adjust to the corresponding text size <i class="icon--text"></i> and will adopt its <span class="is--positive"><i class="icon--star"></i> color scheme</span></p>
+
+<div class="grid">
+    <% _.each(glyphs, function(glyph) { %><div class="col-1-4"><p><i class="<%= className %><%= glyph.name %>"></i> <%= glyph.name %></p></div>
+    <% }); %>
+</div>

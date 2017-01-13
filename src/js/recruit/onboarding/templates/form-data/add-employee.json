@@ -1,0 +1,512 @@
+[
+    {
+        "id": "addEmployeeForm",
+        "name": "addEmployeeForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "SalutationId",
+                "label": "Title",
+                "placeholder": "Select Title",
+                "value": "",
+                "options": [
+                    { "Label": "Select Title", "Value": "" },
+                    { "Label": "Mr", "Value": 1 },
+                    { "Label": "Ms", "Value": 2 },
+                    { "Label": "Mrs", "Value": 3 },
+                    { "Label": "Miss", "Value": 4 },
+                    { "Label": "Dr", "Value": 5 }
+                ],
+                "type": "select",
+                "class": " col-1-4",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "nameSurnameSubmit",
+                "type": "form-fields",
+                "children": [
+                    {
+                        "name": "FirstName",
+                        "label": "Name",
+                        "placeholder": "Name",
+                        "value": "",
+                        "type": "input",
+                        "class": "",
+                        "validation": {
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "Surname",
+                        "label": "Surname",
+                        "placeholder": "Surname",
+                        "value": "",
+                        "class": "",
+                        "type": "input",
+                        "validation": {
+                            "required": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "PreferredName",
+                "label": "Preferred Name",
+                "placeholder": "Nickname",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "BirthDay",
+                "label": "Date of birth",
+                "placeholder": "Date",
+                "value": "",
+                "type": "date",
+                "class": "col-1-4",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "Sex",
+                "label": "Gender",
+                "placeholder": "",
+                "val": "m",
+                "type": "radio",
+                "class": "col-1-4 form__field--inline",
+                "options": [
+                    { "Value": "f", "Label": "Female" },
+                    { "Value": "m", "Label": "Male" }
+                ],
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "EmailContacts",
+                "label": "Email",
+                "placeholder": "Email",
+                "val": [ ],
+                "type": "emails",
+                "class": "col-1-2 form--profile-phone-emails",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "PhoneContacts",
+                "label": "Phone number",
+                "placeholder": "Email",
+                "val": [ ],
+                "type": "phones",
+                "class": "col-1-2 form--profile-phone-emails",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "Address",
+                "label": "Address",
+                "placeholder": "Address",
+                "value": "",
+                "type": "input",
+                "class": "col-2-3",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "Postcode",
+                "label": "Post Code",
+                "placeholder": "Post Code",
+                "value": "",
+                "type": "input",
+                "class": "col-1-4",
+                "validation": {
+                    "required": true,
+                    "maxLength": 5,
+                    "onlyNumber": true
+                },
+                "loader": true
+            },
+            {
+                "name": "Suburb",
+                "label": "Suburb",
+                "placeholder": "Suburb",
+                "value": "",
+                "class": "",
+                "type": "input",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "StateName",
+                "label": "State",
+                "placeholder": "State",
+                "value": "",
+                "class": "",
+                "type": "input",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "City",
+                "label": "City",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "CountryId",
+                "label": "Country",
+                "placeholder": "Select country",
+                "value": "",
+                "class": "col-1-3",
+                "type": "select-country",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "CountryOriginId",
+                "label": "Country Origin",
+                "placeholder": "Select Country Origin",
+                "value": "",
+                "class": "",
+                "type": "select-country",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "LoginName",
+                "label": "Log in Name",
+                "placeholder": "Log in name",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "StartDate",
+                "label": "Starting Date",
+                "placeholder": "Date",
+                "value": "",
+                "class": "col-1-4",
+                "type": "date",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "Role",
+                "label": "Role",
+                "placeholder": "Role",
+                "value": "",
+                "class": "col-1-2",
+                "type": "select-role",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "NetworkGroupId",
+                "label": "Branch name",
+                "placeholder": "Branch name",
+                "value": "",
+                "class": "col-1-2",
+                "type": "select-group",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "SalaryTypeId",
+                "label": "Salary Type",
+                "placeholder": "Salary Type",
+                "val": -1,
+                "options": [ { "Value": -1, "Label": "Select" } ],
+                "class": "col-1-3",
+                "type": "select",
+                "validation": {
+                }
+            },
+            {
+                "name": "EmploymentTypeId",
+                "label": "Employment Type",
+                "placeholder": "Employment Type",
+                "val": -1,
+                "options": [ { "Value": -1, "Label": "Select" } ],
+                "class": "col-1-3",
+                "type": "select",
+                "validation": {
+                }
+            },
+            {
+                "name": "RosterRoleId",
+                "label": "Pay rate",
+                "placeholder": "",
+                "value": "",
+                "type": "radio-list",
+                "class": "col-1-3 form__label--invisible",
+                "onchange": "$cycle()",
+                "filter": {
+                    "label": "Type to search Pay rates..."
+                },
+                "relatedFields": [ "SalaryTypeId"],
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "HoursPerWeek",
+                "label": "Hours per week",
+                "placeholder": "Hours per week",
+                "value": "",
+                "class": "col-1-3",
+                "type": "input",
+                "validation": {
+                }
+            },
+            {
+                "name": "EFirstName",
+                "label": "Name",
+                "placeholder": "Name",
+                "value": "",
+                "type": "input",
+                "class": "col-1-2",
+                "validation": {
+                }
+            },
+            {
+                "name": "ESurname",
+                "label": "Surname",
+                "placeholder": "Surname",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                }
+            },
+            {
+                "name": "Relationship",
+                "label": "Relationship",
+                "placeholder": "Relationship",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                }
+            },
+            {
+                "name": "ContactNumber",
+                "label": "Contact number",
+                "placeholder": "Contact number",
+                "value": "",
+                "class": "col-1-2",
+                "type": "phone",
+                "validation": {
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 50,
+                    "onlyNumber": true
+                }
+            },
+            {
+                "name": "EAddress",
+                "label": "Address",
+                "placeholder": "Address",
+                "value": "",
+                "type": "input",
+                "class": "col-2-3",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "EPostcode",
+                "label": "Post Code",
+                "placeholder": "Post Code",
+                "value": "",
+                "type": "input",
+                "class": "col-1-4",
+                "validation": {
+                    "required": true,
+                    "maxLength": 5,
+                    "onlyNumber": true
+                },
+                "loader": true
+            },
+            {
+                "name": "ESuburb",
+                "label": "Suburb",
+                "placeholder": "Suburb",
+                "value": "",
+                "class": "",
+                "type": "input",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "EStateName",
+                "label": "State",
+                "placeholder": "State",
+                "value": "",
+                "class": "",
+                "type": "input",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "ECity",
+                "label": "City",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "ECountryId",
+                "label": "Country",
+                "placeholder": "Select country",
+                "value": "",
+                "class": "col-1-3",
+                "type": "select-country",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "EEmail",
+                "label": "Email",
+                "placeholder": "myemail@gmail.com",
+                "value": "",
+                "class": "col-1-2",
+                "type": "email",
+                "validation": {
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 100,
+                    "pattern": "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+                }
+            },
+            {
+                "name": "BankName",
+                "label": "Bank",
+                "placeholder": "Bank name",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                }
+            },
+            {
+                "name": "BankAccountName",
+                "label": "Account name",
+                "placeholder": "Account name",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                }
+            },
+            {
+                "name": "BSB",
+                "label": "BSB",
+                "placeholder": "BSB",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                    "required": true,
+                    "maxLength": 6,
+                    "pattern": "^(\\d[\\s-]*){5}\\d$",
+                    "customErrorMessage": "The BSB must be exactly 6 digits"
+                }
+            },
+            {
+                "name": "AccountNo",
+                "label": "Account number",
+                "placeholder": "Account number",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                    "required": true,
+                    "pattern": "^(\\d[\\s-]*){5,9}\\d$",
+                    "customErrorMessage": "The Account Number must be between 6 and 10 digits"
+                }
+            },
+            {
+                "name": "SuperFund",
+                "label": "Super annuation company",
+                "placeholder": "Super annuation company",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "SuperNo",
+                "label": "Superannuation account",
+                "placeholder": "Superannuation account",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "TaxFileNumber",
+                "label": "Tax File Number",
+                "placeholder": "",
+                "value": "",
+                "class": "col-1-2",
+                "type": "input",
+                "validation": {
+                    "required": false,
+                    "maxLength": 9,
+                    "pattern": "^(\\d[\\s-]*){8}\\d$",
+                    "customErrorMessage": "The Tax File Number must be exactly 9 digits"
+                }
+            },
+            {
+                "name": "submitForm",
+                "value": "Add employee",
+                "type": "submit-button",
+                "class": "button--large button--primary aligned--center"
+            }
+        ]
+    }
+]

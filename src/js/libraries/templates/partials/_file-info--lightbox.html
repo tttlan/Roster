@@ -1,0 +1,58 @@
+<div class="file-info-wrapper" style="top: 0px;">
+    <div class="file-info" ng-if="isShowFileInfo">
+        <div class="media media--user">
+            <div class="media__image"><img ng-src="{{artifact.Thumbnail}}" alt="Avatar" class="avatar"></div>
+            <div class="media__body">
+                <a tooltip-placement="bottom" tooltip="{{artifact.FileName.length > 22 ? artifact.FileName :''}}" href="">{{artifact.FileName | limitTo: 22}}{{artifact.FileName.length > 22 ? '...' : ''}}</a>
+                <span>uploaded by <b>{{artifact.Author}}</b></span>
+            </div>
+            <div class="group__icon">
+                <span>{{artifact.ViewCount || 0}} &nbsp;<i class="icon--views"></i></span>&nbsp;&nbsp;
+                <span>{{artifact.DownloadCount || 0}} &nbsp;<i class="icon--download"></i></span>
+            </div>
+        </div>
+        <hr />
+        <table class="table table--noborders table--cozy table--file-info">
+            <tr>
+                <td>File size</td>
+                <td>{{artifact.FormatedFileSize}}</td>
+            </tr>
+            <tr> <td>Lasted Update</td> <td>{{artifact.LastModified | date: 'MMM d, yyyy'}}</td> </tr>
+            <tr>
+                <td colspan="2">Tags</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="tags">
+                        <a style="float: right" class="tag" ng-repeat="tag in artifact.TagNames">{{tag.TagName}}</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="100">
+                    <a href="" class="align-right" ng-click="addTags(artifact)">{{artifact.TagNames.length > 0 ? 'Edit Tag' : 'Add Tag'}}</a>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <span style="text-transform: uppercase" ng-if="sharedUnits.length > 0">share with</span>
+        <ul class="avatars" ng-if="sharedUnits.length > 0">
+            <li ng-if="sharedUnits.length > 4" ng-repeat="item in sharedUnits | limitTo: 3">
+                <a tooltip={{item.Name}} tooltip-placement="bottom">
+                    <img ng-if="item.Type == 'u'" ng-src="item.Avatar" alt="Avatar" class="avatar " >
+                    <img ng-if="item.Type == 'g'" ng-src="/interface/images/default-group.png" alt="Avatar" class="avatar " src="/interface/images/default-group.png">
+                    <img ng-if="item.Type == 'r'" ng-src="/interface/images/default-role.png" alt="Avatar" class="avatar " src="/interface/images/default-role.png">
+                </a>
+            </li>
+            <li ng-if="sharedUnits.length > 0 && sharedUnits.length <= 4" ng-repeat="item in sharedUnits">
+                <a tooltip={{item.Name}} tooltip-placement="bottom">
+                    <img ng-if="item.Type == 'u'" ng-src="item.Avatar" alt="Avatar" class="avatar " >
+                    <img ng-if="item.Type == 'g'" ng-src="/interface/images/default-group.png" alt="Avatar" class="avatar " src="/interface/images/default-group.png">
+                    <img ng-if="item.Type == 'r'" ng-src="/interface/images/default-role.png" alt="Avatar" class="avatar " src="/interface/images/default-role.png">
+                </a>
+            </li>
+            <li ng-if="sharedUnits.length > 4"><a href="" class="avatar additional-members">+{{sharedUnits.length - 4}}</a></li>
+        </ul>
+        <hr ng-if="sharedUnits.length > 0" />
+    </div>
+</div>

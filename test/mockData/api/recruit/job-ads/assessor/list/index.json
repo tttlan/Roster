@@ -1,0 +1,24 @@
+{
+    "data": {
+        "$id": "1",
+        "SearchMemberGroupItems": [
+            {
+                "$id": "2",
+                "SearchMemberGroup": {
+                    "$id": "3",
+                    "Id": 306224,
+                    "Name": "tu test 123",
+                    "Type": "Member",
+                    "Description": "Administrators, Dummy Role 9"
+                },
+                "EntityActions": [],
+                "Status": 0
+            }
+        ],
+        "EntityActions": [],
+        "Pagination": null,
+        "Status": 0
+    },
+    "status": 200,
+    "config": {}
+}

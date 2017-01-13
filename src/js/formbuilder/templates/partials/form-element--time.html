@@ -1,0 +1,23 @@
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+
+    <label
+        class="icon--clock field__after" 
+        for="{{ element.formName + '__time-' + element.name }}">
+            <span class="is-visually-hidden">Time</span>
+    </label>
+
+    <input
+        type="text"
+        id="{{ element.formName + '__time-' + element.name }}"
+        placeholder="Time"
+        ng-model="element.val"
+        name="{{element.name}}"
+        ng-required="element.validation.required"
+        timepicker
+    />
+
+    <span class="form_note" ng-if="element.note">{{ element.note }}</span>
+        
+    <error-builder></error-builder>
+
+</div>

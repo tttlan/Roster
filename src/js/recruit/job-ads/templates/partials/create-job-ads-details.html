@@ -1,0 +1,249 @@
+<div class='form__fields refNumber'>
+    <div class="form__field">
+        <label class="form__label" for="refNumber"><strong>Reference Number</strong></label>
+        <input type="text"
+                id="refNumber"
+                placeholder="Reference Number"
+                name="RefNumber"
+                ng-model="jobAdDetailsFormModel.refNumber"
+                ng-minlength="0" ng-maxlength="50" />
+    </div>
+</div>
+<h2>JOB INFORMATION</h2>
+<div class="form__fields">
+    <div class="form__field is--required">
+        <label class="form__label" for="JobTitle"><strong>Job Title</strong></label>
+        <input type="text"
+                id="jobTitle"
+                placeholder="Job Title"
+                name="JobTitle"
+                ng-model="jobAdDetailsFormModel.jobTitle"
+                ng-minlength="0" ng-maxlength="255" required="required" />
+    </div>
+</div>
+
+<div class="form__fields">
+    <div class="form__field is--required">
+        <label class="form__label" for="JobTitle"><strong>Location or Region</strong>
+        </label>
+    </div>
+    <div class="form__field col-1-5">
+        <div class="field__radio">
+            <input type="radio" ng-model="jobAdDetailsFormModel.locationOrRegion" name="LocationOrRegion" id="location" ng-value="jobLocation.LOCATION">
+            <label for="location" class="form__label">Location</label>
+        </div>
+    </div>
+
+    <div class="form__field col-1-5">
+        <div class="field__radio">
+            <input type="radio" ng-model="jobAdDetailsFormModel.locationOrRegion" name="LocationOrRegion" id="region" ng-value="jobLocation.REGION">
+            <label for="region" class="form__label">Region</label>
+        </div>
+    </div>
+
+    <div class="form__fields" ng-if="jobAdDetailsFormModel.locationOrRegion === jobLocation.LOCATION">
+        <div class="form__field">
+            <network-groups name-base="recruitments/Locations/Search?s=" 
+            ng-model="jobAdDetailsFormModel.selectedLocations" ></network-groups>
+        </div>
+    </div>
+    <div class="form__fields" ng-if="jobAdDetailsFormModel.locationOrRegion === jobLocation.REGION">
+        <div class="form__field col-1-2 is--required" >
+            <select-state format="true" name-base="recruitments/JobRegions/Search?s=" name="State" ng-model="jobAdDetailsFormModel.state">                
+            </select-state>
+        </div>
+        <div class="form__field col-1-2 is--required">
+            <select-area name="Area" state="jobAdDetailsFormModel.state" is-disabled="!jobAdDetailsFormModel.state.Value"
+                 ng-model="jobAdDetailsFormModel.area">                
+            </select-area>
+        </div>
+    </div>
+</div>
+
+<div class="form__fields">
+    <div class="form__field is--required">
+        <label class="form__label" for="selectEmployeeType"><strong>Employment Type</strong></label>
+    </div>
+    <div class="form__field col-1-2">
+          <input-employment-type name="SelectEmployeeType"
+                                name-base="ProfileManagement/EmploymenTypes"
+                                ng-model="jobAdDetailsFormModel.employmentTypeId"
+                                ng-required="true"
+                                 object="jobAdDetailsFormModel.employmentType">
+          </input-employment-type>
+    </div>
+    <div class="form__fields">
+        <div class="field__checkbox checkAdd">
+            <input type="checkbox" id="allowOverseas" ng-model="jobAdDetailsFormModel.allowOverseas">
+            <label for="allowOverseas" class="form__label">Allow overseas applicants to apply</label>
+        </div>
+    </div>
+</div>
+
+<div class="form__fields">
+    <label class="form__label"><strong>Salary</strong></label>
+    <div class="col-3-4">
+        <div class=" col-1-4">
+            <div class="field__radio">
+                <input type="radio" ng-model="jobAdDetailsFormModel.salaryType" name="salaryType" id="salary-annual" ng-value="salaryType.ANNUAL">
+                <label for="salary-annual" class="form__label">Annual</label>
+            </div>
+        </div>
+        <div class=" col-1-4">
+            <div class="field__radio">
+                <input type="radio" ng-model="jobAdDetailsFormModel.salaryType" name="salaryType" id="salary-hourly" ng-value="salaryType.HOURLY">
+                <label for="salary-hourly" class="form__label">Hourly</label>
+            </div>
+        </div>
+        <div class=" col-1-4">
+            <div class="field__radio">
+                <input type="radio" ng-model="jobAdDetailsFormModel.salaryType" name="salaryType" id="salary-daily" ng-value="salaryType.DAILY">
+                <label for="salary-daily" class="form__label">Daily</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-3-4 rangeOrAmount">
+        <div class=" col-1-4">
+            <div class="field__radio">
+                <input type="radio" ng-model="jobAdDetailsFormModel.salaryRangeOrAmount"
+                       name="salaryRangeOrAmount" id="salary-range" ng-value="salaryType.RANGE">
+                <label for="salary-range" class="form__label">Range</label>
+            </div>
+        </div>
+        <div class="col-1-4">
+            <div class="field__radio">
+                <input type="radio" ng-model="jobAdDetailsFormModel.salaryRangeOrAmount"
+                       name="salaryRangeOrAmount" id="salary-amount" ng-value="salaryType.AMOUNT">
+                <label for="salary-amount" class="form__label">Amount</label>
+            </div>
+        </div>
+    </div>
+    <div class="form__field">
+        <div class="col-1-6">
+            <select-salary-currency
+                id="selectSalaryCurrency"
+                name="SelectSalaryCurrency"
+                ng-model="jobAdDetailsFormModel.salaryCurrency">
+            </select-salary-currency>
+        </div>                
+    </div>
+    <div class="form__field" ng-if="jobAdDetailsFormModel.salaryRangeOrAmount === salaryType.RANGE">
+        <div class="col-1-3">
+            <div class="form__field is--required">
+                <label class="form__label"><strong>Min:</strong></label>
+            </div>
+            <select-range-salary
+                    name="MinRange"
+                    ng-required="true"
+                    type="jobAdDetailsFormModel.salaryType"
+                    ng-model="jobAdDetailsFormModel.salaryMin">
+            </select-range-salary>
+        </div>
+        <div class="col-1-3">
+            <div class="form__field is--required">
+                <label class="form__label"><strong>Max:</strong></label>
+            </div>
+            <select-range-salary
+                    name="MaxRange"
+                    ng-required="true"
+                    type="jobAdDetailsFormModel.salaryType"
+                    ng-model="jobAdDetailsFormModel.salaryMax"
+                    from-value="fromValue">
+            </select-range-salary>
+        </div>
+    </div>    
+    <div class="col-1-2 form__fields" ng-if="jobAdDetailsFormModel.salaryRangeOrAmount === salaryType.AMOUNT">
+        <div class="form__field ">
+            <input type="number"
+                    placeholder="Enter Amount"
+                    name="AmountValue"
+                    ng-model="jobAdDetailsFormModel.amount"
+                    required="required" />
+        </div>
+    </div>
+
+    <div>
+        <div class="form__field checkAdd">
+            <div class="field__checkbox">
+                <input type="checkbox" id="chkDisplaySalary" name="ChkDisplaySalary" ng-model="jobAdDetailsFormModel.displaySalary">
+                <label for="chkDisplaySalary" class="form__label">Display salary in job ad</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form__fields">
+    <div class="form__field ">
+        <label class="form__label" for="AddBenefits"><strong>Additional Benefits</strong></label>
+        <input type="text"
+                id="AddBenefits"
+                placeholder="Car, parking..."
+                name="AddBenefits"
+                ng-model="jobAdDetailsFormModel.addBenefits"
+                ng-minlength="0" ng-maxlength="255" />
+        <small>Max 255 characters</small>
+    </div>
+</div>
+
+<div class="form__fields">
+    <div class="form__field ">
+        <label class="form__label" for="JobTag"><strong>Job Tags</strong></label>
+        <tag-manager ng-model="jobAdDetailsFormModel.selectedJobTags"
+                select-data="jobTags">
+            <input type="text" id="auto_complete" placeholder="Add Job Tag" autocomplete="off"
+                    ng-model="typeAheadTag"
+                    typeahead="result as result.label for result in selectData| filter:{label: $viewValue}"
+                    typeahead-on-select="addTag($item, $model, $label)"/>
+        </tag-manager>
+    </div>
+</div>
+
+<div class="form__fields">
+    <div class="form__field is--required">
+        <div class="label-ricktext">
+            <label class="form__label" for="jobSummary"><strong>Job Summary</strong></label>
+        </div>
+        <div class="icon-view-ricktext"
+             ng-show="jobAdDetailsFormModel.jobSummary.length"
+             ng-click="previewText('Job Summary')">
+            <i class="icon--views"></i>
+        </div>
+        <div class="textarea">
+            <text-angular ng-model="jobAdDetailsFormModel.jobSummary"
+                            id="jobSummary"
+                            required="required"
+                            placeholder="Summary text..."
+                            ta-toolbar="[['bold', 'italics', 'underline'],['ul', 'ol'], ['quote']]"
+                            ta-text-editor-class="form__job--editor-content"
+                            ta-html-editor-class="form__job--editor-content">
+            </text-angular>
+        </div>
+        <small>Max 25 Words</small>
+    </div>
+</div>
+
+<div class="form__fields">
+    <div class="form__field is--required">
+        <div class="label-ricktext">
+            <label class="form__label" for="jobBody"><strong>Job Body</strong></label>
+        </div>
+        <div class="icon-view-ricktext"
+             ng-show="jobAdDetailsFormModel.jobBody.length"
+             ng-click="previewText('Job Body')">
+            <i class="icon--views"></i>
+        </div>
+        <div class="textarea">
+            <text-angular ng-model="jobAdDetailsFormModel.jobBody"
+                            id="jobBody"
+                            name="jobBody"
+                            ng-minlength="50"
+                            required="required"
+                            placeholder="Body text ..."
+                            ta-toolbar="[['bold', 'italics', 'underline'],['ul', 'ol'], ['quote']]"
+                            ta-text-editor-class="form__job--editor-content"
+                            ta-html-editor-class="form__job--editor-content">
+            </text-angular>
+        </div>
+        <small ng-class="{'message--error': (form.jobDetails.jobBody.$error.minlength && form.jobDetails.jobBody.$touched)}">Body content must have more than 50 characters</small>
+    </div>
+</div>

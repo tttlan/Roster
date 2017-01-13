@@ -1,0 +1,93 @@
+[
+    {
+        "id": "personalInformationForm",
+        "name": "personalInformationForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "SalutationId",
+                "label": "Salutation",
+                "placeholder": "",
+                "value": 0,
+                "type": "select",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "FirstName",
+                "label": "First name",
+                "placeholder": "",
+                "value": "",
+                "class": "",
+                "type": "input",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "Surname",
+                "label": "Surname",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "PreferredName",
+                "label": "Preferred name",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "BirthDay",
+                "label": "Date of birth",
+                "placeholder": "",
+                "value": "",
+                "type": "date",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": true,
+                    "datePast": true
+                }
+            },
+            {
+                "name": "Sex",
+                "label": "Sex",
+                "placeholder": "",
+                "value": "",
+                "type": "select",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": true
+                },
+                "options": [
+                    {
+                        "Label": "Male",
+                        "Value": "m"
+                    },
+                    {
+                        "Label": "Female",
+                        "Value": "f"
+                    }
+                ]
+            },
+            {
+                "name": "submitForm",
+                "value": "Save changes",
+                "type": "submit-button",
+                "class": "button--small"
+            }
+        ]
+    }
+]

@@ -1,0 +1,777 @@
+{
+  "$id":"1",
+  "MemberEmploymentInfoDetail":{
+    "$id":"2",
+    "MemberId":247682,
+    "RoleId":618,
+    "Roletxt":"HR - Office / Training Coordinator",
+    "DefaultNetworkGroupId":0,
+    "DefaultNetworkGroupName":"",
+    "EmploymentTypeId":21,
+    "EmploymentTypetxt":"Full time",
+    "MinimumHours":null,
+    "RegisterKey":true,
+    "CommencementDate":"2015-08-03T14:00:00",
+    "CustomFormId":null,
+    "PerformanceAssessmentForm":null,
+    "Roles":[
+      {
+        "$id":"3",
+        "Value":618,
+        "Label":"HR - Office / Training Coordinator"
+      }
+    ],
+    "CustomerPremisesName":"Restaurants",
+    "IsRoaming":false,
+    "StoreNetworkGroups":[
+      {
+        "$id":"4",
+        "NetworkGroupId":11067,
+        "GroupName":"Malvern",
+        "Type":"s"
+      },
+      {
+        "$id":"5",
+        "NetworkGroupId":11071,
+        "GroupName":"Chermside",
+        "Type":"s"
+      },
+      {
+        "$id":"6",
+        "NetworkGroupId":11076,
+        "GroupName":"Newcastle (The Junction)",
+        "Type":"s"
+      },
+      {
+        "$id":"7",
+        "NetworkGroupId":11082,
+        "GroupName":"South Melbourne",
+        "Type":"s"
+      },
+      {
+        "$id":"8",
+        "NetworkGroupId":11088,
+        "GroupName":"Degraves Street",
+        "Type":"s"
+      },
+      {
+        "$id":"9",
+        "NetworkGroupId":11107,
+        "GroupName":"Joondalup",
+        "Type":"s"
+      }
+    ],
+    "OtherNetworkGroups":[
+      {
+        "$id":"10",
+        "NetworkGroupId":11042,
+        "GroupName":"VIC - Company ",
+        "Type":"d"
+      },
+      {
+        "$id":"11",
+        "NetworkGroupId":11043,
+        "GroupName":"VIC - Franchise Recruitment ",
+        "Type":"d"
+      },
+      {
+        "$id":"12",
+        "NetworkGroupId":11044,
+        "GroupName":"QLD - Recruitment ",
+        "Type":"d"
+      },
+      {
+        "$id":"13",
+        "NetworkGroupId":11050,
+        "GroupName":"ACT - Company ",
+        "Type":"d"
+      },
+      {
+        "$id":"14",
+        "NetworkGroupId":11129,
+        "GroupName":"Operations - ABM/BM Recruitment",
+        "Type":"d"
+      },
+      {
+        "$id":"15",
+        "NetworkGroupId":11142,
+        "GroupName":"NSW - Company Recruitment ",
+        "Type":"d"
+      },
+      {
+        "$id":"16",
+        "NetworkGroupId":11156,
+        "GroupName":"Burke Franchise ",
+        "Type":"d"
+      }
+    ],
+    "EmploymentClassification":[
+      {
+        "$id":"17",
+        "Value":23,
+        "Label":"Casual"
+      },
+      {
+        "$id":"18",
+        "Value":28,
+        "Label":"Contract"
+      },
+      {
+        "$id":"19",
+        "Value":21,
+        "Label":"Full time"
+      },
+      {
+        "$id":"20",
+        "Value":22,
+        "Label":"Part time"
+      }
+    ],
+    "AccountRecruitment":{
+      "$id":"21",
+      "AccountRecruitmentId":62,
+      "Description":"AutomationAccount1",
+      "NetworkGroupId":0
+    },
+    "ClockInPin":"7978",
+    "AlarmCodeRequired":false,
+    "StoreKeyRequired":false,
+    "DisplayClockInPin":true,
+    "DisplayAlarmCode":false,
+    "DisplayStoreKey":false,
+    "PerformanceMetrics":null,
+    "RosterRoleId":534,
+    "SalaryTypeId":2,
+    "SalaryTypetxt":"Salaried",
+    "Allowance":0.0,
+    "Discount":0.0,
+    "OperatorId":"-1",
+    "DebtorId":0,
+    "OperatorIdDesc":"Employee ID",
+    "DebtorIdDesc":"Clock In ID",
+    "DisplaySalaryClassification":false,
+    "SalaryClassificationId":null,
+    "DisplayPayrollInfo":false,
+    "PayrollMemberIdentifierDesc":null,
+    "PayrollLocationIdentifierDesc":null,
+    "PayrollMemberIdentifier":null,
+    "PayrollLocationIdentifier":null,
+    "SalaryRates":[
+      {
+        "$id":"22",
+        "Value":478,
+        "Label":"<span class=optTitle>01 Team Member</span><span class=optEmpType>Hourly</span><span class=optRate>Age 20 ($15.5/hr)</span></span>"
+      },
+      {
+        "$id":"23",
+        "Value":493,
+        "Label":"<span class=optTitle>02 Team Leader</span><span class=optEmpType>Hourly</span><span class=optRate>Age 20 ($17/hr)</span></span>"
+      },
+      {
+        "$id":"24",
+        "Value":494,
+        "Label":"<span class=optTitle>35,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"25",
+        "Value":495,
+        "Label":"<span class=optTitle>35,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"26",
+        "Value":496,
+        "Label":"<span class=optTitle>36,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"27",
+        "Value":497,
+        "Label":"<span class=optTitle>36,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"28",
+        "Value":498,
+        "Label":"<span class=optTitle>37,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"29",
+        "Value":499,
+        "Label":"<span class=optTitle>37,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"30",
+        "Value":500,
+        "Label":"<span class=optTitle>38,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"31",
+        "Value":501,
+        "Label":"<span class=optTitle>38,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"32",
+        "Value":502,
+        "Label":"<span class=optTitle>39,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"33",
+        "Value":503,
+        "Label":"<span class=optTitle>39,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"34",
+        "Value":504,
+        "Label":"<span class=optTitle>40,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"35",
+        "Value":505,
+        "Label":"<span class=optTitle>40,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"36",
+        "Value":506,
+        "Label":"<span class=optTitle>41,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"37",
+        "Value":507,
+        "Label":"<span class=optTitle>41,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"38",
+        "Value":508,
+        "Label":"<span class=optTitle>42,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"39",
+        "Value":509,
+        "Label":"<span class=optTitle>42,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"40",
+        "Value":510,
+        "Label":"<span class=optTitle>43,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"41",
+        "Value":511,
+        "Label":"<span class=optTitle>43,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"42",
+        "Value":512,
+        "Label":"<span class=optTitle>44,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"43",
+        "Value":513,
+        "Label":"<span class=optTitle>44,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"44",
+        "Value":514,
+        "Label":"<span class=optTitle>45,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"45",
+        "Value":515,
+        "Label":"<span class=optTitle>45,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"46",
+        "Value":516,
+        "Label":"<span class=optTitle>46,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"47",
+        "Value":517,
+        "Label":"<span class=optTitle>46,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"48",
+        "Value":518,
+        "Label":"<span class=optTitle>47,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"49",
+        "Value":519,
+        "Label":"<span class=optTitle>47,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"50",
+        "Value":520,
+        "Label":"<span class=optTitle>48,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"51",
+        "Value":521,
+        "Label":"<span class=optTitle>48,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"52",
+        "Value":522,
+        "Label":"<span class=optTitle>49,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"53",
+        "Value":523,
+        "Label":"<span class=optTitle>49,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"54",
+        "Value":524,
+        "Label":"<span class=optTitle>50,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"55",
+        "Value":525,
+        "Label":"<span class=optTitle>50,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"56",
+        "Value":526,
+        "Label":"<span class=optTitle>51,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"57",
+        "Value":527,
+        "Label":"<span class=optTitle>51,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"58",
+        "Value":528,
+        "Label":"<span class=optTitle>52,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"59",
+        "Value":529,
+        "Label":"<span class=optTitle>52,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"60",
+        "Value":530,
+        "Label":"<span class=optTitle>53,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"61",
+        "Value":531,
+        "Label":"<span class=optTitle>53,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"62",
+        "Value":532,
+        "Label":"<span class=optTitle>54,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"63",
+        "Value":533,
+        "Label":"<span class=optTitle>54,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"64",
+        "Value":534,
+        "Label":"<span class=optTitle>55,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"65",
+        "Value":535,
+        "Label":"<span class=optTitle>55,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"66",
+        "Value":536,
+        "Label":"<span class=optTitle>56,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"67",
+        "Value":537,
+        "Label":"<span class=optTitle>56,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"68",
+        "Value":538,
+        "Label":"<span class=optTitle>57,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"69",
+        "Value":539,
+        "Label":"<span class=optTitle>57,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"70",
+        "Value":540,
+        "Label":"<span class=optTitle>58,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"71",
+        "Value":541,
+        "Label":"<span class=optTitle>58,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"72",
+        "Value":542,
+        "Label":"<span class=optTitle>59,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"73",
+        "Value":543,
+        "Label":"<span class=optTitle>59,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"74",
+        "Value":544,
+        "Label":"<span class=optTitle>60,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"75",
+        "Value":545,
+        "Label":"<span class=optTitle>60,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"76",
+        "Value":546,
+        "Label":"<span class=optTitle>61,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"77",
+        "Value":547,
+        "Label":"<span class=optTitle>61,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"78",
+        "Value":548,
+        "Label":"<span class=optTitle>62,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"79",
+        "Value":549,
+        "Label":"<span class=optTitle>62,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"80",
+        "Value":550,
+        "Label":"<span class=optTitle>63,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"81",
+        "Value":551,
+        "Label":"<span class=optTitle>63,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"82",
+        "Value":552,
+        "Label":"<span class=optTitle>64,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"83",
+        "Value":553,
+        "Label":"<span class=optTitle>64,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"84",
+        "Value":554,
+        "Label":"<span class=optTitle>65,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"85",
+        "Value":555,
+        "Label":"<span class=optTitle>65,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"86",
+        "Value":556,
+        "Label":"<span class=optTitle>66,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"87",
+        "Value":557,
+        "Label":"<span class=optTitle>66,500 </span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"88",
+        "Value":558,
+        "Label":"<span class=optTitle>67,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"89",
+        "Value":559,
+        "Label":"<span class=optTitle>67,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"90",
+        "Value":560,
+        "Label":"<span class=optTitle>68,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"91",
+        "Value":561,
+        "Label":"<span class=optTitle>68,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"92",
+        "Value":562,
+        "Label":"<span class=optTitle>69,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"93",
+        "Value":563,
+        "Label":"<span class=optTitle>69,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"94",
+        "Value":564,
+        "Label":"<span class=optTitle>70,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"95",
+        "Value":565,
+        "Label":"<span class=optTitle>70,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"96",
+        "Value":566,
+        "Label":"<span class=optTitle>71,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"97",
+        "Value":567,
+        "Label":"<span class=optTitle>71,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"98",
+        "Value":568,
+        "Label":"<span class=optTitle>72,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"99",
+        "Value":569,
+        "Label":"<span class=optTitle>72,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"100",
+        "Value":570,
+        "Label":"<span class=optTitle>73,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"101",
+        "Value":571,
+        "Label":"<span class=optTitle>73,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"102",
+        "Value":572,
+        "Label":"<span class=optTitle>74,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"103",
+        "Value":573,
+        "Label":"<span class=optTitle>74,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"104",
+        "Value":574,
+        "Label":"<span class=optTitle>75,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"105",
+        "Value":575,
+        "Label":"<span class=optTitle>75,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"106",
+        "Value":576,
+        "Label":"<span class=optTitle>76,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"107",
+        "Value":577,
+        "Label":"<span class=optTitle>76,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"108",
+        "Value":578,
+        "Label":"<span class=optTitle>77,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"109",
+        "Value":579,
+        "Label":"<span class=optTitle>77,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"110",
+        "Value":580,
+        "Label":"<span class=optTitle>78,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"111",
+        "Value":581,
+        "Label":"<span class=optTitle>78,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"112",
+        "Value":582,
+        "Label":"<span class=optTitle>79,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"113",
+        "Value":583,
+        "Label":"<span class=optTitle>79,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"114",
+        "Value":584,
+        "Label":"<span class=optTitle>80,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"115",
+        "Value":585,
+        "Label":"<span class=optTitle>80,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"116",
+        "Value":586,
+        "Label":"<span class=optTitle>81,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"117",
+        "Value":587,
+        "Label":"<span class=optTitle>81,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"118",
+        "Value":588,
+        "Label":"<span class=optTitle>82,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"119",
+        "Value":589,
+        "Label":"<span class=optTitle>82,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"120",
+        "Value":590,
+        "Label":"<span class=optTitle>83,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"121",
+        "Value":591,
+        "Label":"<span class=optTitle>83,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"122",
+        "Value":592,
+        "Label":"<span class=optTitle>84,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"123",
+        "Value":593,
+        "Label":"<span class=optTitle>84,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"124",
+        "Value":594,
+        "Label":"<span class=optTitle>85,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"125",
+        "Value":595,
+        "Label":"<span class=optTitle>85,500</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"126",
+        "Value":651,
+        "Label":"<span class=optTitle>03 Salary not in rate table</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"127",
+        "Value":652,
+        "Label":"<span class=optTitle>90,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>"
+      },
+      {
+        "$id":"128",
+        "Value":928,
+        "Label":"<span class=optTitle>03 WA Junior</span><span class=optEmpType>Hourly</span><span class=optRate>Age 20 ($16.5/hr)</span></span>"
+      }
+    ],
+    "SalaryTypes":[
+      {
+        "$id":"129",
+        "Value":0,
+        "Label":"Casual"
+      },
+      {
+        "$id":"130",
+        "Value":1,
+        "Label":"Hourly - FT/PT"
+      },
+      {
+        "$id":"131",
+        "Value":2,
+        "Label":"Salaried"
+      }
+    ],
+    "SalaryClassifications":null,
+    "DesiredSalary":null,
+    "IsOnboarding":false,
+    "Comments":null,
+    "OnboardingStatus":"pending",
+    "OnboardingRoleId":610,
+    "OnboardingRoleTxt":"OPS - General Manager - Operations",
+    "OnboardingStoreId":11056,
+    "OnboardingStoreTxt":"Mt Lawley",
+    "OnboardingSalaryRoleId":536,
+    "OnboardingSalaryRoleTxt":"<span class=optTitle>56,000</span><span class=optEmpType>Salaried</span><span class=optRate>$0</span></span>",
+    "OnboardingEmploymentClassificationId":21,
+    "OnboardingEmploymentClassificationTxt":"Full time",
+    "OnboardingCommencementDate":null,
+    "OnboardingHoursPerWeek":null
+  },
+  "EntityActions":[
+    {
+      "$id":"132",
+      "Id":null,
+      "Code":2702,
+      "Caption":"ViewProfileEmploymentDetail",
+      "Description":"ViewProfileEmploymentDetail",
+      "ActionUrl":null,
+      "Children":null
+    },
+    {
+      "$id":"133",
+      "Id":null,
+      "Code":2701,
+      "Caption":"CannotEditProfileEmployeeDetail",
+      "Description":"CannotEditProfileEmployeeDetail",
+      "ActionUrl":null,
+      "Children":null
+    },
+    {
+      "$id":"134",
+      "Id":null,
+      "Code":2710,
+      "Caption":"CanViewPayrollDetails",
+      "Description":"CanViewPayrollDetails",
+      "ActionUrl":null,
+      "Children":null
+    },
+    {
+      "$id":"135",
+      "Id":null,
+      "Code":2713,
+      "Caption":"CannotEditPayrollDetails",
+      "Description":"CannotEditPayrollDetails",
+      "ActionUrl":null,
+      "Children":null
+    },
+    {
+      "$id":"136",
+      "Id":null,
+      "Code":2705,
+      "Caption":"CannotEditCommencementDate",
+      "Description":"CannotEditCommencementDate",
+      "ActionUrl":null,
+      "Children":null
+    }
+  ],
+  "Status":0
+}

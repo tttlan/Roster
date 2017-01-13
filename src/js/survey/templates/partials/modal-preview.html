@@ -1,0 +1,23 @@
+<div class="modal__main" >
+    <div class="button-group segment align-center word-break">
+        <h3>{{questionnaireInfo.name||questionnaireInfo.Name }}</h3>
+        <h4>{{questionnaireInfo.description||questionnaireInfo.Description}}</h4>
+        <h4>{{questionnaireInfo.instructions||questionnaireInfo.Instructions}}</h4>
+    </div>
+    <div class="segment">
+        <div style="pointer-events: none;">
+            <div ng-repeat="item in questionnaireInfo.questions">
+                <question-item
+                    item="item" index="{{$index}}"
+                    question-prefix="question-{{$index}}"
+                    group="group">
+                </question-item>
+            </div>
+        </div>       
+    </div>
+    <footer class="modal__footer">
+        <div class="button-group align-center">
+            <a href="" class="button" ng-click="close()">CLOSE</a>
+        </div>
+    </footer>
+</div>

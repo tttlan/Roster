@@ -1,0 +1,230 @@
+﻿.ui
+    .profile-new {
+
+        .border-red{
+            border: solid 1px red;
+        }
+
+        .profile-cover__wrapper {
+            height: 350px;
+            z-index: 0;
+            width: 100%;
+            position: absolute;
+            top: -40px;
+            overflow: hidden;
+            .profile__cover-image {
+                position: absolute;
+                width: 100%;
+                bottom: -100px;
+
+                &::selection {
+                    background: none;
+                }
+
+            }
+
+            .profile__cover-image-ovelay {
+                   position: absolute;
+                   width: 100%;
+                   height: 350px;
+                   background:rgba(0, 0, 0, .2);
+                   text-align:center;
+                   padding-top: 150px;
+                   opacity:0;    
+                   -webkit-transition: all 0.3s ease-in-out;
+                   -moz-transition: all 0.3s ease-in-out;
+                   -o-transition: all 0.3s ease-in-out;
+                   -ms-transition: all 0.3s ease-in-out;
+                   transition: all 0.3s ease-in-out;
+
+                   &:hover{
+                       opacity:1;
+                   }
+
+                   i {
+                       font-size: 25px;
+                       padding: 10px;
+                       border-radius: 50%;
+                       color: white;
+                       background-color:rgba(255, 255, 255, 0.3);
+                   }
+            }
+
+            .profile__cover-panel {
+                width: 100%;
+                height: 100px;
+                /*background: linear-gradient(180deg, transparent, white);*/
+                /*background: linear-gradient(to bottom, white, #F3F4F5);*/
+                background: linear-gradient(to bottom, transparent, #F3F4F5 80%, #F3F4F5);
+                z-index:2;
+                position: absolute;
+                bottom: 0px;
+            }
+        }
+
+        .profile-page__aside {
+            position: absolute;
+            top: 150px;
+
+            .profile__avatar {
+                width: 170px;
+                height: 170px;
+                border-radius: 5px;
+                margin-left: 50px;
+
+                img {
+                    border-radius: 5px;
+                    border: solid 2px white;
+
+                    &::selection {
+                        background: none;
+                    }
+                }
+
+                div {
+                    background:rgba(0, 0, 0, .2);
+                    position: absolute;
+                    top: 0px; width: 170px;
+                    height: 170px;
+                    border-radius: 5px;
+                    border: solid 2px white;
+                    text-align:center;
+                    padding-top: 80px;
+                    opacity:0;    
+                    -webkit-transition: all 0.3s ease-in-out;
+                    -moz-transition: all 0.3s ease-in-out;
+                    -o-transition: all 0.3s ease-in-out;
+                    -ms-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover{
+                       opacity:1;
+                    }
+
+                    i {
+                       font-size: 25px;
+                       padding: 10px;
+                       border-radius: 50%;
+                       color: white;
+                       background-color:rgba(255, 255, 255, 0.3);
+                    }
+                }
+            }
+
+            .profile__status {
+                width: 170px;
+                margin-left: 50px;
+                
+                span {
+                    display: block;
+                    text-align: center;
+                }
+
+                .profile__status-emo {
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        margin-top: -30px;
+                        margin-left: 155px;
+                    }
+                }
+
+                .profile__status-time {
+                    color: info;
+                }
+
+                .profile__status-date {
+                    color: grey5;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                }
+            }
+
+            .profile__group {
+                margin-top: 20px;
+            }
+
+            .profile-card__details {
+                border-radius: 5px;
+                border: solid 1px default-border-color;
+                margin-top: 20px;
+            }
+        }
+
+        .profile-page__content {
+            top: 190px;
+            .profile__title {
+                width: 100%;
+                border-bottom: solid 1px grey6;
+                padding-bottom: 30px;
+                margin-top: 65px;
+                .profile__username {
+                    .h2 {
+                        font-size: 30px;
+                        .profile__role {
+                            font-size: 16px;
+                            margin-top: 10px;
+                            color: grey4;
+                            font-weight: bold;
+                        }
+                        .profile__groupdefault{
+                            font-size: 16px;
+                            margin-top: 10px;    
+                            color: link-color;
+                        }
+                        .profile__memberstatus {
+                            font-size: 12px;
+                            margin-top: 10px;
+                            color: negative;
+                        }
+                    }
+
+                }
+
+                .profile__navbar {
+                    float: right;
+                    .nav {
+                        li{
+                            a{
+                                color: grey5;
+                            }
+                        }
+
+                        .is--active {
+                            color: info;
+                        }
+                    }
+                }
+            }
+
+            .profile__content {
+                 margin-top: 20px;
+                 .new-post {
+                     width: 100%;
+                 }
+
+                 .feed-posts {
+                     .post--type-ProfilePost, .post--type-MemberUpdate {
+                         margin-left: 48px;
+                     }
+
+                     .post__image {
+                         .avatar-loader{
+                             width: 34px;
+                             height: auto;
+                             left: 76px;
+                         }
+                         
+                         &::before {
+                             left: 108px;
+                         }
+                         &::after {
+                             left: 107px;
+                         }
+                     }
+                 }
+                 
+            }
+        }
+
+    }

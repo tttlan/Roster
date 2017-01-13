@@ -1,0 +1,298 @@
+﻿<form name="tfnSignatureForm" id="tfnSignatureForm" novalidate>
+    <div class="page page--1-c-wide recruit">
+        <div class="page__wrapper">
+            <div class="page__content onboarding" ng-class="{'is--loading': isLoading}">
+
+            <div class="segment">
+    
+                <div ng-if="isSigned()" style="display:inline-block" class="align-right">
+                    <a class="button button--primary button--sm" ng-click="printDiv('onboarding-tfnSignature-form')"><i class="icon--print"></i>Print</a>
+                    &nbsp;<a href="" target="_blank" ng-click="downloadDivPdf()" class="button button--primary button--sm">
+                        <i class="icon--download"></i>Download
+                    </a>
+                </div>
+
+                <div id="onboarding-tfnSignature-form">
+                    <div  style="text-align: center">
+                        <h1>Tax File Declaration Form</h1>
+                        <p><i class="icon--warning is--caution"></i>&nbsp;&nbsp;This declaration is <strong>NOT</strong> an application for a tax file number</p>
+
+                        <h4><strong>To be signed by the PAYEE and returned to the PAYER</strong></h4>
+
+                        <p>
+                            Read all the instructions provided by the payer before you complete
+                            this declaration
+                        </p>
+                    </div>
+                    <table class="table-form table-form--full-width table--striped">
+                        <tr>
+                            <td class="declaration-form__number"><h2>1</h2></td>
+                            <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td class="declaration-form__subtitle"><h4>Tax file number (TFN)</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">
+                                            {{details.tfnNumber1}}{{details.tfnNumber2}}{{details.tfnNumber3}}&nbsp;{{details.tfnNumber4}}{{details.tfnNumber5}}{{details.tfnNumber6}}&nbsp;{{details.tfnNumber7}}{{details.tfnNumber8}}{{details.tfnNumber9}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="declaration-form__number"><h2>2</h2></td>
+                            <td>
+                                <table class="declaration-row clear" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td class="declaration-form__subtitle"><h4>What is your name?</h4></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">
+                                            {{details.fullName}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="declaration-form__number"><h2>3</h2></td>
+                            <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td colspan="2" class="declaration-form__subtitle"><h4>If you have changed your name since you last dealt with ATO, show your previous name details</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">
+                                            {{details.previousName}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="declaration-form__number"><h2>4</h2></td>
+                            <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td class="declaration-form__subtitle"><h4>What is your birthday?</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">{{details.BirthDay}}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="declaration-form__number"><h2>5</h2></td>
+                            <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td class="declaration-form__subtitle"><h4>What is your address?</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">{{details.fullAddress1}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">{{details.fullAddress2}}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="declaration-form__number"><h2>6</h2></td>
+                            <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td class="declaration-form__subtitle"><h4>On what basis are you paid?</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">
+                                            {{details.BasisOfPayment}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="declaration-form__number"><h2>7</h2></td>
+                            <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td class="declaration-form__subtitle"><h4>Are you an australian resident for tax purpose?</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">
+                                            {{details.Resident}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="declaration-form__number"><h2>8</h2></td>
+                            <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td colspan="3" class="declaration-form__subtitle"><h4>Do you want to claim the tax-free threshold from the payer?</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">
+                                            {{details.Threshold}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="declaration-form__number"><h2>9</h2></td>
+                            <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td colspan="3" class="declaration-form__subtitle"><h4>Do you want to claim the senior and pensioners tax offset by reducing amount withheld from payments made to you?</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">
+                                            {{details.senior}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="declaration-form__number"><h2>10</h2></td>
+                            <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td colspan="3" class="declaration-form__subtitle"><h4>Do you want to claim a zone, overseas forces, dependent (invalid or carer) tax offset by reducing amount withheld from payments made to you?</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">
+                                            {{details.zone}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="declaration-form__number"><h2>11</h2></td>
+                            <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td class="declaration-form__subtitle"><h4>(a) Do you have an accumulated Higher Education Loan Program (HELP) and/or Trade Support Loan (TSL) debt?</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">
+                                            {{details.Help}}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="declaration-form__subtitle"><h4>(b) Do you have an accumulated Financial Supplement (SFSS) debt?</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="declaration-two-row table-cell__middle">
+                                            {{details.Sfss}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table-form table-form--full-width borderless" style="text-align: center">
+                        <tr>
+                            <td colspan="2"><h2>Declaration by payee</h2></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <select name="signature-type" ng-model="details.SignatureType" ng-change="typeSignatureChanged(details.SignatureType)" style="width:35%">
+                                    <option>Check box</option>
+                                    <option>Upload</option>
+                                    <option>Direct</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="declaration-form__number" ng-if="details.IsCheckboxSignature">
+                                <input type="checkbox" name="signature-checkbox" id="signature-checkbox" ng-model="details.signatureChecked" ng-click="scrollToBottom()" />
+                                <label for="signature-checkbox">By adding my initials and checking this box<br />I declare that the information I have given is true and correct</label>
+                            </td>
+                            <td colspan="2" class="declaration-form__number" ng-if="details.IsUploadSignature">
+                                <!--<input type="text" name="signature-upload" id="signature-upload" ng-model="details.signature" />-->
+                                <div class="uploader-container" style="width:35%;margin-left:32%">
+                                    <uploader maxsize="52428800" maxfiles="1" ng-model="details.FileStoreId" name="filestore" container-id="details.containerId"></uploader>
+                                    <span class="form__note form__note--error" ng-show="form.filestore.$dirty">
+                                        An uploaded file or an external link is required
+                                    </span>
+                                    <p>
+                                        <small>
+                                            Max file size is 50MB<br />
+                                            Supported file types: jpg, png
+                                        </small>
+                                    </p>
+                                </div>
+                            </td>
+                            <td colspan="2" class="declaration-form__number" ng-if="details.IsDirectSignature">
+                                <div ng-if="!details.signature">
+                                    <table>
+                                        <tr><td align="left"><label for="signature-pad">Sign the box below</label></td></tr>
+                                        <tr>
+                                            <td>
+                                                <signature-pad signature accept="accept" clear="clear" height="220" style="border:1px solid black" text="sign the box below" id="signature-pad"></signature-pad>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" style="width:665px;">
+                                                <button ng-click="clear()" style="color:red">Remove</button>
+                                                <button ng-click="update_tfnSignature(accept())">Done</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div ng-if="details.signature">
+                                    <table>
+                                        <tr>
+                                            <td align="right">
+                                                <button ng-click="details.signature=undefined">Change signature</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <img ng-src="{{details.signature.dataUrl}}" alt="signature" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="signature-done">By adding my signature I declare that the information I have given is true and correct</label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr align-center ng-if="isSigned()">
+                            <td colspan="2">
+                                <b>Date signed</b>
+                            </td>
+                        </tr>
+                        <tr align-center ng-if="isSigned()">
+                            <td colspan="2">
+                                {{details.signedDate}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</form>
+<div class="recruit button-footer">
+    <a id="onboarding__lnkTfnFirst" 
+        ng-disabled="!isSigned() || isLoading" 
+        class="button button--positive button--icon-right toggle-loading" 
+        ng-click="onboarding_tfnSignature()" 
+        href="">Continue <i class="icon--right"></i></a>                    
+ </div>

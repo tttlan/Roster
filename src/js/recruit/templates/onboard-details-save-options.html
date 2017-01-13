@@ -1,0 +1,50 @@
+<div class="segment__fieldset">
+    <div class="segment__fieldset-heading">
+        <h2><i class="icon--notebook"></i>Save Options</h2>
+
+        <a href=""
+           class="align-right"
+           ng-click="data.onboards[$index].isCollapsedSaveOptions = !data.onboards[$index].isCollapsedSaveOptions">
+            <i ng-class="{
+                'icon--arrow-down': data.onboards[$index].isCollapsedSaveOptions,
+                'icon--arrow-up': !data.onboards[$index].isCollapsedSaveOptions
+            }"></i>
+        </a>
+    </div>
+
+    <div collapse="data.onboards[$index].isCollapsedSaveOptions">
+        <table class="table-form table-form--full-width">
+            <tbody ng-class="{'is--editing': true}">
+                <tr>
+                    <th>Save Options</th>
+
+                    <td class="table-form__edit-parent">
+                        <div class="form__field">
+                            <div class="field__checkbox">
+                                <input type="checkbox"
+                                       id="onboarding__BypassAcceptance"
+                                       name="onboarding__BypassAcceptance"
+                                       ng-model="onboard.Option.IsBypassAcceptance">
+
+                                <label for="onboarding__BypassAcceptance" class="form__label">
+                                    Bypass employee acceptance of onboarding
+                                </label>
+                            </div>
+
+                            <div class="field__checkbox">
+                                <input type="checkbox"
+                                       id="onboarding__SuppressEmailNotification"
+                                       name="onboarding__SuppressEmailNotification"
+                                       ng-model="onboard.Option.IsSuppressEmail">
+
+                                <label for="onboarding__SuppressEmailNotification" class="form__label">
+                                    Suppress email notification to employee
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

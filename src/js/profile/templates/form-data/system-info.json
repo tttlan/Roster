@@ -1,0 +1,65 @@
+[
+    {
+        "id": "systemInfoForm",
+        "name": "systemInfoForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "LoginName",
+                "label": "Login Name",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "form__label--invisible",
+                "validation": { 
+                    "required": true
+                }
+            },
+            {
+                "name": "OtherNetworkGroups",
+                "label": "Other groups",
+                "placeholder": "",
+                "value": "",
+                "type": "tag-manager",
+                "class": "form__label--invisible",
+                "validation": { }
+            },
+            {
+                "name": "StoreNetworkGroups",
+                "label": "Other stores",
+                "placeholder": "",
+                "value": "",
+                "type": "tag-manager",
+                "class": "form__label--invisible",
+                "validation": { }
+            },
+            {
+                "name": "AccountRecruitment",
+                "label": "Recruitment account",
+                "placeholder": "",
+                "value": "",
+                "type": "select",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "IsRoaming",
+                "label": "Give access to all groups",
+                "placeholder": "",
+                "value": "",
+                "type": "checkbox",
+                "class": "",
+                "validation": { }
+            },
+            {
+                "name": "submitForm",
+                "value": "Save changes",
+                "type": "submit-button",
+                "class": "button--small"
+            }
+        ]
+    }
+] 

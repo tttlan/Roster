@@ -1,0 +1,575 @@
+
+button_border_radius = .35em;
+button_padding = 0 1.35em;
+
+
+.ui
+    
+    button {
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .button {
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: middle;
+
+        min-height: 1em;
+        width: auto;
+
+        outline: none;
+        border: none;
+        background-color: grey7;
+        border-color: grey7;
+        background-image: none;
+        color: grey3;
+
+        padding: button_padding;
+
+        font-size: 14px;
+        line-height: 34px;
+        font-weight: bold;
+        font-style: normal;
+        text-align: center;
+        text-decoration: none;
+
+        border-radius: button_border_radius;
+
+        box-shadow: inset 1px 1px 3px rgba(0,0,0,0);
+
+        user-select: none;
+
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        transition: all 0.25s ease;
+
+        &.ng-hide-add-active, 
+        &.ng-hide-remove,
+        &.ng-leave {
+          display: none !important;
+        }
+
+        @media print {
+            border: solid 2px grey7 !important;
+        }
+    }
+
+    a.button:not([href]) {
+        cursor: default;
+    }
+
+    // Looks like a button, not actually a button
+    p.button {
+        cursor: default;
+        margin: 0;
+    }
+
+
+    // Button states
+    // 
+    // Markup:
+    // <a href="" class="button {{modifier_class}}">Button!</a>
+    //
+    // .button--hover - Hover style (style is also applied on :hover)
+    // .button--active - Button is active
+    // .button--disabled - Button is disabled
+    // .button--loading - Button is loading
+    // .button--more - 100% width button
+    //
+    // Styleguide elements.buttons.states
+
+    // Hover
+
+    .button--hover ,
+    .button:hover {
+        text-decoration: none;
+        background-color: darken(grey7, 10%);
+        color: grey3;
+    }
+
+    // Active
+
+    .button--active ,
+    .button:active {
+        box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    // Disabled
+
+    .button[disabled] ,
+    .button--disabled {
+        cursor: default;
+        /*color: grey6 !important;
+        background-color: rgba(50, 50, 50, 0.05) !important;
+        background-image: none !important;
+
+        box-shadow: none !important;*/
+        opacity: 0.5;
+    }
+
+    // Loading
+
+    .button--loading {
+        cursor: default;
+    }
+
+    .button--more {
+        width:100%;
+    }
+
+
+    // Buttons with icons
+    // 
+    // Markup:
+    // <a href="" class="button"><i class="icon--check"></i>Button with icon</a>
+    // <a href="" class="button button--icon-right">Next<i class="icon--right"></i></a>
+    // <a href="" class="button button--icon"><i class="icon--search"></i></a>
+    //
+    // Styleguide elements.buttons.icons
+
+    // Mixed
+
+    .button {
+
+        > [class^="icon--"] {
+            margin-right: 0.6em;
+            font-size: 0.8em;
+            line-height: 1;
+        }
+
+        .icon--folder {
+            font-size: 14px;
+            position: relative;
+            top: 1px;
+        }
+
+        .icon--events {
+            top: 2px;
+        }
+
+        &:hover {
+            color: inherit;
+        }
+    }
+
+    // icon right hand side
+
+    .button--icon-right > [class^="icon--"] {
+        margin-right: 0;
+        margin-left: 0.25em;
+    }
+
+    // Icon Only
+
+    .button--icon {
+        padding: 0;
+        width: 34px;
+
+        > [class^="icon--"] {
+
+            margin: 0;
+            font-size: 16px;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+        }
+    }
+
+    .button > .icon--right,
+    .button > .icon--left {
+        position: relative;
+        top: 1px
+    }
+
+    // Button variations and colours
+    // 
+    // Markup:
+    // <a href="" class="button {{modifier_class}}">Button</a>
+    //
+    // .button--primary - Button with users primary colour
+    // .button--postive - Button in the positive colour
+    // .button--negative - Button in the negative colour
+    // .button--caution - Button in the caution colour
+    // .button--white - White button
+    // .button--black - Black button
+    //
+    // Styleguide elements.buttons.variations
+
+    // Primary
+
+    .button--primary {
+        background-color: primary;
+        border-color: primary;
+        color: white;
+    }
+
+    .button--primary:hover,
+    .button--primary:active {
+        background-color: darken(primary, 10%);
+        color: white;
+    }
+
+    .button--primary:active {
+        background-color: lighten(primary, 10%);
+        color: white;
+    }
+
+    // positive
+
+    .button--positive {
+        background-color: positive;
+        border-color: positive;
+        color: white;
+    }
+
+    .button--positive:hover,
+    .button--positive:active,
+    .open .dropdown-toggle.button--positive {
+        background-color: darken(positive, 10%);
+        color: white;
+    }
+
+    .button--positive:active {
+        background-color: lighten(positive, 10%);
+        color: white;
+    }
+
+    // negative
+
+    .button--negative {
+        background-color: negative;
+        border-color: negative;
+        color: white;
+    }
+
+    .button--negative:hover,
+    .button--negative:active {
+        background-color: darken(negative, 20%);
+        color: white;
+    }
+
+    .button--negative:active {
+        background-color: lighten(negative, 10%);
+        color: white;
+    }
+
+    // caution
+
+    .button--caution {
+        background-color: caution;
+        border-color: caution;
+        color: white;
+    }
+
+    .button--caution:hover,
+    .button--caution:active {
+        background-color: darken(caution, 20%);
+        color: white;
+    }
+
+    .button--caution:active {
+        background-color: lighten(caution, 10%);
+        color: white;
+    }
+
+    // White
+
+    .button--white {
+        background-color: white;
+    }
+
+    .button--white:hover,
+    .button--white:active {
+        background-color: grey10;
+    }
+
+    .button--white:active {
+        background-color: lighten(white, 10%);
+    }
+
+    // Black
+
+    .button--black {
+        background-color: rgba(0,0,0,0.8);
+        color: white;
+    }
+
+    .button--black:hover,
+    .button--black:active {
+        color: white;
+        background-color: rgba(0,0,0,.95);
+    }
+
+    .button--black:active {
+        color: white;
+        background-color: rgba(0,0,0,0.7);
+    }
+
+
+    // Button shapes
+    // 
+    // Markup:
+    // <a href="" class="button {{modifier_class}}">Button</a>
+    //
+    // .button--basic - A transparent button
+    // .button--circular - Circular button
+    //
+    // Styleguide elements.buttons.shapes
+
+    .button--basic {
+        box-shadow: inset 0 0 0 1px grey7;
+        background: transparent;
+        color: grey3;
+
+        &:hover {
+            color: black;
+            box-shadow: inset 0 0 0 1px grey6;
+            background-color: grey8;
+        }
+
+        &.button--icon {
+            padding-left: 0;
+            padding-right: 0;
+            width: 26px;
+
+            > [class^="icon--"] {
+                //top: 3px;
+            }
+        }
+    }
+
+    .button--circular {
+        border-radius: 10em;
+    }
+
+
+    // Button sizes
+    // 
+    // Markup:
+    // <a href="" class="button {{modifier_class}}">Button</a>
+    //
+    // .button--tiny - Tiny button
+    // .button--small - Small button
+    // .button--large - Large button
+    // .button--massive - Massive button
+    //
+    // Styleguide elements.buttons.sizes
+
+    .button--tiny {
+        font-size: 10px;
+        line-height: 22px;
+        text-transform: uppercase;
+        padding-left: 1em;
+        padding-right: 1em;
+        font-weight: normal;
+    }
+
+    .button--small {
+        font-size: 12px;
+        line-height: 27px;
+        text-transform: uppercase;
+        padding-left: 1em;
+        padding-right: 1em;
+        font-weight: normal;
+    }
+
+    .button--large {
+        font-size: 20px;
+        line-height: 42px;
+        text-transform: uppercase;
+    }
+
+    .button--massive {
+        font-size: 28px;
+        line-height: 56px;
+        text-transform: uppercase;
+    }
+
+
+    // Groups
+    // ------------------------------------------------
+
+    // siblings
+
+    /*.button + .button-withtext ,
+    .button + .button {
+        margin-top: 10px;
+
+        @media minTablet {
+            margin-top: 0px;
+            margin-left: 10px;
+        }
+    }*/
+
+    // Groups of buttons
+    // 
+    // Markup:
+    // <div class="button-group">
+    //     <button class="button">Save</button>
+    //     <button class="button button--positive">Publish</button>
+    //     <button class="button button--caution button--icon"><i class="icon--bin"></i></button>
+    // </div>
+    //
+    // Styleguide elements.buttons.groups
+
+    .button-group {
+        .buttons,
+        .button {
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+
+        .buttons .button {
+            margin: 0;
+        }
+
+        .button + .button {
+            margin-left: 0;
+        }
+    }
+
+    // Bar of buttons
+    // 
+    // Markup:
+    // <div class="buttons">
+    //     <a href="" class="button">One</a>
+    //     <a href="" class="button">Two</a>
+    //     <a href="" class="button">Three</a>
+    // </div>
+    // <div class="buttons">
+    //     <a href="" class="button button--icon"><i class="icon--star"></i></a>
+    //     <a href="" class="button button--icon"><i class="icon--pencil"></i></a>
+    //     <a href="" class="button button--icon"><i class="icon--comment"></i></a>
+    // </div>
+    //
+    // Styleguide elements.buttons.bar
+
+    .buttons {
+        display: inline-block;
+        vertical-align: middle;
+        clearfix();
+        list-style:none;
+
+        &.dropdown {
+            position:relative;
+        }
+        
+        .button:first-child {
+            border-left: none;
+        }
+
+        .button {
+            float: left;
+            border-radius: 0em;
+            margin-right: 1px;
+        }
+
+        .button:first-child  {
+            margin-left: 0em;
+            border-top-left-radius: button_border_radius;
+            border-bottom-left-radius: button_border_radius;
+        }
+
+        .button:last-child {
+            border-top-right-radius: button_border_radius;
+            border-bottom-right-radius: button_border_radius;
+        }
+
+        .button + .button {
+            margin-left: 0;
+        }
+
+    }
+
+    .button + .button,
+    .buttons + .button,
+    .buttons + .buttons {
+        margin-left: 5px;
+    }
+    
+    
+    // Button with text
+    //
+    // Markup:
+    // <div class="button-withtext">
+    //     <button class="button button--positive button--icon-right">Save and Continue <i class="icon--right"></i></button>
+    //     <a href="" class="button-text">or save and exit</a>
+    // </div>
+    //
+    // Styleguide elements.buttons.buttonwithtext
+
+    .button-withtext {
+        display: inline-block;
+        position: relative;
+        padding-bottom: (gutter/2);
+
+        .button-text {
+            position: absolute;
+            top: 40px;
+            left: 8px;
+        }
+    }
+
+    .button-text {
+        font-size: 13px;
+        color: grey5;
+        border-bottom: 1px dashed grey7;
+
+        &:hover {
+            border-bottom: 1px solid grey7;
+        }
+    }
+
+
+    // Hit area
+    // 
+    // Markup:
+    // <a href="" class="button-hitarea">
+    //     <i class="icon--search icon-is-huge"></i>
+    //     <h2>Click to do something</h2>
+    //     <p>More information</p>
+    // </a>
+    //
+    // Styleguide elements.buttons.hitarea
+
+    .button-hitarea {
+        margin: 0 0 (gutter/2) 0;
+        display: block;
+        color: black;
+        border: dashed 1px grey7;
+        padding: 15% 0;
+        font-size: 16px;
+        text-align: center;
+        border-radius: 4px;
+
+        p {
+            color: grey5;
+        }
+
+        &:hover {
+            color: link-color-hover;
+            background: grey9;
+        }
+    }
+    
+    // Form element as a button
+    // ------------------------------------------------
+
+    .button-form {
+        display: inline-block;
+    }
+    
+
+    // Toggle Disable - for form submissions
+    // Used by the disable-toggle directive
+
+    .disable-toggle {
+        transition: width 125ms ease-in-out;
+    }
+
+    .disable-toggle__loader {
+        loader(12px, #fff)
+        margin-right:10px;
+    }

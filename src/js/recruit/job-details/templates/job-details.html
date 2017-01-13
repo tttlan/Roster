@@ -1,0 +1,47 @@
+<div class="page job-applicant-list" ng-class="{'is--loading': !controls.isLoaded}">
+    <div class="page__wrapper" ng-if="controls.isLoaded">
+        <div class="job-summary-bar">
+            <a class="align-left icon-back" title="Back to list" href="" path="recruit.jobs.index"><i class="icon--arrow-left"></i></a>
+            <div class="align-left job-summary-bar__job-info--margin-left">
+                <div class="job-summary-bar__job-title job-summary-bar__job-title--margin-top">{{jobDetail.jobTitle}}</div>
+                <div>
+                    <span class="label {{jobDetail.statusCode.statusStyle}}">{{jobDetail.statusCode.statusTitle}}</span>
+                    <span class="job-summary-bar__location job-summary-bar__location--margin-left">{{jobDetail.employmentTypeTitle}},
+                        <span ng-if="jobDetail.locationOrRegion === jobLocation.LOCATION"
+                              ng-repeat="location in jobDetail.selectedLocations">{{location.label}}{{ $last ? '' : ', ' }}
+                        </span>
+                        <span ng-if="jobDetail.locationOrRegion === jobLocation.REGION">
+                            {{jobDetail.area.Label + ', ' + jobDetail.state.Label}}
+                        </span>
+                    </span>
+
+                </div>
+            </div>
+            <div class="align-right job-summary-bar__right-bar">
+                <div class="buttons">
+                    <button href="" class="button" ng-class="{'is--selected': controls.showJobDetails}" ng-click="goToPath('details')">Job Details</button>
+                    <button href="" class="button" ng-class="{'is--selected': controls.showJobApplicants}" ng-click="goToPath('applicants')">Applicants</button>
+                </div>
+                <span ng-hide="jobDetail.statusCode.statusTitle === JOB_STATUS_CONSTANTS.JOB_STATUS_CLOSED && controls.showJobDetails"
+                      class="menu--position-relative ellipsis-menu--margin-left ellipsis-menu--alignment-middle">
+                    <a href="#" dropdown-toggle>
+                        <span><i class="icon--ellipsis"></i></span>
+                    </a>
+                    <ul class="submenu submenu--compact dropdown-menu ellipsis-submenu--position">
+                        <li class="submenu__item">
+                            <a href="" ng-show="controls.showJobApplicants" ng-click="openModalManuallyAddApplicant()">Manually add applicants ...</a>
+                            <a href=""
+                               ng-show="controls.showJobDetails && jobDetail.userCan(EntityActionType.CanDuplicateJob)"
+                               ng-click="duplicateJob(jobDetail.jobId)">
+                                Duplicate Job ...
+                            </a>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+
+        <job-details ng-if="controls.isLoaded && controls.showJobDetails && !controls.isError "></job-details>
+        <applicants-list ng-show="controls.showJobApplicants"></applicants-list>
+    </div>
+</div>

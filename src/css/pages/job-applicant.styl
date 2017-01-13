@@ -1,0 +1,339 @@
+.ui {
+  .job-applicant-list {
+
+    .page__header {
+      clearfix();
+    }
+    .search-jobs-form__actions {
+      text-align: center;
+      width: 30%;
+      @media minDesktop {
+        float: right;
+        margin-top: 20px;
+        text-align: right;
+      }
+    }
+
+    .non-selectable-round-badge--show {
+      display: none;
+      @media maxTablet {
+        display: block;
+      }
+    }
+
+    .selectable-round-badge--hide {
+      @media maxTablet {
+        display: none;
+      }
+    }
+
+    .search-jobs-form__search-field {
+      width: 50%;
+      float: left;
+      display: inline-block;
+      border-bottom: solid 1px grey5;
+      .field__before {
+        margin-top: -12px;
+      }
+      .field__before--search-icon {
+        font-size: 20px;
+        width: 0;
+        left: 0;
+      }
+      @media maxTablet {
+        width: 100%;
+      }
+    }
+    .table__thead {
+      background: #f3f4f5;
+    }
+    .table thead th {
+      border-bottom-color: grey5;
+    }
+
+    .table__candidate-application--hide-mobile {
+      @media maxTablet {
+        display: none;
+      }
+    }
+
+    .selected-header {
+      clearfix();
+      width: 100%;
+      position: absolute;
+      padding: 15px;
+      background: primary;
+      z-index: 1; // I didn't want to do this but for some reason table th icons has a higher z-index
+      box-shadow: 0px 2px 8px rgba(0,0,0, 0.2);
+      @media maxTablet {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+      }
+    }
+
+    .selected-header--hide-text {
+      @media maxTablet {
+        display: none;
+      }
+    }
+
+    .selected-header__text-color {
+      color: white;
+    }
+    .selected-header__a--select-styled {
+      border: 1px solid white;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-right: 5px;
+    }
+
+    .a__icon {
+      font-size: 10px;
+      padding-left: 5px;
+    }
+
+    .table__tbody__tr__td--is-selected {
+      background: alpha(primary, 0.2);
+      border-bottom-color: alpha(primary, 0.3);
+    }
+    .table__candidate_checkbox--th-alignment {
+      margin-top: -27px;
+    }
+    .table__candidate_checkbox--td-alignment {
+      margin-top: -16px;
+    }
+    .table__candidate-name--name--position{
+      margin: 0.6em 0 0 0.8em;
+      display: inline-block;
+      @media maxTablet {
+        margin: 0 0 0 0.8em;
+      }
+    }
+    .table__candidate-application--display {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .table__candidate-application--document-icon--size {
+      font-size 2em;
+    }
+    .table__candidate-application--document-name--size {
+      font-size: 0.8em
+    }
+    .table-mobile-layout__tr {
+      @media maxTablet {
+        position: relative;
+      }
+    }
+
+    .table-mobile-layout__checkbox {
+      @media maxTablet {
+        position: absolute;
+        top: 31px;
+        left: 10px;
+      }
+    }
+
+    .table-mobile-layout__status {
+      @media maxTablet {
+        width: 100%;
+        position: absolute;
+        top: 42px;
+        left: 65px;
+      }
+    }
+
+    .table-mobile-layout__elapse-time {
+      @media maxTablet {
+        position: absolute;
+        top: 17px;
+        right: 16px;
+      }
+    }
+
+    .table-mobile-layout__notes {
+      @media maxTablet {
+        position: absolute;
+        top: 43px;
+        right: 16px;
+      }
+    }
+
+    .search-jobs-form__text-input {
+      padding-left: 60px;
+      padding-top: 0;
+      font-size: 20px;
+      padding-bottom: 0;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      height: 50px;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    .search-jobs-form__text-input::-ms-clear,
+    .search-candidate-form__text-input::-ms-reveal {
+      display: none;
+    }
+    .status-filter {
+      display: inline-block;
+      float: left;
+      margin-top: 24px;
+      padding: 0;
+
+      @media maxTablet {
+        float: left;
+        margin-top: 20px;
+      }
+    }
+
+    .status-filter__selected-status {
+      background: grey5;
+      &:before {
+        width: 25px;
+        height: 25px;
+        background: black;
+        border-radius: 50%;
+      }
+    }
+
+    .status-filter__count-margin-top {
+      margin-top: 5px;
+    }
+
+    .status-filter__menu {
+      width: 225px;
+      padding: 10px 0;
+      top: -15px;
+      left: 0px;
+    }
+
+    .job-summary-bar {
+      clearfix();
+      margin-bottom: 25px;
+      
+      .icon-back {
+          .icon--arrow-left {
+            font-size: 40px;
+            color: grey6;
+            &:hover{
+              color: primary;
+            }  
+          }
+      }
+    }
+    .job-summary-bar__right-bar {
+      @media maxTablet {
+        float: left;
+        margin-top: 30px;
+      }
+    }
+    .job-summary-bar__job-info--margin-left {
+      margin-left: 16px;
+    }
+    .job-summary-bar__job-title {
+      font-size: 30px;
+      font-weight: 100;
+    }
+    .job-summary-bar__job-title--margin-top {
+      margin-top: -12px;
+    }
+    .job-summary-bar__location {
+      font-size: 14px;
+      font-weight 100;
+      color: grey3;
+    }
+    .menu--position-relative {
+      position: relative;
+    }
+    .job-summary-bar__location--margin-left,
+    .ellipsis-menu--margin-left {
+      margin-left: 10px;
+    }
+    .ellipsis-menu--alignment-middle {
+      vertical-align: middle;
+    }
+    .ellipsis-menu__icon--white {
+      color: white;
+    }
+    .ellipsis-submenu--position {
+      padding: 10px;
+    }
+    .ellipsis-submenu--font-weight {
+      font-weight: 400;
+    }
+    .ellipsis-submenu--icon-vertical-alignment {
+      vertical-align: middle;
+    }
+    .submenu__item .label {
+      float: none;
+      display: inline-block;
+    }
+    .ellipsis-submenu--position {
+      top: -16px;
+      right: -5px;
+    }
+
+    .change-status-submenu--position-mobile {
+      @media maxTablet {
+        top: -363px;
+        right: -5px;
+      }
+    }
+
+    .ellipsis-submenu--position-mobile {
+      @media maxTablet {
+        top: -68px;
+        right: -5px;
+      }
+    }
+
+    .is--selected {
+      background-color : primary;
+      color : white;
+    }
+    .clickable-label {
+      cursor: pointer;
+    }
+    .label-icon--position {
+      vertical-align: text-top;
+    }
+    .label-dropdown--font-size {
+      font-size: 12px;
+    }
+    .label-count-value {
+      color: grey5;
+      font-size: 11px;
+      right: 10px;
+      position: absolute;
+    }
+    .inner-label-count-value {
+      color: grey5;
+      font-size 11px;
+      padding-right: 10px;
+    }
+    .select-status__position {
+      position: relative;
+      .clickable-label {
+        margin-left: 30px;
+        vertical-align: super;
+      }
+    }
+    .selected-item {
+      background: grey7;
+      span.clickable-label {
+        &:before {
+          content: "\2022";
+          font-size: 30px;
+          color: black;
+          position: absolute;
+          left: 10px;
+          top: 0px;
+        }
+      }
+    }
+  }
+}

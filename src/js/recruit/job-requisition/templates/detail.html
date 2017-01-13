@@ -1,0 +1,212 @@
+﻿<div class="page job-requisition" ng-init="init()">
+    <!--Page Wrapper-->
+    <div class="page__wrapper">
+
+        <!--Page Header-->
+        <div class="page__header">
+            <h1>{{Requisition.State}}</h1>
+        </div>
+        <!--End Page Header-->
+        <!--Page Content-->
+        <div class="page__content">
+            <div class="segments" ng-class="{'is--loading': isLoading || !Requisition}">
+
+                <div class="segment">
+                    <div class="media media--user">
+                        <div class="media__image">
+                            <avatar img-src="Requisition.Owner.PhotoThumb" size="small"></avatar>
+                        </div>
+                        <div class="media__body">
+                            <a href="">{{Requisition.Owner.FirstName}} {{Requisition.Owner.Surname}}</a>
+                            <span class="media__body-date">{{Requisition.CreatedDateTime  | dateTimeFormat: 'MMM DD, YYYY'}}</span>
+                            <span>{{Requisition.Owner.RoleTitle}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="segment segment--borderTop">
+                    <form name="RequisitionForm">
+                        <table class="table-form"
+                               ng-class="{'no-borderCollapse': Requisition.State === REQUISITION_STATUS.DRAFT}">
+                            <tr>
+                                <th>Role</th>
+                                <td class="table-form__edit-parent">
+
+                                    <span ng-show="Requisition.State !== REQUISITION_STATUS.DRAFT && !isEditingRequisition.Role ||
+                                          Requisition.State === REQUISITION_STATUS.DRAFT &&  !Requisition.userCan(EntityActionType.CanEditJobAdRequisition)"
+                                          class="table-form__form-value">{{Requisition.Role.Description}}</span>
+
+                                    <a ng-show="Requisition.State !== REQUISITION_STATUS.DRAFT && Requisition.userCan(EntityActionType.CanEditJobAdRequisition) && !isEditingRequisition.Role"
+                                       ng-click="updateRequisitionField('ROLE')"
+                                       title="Edit role"
+                                       class="table-form__edit--requisition ng-scope" href="">
+                                        <span>Edit</span>
+                                    </a>
+                                    <a ng-show="Requisition.userCan(EntityActionType.CanEditJobAdRequisition) && isEditingRequisition.Role"
+                                       ng-click="updateRequisitionField('ROLE'); resetField('ROLE')" title="Edit role"
+                                       class="table-form__edit--requisition margin-top-10 ng-scope" href="">
+                                        <span>Cancel</span>
+                                    </a>
+
+                                    <div class="relative"
+                                         ng-show="Requisition.State === REQUISITION_STATUS.DRAFT && Requisition.userCan(EntityActionType.CanEditJobAdRequisition) || isEditingRequisition.Role">
+                                        <input type="text" placeholder="Select role"
+                                               id="selectRole"
+                                               ng-model="Requisition.Role.Description"
+                                               ng-change="onChangeInput(Requisition.Role.Description)"
+                                               class="autocomplete"
+                                               ng-focus="onFocusOrOnBlurDropdown('Role', Requisition.Role.Description)"
+                                               ng-blur="onFocusOrOnBlurDropdown(''); resetLabel('Role')"
+                                               autocomplete="off"/>
+                                        <span class="icon--down field__after"></span>
+                                        <ul ng-show="showDropdownFor === 'Role'" class="typeahead__list popout"
+                                            role="listbox">
+                                            <li class="typeahead__item" role="option"
+                                                ng-repeat="role in List = (roleList | filter: { Description: isChangedInput ? Requisition.Role.Description : '' }) ">
+                                                <a class="typeahead__link"
+                                                   ng-mousedown="onSelect(role, 'ROLE');">{{role.Description}}</a>
+                                            </li>
+                                            <li ng-if="List.length === 0" class="typeahead__item" role="option">
+                                                <a class="typeahead__link">No results match
+                                                    "{{Requisition.Role.Description}}"</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>Location</th>
+                                <td class="table-form__edit-parent">
+
+                                    <span ng-show="Requisition.State !== REQUISITION_STATUS.DRAFT && !isEditingRequisition.Group || 
+                                          Requisition.State === REQUISITION_STATUS.DRAFT &&  !Requisition.userCan(EntityActionType.CanEditJobAdRequisition)"
+                                          class="table-form__form-value">{{Requisition.Group.GroupName}}</span>
+
+                                    <div class="relative"
+                                         ng-show="Requisition.State === REQUISITION_STATUS.DRAFT && Requisition.userCan(EntityActionType.CanEditJobAdRequisition) || isEditingRequisition.Group">
+                                        <input type="text" placeholder="Select location"
+                                               id="selectLocation"
+                                               ng-model="Requisition.Group.GroupName"
+                                               ng-change="onChangeInput(Requisition.Group.GroupName)"
+                                               class="autocomplete"
+                                               ng-focus="onFocusOrOnBlurDropdown('Location', Requisition.Group.GroupName)"
+                                               ng-blur="onFocusOrOnBlurDropdown(''); resetLabel('Location')"
+                                               autocomplete="off"/>
+                                        <span class="icon--down field__after"></span>
+                                        <ul ng-show="showDropdownFor === 'Location'" class="typeahead__list popout"
+                                            role="listbox">
+                                            <li class="typeahead__item" role="option"
+                                                ng-repeat="location in List = (locationList | filter: { GroupName: isChangedInput ? Requisition.Group.GroupName : '' })">
+                                                <a class="typeahead__link"
+                                                   ng-mousedown="onSelect(location, 'LOCATION');">{{location.GroupName}}</a>
+                                            </li>
+                                            <li ng-if="List.length === 0" class="typeahead__item" role="option">
+                                                <a class="typeahead__link">No results match
+                                                    "{{Requisition.Group.GroupName}}"</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <!--End of New layout-->
+        </div>
+        <!--End Page Content-->
+    </div>
+
+    <div class="footer-action" ng-if="Requisition">
+        <div class="content">
+            <div class="button-group align-left">
+                <span class="label"
+                      ng-class="{'label--info' : Requisition.SubState === REQUISITION_STATUS.APPROVED || Requisition.SubState === REQUISITION_STATUS.ARCHIVED,
+                           'label--active': Requisition.SubState === REQUISITION_STATUS.CANCELLED || Requisition.SubState === REQUISITION_STATUS.DELETED,
+                           'label--caution': Requisition.SubState === REQUISITION_STATUS.PENDING || Requisition.SubState === REQUISITION_STATUS.REQ_CHANGES,
+                           'label--dark': Requisition.SubState === REQUISITION_STATUS.DRAFT,
+                           'label--positive' : Requisition.SubState === REQUISITION_STATUS.EXECUTED,
+                           'label--negative' : Requisition.SubState === REQUISITION_STATUS.REJECTED}">{{Requisition.SubState}}</span>
+
+                <small>{{Requisition.LastModifiedDateTime  | dateTimeFormat: 'MMM DD, YYYY'}}</small>
+            </div>
+            <div class="button-group align-left button-group__trash">
+                <a ng-if="Requisition.userCan(EntityActionType.CanDeleteJobAdRequisition)"
+                   href="#" tooltip="Remove" tooltip-placement="top"
+                   ng-confirm-message="Are you sure you want to remove this job requisition?"
+                   ng-confirm-click="processRequisition(REQUISITION_ACTION.DELETE)"
+                   ng-disabled="isLoading"><i class="icon--trash"></i></a>
+            </div>
+
+            <div class="button-group align-right">
+                <a href="" ng-click="backToList(Requisition)" class="button button--uppercase button--transparent">Back
+                    to list</a>
+
+                <button ng-if="Requisition.userCan(EntityActionType.CanEditJobAdRequisition) && Requisition.State === 'Draft'"
+                        class="button button--uppercase button--transparent"
+                        ng-click="processRequisition(REQUISITION_ACTION.SAVE_AS_DRAFT)"
+                        ng-disabled="isLoading || !Requisition.IsValid()">
+                    Save and close
+                </button>
+
+                <button ng-if="Requisition.userCan(EntityActionType.CanCancelJobAdRequisition)"
+                        class="button button--uppercase button--transparent"
+                        ng-click="processRequisition(REQUISITION_ACTION.CANCEL)"
+                        ng-disabled="isLoading || !Requisition.IsValid()">
+                    Cancel Requisition
+                </button>
+
+                <button ng-if="Requisition.userCan(EntityActionType.CanArchiveJobAdRequisition)"
+                        class="button button--uppercase button--transparent"
+                        ng-click="processRequisition(REQUISITION_ACTION.ARCHIVE)"
+                        ng-disabled="isLoading || !Requisition.IsValid()">
+                    Archive Requisition
+                </button>
+
+                <button ng-if="Requisition.userCan(EntityActionType.CanDeclinedJobAdRequisition)"
+                        class="button button--uppercase button--transparent button--reject"
+                        ng-click="processRequisition(REQUISITION_ACTION.REJECT)"
+                        ng-disabled="isLoading || !Requisition.IsValid()">
+                    Reject
+                </button>
+
+                <button ng-if="Requisition.userCan(EntityActionType.CanEditJobAdRequisition) && isEditingRequisition.CanSave && Requisition.State !== REQUISITION_STATUS.DRAFT"
+                        class="button button--uppercase button--positive"
+                        ng-click="processRequisition(REQUISITION_ACTION.SAVE)"
+                        ng-disabled="isLoading || !Requisition.IsValid()">
+                    Save
+                </button> <!--Not integrate with entity action yet-->
+
+                <button ng-if="Requisition.userCan(EntityActionType.CanSendToApprovalJobAdRequisition)"
+                        class="button button--uppercase button--positive"
+                        ng-click="processRequisition(REQUISITION_ACTION.SUBMIT)"
+                        ng-disabled="isLoading || !Requisition.IsValid()">
+                    Submit
+                </button>
+
+                <button ng-if="Requisition.userCan(EntityActionType.CanApprovedJobAdRequisition)"
+                        class="button button--uppercase button--positive"
+                        ng-click="processRequisition(REQUISITION_ACTION.APPROVE)"
+                        ng-disabled="isLoading || !Requisition.IsValid()">
+                    Approve
+                </button>
+
+                <button ng-if="Requisition.userCan(EntityActionType.CanExecutedJobAdRequisition)"
+                        class="button button--uppercase button--positive"
+                        ng-click="processRequisition(REQUISITION_ACTION.EXECUTE)"
+                        ng-disabled="isLoading || !Requisition.IsValid()">
+                    Execute
+                </button>
+
+                <a ng-if="Requisition.userCan(EntityActionType.CanViewJobFromJobRequisition)"
+                   href=""
+                   class="button button--uppercase button--positive"
+                   ng-click="viewJob(Requisition.ExecutedJobId)">
+                    View Job
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>

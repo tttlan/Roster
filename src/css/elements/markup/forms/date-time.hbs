@@ -1,0 +1,32 @@
+<div class="form__field {{ element.class }}">        
+    <p class="form__label">Date / time picker</p>
+    <div class="form__datetime">    
+        <div class="form__field">
+            <label 
+                for="date"
+                class="icon--calendar field__after">
+                    <span class="is-visually-hidden">Date</span>
+            </label>    
+            <input type="text"
+            id="date2"
+            placeholder="Date"
+            name="input"
+            ng-model="date2"
+            datepick datepicker-popup="d MMM yyyy" />    
+        </div>    
+        <div class="form__field">
+            <label
+            class="icon--clock field__after" 
+            for="time2">
+                <span class="is-visually-hidden">Time</span>
+            </label>
+            <input
+            type="text"
+            id="time2"
+            placeholder="Time"
+            ng-model="time2"
+            timepicker
+            />
+        </div>    
+    </div>    
+</div>

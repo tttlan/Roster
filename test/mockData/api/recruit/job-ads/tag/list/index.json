@@ -1,0 +1,100 @@
+{
+    "data": {
+        "$id": "1",
+        "JobTagItemResults": [
+            {
+                "$id": "2",
+                "JobTag": {
+                    "$id": "3",
+                    "JobTagId": 238,
+                    "TagDesc": "dummy job tag 0.194747",
+                    "TagCategory": "Job"
+                },
+                "EntityActions": [],
+                "Status": 0
+            },
+            {
+                "$id": "4",
+                "JobTag": {
+                    "$id": "5",
+                    "JobTagId": 242,
+                    "TagDesc": "dummy job tag 0.330723",
+                    "TagCategory": "Job"
+                },
+                "EntityActions": [],
+                "Status": 0
+            },
+            {
+                "$id": "6",
+                "JobTag": {
+                    "$id": "7",
+                    "JobTagId": 241,
+                    "TagDesc": "dummy job tag 0.605646",
+                    "TagCategory": "Job"
+                },
+                "EntityActions": [],
+                "Status": 0
+            },
+            {
+                "$id": "8",
+                "JobTag": {
+                    "$id": "9",
+                    "JobTagId": 243,
+                    "TagDesc": "dummy job tag 0.835233",
+                    "TagCategory": "Job"
+                },
+                "EntityActions": [],
+                "Status": 0
+            },
+            {
+                "$id": "10",
+                "JobTag": {
+                    "$id": "11",
+                    "JobTagId": 239,
+                    "TagDesc": "dummy job tag 0.914259",
+                    "TagCategory": "Job"
+                },
+                "EntityActions": [],
+                "Status": 0
+            },
+            {
+                "$id": "12",
+                "JobTag": {
+                    "$id": "13",
+                    "JobTagId": 240,
+                    "TagDesc": "dummy job tag 0.916753",
+                    "TagCategory": "Job"
+                },
+                "EntityActions": [],
+                "Status": 0
+            },
+            {
+                "$id": "14",
+                "JobTag": {
+                    "$id": "15",
+                    "JobTagId": 245,
+                    "TagDesc": "dummy job tag 0.919209",
+                    "TagCategory": "Job"
+                },
+                "EntityActions": [],
+                "Status": 0
+            },
+            {
+                "$id": "16",
+                "JobTag": {
+                    "$id": "17",
+                    "JobTagId": 244,
+                    "TagDesc": "dummy job tag 0.927903",
+                    "TagCategory": "Job"
+                },
+                "EntityActions": [],
+                "Status": 0
+            }
+        ],
+        "EntityActions": [],
+        "Pagination": null,
+        "Status": 0
+    },
+    "status": 200,
+    "config": {}
+}

@@ -1,0 +1,11 @@
+<div class="select-wrapper">
+    <select ng-model="selectModel"
+            ng-options="region as region.Label for region in regions.data track by region.Value"
+            ng-disabled="regions.loading"
+            ng-change="updateModel(selectModel)">
+        <option selected value="">Please select a Region</option>
+    </select>
+    <span class="select">{{ val }}</span>
+    <span class="select" ng-if='selectModel.Label'>{{ selectModel.Label}}</span>
+    <span class="select" ng-if='!selectModel.Label'>Please select a Region</span>
+</div>

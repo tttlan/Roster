@@ -1,0 +1,61 @@
+<header class="modal__header">
+    <h3 class="modal__title">Edit file</h3>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+
+<div class="modal__content">
+    
+     <ng-form name="form" novalidate validate-form>
+
+        <fieldset class="form">
+
+            <div class="form__fields">
+                
+                <div class="form__field col-1-2">
+                    <label class="form__label" for="input_folderName">File Name</label>
+                    <input type="text" id="input_folderName" name="folderName" required ng-model="data.name" maxlength="60">
+                    <span class="form__note form__note--error" ng-show="(form.courseName.$dirty || submitted) && form.courseName.$invalid">A file name is required</span>
+                </div><!--
+
+                --><div class="form__field col-1-2">
+                    <label for="selectBox" class="form__label">Move to a different folder</label>
+                    <select-box ng-model="data.folders">
+                        <select select-i="" ng-model="data.folders">
+                            <option>My documents</option>
+                            <option>Recruitment</option>
+                            <option>Payroll</option>
+                            <option>etc</option>
+                        </select>
+                        <!--
+                        <select select-i="" ng-model="form.country" ng-options="c.title for c in data.countries track by c.val"></select>
+                        -->
+                    </select-box> 
+                </div>
+
+            </div>
+
+            <div class="form__field">
+                <uploader 
+                    maxsize="50 * 1000 * 1024" 
+                    maxfiles="1" 
+                    ng-model="data.FileStoreIds" 
+                    existing="data.existingFile" 
+                    is-uploading="isUploading"
+                ></uploader>
+
+                <p><small>
+                    Max. accepted file size in 50MB<br />
+                    Supported file types: doc, docx, ppt, pptx, pdf, jpg, png, mp4</small>
+                </p>
+            </div>
+
+            <hr class="solid" />
+
+            <a href="" class="button button--small" ng-click="cancel()">Cancel</a>
+            <a href="" class="button button--small button--primary" ng-click="ok()">Save changes</a>
+
+        </fieldset>
+
+    </ng-form>
+   
+</div>

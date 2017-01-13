@@ -1,0 +1,44 @@
+﻿<div class="lightbox__wrapper lightbox__viewing--{{ items[currentIndex].type }}" ng-class="{'comments--open' : showComments}">
+    <div class="lightbox__main">
+        <div class="lightbox__slider">
+            <ul slider-panel>
+                <li ng-class="{ 'slide--selected': selectedSlide.indx == $index && selectedSlide.loaded }"
+                    slide="slide"
+                    ng-repeat="slide in slides"
+                    slide-resize="selectedSlide.showComments"></li>
+            </ul>
+        </div>
+        <div class="lightbox__nav">
+            <a href="" class="lightbox__close" ng-click="cancel()"><i class="icon--cross"></i></a>
+
+            <a href="" ng-if="showComments" class="lightbox__comment-count" ng-click="showComments = !showComments"><i class="icon--comment"></i> <span>5</span></a>
+            <a href="" ng-if="slides.length > 1" class="nav--prev" ng-click="prevSlide()"><div class="nav__icon"><i class="icon--arrow-left"></i></div></a>
+            <a href="" ng-if="slides.length > 1" class="nav--next" ng-click="nextSlide()"><div class="nav__icon"><i class="icon--arrow-right"></i></div></a>
+        </div>
+    </div>
+
+    <div class="lightbox__comments" ng-if="showComments">
+
+        <div class="lightbox__comments-header">
+            <div class="media media--user">
+                <div class="media__image">
+                    <avatar img-src="currentUser.MemberProfile.PhotoThumb" size="small"></avatar>
+                </div>
+                <div class="media__body">
+                    <a href="">Sherpa Admin</a>
+                    <span>uploaded 12 June 2014</span>
+                </div>
+            </div>
+            <a class="lightbox__comments-close" href="" ng-click="showComments = !showComments"><i class="icon--right"></i></a>
+        </div>
+
+        <post-comments ng-if="true"
+                       resource-type="news"
+                       resource-id="2575653"
+                       comment-count="1"
+                       current-user="currentUser"
+                       show-add-comment="true">
+        </post-comments>
+
+    </div>
+</div>

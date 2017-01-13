@@ -1,0 +1,19 @@
+{
+    "html": {
+        "indent_size": 4,
+        "preserve_newlines": true,
+        "wrap_attributes": "force",
+        "wrap_attributes_indent_size": 4
+    },
+    "css": {
+        "indent_size": 4,
+        "newline_between_rules": true
+    },
+    "js": {
+        "indent_size": 4,
+        "preserve_newlines": true,
+        "max_preserve_newlines": 2,
+        "keep_array_indentation": true,
+        "keep_function_indentation": true
+    }
+}

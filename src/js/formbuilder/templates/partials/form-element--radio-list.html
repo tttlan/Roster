@@ -1,0 +1,48 @@
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+    
+    <div class="radio-list" ng-class="{'radio-list--filter': element.filter}">
+
+        <p
+            ng-if="element.label" 
+            class="form__label"
+        >
+            {{ element.label }}
+        </p>
+        
+        <div class="form__field radio-list__filter" ng-show="element.filter">
+            
+            <label 
+                for="{{ formData.name + '__' + element.name + '__filter' }}"
+                class="icon--search field__before field__before--filter">
+                <span class="is-visually-hidden">{{element.filter.label}}</span>
+            </label>
+            
+            <input 
+                type="text" 
+                id="{{ formData.name + '__' + element.name + '__filter' }}"
+                placeholder="{{element.filter.label}}"
+                ng-model="filterText"
+                ng-model-options="{debounce: 500}"
+                class="invisible-input" />
+                
+        </div>
+        <div class="field__radio" ng-repeat="option in element.options | filter:filterText track by (element.labelPropertyName ? option[element.labelPropertyName] : option.Label)">
+            <input type="radio"
+                   id="{{ formData.name + '__' + element.name + $index }}"
+                   name="{{element.name}}"
+                   ng-value="element.valuePropertyName ? option[element.valuePropertyName] : option.Value"
+                   ng-model="element.val"
+                   ng-change="{{element.onchange}}"
+                   ng-checked="{{option.checked}}" />
+            
+            <label for="{{ formData.name + '__' + element.name + $index }}" class="form__label" ng-bind-html="element.labelPropertyName ? option[element.labelPropertyName] : option.Label"></label>
+
+        </div>
+
+        <span class="form_note" ng-if="element.note">{{ element.note }}</span>
+        
+        <error-builder></error-builder>
+
+    </div>
+
+</div>

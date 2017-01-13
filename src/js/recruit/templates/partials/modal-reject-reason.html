@@ -1,0 +1,74 @@
+<form name="onboardRejectForm">
+    <header class="modal__header">
+        <h2 class="modal__title">Rejection reason</h2>
+    </header>
+
+    <div class="modal__content"
+        ng-class="{'is--loading': changePassword.$submitting}">
+
+        <div class="form__field">
+            <div class="field__radio" ng-if="data.permission.rejectonboardforchanges">
+                <input type="radio"
+                    id="onboarding__RejectType__1"
+                    name="onboarding__RejectType"
+                    value="changesrequired"
+                    ng-model="data.type"
+                    required>
+                <label for="onboarding__RejectType__1"
+                    class="form__label">Changes required</label>
+            </div>
+
+            <div class="field__radio" ng-if="data.permission.rejectonboard">
+                <input type="radio"
+                    id="onboarding__RejectType__2"
+                    name="onboarding__RejectType"
+                    value="notneeded"
+                    ng-model="data.type"
+                    required>
+                <label for="onboarding__RejectType__2"
+                    class="form__label">Permanent</label>
+            </div>
+            
+            <div class="field__radio" ng-if="data.permission.rejectonboardpermanent">
+                <input type="radio"
+                    id="onboarding__RejectType__3"
+                    name="onboarding__RejectType"
+                    value="permanentlyreject"
+                    ng-model="data.type"
+                    required>
+                <label for="onboarding__RejectType__3"
+                    class="form__label">Permanent</label>
+            </div>
+
+            <form-errors input="onboardRejectForm.onboarding__RejectType">
+                <form-error error-key="required"
+                    error-text="'Rejection type' is required."></form-error>
+            </form-errors>
+        </div>
+
+        <div class="form__field">
+            <label class="form__label"
+                for="onboarding__RejectComments">Comments</label>
+            <textarea id="onboarding__RejectComments"
+                name="onboarding__RejectComments"
+                ng-model="data.comments"
+                required></textarea>
+
+            <form-errors input="onboardRejectForm.onboarding__RejectComments">
+                <form-error error-key="required"
+                    error-text="'Comments' are required."></form-error>
+            </form-errors>
+        </div>
+
+    </div>
+
+    <footer class="modal__footer">
+        <button type="button"
+            class="button"
+            ng-click="$dismiss()">Cancel</button>
+        <button type="button"
+            class="button button--positive"
+            ng-click="$close(data)"
+            ng-disabled="onboardRejectForm.$invalid">Reject onboard</button>
+    </footer>
+</form>

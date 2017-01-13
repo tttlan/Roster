@@ -1,0 +1,11 @@
+<div class="select-wrapper">
+    <select ng-model="selectModel"
+            ng-options="classification as classification.Label for classification in classifications.data track by classification.Value"
+            ng-disabled="locations.loading"
+            ng-change="updateModel(selectModel)">
+        <option selected value="">Please select a Classification</option>
+    </select>
+    <span class="select">{{ val}}</span>
+    <span class="select" ng-if='selectModel.Label'>{{ selectModel.Label}}</span>
+    <span class="select" ng-if='!selectModel.Label'>Please select a Classification</span>
+</div>

@@ -1,0 +1,70 @@
+<div class="page">
+    
+    <div class="page__wrapper"
+        paginate="getSubjects"
+        order-by="Title"
+        filter-by="Active"
+        page-size="20">
+
+        <h1>Manage Subjects</h1>
+
+        <!-- content component -->
+
+        <div class="page__content">
+
+            <div class="page__options">
+
+                <ul tabs class="nav nav--filter">
+                    <li tab-link active><a href="" ng-click="page.setFilter('Active')">Active</a></li>
+                    <li tab-link><a href="" ng-click="page.setFilter('Inactive')">Archived</a></li>
+                </ul>
+
+                <a ng-if="userCan.add" href="" path="training.manage.subjects.create" class="page__header-cta button button--positive">New subject</a>
+            </div>
+
+            <div ng-class="{'is--loading': page.loading}">
+                <div class="table-responsive" toggle-set>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="row--xlarge"><a href="" toggle-active="page.setOrderBy('Title')">Subject name</a></th>
+                                <th><a href="" toggle-active="page.setOrderBy('CreatedDate')">Created</a></th>
+                                <th><a href="" toggle-active="page.setOrderBy('LastUpdatedDate')">Last updated</a></th>
+                                <th>&nbsp;</th>
+                                <th class="cell--icon"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="subject in page.items">
+                                <td>{{ subject.Title }}</td>
+                                <td>{{ subject.CreatedDate | date:'dd MMM yyyy' }}</td>
+                                <td>{{ subject.LastUpdatedDate | date:'dd MMM yyyy' }}</td>
+                                <td>
+                                    <span class="label" ng-if="subject.IsThirdParty">External</span>
+                                </td>
+                                <td class="cell--icon">
+                                    <span tooltip="Edit" tooltip-placement="left">
+                                        <a ng-if="!subject.IsThirdParty && userCan.edit" href=""
+                                            path="training.manage.subjects.edit"
+                                            path-params="subject.TrainingSubjectId">
+                                            <i class="icon--edit"></i>
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="message message--empty" ng-hide="page.items.length || page.error || page.loading">
+                    <i class="icon--mnuTraining icon-is-huge"></i>
+                    <p>No matching subjects found, <a href="" path="training.manage.subjects.create">create one now</a></p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- END content component -->
+
+    </div>
+</div>

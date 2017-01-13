@@ -1,0 +1,99 @@
+[
+    {
+        "id": "bankingInformationForm",
+        "name": "bankingInformationForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [            
+            {
+                "name": "BankName",
+                "label": "Bank name",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "AccountName",
+                "label": "Account name",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "BSB",
+                "label": "BSB",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": true,
+                    "pattern": "^(\\d[\\s-]*){5}\\d$",
+                    "customErrorMessage": "The BSB must be exactly 6 digits"
+                }
+            },
+            {
+                "name": "AccountNo",
+                "label": "Account number",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": true,
+                    "pattern": "^(\\d[\\s-]*){3,9}\\d$",
+                    "customErrorMessage": "The Account Number must be between 4 and 10 digits"
+                }
+            },            
+            {
+                "name": "SuperFund",
+                "label": "Superannuation fund name",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": false
+                }
+            },            
+            {
+                "name": "SuperNo",
+                "label": "Superannuation member ID",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": false
+                }
+            },            
+            {
+                "name": "TaxFileNumber",
+                "label": "Tax File Number",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "input",
+                "validation": {
+                    "required": false,
+                    "pattern": "^(\\d[\\s-]*){8}\\d$",
+                    "customErrorMessage": "The Tax File Number must be exactly 9 digits"
+                }
+            },
+            {
+                "name": "submitForm",
+                "value": "Save changes",
+                "type": "submit-button",
+                "class": "button--small"
+            }
+        ]
+    }
+]

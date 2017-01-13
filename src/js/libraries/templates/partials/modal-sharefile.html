@@ -1,0 +1,91 @@
+﻿<header class="modal__header">
+    <h3 class="modal__title">Share this file</h3>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+
+<div class="modal__content libraries" ng-class="{'is--loading' : loading}">
+
+    <ng-form name="form" novalidate validate-form>
+
+        <fieldset class="form">
+
+            <div class="form__fields">
+                <select-box ng-model="pemissions" class="share-file-select">
+                    <select ng-options="item as item.label for item in items track by item.id"
+                            ng-model="selected"
+                            ng-change="selectShareOption(selected)"
+                            style="opacity: 1"></select>
+                </select-box>
+            </div>
+
+            <div class="form__fields">
+                <input type="text" id="auto_complete_share"
+                       placeholder="Search people, group or role"
+                       dropdown-toggle
+                       ng-model="searchUnitsKeyword"
+                       ng-change="onChangeSearchUnits(searchUnitsKeyword)"
+                       ng-disabled="selected.disabled"
+                       ng-click="showAutocomplete()" />
+                <ul class="autocompleteSearchArtifact submenu submenu--compact dropdown-menu modal--share--list"
+                    id="share-unit-list" ng-scrollbars ng-scrollbars-config="scrollbarShareModalConfig">
+                    <li class="submenu__item" ng-repeat="unit in groups" ng-click="addUnits(unit)">
+                        <div class="media" style="padding: 5px; margin: 0px;">
+                            <div class="media__image">
+                                <img ng-if="unit.Type == 'u'" ng-src="unit.Avatar" alt="Avatar" class="avatar avatar--small">
+                                <img ng-if="unit.Type == 'g'" ng-src="/interface/images/default-group.png" alt="Avatar" class="avatar avatar--small" src="/interface/images/default-group.png">
+                                <img ng-if="unit.Type == 'r'" ng-src="/interface/images/default-role.png" alt="Avatar" class="avatar avatar--small" src="/interface/images/default-role.png">
+                            </div>
+                            <div class="media__body">
+                                <p>
+                                    <strong>{{unit.Name}}</strong>
+                                    <small ng-if="unit.Type == 'u'">Network User</small>
+                                    <small ng-if="unit.Type == 'g'">Network Group</small>
+                                    <small ng-if="unit.Type == 'r'">Network Role</small>
+                                </p>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="list--share" ng-show="hideList">
+                    <div style="width: 80%; float: left">
+                        <span ng-if="listToShare.length != 0">Shared </span>
+                        <span ng-repeat="list in listToShare" class="list--share--people">
+                            <span>{{list.Name}}{{$last ? '' : ', '}}</span>
+                        </span>
+                    </div>
+                    <div ng-if="listToShare.length != 0" class="share--link">
+                        <a href="#" class="table-form__edit change--share--link" ng-click="showListGroup()">Change</a>
+                    </div>
+
+                </div>
+
+                <div class="list--share" ng-hide="hideList" ng-scrollbars ng-scrollbars-config="scrollbarShareModalConfig">
+                    <div ng-repeat="list in listToShare">
+                        <div class="media media--user media--list--share" ng-mouseover="showDeleteIcon($index)" ng-mouseout="hideDeleteIcon($index)">
+                            <div class="media__image">
+                                <img ng-if="list.Type == 'u'" ng-src="list.Avatar" alt="Avatar" class="avatar avatar--small">
+                                <img ng-if="list.Type == 'g'" ng-src="/interface/images/default-group.png" alt="Avatar" class="avatar avatar--small" src="/interface/images/default-group.png">
+                                <img ng-if="list.Type == 'r'" ng-src="/interface/images/default-role.png" alt="Avatar" class="avatar avatar--small" src="/interface/images/default-role.png">
+                            </div>
+                            <div class="media__body">
+                                <a href="">{{list.Name}}</a>
+                                <span ng-show="iconDelete && $index === deleteIconIndex" class="media--action"><a style="float: right; margin-top: -7px" ng-click="removeGroup($index, list)"><small style="text-transform:uppercase;color:#f0ad4e;font-size:11px">Remove</small></a></span>
+                                <span ng-if="list.Type == 'g'">Network group</span>
+                                <span ng-if="list.Type == 'r'">Network Role</span>
+                                <span ng-if="list.Type == 'u'">Network User</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div align="center">
+                <button class="button" ng-click="cancel()">Cancel</button>
+                <button class="button button--positive" ng-click="ok()">Done</button>
+            </div>
+
+        </fieldset>
+
+    </ng-form>
+
+</div>

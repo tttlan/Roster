@@ -1,0 +1,23 @@
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+
+    <label 
+    ng-if="element.label"
+    class="form__label"
+    for="{{ element.formName + '__' + element.name }}">{{ element.label }}</label>
+
+    <uploader maxsize="element.maxsize || 52428800"
+              maxfiles="element.maxfiles || 1"
+              ng-model="element.val[element.val.length].FileStoreId"
+              ng-change="{{element.onchange}}"
+              name="{{element.name}}"
+              container-id="element.containerId"
+              existing="element.val"
+              is-uploading="form.isUploading"
+              input-id="{{ element.formName + '__' + element.name }}"
+              cta="{{ element.placeholder }}"></uploader> 
+
+    <p ng-if="element.note"><small>{{ element.note }}</small></p>
+
+    <error-builder></error-builder>
+
+</div>

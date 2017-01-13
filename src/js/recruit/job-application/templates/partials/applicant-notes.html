@@ -1,0 +1,37 @@
+<div>All Notes <span class="is--disabled">{{ notesModel.notes.length }}</span></div>
+<hr class="solid"/>
+<div ng-show="notesModel.userCan(EntityActionType.CanAddComment)">
+    <div class="applicant__add__notes" ng-hide="editing" ng-click="editing=true">
+        <avatar size="tiny" img-src="currentUser.MemberProfile.PhotoThumbMini"></avatar>
+        <small class="is--disabled">Add note...</small>
+        <p><i class="icon--neutral icon-is-disabled" /><i class="icon--down icon-is-disabled icon-is-small"/></p>
+    </div>
+</div>
+<div ng-show="editing" class="form__add__notes">
+    <form name="noteForm" ng-submit="editing = false">
+        <avatar size="tiny" img-src="currentUser.MemberProfile.PhotoThumbMini"></avatar>
+        <div class="form__field form__field--inline">
+            <textarea required autogrow ng-model="newNote.commentString" id="fieldInline"></textarea>
+            <span class="table__table-menu">
+                <i ng-if="newNote.reaction === ReactionConstants.REACTION_LIKE" class="icon--smiling is--positive"></i>
+                <i ng-if="newNote.reaction === ReactionConstants.REACTION_DISLIKE" class="icon--sad is--negative"></i>
+                <i ng-if="newNote.reaction === ReactionConstants.REACTION_NEUTRAL" class="icon--neutral is--caution"></i>
+                <a class="table__a--select-styled" href="#" dropdown-toggle>
+                    <span class="table__thead--is-selected--text-color"><i class="icon--down icon-is-disabled icon-is-small"></i></span>
+                </a>
+                <ul class="submenu submenu--compact dropdown-menu table__ellipsis-submenu--position ellipsis-submenu--font-weight">
+                    <li class="submenu__item align-left">
+                        <a href="#"><i ng-click="newNote.reaction = ReactionConstants.REACTION_NEUTRAL" class="icon--neutral is--caution"></i></a>
+                        <a href="#"><i ng-click="newNote.reaction = ReactionConstants.REACTION_LIKE" class="icon--smiling is--positive"></i></a>
+                        <a href="#"><i ng-click="newNote.reaction = ReactionConstants.REACTION_DISLIKE" class="icon--sad is--negative"></i></a>
+                    </li>
+                </ul>
+            </span>
+        </div>
+        <div class="button-group align-right">
+            <button type="reset" ng-click="discardNote()" class="button button--white button--small">Discard</button>
+            <button class="button button--primary button--small" ng-click="addNote(noteForm.$valid, newNote)">Add note</button>
+        </div>
+    </form>
+</div>
+<notes-inline-edit notes-model="notesModel" note-to-show="noteToShow" member-id="memberId" editing="editing"></notes-inline-edit>

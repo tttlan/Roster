@@ -1,0 +1,12 @@
+<div class="select-wrapper">
+    <select
+        ng-model="ngModel"
+        ng-options="state as state.Label for state in states.data track by state.Value"
+        ng-disabled="states.loading || isDisabled"
+    >
+        <option selected value="">Please select a State</option>
+    </select>
+    <span class="select">{{ val }}</span>
+    <span class="select" ng-if='ngModel.Label'>{{ ngModel.Label }}</span>
+    <span class="select" ng-if='!ngModel.Label'>Please select a State</span>
+</div>

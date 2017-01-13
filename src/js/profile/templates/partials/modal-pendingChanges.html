@@ -1,0 +1,58 @@
+<header class="modal__header">
+    <h3 class="modal__title">Pending changes</h3>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+<div class="modal__content">
+
+    <p>The following changes are awaiting approval.</p>
+
+    <table class="table table--responsive-stacked profile__onboardingPendingTable">
+        <thead>
+            <tr>
+                <th width="35%">Type</th>
+                <th width="30%">Current Value</th>
+                <th width="5%"></th>
+                <th width="30%">New Value (pending approval)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-if="items.role.pending">
+                <td data-title="Type">{{ items.role.label }}</td>
+                <td data-title="Current Value">{{ items.role.current ? items.role.current : 'Not set' }}</td>
+                <td>&rarr;</td>
+                <td data-title="New Value (pending approval)">{{ items.role.pending }}</td>
+            </tr>
+            <tr ng-if="items.group.pending">
+                <td data-title="Type">{{ items.group.label }}</td>
+                <td data-title="Current Value">{{ items.group.current ? items.group.current : 'Not set' }}</td>
+                <td>&rarr;</td>
+                <td data-title="New Value (pending approval)">{{ items.group.pending }}</td>
+            </tr>
+            <tr ng-if="items.salary.pending">
+                <td data-title="Type">{{ items.salary.label }}</td>
+                <td data-title="Current Value" ng-bind-html="items.salary.current"></td>
+                <td>&rarr;</td>
+                <td data-title="New Value (pending approval)" ng-bind-html="items.salary.pending"></td>
+            </tr>
+            <tr ng-if="items.employmenttype.pending">
+                <td data-title="Type">{{ items.employmenttype.label }}</td>
+                <td data-title="Current Value" ng-bind-html="items.employmenttype.current"></td>
+                <td>&rarr;</td>
+                <td data-title="New Value (pending approval)" ng-bind-html="items.employmenttype.pending"></td>
+            </tr>
+            <tr ng-if="items.commencement.pending">
+                <td data-title="Type">{{ items.commencement.label }}</td>
+                <td data-title="Current Value">{{ (items.commencement.current ? items.commencement.current : 'Not set') | date }}</td>
+                <td>&rarr;</td>
+                <td data-title="New Value (pending approval)">{{ items.commencement.pending | date }}</td>
+            </tr>
+            <tr ng-if="items.hoursperweek.pending">
+                <td data-title="Type">{{ items.hoursperweek.label }}</td>
+                <td data-title="Current Value">{{ (items.hoursperweek.current ? items.hoursperweek.current : 'Not set')}}</td>
+                <td>&rarr;</td>
+                <td data-title="New Value (pending approval)">{{ items.hoursperweek.pending }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

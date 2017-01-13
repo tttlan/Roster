@@ -1,0 +1,21 @@
+<header class="modal__header">
+    <h2 class="modal__title">{{profileNoteForm.$editing ? 'Edit Note' : 'Create Note'}}</h2>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+<div class="modal__content modal__uploader">
+    <form-builder form-id="profileNoteForm"
+                  submit="submitData"
+                  is-submitting="profileNoteForm.isSubmitting"
+                  is-loaded="profileNoteForm.isBuilt"
+                  is-uploading="profileNoteForm.isUploading"
+                  model-data="profileNoteForm.$promise"
+                  form-data-promise="profileNoteForm.$formPromise"
+                  submit-event="submitProfileNoteData"></form-builder>
+</div>
+<footer class="modal__footer">
+    <div class="button-group text-right">
+        <i ng-show="!profileNoteForm.$editing" class="icon--help" tooltip="Max upload size 10MB" tooltip-placement="left"></i>
+        <button class="button" ng-click="cancel()">Cancel</button>
+        <button-loading btn-class="button--positive" ng-click="save()" ng-disabled="profileNoteForm.isSubmitting || profileNoteForm.isUploading" ng-class="{'is--btn-loading' : profileNoteForm.isSubmitting || profileNoteForm.isUploading }" style="margin-right: 0;">{{ profileNoteForm.isUploading ? 'Uploading...' : 'Save Note' }}</button-loading>
+    </div>
+</footer> 

@@ -1,0 +1,26 @@
+<form class="form" name="$memberForm">
+    <div class="form__field">
+        <div class="fake-input" focus-input >
+            <div class="tags">
+                <a ng-repeat="tag in selectedMember" class="tag" ng-click="remove($index)" >{{tag.Fullname}}<i class="icon--cross"></i></a>
+                <input type="text"
+                    id="{{::name}}"
+                    name="{{::name}}"
+                    placeholder="Search Member..."
+                    ng-model="textInput"
+                    typeahead="i.Fullname as i.Fullname for i in getItems($viewValue)"
+                    typeahead-loading="isLoading"
+                    ng-disabled="ngDisabled"
+                    typeahead-min-length="3">
+                <loader ng-if="isLoading" class="typeahead__loading"></loader>
+            </div>
+      </div>
+    </div>
+    <input type="hidden" name="memberModel" ng-model="selectedMember"/>
+
+    <div class="form__errors" ng-show="!$memberForm.memberModel.$valid">
+        <error ng-show="$memberForm.memberModel.$error.isRequired">
+            Referring Member is required
+        </error>
+    </div>
+</form>

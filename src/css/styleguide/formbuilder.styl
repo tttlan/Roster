@@ -1,0 +1,43 @@
+// Formbuilder
+//
+// ******************
+//
+// **WARNING**
+//
+// We found that building forms using the the JSON style of Formbuilder was too
+// restrictive and that it wasn't suitable for more complex scenarios such as:
+// - binding inputs to a data model which has nested structures
+// - loading form data from an API (for example, load a dropdown's options from an API)
+//
+// For this reason, it is recommended that you build regular Angular forms
+// and use the form-errors directive to handle displaying of error messages.
+//
+// **END WARNING**
+//
+// ******************
+//
+// The form-id attribute's value must match the id property in the referenced json file
+//
+// The url attribute is referencing a .json file however the file has been renamed to a .hbs so it plays nice with the styleguide
+//
+// Markup:
+// <form-builder
+//     form-id="form"
+//     form-data-url="public/views/formbuilder.hbs"
+//     template="public/views/formbuilder.html"
+//     submit="submitFn"
+//     model-data="formObj.$promise"
+//     parent-data="formObj"
+// ></form-builder>
+//
+// Styleguide styleguide.formbuilder
+
+// Formbuilder JSON structure
+//
+// This JSON is passed into the previous form builder directive above
+//
+// Weight: 1
+//
+// Markup: ../../../docs/public/views/formbuilder.hbs
+//
+// Styleguide styleguide.formbuilder.json

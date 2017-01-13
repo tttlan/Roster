@@ -1,0 +1,47 @@
+// Tags
+//
+// Used within the tag manager and can also be used anywhere to show a collection of tags / terms
+//
+// Markup: 
+// <a class="tag">Doncaster<i class="icon--cross"></i></a>
+// <a class="tag">Peter Smith<i class="icon--cross"></i></a>
+// <a class="tag">Team member<i class="icon--cross"></i></a>
+// <a class="tag">Adelaide<i class="icon--cross"></i></a>
+//
+// Styleguide elements.tags.basic
+
+.ui
+
+    .tag {
+        border-radius: base-border-radius;
+        cursor: pointer;
+        padding: 0 24px 0 8px;
+        position: relative;
+        float: left;
+        margin: 0 4px 4px 0;
+        background: primary;
+        color: white;
+        border-color: primary;
+        font-size: 12px;
+        text-transform: uppercase;
+        line-height: 23px;
+
+        [class*="icon--"] {
+            position: absolute;
+            top: 0;
+            right: 6px;
+            font-size: 10px;
+            margin-top: 7px;
+            color: white;
+            opacity: 0.4
+        }
+
+        &:hover {
+
+            background: darken(primary, 10%)
+
+            [class*="icon--"] {
+                opacity: 1;
+            }
+        }
+    }

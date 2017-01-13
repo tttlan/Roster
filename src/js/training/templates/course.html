@@ -1,0 +1,92 @@
+<div class="page page--2-1" ng-cloak ng-class="{'is--loading': course.$loading}">
+
+    <div class="page__wrapper">
+
+        <!-- content component -->
+
+        <div class="page__content">
+
+            <div class="training">
+
+                <div class="training__header">
+                    <ul class="nav nav--breadcrumb">
+                        <li><a href="" path="training.index"><i class="icon--training"></i> My Training</a></li>
+                    </ul>
+                    <h1 class="training__title">{{ course.Title }}</h1>
+                </div>
+
+                <div class="training__content">
+                    <h4>Overview</h4>
+                    <p>{{ course.Overview }}</p>
+
+                    <h4>Course Objectives</h4>
+                    <span ng-bind-html="course.Objectives | unsafe"></span>
+                </div>
+                
+                <div class="training__footer">
+
+                    <div class="training__footer-details">
+                        <dl>
+                            <dt>Due Date:</dt>
+                            <dd>{{ course.EndDate | date }}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Est. Duration:</dt>
+                            <dd>{{ course.duration }}</dd>
+                        </dl>
+                    </div>
+                    
+                    <div class="training__footer-button">
+                        <a href=""
+                            path="training.subject"
+                            path-params="course.TrainingCourseId,course.$nextSubjectForMemberId"
+                            ng-show="course.$nextSubjectForMemberId"
+                            class="button button--positive"
+                        >
+                            
+                            {{ (course.memberSubject[0].TrainingSubjectId === course.$nextSubjectForMemberId) ? 'Start' : 'Continue' }} Course
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- END content component -->
+
+        <!-- nav component -->
+
+        <div class="page__aside lt-tablet-hide">
+
+            <div class="panel panel--noPadding"
+                ng-class="{'is--loading': course.$subjectsForMemberLoading}"
+            >
+                <ul class="progress-list">
+                    <li class="progress__title">Your progress</li>
+                    <li class="progress__step"
+                        ng-repeat="sub in course.subjectsForMember"
+                        ng-class="{ 'progress__step--complete': sub.TrainingSubjectMemberProgressStatusId == 'Passed',
+                        'progress__step--active': sub.TrainingSubjectId === subject.TrainingSubjectId }">
+                        <a ng-if="sub.TrainingSubjectMemberProgressStatusId == 'Passed' || sub.TrainingSubjectId === course.$nextSubjectForMemberId" class="step__item"
+                            href="" path="training.subject" path-params="course.TrainingCourseId,sub.TrainingSubjectId">
+                            <div class="step__number" data-text="{{ $index + 1 }}"></div>
+                            <div class="step__title">{{ sub.Title }} </div>
+                            <div class="step__description">{{ sub.Description | textLimit:65 }}</div>
+                        </a>
+                        <div ng-if="sub.TrainingSubjectMemberProgressStatusId != 'Passed' && sub.TrainingSubjectId != course.$nextSubjectForMemberId" class="step__item">
+                            <div class="step__number" data-text="{{ $index + 1 }}"></div>
+                            <div class="step__title">{{ sub.Title }} </div>
+                            <div class="step__description">{{ sub.Description | textLimit:65 }}</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- END nav component -->
+
+    </div>
+</div>

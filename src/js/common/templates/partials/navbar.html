@@ -1,0 +1,19 @@
+<nav class="navbar" ng-if="ready && subNavLinksCount">
+    <div class="navbar__wrapper">
+        <ul class="nav">
+            <li ng-repeat="link in links" ng-if="link.visible">
+                <a ng-class="{ 'is--active': isActive(link.activePath) }" href="{{ link.external ? link.url : BASE_URL + link.url }}" target="{{ link.external && '_self' || '' }}">
+                    <i class="icon--{{ link.iconclass }} link-icon"></i>
+                    <span>{{ link.name }}</span>
+                </a><div class="nav__toggle dropdown" ng-if="link.hasVisibleChildren">
+                    <a href="" class="nav__toggle-icon dropdown-toggle"><i class="icon--down"></i></a>
+                    <ul ng-if="link.hasVisibleChildren" class="submenu submenu--left dropdown-menu">
+                        <li class="submenu__item" ng-if="child.visible" ng-repeat="child in link.children" ng-class="{ 'is--active': isActive(child.activePath) }">
+                            <a href="{{ BASE_URL + child.url }}">{{ child.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

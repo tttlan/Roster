@@ -1,0 +1,18 @@
+﻿<header class="modal__header">
+    <h3 class="modal__title">Add to blacklist</h3>
+</header>
+
+<div class="modal__content libraries">
+    <div class="form__fields">
+        <div class="form__field">
+            <input type="text" id="reason" name="reason" ng-model="reason" placeholder="Enter a reason" maxlength="50" ng-enter="ok()">
+        </div>
+    </div>
+</div>
+
+<footer class="modal__footer">
+    <div class="button-group">
+        <a href="" class="button" ng-click="cancel()">Cancel</a>
+        <a href="" class="button button--positive" ng-click="ok()">Done</a>
+    </div>
+</footer>

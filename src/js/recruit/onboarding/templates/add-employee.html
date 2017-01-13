@@ -1,0 +1,30 @@
+<div class="page recruit recruit--add-new-employee">
+    <div class="page__wrapper">
+        <div class="page__content">
+            <h2>Add new employee</h2>
+            <div class="page__content__header lt-nav-desktop-show text-right">
+                <div class="page__content__header-inner">
+                    <a class="button button--primary">Back</a>
+                </div>
+            </div>
+            <div class="page__content__nav-wrapper">
+                <div class="page__content__nav-prev lt-nav-desktop-hide">
+                    <div class="page__content__nav-prev-inner">
+                        <a path="recruit.onboards.index"><i class="icon--arrow-left icon-is-huge"></i></a>
+                    </div>
+                </div>
+                <!--<div class="page__content__nav-next lt-nav-desktop-hide">-->
+                    <!--<div class="page__content__nav-next-inner">-->
+                        <!--<i class="icon&#45;&#45;arrow-right icon-is-huge"></i>-->
+                    <!--</div>-->
+                 <!--</div>-->
+                <form-builder form-id="addEmployeeForm"
+                              form-data-url="/interface/views/recruit/onboarding/form-data/add-employee.json"
+                              template="/interface/views/recruit/onboarding/partials/form-add-employee.html"
+                              submit="addEmployeeFormSave"
+                              model-data="employeeForm.$promise"
+                              parent-data="employeeForm"></form-builder>
+            </div>
+        </div>
+    </div>
+</div>

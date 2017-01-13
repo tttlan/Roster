@@ -1,0 +1,25 @@
+<form name="candidateResponses" novalidate validate-form ng-class="{'is--loading' : loading}" class="fade in">
+    <div class="segment candidate-responses">
+        <reload action="loadQuestionnaire()" ng-show="error"/>
+        <div class="accordion" ng-show="!error">
+            <a href="" ng-click="isShowDetails = !isShowDetails" class="icon--down" ng-class="(isShowDetails) ? 'icon--up' : 'icon--down'"></a>
+            <label><a href="" ng-click="isShowDetails = !isShowDetails">{{ngModel.name}}</a></label>
+            <div class="description collapse in" collapse="isShowDetails" ng-class="(isShowDetails) ? 'border__description' : ''">
+                <fieldset>
+                    <ul>
+                        <li ng-repeat="item in ngModel.questions">
+                            <div class="grid">
+                                <input ng-hide="true" type="text" name="responseChoice_{{item.QuestionId}}" ng-model="item.ResponseChoicesValue.Value" ng-required="item.IsMandatory"/>
+                                <span ng-show="candidateResponses.responseChoice_{{item.QuestionId}}.$error.required && submitted"
+                                      class="form__note form__note--error">This question is required</span>
+                                <question-item item="item" index="{{$index}}" question-prefix="question-{{$index}}"></question-item>
+                            </div>
+                        </li>
+                    </ul>
+                </fieldset>
+
+            </div>
+
+        </div>
+    </div>
+</form>

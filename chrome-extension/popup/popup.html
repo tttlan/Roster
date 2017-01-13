@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" class="ui">    
+    <head>
+        
+        <meta charset="utf-8">
+        <title></title>
+        
+        <link rel="stylesheet" href="../sherpa.css">
+        <link rel="stylesheet" href="popup.css">
+        <script src="../sprint.min.js"></script>
+        <script src="popup.js"></script>
+        
+                
+    </head>    
+    <body>
+        
+        <div class="wrapper">
+            
+            <div class="form">
+            
+                <div class="form__field">
+                    <div class="field__toggle">
+                        <input type="checkbox" name="" id="silentMode" />
+                        <label class="form__label" for="silentMode">Silent mode</label>
+                        <p ng-if="element.note"><small>Silent mode stops prevents data from being to the API and console logs data sent to the API</small></p>
+                    </div>
+                </div>
+                
+                <div class="form__field">
+                    <label class="form__label">Theme</label>
+                    <select id="theme">
+                        <option value="none"></option>
+                        <option value="default">Default</option>
+                        <option value="black">Black</option>
+                        <option value="blue">Blue</option>
+                        <option value="crimson">Crimson</option>
+                        <option value="green">Green</option>
+                        <option value="orange">Orange</option>
+                        <option value="pink">Pink</option>
+                        <option value="purple">Purple</option>
+                        <option value="red">Red</option>
+                        <option value="teal">Teal</option>
+                    </select>
+                </div>
+                            
+            </div>
+            
+            <!-- <form id="login" class="login-form" action="#">
+                
+                <fieldset>
+            
+                    <p class="form__label"><strong>Login as...</strong></p>
+                    
+                    <div class="form__field">
+                        <label class="form__label" for="username">Username</label>
+                        <input type="text" id="username" />
+                    </div>                    
+                
+                    <div class="form__field">
+                        <label class="form__label" for="password">Password</label>
+                        <input type="password" id="password" />
+                    </div>
+                    
+                    <input type="submit" class="button button--positive" value="Login" />
+                    
+                </fieldset>
+                
+            </form> -->
+            
+        </div>
+
+    </body>    
+</html>

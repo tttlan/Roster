@@ -1,0 +1,8 @@
+<li>
+    <h3>
+        <a href="" ng-click="isOpen = !isOpen">
+            <i ng-class="(isOpen) ? 'icon--minus' : 'icon--plus'"></i><span accordion-transclude="heading"></span>
+        </a>
+    </h3>
+    <div class="description" collapse="!isOpen" ng-transclude></div>
+</li>

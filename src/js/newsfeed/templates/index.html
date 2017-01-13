@@ -1,0 +1,149 @@
+        <div class="page page--2-1">
+        
+<div class="page__wrapper">
+
+    <!-- aside component -->
+
+    <div class="page__aside">
+
+        <div class="panel panel--shift" ng-controller="NextShiftCtrl" ng-class="{'is--loading': loading}" ng-show="isVisible">
+
+            <div class="shift__widget">
+                <div class="shift shift--hero" ng-show="days.length">
+                    <a href="" ng-click="showDetails(days, 0)" class="shift__hero">
+                        <h2 class="panel__heading">Next shift</h2>
+                        <span class="label label--badge label--{{days[0].status}}">{{days[0].shifts.length}}</span>
+                        <div class="shift__content">
+                            <div class="shift__date">
+                                <span>{{ days[0].date | date:'dd' }}</span> 
+                                {{ days[0].date | date:'MMM, yyyy'}}
+                            </div>
+                            <div class="shift__details">
+                                <span>{{days[0].shifts[0].StartTime | date:'H:mm' }} - {{ days[0].shifts[0].EndTime | date:'H:mm' }}</span>
+                                {{ days[0].shifts[0].Location }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="shift" ng-repeat="day in days | limitTo:7">
+
+                    <a href="" ng-click="showDetails(days, $index)" class="shift__block" ng-class="{'shift__block--off' : day.shifts.length === 0 }">
+                        <span class="shift__status shift__status--{{day.status}}"></span>
+                        <span class="label label--badge" ng-if="day.shifts.length > 1">{{day.shifts.length}}</span>
+                        <div class="shift__content">
+                            <div class="shift__date">{{ day.date | date:'dd' }}</div>
+                            <div class="shift__day">{{ day.date | date:'EEEE' }}</div>
+                            <div class="shift__time">{{day.shifts[0].StartTime | date:'H:mm' }} - {{ day.shifts[0].EndTime | date:'H:mm' }}</div>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div ng-hide="!error || !days.length">
+
+                <div class="shift__widget">
+
+                    <dl ng-repeat="day in days"
+                        ng-class="{'shift__block-hero': $first, 'shift__block': !$first, 'shift__block--accepted': day.shifts.length }">
+                                    
+                        <dt class="shift__title" ng-if="$first">
+                            <span>{{ day.date | date:'dd' }}</span> 
+                            {{ day.date | date:'MMM, yyyy'}}
+                        </dt>
+                        <dt class="shift__title" ng-if="!$first">{{ day.dateDay }}</dt>
+                        <dd class="shift__details shift__details--off" ng-if="day.shifts.length === 0">Day off</dd>
+                        <dd class="shift__details shift__details--{{shift.Status}}" ng-repeat="shift in day.shifts">
+                            <!-- <a href="{{ shift.action }}" target="_self"> -->
+                            <a href="" ng-click="showDetails(shift)">
+                                {{ shift.StartTime | date:'H:mm' }} - {{ shift.EndTime | date:'H:mm' }}
+                                <small>{{ shift.Location }}</small>
+                                <span ng-if="shift.Status == 'confirmed'" class="label label--badge label--positive"><i class="icon--check"></i> {{shift.Status}}</span>
+                                <span ng-if="shift.Status == 'rejected'" class="label label--badge label--negative"><i class="icon--cross"></i> {{shift.Status}}</span>
+                            </a>
+                        </dd>
+
+                    </dl>
+
+                </div>
+
+                <a href="" path="network.roster" class="panel__more"><i class="icon--ellipsis"></i></a>
+            </div>
+
+            <div ng-show="!days.length && !error && !loading" class="message message--small">
+                You have no upcoming shifts
+            </div>
+
+            <reload action="loadRoster()" ng-show="error" />
+
+        </div>
+
+        <div class="panels">
+            <div class="panel">
+                            
+                <h4 class="panel__heading">Upcoming Events</h4>
+
+                <div class="events-list" ng-controller="UpcomingEventsCtrl">
+
+                    <div class="message message--small" ng-show="!events.length && !loading">
+                        There are no upcoming events.
+                    </div>
+
+                    <div class="event" ng-repeat="event in events">
+                        <div class="event__date">
+                            <span class="event__date-day">{{ event.EventWidget.StartDate | date:'dd' }}</span>
+                            <span class="event__date-month">{{ event.EventWidget.StartDate | date:'MMM yyyy' }}</span>
+                        </div>
+                        <a href="" target="_self" class="event__description" path="events.details" path-params="event.EventWidget.EventId">
+                            <p>
+                                <span class="link">{{ event.EventWidget.Title }}</span>
+                                <span ng-if="event.EventWidget.MemberInviteStatus === 1" class="label label--badge label--positive">You are attending</span>
+                                <span ng-if="event.EventWidget.MemberInviteStatus === 2" class="label label--badge label--caution">You might be attending</span>
+                                <span ng-if="event.EventWidget.MemberInviteStatus === 3" class="label label--badge label--negative">You are not attending</span>
+                                <small ng-if="(event.EventWidget.StartDate | date) == (event.EventWidget.EndDate | date)">{{ event.EventWidget.StartDate | amUtc | amLocal | amDateFormat:'hh:mm A'}} - {{ event.EventWidget.EndDate | amUtc | amLocal | amDateFormat:'hh:mm A'}}</small>
+                                <small ng-if="(event.EventWidget.StartDate | date) != (event.EventWidget.EndDate | date)">{{ event.EventWidget.StartDate | amUtc | amLocal | amDateFormat:'hh:mm A' }}</small>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel">
+                            
+                <h4 class="panel__heading">Birthdays</h4>
+
+                <div class="panel-list" ng-controller="UpcomingBirthdaysCtrl">
+                    <div class="message message--small" ng-show="!birthdays.length && !loading">
+                        There are no birthdays today.
+                    </div>
+
+                    <a href="" class="panel-list__item" ng-repeat="birthday in birthdays | limitTo : limit | orderBy: 'MemberBirthdays.Birthday'" target="_self" path="network.profile" path-params="birthday.MemberBirthdays.MemberId" >
+                        <span>{{ birthday.MemberBirthdays.Birthday }}</span>
+                        <i class="icon--birthday"></i> {{ birthday.MemberBirthdays.MemberName }}
+                    </a>
+
+                    <a href="" class="panel-list__more" ng-show="limit < birthdays.length" ng-click="showAll()"><i class="icon--down"></i> SEE MORE</a>
+                </div>
+
+            </div>
+        </div>
+                
+    </div>
+
+    <!-- END aside component -->
+
+    <!-- content component -->
+
+    <div class="page__content">
+
+        <activity-feed type="network"></activity-feed>
+   
+    </div>
+
+    <!-- END content component -->
+
+</div>
+</div>

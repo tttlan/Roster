@@ -1,0 +1,235 @@
+// Blank document
+//
+// Markup:
+// <div class="document">
+//     <a href="" class="document__block"></a>
+// </div>
+//
+// Styleguide modules.documents.blank
+
+.ui
+
+    .document {
+        width: 95%;
+        margin: 0 0 (gutter/2) 0;
+        padding-bottom: 126%;
+        border-radius: 0 0 base-border-radius base-border-radius;
+        text-align: left;
+        position: relative;
+        display: inline-block;
+        background: url(/interface/images/document-blank.png) left top no-repeat;
+        background-size: 100%;
+
+        @media print {
+            padding-bottom: 0;
+        }
+    }
+
+    // Document with content
+    //
+    // Markup:
+    // <div class="document">
+    //     <a href="" class="document__block">
+    //         <div class="document__header">
+    //             <span class="label label--badge label--negative">Overdue</span>
+    //         </div>
+    //         <h3 class="document__title">OHS Online Station Part1</h3>
+    //         <div class="document__meta">
+    //             <span class="document__meta-text">Completed: 3/10</span>
+    //             <progress-bar value="30"></progress-bar>
+    //         </div>
+    //     </a>
+    // </div>
+    //
+    // Styleguide modules.documents.documentcontent    
+
+    .document__block {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 15px;
+
+        &:hover {
+            color: primary
+        }
+
+        @media print {
+            position: static;
+        }
+    }
+
+    .document__header {
+        min-height: 30px;
+    }
+
+    .document__title {
+        font-size: 18px;
+        line-height: 22px;
+        margin: 0;
+        word-wrap: break-word;
+    }
+
+    .document__date {
+        color: grey5;
+        font-size: 10px;
+    }
+
+    .document__meta {
+        font-size: 10px;
+        color: grey5;
+        position: absolute;
+        top: auto;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+
+        @media print {
+            position: static;
+        }
+
+        .progress-bar {
+            height: 3px;
+            padding: 0;
+        }
+
+        .document__meta-text {
+            margin-bottom: 5px;
+            display: block;
+            color: grey5;
+        }
+    }
+
+
+    // Tablet and above
+    @media minTablet {
+
+        .document {
+            width: 211px;
+            padding-bottom: 283px;
+
+            background-size: auto;
+        }
+
+        .document__block {
+            padding: 25px;
+        }
+
+        .document__header {
+            min-height: 36px;
+            top: 0;
+        }
+
+        .document__title {
+            font-size: 24px;
+            line-height: 30px;
+        }
+
+        .document__meta {
+            left: 25px;
+            right: 25px;
+            bottom: 25px;
+
+            .progress-bar {
+                height: 4px;
+            }
+        }
+
+        .document__date {
+            font-size: 11px;
+        }
+
+    }
+
+
+    // Desktop and above
+    @media minDesktop {
+
+        .document { }
+
+    }
+
+
+    // layout assistance 
+    // ------------------------------------------------
+
+    // To go around all the documents
+    .document-collection {
+        width: 100%;
+        clearfix();
+    }
+
+    // to go around each individual document
+    .document-container {
+        width: 50%;
+        float: left;
+
+        @media minTablet {
+            width: 33.3%;
+        }
+
+        @media minDesktop {
+            width: 25%;
+        }
+    }
+
+
+    // Document listing
+    // 
+    // Markup:
+    // <div class="segment segment--outline">
+    //     <div class="document-listing">
+    //         <div class="document-listing__image"></div>
+    //         <span class="document-listing__desc">Document (PDF)</span>
+    //         <h4 class="document-listing__title">Fair-Work-Information-Statement.pdf</h4>
+    //         <a href="" class="button button--small button--primary">Read Document</a>
+    //     </div>
+    // </div>
+    //
+    // Styleguide modules.documents.listing 
+
+    .document-listing {
+        text-align: center;
+
+        @media minTablet {
+            text-align: left;
+            padding-left: 130px;
+            display: table-cell;
+            vertical-align: middle;
+            height: 145px;
+        }
+
+        .document-listing__image {
+            width: 109px;
+            height: 145px;
+            background: url(/interface/images/document-lined.png) left top no-repeat;
+            background-size: 100%;
+            z-index: 2;
+            display: inline-block;
+            margin-bottom: 15px
+
+            @media minTablet {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+        }
+
+        .document-listing__desc {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: grey5;
+            display: block;
+        }
+
+        .document-listing__title {
+            font-weight: normal;
+            margin-bottom: (gutter/2);
+            word-wrap: break-word;
+        }
+
+        .document-listing__desc + .document-listing__title {
+            margin-top: 0;
+        }
+    }

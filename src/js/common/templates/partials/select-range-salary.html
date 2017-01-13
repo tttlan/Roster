@@ -1,0 +1,14 @@
+<div class="select-wrapper">
+    <select
+            ng-model="ngModel"
+            name="{{::name}}"
+            ng-required="ngRequired"
+            ng-options="range as range.Label for range in ranges.data | filter:shouldShow track by range.Value"
+            ng-disabled="ranges.loading"
+            >
+        <option selected value="">Please select a Salary</option>
+    </select>
+    <span class="select">{{ val }}</span>
+    <span class="select" ng-if='ngModel.Label'>{{ ngModel.Label }}</span>
+    <span class="select" ng-if='!ngModel.Label'>Please select a Salary</span>
+</div>

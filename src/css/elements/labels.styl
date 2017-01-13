@@ -1,0 +1,423 @@
+
+label_border_radius = base-border-radius
+
+// Color Variables
+green = #188C18
+lime = #97B864
+teal = #46B6B8
+blue = #3569E2
+sky = #82ABE9
+purple = #8E549E
+pink = #D68EB1
+red = #C82C43
+orange = #EE6615
+yellow = #EEAE38
+gold = #A5802D
+brown = #753B00
+black = #231F20
+grey = #7B7B7B
+silver = #C0C0C0
+
+
+// Labels
+// ------------------------------------------------
+
+/*
+ * Whilst sharing a name, these labels are NOT similar
+ * to the form <label> object.
+ */
+
+.ui
+    // Basic label
+    //
+    // Markup:
+    // <span class="label">Label</span>
+    // <span class="label">22</span>
+    // <span class="label">10</span>
+    // <span class="label">7</span>
+    //
+    // Styleguide elements.labels.basic
+
+    .label {
+        display: inline-block;
+        vertical-align: middle;
+
+        color: grey3;
+        box-shadow: inset 0 0 0 1px grey7;
+        background: white;
+
+        margin: 0em 0.3em 0.3em 0;
+
+        font-size: 10px;
+        line-height: 1;
+        padding: .6em 1em;
+        text-transform: uppercase;
+        font-weight: regular;
+
+        border-radius: label_border_radius;
+        transition: all 125ms linear;
+
+        &:first-child {
+            margin-left: 0em;
+        }
+
+        &:last-child {
+            margin-right: 0em;
+        }
+
+        // Fix alignment issues for labels that have a show more / ellipses button at the end
+        + .button {
+            vertical-align: top;
+        }
+    }
+
+
+    // Label as a link
+    //
+    // Markup:
+    // <a href="" class="label">I'm a link and a label</a>
+    //
+    // Styleguide elements.labels.link
+
+    a.label {
+        cursor: pointer;
+
+        &:hover {
+            color: grey1;
+            box-shadow: inset 0 0 0 1px grey6;
+            background-color: grey8;
+            text-decoration: none;
+        }
+    }
+
+
+    // Label Solid
+    //
+    // Markup:
+    // <span class="label label--solid">I'm a solid label</span>
+    // <a href="" class="label label--solid">I'm a solid label</a>
+    //
+    // Styleguide elements.labels.solid
+
+    .label--solid {
+        color: white;
+        background: primary;
+        box-shadow: inset 0 0 0 0px transparent;
+    }
+
+    a.label--solid {
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+            box-shadow: inset 0 0 0 0px transparent;
+            background-color: darken(primary, 10%);
+            text-decoration: none;
+        }
+    }
+
+
+
+    // States
+    //
+    // Markup: <span class="label {{modifier_class}}">State</span>
+    //
+    // .label--positive - Positive label style
+    // .label--negative - Negative label style
+    // .label--caution - Caution label style
+    // .label--info - Info label style
+    // .label--dark - Dark label
+    // .label--active - Active label
+    // .label--disabled - Disabled label
+    //
+    // Styleguide elements.labels.states
+
+    .label--positive {
+        box-shadow: inset 0 0 0 1px positive;
+        color: darken(positive, 15%);
+
+        &.label--solid {
+            background-color: positive;
+            color: white;
+        }
+    }
+
+    .label--negative {
+        box-shadow: inset 0 0 0 1px negative;
+        color: darken(negative, 15%);
+
+        &.label--solid {
+            background-color: negative;
+            color: white;
+        }
+    }
+
+    .label--caution {
+        box-shadow: inset 0 0 0 1px caution;
+        color: darken(caution, 15%);
+
+        &.label--solid {
+            background-color: caution;
+            color: white;
+        }
+    }
+
+    .label--info {
+        box-shadow: inset 0 0 0 1px info;
+        color: darken(info, 15%);
+
+        &.label--solid {
+            background-color: info;
+            color: white;
+        }
+    }
+
+    .label--dark {
+        box-shadow: inset 0 0 0 1px grey3;
+        color: grey2;
+
+        &.label--solid {
+            background-color: grey3;
+            color: white;
+        }
+    }
+
+    .label--active {
+        box-shadow: inset 0 0 0 1px grey6;
+    }
+
+    .label--disabled {
+       opacity: 0.68
+    }
+
+
+    // Pill
+    //
+    // Markup: <span class="label label--pill">Pill</span>
+    //
+    // Styleguide elements.labels.pill
+
+    .label--pill {
+        color: grey5;
+        text-align: center;
+        padding-right: .88em;
+        padding-left: .88em;
+        border-radius: 500px;
+        background: transparent;
+    }
+
+
+    // Badge
+    //
+    // Markup: <span class="label label--badge {{modifier_class}}">Badge</span>
+    //
+    // .label--positive - Positive badge variation
+    // .label--negative - Negative badge variation
+    // .label--caution - Caution badge variation
+    //
+    // Styleguide elements.labels.badge
+
+    .label--badge {
+        min-height: 15px;
+        min-width: 16px;
+
+        line-height: 15px;
+        font-size: 10px;
+        text-align: center;
+
+        padding: 0 .5em;
+        text-transform: uppercase;
+
+        background-color: primary;
+        color: white;
+
+        box-shadow: none;
+
+        &.label--positive ,
+        &.label--confirmed {
+            background-color: positive;
+        }
+
+        &.label--negative ,
+        &.label--declined {
+            background-color: negative;
+        }
+
+        &.label--caution ,
+        &.label--warning {
+            background-color: caution;
+        }
+    }
+
+    .label--badge-outline {
+        @extends .ui .label--badge;
+        background-color: white;
+        box-shadow: inset 0 0 0 1px primary;
+        color: primary;
+    }
+
+    // Label with icon
+    //
+    // Markup:
+    // <span class="label label--icon {{modifier_class}}"><i class="icon--left"></i> left</span>
+    // <span class="label label--icon {{modifier_class}}"><i class="icon--star"></i> star</span>
+    //
+    // .label--positive - Positive badge variation
+    // .label--negative - Negative badge variation
+    //
+    // Styleguide elements.labels.labelicon
+
+    .label--icon  {
+        position: relative;
+        padding-left: 2.25em;
+
+        [class*="icon--"] {
+            position: absolute;
+            top: .6em;
+            left: 1em;
+        }
+
+        &.label--badge {
+
+            padding-left: 2em;
+
+            [class*="icon--"] {
+                top: 0.2em;
+                left: 0.6em;
+            }
+        }
+    }
+
+
+    // Label groups
+    //
+    // Markup:
+    // <span class="labels">
+    //     <span class="label label--dark label--solid">25</span>
+    //     <span class="label">May</span>
+    // </span>
+    // <span class="labels">
+    //     <span class="label label--dark label--solid">7</span>
+    //     <span class="label">November</span>
+    // </span>
+    //
+    // Styleguide elements.labels.groups
+
+    .labels {
+        clearfix();
+        display: inline-block;
+        margin: 0em 0.3em 0.3em 0;
+
+        .label {
+            margin: 0 0 0 -6px;
+            border-radius: 0;
+            padding-left: 0.75em;
+            padding-right: 0.75em;
+            min-width: 22px;
+            text-align: center;
+
+            &:first-child {
+                border-radius: label_border_radius 0 0 label_border_radius;
+                margin: 0;
+            }
+
+            &:last-child {
+                border-radius: 0 label_border_radius label_border_radius 0;
+            }
+        }
+    }
+
+    // Label Colors
+    //
+    // Markup:
+    // <span class="label label--green">Status</span>
+    // <span class="label label--lime">Status</span>
+    // <span class="label label--teal">Status</span>
+    // <span class="label label--blue">Status</span>
+    // <span class="label label--sky">Status</span>
+    // <span class="label label--purple">Status</span>
+    // <span class="label label--pink">Status</span>
+    // <span class="label label--red">Status</span>
+    // <span class="label label--orange">Status</span>
+    // <span class="label label--yellow">Status</span>
+    // <span class="label label--gold">Status</span>
+    // <span class="label label--brown">Status</span>
+    // <span class="label label--black">Status</span>
+    // <span class="label label--grey">Status</span>
+    // <span class="label label--silver">Status</span>
+    //
+    // Styleguide elements.label.colors
+    .label--green {
+        box-shadow: inset 0 0 0 1px green;
+        color: green;
+    }
+
+    .label--lime {
+        box-shadow: inset 0 0 0 1px lime;
+        color: lime;
+    }
+
+    .label--teal {
+        box-shadow: inset 0 0 0 1px teal;
+        color: teal;
+    }
+
+    .label--blue {
+        box-shadow: inset 0 0 0 1px blue;
+        color: blue;
+    }
+
+    .label--sky {
+        box-shadow: inset 0 0 0 1px sky;
+        color: sky;
+    }
+
+    .label--purple {
+        box-shadow: inset 0 0 0 1px purple;
+        color: purple;
+    }
+
+    .label--pink {
+        box-shadow: inset 0 0 0 1px pink;
+        color: pink;
+    }
+
+    .label--red {
+        box-shadow: inset 0 0 0 1px red;
+        color: red;
+    }
+
+    .label--orange {
+        box-shadow: inset 0 0 0 1px orange;
+        color: orange;
+    }
+
+    .label--yellow {
+        box-shadow: inset 0 0 0 1px yellow;
+        color: yellow;
+    }
+
+    .label--gold {
+        box-shadow: inset 0 0 0 1px gold;
+        color: gold;
+    }
+
+    .label--brown {
+        box-shadow: inset 0 0 0 1px brown;
+        color: brown;
+    }
+
+    .label--black {
+        box-shadow: inset 0 0 0 1px black;
+        color: black;
+    }
+
+    .label--grey {
+        box-shadow: inset 0 0 0 1px grey;
+        color: grey;
+    }
+
+    .label--silver {
+        box-shadow: inset 0 0 0 1px silver;
+        color: silver;
+    }

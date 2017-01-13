@@ -1,0 +1,27 @@
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+   
+    <label
+    for="{{ element.formName + '__' + element.name }}"
+    ng-if="element.label"
+    class="form__label">{{element.label}}</label>
+
+    <div class="relative">
+        <input type="text"
+            id="{{ element.formName + '__' + element.name }}"
+            placeholder="{{ element.placeholder }}"
+            name="{{element.name}}"
+            ng-model="element.val"
+            ng-model-options="{ allowInvalid: true }"
+            ng-change="{{element.onchange}}"
+            ng-required="element.validation.required"
+            validate-date="{{element.validation.date}}"
+            datepick datepicker-popup="d MMM yyyy" />
+
+        <span class="icon--calendar field__after"></span>
+    </div>
+
+    <span class="form_note" ng-if="element.note">{{ element.note }}</span>
+
+    <error-builder></error-builder>
+
+</div>

@@ -1,0 +1,6 @@
+<div class="external-embed">
+    <div class="youtube__wrapper" ng-if="provider === 'youtube' || provider === 'vimeo' ">
+        <iframe class="youtube__player" type="text/html" ng-src="{{src}}" frameborder="0" />
+    </div>
+    <img ng-if="provider === 'img'" ng-src="{{src}}" />
+</div>

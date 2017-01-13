@@ -1,0 +1,43 @@
+.ui
+
+    .birthday-list {
+        margin-bottom: 0;
+
+        .birthday {
+            font-size: 13px;
+            color: black;
+            display: block;
+            margin-bottom: .5em;
+
+            [class*="icon--"] {
+                color: primary;
+                margin-right: .35em
+            }
+
+            span {
+                color: grey5;
+                text-transform: uppercase;
+                font-size: 11px;
+                float: right;
+            }
+
+            &:hover {
+                color: primary;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .birthday__more {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: grey5;
+
+            &:hover {
+                color: primary
+            }
+        }
+
+    }

@@ -1,0 +1,81 @@
+<div class="question">
+    <div class="questionContent">
+        <label ng-bind="model.content"></label>
+    </div>
+    <!-- should be right naming question response ! -->
+    <!-- Text -->
+    <div class="questionValueChoice" ng-if="model.questionType == 1">
+        <textarea placeholder="Type here" name="input" ng-required="element.validation.required" ng-minlength="0" ng-maxlength="9999"
+                  class="ng-pristine ng-animate ng-valid-maxlength ng-valid-minlength ng-valid ng-valid-required"></textarea>
+    </div>
+    <!-- Yes/No -->
+    <div class="questionValueChoice" ng-if="model.questionType == 2">
+
+        <div class="field__radio" ng-repeat="c in model.responseChoices">
+            <input type="radio" name="yesno-{{model.id}}" value="c.value">
+            <label class="form__label">{{c.value}}</label>
+        </div>
+
+        <div class="QuestionOption" ng-show="model.displayOptionalOnYesNo">
+            <div class="questionContent"> <label ng-bind="model.subQuestion.content"></label></div>
+            <div class="questionValueChoice">
+                <textarea placeholder="Type here"
+                          ng-required="element.validation.required" ng-minlength="0" ng-maxlength="9999"
+                          class="ng-pristine ng-animate ng-valid-maxlength ng-valid-minlength ng-valid ng-valid-required"></textarea>
+            </div>
+        </div>
+    </div>
+    <!-- Multi-ChoiceList -->
+    <div class="questionValueChoice" ng-if="model.questionType == 3"> 
+        <div class="field__checkbox" ng-repeat="c in model.responseChoices">
+            <input type="checkbox" id="multip-{{model.id}}-{{$index}}" name="multip-{{model.id}}" ng-checked="c.isDefaultSelected">
+            <label for="multip-{{model.id}}-{{$index}}" class="form__label" ng-if="c.choiceTypeId == 1">{{c.value}}</label> 
+            <label for="multip-{{model.id}}-{{$index}}" class="form__label" ng-if="c.choiceTypeId == 2">
+                <textarea placeholder="Type here"
+                          ng-required="element.validation.required" ng-minlength="0" ng-maxlength="9999"
+                          class="ng-pristine ng-animate ng-valid-maxlength ng-valid-minlength ng-valid ng-valid-required"></textarea>
+            </label> 
+            <label for="multip-{{model.id}}-{{$index}}" class="form__label" ng-if="c.choiceTypeId == 10">
+                <uploader maxsize="5000 * 1026" maxfiles="10"></uploader>
+            </label> 
+            <label for="multip-{{model.id}}-{{$index}}" class="form__label" ng-if="c.choiceTypeId == 6">
+                <input type="text" id="input_startDate{{$index}}" placeholder="Date picker"
+                       ng-model="date" datepick="" datepicker-popup="d MMM yyyy"
+                       date-disabled="disabled(date, mode)">
+            </label> 
+        </div>
+    </div>
+    <!-- Singe-ChoiceList -->
+    <div class="questionValueChoice" ng-if="model.questionType == 4">
+        <div class="field__radio" ng-repeat="c in model.responseChoices">
+            <input type="radio" id="single-{{model.id}}-{{$index}}" name="single-{{model.id}}" ng-checked="c.isDefaultSelected">
+            <label for="single-{{model.id}}-{{$index}}" class="form__label" ng-if="c.choiceTypeId == 1">{{c.value}}</label>
+            <label for="single-{{model.id}}-{{$index}}" class="form__label" ng-if="c.choiceTypeId == 2">
+                <textarea placeholder="Type here"
+                          ng-required="element.validation.required" ng-minlength="0" ng-maxlength="9999"
+                          class="ng-pristine ng-animate ng-valid-maxlength ng-valid-minlength ng-valid ng-valid-required"></textarea>
+            </label>
+            <label for="single-{{model.id}}-{{$index}}" class="form__label" ng-if="c.choiceTypeId == 10">
+                <uploader maxsize="5000 * 1026" maxfiles="10"></uploader>
+            </label>
+            <label for="single-{{model.id}}-{{$index}}" class="form__label" ng-if="c.choiceTypeId == 6">
+                <input type="text" id="input_startDate{{$index}}" placeholder="Date picker"
+                       ng-model="date" datepick="" datepicker-popup="d MMM yyyy"
+                       date-disabled="disabled(date, mode)">
+            </label> 
+        </div>
+    </div>
+    <!-- Date -->
+    <div class="questionValueChoice" ng-if="model.questionType == 5">
+        <div class="form__field">
+            <label for="input_startDate" class="icon--calendar field__after"></label>
+            <input type="text" id="input_startDate-{{model.id}}" placeholder="Date picker"
+                   ng-model="date" datepick="" datepicker-popup="d MMM yyyy"
+                   date-disabled="disabled(date, mode)">
+        </div>
+    </div>
+    <!-- Document -->
+    <div class="questionValueChoice" ng-if="model.questionType == 6">
+        <uploader maxsize="5000 * 1024" maxfiles="10" ng-model="upload"></uploader>
+    </div>
+</div>

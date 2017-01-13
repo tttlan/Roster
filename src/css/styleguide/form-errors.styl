@@ -1,0 +1,27 @@
+// Form errors
+//
+// This uses ngMessages internally to display error messages below form inputs.
+// It removes the need for you to copy and paste the same span elements and its CSS
+// classes everywhere you need to display errors on a form input.
+//
+// Bind the form-errors directive to an input with the input="" attribute,
+// then add child form-error elements.
+//
+// Each form-error binds to a validation key. In this example it is "required" and "minlength",
+// however, this could be any validation key that is part of Angular's $validators pipeline.
+//
+// Markup:
+// <form name="exampleForm">
+//     <label>Example input</label>
+//     <input type="text"
+//         name="exampleInput"
+//         ng-model="exampleModel"
+//         required
+//         minlength="2">
+//     <form-errors input="exampleForm.exampleInput">
+//         <form-error error-key="required" error-text="This field is very special and is required..."></form-error>
+//         <form-error error-key="minlength" error-text="This field is too short..."></form-error>
+//     </form-errors>
+// </form>
+//
+// Styleguide styleguide.formerrors

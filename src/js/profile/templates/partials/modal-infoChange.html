@@ -1,0 +1,62 @@
+<header class="modal__header">
+    <h3 class="modal__title">Confirm changes</h3>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+<ng-form name="form">
+    <fieldset class="modal__content">
+        <p>Please confirm your request to change the following employment details. These changes will start a new onboarding process for the employee.</p>
+        <table class="table table--responsive-stacked">
+            <thead>
+            <tr>
+                <th width="35%">Type</th>
+                <th width="30%">Current Value</th>
+                <th width="5%"></th>
+                <th width="30%">New Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="change in changes">
+                <td data-title="Type">{{ change.type }}</td>
+                <td data-title="Current value">{{ change.oldValue ? change.oldValue : 'Not set' }}</td>
+                <td class="row--optional">&rarr;</td>
+                <td data-title="New value">{{ change.newValue ? change.newValue : 'Not set' }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="form__field">
+            <textarea ng-model="data.Comments" name="comments" placeholder="Enter any additional comments"></textarea>
+        </div>
+        <div class="form__field">
+            <p>Please nominate a date for these changes to become effective</p>
+        </div>
+        <div class="form__field col-1-2">
+            <label class="icon--calendar field__after" for="OnboardingCommencementDate"></label>
+            <input type="text" id="OnboardingCommencementDate" placeholder="Effective date of change" ng-model="data.OnboardingCommencementDate" datepicker-popup="d MMM yyyy" required >
+        </div>
+
+        <div class="field__checkbox--inline field__checkbox" ng-if="canByPassOnboard===true">
+            <input
+                    type="checkbox"
+                    id="bypass"
+                    name="bypass"
+                    ng-model="data.IsOnboarding"
+                    ng-true-value="false"
+                    ng-false-value="true"/>
+            <label class="form__label" for="bypass">
+                Bypass the onboarding process
+            </label>
+        </div>
+
+        <div class="form__field" ng-if="lastestOnboard">
+            <p class="form__label">Please note there is already pending <a href="{{lastestOnboard}}" target="_self" style="color:#25A8D6;">'Change Of Role' onboard</a> for this member. You may wish to update the existing onboard rather than create a new one.</p>
+        </div>
+    </fieldset>
+</ng-form>
+<footer class="modal__footer">
+
+    <div class="button-group">
+        <button href="" class="button button--small" ng-click="cancel()">Cancel</button>
+        <button class="button button--positive button--small" ng-click="ok()">Confirm changes</button>
+    </div>
+</footer>

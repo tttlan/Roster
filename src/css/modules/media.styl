@@ -1,0 +1,143 @@
+// Standard media block
+//
+// this is broken and too complex.
+// maybe use a simpler layout
+// http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+//
+// Weight: 1
+//
+// Markup:
+// <div class="media">
+//     <div class="media__image">
+//         <img src="interface/images/avatar.jpg" class="avatar" alt="Avatar" />
+//     </div>
+//     <div class="media__body">
+//         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+//     </div>
+// </div>
+//
+// Styleguide modules.media.standard
+
+
+
+// Nested media block
+//
+// Weight: 2
+//
+// Markup:
+// <div class="media">
+//     <div class="media__image">
+//         <img src="interface/images/avatar.jpg" class="avatar" alt="Avatar" />
+//     </div>
+//     <div class="media__body">
+//         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+//         <div class="media">
+//             <div class="media__image">
+//                 <img src="interface/images/avatar.jpg" class="avatar" alt="Avatar" />
+//             </div>
+//             <div class="media__body">
+//                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+//             </div>
+//         </div> 
+//     </div>
+// </div>
+//
+// Styleguide modules.media.nested
+
+
+// Media block for users
+//
+// Weight: 3
+//
+// Markup:
+// <div class="media media--user">
+//     <div class="media__image">
+//         <avatar img-src="currentUser.MemberProfile.PhotoThumb" size="small"></avatar>
+//     </div>
+//     <div class="media__body">
+//         <a href="">Jaquie Smith</a>
+//         <span>some sort of subtitle</span>
+//     </div>
+// </div>
+//
+// Styleguide modules.media.user
+
+// Media Mixin
+
+media(name)
+    blockMargins();
+
+    .{name}__image ,
+    .{name}__body {
+
+        > :first-child {
+            margin-top: 0px;
+        }
+
+        > :last-child {
+            margin-bottom: 0px;
+        }
+
+    }
+
+    .{name}__image {
+        float:left; 
+        margin-right: 10px;
+
+        > img {
+            display: block;
+            max-width: none;
+        }
+    }
+
+    .{name}__body {
+        overflow: hidden;
+
+        > img {
+            display: block;
+            max-width: none;
+        }
+    }
+
+
+// The media Object
+// ------------------------------------------------
+
+/*
+ * The media object is an image to the left, with descriptive content to the right
+ * This component basically makes up a gigantic portion of the internet.
+ * Having one reusable object means we can save hundreds of lines of code.
+ *
+ */
+
+
+.media {
+    media('media')
+}
+
+
+// User modifer
+
+.media--user {
+
+    .media__body {
+        line-height: 17px;
+
+        span {
+            color: grey4;
+            font-size: 13px;
+            font-weight: light;
+            display: block;
+        }
+
+        a {
+            font-weight: bold;
+            color: primary;
+            font-size: 14px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

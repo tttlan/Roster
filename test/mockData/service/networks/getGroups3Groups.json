@@ -1,0 +1,27 @@
+{
+  "loaded": true,
+  "loading":false,
+  "data": [
+    {
+      "label": "Group 1",
+      "value": {
+        "DistributionId": 1,
+        "DistributionType": 1
+      }
+    },
+    {
+      "label": "Group 2",
+      "value": {
+        "DistributionId": 2,
+        "DistributionType": 1
+      }
+    },
+    {
+      "label": "Group 3",
+      "value": {
+        "DistributionId": 3,
+        "DistributionType": 1
+      }
+    }
+  ]
+}

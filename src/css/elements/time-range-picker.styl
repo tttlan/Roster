@@ -1,0 +1,142 @@
+.ui
+    .timepicker
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        list-style: none;
+        font-size: 14px;
+        text-align: left;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 4px;
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        background-clip: padding-box;
+
+    .timepicker.dropdown-menu {
+        padding: 0 4px;
+        padding: 0;
+        width: 482px !important;
+    }
+    .timepicker.dropdown-menu tbody button {
+        padding: 1px;
+    }
+    .timepicker.dropdown-menu table button {
+        outline: 0;
+        border: 0;
+        border-radius: 50%;
+        width: 30px !important;
+        height: 30px !important;
+        padding: 0;
+        line-height: 14px;
+    }
+    .btn {
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        border-radius: 4px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .btn[disabled] {
+        cursor: default;
+        opacity: 0.5;
+    }
+    /*.btn:active {
+        @extends .ui .button--active;
+    }*/
+    .btn-default {
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+    }
+    .btn[disabled] {
+        cursor: default;
+        opacity: 0.5;
+    }
+    .btn-default.active, .btn-default:active, .btn-default:hover, .open>.dropdown-toggle.btn-default {
+        &:not([disabled]) {
+            /*color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;*/
+            text-decoration: none;
+            background-color: #ccc;
+            color: #5a5a5a;
+        }
+    }
+    .btn-ranged:not(.btn-primary) {
+        background: #ebf4f8;
+        border-radius: 0 !important;
+    }
+    .btn-primary {
+        color: #fff;
+        background-color: primary;
+        border-color: #2e6da4;
+    }
+    .btn-primary.active, .btn-primary:active, .btn-primary:hover, .open > .dropdown-toggle.btn-primary {
+        color: #fff;
+        background-color: #286090;
+        border-color: #204d74;
+    }
+    .timepicker1 {
+        float: right;
+        margin: 10px;
+        border: 1px solid #ddd;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 4px;
+        margin-right: 0;
+    }
+    .timepicker2 {
+        float: right;
+        margin: 10px;
+        border: 1px solid #ddd;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 4px;
+    }  
+    .timepicker {
+        .ranges {
+            float: right;
+            width: 190px;
+            padding: 10px;
+            padding-right: 0;
+            .range_inputs>div {
+                float: left;
+            }
+        }
+        .applyBtn {
+            @extends .ui .daterangepicker .applyBtn;
+        }
+        .cancelBtn {
+            @extends .ui .daterangepicker .cancelBtn;
+        }
+        .input-mini {
+            @extends .ui .daterangepicker .ranges .input-mini;
+        }
+        .daterangepicker_start_input label  {
+            @extends .ui .daterangepicker .daterangepicker_start_input label ;
+        }
+        .daterangepicker_end_input label  {
+            @extends .ui .daterangepicker .daterangepicker_end_input label ;
+        }
+    }

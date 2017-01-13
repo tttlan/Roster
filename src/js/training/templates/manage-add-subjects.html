@@ -1,0 +1,102 @@
+<div class="page page--2-1">
+
+    <div class="page__wrapper">
+
+        <header class="page__header">
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="training.manage.index">Manage Courses</a></li>
+            </ul>
+            <h1>Add subjects</h1>
+        </header>
+
+        <!-- content component -->
+
+        <div class="page__content">
+            <!--
+                All select objects need to have: Title, Active, Id
+             -->
+            <select-list
+                items="subjects"
+                items-name="subjects"
+                unselected-title="Available Subjects"
+                selected-title="Subjects in course"
+                ng-model="data.selectedSubjects"
+                loaded="subjectsLoaded"
+                is-sortable="true"
+                toggle-inactive="true"
+            >
+            </select-list>
+
+            <fieldset class="form">
+
+                <p>Subjects are the chapters of content that make up an entire course.<br />A course can contain just 1 subject, or as many as you like.</p>
+
+                <p>Select available subjects from the list above or create a new one below.</p>
+
+                <a class="button" href="" path="training.manage.subjects.createForCourse" path-params="trainingCourseId">Create a new subject</a>
+                <hr>
+                
+            </fieldset>
+            
+            <p class="form__note form__note--error" ng-show="serverError">
+                {{ serverError }}
+            </p>
+
+            <div class="button-group">
+                <a href="" path="training.manage.courses.edit" path-params="trainingCourseId" class="button">Back</a>
+                <div class="button-withtext">
+                    <button class="button button--positive button--icon-right"
+                        ng-disabled="!data.selectedSubjects.length"
+                        ng-click="addSubjectsToCourses(data.selectedSubjects, true)"
+                        disable-toggle="loading"
+                    >Save and Continue <i class="icon--right"></i></button>
+                    <a class="button-text" href="" ng-click="addSubjectsToCourses(data.selectedSubjects)">or save and exit</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- END content component -->
+
+        <!-- nav component -->
+
+        <div class="page__aside lt-tablet-hide">
+
+            <div class="panel panel--noPadding">
+                <ul class="progress-list">
+                    <li class="progress__title">Create a new course</li>
+                    <li class="progress__step progress__step--complete">
+                        <a href="" path="training.manage.courses.edit" path-params="trainingCourseId" class="step__item">
+                            <div class="step__number" data-text="1"></div>
+                            <div class="step__title">Edit</div>
+                            <div class="step__description">Edit your course </div>
+                        </a>
+                    </li>
+                    <li class="progress__step progress__step--active">
+                        <a class="step__item" 
+                            href="" path="training.manage.courses.addSubjects" path-params="trainingCourseId">
+                            <div class="step__number" data-text="2"></div>
+                            <div class="step__title">Add Subjects</div>
+                            <div class="step__description">Choose from or create a new subject</div>
+                        </a>
+                    </li>
+                    <li class="progress__step">
+                        <span class="step__item">
+                            <div class="step__number" data-text="3"></div>
+                            <div class="step__title">Publish</div>
+                            <div class="step__description">Who has to do this course?</div>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- END nav component -->
+
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer__wrapper"></div>
+</footer>

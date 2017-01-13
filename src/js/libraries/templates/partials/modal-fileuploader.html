@@ -1,0 +1,16 @@
+<header class="modal__header">
+    <h3 class="modal__title">Upload files <em>to</em> {{data.folder}}</h3>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+
+<div class="modal__reminder ng-hide">Files uploaded here will only be visible to you</div>
+
+<div class="modal__uploader">
+    <lib-uploader 
+        maxsize="20 * 1000 * 1024" 
+        maxfiles="20" 
+        ng-model="items" 
+        start-open="true"
+        pane-data="data"
+    ></lib-uploader>
+</div>

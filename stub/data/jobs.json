@@ -1,0 +1,199 @@
+{
+  "api/recruitments/jobs/search": {
+    "JobSummaryItems": [
+      {
+        "JobSummary": {
+          "JobId": 1,
+          "NetworkId": 2,
+          "JobTitle": "Casual Manager",
+          "Summary": "A job for the position of Casual Manager",
+          "JobReference": "7701095427001",
+          "JobStatusCode": "1",
+          "JobLocation": "Fitzroy",
+          "ApplicationStatus": "1",
+          "Logo": "images/seek.gif",
+          "LogoUrl": "images/seek.gif",
+          "JobBoardId": 1,
+          "Location": "Fitzroy",
+          "Sorter": "Wtf even is a sorter?"
+        },
+        "EntityActions": [
+          {
+            "Code": 100101010,
+            "Caption": "CanViewJob",
+            "Description": "GET",
+            "ActionUrl": "recruitments/jobs/1"
+          },
+          {
+            "Code": 100101008,
+            "Caption": "CanDeleteJob",
+            "Description": "GET",
+            "ActionUrl": "recruitments/jobs/1"
+          },
+          {
+            "Code": 100101009,
+            "Caption": "CanCloseJob",
+            "Description": "PUT",
+            "ActionUrl": "recruitments/jobs/1/close"
+          }
+        ]
+      },
+      {
+        "JobSummary": {
+          "JobId": 2,
+          "NetworkId": 2,
+          "JobTitle": "Floor Staff",
+          "Summary": "A job for the position of Floor Staff",
+          "JobReference": "12345678",
+          "JobStatusCode": "1",
+          "JobLocation": "St Kilda",
+          "ApplicationStatus": "1",
+          "Logo": "images/seek.gif",
+          "LogoUrl": "images/seek.gif",
+          "JobBoardId": 1,
+          "Location": "St Kilda",
+          "Sorter": "Wtf even is a sorter?"
+        },
+        "EntityActions": [
+          {
+            "Code": 100101010,
+            "Caption": "CanViewJob",
+            "Description": "GET",
+            "ActionUrl": "recruitments/jobs/1"
+          },
+          {
+            "Code": 100101008,
+            "Caption": "CanDeleteJob",
+            "Description": "GET",
+            "ActionUrl": "recruitments/jobs/1"
+          },
+          {
+            "Code": 100101009,
+            "Caption": "CanCloseJob",
+            "Description": "PUT",
+            "ActionUrl": "recruitments/jobs/1/close"
+          }
+        ]
+      },
+      {
+        "JobSummary": {
+          "JobId": 1,
+          "NetworkId": 2,
+          "JobTitle": "Spaghetti Monster",
+          "Summary": "A job for the position of Spaghetti Monster",
+          "JobReference": "7701095427001",
+          "JobStatusCode": "1",
+          "JobLocation": "Prahran",
+          "ApplicationStatus": "1",
+          "Logo": "images/seek.gif",
+          "LogoUrl": "images/seek.gif",
+          "JobBoardId": 1,
+          "Location": "Prahran",
+          "Sorter": "Wtf even is a sorter?"
+        },
+        "EntityActions": [
+          {
+            "Code": 100101010,
+            "Caption": "CanViewJob",
+            "Description": "GET",
+            "ActionUrl": "recruitments/jobs/1"
+          },
+          {
+            "Code": 100101008,
+            "Caption": "CanDeleteJob",
+            "Description": "GET",
+            "ActionUrl": "recruitments/jobs/1"
+          },
+          {
+            "Code": 100101009,
+            "Caption": "CanCloseJob",
+            "Description": "PUT",
+            "ActionUrl": "recruitments/jobs/1/close"
+          }
+        ]
+      },
+      {
+        "JobSummary": {
+          "JobId": 1,
+          "NetworkId": 2,
+          "JobTitle": "Enforcer",
+          "Summary": "A job for the position of Enforcer",
+          "JobReference": "7701095427001",
+          "JobStatusCode": "1",
+          "JobLocation": "Brunswick",
+          "ApplicationStatus": "1",
+          "Logo": "images/seek.gif",
+          "LogoUrl": "images/seek.gif",
+          "JobBoardId": 1,
+          "Location": "Brunswick",
+          "Sorter": "Wtf even is a sorter?"
+        },
+        "EntityActions": [
+          {
+            "Code": 100101010,
+            "Caption": "CanViewJob",
+            "Description": "GET",
+            "ActionUrl": "recruitments/jobs/1"
+          },
+          {
+            "Code": 100101008,
+            "Caption": "CanDeleteJob",
+            "Description": "GET",
+            "ActionUrl": "recruitments/jobs/1"
+          },
+          {
+            "Code": 100101009,
+            "Caption": "CanCloseJob",
+            "Description": "PUT",
+            "ActionUrl": "recruitments/jobs/1/close"
+          }
+        ]
+      },
+      {
+        "JobSummary": {
+          "JobId": 1,
+          "NetworkId": 2,
+          "JobTitle": "Plebian",
+          "Summary": "A job for the position of Plebian",
+          "JobReference": "7701095427001",
+          "JobStatusCode": "1",
+          "JobLocation": "Footscraycray",
+          "ApplicationStatus": "1",
+          "Logo": "images/seek.gif",
+          "LogoUrl": "images/seek.gif",
+          "JobBoardId": 1,
+          "Location": "Footscraycray",
+          "Sorter": "Wtf even is a sorter?"
+        },
+        "EntityActions": [
+          {
+            "Code": 100101010,
+            "Caption": "CanViewJob",
+            "Description": "GET",
+            "ActionUrl": "recruitments/jobs/1"
+          },
+          {
+            "Code": 100101008,
+            "Caption": "CanDeleteJob",
+            "Description": "GET",
+            "ActionUrl": "recruitments/jobs/1"
+          },
+          {
+            "Code": 100101009,
+            "Caption": "CanCloseJob",
+            "Description": "PUT",
+            "ActionUrl": "recruitments/jobs/1/close"
+          }
+        ]
+      }
+    ],
+    "EntityActions": [],
+    "Pagination": {
+      "TotalCount": 5,
+      "TotalPages": 1,
+      "PageSize": 5,
+      "Page": 1
+    },
+    "Status": 0
+  }
+}

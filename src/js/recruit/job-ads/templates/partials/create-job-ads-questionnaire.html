@@ -1,0 +1,89 @@
+<div class="job-ads__custom-questions">                                    
+<h4><b>QUESTIONS</b></h4>
+<tabs>
+    <ul class="nav nav--tabs" overflow>
+        <li tab-link active><a href="">CANDIDATE JOB QUESTIONS</a></li>
+        <li tab-link><a href="">PHONE INTERVIEWS QUESTIONS</a></li>
+    </ul>
+    <div class="tab-group">
+        <div tab-content class="tab-group__tab">
+            <div class="form__field field-add-questionaire">
+                <label for="auto_complete1" class="icon--plus field__before"></label>
+                <input autocomplete="off"
+                       placeholder="Add questionnaire"
+                       type="text"
+                       id="auto_complete1"
+                       dropdown-toggle
+                       ng-model="inputSearchQuestionnaires"
+                       ng-change="searchQuestionnaires(inputSearchQuestionnaires,false)"/>
+                <loader ng-if="isLoading" class="typeahead__loading"></loader>
+                <ul class="submenu submenu--compact dropdown-menu select-template">
+                    <li class="submenu__item" ng-repeat="question in jobQuestions">
+                        <div class="media">
+                            <div class="media__image">
+                                <a href="" ng-click="addCustomQuestion(question,false)"><i class="icon--plus" tooltip="Add"></i> </a>
+                            </div>
+                            <div class="media__body">
+                                <h4>{{question.templateTitle}}</h4>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="question__list accordion" ng-repeat="customQuestion in jobAdQuestionnaireModel.selectedCustomQuestions">
+                <div class="question-group-item ">
+                    <div class="question-group-title">
+                        <i class="icon--grid"></i>
+                        <span class="group-name">{{customQuestion.templateTitle}}</span>
+                        <i class="icon--trash" ng-click="jobAdQuestionnaireModel.selectedCustomQuestions.splice($index,1)"></i>
+                    </div>
+                        <fieldset class="segment">
+                        <div ng-repeat="question in customQuestion.questions">
+                            <question-details model="question"></question-details> 
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div tab-content class="tab-group__tab">
+            <div class="form__field field-add-questionaire">
+                <label for="auto_complete2" class="icon--plus field__before"></label>
+                <input autocomplete="off"
+                       placeholder="Add questionnaire"
+                       type="text"
+                       id="auto_complete2"
+                       dropdown-toggle
+                       ng-model="inputSearchPhoneQuestions"
+                       ng-change="searchQuestionnaires(inputSearchPhoneQuestions,true)"/>
+                <loader ng-if="isLoading" class="typeahead__loading"></loader>
+                <ul class="submenu submenu--compact dropdown-menu select-template">
+                    <li class="submenu__item" ng-repeat="question in phoneQuestions">
+                        <div class="media">
+                            <div class="media__image">
+                                <a href="" ng-click="addCustomQuestion(question, true)"><i class="icon--plus" tooltip="Add"></i> </a>
+                            </div>
+                            <div class="media__body">
+                                <h4>{{question.templateTitle}}</h4>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="question__list accordion" ng-repeat="customQuestion in jobAdQuestionnaireModel.selectedPhoneQuestions">
+                <div class="question-group-item ">
+                <div class="question-group-title">
+                        <i class="icon--grid"></i>
+                        <span class="group-name">{{customQuestion.templateTitle}}</span>
+                        <i class="icon--trash" ng-click="jobAdQuestionnaireModel.selectedPhoneQuestions.splice($index,1)"></i>
+                    </div>
+                        <fieldset class="segment">
+                        <div ng-repeat="question in customQuestion.questions">
+                            <question-details model="question"></question-details> 
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</tabs>
+</div>

@@ -1,0 +1,16 @@
+<div class="modal__content">
+    <form name="form" ng-class="{'form--unsubmitted': !formState.submitted}" validate-form>
+        <div class="form__field">
+            <input type="text" id="auto_complete" required="required" name="txtGroupName" placeholder="Select group ..." ng-model="group" 
+                   typeahead="t as t.name for t in listTags | filter:$viewValue | limitTo:10"/>
+            <span  class="form__note form__note--error " ng-show="(form.txtGroupName.$dirty || submitted) &amp;&amp; form.txtGroupName.$invalid">Group name is required</span>
+        </div>
+    </form>
+</div>
+
+<footer class="modal__footer">
+    <div class="button-group">
+        <button class="button" ng-click="cancel()" ng-discard>CANCEL</button>
+        <button class="button button--negative" ng-click="ok(isFormValid(questionForm.$valid), group)" ng-style="{'button--disabled' : !form.$valid }">Import</button>
+    </div>
+</footer>

@@ -1,0 +1,33 @@
+<li class="submenu__item">
+    <a ng-class="{'is--active': currentFilterCollection === 'All'}" href="" ng-click="ActiveFilter('All')">All</a>
+</li>
+<li class="submenu__item">
+    <a ng-class="{'is--active': currentFilterCollection === 'New'}" href="" ng-click="ActiveFilter('New')">New</a>
+</li>
+<li class="submenu__item">
+    <a ng-class="{'is--active': currentFilterCollection === 'Approval'}" href="" ng-click="ActiveFilter('Approval')">Approval</a>
+</li>
+<li class="submenu__item" ng-if="isSingle">
+    <a ng-class="{'is--active': currentFilterCollection === 'Trial'}" href="" ng-click="ActiveFilter('Trial')">Trial</a>
+</li>
+<li class="submenu__item">
+    <a ng-class="{'is--active': currentFilterCollection === 'Documentation'}" href="" ng-click="ActiveFilter('Documentation')">Documentation</a>
+</li>
+<li class="submenu__item">
+    <a ng-class="{'is--active': currentFilterCollection === 'Acceptance'}" href="" ng-click="ActiveFilter('Acceptance')">Acceptance</a>
+</li>
+<li class="submenu__item">
+    <a ng-class="{'is--active': currentFilterCollection === 'Confirmation'}" href="" ng-click="ActiveFilter('Confirmation')">Confirmation</a>
+</li>
+<li class="submenu__item">
+    <a ng-class="{'is--active': currentFilterCollection === 'Probation'}" href="" ng-click="ActiveFilter('Probation')">Probation</a>
+</li>
+<li class="submenu__item">
+    <a ng-class="{'is--active': currentFilterCollection === 'Complete'}" href="" ng-click="ActiveFilter('Complete')">Complete</a>
+</li>
+<li class="submenu__item" ng-if="isSingle">
+    <a ng-class="{'is--active': currentFilterCollection === 'Pending'}" href="" ng-click="ActiveFilter('Pending')">Pending</a>
+</li>
+<li class="submenu__item">
+    <a ng-class="{'is--active': currentFilterCollection === 'Declined'}" href="" ng-click="ActiveFilter('Declined')">Declined</a>
+</li>

@@ -1,0 +1,131 @@
+<div class="page__content">
+
+    <div class="segments">
+
+        <div class="segment segment--no-padding">
+
+            <div class="events-form__image" ng-class="{'events-form__image--has-image': parentData.imageUploader.$imageUploaded}">           
+                
+                <img ng-if="parentData.imageUploader.$imageUploaded" file-link="{{parentData.imageUploader.imageId}}" alt="{{form.Title.$viewValue}}" />
+
+                <a href="" ng-show="!parentData.imageUploader.$imageUploaded" class="events-form__image-upload-link" ng-click="parentData.imageUploader.addImage()">
+                    <i class="icon--camera"></i>
+                    <p>Add image to event</p>
+                </a>
+
+                <button type="button" ng-click="parentData.imageUploader.addImage()" ng-show="parentData.imageUploader.$imageUploaded" class="button button--black button--icon events-form__editImage" title="Change image"><i class="icon--edit"></i></button>
+
+                <button type="button" ng-click="parentData.imageUploader.removeImage()" ng-show="parentData.imageUploader.$imageUploaded" class="button button--black button--icon events-form__removeImage" title="Remove image"><i class="icon--bin"></i></button>
+
+            </div>
+
+        </div>
+
+        <div class="segment segment--mid-padding">
+        
+            <div class="form__fields">
+
+                <div class="col-2-3">
+        
+                    [[Title]]
+                    
+                </div>
+                
+            </div>
+
+            <div class="form__fields">
+
+                <div class="col-1-2">
+
+                    [[StartDate]]
+
+                </div><!-- Remove whitespace between these fields for inline block styles
+
+             --><div class="col-1-2">
+                
+                    [[EndDate]]
+                
+                </div>
+                
+            </div>
+
+            [[locationAddress]]
+
+            <div class="form__field">
+                
+                <div ng-if="element.name == 'locationAddress'" ng-repeat="element in formData.elements">
+
+                    <div ng-if="element.name == 'Address' && element.val != ''" ng-repeat="element in element.children">
+
+                        <!-- The default address in the gmaps directive is Australia -->
+                        <google-map address="element.val" zoom="2" places-autocomplete="element.autocompleteValues"></google-map>
+
+                        <p ng-show="parentData.addressToGeocode != 'Australia'"><small>Your finished event will contain a map.  If the marker is not in the correct position, try entering a more detailed address</small></p>
+                        
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            [[Description]]
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="page__aside">
+
+    <div class="panel">
+    
+        <h2 class="panel__heading--large">Manage invitations</h2>
+
+        <div class="panel__fieldset">
+
+            [[ShowComments]]
+
+            [[ShowGuestList]]
+            
+            <div class="form__field">
+
+                <p>Final RSVP date<a href="" ng-show="!toggleRSVP" ng-click="toggleRSVP = !toggleRSVP">{{form.RsvpDate.$viewValue ? form.RsvpDate.$viewValue : 'Add RSVP date' | date}}</a></p>
+
+                <div ng-show="toggleRSVP">
+                    [[RsvpDate]]
+                </div>
+
+            </div>
+
+            <div class="form__field">
+
+                <p>Limited spots available?<a href="" ng-show="!toggleMaxAttending" ng-click="toggleMaxAttending = !toggleMaxAttending">{{form.MaxAttending.$viewValue ? form.MaxAttending.$viewValue + ' places' : 'Add limit'}}</a></p>            
+
+                <div ng-show="toggleMaxAttending">
+                    [[MaxAttending]]
+                </div>
+
+            </div>
+
+            <div class="form__field">
+                                
+                <p>Invitees<a href="" ng-click="parentData.showInviteesModal()"><event-invitee-summary invitees="parentData.invitees"></event-invitee-summary></a></p>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div class="button-group">
+
+        <a ng-if="parentData.$editing" path="events.details" path-params="::parentData.$eventId" class="button is--secondary" ng-disabled="submitting" ng-class="{'button--loading': submitting}">Cancel</a>
+
+        <a ng-if="!parentData.$editing" path="events.index" class="button is--secondary" ng-disabled="submitting" ng-class="{'button--loading': submitting}">Cancel</a>
+
+        [[submitForm]]
+    
+    </div>
+
+</div>

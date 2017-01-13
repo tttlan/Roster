@@ -1,0 +1,31 @@
+<header class="modal__header">
+    <h2 class="modal__title">Who do you want to publish this to?</h2>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+<div class="modal__content">
+    
+    <fieldset class="form">
+        
+        <p>If you unselect the checkbox below, you will be able to list specific groups to publish to</p>
+
+        <div class="form__field" ng-class="{'submitted': submitted}" groups-and-roles>
+            <div class="field__checkbox">
+
+                <input type="checkbox" id="form_checkbox_allgroups" ng-model="modalData.allGroups"> 
+                <label for="form_checkbox_allgroups">Publish to all my groups</label>
+                
+            </div>
+            <network-groups
+                ng-model="modalData.selectedGroups"
+                all-toggle="modalData.allGroups"
+            ></network-groups>
+        </div>
+    </fieldset>
+
+</div>
+<footer class="modal__footer">
+    <div class="button-group">
+        <a href="" class="button" ng-click="cancel()">Cancel</a>
+        <a href="" class="button button--positive" ng-click="ok()" ng-disabled="!modalData.allGroups && !modalData.selectedGroups.length">Save changes</a>
+    </div>
+</footer>

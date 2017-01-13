@@ -1,0 +1,7 @@
+<div class="pie-chart">
+    <p class="pie-chart__percent" ng-show="percentage !== undefined">{{ percentage }}<span class="pie-chart__percentLiked">% {{verb}}</span></p>
+    <div class="pie-chart__slice-wrapper" ng-class="{'pie-chart__slice-wrapper--gt50' : greaterThan50}">
+        <div class="pie-chart__slice" ng-style="getStyle()"></div>
+        <div class="pie-chart__slice pie-chart__slice--fill" ng-style="getStyle()"></div>
+    </div>  
+</div>

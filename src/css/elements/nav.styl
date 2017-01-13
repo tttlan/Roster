@@ -1,0 +1,376 @@
+
+// The Nav Object
+// ------------------------------------------------
+
+/*
+ * This will throw any list into a very basic/crude 
+ * horizontal series of links which we can then extend
+ * to adopt more specific styles
+ *
+ */
+
+.ui
+
+    // Standard nav
+    //
+    // Markup:
+    // <ul class="nav">
+    //     <li><a href="#" class="is--active">Dashboard</a></li>
+    //     <li><a href="#">My Team <span class="label label--badge">5</span></a></li>
+    //     <li><a href="#">Roster</a></li>
+    //     <li><a href="#">Training</a></li>
+    //     <li><a href="#">Settings</a></li>
+    // </ul>
+    //
+    // Styleguide elements.nav.standard
+    
+    .nav {
+        list-style:none;
+        padding-left:0;
+        margin-bottom: gutter;
+        margin-top: 0;
+
+        > li ,
+        > li > a {
+            display:inline-block;
+            *display:inline;
+            zoom:1;
+        }
+
+        > li {
+            position: relative;
+            font-size: 14px;
+            margin-right: (gutter/2);
+        }
+
+        a {
+            color: grey2;
+            transition: color 100ms linear;
+
+            &.is--active ,
+            &:hover {
+                color: black;
+                text-decoration: none;
+            }
+        }
+
+        .label {
+            margin-left: .5em;
+            margin-bottom: 0;
+            vertical-align: top;
+        }
+        
+    }
+
+    // Nav vertical
+    // 
+    // Markup:
+    // <ul class="nav nav--vert">
+    //     <li><a href="#" class="is--active">Dashboard</a></li>
+    //     <li><a href="#">My Team <span class="label label--badge">5</span></a></li>
+    //     <li><a href="#">Roster</a></li>
+    //     <li><a href="#">Training</a></li>
+    //     <li><a href="#">Settings</a></li>
+    // </ul>
+    //
+    // Styleguide elements.nav.vertical
+
+    .nav--vert {
+        border-left: solid 2px grey7;
+        margin-left: 3px;
+        
+        > li {
+            display: block;
+            margin: 0;
+
+            > a {
+                padding: 0px 10px 0 10px;
+                margin: 0px 0 8px 0;
+                position: relative;
+            }
+
+            > a:hover ,
+            .is--active {
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -2px;
+                    bottom: 0;
+                    width: 2px;
+                    background-color: primary;
+                }
+            }
+
+            &:last-child a {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+
+        
+    // Nav horizontal
+    //
+    // Markup:
+    // <ul class="nav nav--horz">
+    //     <li><a href="#" class="is--active">Dashboard</a></li>
+    //     <li><a href="#">My Team <span class="label label--badge">5</span></a></li>
+    //     <li><a href="#">Roster</a></li>
+    //     <li><a href="#">Training</a></li>
+    //     <li><a href="#">Settings</a></li>
+    // </ul>
+    //
+    // Styleguide elements.nav.horizontal
+
+    .nav--horz {
+        font-size: 0;
+        border-bottom: solid 1px grey8;
+        margin-bottom: (gutter/2);
+        
+        > li {
+            padding-right: 30px;
+            margin: 0;
+            font-size: 13px;
+            text-transform: uppercase;
+            line-height: 27px;
+
+            > a {
+                padding: 11px 0 9px 0;
+                margin: 0;
+                position: relative;
+
+                /*&:after {
+                    content: '';
+                    position: absolute;
+                    left: 0px;
+                    right: 0;
+                    bottom: 0px;
+                    height: 0px;
+                    background-color: grey6;
+                    transition: height 150ms linear;
+                }*/
+            }
+
+            > a:hover {
+                color: primary;
+
+                &:after {
+                    height: 2px;
+                }
+            }
+
+            .is--active {
+                color: primary;
+                
+                &:after {
+                    background-color: primary;
+                    height: 2px;
+                }
+            }
+
+            &:last-child a {
+                margin-right: 0;
+            }
+
+        }
+    }
+    
+    // Alignment for nav--horz / tabs at the top of a segment block
+    .segment .tabs:first-child .nav--horz__container {
+        margin-top: -10px;
+    }
+
+
+    // Breadcrumb
+    // 
+    // Markup:
+    // <ul class="nav nav--breadcrumb">
+    //     <li><a href="#">Home</a></li>
+    //     <li><a href="#">About</a></li>
+    //     <li><a href="#">About us</a></li>
+    // </ul>
+    //
+    // Styleguide elements.nav.breadcrumb
+
+    .nav--breadcrumb {
+        margin: 0;
+
+        > li:before {
+            font-weight: light;
+            content: '/';
+            margin: 0 7px 0 4px;
+            font-size: 15px;
+            position: relative;
+            top: 1px;
+        }
+        > li:first-child:before {
+            content: normal;
+        }
+        li {
+            font-size: 13px;
+            line-height: 1;
+            color: grey7;
+            margin: 0;
+
+            a {
+                color: grey5;
+            }
+
+            [class*="icon--"] {
+                margin-right: .35em;
+                font-size: 14px;
+            }
+        }
+    }
+
+
+    // Filter
+    // 
+    // Markup:
+    // <ul class="nav nav--filter">
+    //     <li><a href="#" class="is--active">All articles</a></li>
+    //     <li><a href="#">Drafts</a></li>
+    //     <li><a href="#">Trash</a></li>
+    // </ul>
+    //
+    // Styleguide elements.nav.filter
+
+    .nav--filter {
+        font-size: 0;
+        margin-bottom: 0;
+        display: table;
+        width: 100%;
+        
+        > li {
+            margin: 0;
+            border: solid 1px grey7;
+            border-right-width: 0px;
+            background-color: #eee;
+            overflow: hidden;
+            line-height: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+
+            &:first-child {
+                border-top-left-radius: button_border_radius;
+                border-bottom-left-radius: button_border_radius;
+            }
+
+            &:last-child {
+                border-right-width: 1px;
+                border-top-right-radius: button_border_radius;
+                border-bottom-right-radius: button_border_radius;
+            }
+
+            > a {
+                padding: 9px 0px;
+                margin: 0;
+                position: relative;
+                display: block;
+                cursor: pointer;
+                color: grey4;
+
+                .label {
+                    margin-bottom: 0;
+                }
+            }
+
+            a:hover ,
+            .is--active {
+                background-color: white;
+                color: black;
+            }
+
+        }
+
+        // Responsive
+        // ------------------------------------------------
+
+        @media minTablet {
+            width: auto;
+            display: inline-block;
+        
+            > li {
+                display: inline-block;
+
+                a {
+                    padding-left:20px;
+                    padding-right:20px;
+                }
+            }
+
+        }
+
+    }
+
+
+    // Sub nav in bar
+    // ------------------------------------------------
+
+    .nav__toggle {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        .nav__toggle-icon {
+            display: block;
+            height: 100%;
+
+            [class*="icon--"] {
+                display: none;
+            }
+        }
+
+        .submenu {
+            margin-left: -8px;
+            margin-top: -4px;
+        }
+
+        @media minTablet {
+            width: 28px;
+            display: inline-block;
+            line-height: 48px;
+            position: static;
+            height: auto;
+
+            .nav__toggle-icon {
+                padding: 0;
+                display: block;
+                color: grey4;
+                transition: color 150ms linear;
+                cursor: pointer;
+                text-align: right;
+                font-size: 12px;
+                position: relative;
+                height: auto;
+
+                :after {
+                    content: '';
+                    position: absolute;
+                    top: 17px;
+                    left: 7px;
+                    width: 1px;
+                    height: 13px;
+                    background: #ededed;
+                }
+
+                [class*="icon--"] {
+                    margin: -2px 0 0 0;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                &:hover {
+                    color: primary;
+                }
+            }
+
+        }
+    }

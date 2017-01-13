@@ -1,0 +1,169 @@
+﻿<div class="page job-requisition">
+    <!--Page Wrapper-->
+    <div class="page__wrapper">
+
+        <!--Page Header-->
+        <div class="page__header">
+            <div class="form__field search-jobs-form__search-field">
+                <label for="beforeAfterInput"
+                       class="icon--search field__before field__before--search-icon">
+                </label>
+                <input type="text"
+                       id="beforeAfterInput"
+                       ng-model="searchString"
+                       ng-enter="searchRequisition()" 
+                       ng-change="onSearchStringChanged()"
+                       placeholder="Search for requisition"
+                       class="search-jobs-form__text-input"/>
+
+                <a ng-show="searchString !== '' "
+                   ng-click="removeSearchRequisition()"
+                   for="beforeAfterInput"
+                   tooltip="Clear"
+                   tooltip-placement="top"
+                   class="icon--cross field__after clear-search-requisition">
+                </a>
+            </div>
+        </div>
+        <!--End Page Header-->
+        <!--Page Content-->
+        <div class="page__content"
+             paginate="getListRequisition"
+             page-size="10"
+             paginate-on-scroll="true">
+
+            <div class="message message--empty"
+                 ng-hide="page.loading || page.items.length || page.error">
+                <i class="icon--mnuDashboard icon-is-huge"></i>
+                <p>List Requisition is empty</p>
+            </div>
+
+
+            <!--Table Jobs List -->
+            <table ng-show="page.items.length > 0"
+                   class="table table__list--requisitions">
+                <thead>
+                <tr>
+                    <th>
+                        <a ng-click="orderBy('Name')"
+                           href="">
+                            Requisition Name
+                            <i ng-if="predicate === 'Name'" ng-class="reverse ? 'icon--down':'icon--up'"></i>
+                        </a>
+                    </th>
+                    <th>
+                        <a ng-click="orderBy('Location')"
+                           href="">
+                            Location
+                            <i ng-if="predicate === 'Location'" ng-class="reverse ? 'icon--down' : 'icon--up'"></i>
+                        </a>
+                    </th>
+
+                    <th>
+                        <a ng-click="orderBy('CreateDate')"
+                           href="">
+                            Elapse
+                            <i ng-if="predicate === 'CreateDate'" ng-class="reverse ? 'icon--down': 'icon--up' "></i>
+                        </a>
+                    </th>
+
+                    <th>
+                        <a ng-click="orderBy('Requestor.FirstName')"
+                           href="">
+                            Requestor
+                            <i ng-if="predicate === 'Requestor.FirstName'"
+                               ng-class="reverse ? 'icon--down': 'icon--up' "></i>
+                        </a>
+                    </th>
+
+                    <th>
+                        <a ng-click="orderBy('State')"
+                           href="">
+                            Status
+                            <i ng-if="predicate[0] === 'StatePriority' || predicate[0] === '-StatePriority'"
+                               ng-class="predicate[0] === 'StatePriority' ? 'icon--up' : 'icon--down'"></i>
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="requisition in page.items | limitTo: page.showing | orderBy:predicate:reverse  track by requisition.Id">
+
+                    <td>
+                        <a href="" path="recruit.requisition.detail" path-params="{{requisition.Id}}"
+                           class="requisition-name">{{requisition.Name}}</a>
+                    </td>
+
+                    <td>
+                        <span class="requisition-location">{{requisition.Location}}</span>
+                    </td>
+
+                    <td>
+                        <span class="requisition-elapse">{{requisition.CreateDate  | fromNow}}</span>
+                    </td>
+
+                    <td>
+                        <div class="media media--user">
+                            <div class="media__image">
+                                <avatar img-src="requisition.Requestor.PhotoThumb"
+                                        size="small"></avatar>
+                            </div>
+                            <div class="media__body">
+                                <a href="">{{requisition.Requestor.FirstName}} {{requisition.Requestor.SurName}}</a>
+                                <span>{{requisition.Requestor.Role}}</span>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                            <span ng-if="requisition.State === REQUISITION_STATUS.PENDING"
+                                  class="label label--caution">{{requisition.State}}</span>
+                            <span ng-if="requisition.State === REQUISITION_STATUS.APPROVED"
+                                  class="label label--info">{{requisition.State}}</span>
+                            <span ng-if="requisition.State === REQUISITION_STATUS.EXECUTED"
+                                  class="label label--positive">{{requisition.State}}</span>
+                            <span ng-if="requisition.State === REQUISITION_STATUS.REJECTED"
+                                  class="label label--negative">{{requisition.State}}</span>
+                            <span ng-if="requisition.State === REQUISITION_STATUS.DRAFT"
+                                  class="label label--dark">{{requisition.State}}</span>
+                            <span ng-if="requisition.State === REQUISITION_STATUS.REQ_CHANGES"
+                                  class="label label--caution">{{requisition.State}}</span>
+                            <span ng-if="requisition.State === REQUISITION_STATUS.ARCHIVED"
+                                  class="label label--info">{{requisition.State}}</span>
+                            <span ng-if="requisition.State === REQUISITION_STATUS.CANCELLED"
+                                  class="label label--active">{{requisition.State}}</span>
+                            <span ng-if="requisition.State === REQUISITION_STATUS.DELETED"
+                                  class="label label--disabled">{{requisition.State}}</span>
+
+                        <br/>
+                        <span class="requisition-status--date">{{requisition.LastUpdateDate  | dateTimeFormat: 'MMM DD, YYYY'}}</span>
+                    </td>
+
+                </tr>
+                </tbody>
+
+            </table>
+
+            <!--End Table Jobs List -->
+            <p ng-if="page.total > 0 && page.current * page.size < page.total"
+               class="requisition-list--count">
+                Showing {{page.loading ? (page.current-1) * page.size : page.current * page.size }} of {{page.total}}
+            </p>
+            <p ng-if="page.total > 0 && page.current * page.size > page.total"
+               class="requisition-list--count">
+                Showing {{page.loading ? (page.current-1) * page.size : page.total}} of {{page.total}}
+            </p>
+        </div>
+        <!--End Page Content-->
+
+    </div>
+    <!--End Page Wrapper-->
+
+    <div ng-show="ListRequisition.userCan(EntityActionType.CanCreateNewJobAdRequisition)">
+        <nav mfb-menu position="br" label="New Requisition Form"
+             resting-icon="icon--plus"
+             ng-click="redirectToCreatePage()">
+        </nav>
+    </div>
+
+</div>

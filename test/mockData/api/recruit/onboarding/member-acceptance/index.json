@@ -1,0 +1,223 @@
+{
+  "OnboardingAcceptanceDetail": {
+    "$id": "2",
+    "OnboardId": 1,
+    "AcceptanceState": "sample string 2",
+    "CandidatePersonalInfo": {
+      "$id": "3",
+      "MemberId": 1,
+      "Salutation": 2,
+      "FirstName": "sample string 3",
+      "Surname": "sample string 4",
+      "PreferredName": "sample string 5",
+      "Sex": "sample string 6",
+      "BirthDay": "2016-04-05T20:11:05.1426317+10:00",
+      "LastModified": "2016-04-05T20:11:05.1426317+10:00",
+      "MemberType": "sample string 7",
+      "Title": "sample string 8",
+      "Active": true,
+      "DateRegistered": "2016-04-05T20:11:05.1582572+10:00",
+      "PhotoThumb": "sample string 10"
+    },
+    "CandidateContacts": [
+      {
+        "$id": "4",
+        "MemberId": 1,
+        "ContactInfoId": 2,
+        "DateCreated": "2016-04-05T20:11:05.1582572+10:00",
+        "DateModified": "2016-04-05T20:11:05.1582572+10:00",
+        "IsPrimary": true,
+        "IsPrivate": true,
+        "Type": "sample string 7",
+        "Address": "sample string 8",
+        "City": "sample string 10",
+        "Suburb": "sample string 11",
+        "Postcode": "sample string 12",
+        "MobilePhone": "sample string 15",
+        "Phone": "sample string 16",
+        "Fax": "sample string 17",
+        "Email": "sample string 18",
+        "WebAddress": "sample string 19",
+        "StateName": "sample string 20",
+        "StateRegionId": 1,
+        "StateRegion": {
+          "$id": "5",
+          "StateRegionId": 1,
+          "Name": "sample string 2",
+          "NameAbbreviated": "sample string 3",
+          "LookupUrl": "sample string 4"
+        },
+        "CountryId": 1,
+        "Country": {
+          "$id": "6",
+          "LookupUrl": "sample string 1",
+          "Value": 2,
+          "Label": "sample string 3"
+        },
+        "CanAcceptSms": true,
+        "CanAcceptVoiceCall": true,
+        "CanAcceptFax": true,
+        "CanAcceptHtml": true
+      }
+    ],
+    "EmergencyContact": {
+      "$id": "7",
+      "FirstName": "sample string 1",
+      "SurName": "sample string 2",
+      "Relationship": "sample string 3",
+      "Address": "sample string 4",
+      "Address2": "sample string 5",
+      "City": "sample string 6",
+      "Suburb": "sample string 7",
+      "Postcode": "sample string 8",
+      "LinePhone1": "sample string 9",
+      "LinePhone2": "sample string 10",
+      "MobilePhone": "sample string 11",
+      "Fax": "sample string 12",
+      "Email": "sample string 13",
+      "WebAddress": "sample string 14",
+      "StateName": "sample string 15",
+      "StateRegionId": 1,
+      "CountryId": 1,
+      "CanAcceptSms": true,
+      "CanAcceptVoiceCall": true,
+      "CanAcceptFax": true,
+      "CanAcceptHtml": true
+    },
+    "MemberBankingDetail": {
+      "$id": "8",
+      "LoginName": "sample string 1",
+      "MemberId": 2,
+      "LoginCount": 3,
+      "Password": "sample string 4",
+      "BankPassword": "sample string 5",
+      "BankingID": 1,
+      "AccountName": "sample string 6",
+      "BSB": "sample string 7",
+      "AccountNo": "sample string 8",
+      "SuperFund": "sample string 9",
+      "SuperNo": "sample string 10",
+      "BankName": "sample string 11",
+      "TaxFileNumber": "sample string 12"
+    },
+    "OutboundDocuments": {
+      "$id": "9",
+      "OnboardDocumentItemResults": [
+        {
+          "$id": "10",
+          "OnboardDocumentRecord": {
+            "$id": "11",
+            "OnboardDocumentId": 1,
+            "OnboardId": 2,
+            "FileName": "sample string 3",
+            "FileSize": 1,
+            "OnboardState": "sample string 4",
+            "AcceptedDate": "2016-04-05T20:11:05.1582572+10:00",
+            "SentDate": "2016-04-05T20:11:05.1582572+10:00",
+            "MergeFields": true,
+            "Visibility": "sample string 6",
+            "IsCloudDocument": true,
+            "AcceptanceOrder": 8,
+            "InboundRequestId": 1,
+            "LibraryDocumentId": 1,
+            "IsDefaultDocument": true,
+            "BulkOnboardId": "4bb5db81-d283-423d-849e-8a56f54ac1f3",
+            "FileExt": "sample string 3"
+          },
+          "EntityActions": null,
+          "Status": 0
+        }
+      ],
+      "EntityActions": null,
+      "Pagination": {
+        "$id": "12",
+        "TotalCount": 1,
+        "TotalPages": 2,
+        "PageSize": 1,
+        "Page": 1
+      },
+      "Status": 0
+    },
+    "InboundRequirements": {
+      "$id": "13",
+      "OnboardDocumentItemResults": [
+        {
+          "$id": "14",
+          "InboundRequirement": {
+            "$id": "15",
+            "Id": 1,
+            "MemberId": 2,
+            "RequirementDocumentTypeId": 3,
+            "RequirementDescription": "sample string 4",
+            "ExpireDate": "2016-04-05T20:11:05.1582572+10:00",
+            "IsLodged": true,
+            "LodgedDate": "2016-04-05T20:11:05.1582572+10:00",
+            "InboundDocument": {
+
+            },
+            "IsAccepted": true,
+            "IsRejected": true,
+            "RejectReason": "sample string 7",
+            "IsExpiredDateRequired": true
+          },
+          "EntityActions": null,
+          "Status": 0
+        }
+      ],
+      "EntityActions": null,
+      "Pagination": {
+        "$ref": "12"
+      },
+      "Status": 0
+    },
+    "MemberTFN": {
+      "$id": "16",
+      "TaxFileNumber": "sample string 1",
+      "TfnExemptionCode": "sample string 2",
+      "DateOfBirth": "2016-04-05T20:11:05.1582572+10:00",
+      "PayrollNumberOrIdentifier": 1,
+      "ResidencyStatus": true,
+      "BasisOfPaymentCode": "sample string 3",
+      "TaxFreeThresholdClaimed": true,
+      "SeniorAustraliansTaxOffsetClaimed": true,
+      "ZoneRebateClaimed": true,
+      "OverseasForcesRebateClaimed": true,
+      "DependantSpouseRebateClaimed": true,
+      "SpecialRebateClaimed": true,
+      "HelpIndicator": true,
+      "TradeSupportLoanIndicator": true,
+      "StudentLoanIndicator": true,
+      "AddressUsageCode": "sample string 4",
+      "City": "sample string 5",
+      "Suburb": "sample string 6",
+      "Postcode": 7,
+      "Address": "sample string 8",
+      "CountryId": 9,
+      "PersonCurrentNameTypeCode": "sample string 10",
+      "PersonNameDetailsCurrencyCode": "sample string 11",
+      "SalutationId": 12,
+      "Surname": "sample string 13",
+      "FirstGivenName": "sample string 14",
+      "SecondGivenName": "sample string 15",
+      "LinePhone1": "sample string 16",
+      "LinePhone2": "sample string 17",
+      "StartDate": "2016-04-05T20:11:05.1582572+10:00",
+      "EndDate": "2016-04-05T20:11:05.1582572+10:00",
+      "Accepted": true,
+      "DateDeclarationSigned": "2016-04-05T20:11:05.1582572+10:00",
+      "SignatoryIdentifierText": "sample string 20",
+      "SignatoryLibraryDocumentId": 1,
+      "TfnAddressTypeId": 21,
+      "PreviousSurname": "sample string 22",
+      "PreviousName": "sample string 23",
+      "PreviousOtherName": "sample string 24",
+      "HasMadeSeparateEnquiry": true,
+      "IsExemption": true,
+      "IsPensionerExemption": true
+    },
+    "WelcomeMessage": "sample string 3",
+    "IsCandidateActivate": true
+  },
+  "EntityActions": null,
+  "Status": 0
+}

@@ -1,0 +1,131 @@
+<div class="message message--empty" ng-show="profile.Deleted && !profile.$userCan.isadmin">
+    <i class="icon--user icon-is-huge"></i>
+    <p>This profile has been deleted</p>
+    <a href="#" back class="button button--icon-left button--primary"><i class="icon--left"></i>Back</a>
+</div>
+
+<div class="message message--empty" ng-show="profile.Active === false && !profile.$userCan.isadmin">
+    <i class="icon--user icon-is-huge"></i>
+    <p>This profile is not active</p>
+    <a href="#" back class="button button--icon-left button--primary"><i class="icon--left"></i>Back</a>
+</div>
+
+<div class="message message--empty" ng-show="profile.$error && !profile.$noPermission">
+    <i class="icon--user icon-is-huge"></i>
+    <p>This profile could not be loaded</p>
+    <a href="#" back class="button button--icon-left button--primary"><i class="icon--left"></i>Back</a>
+</div>
+
+<div class="message message--empty" ng-show="profile.$error && profile.$noPermission">
+    <i class="icon--user icon-is-huge"></i>
+    <p>You do not have permission to view this profile</p>
+    <a href="#" back class="button button--icon-left button--primary"><i class="icon--left"></i>Back</a>
+</div>
+
+<div class="page__aside profile-card" ng-if="((profile.Deleted === false && profile.Active === true) || profile.$userCan.isadmin) && !profile.$noPermission">
+
+    <div class="profile-card__picture">
+
+        <div class="profile-card__bg">
+            <svg width="800" height="370" viewPort="0 0 800 370" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="400" cy="185" rx="400" ry="185" />
+            </svg>
+        </div>
+
+        <div class="profile-card__avatar">
+
+            <avatar size="large" img-src="profile.AvatarPhotoLarge"></avatar>
+
+            <a href="/Network/ProfileAvatar.aspx?id=u{{profile.MemberId}}&returnUrl=/profile/{{profile.returnOldUrl}}" target="_self" title="Upload or change profile photo" class="profile-card__update-photo"
+               ng-show="profile.$userCan.isadmin || profile.$ownProfile">
+                <i class="icon--camera"></i>
+            </a>
+        </div>
+
+        <div>
+            <h1 class="h2">
+                {{profile.FirstName}} {{profile.Surname}}
+                <span class="status"
+                      ng-class="{'status--offline' : !profile.IsOnline, 'status--online' : profile.IsOnline }"
+                      tooltip="{{ profile.IsOnline ? 'Online' : 'Offline' }}"
+                      tooltip-placement="right"></span>
+            </h1>
+
+            <p>{{profile.RoleDescription}}</p>
+
+            <h5 ng-if="profile.DefaultGroupName">Primary Group</h5>
+            <a target="_self" class="button button--tiny button--basic" href="" path="groups.group" path-params="profile.DefaultGroupID" ng-if="profile.DefaultGroupName">{{profile.DefaultGroupName}}</a>
+            
+            <h5 ng-if="profile.MemberStatus!=='' && profile.$userCan.canviewcontact">Member Status</h5>
+            <p class="is--negative" ng-if="profile.MemberStatus!=='' && profile.$userCan.canviewcontact">
+                {{profile.MemberStatus}}
+            </p>
+            <p ng-show="profile.Active === false || profile.Deleted === true">
+                <p ng-show="profile.Active === false" class="icon--warning text-warning">This profile is not active</p>
+                <p ng-show="profile.Deleted === true" class="icon--warning text-warning">This profile has been deleted</p>
+            </p>
+
+        </div>
+    </div>
+
+    <div class="profile-card__details">
+        <dl ng-if="profile.Phone || profile.OtherPhones">
+            <dt>Phone number</dt>
+            <dd>
+                <span ng-if="false">
+                    <!-- display a mobile first and if it doesn't exist, phoneline1 and if that doesn't exist, phoneline2
+                also only display the phone numbers as a link on mobiles -->
+                </span>
+
+                <a href="tel:{{profile.Phone}}" ng-if="isMobile">{{profile.Phone | tel}}</a>
+                <span ng-if="!isMobile">{{profile.Phone | tel}}</span>
+            </dd>
+            <dd ng-repeat="phone in profile.OtherPhones">
+                <span>{{phone}}</span>
+            </dd>
+        </dl>
+        
+        <dl ng-if="profile.Email || profile.OtherEmails">
+            <dt>Email</dt>
+            <dd><a href="mailto:{{profile.Email}}">{{profile.Email}}</a></dd>
+            <dd ng-repeat="email in profile.OtherEmails">
+                <a href="mailto:{{email}}">{{email}}</a>
+            </dd>
+        </dl>
+
+        <dl ng-if="(profile.Address || profile.Suburb || profile.City || profile.State || profile.CountryName || profile.Postcode) && profile.$userCan.canviewcontact">
+            <dt>Address</dt>
+            <dd>
+                <span ng-if="profile.Address">{{profile.Address}}, </span>
+                <span ng-if="profile.Suburb">{{profile.Suburb}}, </span>
+                <span ng-if="profile.City">{{profile.City}}, </span>
+                <span ng-if="profile.CountryName">{{profile.CountryName}}, </span>
+                <span ng-if="profile.Postcode">{{profile.Postcode}}.</span>
+            </dd>
+        </dl>
+
+        <dl ng-if="profile.$userCan.canviewsysteminformation">
+            <dt ng-show="profile.GroupsList">Other groups</dt>
+            <dd ng-show="profile.GroupsList">
+
+                <a target="_self" href="" path="groups.group" path-params="group.NetworkGroupId" class="label label--basic" ng-repeat="group in profile.GroupsList | limitTo: profile.groupLimit">{{group.GroupName}}</a>
+                <!-- this comment removes whitespace to help inline block styling
+                -->
+                <a href="" ng-click="profile.showAllGroups()" class="button button--basic button--tiny button--icon" ng-hide="profile.GroupsList.length <= 3 || profile.$hideGroupToggle"><i class="icon--ellipsis"></i></a>
+
+            </dd>
+        </dl>
+        <dl ng-if="profile.$userCan.canviewchangepassword || profile.$ownProfile || profile.$userCan.canviewexitformlink">
+            <dt>Other links</dt>
+            <dd>
+                <ul class="list-of-links--small list-of-links">
+                    <li ng-if="profile.$userCan.canviewchangepassword"><a href="" path="{{ profile.$ownProfile ? 'profile.changeOwnPassword' : 'profile.changePassword' }}" path-params="profile.MemberId">Change password</a></li>
+                    <li ng-if="profile.$ownProfile"><a target="_self" href="/network/Notifications2.aspx">Notification settings</a></li>
+                    <li ng-if="profile.$userCan.canviewexitformlink"><a target="_self" href="{{profile.$userCan.canviewexitformlink}}">Exit form</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+    </div>
+
+</div>

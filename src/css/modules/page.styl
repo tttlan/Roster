@@ -1,0 +1,467 @@
+
+page_border_color = grey8;
+
+
+// Page structure
+// ------------------------------------------------
+
+
+/* there are a few different combinations of the page structure.
+ *
+ * 1. single column page
+ * 2. main column with sidebar on right
+ *
+ */
+
+
+.page {
+    width: 100%;
+    padding-top: (gutter/2);
+
+    .page__wrapper {
+        wrapper();
+        clearfix();
+        position: relative;
+        padding: 0 15px;
+
+        @media print {
+            max-width: none;
+        }
+    }
+
+    h1 {
+        margin-bottom: (gutter/2);
+    }
+
+    // header
+    .page__header {
+        position: relative;
+
+        p {
+            max-width: 640px;
+        }
+    }
+
+    // header call to action
+    .page__options {
+        clearfix();
+
+        margin-bottom: (gutter/2);
+
+        .button,
+        .nav {
+            float: left;
+        }
+
+        @media maxTablet {
+            .nav + .button {
+                margin-top: 12px;
+            }
+        }
+
+        @media minTablet {
+            .nav {
+                margin-right: (gutter/2);
+            }
+        }
+    }
+
+    .page-return {
+        position: absolute;
+        top: 17px;
+        left: -100px;
+        color: grey7;
+
+        &:hover {
+            color: primary;
+        }
+        
+        @media maxDesktop {
+            position: static;
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: grey5;
+            margin-bottom: 0.5em;
+            
+            [class*="icon--"] {
+                font-size: 10px;
+                vertical-align: top;
+                margin-right: 1em;
+            }
+        }
+    }
+    
+    .page-return__text {
+        position: absolute;
+        left: -999em;
+        
+        @media maxDesktop {
+            position: static;
+            left: 0;
+        }
+    }
+
+    &.page--2-1,
+    &.page--1-2
+    &.page--2-2,
+    &.page--1-4 {
+        .page-return {
+            left: -50px;
+        }
+    }
+
+    // Sidebar
+    .page__aside {
+        margin: 0;
+
+        & > :first-child {
+            margin-top: 0;
+        }
+    }
+
+    // content container
+    .page__content {
+        position: relative;
+        margin-right: 0;
+        margin-bottom: gutter;
+        border-top: 1px solid transparent; // margin bug fix
+
+        & > :first-child {
+            margin-top: 0;
+        }
+    }
+    .page__content__nav-wrapper {
+        position: relative;
+    }
+    .page__content__nav-prev {
+        position: absolute;
+        left: 0;
+    }
+    .page__content__nav-next {
+        position: absolute;
+        right: 0;
+    }
+    .page__content__nav-prev-inner, .page__content__nav-next-inner {
+        position: absolute;
+        padding-left: (gutter/2); 
+        padding-right: (gutter/2);
+    }
+    .page__content__nav-prev-inner {
+        right: 0;
+    }
+    .page__content__nav-next-inner {
+        left: 0;
+    }
+    @media minMobile {
+        .page__header {
+            margin-bottom: (gutter/2);
+        }
+    }
+
+    .page__content {
+        .page__content__header {
+            position: relative;
+            .page__content__header-inner {
+                position: absolute;
+                bottom: 0;
+                margin-bottom: (gutter/2);
+                width: 100%;
+            }
+        }
+    }
+    @media minTablet {
+
+        padding-top: gutter;
+
+        .page__wrapper {
+            padding: 0 (gutter/2);
+        }
+
+        .page__header {
+            margin-bottom: gutter;
+        }
+
+        h1 {
+            margin-bottom: gutter;
+        }
+    }
+
+}
+
+
+// Layout Modifiers
+// ------------------------------------------------
+
+.page + .page {
+    padding: 0;
+}
+
+
+
+
+// removes page margins and padding
+
+.page--flush {
+    padding: 0px !important;
+    margin: 0px !important;
+    height: 100%;
+}
+
+
+// Page Columns
+// Columns are defined using the 1-2-1 format
+// In this case it means there are 4 columns, quarter, half and quarter
+// i.e. 1-4 = 5 columns first is 1/5 wide, second is 4/5s wide
+
+
+// 1-c
+// Centered page, max-width: 650px;
+
+.page--1-c {
+
+    .page__content {
+        float:none;
+        margin:0 auto;
+        max-width: 650px;
+        width: 100%;
+    }
+}
+
+// 1-c-wide
+// Centered page, max-width: 810px;
+
+.page--1-c-wide {
+
+    .page__content {
+        float:none;
+        margin:0 auto;
+        max-width: 810px;
+        width: 100%;
+    }
+}
+
+// 1-c-narrow
+// Centered page, max-width: 810px;
+
+.page--1-c-narrow {
+
+    .page__content {
+        float:none;
+        margin:0 auto;
+        max-width: 500px;
+        width: 100%;
+    }
+}
+
+
+// 2-2
+// Two evenly size columns
+
+.page--2-2 {
+
+    .page__aside,
+    .page__content {
+        width: 100%;
+    }
+
+    @media minTablet {
+        .page__content {
+            width: 48%;
+            float: left;
+
+            &:first-child {
+                margin-right: 4%;
+            }
+        }
+    }
+
+}
+
+
+// 2-1
+// Large column left, small aside right
+
+.page--2-1 {
+
+    .page__aside,
+    .page__content {
+        width: 100%;
+    }
+
+    @media minTablet {
+
+        // Sidebar
+       .page__aside {
+            float: right;
+            width: 35%;
+        }
+
+        //content
+        .page__content {
+            float: left;
+            width: 60%;
+            margin-right: 5%;
+        }
+
+    }
+
+    @media minDesktop {
+
+        // Sidebar
+       .page__aside {
+            width: 30%;
+        }
+
+        //content
+        .page__content {
+            width: 66%;
+            margin-right: 4%;
+        }
+
+    }
+
+    @media print {
+
+        // Sidebar
+       .page__aside {
+            width: 30%;
+            float: right;
+        }
+
+        //content
+        .page__content {
+            width: 66%;
+            margin-right: 4%;
+            float: left;
+        }
+
+    }
+
+}
+
+
+// 1-2
+// Small column left, large content right
+
+.page--1-2 {
+
+    .page__aside,
+    .page__content {
+        width: 100%;
+    }
+
+    @media minTablet {
+
+        // Sidebar
+       .page__aside {
+            float: left;
+            width: 35%;
+            margin-right: 5%;
+        }
+
+        //content
+        .page__content {
+            float: right;
+            width: 60%;
+        }
+
+    }
+
+    @media minDesktop {
+
+        // Sidebar
+       .page__aside {
+            width: 30%;
+            margin-right: 4%;
+        }
+
+        //content
+        .page__content {
+            width: 66%;
+        }
+
+    }
+
+}
+
+
+// 1-4
+// tiny column left, large content right
+
+.page--1-4 {
+
+    .page__aside,
+    .page__content {
+        width: 100%;
+    }
+
+    @media minTablet {
+
+        // Sidebar
+       .page__aside {
+            float: left;
+            width: 20%
+        }
+
+        //content
+        .page__content {
+            float: right;
+            width: 80%;
+        }
+
+    }
+
+}
+
+
+// Color Modifiers
+// ------------------------------------------------
+
+.page--white {
+    background: white;
+    border-bottom: solid 1px #eee
+}
+
+
+// Collapsible container for Phablet and smaller
+// ------------------------------------------------
+.page {
+    .collapsible__container {
+        float:right;
+    }
+    .collapsible__toggle { display:none; }
+}
+
+@media maxTablet {
+    .page {
+        .collapsible__container {
+            float:none;
+            transition: max-height 125ms ease;
+            margin-bottom:20px;
+
+            &.is--active {
+                .collapsible__item { display:block; }
+                .collapsible__toggle { margin-top:-20px;}
+            }
+        }
+        .collapsible__item {
+            display:none;
+        }
+        .collapsible__toggle {
+            display:block;
+            line-height:15px;
+            text-align: center;
+            height: 20px;
+            font-size: .8em;
+            background: url('/interface/images/bg--fade.png') repeat-x 0 0;
+            color: grey2;
+            z-index: 20;
+            margin-top:-30px;
+
+            &:hover {
+                background:grey9;
+            }
+        }
+    }
+}

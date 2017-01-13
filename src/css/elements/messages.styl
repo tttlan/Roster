@@ -1,0 +1,81 @@
+// Basic messages
+//
+// Messages contain a set message or content item. It is used to communicate something with user based on interaction or data error
+//
+// Markup:
+// <div class="message {{modifier_class}}">
+//    <p>I'm a message</p>
+// </div>
+//
+// .message--small - Smaller text
+// .message--error - Used to indicate an error
+// .message--success - Used to indicate success
+// .message--retry - Used for failed content loads.  Contains a less padding that the standard message
+// .message--content - Set to display: none initially.  Currently not used anywhere
+//
+// Styleguide elements.messages.basic
+
+.ui
+
+    .message {
+        padding: gutter;
+        margin: 1em auto;
+        text-align: center;
+        max-width: 600px;
+
+        h1 {
+            font-size: 60px;
+            line-height: 1;
+            margin: 0;
+
+            @media minTablet {
+                font-size: 120px;
+            }
+        }
+    }
+
+    
+    .message--small {
+        background: #f7f7f7;
+        padding: 8px 12px;
+        margin: 0;
+        font-size: 11px;
+        text-align: left;
+        border-radius: base-border-radius;
+        color: grey5;
+    }
+
+
+    // Form messages
+
+    .message--error {
+        display:block;
+        padding: 0;
+        font-size: 13px;
+        color: negative;
+    } 
+    
+    .message--success {
+        display:block;
+        padding: 0;
+        font-size: 13px;
+        color: positive;
+    } 
+
+    .message--retry {
+        
+        padding:10px;
+
+        a {
+            color:primary;
+            cursor:pointer;
+        }
+    }
+    
+    // Content messages
+    .message--content {
+        font-size: 24px;
+        font-weight: light;
+        color: grey5;
+        display: none;
+    }

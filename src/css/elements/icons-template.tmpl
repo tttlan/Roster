@@ -1,0 +1,20 @@
+/* 
+ * This file is a template used to generate icons.styl
+ *
+ * To override automatic gylph names, create the svg in the following format
+ *
+ * filename:  uE123-logout.svg
+ * output:  .icon--logout:before {content: "\E234"}
+ *
+ */
+ 
+// All icons
+//
+// Markup: markup/icons.hbs
+//
+// Styleguide elements.icons.allicons
+
+<% _.each(glyphs, function(glyph) { 
+    %>.<%= className %><%= glyph.name %>:before { content: "\<%= glyph.codepoint.toString(16).toUpperCase() %>" }
+icon-<%= glyph.name %> = "\<%= glyph.codepoint.toString(16).toUpperCase() %>";
+<% }); %>

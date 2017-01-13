@@ -1,0 +1,296 @@
+﻿ <!--This is old layout but it maybe use in future-->
+
+            <!--<accordion-segment>
+                <!-- Requestor Info -->
+            <!--<accordion-segment-group>
+                <accordion-heading>Requestor Info</accordion-heading>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-2">
+                        <label class="form__label">Regional Manager</label>
+                        <div class="media media--user">
+                            <div class="media__image">
+                                <avatar img-src="'interface/images/avatar.jpg'" size="small"></avatar>
+                            </div>
+                            <div class="media__body">
+                                <a href="#">Jaquie Smith</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form__field col-1-2">
+                        <label class="form__label">Date</label>
+                        <label>12 February 2016</label>
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="requestorLocation">Location</label>
+                        <input type="text" id="requestorLocation">
+                    </div>
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="contactNumber">Contact Number</label>
+                        <input type="tel" placeholder="xxxx xxx xxx" id="contactNumber">
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="contactPerson">Contact Person</label>
+                        <input type="text" id="contactPerson">
+                    </div>
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="contactNumber">Contact Number</label>
+                        <input type="tel" placeholder="xxxx xxx xxx" id="contactNumber">
+                    </div>
+                </div>
+
+            </accordion-segment-group>-->
+            <!--End of Requestor Info-->
+            <!-- Position Information -->
+            <!--<accordion-segment-group>
+                <accordion-heading>Position Information</accordion-heading>
+                <div class="form__fields">
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="roleTitle">Role Title</label>
+                        <input type="text" id="roleTitle">
+                    </div>
+
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="jobLocation">Location</label>
+                        <select-box id="jobLocation" ng-model="c">
+                            <select ng-model="c" ng-options="c.title for c in [{title: 'First option', val: 1},{title: 'Second option', val: 2},{title: 'Third option', val: 3}] track by c.val"></select>
+                        </select-box>
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="recruitmentReason">Recruitment Reason</label>
+                        <input type="text" id="recruitmentReason">
+                    </div>
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="typeEmployment">Type of Employement</label>
+                        <select-box id="typeEmployment" ng-model="empType">
+                            <select ng-model="empType" ng-options="empType.title for empType in
+                            [{title: 'Full time', val: 1},
+                            {title: 'Part time', val: 2},
+                            {title: 'Casual', val: 3},
+                            {title: 'Contract', val: 4}]
+                            track by empType.val"></select>
+                        </select-box>
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field form__field--inline">
+                        <label class="form__label">Days required to work</label>
+                        <div ng-repeat="day in DayToWork" class="field__checkbox">
+                            <input ng-model="day.IsChecked" ng-checked="day.IsChecked" type="checkbox" id="{{day.Title}}">
+                            <label for="{{day.Title}}" class="form__label">{{day.Title}}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="hourPerWeek">Hours per week</label>
+                        <input type="text" id="hourPerWeek">
+                    </div>
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="salaryType">Salary Type</label>
+                        <select-box id="salaryType" ng-model="salaryType">
+                            <select ng-model="salaryType" ng-options="salaryType.title for salaryType in
+                            [{title: 'Per hour', val: 1},
+                            {title: 'Per day', val: 2},
+                            {title: 'Per week', val: 3},
+                            {title: 'Per year', val: 4}]
+                            track by salaryType.val"></select>
+                        </select-box>
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-2">
+                        <label class="form__label" for="salaryBand">Salary Type</label>
+                        <select-box id="salaryBand" ng-model="salaryBand">
+                            <select ng-model="salaryBand" ng-options="salaryBand.title for salaryBand in
+                            [{title: 'AU$ 50,000 - 60,000', val: 1},
+                            {title: 'AU$ 40,000 - 50,000', val: 2},
+                            {title: 'AU$ 30,000 - 40,000', val: 3},
+                            {title: 'AU$ 20,000 - 30,000', val: 4}]
+                            track by salaryBand.val"></select>
+                        </select-box>
+                    </div>
+                    <div class="form__field col-1-2">
+
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-2">
+                        <label class="form__label">Other Benefits</label>
+                        <div class="form__field other--benefit disabled">
+                            <input type="text" value="Bonus" />
+                            <a tooltip="Remove" tooltip-placement="right" href="">
+                                <i class="icon--round-minus"></i>
+                            </a>
+                        </div>
+                        <div class="form__field other--benefit">
+                            <input type="text" />
+                            <a tooltip="Add" tooltip-placement="right" href=""><i class="icon--round-plus"></i></a>
+                        </div>
+                    </div>
+                    <div class="form__field col-1-2">
+
+                    </div>
+                </div>
+
+                <hr class="solid" style="margin-top:70px">
+
+                <div class="form__fields">
+                    <div class="form__field form__field--inline">
+                        <label class="form__label">Are duties different from the duties describle for this role in the company</label>
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="yes">
+                            <label for="yes" class="form__label">YES</label>
+                        </div>
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="no">
+                            <label for="no" class="form__label">NO</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field">
+                        <label class="form__label" for="roleDescription">Role Description</label>
+                        <textarea style="min-height:110px" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan metus vel ante ultrices, ut sodales mi consequat. Ut euismod mattis massa, ut porta magna vestibulum ac. Donec eget accumsan nibh, sed ornare lectus. Phasellus quis efficitur mauris, at semper nisi. Proin varius quam sit amet orci fermentum tincidunt. Pellentesque at tempus urna, quis tincidunt nisi. Nunc condimentum nulla ac fermentum malesuada. Cras lobortis quam tristique ante maximus lacinia. Aliquam odio est, tristique non lorem sit amet, dapibus tincidunt elit. Phasellus lobortis ante tortor, venenatis sollicitudin eros cursus vitae."
+                                  id="roleDescription" autogrow ng-model="roleDescription"></textarea>
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-2">
+                        <label class="form__label">List qualification for this role</label>
+                        <div class="form__field qualification">
+                            <a href="" class="field__after button--icon" ng-confirm-click="onRemove($index)" ng-confirm-message="Are you sure you want to remove this qualification?">
+                                <i class="icon--round-minus" tooltip="Remove" tooltip-placement="right"></i>
+                            </a>
+                            <input value="Diploma in Business" type="text" ng-required="true" />
+                        </div>
+                        <div class="form__field qualification qualification--placeholder">
+                            <input placeholder="Add qualification" type="text" />
+                        </div>
+                    </div>
+                    <div class="form__field col-1-2">
+
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-2">
+                        <label class="form__label">List skills for this role</label>
+                        <div class="form__field qualification">
+                            <a href="" class="field__after button--icon" ng-confirm-click="onRemove($index)" ng-confirm-message="Are you sure you want to remove this skill?">
+                                <i class="icon--round-minus" tooltip="Remove" tooltip-placement="right"></i>
+                            </a>
+                            <input value="Customer Service" type="text" />
+                        </div>
+                        <div class="form__field qualification">
+                            <a href="" class="field__after button--icon" ng-confirm-click="onRemove($index)" ng-confirm-message="Are you sure you want to remove this skill?">
+                                <i class="icon--round-minus" tooltip="Remove" tooltip-placement="right"></i>
+                            </a>
+                            <input value="Team Leader" type="text" />
+                        </div>
+                        <div class="form__field qualification qualification--placeholder">
+                            <input placeholder="Add skill" type="text" />
+                        </div>
+                    </div>
+                    <div class="form__field col-1-2">
+
+                    </div>
+                </div>
+
+                <div class="form__fields">
+                    <div class="form__field col-1-4">
+                        <label class="form__label">Desired start date</label>
+                        <div class="relative">
+                            <input type="text" id="desiredStartDate" ng-model="desiredStartDate" name="desiredStartDate" datepick datepicker-popup="MM/dd/yyyy" />
+                            <span class="icon--calendar field__after"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </accordion-segment-group>-->
+            <!--End of Position Information-->
+            <!-- Advertising -->
+            <!--<accordion-segment-group>
+                <accordion-heading>Advertising</accordion-heading>
+                <div class="form__fields">
+                    <div class="form__field form__field--inline">
+                        <label class="form__label">Would you like to advertise : </label>
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="internally">
+                            <label for="internally" class="form__label">Internally</label>
+                        </div>
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="externally">
+                            <label for="externally" class="form__label">Externally</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form__fields">
+                    <div class="form__field col-1-4">
+                        <label class="form__label">Clossing advertising date</label>
+                        <div class="relative">
+                            <input type="text" id="closeAdvertisingDate" ng-model="closeAdvertisingDate" name="closeAdvertisingDate" datepick datepicker-popup="MM/dd/yyyy" />
+                            <span class="icon--calendar field__after"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form__fields">
+                    <label class="form__label" style="text-transform: uppercase">Choose external advertising boards</label>
+                    <div class="form__field col-1-4">
+                        <div class="external--advertising">
+                            <div class="field__checkbox">
+                                <input type="checkbox" id="seek">
+                                <label for="seek" class="form__label"></label>
+                            </div>
+                        </div>
+                        <label class="form__label">SEEK</label>
+                    </div>
+                    <div class="form__field col-1-4">
+                        <div class="external--advertising">
+                            <div class="field__checkbox">
+                                <input type="checkbox" id="careerone">
+                                <label for="careerone" class="form__label"></label>
+                            </div>
+                        </div>
+                        <label class="form__label">Career One</label>
+                    </div>
+                    <div class="form__field col-1-4">
+                        <div class="external--advertising">
+                            <div class="field__checkbox">
+                                <input type="checkbox" id="linkedIn">
+                                <label for="linkedIn" class="form__label"></label>
+                            </div>
+                        </div>
+                        <label class="form__label">LinkedIn</label>
+                    </div>
+                    <div class="form__field col-1-4">
+                        <div class="external--advertising" style="background-image:url('/interface/images/logo--sherpa.png')">
+                            <div class="field__checkbox">
+                                <input type="checkbox" id="addeco">
+                                <label for="addeco" class="form__label"></label>
+                            </div>
+                        </div>
+                        <label class="form__label">Addeco</label>
+                    </div>
+                </div>
+            </accordion-segment-group>-->
+            <!--End of Advertising-->
+            <!--</accordion-segment>-->
+
+            <!--End of old layout-->

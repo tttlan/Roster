@@ -1,0 +1,13 @@
+<div class="post__content">
+    
+    <div class="post__name">
+        <a href="" target="_self" path="network.profile" path-params="post.content.Owner.MemberId">{{ post.content.Owner.FirstName }} {{ post.content.Owner.Surname }}</a> <div class="post__details"> sent you a message</div>
+    </div>
+    <a href="" path="inbox.message" path-params="post.content.Id" class="post__message">
+        <div class="message__icon"><i class="icon--inbox"></i></div>
+        <div class="message__content">
+            {{post.content.subject }}
+            <div class="message__cta">Read message</div>
+        </div>
+    </a>
+</div>

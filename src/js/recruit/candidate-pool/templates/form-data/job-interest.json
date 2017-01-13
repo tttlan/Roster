@@ -1,0 +1,39 @@
+﻿[
+    {
+        "id": "jobinterestForm",
+        "name": "jobinterestForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "Role",
+                "label": "Role",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "Notification",
+                "label": false,
+                "placeholder": "",
+                "val": [],
+                "options": [ { "Label": "Label 1", "Value": 0}, { "Label": "Label 2", "Value": 1 } ],
+                "type": "checkbox-list",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "submitForm",
+                "value": "Save changes",
+                "type": "submit-button",
+                "class": "button--small"
+            }
+        ]
+    }
+]

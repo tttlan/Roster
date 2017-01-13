@@ -1,0 +1,27 @@
+<div class="form__field {{ element.class }}">
+    
+    <p 
+    ng-if="element.label" 
+    class="form__label" 
+    for="{{ formData.name + '__' + element.name + '0' }}"
+    ng-class="{'is--required': element.validation.required}">{{ element.label }}</p>
+
+    <div class="field__radio" ng-repeat="option in element.options">
+                    
+        <input type="radio"
+            id="{{ element.formName + '__' + element.name + $index }}"
+            name="{{element.name}}"
+            ng-value="option.Value"
+            ng-model="element.val"
+            ng-change="{{element.onchange}}"
+            ng-checked="{{option.checked}}"
+        />
+            
+        <label for="{{ element.formName + '__' + element.name + $index }}" class="form__label">{{ option.Label }}</label>
+        
+    </div>
+    <span class="form_note" ng-if="element.note">{{ element.note }}</span>
+    
+    <error-builder></error-builder>
+
+</div>

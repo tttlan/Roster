@@ -1,0 +1,538 @@
+{
+    "data": {
+        "$id": "1",
+        "JobSummaryItems": [
+            {
+                "$id": "2",
+                "JobSummary": {
+                    "$id": "3",
+                    "JobId": 11082,
+                    "NetworkId": 989,
+                    "JobTitle": "asasas",
+                    "Summary": "<p>saaaaaaaaaaaaaaaaaaaaa</p>",
+                    "JobReference": "",
+                    "JobStatusCode": "DRAFT",
+                    "JobLocation": null,
+                    "ApplicationStatus": null,
+                    "Location": "ABBOTSHAM, TAS, 7315",
+                    "Sorter": null,
+                    "Elapse": 0,
+                    "ApplicationCount": 0,
+                    "ActiveApplicationCount": 0,
+                    "StatusOrder": 1,
+                    "StatusDate": "2016-06-22T17:30:31.37"
+                },
+                "EntityActions": [
+                    {
+                        "$id": "4",
+                        "Id": "11082",
+                        "Code": 100101010,
+                        "Caption": "CanViewJob",
+                        "Description": "GET",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11082",
+                        "Children": null
+                    },
+                    {
+                        "$id": "5",
+                        "Id": "11082",
+                        "Code": 100101008,
+                        "Caption": "CanDeleteJob",
+                        "Description": "DELETE",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11082",
+                        "Children": null
+                    },
+                    {
+                        "$id": "6",
+                        "Id": "11082",
+                        "Code": 100101009,
+                        "Caption": "CanCloseJob",
+                        "Description": "PUT",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11082/Close",
+                        "Children": null
+                    }
+                ],
+                "Status": 0
+            },
+            {
+                "$id": "7",
+                "JobSummary": {
+                    "$id": "8",
+                    "JobId": 11081,
+                    "NetworkId": 989,
+                    "JobTitle": "Assistant Cellar Manager",
+                    "Summary": null,
+                    "JobReference": "2605",
+                    "JobStatusCode": "DRAFT",
+                    "JobLocation": null,
+                    "ApplicationStatus": null,
+                    "Location": "ABBEY, WA, 6280",
+                    "Sorter": null,
+                    "Elapse": 0,
+                    "ApplicationCount": 0,
+                    "ActiveApplicationCount": 0,
+                    "StatusOrder": 1,
+                    "StatusDate": "2016-06-22T17:29:52.483"
+                },
+                "EntityActions": [
+                    {
+                        "$id": "9",
+                        "Id": "11081",
+                        "Code": 100101010,
+                        "Caption": "CanViewJob",
+                        "Description": "GET",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11081",
+                        "Children": null
+                    },
+                    {
+                        "$id": "10",
+                        "Id": "11081",
+                        "Code": 100101008,
+                        "Caption": "CanDeleteJob",
+                        "Description": "DELETE",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11081",
+                        "Children": null
+                    },
+                    {
+                        "$id": "11",
+                        "Id": "11081",
+                        "Code": 100101009,
+                        "Caption": "CanCloseJob",
+                        "Description": "PUT",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11081/Close",
+                        "Children": null
+                    }
+                ],
+                "Status": 0
+            },
+            {
+                "$id": "12",
+                "JobSummary": {
+                    "$id": "13",
+                    "JobId": 11078,
+                    "NetworkId": 989,
+                    "JobTitle": "1662eube0m",
+                    "Summary": "1662eube0m",
+                    "JobReference": "",
+                    "JobStatusCode": "DRAFT",
+                    "JobLocation": null,
+                    "ApplicationStatus": null,
+                    "Location": "ABBEY, WA, 6280",
+                    "Sorter": null,
+                    "Elapse": 0,
+                    "ApplicationCount": 0,
+                    "ActiveApplicationCount": 0,
+                    "StatusOrder": 1,
+                    "StatusDate": "2016-06-22T17:20:04.08"
+                },
+                "EntityActions": [
+                    {
+                        "$id": "14",
+                        "Id": "11078",
+                        "Code": 100101010,
+                        "Caption": "CanViewJob",
+                        "Description": "GET",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11078",
+                        "Children": null
+                    },
+                    {
+                        "$id": "15",
+                        "Id": "11078",
+                        "Code": 100101008,
+                        "Caption": "CanDeleteJob",
+                        "Description": "DELETE",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11078",
+                        "Children": null
+                    },
+                    {
+                        "$id": "16",
+                        "Id": "11078",
+                        "Code": 100101009,
+                        "Caption": "CanCloseJob",
+                        "Description": "PUT",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11078/Close",
+                        "Children": null
+                    }
+                ],
+                "Status": 0
+            },
+            {
+                "$id": "17",
+                "JobSummary": {
+                    "$id": "18",
+                    "JobId": 11077,
+                    "NetworkId": 989,
+                    "JobTitle": "Jun22_0518",
+                    "Summary": "<p>Jun22_0518<br></p>",
+                    "JobReference": "",
+                    "JobStatusCode": "PUBLISHED",
+                    "JobLocation": null,
+                    "ApplicationStatus": null,
+                    "Location": "ABBOTSHAM, TAS, 7315",
+                    "Sorter": null,
+                    "Elapse": 0,
+                    "ApplicationCount": 0,
+                    "ActiveApplicationCount": 0,
+                    "StatusOrder": 2,
+                    "StatusDate": "2016-06-22T17:19:03.943"
+                },
+                "EntityActions": [
+                    {
+                        "$id": "19",
+                        "Id": "11077",
+                        "Code": 100101010,
+                        "Caption": "CanViewJob",
+                        "Description": "GET",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11077",
+                        "Children": null
+                    },
+                    {
+                        "$id": "20",
+                        "Id": "11077",
+                        "Code": 100101008,
+                        "Caption": "CanDeleteJob",
+                        "Description": "DELETE",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11077",
+                        "Children": null
+                    },
+                    {
+                        "$id": "21",
+                        "Id": "11077",
+                        "Code": 100101009,
+                        "Caption": "CanCloseJob",
+                        "Description": "PUT",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11077/Close",
+                        "Children": null
+                    }
+                ],
+                "Status": 0
+            },
+            {
+                "$id": "22",
+                "JobSummary": {
+                    "$id": "23",
+                    "JobId": 11076,
+                    "NetworkId": 989,
+                    "JobTitle": "1662eube0m",
+                    "Summary": "1662eube0m",
+                    "JobReference": "",
+                    "JobStatusCode": "DRAFT",
+                    "JobLocation": null,
+                    "ApplicationStatus": null,
+                    "Location": "ABBEY, WA, 6280",
+                    "Sorter": null,
+                    "Elapse": 0,
+                    "ApplicationCount": 0,
+                    "ActiveApplicationCount": 0,
+                    "StatusOrder": 1,
+                    "StatusDate": "2016-06-22T17:13:48.633"
+                },
+                "EntityActions": [
+                    {
+                        "$id": "24",
+                        "Id": "11076",
+                        "Code": 100101010,
+                        "Caption": "CanViewJob",
+                        "Description": "GET",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11076",
+                        "Children": null
+                    },
+                    {
+                        "$id": "25",
+                        "Id": "11076",
+                        "Code": 100101008,
+                        "Caption": "CanDeleteJob",
+                        "Description": "DELETE",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11076",
+                        "Children": null
+                    },
+                    {
+                        "$id": "26",
+                        "Id": "11076",
+                        "Code": 100101009,
+                        "Caption": "CanCloseJob",
+                        "Description": "PUT",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11076/Close",
+                        "Children": null
+                    }
+                ],
+                "Status": 0
+            },
+            {
+                "$id": "27",
+                "JobSummary": {
+                    "$id": "28",
+                    "JobId": 11075,
+                    "NetworkId": 989,
+                    "JobTitle": "Jun22_0510",
+                    "Summary": "<p>Jun22_0510<br></p><p>Jun22_0510<br></p><p>Jun22_0510<br></p><p>Jun22_0510<br></p><p>Jun22_0510Jun22_0510Jun22_0510<br></p>",
+                    "JobReference": "",
+                    "JobStatusCode": "PUBLISHED",
+                    "JobLocation": null,
+                    "ApplicationStatus": null,
+                    "Location": "ABBOTSHAM, TAS, 7315",
+                    "Sorter": null,
+                    "Elapse": 0,
+                    "ApplicationCount": 0,
+                    "ActiveApplicationCount": 0,
+                    "StatusOrder": 2,
+                    "StatusDate": "2016-06-22T17:11:06.22"
+                },
+                "EntityActions": [
+                    {
+                        "$id": "29",
+                        "Id": "11075",
+                        "Code": 100101010,
+                        "Caption": "CanViewJob",
+                        "Description": "GET",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11075",
+                        "Children": null
+                    },
+                    {
+                        "$id": "30",
+                        "Id": "11075",
+                        "Code": 100101008,
+                        "Caption": "CanDeleteJob",
+                        "Description": "DELETE",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11075",
+                        "Children": null
+                    },
+                    {
+                        "$id": "31",
+                        "Id": "11075",
+                        "Code": 100101009,
+                        "Caption": "CanCloseJob",
+                        "Description": "PUT",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11075/Close",
+                        "Children": null
+                    }
+                ],
+                "Status": 0
+            },
+            {
+                "$id": "32",
+                "JobSummary": {
+                    "$id": "33",
+                    "JobId": 11074,
+                    "NetworkId": 989,
+                    "JobTitle": "verify 26163 - Copy",
+                    "Summary": "<p>verify 26163<br></p>",
+                    "JobReference": "",
+                    "JobStatusCode": "CLOSED",
+                    "JobLocation": null,
+                    "ApplicationStatus": null,
+                    "Location": "Ballarat & Central Highlands, Victoria",
+                    "Sorter": null,
+                    "Elapse": 0,
+                    "ApplicationCount": 0,
+                    "ActiveApplicationCount": 0,
+                    "StatusOrder": 4,
+                    "StatusDate": "2016-06-22T17:07:19.7"
+                },
+                "EntityActions": [
+                    {
+                        "$id": "34",
+                        "Id": "11074",
+                        "Code": 100101010,
+                        "Caption": "CanViewJob",
+                        "Description": "GET",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11074",
+                        "Children": null
+                    },
+                    {
+                        "$id": "35",
+                        "Id": "11074",
+                        "Code": 100101008,
+                        "Caption": "CanDeleteJob",
+                        "Description": "DELETE",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11074",
+                        "Children": null
+                    },
+                    {
+                        "$id": "36",
+                        "Id": "11074",
+                        "Code": 100101009,
+                        "Caption": "CanCloseJob",
+                        "Description": "PUT",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11074/Close",
+                        "Children": null
+                    }
+                ],
+                "Status": 0
+            },
+            {
+                "$id": "37",
+                "JobSummary": {
+                    "$id": "38",
+                    "JobId": 10984,
+                    "NetworkId": 989,
+                    "JobTitle": "verify 26163",
+                    "Summary": "<p>verify 26163<br></p>",
+                    "JobReference": "",
+                    "JobStatusCode": "CLOSED",
+                    "JobLocation": null,
+                    "ApplicationStatus": null,
+                    "Location": "Ballarat & Central Highlands, Victoria",
+                    "Sorter": null,
+                    "Elapse": 5,
+                    "ApplicationCount": 0,
+                    "ActiveApplicationCount": 0,
+                    "StatusOrder": 4,
+                    "StatusDate": "2016-06-22T17:07:13.077"
+                },
+                "EntityActions": [
+                    {
+                        "$id": "39",
+                        "Id": "10984",
+                        "Code": 100101010,
+                        "Caption": "CanViewJob",
+                        "Description": "GET",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/10984",
+                        "Children": null
+                    },
+                    {
+                        "$id": "40",
+                        "Id": "10984",
+                        "Code": 100101008,
+                        "Caption": "CanDeleteJob",
+                        "Description": "DELETE",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/10984",
+                        "Children": null
+                    },
+                    {
+                        "$id": "41",
+                        "Id": "10984",
+                        "Code": 100101009,
+                        "Caption": "CanCloseJob",
+                        "Description": "PUT",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/10984/Close",
+                        "Children": null
+                    }
+                ],
+                "Status": 0
+            },
+            {
+                "$id": "42",
+                "JobSummary": {
+                    "$id": "43",
+                    "JobId": 11072,
+                    "NetworkId": 989,
+                    "JobTitle": "(^) Happy birthday to you",
+                    "Summary": "<p>(^) Happy birthday to you<br></p>",
+                    "JobReference": "",
+                    "JobStatusCode": "DRAFT",
+                    "JobLocation": null,
+                    "ApplicationStatus": null,
+                    "Location": "Devonport & North West, Tasmania",
+                    "Sorter": null,
+                    "Elapse": 0,
+                    "ApplicationCount": 0,
+                    "ActiveApplicationCount": 0,
+                    "StatusOrder": 1,
+                    "StatusDate": "2016-06-22T16:57:08.477"
+                },
+                "EntityActions": [
+                    {
+                        "$id": "44",
+                        "Id": "11072",
+                        "Code": 100101010,
+                        "Caption": "CanViewJob",
+                        "Description": "GET",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11072",
+                        "Children": null
+                    },
+                    {
+                        "$id": "45",
+                        "Id": "11072",
+                        "Code": 100101008,
+                        "Caption": "CanDeleteJob",
+                        "Description": "DELETE",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11072",
+                        "Children": null
+                    },
+                    {
+                        "$id": "46",
+                        "Id": "11072",
+                        "Code": 100101009,
+                        "Caption": "CanCloseJob",
+                        "Description": "PUT",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11072/Close",
+                        "Children": null
+                    }
+                ],
+                "Status": 0
+            },
+            {
+                "$id": "47",
+                "JobSummary": {
+                    "$id": "48",
+                    "JobId": 11063,
+                    "NetworkId": 989,
+                    "JobTitle": "Jun22_1252",
+                    "Summary": "<p>Jun22_1252<br></p><p>Jun22_1252<br></p><p>Jun22_1252Jun22_1252<br></p><p>v</p><p>Jun22_1252<br></p><p>Jun22_1252Jun22_1252<br></p><p>Jun22_1252Jun22_1252<br></p>",
+                    "JobReference": "",
+                    "JobStatusCode": "CLOSED",
+                    "JobLocation": null,
+                    "ApplicationStatus": null,
+                    "Location": "ABBOTSHAM, TAS, 7315",
+                    "Sorter": null,
+                    "Elapse": 0,
+                    "ApplicationCount": 0,
+                    "ActiveApplicationCount": 0,
+                    "StatusOrder": 4,
+                    "StatusDate": "2016-06-22T12:52:59.247"
+                },
+                "EntityActions": [
+                    {
+                        "$id": "49",
+                        "Id": "11063",
+                        "Code": 100101010,
+                        "Caption": "CanViewJob",
+                        "Description": "GET",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11063",
+                        "Children": null
+                    },
+                    {
+                        "$id": "50",
+                        "Id": "11063",
+                        "Code": 100101008,
+                        "Caption": "CanDeleteJob",
+                        "Description": "DELETE",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11063",
+                        "Children": null
+                    },
+                    {
+                        "$id": "51",
+                        "Id": "11063",
+                        "Code": 100101009,
+                        "Caption": "CanCloseJob",
+                        "Description": "PUT",
+                        "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs/11063/Close",
+                        "Children": null
+                    }
+                ],
+                "Status": 0
+            }
+        ],
+        "EntityActions": [
+            {
+                "$id": "52",
+                "Id": null,
+                "Code": 2504,
+                "Caption": "CanAddJob",
+                "Description": "POST",
+                "ActionUrl": "http://api.test3.sherpasystems.net.au/api/recruitments/Jobs",
+                "Children": null
+            }
+        ],
+        "Pagination": {
+            "$id": "53",
+            "TotalCount": 468,
+            "TotalPages": 47,
+            "PageSize": 10,
+            "Page": 2
+        },
+        "Status": 0
+    },
+    "status": 200,
+    "config": {}
+}

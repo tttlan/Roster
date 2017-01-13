@@ -1,0 +1,186 @@
+<div ng-form="personalForm_{{onboard.OnboardId}}">
+    <table class="table-form table-form--full-width">
+        <tbody ng-class="{'is--editing': isOnboardPhaseNew(subItems[0]) || isOnboardPhaseUndefined(subItems[0]) || onboard.state.isEditable }" class="noborder">
+            <tr>
+                <td class="table-form__edit-parent" ng-if="!isSingle"></td>
+                <td class="table-form__edit-parent" ng-if="!isSingle && (onboard.Permissions.editpersonalinformation || onboard.Permissions.editcandidatecontacts || onboard.Permissions.splitonboard)">
+                    <div>
+                        <a href="" dropdown-toggle><i class="icon--ellipsis align-right icon-is-large"></i></a>
+                        <ul class="submenu dropdown-menu">
+                            <li class="submenu__item" ng-class="{'is--active' : isMenuEditActive(onboard)}" ng-if="onboard.Permissions.editpersonalinformation || onboard.Permissions.editcandidatecontacts">
+                                <a href="" ng-click="toggleCandidateEditable(onboard)">
+                                    Edit
+                                </a>
+                            </li>
+                            <li class="submenu__item" ng-class="{'is--active' : isMenuBulkRemoveCandidateActive(onboard)}" ng-if="onboard.Permissions.splitonboard">
+                                <a href=""
+                                   ng-confirm-click="removeCandidateFromBulk(onboard)"
+                                   ng-disabled="onboard.isSubmitting">Remove from bulk</a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-form__edit-parent no__padding--right" colspan="2">
+                    <span class="table-form__form-value">
+                        <div class="form__label--style">Title</div>
+                        <div>{{onboard.CandidatePersonalInfo.Title }}</div>
+                    </span>
+
+                    <div class="table-form__form-field" style="width: 25%;">
+                        <div class="form__field is--required">
+                            <label for="onboarding__Salutation"
+                                   class="form__label form__label--style is--uppercase">Salutation</label>
+
+                            <input-salutation name="onboarding__Salutation"
+                                              object="onboard.salutation"
+                                              ng-model="onboard.CandidatePersonalInfo.Salutation"
+                                              ng-required="true"></input-salutation>
+
+                            <form-errors input="personalForm.onboarding__Salutation">
+                                <form-error error-key="required"
+                                            error-text="'Salutation' is required."></form-error>
+                            </form-errors>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-form__edit-parent no__padding--right">
+                    <span class="table-form__form-value">
+                        <div class="form__label--style">Name</div>
+                        <div>{{onboard.CandidatePersonalInfo.FirstName}}</div>
+                    </span>
+                    <div class="table-form__form-field">
+                        <div class="form__field is--required">
+                            <label for="onboarding__FirstName"
+                                   class="form__label form__label--style is--uppercase">Name</label>
+                            <input type="text"
+                                   id="onboarding__FirstName"
+                                   name="onboarding__FirstName"
+                                   ng-model="onboard.CandidatePersonalInfo.FirstName"
+                                   required>
+
+                            <form-errors input="personalForm.onboarding__FirstName">
+                                <form-error error-key="required"
+                                            error-text="'First Name' is required."></form-error>
+                            </form-errors>
+                        </div>
+                    </div>
+                </td>
+                <td class="table-form__edit-parent no__padding--right">
+                    <span class="table-form__form-value">
+                        <div class="form__label--style">Surname</div>
+                        <div>{{onboard.CandidatePersonalInfo.Surname}}</div>
+                    </span>
+                    <div class="table-form__form-field">
+
+                        <div class="form__field is--required">
+                            <label for="onboarding__Surname"
+                                   class="form__label--style">Surname</label>
+                            <input type="text"
+                                   id="onboarding__Surname"
+                                   name="onboarding__Surname"
+                                   ng-model="onboard.CandidatePersonalInfo.Surname"
+                                   required>
+
+                            <form-errors input="personalForm.onboarding__Surname">
+                                <form-error error-key="required"
+                                            error-text="'Surname' is required."></form-error>
+                            </form-errors>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="table-form__edit-parent no__padding--right">
+                    <span class="table-form__form-value">
+                        <div class="form__label--style">Preferred Name</div>
+                        <div>{{onboard.CandidatePersonalInfo.PreferredName}}</div>
+                    </span>
+                    <div class="table-form__form-field">
+                        <div class="form__field">
+                            <label for="onboarding__PreferredName"
+                                   class="form__label--style">Preferred Name</label>
+                            <input type="text"
+                                   id="onboarding__PreferredName"
+                                   name="onboarding__PreferredName"
+                                   ng-model="onboard.CandidatePersonalInfo.PreferredName">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-form__edit-parent no__padding--right">
+                    <span class="table-form__form-value" ng-if="OnSettings.IsRequireBirthday === true">
+                        <div class="form__label--style">Date of Birth</div>
+                        <div>{{onboard.CandidatePersonalInfo.BirthDay ? (onboard.CandidatePersonalInfo.BirthDay | dateOnly) : ''}}</div>
+                    </span>
+
+                    <div class="table-form__form-field" style="float: left; margin-right: 10px;" ng-if="OnSettings.IsRequireBirthday === true">
+                        <div class="form__field is--required">
+                            <label for="onboarding__BirthDay__{{$index}}" class="form__label form__label--style">Date Of Birth</label>
+                            <div class="relative" style="float: left;">
+                                <input type="text"
+                                       id="onboarding__BirthDay__{{$index}}"
+                                       name="onboarding__BirthDay__{{$index}}"
+                                       ng-model="onboard.CandidatePersonalInfo.BirthDay"
+                                       required
+                                       datepick
+                                       datepicker-popup="d MMM yyyy"
+                                       validate-date-greater>
+                                <span class="icon--calendar field__after"></span>
+                            </div>
+
+                            <form-errors input="personalForm.onboarding__BirthDay__$index">
+                                <form-error error-key="required"
+                                            error-text="'Date Of Birth' is required."></form-error>
+                            </form-errors>
+
+                            <form-errors input="personalForm.onboarding__BirthDay__$index">
+                                <form-error error-key="validateDateGreater"
+                                            error-text="Invalid birth date."></form-error>
+                            </form-errors>
+                            <label class="form__note form__note--error" ng-show="checkYearOldCandidate(onboard.CandidatePersonalInfo.BirthDay) ">Parental consent is required </label>
+
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <span class="table-form__form-value">
+                        <div class="form__label--style">Gender</div>
+                        <div>{{onboard.CandidatePersonalInfo.Sex | uppercase}}</div>
+                    </span>
+
+                    <div class="table-form__form-field" style="float: left; width: 45%;">
+                        <div class="form__field">
+                            <label for="onboarding__Sex__{{$index}}"
+                                   class="form__label  is--required form__label--style">Gender</label>
+                            <div class="field__radio" style="float: left; margin-right: 10px;">
+                                <input type="radio"
+                                       id="onboarding__Sex__1__{{$index}}"
+                                       name="onboarding__Sex__{{$index}}"
+                                       value="m"
+                                       ng-model="onboard.CandidatePersonalInfo.Sex">
+                                <label for="onboarding__Sex__1__{{$index}}"
+                                       class="form__label">Male</label>
+                            </div>
+
+                            <div class="field__radio" style="float: left;">
+                                <input type="radio"
+                                       id="onboarding__Sex__2__{{$index}}"
+                                       name="onboarding__Sex__{{$index}}"
+                                       value="f"
+                                       ng-model="onboard.CandidatePersonalInfo.Sex">
+                                <label for="onboarding__Sex__2__{{$index}}"
+                                       class="form__label">Female</label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,262 @@
+segment()
+    whiteWithBorder();
+    clearfix();
+
+    position: relative;
+    margin: gutter 0;
+    padding: (gutter / 2);
+    border-radius: base-border-radius;
+
+    /* No padding on edge content */
+
+    &:first-child,
+    > :first-child
+        margin-top: 0
+
+    &:last-child ,
+    > :last-child
+        margin-bottom: 0
+
+
+
+.ui
+
+    .segment {
+        segment();
+
+        @media maxTablet {
+            h1 {
+              font-size: 20px
+            }
+            p {
+              font-family: 12px
+            }
+        }
+
+        h1 {
+            margin-bottom:20px;
+        }
+
+        .is--loading:before ,
+        &.is--loading:before {
+            background-color: white;
+        }
+    }
+
+    // Multiple segments
+    //
+    // Use this for multiple segments
+    //
+    // Markup:
+    // <div class="segments">
+    //    <div class="segment">
+    //        <p>I'm a bit of content in a segment</p>
+    //     </div>
+    //    <div class="segment">
+    //        <p>I'm a bit of content in a segment</p>
+    //     </div>
+    //    <div class="segment">
+    //        <p>I'm a bit of content in a segment</p>
+    //     </div>
+    // </div>
+    //
+    // Styleguide elements.segment.segments
+
+    .segments {
+
+        margin-bottom: gutter;
+
+        .segment {
+            margin: 0;
+            border-top: 0;
+            border-bottom: 0;
+            border-radius: 0;
+
+            &:first-child {
+                border-top: solid 1px default-border-color;
+                border-radius: base-border-radius base-border-radius 0 0;
+            }
+
+            &:last-child {
+                border-bottom: solid 1px default-border-color;
+                border-radius: 0 0 base-border-radius base-border-radius;
+            }
+        }
+
+        .segment  {
+
+        }
+    }
+
+
+    // Segment variations
+    //
+    // Markup:
+    // <div class="segment {{modifier_class}}">
+    //     <p>I'm a bit of content in a segment</p>
+    // </div>
+    //
+    // .segment--centered - Center a segment
+    // .segment--popup - Use me in a modal.  I'm not currently used anywhere and may be deleted
+    // .segment--bordered - Segment with a primary coloured left border
+    // .segment--outline - Segment with an outline
+    // .segment--mid-padding - Segment with a medium amount of padding
+    // .segment--large-padding - Segment with a large amount of padding
+    // .segment--no-padding - Segment with no padding
+    //
+    // Styleguide elements.segment.variations
+
+    .segment--centered {
+        max-width: 320px;
+        margin: 0 auto !important;
+    }
+
+    .segment--popup {
+        vertical-align();
+        width:95%;
+        max-width:320px;
+        margin:0 auto;
+        overflow:hidden;
+        z-index:2;
+    }
+
+    .segment--bordered {
+        border-left: solid 3px primary;
+    }
+
+    .segment--outline {
+        background-color: transparent;
+    }
+
+    .segment--gutter-right {
+
+        @media minTablet {
+            padding-right: 20.5%;
+        }
+    }
+
+    .segment--mid-padding {
+
+        @media minTablet { // Extra padding is a desktop only style
+            padding: gutter;
+        }
+    }
+
+    .segment--large-padding {
+
+        @media minTablet { // Extra padding is a desktop only style
+            padding: gutter (gutter * 1.375);
+        }
+    }
+
+    .segment--mid-padding
+    .segment--large-padding {
+        // Reset this as the extra padding on the segment remove the need for it
+        fieldset:first-child {
+            margin-top: 0 !important;
+        }
+        h1:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .segment--no-padding {
+        padding: 0;
+
+        .segment-heading-block__heading {
+            margin: 0;
+        }
+    }
+
+
+    // Segment heading
+    // ----------------------------------------------
+
+    .segment-heading-block,
+    .segment-heading-block:first-child {
+
+        margin-top: -(gutter/2);
+        margin-left: -(gutter/2);
+        margin-right: -(gutter/2);
+        margin-bottom: (gutter/2);
+        background: #fcfcfc;
+        padding: (gutter/2);
+        border-bottom: solid 1px default-border-color;
+        border-radius: base-border-radius base-border-radius 0 0;
+        position: relative;
+    }
+
+    .segment--no-padding {
+
+        .segment-heading-block,
+        .segment-heading-block:first-child {
+
+            margin: 0;
+        }
+    }
+
+    .segment-heading-block__heading {
+
+        margin: 0;
+        text-transform: uppercase;
+        color: grey2;
+        font-size: 0.9em;
+        letter-spacing: 0;
+        font-weight: 700;
+        line-height: 1.2em;
+
+        [class*="icon--"] {
+
+            margin-right: 0.7em;
+            font-size: 1.1em;
+            line-height: 1.2em;
+            vertical-align: text-bottom;
+        }
+    }
+
+    .segment-heading-block__heading--sub {
+
+        margin: 2em 0 1.7em 0;
+    }
+
+
+    // Segment fieldset
+    // ----------------------------------------------
+
+    .segment__fieldset {
+        margin: 0 0 2em 0;
+        padding: 0;
+    }
+
+    .segment__fieldset-heading {
+
+        margin: 2em 0 1em 0;
+        padding: 0 0 0.7em 0;
+        border-bottom: solid 1px default-border-color;
+        position: relative;
+
+        // Align child headings to the left and right sides of the parent
+        text-align: justify;
+
+        &:first-child {
+            margin-top: 0.3em;
+        }
+
+        h2 {
+            @extends .ui .segment-heading-block__heading
+
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+        }
+    }
+
+    .segment__fieldset-heading-cta {
+
+        @extends .ui .segment-heading-block__heading
+
+        color: primary;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+    }

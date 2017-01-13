@@ -1,0 +1,38 @@
+.ui
+  .applicant-comment
+    clearfix();
+    position: relative
+    img
+      display: inline-block;
+      float: left;
+      margin-right: 10px;
+      @media maxPhablet
+        margin-bottom: 10px;
+    &__form-field
+      width: 90%;
+      border: 1px solid #c7c7c7;
+      padding: 5px;
+      border-radius: 5px;
+      float: left;
+      @media maxPhablet
+        width: 85%;
+      @media betweenPhabletSmallTablet
+        width: 85%;
+      textarea
+        border: none;
+        display: inline-block;
+        float: left;
+        width: 90%
+        margin-bottom: 20px;
+        @media maxPhablet
+          width: 82%;
+        @media betweenPhabletSmallTablet
+          width: 85%;
+      &__reactions
+        width: 10%
+        text-align: right;
+        position: relative;
+        @media maxPhablet
+          width: 20%;
+        @media betweenPhabletSmallTablet
+          width: 20%;

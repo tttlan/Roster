@@ -1,0 +1,8 @@
+<div class="select-wrapper">
+    <select ng-model="selectModel"
+            ng-options="company as company.Label for company in companies.data track by company.Value"
+            ng-disabled="companies.loading">
+        <option selected value="">Please select a Company</option>
+    </select>
+    <span class="select">{{ val ? val : ngModel.Label}}</span>
+</div>

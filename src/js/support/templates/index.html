@@ -1,0 +1,47 @@
+<div class="page page--1-c">
+
+    <div class="page__wrapper">
+
+        <div class="page__content">
+
+            <h1>Support</h1>
+
+            <tabs>
+                
+                <ul class="nav nav--tabs" overflow>
+                    <li tab-link active><a href="">Frequently asked questions</a></li>
+                    <li tab-link><a href="">Support requests</a></li>
+                </ul>
+
+                <div class="tab-group segment segment--mid-padding">
+                    <div tab-content class="tab-group__tab" ng-controller="supportFAQS">
+
+                        <h2>Read our frequently asked questions</h2>
+
+                        <accordion>
+                            <accordion-group ng-repeat="faq in faqs.topics">
+                                <accordion-heading>{{faq.title}}</accordion-heading>
+                                <span ng-bind-html="faq.body"></span>
+                            </accordion-group>                                                    
+                        </accordion>
+
+                    </div>
+
+                    <div tab-content class="tab-group__tab" ng-controller="supportRequests">
+                        
+                        <h2>Log a support request</h2>
+                        
+                        <form-builder form-id="supportRequest" form-data-url="/interfaceTemplates/mock-data/support-request-form.json" submit="sendSupportRequest" model-data="modelData">
+                
+                        </form-builder>
+
+                    </div>
+                </div>
+
+            </tabs>
+
+        </div>
+
+    </div>
+
+</div>

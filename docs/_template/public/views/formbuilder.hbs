@@ -1,0 +1,341 @@
+[
+    {
+        "id": "form",
+        "name": "formbuilder",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "input",
+                "label": "Standard input",
+                "placeholder": "Enter email Address",
+                "value": "",
+                "classes": "",
+                "type": "input",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "email",
+                "label": "Email Address",
+                "placeholder": "Enter email Address",
+                "value": "",
+                "classes": "",
+                "type": "email",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "url",
+                "label": "Url",
+                "placeholder": "Enter url",
+                "value": "",
+                "classes": "",
+                "type": "url",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "password",
+                "label": "Password",
+                "placeholder": "",
+                "value": "",
+                "classes": "",
+                "type": "password",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "url",
+                "label": "Email Address",
+                "placeholder": "Enter url",
+                "value": "",
+                "classes": "",
+                "type": "url",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "formfields",
+                "type": "form-fields",
+                "children": [
+                    {
+                        "name": "username",
+                        "label": "Username",
+                        "placeholder": "Username",
+                        "value": "",
+                        "class": "test",
+                        "type": "input",
+                        "validation": {
+                            "required": true,
+                            "minLength": 2,
+                            "maxLength": 12
+                        },
+                        "note": "This can be an email address or unique username"
+                    },
+                    {
+                        "name": "password",
+                        "label": "Password",
+                        "placeholder": "",
+                        "value": "",
+                        "type": "password",
+                        "validation": {
+                            "required": true,
+                            "minLength": 2,
+                            "maxLength": 12
+                        },
+                        "note": "Don't forget your password"
+                    }
+                ]
+            },
+            {
+                "name": "textarea",
+                "label": "For large amounts of text",
+                "placeholder": "Enter some text",
+                "value": "",
+                "type": "textarea",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "richtext",
+                "label": "Rich text",
+                "val": "",
+                "type": "richtext",
+                "richTextConfig": "simple",
+                "class": "",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "checkbox",
+                "label": "Check me",
+                "placeholder": "",
+                "value": "",
+                "type": "checkbox",
+                "validation": {
+                    "required": true
+                },
+                "note": "Don't forget to check me!"
+            },
+            {
+                "name": "radios",
+                "label": "What sex are you?",
+                "options": [
+                    {
+                        "Label": "Male",
+                        "Value": "m",
+                        "checked": true
+                    },
+                    {
+                        "Label": "Female",
+                        "Value": "f"
+                    },
+                    {
+                        "Label": "Other",
+                        "Value": "asd"
+                    }
+                ],
+                "type": "radio",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "toggle",
+                "label": "Toggle me",
+                "placeholder": "",
+                "val": false,
+                "type": "toggle",
+                "class": "",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "file",
+                "label": "Upload a file",
+                "value": "",
+                "type": "file",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "date",
+                "label": "Date of Birth",
+                "value": "",
+                "type": "date",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "time",
+                "label": "What's the time bruz?",
+                "value": "",
+                "type": "time",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "datetime",
+                "label": "Date and time",
+                "placeholder": "",
+                "val": "",
+                "type": "date-time",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "dateFuture": true,
+                    "customErrorMessage": "The start date and time of the event must be before the end date and time of the event"
+                }
+            },
+            {
+                "name": "hidden",
+                "value": "nobody knows",
+                "type": "hidden",
+                "validation": {
+                }
+            },
+            {
+                "name": "select",
+                "label": "Select some stuff",
+                "options": [
+                    {
+                        "Label": "Are  you a male",
+                        "Value": "male",
+                        "checked": true
+                    },
+                    {
+                        "Label": "female",
+                        "Value": "female"
+                    },
+                    {
+                        "Label": "Other",
+                        "Value": "asd"
+                    }
+                ],
+                "type": "select",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "selectGroup",
+                "label": "Select a group",
+                "type": "select-group",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "selectRole",
+                "label": "Select a role",
+                "type": "select-role",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "fieldset",
+                "type": "fieldset",
+                "title": "I am a legend tag",
+                "children": [
+                    {
+                        "name": "input1",
+                        "label": "Standard input",
+                        "placeholder": "Enter some text",
+                        "value": "",
+                        "classes": "",
+                        "type": "input",
+                        "validation": {
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "input2",
+                        "label": "Standard input",
+                        "placeholder": "Enter some text",
+                        "value": "",
+                        "classes": "",
+                        "type": "input",
+                        "validation": {
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "input3",
+                        "label": "Standard input",
+                        "placeholder": "Enter some text",
+                        "value": "",
+                        "classes": "",
+                        "type": "input",
+                        "validation": {
+                            "required": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "linkbutton",
+                "text": "I link to somewhere",
+                "class": "",
+                "type": "link-button",
+                "validation": {
+
+                }
+            },
+            {
+                "name": "buttongroup",
+                "type": "button-group",
+                "children": [
+                    {
+                        "name": "button1",
+                        "text": "Un oh",
+                        "class": "button--negative",
+                        "type": "link-button",
+                        "validation": {
+
+                        }
+                    },
+                    {
+                        "name": "button2",
+                        "text": "Hmmmm...",
+                        "class": "button--caution",
+                        "type": "link-button",
+                        "validation": {
+
+                        }
+                    },
+                    {
+                        "name": "button3",
+                        "placeholder": "",
+                        "value": "Submit",
+                        "type": "submit-button"
+                    }
+                ]
+            },
+            {
+                "name": "submit",
+                "placeholder": "",
+                "value": "Submit",
+                "type": "submit-button"
+            },
+            {
+                "name": "reset",
+                "placeholder": "",
+                "text": "Reset the form",
+                "type": "reset-button"
+            }
+        ]
+    }
+]

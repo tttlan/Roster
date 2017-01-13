@@ -1,0 +1,62 @@
+<article class="card fadeUp" masonry-brick ng-repeat="event in cards | limitTo:cardLimit"  ng-style="event.position" ng-class="{'in': isVisible}">
+
+    <div class="card__inner">
+
+        <a ng-if="event.EventFeedEntrySummary.PhotoSmlId" href="" path="events.details" path-params="::event.EventFeedEntrySummary.EventId" class="card__feature-image-container">        
+            
+            <div class="card__feature-image-overflow-wrapper">
+                <img class="card__feature-image" file-link="{{ ::event.EventFeedEntrySummary.PhotoSmlId }}" alt="{{event.EventFeedEntrySummary.Title}}" />
+                <!--<static-map class="card__feature-image" ng-if="!event.EventFeedEntrySummary.PhotoSmlId" address="{{ event.EventFeedEntrySummary.Address }}" width="{{mapWidth}}" height="{{mapHeight}}"></static-map>-->
+            </div>
+
+            <card-date start-date="event.EventFeedEntrySummary.StartDate" end-date="event.EventFeedEntrySummary.EndDate" class="events__date"></card-date>
+            
+            <avatar size="small" img-src="event.EventFeedEntrySummary.Owner.PhotoThumb" class="card__avatar" tooltip="Event created by {{event.EventFeedEntrySummary.Owner.FirstName}} {{event.EventFeedEntrySummary.Owner.Surname}}" tooltip-placement="right"></avatar>
+            
+        </a>
+        
+        <card-date ng-if="!event.EventFeedEntrySummary.PhotoSmlId" start-date="event.EventFeedEntrySummary.StartDate" end-date="event.EventFeedEntrySummary.EndDate" class="events__date"></card-date>
+        
+        <avatar ng-if="!event.EventFeedEntrySummary.PhotoSmlId" size="small" img-src="event.EventFeedEntrySummary.Owner.PhotoThumb" class="card__avatar" tooltip="Event created by {{event.EventFeedEntrySummary.Owner.FirstName}} {{event.EventFeedEntrySummary.Owner.Surname}}" tooltip-placement="right"></avatar>
+        
+        <div class="card__content">
+
+            <h2 class="events__title"><a href="" path="events.details" path-params="::event.EventFeedEntrySummary.EventId">{{ event.EventFeedEntrySummary.Title }}</a></h2>
+            
+            <p>
+                <span ng-if="event.EventFeedEntrySummary.EndDate && (event.EventFeedEntrySummary.StartDate | day) !== (event.EventFeedEntrySummary.EndDate | day)">Starting at {{event.EventFeedEntrySummary.StartDate | time}}</span>
+
+                <span ng-if="(event.EventFeedEntrySummary.StartDate | day) === (event.EventFeedEntrySummary.EndDate | day)">{{event.EventFeedEntrySummary.StartDate | time}}<span ng-if="event.EventFeedEntrySummary.EndDate"> - {{event.EventFeedEntrySummary.EndDate | time}}</span></span>
+                
+                <span ng-if="event.EventFeedEntrySummary.Location" class="events__location"><br />{{event.EventFeedEntrySummary.Location}}</span>
+                
+                <small ng-if="event.EventFeedEntrySummary.MaxAttending" class="events__capacity"><br />Event capacity: <ng-pluralize count="event.EventFeedEntrySummary.MaxAttending"
+                    when="{'one': '1 person',
+                           'other': '{} people'}">
+                </ng-pluralize></small>
+            </p>
+
+            <div class="card__actions" ng-switch on="event.EventFeedEntrySummary.MemberInviteStatus">
+                <span ng-switch-when="1" class="label label--icon label--positive" tooltip="{{event.EventFeedEntrySummary.AttendCount}} {{event.EventFeedEntrySummary.AttendCount === 1 ? 'person is' : 'people are'}} attending, {{event.EventFeedEntrySummary.InviteCount}} {{event.EventFeedEntrySummary.InviteCount === 1 ? 'is' : 'are'}} invited" tooltip-placement="right"><i class="icon--check"></i>Attending</span>
+                <span ng-switch-when="2" class="label label--caution" tooltip="{{event.EventFeedEntrySummary.AttendCount}} {{event.EventFeedEntrySummary.AttendCount === 1 ? 'person is' : 'people are'}} attending, {{event.EventFeedEntrySummary.InviteCount}} {{event.EventFeedEntrySummary.InviteCount === 1 ? 'is' : 'are'}} invited" tooltip-placement="right">Maybe attending</span>
+                <span ng-switch-when="3" class="label label--icon label--negative" tooltip="{{event.EventFeedEntrySummary.AttendCount}} {{event.EventFeedEntrySummary.AttendCount === 1 ? 'person is' : 'people are'}} attending, {{event.EventFeedEntrySummary.InviteCount}} {{event.EventFeedEntrySummary.InviteCount === 1 ? 'is' : 'are'}} invited" tooltip-placement="right"><i class="icon--cross"></i>Not attending</span>
+                <a ng-switch-default class="button button--small button--positive" path="events.details" path-params="::event.EventFeedEntrySummary.EventId" tooltip="{{event.EventFeedEntrySummary.AttendCount}} {{event.EventFeedEntrySummary.AttendCount === 1 ? 'person is' : 'people are'}} attending, {{event.EventFeedEntrySummary.InviteCount}} {{event.EventFeedEntrySummary.InviteCount === 1 ? 'is' : 'are'}} invited" tooltip-placement="right">Read more</a>
+            </div>
+
+        </div>
+        
+        <footer class="card__footer">
+
+            <p class="events__comments"><a href="" path="events.details" path-params="::event.EventFeedEntrySummary.EventId" path-anchor="comments"><ng-pluralize count="::event.EventFeedEntrySummary.CommentCount"
+                when="{'0': 'No comments',
+                       'one': '1 comment',
+                       'other': '{} comments'}">
+            </ng-pluralize></p>
+
+            <a href="" path="events.details" path-params="::event.EventFeedEntrySummary.EventId" class="card__arrow">&rarr;</a>
+
+        </footer>
+
+    </div>
+
+</article>     

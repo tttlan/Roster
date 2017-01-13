@@ -1,0 +1,113 @@
+<accordion-segment>
+    <accordion-segment-group>
+        <accordion-heading><i class="icon--user"></i>Personal information</accordion-heading>
+        <div class="form" ng-show="parentData.dataLoaded">
+            <div class="form__fields">
+                [[SalutationId]]
+            </div>
+            [[nameSurnameSubmit]]
+            <div class="form__fields">
+                [[PreferredName]][[BirthDay]][[Sex]]
+            </div>
+            <div class="form__fields">
+                [[PhoneContacts]]
+            </div>
+            <div class="form__fields">
+                [[EmailContacts]]
+            </div>
+            <address-lookup>
+                <div class="form__fields">
+                    <div class="form__field">
+                        [[Address]][[CountryId]]
+                    </div>
+                </div>
+                <div class="form__fields form__fields--hor-group-address">
+                        [[Postcode]]
+                    <address-lookup-suburb suburb-classes="col-1-3"></address-lookup-suburb>
+                    <div class="form__field col-1-3" ng-show="form.$locationLookupResolved" ng-class="{'is--blocked' : !form.$locationLookupResolved}">
+                        [[Suburb]]
+                    </div><div class="form__field col-1-3" ng-class="{'is--blocked' : !form.$locationLookupResolved}">
+                        [[StateName]]
+                    </div><div class="form__field col-1-3" ng-show="form.$noLocationMatches" ng-class="{'is--blocked' : !form.$locationLookupResolved}">
+                        [[City]]
+                    </div>
+                    </div><div class="form__field col-1-3" ng-show="parentData.dataLoaded">
+                        [[CountryOriginId]]
+                    </div>
+                </div>
+            </address-lookup>
+        </div>
+    </accordion-segment-group>
+</accordion-segment> 
+<accordion-segment> 
+    <accordion-segment-group>
+        <accordion-heading><i class="icon--vcard"></i>Role Details</accordion-heading>
+        <div class="form" ng-show="parentData.dataLoaded">
+            <div class="form__fields">
+                [[LoginName]][[StartDate]]
+            </div>
+            <div class="form__fields">
+                [[Role]][[NetworkGroupId]]
+            </div>
+            <div class="form__fields">
+                [[SalaryTypeId]][[EmploymentTypeId]][[RosterRoleId]]
+            </div>
+            <div class="form__fields">
+                [[HoursPerWeek]]
+            </div>
+        </div>
+    </accordion-segment-group>
+</accordion-segment>
+<accordion-segment>
+    <accordion-segment-group>
+        <accordion-heading><i class="icon--phone"></i>Emergency Details</accordion-heading>
+        <div class="form" ng-show="parentData.dataLoaded">
+            <div class="form__fields">
+                [[EFirstName]][[ESurname]]
+            </div>
+            <div class="form__fields">
+                [[Relationship]][[ContactNumber]]
+            </div>
+            <address-lookup classes="form__fields" field-names="['ESuburb', 'EStateName' , 'EPostcode' , 'ECity' ]" country-id-attr="ECountryId" prefix="E">
+                <div class="form__fields">
+                    [[EAddress]][[ECountryId]]
+                </div>
+                <div class="form__fields form__fields--hor-group-address">
+                    [[EPostcode]]
+                    <address-lookup-suburb suburb-classes="col-1-3" prefix="E"></address-lookup-suburb><div class="form__field col-1-3" ng-show="form.$ElocationLookupResolved" ng-class="{'is--blocked' : !form.$ElocationLookupResolved}">
+                        [[ESuburb]]
+                    </div><div class="form__field col-1-3" ng-class="{'is--blocked' : !form.$ElocationLookupResolved}">
+                        [[EStateName]]
+                    </div><div class="form__field col-1-3" ng-show="form.$EnoLocationMatches" ng-class="{'is--blocked' : !form.$ElocationLookupResolved}">
+                        [[ECity]]
+                    </div>
+                </div>
+            </address-lookup>
+            <div class="form__fields">
+                [[EEmail]]
+            </div>
+        </div>
+    </accordion-segment-group>
+</accordion-segment>
+<accordion-segment>
+    <accordion-segment-group>
+        <accordion-heading><i class="icon--latest-news"></i>Bank Details</accordion-heading>
+        <div class="form" ng-show="parentData.dataLoaded">
+            <div class="form__fields">
+                [[BankName]][[BankAccountName]]
+            </div>
+            <div class="form__fields">
+                [[BSB]][[AccountNo]]
+            </div>
+            <div class="form__fields">
+                [[SuperFund]][[SuperNo]]
+            </div>
+            <div class="form__fields">[[TaxFileNumber]]</div>
+        </div>
+    </accordion-segment-group>
+</accordion-segment>  
+
+<div class="form__field aligned--center" ng-show="parentData.dataLoaded">
+    <a class="button button--large" href="" path="recruit.onboards.index" path-params="">Back</a>
+    [[submitForm]]
+</div>

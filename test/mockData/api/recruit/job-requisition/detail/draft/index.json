@@ -1,0 +1,77 @@
+﻿{
+  "data": {
+    "$id": "1",
+    "JobRequisitionDetail": {
+      "$id": "2",
+      "JobAdRequisitionId": 1913,
+      "CreatedDateTime": "2016-05-23T09:22:49.16",
+      "LastModifiedDateTime": "2016-05-24T01:42:56.297",
+      "ContactPerson": null,
+      "ContactNumber": null,
+      "State": "Draft",
+      "SubState": "",
+      "NetworkGroup": {
+        "$id": "3",
+        "NetworkGroupId": 11082,
+        "GroupName": "South Melbourne",
+        "Type": null,
+        "LookupUrl": "http://localhost:56828/Api/",
+        "IsTrainingLocation": null
+      },
+      "Role": {
+        "$id": "4",
+        "RoleId": 618,
+        "Description": "HR - Office / Training Coordinator",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "Owner": {
+        "$id": "5",
+        "MemberId": 247682,
+        "FirstName": "Sherpa",
+        "Surname": "Admin",
+        "PreferredName": null,
+        "Title": "FIN - Systems Administrator",
+        "PhotoLarge": "/networkrepository/957/member/247682/profile_large.png",
+        "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.png",
+        "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+        "RoleTitle": "FIN - Systems Administrator",
+        "DefaultNetworkGroupId": 11038,
+        "Birthday": null,
+        "Sex": "m",
+        "Salutation": null
+      }
+    },
+    "EntityActions": [
+      {
+        "$id": "6",
+        "Id": "1972",
+        "Code": 3702,
+        "Caption": "CanSendToApprovalJobAdRequisition",
+        "Description": "CanSendToApprovalJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/submit",
+        "Children": null
+      },
+      {
+        "$id": "7",
+        "Id": "1972",
+        "Code": 3708,
+        "Caption": "CanEditJobAdRequisition",
+        "Description": "CanEditJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1972",
+        "Children": null
+      },
+      {
+        "$id": "8",
+        "Id": "1972",
+        "Code": 3701,
+        "Caption": "CanDeleteJobAdRequisition",
+        "Description": "CanDeleteJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1972",
+        "Children": null
+      }
+    ],
+    "Status": 0
+  },
+  "status": 200,
+  "config": {}
+}

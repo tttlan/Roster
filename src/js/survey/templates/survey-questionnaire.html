@@ -1,0 +1,90 @@
+ <div class="page survey">
+    <div class="page__wrapper page-1--3--survey">
+        <!-- Header link -->
+        <sheader class="page__header" hidden>
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="">Recruit</a></li>
+                <li><a href="" path="">Communication</a></li>
+                <li><a href="" path="" id="colorPrimary">Job Application</a></li>
+            </ul>
+        </sheader>
+
+        <!-- Add new questionnaire template button -->
+        <div class="top--right--button" style="text-align:right;margin-bottom:15px">
+            <a ng-show="canCreateQuestionnaire" href="survey/manage/questionnaires/create" class="button button--primary"><i class="icon--plus"></i> ADD QUESTIONNAIRE </a>
+        </div>
+
+        <!-- Left page aside-->
+        <div class="page__aside" style="">
+            <!--<h3 style="text-align:left;margin-bottom:17px">Questionnaire</h3>-->
+            <div class="blog blog--sidebar survey--sidebar" style="text-align:left;">
+                <span ng-click="showCats = !showCats" class="blog__toggle">Change category <i class="icon--down"></i></span>
+                <ul class="blog-categories" ng-show="showCats">
+                    <li><a href="survey/manage" class="is--active">QUESTIONNAIRE <i class="icon--right"></i></a></li>
+                    <li><a href="survey/manage/questionnairestemplate">QUESTIONNAIRE TEMPLATE <i class="icon--right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- content component -->
+        <div class="page__content"
+             paginate="getQuestionnaireList"
+             page-size="10">
+            <table class="table table-questionnaire word-break" ng-class="{'is--loading': page.loading}">
+                <tbody>
+                    <tr ng-repeat="question in page.items">
+                        <td>{{question.SurveyQuestionnaireInfo.Name}}</td>
+                        <td style="width: 20%">{{question.SurveyQuestionnaireInfo.CreatedDate | date}}</td>
+                        <td style="width: 10%" class="cell--edit--icon" ng-show="question.EntityActions[1].Code == 2804">
+                            <a path="survey.questionnaires.edit" path-params="question.SurveyQuestionnaireInfo.QuestionnaireId"
+                               tooltip="Edit" tooltip-animation="false" tooltip-placement="bottom">
+                                <i class="icon--edit"></i>
+                            </a>
+                        </td>
+                        <td style="width: 10%" class="cell--edit--icon" ng-show="question.EntityActions[0].Code == 2806">
+                            <a ng-click="previewQuestionnaire(question.SurveyQuestionnaireInfo.QuestionnaireId)"
+                               href="" tooltip="View" tooltip-animation="false" tooltip-placement="bottom">
+                                <i class="icon--views"></i>
+                            </a>
+                        </td>
+                        <td style="width: 10%" class="cell--edit--icon" ng-show="question.EntityActions[2].Code == 2805">
+                            <a tooltip="Delete" tooltip-animation="false" tooltip-placement="bottom" 
+                               ng-confirm-click="deleteQuestionnaire(question.SurveyQuestionnaireInfo.QuestionnaireId , question.SurveyQuestionnaireInfo.Name)" 
+                               ng-confirm-message="Are you sure you want to delete this questionnaire?" href="">
+                               <i class="icon--bin"></i>
+                            </a>
+                        </td>       
+                        <td>
+                            <div class="header__actions dropdown">
+                                <a class="dropdown-toggle" title="Open user menu" href="javascript:void(0)">
+                                    <i class="icon--ellipsis"></i>
+                                </a>
+                                <ul class="submenu submenu--right submenu--compact dropdown-menu">
+                                    <li class="submenu__item" ng-show="question.EntityActions[1].Code == 2804">
+                                        <a href="" path="survey.questionnaires.edit" path-params="question.SurveyQuestionnaireInfo.QuestionnaireId">
+                                            <i class="icon--edit"></i>Edit
+                                        </a>
+                                    </li>
+                                    <li class="submenu__item" ng-show="question.EntityActions[0].Code == 2806">
+                                        <a href="" ng-click="previewQuestionnaire(question.SurveyQuestionnaireInfo.QuestionnaireId)">
+                                            <i class="icon--views"></i>View
+                                        </a>
+                                    </li>
+                                    <li class="submenu__item" ng-show="question.EntityActions[2].Code == 2805">
+                                        <a href="" ng-confirm-click="deleteQuestionnaire(question.SurveyQuestionnaireInfo.QuestionnaireId , question.SurveyQuestionnaireInfo.Name)" ng-confirm-message="Are you sure you want to delete this questionnaire?">
+                                            <i class="icon--bin"></i>Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="message message--empty" ng-hide="page.loading || page.items.length || page.error">
+                <i class="icon--mnuDashboard icon-is-huge"></i>
+                <p>No questionnaire</p>
+            </div>
+        </div>
+    </div>
+</div>

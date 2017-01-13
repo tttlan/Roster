@@ -1,0 +1,40 @@
+<div class="segment" ng-controller="profileWorkflows">
+
+    <div class="segment__fieldset">
+        
+        <div class="segment__fieldset-heading">
+            <h2><i class="icon--vcard"></i>Workflows</h2>
+        </div>
+
+        <loading-placeholder ng-hide="workflows.$loaded"></loading-placeholder>
+
+        <div ng-show="workflows.$loaded && !workflows.data.length" class="message message--small">
+           <p>There are currently no workflows available</p>
+        </div>
+        
+        <p ng-show="workflows.$loaded && workflows.data.length"><small>Delegating your Workflow approval rights for the nominated period means that all Workflow Requests normally sent to you will automatically be sent to the nominated person during this time. Please ensure you advise this person of your action.</small></p>
+
+        <table class="table-form">
+
+            <tr ng-repeat="form in workflowsFactory.formData"
+                ng-class="{ 'is--editing' : workflows.data[$index].$editing === 'workflow{{$index}}', 'is--loading' : workflows.data[$index].$submitting }"
+                ng-show="true">                
+
+                <th>{{ workflows.data[$index].staticValues.name }}</th>
+                <td>                    
+                    <form-builder
+                        form-id="workflowsForm{{$index}}"
+                        form-data-promise="workflowsFactory.$formDataPromise"
+                        template="/interface/views/profile/partials/form-workflows.html"
+                        submit="workflowsSave"
+                        model-data="workflows.data[$index].$promise"
+                        parent-data="workflows.data[$index]">
+                    </form-builder>
+                </td>
+            </tr>
+            
+        </table>
+
+    </div>
+
+</div>

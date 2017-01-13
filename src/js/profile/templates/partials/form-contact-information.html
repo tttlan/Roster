@@ -1,0 +1,36 @@
+<span class="table-form__form-value">
+    
+    <div ng-show="form.Address.$viewValue">
+        {{ form.Address.$viewValue }},
+    </div>
+    
+    <div>
+        <span ng-show="form.Suburb.$viewValue">{{ form.Suburb.$viewValue }} </span>
+        <span ng-show="form.StateName.$viewValue">{{ form.StateName.$viewValue }} </span>
+        <span ng-show="form.Postcode.$viewValue">{{ form.Postcode.$viewValue }}</span>
+    </div>
+    
+    <div ng-show="form.CountryId.$viewValue">
+        {{ form.CountryId.$viewValue.Label }}
+    </div>
+</span>
+
+<div class="table-form__form-field" ng-class="{'is--blocked': parentData.$submitting}">
+    <address-lookup>
+        [[CountryId]]
+        [[Postcode]]
+        <address-lookup-suburb></address-lookup-suburb>
+        <div class="form__field" ng-class="{'is--blocked' : !form.$locationLookupResolved}">
+            [[Address]]
+            <div class="form__field" ng-show="form.$locationLookupResolved">
+                [[Suburb]]
+            </div>
+            [[StateName]]
+            <div class="form__field" ng-show="form.$noLocationMatches">
+                [[City]]
+            </div>
+        </div>
+    </address-lookup>
+</div>
+
+<table-form-buttons edit-name="address"></table-form-buttons>

@@ -1,0 +1,62 @@
+<div class="questionnaire">
+  <h1>APPLICATION QUESTIONNAIRE</h1>
+  <h2>Sales position questions</h2>
+  <p class="questionnaire__description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sodales ligula. Phasellus tincidunt maximus finibus. Donec luctus a sem vel faucibus. Integer faucibus ut nisi in maximus. Duis viverra ante faucibus tincidunt commodo. Pellentesque iaculis nibh non cursus aliquam. Fusce tincidunt ultricies tempus. Aenean quis turpis nisl. Vestibulum porttitor a tortor sit amet consectetur. Cras eget nunc congue, sodales nibh in, eleifend ex. Etiam hendrerit hendrerit augue. Aliquam ut lorem risus. Aenean a ipsum neque. Maecenas quis iaculis ligula.
+  </p>
+
+  <div class="questionnaire__group">
+    <h2 class="questionnaire__group__title">Group 1</h2>
+
+    <div class="form__field form__field--inline">
+        <p class="form-label">This is a question</p>
+        <div class="field__radio field__radio--inline">
+            <input type="radio" name="optionsRadios1" id="optionsRadios1" value="2" ng-model="searchOpts">
+            <label class="form__label" for="optionsRadios1">Yes</label>
+        </div>
+        <div class="field__radio field__radio--inline">
+            <input type="radio" name="optionsRadios1" id="optionsRadios2" value="5" ng-model="searchOpts">
+            <label class="form__label" for="optionsRadios2">Maybe?</label>
+        </div>
+    </div>
+  </div>
+  
+  <div class="questionnaire__group">
+    <h2 class="questionnaire__group__title">Group 2</h2>
+  
+    <div class="form__field form__field--inline">
+        <p class="form-label">This is a question</p>
+        <div class="field__radio field__radio--inline">
+            <input type="radio" name="optionsRadios1" id="optionsRadios1" value="2" ng-model="searchOpts">
+            <label class="form__label" for="optionsRadios1">Yes</label>
+        </div>
+        <div class="field__radio field__radio--inline">
+            <input type="radio" name="optionsRadios1" id="optionsRadios2" value="5" ng-model="searchOpts">
+            <label class="form__label" for="optionsRadios2">Maybe?</label>
+        </div>
+    </div>
+  </div>
+
+  <div class="questionnaire__group">
+    <h2 class="questionnaire__group--title">Group 3</h2>
+
+    <div class="form__field" ng-class="{'is--required': element.required}">
+   
+        <p for="quesiton3" class="form-label">Question 3</p>
+
+        <div class="relative datepicker">
+            <input type="text"
+                placeholder="Date"
+                name="question3"
+                ng-model="element.val"
+                ng-model-options="{ allowInvalid: true }"
+                datepick datepicker-popup="d MMM yyyy" />
+
+            <span class="icon--calendar field__after"></span>
+        </div>
+
+    </div>
+
+  </div>
+
+</div>

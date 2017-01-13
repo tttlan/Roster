@@ -1,0 +1,107 @@
+﻿<div class="recruit">
+    <header class="modal__header header-employees-modal">
+        <h3 class="modal__title" ng-hide="isCompleted">Launch employees</h3>
+        <a href="" class="modal__close" ng-click="cancel()"></a>
+
+        <p ng-if="!isCompleted"> Only user that have not been previously launched, are not deleted and
+            have an
+            Email
+            Address, User Name,
+            Password, Network Group and Role will be included in launch process.</p>
+    </header>
+    <div class="modal__content content-modal-employees" ng-show="!isCompleted" ng-class="{'is--loading': isLoading}">
+        <ng-form name="form" novalidate validate-form>
+            <fieldset class="form">
+                <!--Launch Type-->
+                <hr/>
+                <h3>LAUNCHING</h3>
+                <div>
+                    <div class="form__fields">
+                        <div class="field__radio">
+                            <div ng-repeat="type in listType">
+                                <input type="radio" name="launchType" id="{{type.name}}" value="{{type.value}}"
+                                       ng-click="changeSelectType($index +1)"  ng-checked="$index === selectedType -1">
+                                <label for="{{type.name}}" class="form__label">{{type.name}}</label>
+                            </div>
+                        </div>
+                        <!--Show group and member-->
+                        <div class="auto-complete-group-member" ng-show="selectedType === 2">
+                            <tag-manager ng-model="groupAndMember.currentGroupAndMember"
+                                         select-data="groupAndMember.listGroupAndMember">
+                                <input type="text" id="auto_complete" placeholder="Enter group or member..."
+                                       ng-model="typeAheadTag"
+                                       typeahead="result as result.label for result in selectData| filter:{label: $viewValue}"
+                                       typeahead-on-select="addTag($item, $model, $label)"
+                                        />
+                            </tag-manager>
+                        </div>
+                        <div ng-show="selectedType === 2 && groupAndMember.currentGroupAndMember.length === 0 && showTagsList ">
+                            <label style="color: darkred">* </label><label>You must select at least one member or
+                            group. </label>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+
+                <!--Launch By-->
+                <h3>BY</h3>
+                <div>
+                    <div class="form__fields">
+                        <div class="field__radio">
+                            <div ng-repeat=" item in listOption">
+                                <input type="radio" name="launchBy" id="{{item.name}}" value="{{item.value}}"
+                                       ng-click="changeSelectOption($index+1)" ng-checked="$index === selectedOption -1">
+                                <label for="{{item.name}}" class="form__label">{{item.name}}</label>
+                            </div>
+                        </div>
+
+                        <div ng-show="showOption(1)">
+                            <p>Email launching will send an email to all the employees with a temporary password.</p>
+                        </div>
+                        <div ng-show="showOption(2)">
+                            <p>New onboard will create new individual onboards.</p>
+                        </div>
+                        <div ng-show="showOption(3)">
+                            <p>Onboard bypassing approvals option will create individual onboards. The candidate will go
+                                through
+                                the welcoming
+                                process: Accepts term and conditions, read and accepts default company default set
+                                exclusively
+                                for the launch process
+                                , declare and sign TFN and profile creation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+
+                <!--Document upload-->
+                <div ng-hide="selectedOption === 1">
+                    <h3> DOCUMENTS</h3>
+                    <div style="max-height:200px; overflow-y: auto">
+						<uploader maxsize="5000 * 1024" ng-model="listIds" delayed-upload="false"
+								  container-id="2" file-name="listFileName" maxfiles="10"></uploader>
+                    </div>
+                    <hr/>
+                </div>
+
+                <!--Submit-->
+                <div align="right">
+                    <button class="button" ng-click="cancel()">Cancel</button>
+                    <button class="button button--primary" ng-click="launchEmployeesSubmit()"
+                            ng-if="checkShowComplete()">COMPLETE LAUNCHING
+                    </button>
+                </div>
+            </fieldset>
+        </ng-form>
+    </div>
+    <div class="modal__content" ng-if="isCompleted">
+        <div align="center">
+            <i class="icon--check icon-is-huge" style="color:darkseagreen; font-size: 80px"></i>
+
+            <h3> CONGRATULATIONS!</h3>
+
+            <p>Employee(s) has been successful launched.</p>
+        </div>
+    </div>
+</div>

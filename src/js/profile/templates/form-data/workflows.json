@@ -1,0 +1,55 @@
+[
+    {
+        "id": "workflowsForm",
+        "name": "workflowsForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "TargetMemberId",
+                "label": "Delegate to this user",
+                "placeholder": "",
+                "value": "",
+                "class": "",
+                "type": "select",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+               "name": "dates",
+               "type": "form-fields",
+               "children": [
+                    {
+                        "name": "StartDate",
+                        "label": "Start date",
+                        "placeholder": "",
+                        "value": "",
+                        "class": "",
+                        "type": "date",
+                        "validation": {
+                            "required": true,
+                            "dateFuture": true,
+                            "dateBefore": "EndDate",
+                            "customErrorMessage": "The start date must be after today and before the end date"
+                        }
+                    },
+                    {
+                        "name": "EndDate",
+                        "label": "End date",
+                        "placeholder": "",
+                        "value": "",
+                        "type": "date",
+                        "class": "",
+                        "validation": {
+                            "required": true,
+                            "dateFuture": true,
+                            "dateAfter": "StartDate",
+                            "customErrorMessage": "The end date must be after the start date"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+] 

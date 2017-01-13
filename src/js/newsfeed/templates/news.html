@@ -1,0 +1,74 @@
+<div class="page page--1-4">
+
+    <div class="page__wrapper">
+
+        <div class="page__aside">
+
+            <div class="blog blog--sidebar">
+
+                <h1>Latest News</h1>
+
+                <span ng-click="showCats = true; showFilter = false;" class="blog__toggle">Change category <i class="icon--down"></i></span>
+
+                <span ng-click="showFilter = true; showCats = false;" class="blog__toggle">Filter news <i class="icon--down"></i></span>
+
+                <ul class="blog-categories" ng-show="showCats"> <!-- NOTE: 'showCats' here will not affect because class 'blog-categories' has style 'display:block !important'-->
+                    <li><a href="" path="dashboard.news.index" ng-click="search.categoryId = null" ng-class="{'is--active': !search.categoryId}">All News <i class="icon--right"></i></a></li>
+                    <li ng-repeat="category in categories | orderBy:'CategoryName'">
+                        <a href="" ng-click="search.categoryId = category.Id; cardCtrl.resetCardLayout()" ng-class="{'is--active': search.categoryId == category.Id}">
+                            {{ category.CategoryName }} <i class="icon--right"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <form ng-show="showFilter" class="blog-filter">
+
+                    <div class="form__field">
+                        <label for="blogTitle" class="icon--search field__before"><span class="is-visually-hidden">Title</span></label>
+                        <input type="text" id="blogTitle" placeholder="Title" ng-model="search.title"><!-- ngIf: isOpen() -->
+                    </div>
+
+                    <div class="form__field">
+
+                        <label for="blogDateAfter" class="form__label">News published after...</label>
+
+                        <div class="relative">
+                            <span class="icon--calendar field__after"></span>
+                            <input placeholder="Choose date" type="text" id="blogDateAfter" ng-model="search.dateFrom" datepick="" datepicker-popup="d MMM yyyy">
+                        </div>
+                    </div>
+
+                    <div class="form__field">
+
+                        <label for="blogDateBefore" class="form__label">News published before...</label>
+
+                        <div class="relative">
+                            <span class="icon--calendar field__after"></span>
+                            <input placeholder="Choose date" type="text" id="blogDateBefore" ng-model="search.dateTo" datepick="" datepicker-popup="d MMM yyyy">
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- content component -->
+        <div class="page__content"
+             paginate="getBlogFeed"
+             page-size="8"
+             paginate-on-scroll="true">
+
+            <div class="message message--empty" ng-show="!(page.loading || page.items.length || page.error) && cardCtrl.shouldRenderMasonry()">
+                <!-- should be waiting for change -->
+                <i class="icon--mnuDashboard icon-is-huge"></i>
+                <p>There is no news just yet</p>
+            </div>
+            <div class="cards cards--2-columns cards--left-gutter" card-ctrl="cardCtrl" masonry="page.items" template-url="/interface/views/newsfeed/partials/blog-item.html" limit-to="page.showing"></div>
+
+        </div>
+
+    </div>
+
+</div>

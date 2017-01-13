@@ -1,0 +1,123 @@
+﻿<div class="segment recruit" ng-init="settings()">
+    <div>
+        <a href=""
+           ng-click="toggleCadidateCollapsed();">
+            <div class="segment__fieldset-heading padding-left__20">
+                <h2>
+                    <i ng-class="{'icon--user': isSingle, 'icon--person-group': !isSingle}"></i>CANDIDATE<span ng-if="!isSingle">S</span>
+                </h2>
+                <i class="align-right" ng-class="{'icon--arrow-down': isCollapsedCandidate,
+                                                  'icon--arrow-up': !isCollapsedCandidate }"></i>
+            </div>
+        </a>
+    </div>
+    <strong class="is--negative" ng-if="isOnboardPhaseDeclined(subItems[0]) && isSingle">The onboard(s) has/have been declined</strong>
+
+    <div collapse="isCollapsedCandidate" class="segment__fieldset candidate_segment padding__35">
+        <ng-form name="uploadCsvForm" id="uploadCsvForm" enctype="multipart/form-data" ng-if="!isSingle && isCreateNew(0)">
+            <div class="uploader-container upload__list--candidate">
+                <uploader maxsize="52428800"
+                            maxfiles="1"
+                            ng-model="data.FileStoreId"
+                            name="filestore"
+                            container-id="2"
+                            ng-required="addNewCandidateAfterUploadCsv === false"
+                            cta="Browse for a csv file"
+                            file-types="['csv']"
+                            attachment-list="getArtifactIdForUploadCsv"
+                            module-upload="create-bulk-onboard"></uploader>
+
+                <span class="form__note form__note--error" ng-show="form.filestore.$error.required">
+                    An uploaded file or an external link is required
+                </span>
+                <p>
+                    <small>
+                        Max file size is 50MB<br />
+                        Supported file types: csv
+                    </small>
+                </p>
+            </div>
+            <div ng-if="!isSingle && isCreateNew(0)" style="width:100%" class="align-center">
+                <hr />
+                <a href="" ng-click="addNewListCandidate()" title="add new candidate">
+                    <i class="icon--round-plus is--positive icon-is-large"></i>
+                </a>
+            </div>
+        </ng-form>
+                
+        <fieldset ng-repeat="onboard in subItems track by $index" ng-init="ngFormName='onboardingForm'+onboard.OnboardId" ng-form="{{ngFormName}}"
+                ng-disable = "checkDisable($index)" ng-if="isCreateNew(0) && (addNewCandidateAfterUploadCsv === true && !isSingle || isSingle)">
+            
+            <div class="segment__fieldset-heading" ng-if="!isSingle">
+                <div style="float: left; width: 90%;">
+                    <span class="onboard-listing__candidate-avatar" >
+                        <avatar size="small" class="align-center"></avatar>
+                        <span class="candidate__name">{{onboard.CandidatePersonalInfo.FirstName}} {{onboard.CandidatePersonalInfo.Surname}}</span>
+                    </span>
+                </div>
+                <div>
+                    <a href=""
+                        class="align-right toggle__candidate"
+                        ng-click="toggleCadidateDetailsCollapsed($index)">
+                            <i ng-class="{'icon--arrow-down': onboard.state.isCollapsedCandidateDetails,
+                            'icon--arrow-up': !onboard.state.isCollapsedCandidateDetails }"></i>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="segment__fieldset" collapse="onboard.state.isCollapsedCandidateDetails">
+                <fieldset ng-class="{'is--loading': onboard.isSubmitting}"
+                          ng-include="'/interface/views/recruit/onboard-details-personal-information.html'"></fieldset>
+
+                <fieldset ng-class="{'is--loading': onboard.isSubmitting}"
+                          ng-include="'/interface/views/recruit/onboard-details-contact-details.html'" style="margin-top: 0px"></fieldset>
+
+                <div ng-if="!isSingle && $index===subItems.length-1 && isCreateNew($index)" style="width:100%" class="align-center">
+                    <hr />
+                    <a href="" ng-click="addNewCandidate()" title="add new candidate">
+                        <i class="icon--round-plus is--positive icon-is-large"></i>
+                    </a>
+                </div>
+            </div>
+
+        </fieldset>
+        
+        <fieldset ng-repeat="onboard in subItems track by $index" ng-init="ngFormName='onboardingForm'+onboard.OnboardId" ng-form="{{ngFormName}}"
+                ng-disable = "checkDisable($index)" ng-if="!isCreateNew(0)">
+            
+            <div class="segment__fieldset-heading" ng-if="!isSingle">
+                <span class="onboard-listing__candidate-avatar" >
+                    <avatar size="small" class="align-center"></avatar>
+                    <span style="margin-left:20px;vertical-align:middle;">{{onboard.CandidatePersonalInfo.FirstName}} {{onboard.CandidatePersonalInfo.Surname}}</span>
+                </span>
+                
+                <span ng-if="isComplete(onboard)" class="candidate__completed">COMPLETED</span>
+                <span ng-if="isDeclined(onboard)" class="candidate__completed">The onboard has been declined</span>
+                <span ng-if="isProbation(onboard)" class="candidate__completed">PROBATION</span>
+                
+                <a href=""
+                class="align-right"
+                ng-click="toggleCadidateDetailsCollapsed($index)">
+                    <i ng-class="{'icon--arrow-down': onboard.state.isCollapsedCandidateDetails,
+                    'icon--arrow-up': !onboard.state.isCollapsedCandidateDetails }"></i>
+                </a>
+            </div>
+        
+            <div class="segment__fieldset" collapse="onboard.state.isCollapsedCandidateDetails">
+                <fieldset ng-class="{'is--loading': onboard.isSubmitting}"
+                          ng-include="'/interface/views/recruit/onboard-details-personal-information.html'"></fieldset>
+                    
+                <fieldset ng-class="{'is--loading': onboard.isSubmitting}"
+                          ng-include="'/interface/views/recruit/onboard-details-contact-details.html'" style="margin-top: 0px"></fieldset>
+
+                <fieldset ng-if="!isSingle && !isCreateNew(0)" ng-class="{'is--loading': onboard.isSubmitting}" ng-include="'/interface/views/recruit/onboard-details-proposed-role.html'"></fieldset>
+
+                <fieldset ng-if="!isSingle && onboard.Permissions.getinboundrequirementdocument 
+                            && (isAwaitingConfirmation(onboard) || isComplete(onboard))" ng-class="{'is--loading': onboard.isSubmitting}" ng-include="'/interface/views/recruit/onboard-details-candidate-documentation.html'"></fieldset>
+            </div>
+
+        </fieldset>
+        
+    </div>
+
+</div>

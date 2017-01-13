@@ -1,0 +1,16 @@
+<div class="post__content">
+     <div class="post__name">
+        <a href="" target="_self" path="network.profile" path-params="post.content.Owner.MemberId">{{ post.content.Owner.FirstName }} {{ post.content.Owner.Surname }}</a>
+        <div class="post__details">{{ post.content.JobFeedType == 27 ? 'posted' : 'updated' }} an internal job</div>
+    </div>
+    <span ng-bind-html="post.content.JobInternalApplicantsMessage | unsafe"></span>
+    <div class="post__segment segment segment--bordered">
+        <h3 class="post__title"><a href="" path="network.internalJob" path-params="post.entityKey">{{ post.content.JobTitle }} in {{ post.content.JobLocation }}</a></h3>
+        <p>{{ post.content.Summary }}</p>
+        <p>
+            <span ng-show="post.content.JobInternalReferToFriendEnable === 'True'">
+                <a href="" ng-click="post.referFriend(post)">Refer a friend</a> -</span>
+            <a href="" path="network.internalJob" path-params="post.entityKey">View details</a>
+        </p>
+    </div>
+</div>

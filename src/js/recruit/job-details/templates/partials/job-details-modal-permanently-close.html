@@ -1,0 +1,133 @@
+<form name="frmPermanentlyCloseJob" class="permanently-close" novalidate ng-submit="save()">
+
+    <header class="modal__header">
+        <h2 class="modal__title align-left">Permanently close job</h2>
+        <a href="" class="modal__close" ng-click="close()"></a>
+    </header>
+
+    <section ng-class="{'is--loading': controls.showSpinner}">
+        <div class="modal__content permanently-close-well">
+            <div class="well">
+                <i class="icon--round-info well__icon"></i>
+                <span class="well__content">
+                    Closed jobs become <b>read-only</b>:
+                    <ul>
+                        <li>Cannot accept new applicants</li>
+                        <li>Cannot modify applicant data</li>
+                        <li>Cannot continue applicant communications</li>
+                        <li class="red"><span class="red">This action cannot be undone</span></li>
+                    </ul>
+                </span>
+            </div>
+
+            <div class="permanently-close-option">
+                <div class="permanently-close-title">
+                    <strong>Overall job conclusion</strong>
+                </div>
+
+                <div class="form__field">
+                    <div class="field__radio">
+                        <input id="id_conclusionSuccessful" type="radio" name="conclusion" value="successful" ng-model="job.conclusion" ng-checked="true" checked="true">
+                        <label for="id_conclusionSuccessful" class="form__label">Job was <strong>succcessfully filled</strong></label>
+                    </div>
+                </div>
+
+                <div class="form__field">
+                    <div class="field__radio">
+                        <input id="id_conclusionNotFilled" type="radio" name="conclusion" value="not filled" ng-model="job.conclusion">
+                        <label for="id_conclusionNotFilled" class="form__label">Job was <strong>not filled</strong></label>
+                    </div>
+                </div>
+
+                <div class="form__field">
+                    <div class="field__radio">
+                        <input id="id_conclusionWithdrawn" type="radio" name="conclusion" value="withdrawn" ng-model="job.conclusion">
+                        <label for="id_conclusionWithdrawn" class="form__label">Job was <strong>withdrawn</strong></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="permanently-close-option">
+                <div class="permanently-close-title">
+                    <strong>Communication</strong>
+                </div>
+
+                <div class="form__field">
+                    <div class="field__radio">
+                        <input id="id_communication" type="checkbox" name="communication" ng-model="job.communication" ng-click="hideEmailTemplate()">
+                        <label for="id_communication" class="form__label">Send <strong>unsuccessful</strong> applicants a rejection email</label>
+                    </div>
+                </div>
+
+                <div class="permanently-close-email" ng-show="job.communication">
+                    <div class="permanently-close-email-info">
+                        <label>
+                            Applicant <b>not in the <label class="label label--sky">HIRED</label> status</b> will be sent an email. <br />
+                            Rejected applicants that have already been sent an email will not be contacted.
+                        </label>
+                    </div>
+                    <div class="permanently-close-email-template">
+                        <div class="permanently-close-email-content align-right">
+                            <a href="#" class="dropdown-toggle link">Load template...</a>
+                            <ul class="submenu dropdown-menu permanently-close-email-content--submenu">
+                                <li class="submenu__item">
+                                    <div class="well email-template-dropdown">
+                                        <i class="icon--round-info well__icon"></i>
+                                        <span class="well__content">Loading a template will override current subject and message</span>
+                                    </div>
+                                </li>
+                                <li class="submenu__item">
+                                    <input type="text" id="search_templates" placeholder="Search templates" ng-model="controls.emailTemplateSearch" ng-click="$event.stopPropagation()" ng-keyup="searchEmailTemplate()">
+                                </li>
+                                <div class="permanently-close-email-content-list">
+                                    <li ng-repeat="template in templates" class="submenu__item" >
+                                        <a href="" ng-click="applyTemplate(template.userCan(EntityActionType.GetContentOfEmail).ActionUrl)">{{template.Title}}</a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="permanently-close-email-subject">
+                        <input type="text"
+                               placeholder="Subject"
+                               name="subject"
+                               ng-model="job.subject"
+                               ng-required="true"
+                               ng-maxlength="255"
+                               maxlength="255" />
+                        <span class="form__note form__note--error"
+                              ng-show="(frmPermanentlyCloseJob.$submitted || frmPermanentlyCloseJob.subject.$dirty) && frmPermanentlyCloseJob.subject.$error.required">
+                                <span class="ng-binding ng-scope">Subject is required</span>
+                        </span>
+                    </div>
+                    <div class="textarea">
+                        <text-angular ng-model="job.body"
+                                      name="body"
+                                      id="jobSummary"
+                                      ng-required="true"
+                                      required="required"
+                                      placeholder="Summary text..."
+                                      ta-toolbar="[['bold', 'italics', 'underline'],['ul', 'ol'], ['quote']]"
+                                      ta-text-editor-class="form__job--editor-content"
+                                      ta-html-editor-class="form__job--editor-content">
+                        </text-angular>
+                    </div>
+                    <span class="form__note form__note--error"
+                          ng-show="(frmPermanentlyCloseJob.$submitted || frmPermanentlyCloseJob.body.$dirty) && frmPermanentlyCloseJob.body.$error.required">
+                            <span class="ng-binding ng-scope">Email body is required</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <hr class="solid" />
+
+        <footer class="modal__footer">
+            <div class="align-right permanently-close-footer">
+                <button type="button" class="button button--basic button--small" ng-click="close()">Cancel</button>
+                <button type="submit" class="button button--basic button--small label--red">Permanently close</button>
+            </div>
+        </footer>
+    </section>
+</form>
+
+

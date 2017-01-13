@@ -1,0 +1,202 @@
+<div class="col col-1-9 form__field" id="questionNumber">
+    <span class="questionNumber"> {{1*index  + 1}} </span>
+</div>
+<div class="col col-8-9" id="questionContent">
+    <div class="questionContent">
+        <label>{{item.QuestionContent}}</label>
+    </div>
+    <div ng-repeat="responseChoice in item.ResponseChoices">
+        <div ng-switch="responseChoice.ResponseChoiceTypeId">
+            <!--ResponseChoice is upload file-->
+            <div class="questionValueChoice" ng-switch-when="10">
+                <!--text question: ResponseChoiceTyppe is 1 and ResponseChoice only 1 item-->
+                <div ng-if="item.ResponseChoices.length == 1">
+                    <uploader
+                            container-id="14"
+                            maxsize="5000 * 1024"
+                            maxfiles="10"
+                            ng-model="item.uploadedFiles[responseChoice.ResponseChoiceId]">
+                    </uploader>
+                </div>
+                <div ng-if="!(item.ResponseChoices.length == 1)">
+                    <div class="field__radio" ng-if="item.QuestionTypeId == 4">
+                        <input type="radio" name="{{item.QuestionContent}}" ng-attr-id="{{questionPrefix + item.QuestionContent + $index}}"
+                               ng-value="{{responseChoice.ResponseChoiceId}}"
+                               ng-checked="responseChoice.IsDefaultSelected"
+                               ng-model="item.ResponseChoicesValue.Value">
+                        <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label">
+                            <uploader
+                                    container-id="14"
+                                    maxsize="5000 * 1024"
+                                    maxfiles="10"
+                                    ng-model="item.uploadedFiles[responseChoice.ResponseChoiceId]">
+                            </uploader>
+                        </label>
+                    </div>
+
+                    <div class="field__checkbox" ng-if="item.QuestionTypeId == 3">
+                       <input ng-attr-id="{{'question-' + $index}}" type="checkbox"
+                               ng-checked="responseChoice.IsDefaultSelected"
+                               ng-value="{{responseChoice.ResponseChoiceId ? responseChoice.ResponseChoiceId : 'question-' + $index}}"
+                               ng-model="item.ResponseChoicesValue.Value[responseChoice.ResponseChoiceId ? responseChoice.ResponseChoiceId : 'question-' + $index]">
+                        <label for="{{'question-' + $index}}" class="form__label">
+                            <uploader
+                                    container-id="14"
+                                    maxsize="5000 * 1024"
+                                    maxfiles="10"
+                                    ng-model="item.uploadedFiles[responseChoice.ResponseChoiceId]">
+                            </uploader>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!--ResponseChoice is question text -->
+            <div class="questionValueChoice" ng-switch-when="2">
+                <!--text question: ResponseChoiceTyppe is 1 and ResponseChoice only 1 item-->
+                <div ng-if="item.ResponseChoices.length == 1">
+                    <textarea placeholder="Type here" name="item.QuestionContent" ng-model="item.ResponseChoicesValue.Value"
+                              ng-required="element.validation.required" ng-minlength="0" ng-maxlength="9999"></textarea>
+                </div>
+                <div ng-if="!(item.ResponseChoices.length == 1)">                    
+                    <div class="field__radio" ng-if="item.QuestionTypeId == 4">
+                        <input type="radio" name="{{item.QuestionContent}}" ng-attr-id="{{questionPrefix + item.QuestionContent + $index}}"
+                               ng-value="{{responseChoice.ResponseChoiceId}}"
+                               ng-checked="responseChoice.IsDefaultSelected"
+                               ng-model="item.ResponseChoicesValue.Value">
+                        <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label">
+                            <textarea placeholder="Type here" name="input" ng-model="item.ResponseChoicesValue.AnswerText[responseChoice.ResponseChoiceId]"
+                                      ng-required="element.validation.required" ng-minlength="0" ng-maxlength="9999"></textarea>
+                        </label>
+                    </div>
+                    <div class="field__checkbox" ng-if="item.QuestionTypeId == 3">
+                        <input ng-attr-id="{{questionPrefix + item.QuestionContent + $index}}" type="checkbox"
+                               ng-checked="responseChoice.IsDefaultSelected"
+                               ng-value="{{responseChoice.ResponseChoiceId ? responseChoice.ResponseChoiceId : 'question-' + $index}}"
+                               ng-model="item.ResponseChoicesValue.Value[responseChoice.ResponseChoiceId ? responseChoice.ResponseChoiceId : 'question-' + $index]">
+                        <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label">
+                            <textarea placeholder="Type here" name="input" ng-model="item.ResponseChoicesValue.AnswerText[responseChoice.ResponseChoiceId]"
+                                      ng-required="element.validation.required" ng-minlength="0" ng-maxlength="9999"></textarea>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ResponseChoice type label-->
+            <div class="questionValueChoice" ng-switch-when="1">                
+                <!-- Yes/No-->
+                <div class="{{item.DisplayOptionalOnYesNo}}" ng-if="item.QuestionTypeId == 2 && item.DisplayOptionalOnYesNo != null">
+                    <div class="field__radio">
+                        <input type="radio" name="{{group.tag.name + item.QuestionContent}}"
+                               ng-attr-id="{{questionPrefix + item.QuestionContent + $index}}"
+                               ng-value="{{responseChoice.ResponseChoiceId}}"
+                               ng-click="ChangeValue(item,item.ResponseChoices[$index].ChoiceValue)"
+                               ng-model="item.ResponseChoicesValue.Value"
+                               ng-if="responseChoice.ResponseChoiceId" >
+                        <!--Create question without responseChoice.ResponseChoiceId-->
+                        <input type="radio" name="{{group.tag.name + item.QuestionContent}}"
+                               ng-attr-id="{{questionPrefix + item.QuestionContent + $index}}"
+                               ng-value="{{responseChoice.ResponseChoiceId}}"
+                               ng-click="ChangeValue(item,item.ResponseChoices[$index].ChoiceValue)"
+                               ng-if="!responseChoice.ResponseChoiceId" >
+                                <!--item.ResponseChoicesValue.Value{{item.ResponseChoicesValue.Value}}-->
+                        <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label">{{responseChoice.ChoiceValue}}</label>
+                    </div>
+                </div>
+
+                <!--bellow is radio and checkbox--> 
+                <div class="field__radio" ng-if="(item.QuestionTypeId == 4 || item.QuestionTypeId == 2) && item.DisplayOptionalOnYesNo == null">
+                    <input type="radio" name="{{item.QuestionContent}}" ng-attr-id="{{questionPrefix + item.QuestionContent + $index}}"
+                           ng-value="{{responseChoice.ResponseChoiceId}}"
+                           ng-checked="responseChoice.IsDefaultSelected"
+                           ng-model="item.ResponseChoicesValue.Value">
+                    <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label">{{responseChoice.ChoiceValue}}</label>
+                </div>
+
+                <div class="field__checkbox" ng-if="item.QuestionTypeId == 3">
+                    <input ng-attr-id="{{questionPrefix + item.QuestionContent + $index}}" type="checkbox"
+                           ng-value="{{responseChoice.ResponseChoiceId ? responseChoice.ResponseChoiceId : 'question' + $index}}"
+                           ng-model="item.ResponseChoicesValue.Value[responseChoice.ResponseChoiceId ? responseChoice.ResponseChoiceId : 'question-' + $index]">
+                           <!--{{item.ResponseChoicesValue.Value[responseChoice.ResponseChoiceId]}}-->
+                    <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label">
+                        {{responseChoice.ChoiceValue}}
+                    </label>
+                </div>
+            </div>
+
+            <!-- ResponseChoice type = 3 && only 1 element -> type datepicker-->
+            <div class="questionValueChoice" ng-switch-when="6">
+                <div ng-if="item.ResponseChoices.length == 1">
+                    {{item.ResponseChoicesValue}}
+                    <div class="form__field">
+                        <label for="input_Date{{$index}}" class="icon--calendar field__after"></label>
+                        <input type="text" id="input_Date{{$index}}" placeholder="Date picker"
+                               datepicker-append-to-body="true" datepicker-popup="d MMM yyyy"
+                               ng-model="item.ResponseChoicesValue.Value">
+                    </div>
+                </div>
+
+                <div ng-if="!(item.ResponseChoices.length == 1)">
+                    {{item.ResponseChoicesValue}}
+                    <div class="field__radio" ng-if="item.QuestionTypeId == 4">
+                        <input type="radio" name="{{item.QuestionContent}}" ng-attr-id="{{questionPrefix + item.QuestionContent + $index}}"
+                               ng-value="{{responseChoice.ResponseChoiceId}}"
+                               ng-model="item.ResponseChoicesValue.Value"
+                               ng-checked="responseChoice.IsDefaultSelected">
+                        <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label">
+                            <div class="form__field">
+                                <label for="input_mDate{{$index}}" class="icon--calendar field__after"></label>
+
+                                <input type="text" id="input_mDate{{$index}}" placeholder="Date picker"
+                                       datepicker-append-to-body="true" datepicker-popup="d MMM yyyy"
+                                       ng-model="item.ResponseChoicesValue.AnswerDate[responseChoice.ResponseChoiceId]">
+
+                            </div>
+                        </label>
+                    </div>
+                    <div class="field__checkbox" ng-if="item.QuestionTypeId == 3">
+                        <input type="checkbox" name="{{item.QuestionContent}}" ng-attr-id="{{questionPrefix + item.QuestionContent + $index}}"
+                               ng-value="{{responseChoice.ResponseChoiceId ? responseChoice.ResponseChoiceId : 'question-' + $index}}"
+                               ng-model="item.ResponseChoicesValue.Value[responseChoice.ResponseChoiceId ? responseChoice.ResponseChoiceId : 'question-' + $index]"
+                               ng-checked="responseChoice.IsDefaultSelected">
+                        <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label">
+                            <div class="form__field">
+                                <label for="input_startDate" class="icon--calendar field__after"></label>
+                                <input type="text" id="input_mDate{{$index}}" placeholder="Date picker"
+                                       datepicker-append-to-body="true" datepicker-popup="d MMM yyyy"
+                                       ng-model="item.ResponseChoicesValue.Answer[responseChoice.ResponseChoiceId]">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!--Not use Todo Comment nuberic range-->
+            <div class="questionValueChoice" ng-switch-when="7">
+                <div class="field__radio">
+                    <input type="radio" name="{{item.QuestionContent}}" ng-attr-id="{{questionPrefix + item.QuestionContent + $index}}"
+                           value="{{responseChoice.ChoiceValue}}" ng-checked="responseChoice.IsDefaultSelected">
+                    <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label" ng-if="!responseChoice.ChoiceMinValue && responseChoice.ChoiceMaxValue">
+                        > {{responseChoice.ChoiceMaxValue}}
+                    </label>
+                    <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label" ng-if="responseChoice.ChoiceMinValue && !responseChoice.ChoiceMaxValue">
+                        < {{responseChoice.ChoiceMinValue}}
+                    </label>
+                    <label for="{{questionPrefix + item.QuestionContent + $index}}" class="form__label" ng-if="responseChoice.ChoiceMinValue && responseChoice.ChoiceMaxValue">
+                        {{responseChoice.ChoiceMinValue}} - {{responseChoice.ChoiceMaxValue}}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="QuestionOption" hidden ng-if="item.DisplayOptionalOnYesNo != null" id="sub{{group.tag.name + index}}">
+    <div class="questionContent">
+        Question Option : {{item.QuestionOption.QuestionContent}}
+    </div>
+    <textarea
+            placeholder="Type here" name="input" ng-required="element.validation.required"
+            ng-minlength="0" ng-maxlength="9999" ng-model="item.ResponseChoices.ChoiceValue">
+    </textarea>
+</div>

@@ -1,0 +1,105 @@
+[
+    {
+        "id": "accessOwnBankingInformationForm",
+        "name": "accessOwnBankingInformationForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "usernamePasswordSubmit",
+                "type": "form-fields",
+                "children": [
+                    {
+                        "name": "LoginName",
+                        "label": "Username",
+                        "placeholder": "",
+                        "value": "",
+                        "type": "input",
+                        "class": "",
+                        "validation": {
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "Password",
+                        "label": "Password",
+                        "placeholder": "",
+                        "value": "",
+                        "class": "",
+                        "type": "password",
+                        "validation": {
+                            "required": true
+                        }
+                    }, 
+                    {
+                        "name": "submitForm",
+                        "value": "Authenticate",
+                        "type": "submit-button",
+                        "loader": true,
+                        "class": "button--primary profile-details__authenticate-button"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "accessBankingInformationForm",
+        "name": "accessBankingInformationForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "usernamePassword",
+                "type": "form-fields",
+                "children": [
+                    {
+                        "name": "LoginName",
+                        "label": "Username",
+                        "placeholder": "",
+                        "value": "",
+                        "type": "input",
+                        "class": "",
+                        "validation": {
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "Password",
+                        "label": "Password",
+                        "placeholder": "",
+                        "value": "",
+                        "class": "",
+                        "type": "password",
+                        "validation": {
+                            "required": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "bankingPWSubmit",
+                "type": "form-fields",
+                "children": [            
+                    {
+                        "name": "BankPassword",
+                        "label": "Banking password",
+                        "placeholder": "",
+                        "value": "",
+                        "class": "",
+                        "type": "password",
+                        "validation": {
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "submitForm",
+                        "value": "Authenticate",
+                        "type": "submit-button",
+                        "loader": true,
+                        "class": "button--primary profile-details__authenticate-button"
+                    }
+                ]
+            }
+        ]
+    }
+]

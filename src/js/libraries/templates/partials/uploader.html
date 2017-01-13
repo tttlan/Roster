@@ -1,0 +1,90 @@
+<div class="uploader uploader--list" 
+    ng-hide="hideUploader" 
+    ng-class="{ 'is--open' : files.showDropArea && !files.items.length, 'is--dragging' : isDragging }">
+
+    <ul class="uploader__files" ng-if="files.items.length || errors.length">
+
+        <li class="file" ng-repeat="file in files.items" ng-class="{'file--success' : file.success, 'file--started': file.started}">
+            <div class="file__content">
+                <canvas class="file__thumb" uploader-thumb></canvas>
+                <i class="svg-icon--{{file.ext}}"></i>
+                <p class="file__name">{{file.name}}</p>
+                <ul class="file__meta">
+                    <li>{{file.size}}</li>
+                    <li ng-hide="file.started || file.error"> - <a href="" ng-click="editFile($index)">edit</a></li>
+                    <li ng-hide="file.success"> - <a href="" ng-click="uploader.removeFile($index, file)">remove</a></li>
+                    <li ng-show="file.error"> - <a href="" ng-click="uploader.sendFile($index)" tooltip="Upload failed" tooltip-placement="left">try again</a></li>
+                </ul>
+                <canvas ng-show="file.success" class="file__preview" uploader-thumb></canvas>
+                <a href="" class="file__cancel" ng-click="uploader.removeFile($index)" tooltip="Remove" tooltip-append-to-body="true"><i class="icon--cross"></i></a>
+                <div class="file__status" ng-show="file.isNew">
+                    <loader ng-hide="file.success || file.error || file.progress < 99"></loader>
+                    <i ng-hide="!file.success" class="icon--round-check"></i>
+                    <i ng-hide="!file.error" class="icon--round-cross"></i>
+                </div>
+            </div> 
+            <div class="file__progress" ng-show="file.started">
+                <progress-bar type="white" value="file.progress"></progress-bar> 
+            </div>
+
+            <div class="file__properties" ng-hide="!file.editing">
+                <fieldset class="form">
+                    <div class="form__fields">
+
+                        <div class="form__field col-1-2">
+                            <label class="form__label" for="input_filename">Change file name</label>
+                            <input type="text" id="input_filename" ng-model="file.FinalName" remove-extension>
+                        </div><!--
+
+                    --><div class="form__field col-1-2">
+                            <label class="form__label" for="input_folder">Destination folder</label>
+                            <input type="text" id="input_folder" ng-model="file.Folder">
+                        </div>
+
+                    </div>
+
+                    <div class="form__field">
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="upload_checkbox{{ $index }}"> 
+                            <label for="upload_checkbox{{ $index }}" class="form__label">Share this file on the network feed</label>
+                        </div>
+                    </div>
+
+                </fieldset>
+                <a href="" class="button button--small" ng-click="cancelChanges($index)">Cancel</a>
+                <a href="" class="button button--primary button--small" ng-click="saveChanges(file,$index)">Save changes</a>
+            </div>
+        </li>
+
+    </ul>
+
+    <div class="uploader__footer">
+
+        <a href="" ng-hide="!files.items.length || uploadStarted" class="button button--primary button--small" ng-click="uploadAll()">Upload files</a>
+
+        <div class="uploader__count" ng-hide="!uploadStarted">
+            <p ng-show="files.uploadedCount != files.items.length">Completed {{ files.uploadedCount }} / {{ files.items.length }}</p>
+            <p ng-show="files.uploadedCount == files.items.length">Upload complete &nbsp; &bull; &nbsp; <a href="" ng-click="$parent.ok()">Close window</a></p>
+        </div>
+
+        <a trigger-browse class="uploader__action" ng-hide="files.reachedLimit || uploadStarted">
+            <i class="icon--block-plus"></i>
+            <span ng-if="files.items.length">Add files</span>
+        </a>
+        
+    </div>
+
+    <a trigger-browse href="" class="uploader__drop" ng-hide="files.reachedLimit">
+        
+        <div class="uploader__drop-message">
+            <div class="uploader__drop-cell">
+                <img src="/interface/images/add_file.svg" />
+                <h2>ADD FILES</h2>
+                <p>You can drag and drop files here to upload.</p>
+            </div>
+        </div>
+    </a>
+    
+    <input type="file" class="is-visually-hidden" multiple name="upload-file">
+
+</div>

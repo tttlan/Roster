@@ -1,0 +1,74 @@
+<div class="page">
+
+    <div class="page__wrapper">
+
+        <div class="page__header page__header--stats">
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="training.manage.index">Manage courses</a></li>
+                <li><a href="" path="training.manage.courses.stats" path-params="course.id">{{course.title}}</a></li>
+            </ul>
+            <h1>{{ subject.title }}</h1>
+        </div>
+
+        <div class="page__content"
+            paginate="getSubjectStats"
+            page-size="20"
+            order-by="Firstname"
+            ng-class="{'is--loading': page.loading}"
+            disable-paging="true">
+
+            <div class="table-responsive" ng-show="page.items">
+                <table class="table">
+                    <thead toggle-set>
+                        <tr>
+                            <th><a href="" toggle-active="page.setOrderBy('Firstname')">Name</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('RoleTitle')">Role</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('NetworkGroupTitle')">Location</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('Score')">Progress</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('CommencedDate')">Start Date</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('LastUpdatedDate')">Last Updated</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="member in page.items">
+                            <td>{{ member.Firstname }} {{ member.SurName }}</td>
+                            <td>{{ member.RoleTitle }}</td>
+                            <td>{{ member.NetworkGroupTitle }}</td>
+                            <td>{{ member.Score === null ? member.TrainingSubjectMemberProgressStatusId : member.Score }}</td>
+                            <td>{{ member.CommencedDate | date }}</td>
+                            <td>{{ member.LastUpdatedDate | date }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="message message--empty" ng-hide="page.items.length || page.loading || page.error">
+                <i class="icon--mnuTraining icon-is-huge"></i>
+                <p>There are currently no members that have completed this subject.</p>
+            </div>
+            
+        </div>
+
+         <div class="paging" ng-show="page.total > 0 && !page.loading && !page.error">
+            
+            <div class="paging__menu dropdown" ng-if="csvUrl">
+                <a href="" class="dropdown-toggle"><i class="icon--options"></i></a>
+                <ul class="dropdown-menu submenu submenu--right submenu--top">
+                    <li class="submenu__item">
+                        <a href="{{ csvUrl }}" target="_blank">
+                            <i class="icon--download"></i>Download CSV
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <pagination page="page.current" total-items="page.total" items-per-page="page.size" max-size="5"
+                direction-links="true"
+                ng-show="page.loaded && !page.error && page.totalPages > 0"
+                ng-class="{'is--disabled-pagination': paginationDisabled}">
+            </pagination>
+
+        </div>
+
+    </div>
+</div>

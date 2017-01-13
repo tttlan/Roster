@@ -1,0 +1,69 @@
+<section class="job-ads-create-section">
+    <h4 class="is--bold">JOB INFORMATION</h4>
+
+    <table class="table table--responsive-stacked">
+        <tbody>
+            <tr>
+                <td class="is--disabled" width="35%"><b>REFERENCE NUMBER</b></td>
+                <td width="65%">{{jobDetail.refNumber}}</td>
+            </tr>
+            <tr>
+                <td class="is--disabled"><b>TITLE</b></td>
+                <td>{{jobDetail.jobTitle}}</td>
+            </tr>
+            <tr>
+                <td class="is--disabled"><b>LOCATION</b></td>
+                <td>
+                    <span ng-if="jobDetail.locationOrRegion === jobLocation.LOCATION"
+                          ng-repeat="location in jobDetail.selectedLocations">{{location.label}}{{ $last ? '' : ', ' }}</span>
+                    <span ng-if="jobDetail.locationOrRegion === jobLocation.REGION">
+                        {{jobDetail.area.Label + ', ' + jobDetail.state.Label}}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="is--disabled"><b>EMPLOYMENT TYPE</b></td>
+                <td>{{jobDetail.employmentTypeTitle}}</td>
+            </tr>
+            <tr>
+                <td class="is--disabled"><b>OVERSEAS APPLICANTS</b></td>
+                <td>
+                    Overseas applicants are <span ng-show="!jobDetail.allowOverseas">not </span>allowed
+                </td>
+            </tr>
+            <tr>
+                <td class="is--disabled valign-text-top"><b>SALARY</b></td>
+                <td>
+                    <label ng-show="jobDetail.salaryType === salaryType.ANNUAL">Annual</label>
+                    <label ng-show="jobDetail.salaryType === salaryType.HOURLY">Hourly</label>
+                    <label ng-show="jobDetail.salaryType === salaryType.DAILY">Daily</label>
+                    <div ng-show="jobDetail.salaryRangeOrAmount === salaryType.RANGE">
+                        <span class="is--disabled">{{jobDetail.salaryCurrency.Label}}$ </span> {{jobDetail.salaryMin.Label.substr(1)}} to {{jobDetail.salaryMax.Label.substr(1)}} including super
+                    </div>
+                    <div ng-show="jobDetail.salaryRangeOrAmount === salaryType.AMOUNT">
+                        <span class="is--disabled">{{jobDetail.salaryCurrency.Label}}$ </span> {{jobDetail.amount}} including super
+                    </div>
+                    <div>
+                        <p>
+                            <i ng-show="jobDetail.displaySalary" class="icon--check icon-is-small icon-is-disabled valign-text-top"></i>
+                            <span ng-show="jobDetail.displaySalary" class="is--disabled">Display salary in job advertisement.</span>
+                            <span ng-show="!jobDetail.displaySalary" class="is--disabled">Don't display salary in job advertisement.</span>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="is--disabled"><b>ADDITIONAL BENEFITS</b></td>
+                <td>{{jobDetail.addBenefits}}</td>
+            </tr>
+            <tr>
+                <td class="is--disabled"><b>JOB TAGS</b></td>
+                <td>
+                    <ul class="list--inline">
+                        <li ng-repeat="tag in jobDetail.selectedJobTags"><span class="label label--disabled">{{tag.label}}</span></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

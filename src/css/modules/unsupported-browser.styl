@@ -1,0 +1,52 @@
+.ui
+
+    .modal__main .unsupported-browser {
+        padding: 20px;
+    }
+
+    .unsupported-browser {
+        
+        text-align: center;
+
+        h2 {margin-top: 0;}
+
+        .unsupported-browser__download {
+
+            display: inline-block; 
+            margin: 1em 1.2em 0 1.2em;
+            
+            &:hover {
+                text-decoration: underline;
+            }
+            
+            p {
+                margin-bottom: 0; 
+                line-height: 1;
+            }
+        }
+
+    }
+
+    .unsupported-browser--login-page {
+
+        position: relative;
+        z-index: 100;
+        width: 320px;
+        margin: 100px auto 20px auto;
+        background: #fff;
+        padding: 10px;
+
+        h2 {
+            font-size: 1.2em;
+        }
+
+        p {
+            font-size: 0.95em;
+        }
+
+        .unsupported-browser__download {
+            width: 18%;
+            margin: 0 2%;
+            font-size: 14px;
+        }
+    }

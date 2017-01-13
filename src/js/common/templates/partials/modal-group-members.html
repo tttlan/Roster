@@ -1,0 +1,46 @@
+<div class="people-list">
+    
+    <div class="vcard__avatar">
+        <avatar size="large" img-src="groupBio.PhotoLarge" type="group"></avatar>
+    </div>
+    
+    <h2 class="is--bold">{{ groupBio.GroupName }}</h2>
+    
+    <dl ng-show="groupBio.LinePhone1 || groupBio.MobilePhone">
+        <dt>Phone</dt>
+        <dd>{{ groupBio.LinePhone1 || groupBio.MobilePhone }}</dd>
+    </dl>
+
+    <dl ng-show="groupBio.Address || groupBio.Suburb || groupBio.Country">
+        <dt>Location</dt>
+        <dd>{{ groupBio.Address }} <br />{{ groupBio.Suburb}}, {{ groupBio.Country}}</dd>
+    </dl>
+                
+    <div class="people-list__search" ng-show="count >= 10">
+        <i class="icon--search"></i>
+        <input type="text" class="invisible-input" ng-model="search.FirstName" placeholder="Type to search members" />
+    </div>
+
+    <div class="people-list__person" ng-repeat="person in items | filter:search">
+
+        <a class="media" target="_self" path="network.profile" path-params="person.MemberId">
+            <div class="media__image" path="network.profile" path-params="person.MemberId">
+                <avatar img-src="person.PhotoThumb" size="small"></avatar>
+            </div>
+            <div class="media__body">
+                <p>
+                    {{person.FirstName}} {{person.Surname}}
+                    <small>{{ person.body }}</small>
+                </p>
+            </div>
+        </a>
+    </div>
+    
+    <p class="align-center">
+        <small ng-show="(items | filter:search).length === count">Showing all {{count}} group members</small>
+        <small ng-show="(items | filter:search).length < count && items.length !== 0">Showing {{(items | filter:search).length}} of {{count}} group members</small>
+    </p>
+    
+    <loader align="center" ng-show="loading"></loader>
+    
+</div>

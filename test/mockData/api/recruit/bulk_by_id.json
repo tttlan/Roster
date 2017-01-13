@@ -1,0 +1,269 @@
+{
+  "$id": "1",
+  "BulkOnboardingDetail": {
+    "$id": "2",
+    "Status": "Approval",
+    "BulkOnboardingId": "9464b031-0b5d-4d4a-91aa-806f0deeccef",
+    "CreatedDate": "2016-03-17T19:03:14.88",
+    "HoursPerWeek": 4,
+    "Source": "s",
+    "CommencementDate": "2016-03-24T17:00:00",
+    "Count": 1,
+    "Onboardings": [
+      {
+        "$id": "3",
+        "OnboardId": 7556,
+        "Status": "a",
+        "StatusCode": null,
+        "CommencementDate": "2016-03-24T17:00:00",
+        "CandidatePersonalInfo": {
+          "$id": "4",
+          "MemberId": 306278,
+          "Salutation": 1,
+          "FirstName": "Quangg",
+          "Surname": "Le Hoang",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": "1990-09-02T00:00:00",
+          "LastModified": "2016-03-17T19:03:14.21",
+          "MemberType": "j",
+          "Title": "",
+          "Active": false,
+          "DateRegistered": "2016-03-17T19:03:14.21",
+          "PhotoThumb": null
+        },
+        "CandidateContacts": [
+          {
+            "$id": "5",
+            "MemberId": 0,
+            "ContactInfoId": 1205068,
+            "DateCreated": "2016-03-21T09:44:00.82",
+            "DateModified": "2016-03-21T09:44:00.82",
+            "IsPrimary": true,
+            "IsPrivate": false,
+            "Type": "p",
+            "Address": null,
+            "City": null,
+            "Suburb": null,
+            "Postcode": null,
+            "MobilePhone": "9069338778",
+            "Phone": "9069338778",
+            "Fax": null,
+            "Email": null,
+            "WebAddress": null,
+            "StateName": null,
+            "StateRegionId": null,
+            "StateRegion": null,
+            "CountryId": null,
+            "Country": null,
+            "CanAcceptSms": false,
+            "CanAcceptVoiceCall": false,
+            "CanAcceptFax": false,
+            "CanAcceptHtml": false
+          },
+          {
+            "$id": "6",
+            "MemberId": 0,
+            "ContactInfoId": 1205069,
+            "DateCreated": "2016-03-21T09:44:00.82",
+            "DateModified": "2016-03-21T09:44:00.82",
+            "IsPrimary": true,
+            "IsPrivate": false,
+            "Type": "e",
+            "Address": null,
+            "City": null,
+            "Suburb": null,
+            "Postcode": null,
+            "MobilePhone": null,
+            "Phone": null,
+            "Fax": null,
+            "Email": "1236fff666@gmail.com",
+            "WebAddress": null,
+            "StateName": null,
+            "StateRegionId": null,
+            "StateRegion": null,
+            "CountryId": null,
+            "Country": null,
+            "CanAcceptSms": false,
+            "CanAcceptVoiceCall": false,
+            "CanAcceptFax": false,
+            "CanAcceptHtml": false
+          },
+          {
+            "$id": "7",
+            "MemberId": 0,
+            "ContactInfoId": 1204790,
+            "DateCreated": "2016-03-17T12:03:14.347",
+            "DateModified": "2016-03-21T02:44:00.817",
+            "IsPrimary": true,
+            "IsPrivate": false,
+            "Type": "ad",
+            "Address": "1223 QT str",
+            "City": null,
+            "Suburb": "GILBERTON",
+            "Postcode": "3072",
+            "MobilePhone": "9069338778",
+            "Phone": "9069338778",
+            "Fax": null,
+            "Email": "1236fff666@gmail.com",
+            "WebAddress": null,
+            "StateName": "VIC",
+            "StateRegionId": null,
+            "StateRegion": null,
+            "CountryId": 13,
+            "Country": {
+              "$id": "8",
+              "LookupUrl": "http://localhost:56828/Api//api/profilemanagement/countries",
+              "Value": 13,
+              "Label": "Australia"
+            },
+            "CanAcceptSms": false,
+            "CanAcceptVoiceCall": false,
+            "CanAcceptFax": false,
+            "CanAcceptHtml": false
+          }
+        ],
+        "OnboardRole": {
+          "$id": "9",
+          "RoleId": 648,
+          "Description": "D&D - National Development Manager",
+          "LookupUrl": "http://localhost:56828/Api/"
+        },
+        "OnboardStore": {
+          "$id": "10",
+          "NetworkGroupId": 11065,
+          "GroupName": "Richmond",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/",
+          "IsTrainingLocation": null
+        },
+        "Creator": {
+          "$id": "11",
+          "MemberId": 247682,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PhotoLarge": "/networkrepository/957/member/247682/profile_large.png",
+          "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.png",
+          "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+          "RoleTitle": "FIN - Systems Administrator",
+          "DefaultNetworkGroupId": 11038
+        },
+        "CreatedDate": "2016-03-17T19:03:14.88",
+        "ProbationEndDate": null,
+        "IsPromotion": null
+      }
+    ],
+    "Creator": {
+      "$id": "12",
+      "MemberId": 247682,
+      "Salutation": 5,
+      "FirstName": "Sherpa",
+      "Surname": "Admin",
+      "PreferredName": null,
+      "Sex": "m",
+      "BirthDay": null,
+      "LastModified": "2014-08-11T12:06:30.38",
+      "MemberType": "e",
+      "Title": "FIN - Systems Administrator",
+      "Active": true,
+      "DateRegistered": "2012-05-18T09:08:27.463",
+      "PhotoThumb": "profile_mid.png"
+    },
+    "SourceDetail": null,
+    "Payroll": null,
+    "IsPromotion": null,
+    "Option": null,
+    "Comments": null,
+    "InboundRequirements": {
+      "$id": "13",
+      "OnboardDocumentItemResults": [],
+      "EntityActions": [],
+      "Pagination": null,
+      "Status": 0
+    },
+    "ProposedRole": {
+      "$id": "14",
+      "HoursPerWeek": null,
+      "EffectiveDate": "0001-01-01T00:00:00",
+      "Comments": null,
+      "OnboardRole": {
+        "$id": "15",
+        "RoleId": 648,
+        "Description": "D&D - National Development Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "OnboardStore": {
+        "$id": "16",
+        "NetworkGroupId": 11065,
+        "GroupName": "Richmond",
+        "Type": null,
+        "LookupUrl": "http://localhost:56828/Api/",
+        "IsTrainingLocation": null
+      },
+      "SalaryType": {
+        "$id": "17",
+        "SalaryTypeId": 1,
+        "Description": null,
+        "IsPermanent": false,
+        "MiniumHours": 0,
+        "PaymentType": null,
+        "LookupUrl": "http://localhost:56828/Api/onboarding/salarytypes/"
+      },
+      "SalaryPayRate": null,
+      "EmploymentType": {
+        "$id": "18",
+        "EmploymentTypeId": 23,
+        "Description": "Casual",
+        "LookupUrl": "http://localhost:56828/Api/onboarding/employmenttypes"
+      },
+      "EmploymentClassification": null,
+      "Payroll": {
+        "$id": "19",
+        "OperatorId": null,
+        "DebtorId": null
+      },
+      "DesiredSalary": null,
+      "SourceDetail": null,
+      "OnboardOption": null,
+      "RegisterKey": null
+    },
+    "OutboundDocuments": {
+      "$id": "20",
+      "OnboardDocumentItemResults": [],
+      "EntityActions": [],
+      "Pagination": null,
+      "Status": 0
+    },
+    "CommentCount": 0
+  },
+  "EntityActions": [
+    {
+      "$id": "21",
+      "Id": "9464b031-0b5d-4d4a-91aa-806f0deeccef",
+      "Code": 2650,
+      "Caption": "CanDeleteBulkOnboard",
+      "Description": "CanDeleteBulkOnboard",
+      "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/9464b031-0b5d-4d4a-91aa-806f0deeccef",
+      "Children": null
+    },
+    {
+      "$id": "22",
+      "Id": "9464b031-0b5d-4d4a-91aa-806f0deeccef",
+      "Code": 2661,
+      "Caption": "CanGetOnboardingBelongBulkOnboarding",
+      "Description": "CanGetOnboardingBelongBulkOnboarding",
+      "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/9464b031-0b5d-4d4a-91aa-806f0deeccef/onboardings",
+      "Children": null
+    },
+    {
+      "$id": "23",
+      "Id": "9464b031-0b5d-4d4a-91aa-806f0deeccef",
+      "Code": 2662,
+      "Caption": "CanProcessBulkOnboarding",
+      "Description": "CanProcessBulkOnboarding",
+      "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/9464b031-0b5d-4d4a-91aa-806f0deeccef/process",
+      "Children": null
+    }
+  ],
+  "Status": 0
+}

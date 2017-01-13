@@ -1,0 +1,93 @@
+// Login
+// ------------------------------------------------
+
+/*
+ * This contains all the different styles for the Login
+ * processes. Basically anything in the App that is in front
+ * of the login wall.
+ * 
+ * This includes the following styles.
+ * Login
+ * Register
+ * Forgot Password
+ * Forgot Pin
+ */
+
+
+.login-section {
+    verticalAlignContent();
+
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:primary;
+
+    h1 {
+        text-align: center;
+        margin: 30px 0;
+
+        @media minTablet {
+            margin: 50px 0;
+        }
+
+    }
+}
+
+.login-section__popup {
+    
+    display:inline-block;
+    text-align:center;
+    vertical-align:middle;
+
+    .lt-ie9 & {
+        display: block;
+    }
+
+    label { text-align:left; }
+}
+
+.login-section__message {
+    text-align:left;
+    margin:20px auto;
+    max-width:280px;
+}
+
+.login-section__logo {
+    &:not(.login-section__logo--new) {
+        margin-bottom:20px;
+    }
+}
+
+.login-section__logo + h1 {
+    margin-top: 0;
+}
+
+.login-section__background {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+
+    background: grey3 no-repeat top center;
+    background-size: cover;
+
+
+    &:before {
+        display:block;
+        width:100%;
+        height:100%;
+
+        content:'.';
+        text-indent:100%;
+        background:rgba(10,10,10,0.1);
+    }
+}
+
+//For asp.net silly wrapping form and div tags to adhere to full widths and heights.
+.full-width-height {
+    width:100%;
+    height:100%;
+    display:block;
+}

@@ -1,0 +1,263 @@
+// Single card
+// 
+// Cards are used with the masonry layout.  Use these to display a listing of items as a grid of cards
+//
+// Markup: markup/cards.hbs
+//
+// .cards--2-columns - Max number of cols is 2 
+// .cards--3-columns - Max number of cols is 3
+// .cards--4-columns - Max number of cols is 4   
+// 
+// Styleguide modules.cards.card
+
+card-gutter = 2.5%; // Spacing between cards
+card-spacing = 17px; // Padding within the card
+
+.ui 
+
+    .cards {
+        
+        position: relative;
+        
+        @media betweenSmallTabletTablet {
+            width: 100 + card-gutter + 1.5;
+            margin-left: -(card-gutter + 1.5);
+        }
+        
+        @media minTablet {
+            width: 100 + card-gutter;
+            margin-left: -(card-gutter);
+        }
+        
+        // Used to add some left spacing to the side of the cards block
+        &--left-gutter {
+            
+            @media minTablet{
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+                        
+        &--2-columns .card {
+        
+            @media minSmallTablet {
+        
+                width: 50%;
+        
+                &:nth-child(2n + 1) {
+                    
+                    clear: left;
+                }
+            }
+        }
+        
+        &--3-columns .card {
+            
+            @media betweenSmallTabletTablet {
+        
+                width: 50%;
+        
+                &:nth-child(2n + 1) {
+                    
+                    clear: left;
+                }
+            }
+        
+            @media minTablet {
+        
+                width: 33.3%;
+        
+                &:nth-child(3n + 1) {
+                    
+                    clear: left;
+                }
+            }
+        }
+        
+        &--4-columns .card {
+            
+            @media betweenSmallTabletTablet {
+        
+                width: 50%;
+        
+                &:nth-child(2n + 1) {
+                    
+                    clear: left;
+                }
+            }
+        
+            @media betweenTabletDesktop {
+        
+                width: 33.3%;
+        
+                &:nth-child(3n + 1) {
+                    
+                    clear: left;
+                }
+            }
+            
+            @media minDesktop {
+        
+                width: 25%;
+        
+                &:nth-child(4n + 1) {
+                    
+                    clear: left;
+                }
+            }
+        }
+    }
+
+
+    .card {
+        
+        float: left;
+        width: 100%;
+        padding-bottom: card-gutter + 1.5;
+        
+        @media betweenSmallTabletTablet {
+            padding-left: card-gutter + 1.5;
+        }
+        
+        @media minTablet {
+            padding-bottom: card-gutter;
+            padding-left: card-gutter;
+        }
+    }
+        
+
+    .card__inner {
+        
+        background: #fff;
+        border-radius: base-border-radius;
+        border: solid 1px #dfe0e1;
+        width: 100%;
+        position: relative;
+    }
+    
+    // Outer div
+    .card__feature-image-container {
+
+        display: block;
+        border-radius: 3px 3px 0 0;
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+                
+        .card__date {
+            
+            position: absolute;
+            bottom: card-spacing;
+            left: card-spacing;
+            margin: 0 !important;
+        }   
+        
+        .card__avatar {
+            top: auto;
+            bottom: card-spacing - 5;
+        }     
+    }
+    
+    // Used to contain images that are too big.  Can't use the outer container as we need tooltips to extend outside the bounds of the div
+    .card__feature-image-overflow-wrapper {
+        
+        overflow: hidden;
+        width: 100%;
+        position: absolute;
+        padding-bottom: 56.25%;
+    }
+    
+    // Used on the <img> element
+    .card__feature-image {
+        
+        max-width: none;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        
+        // Resizing google maps looses their crispness, give them an auto width and let overflow clip instead
+        &[src^="http://maps"] {
+            width: auto;
+        }
+    }
+    
+    .card__date {
+
+        margin: card-spacing 0 0 card-spacing;
+        
+        .label {
+            font-size: 11px;
+        }
+    }
+    
+    .card__avatar {
+        
+        position: absolute;
+        top: card-spacing - 5;
+        right: card-spacing;
+        z-index: 1;
+    }
+            
+    .card__content {
+        
+        padding: card-spacing;
+        
+        h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            font-weight: 300;
+            word-wrap: break-word;
+        }
+                
+        p {
+            color: grey4;
+            font-size: 0.85em;
+            margin: 0.5em 0;
+            word-wrap: break-word;
+        }
+    }    
+            
+    .card__actions {
+        margin-top: 12px;
+    }
+    
+    .card__footer {
+        
+        border-top: solid 1px grey7;
+        padding-top: 12px;
+        margin: 0 card-spacing card-spacing card-spacing;
+        position: relative;
+        
+        p {
+            font-size: 0.7em;
+            text-transform: uppercase;
+            color: grey4;
+            margin: 0;
+            
+            a {
+                color: grey4; 
+                
+                &:hover {
+                    color: primary;
+                }
+            }
+        }
+    }
+    
+    .card__arrow {
+        
+        font-size: 1.3em;
+        color: grey5;
+        line-height: 0.6;
+        position: absolute;
+        top: 12px;
+        right: 0;
+    
+        &:hover {
+            color: primary;
+        }    
+    }

@@ -1,0 +1,49 @@
+@import '../core/material-colors'
+
+
+.ui
+  // Round Badge
+  // 
+  // Display user by their initals on a round color background.
+  // 
+  // Markup:
+  // <ul style="list-style: none">
+  //    <li><round-badge>RC</round-badge> Default black color and default small sizing.</li>
+  //    <li><round-badge name-color-hash="-7061885798">SC</round-badge> Color Based on Hashed string value (default email).</li>
+  //    <li><round-badge  name-color-hash-race="-7061885798" size="tiny">SC</round-badge> Color Based on Hashed string value, also checks for race condition (default email)</li>
+  //    <li><round-badge name-color-hash="-7061885798" size="tiny">SC</round-badge> Tiny Size</li>
+  //    <li><round-badge name-color-hash="-7061885798" size="small">SC</round-badge> Small Size</li>
+  //    <li><round-badge name-color-hash="-7061885798"" size="med">CS</round-badge> Med Size</li>
+  //    <li><round-badge name-color-hash="-7061885798" size="large">LM</round-badge> Large Size</li>
+  // </ul>
+  //
+  // Styleguide modules.roundbadge
+  .round-badge
+
+    color: white
+    margin-right: 5px
+    border-radius: 100px
+    text-align: center
+    overflow: hidden
+    display: inline-block
+
+    &--tiny
+      width: 20px
+      height: 20px
+      padding-top: 1px
+      font-size: 11px
+    &--small
+      width: 35px
+      height: 35px
+      padding-top: 5px
+      font-size: 15px
+    &--med
+      width: 70px
+      height: 70px
+      padding-top: 14px
+      font-size: 25px
+    &--large
+      width: 160px
+      height: 160px
+      padding-top: 39px
+      font-size: 50px

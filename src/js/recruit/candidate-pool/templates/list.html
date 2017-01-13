@@ -1,0 +1,268 @@
+﻿<div class="page candidate-pool">
+    <!--Page Wrapper-->
+    <div class="page__wrapper">
+
+        <!--Page Header-->
+        <div class="page__header">
+            <div class="form__field search-candidate-form__search-field">
+                <label for="beforeAfterInput"
+                       class="icon--search field__before field__before--search-icon">
+                </label>
+                <input type="text"
+                       id="beforeAfterInput"
+                       ng-model="filterObj.s"
+                       ng-enter="searchCandidates()"
+                       placeholder="Search for candidate"
+                       class="search-candidate-form__text-input" />
+                <div class="search-candidate-form__add-filter" ng-click="openFilterPanel()">
+                    <a href="#"><i class="icon--cd-add_filter"></i> Add filter</a>
+                </div>
+            </div>
+            <div class="search-candidate-form__actions">
+                <a href="#" class="button button--positive" path="recruit.onboards.create">
+                    <i class="icon--plus"></i>
+                    New Candidate
+                </a>
+            </div>
+
+            <div ng-if="fakeTags.length > 0" class="search-candidate-form__tag-area">
+                <a class="tag" ng-repeat="tag in fakeTags track by $index"><i class="icon--cd-tag icon-left" ng-if="tag.unique === 2"></i>{{tag.label}}<i class="icon--cross" ng-click="removeFilterTag($index)"></i></a>
+            </div>
+        </div>
+        <!--End Page Header-->
+        <!--Page Content-->
+        <div class="page__content page__content__candidate" ng-class="{'is--loading': !candidateListSumary}">
+            <!--Table Candidate List -->
+            <table class="table table__candidate" ng-if="candidateListSumary && candidateListSumary.Candidates.length !== 0">
+                <thead>
+                    <tr>
+                        <th colspan="1">
+                            <div class="field__checkbox field__checkbox__all">
+                                <input type="checkbox" id="checkboxAll" ng-model="selectAll" ng-checked="candidateListSumary.Candidates.filter(checkIsSelected).length === (candidateListSumary.Candidates | filter:tableFilter).length" ng-change="selectAllRecords(selectAll)">
+                                <label for="checkboxAll" class="form__label"></label>
+                            </div>
+                        </th>
+                        <th colspan="3" ng-if="isShowSearchResult === false">{{(candidateListSumary.Candidates | filter:tableFilter).length}} Candidate(s)<span ng-if="candidateListSumary.Candidates.filter(checkIsSelected).length > 0">, {{candidateListSumary.Candidates.filter(checkIsSelected).length}} selected</span></th>
+                        <th colspan="3" ng-if="isShowSearchResult !== false">
+                            <span ng-if="filterMode === false">Found {{candidateListSumary.Pagination.TotalCount}} candidate(s)</span>
+                            <span ng-if="filterMode === true">Found {{(candidateListSumary.Candidates | filter:tableFilter).length}} in {{candidateListSumary.Candidates.length}} displayed candidate(s)</span>
+                            <span ng-if="candidateListSumary.Candidates.filter(checkIsSelected).length > 0">, {{candidateListSumary.Candidates.filter(checkIsSelected).length}} selected</span>  /
+                            <a href="" ng-click="resetResult()" class="button-text">Back to candidate list</a>
+                        </th>
+                        <th colspan="3">
+                            <ul class="nav">
+                                <li ng-if="openedList.length < candidateListSumary.Candidates.length">
+                                    <a tooltip="Open all" tooltip-placement="bottom" href="#">
+                                        <i class="icon--cd-open_all" ng-click="openAllCandidates(candidateListSumary.Candidates.length)"></i>
+                                    </a>
+
+                                </li>
+                                <li ng-if="openedList.length === candidateListSumary.Candidates.length">
+                                    <a tooltip="Close all" tooltip-placement="bottom" href="#">
+                                        <i class="icon--cd-close_all" ng-click="openAllCandidates(candidateListSumary.Candidates.length)"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" ng-click="refreshCandidatesList()">
+                                        <i class="icon--clockwise" tooltip="Refresh" tooltip-placement="bottom"></i>
+                                    </a>
+                                </li>
+                                <li ng-if="candidateListSumary.Candidates.filter(checkIsSelected).length > 0">
+                                    <a ng-click="makeAsStar()" tooltip="Make as star" tooltip-placement="bottom" href="#">
+                                        <i class="icon--cd-star_full"></i>
+                                    </a>
+                                </li>
+                                <li ng-if="candidateListSumary.Candidates.filter(checkIsSelected).length > 0">
+                                    <a ng-click="unStar()" tooltip="Unstar candidate" tooltip-placement="bottom" href="#">
+                                        <i class="icon--cd-unstar"></i>
+                                    </a>
+                                </li>
+                                <li ng-if="candidateListSumary.Candidates.filter(checkIsSelected).length > 0">
+                                    <a tooltip="Remove tags" tooltip-placement="bottom" href="#">
+                                        <i class="icon--cd-remove_tag"></i>
+                                    </a>
+                                </li>
+                                <li ng-if="candidateListSumary.Candidates.filter(checkIsSelected).length > 0">
+                                    <a href="#">
+                                        <i tooltip="Add Tags" tooltip-placement="bottom" class="icon--cd-add_tag"></i>
+                                    </a>
+                                </li>
+                                <li ng-if="candidateListSumary.Candidates.filter(checkIsSelected).length > 0">
+                                    <a tooltip="Share" tooltip-placement="bottom" href="#">
+                                        <i class="icon--cd-share"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="icon__submenu" href="" dropdown-toggle tooltip="More" tooltip-placement="bottom">
+                                        <i class="icon--ellipsis"></i>
+                                    </a>
+                                    <ul class="submenu submenu--compact dropdown-menu submenu__detail">
+                                        <li class="submenu__item" ng-if="candidateListSumary.Candidates.filter(checkIsSelected).length > 0">
+                                            <a href="" ng-click="addToBlackList()">
+                                                <span>  Add to blacklist</span>
+                                            </a>
+                                        </li>
+                                        <li class="submenu__item">
+                                            <a href="" ng-if="candidateListSumary.Candidates.filter(checkIsSelected).length > 0" ng-click="removeMultiCandidatesFromBlackList()">
+                                                <span>Remove from blacklist</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody ng-repeat="candidate in candidateListSumary.Candidates | filter:tableFilter">
+                    <tr ng-class="{'table__candidate--black-list-record': candidate.IsBlackList}">
+                        <td class="table__candidate-checkbox">
+                            <div class="field__checkbox">
+                                <input id="checkbox{{$index}}" type="checkbox"
+                                       ng-disabled="!candidate.CanSelect"
+                                       ng-model="candidate.IsSelected"
+                                       ng-change="filterCandidatesCanSelect(candidate)">
+                                <label for="checkbox{{$index}}" class="form__label"></label>
+                            </div>
+                        </td>
+                        <td class="table__candidate-name">
+                            <div class="table__candidate-name--avatar">
+                                <i class="icon--cd-star_full" ng-if="candidate.IsStarredByCurrentManager === true && candidate.IsBlackList !== true"></i>
+                                <i class="icon--stop" ng-if="candidate.IsBlackList === true"></i>
+                                <div ng-class="{'avatar-loader is': candidate.IsSettingStar === true}">
+                                    <avatar size="small" img-src="candidate.PhotoThumb"></avatar>
+                                </div>
+                            </div>
+                            <a href="recruit/candidate-pool/{{candidate.MemberId}}" class="table__candidate-name--name">
+                                <span class="first-name">{{candidate.FirstName}}</span>
+                                <span class="last-name">{{candidate.Surname}}</span>
+                            </a>
+
+                            <!--Black list overlay-->
+                            <div ng-if="candidate.IsBlackList === true" class="blacklist-overlay blacklist-overlay__large">&nbsp;</div> <!--If marked blacklist-->
+                            <div ng-if="candidate.IsBlackList === true" class="blacklist-overlay blacklist-overlay__large--icon">&nbsp;</div><!--If marked blacklist-->
+                            <!--End of black list overlay-->
+
+                        </td>
+
+                        <td class="table__candidate-email">
+                            <span>{{candidate.Email}}</span>
+                        </td>
+
+                        <td class="table__candidate-label">
+                            <span ng-if="candidate.MemberType === 'e'" class="label label--active label--candidate-internal">Internal</span>
+                            <span ng-if="candidate.MemberType === 'j'" class="label label--active label--candidate-external">External</span>
+                        </td>
+
+                        <td class="table__candidate-tag">
+                            <a href="" ng-click="collapseOrExpand($index)">
+                                <span><i class="icon--cd-tag"></i> {{candidate.Tags.length}}</span>
+                            </a>
+                        </td>
+
+                        <td class="table__candidate-application">
+                            <a href="#" ng-click="collapseOrExpand($index)">
+                                <span class="table__candidate-application--number">{{candidate.AppliedJobCount}}</span>
+                                <span>
+                                    open application
+                                </span>
+                            </a>
+                        </td>
+
+                        <td class="table__candidate-warning">
+                            <span ng-if="candidate.warning === 1"><i tooltip="requires attention" tooltip-placement="bottom" class="icon--cd-warning"></i></span>
+                        </td>
+                    </tr>
+
+                    <tr class="expandable">
+                        <td colspan="7" class="expandable__cell" ng-show="openedList.indexOf($index) > -1" ng-class="{'is--loading': candidate.IsLoading === true}">
+                            <div class="expandable__details" ng-show="openedList.indexOf($index) > -1">
+                                <div class="table-list__expandable">
+                                    <div ng-if="candidate.CandidateApplicationHistory.AppliedJobApplications.length > 0" class="table-list__row" ng-repeat="openApplication in candidate.CandidateApplicationHistory.AppliedJobApplications">
+                                        <div class="row__cell row__cell--title">
+                                            <p>{{openApplication.JobSummary.JobTitle || 'No title'}}</p>
+                                            <span ng-if="openApplication.warning === 1" class="row__cell--title__triangle"></span>
+                                            <span class="row__cell--title__descript">{{openApplication.JobSummary.Summary || 'No description'}}</span>
+                                        </div>
+                                        <div class="row__cell row__cell--lable">
+                                            <avatar ng-if="candidate.IsBlackList === false" size="tiny" img-src="candidate.PhotoThumb" class="avatar__normal"></avatar>
+                                            <avatar ng-if="candidate.IsBlackList === true" size="tiny" img-src="candidate.PhotoThumb" class="avatar__is-blacklist"></avatar>
+                                            <div ng-if="candidate.IsBlackList === true" class="blacklist-overlay blacklist-overlay__small"></div><!--If marked blacklist-->
+                                            <!--DO NOT REMOVE THIS BLOCK-->
+                                            <!--<span class="labels">
+                                                <span ng-if="openApplication.label.type === 1" class="label label--caution">{{openApplication.label.title}}</span>
+                                                <span ng-if="openApplication.label.type === 2" class="label label--info">{{openApplication.label.title}}</span>
+                                                <span class="label">{{openApplication.label.value}}</span>
+                                            </span>-->
+                                            <!--DO NOT REMOVE THIS BLOCK-->
+                                            <span class="labels">
+                                                <span class="label label--caution">NEW</span>
+                                                <span class="label">1</span>
+                                            </span>
+                                        </div>
+                                        <!--DO NOT REMOVE THIS BLOCK-->
+                                            <!--<div class="row__cell row__cell--progress">
+                                            <span ng-if="openApplication.progress >= 51 && openApplication.progress <= 100" class="row__cell--progress__green"><i class="icon--cd-progress_green"></i></span>
+                                            <span ng-if="openApplication.progress >= 26 && openApplication.progress <= 50" class="row__cell--progress__yellow"><i class="icon--cd-progress_yellow"></i></span>
+                                            <span ng-if="openApplication.progress >= 0 && openApplication.progress <= 25" class="row__cell--progress__red"><i class="icon--cd-progress_red"></i></span>
+                                            <span>{{openApplication.progress}}%</span>
+                                            </div>-->
+                                        <!--DO NOT REMOVE THIS BLOCK-->
+                                        <div class="row__cell row__cell--progress">
+                                            <span class="row__cell--progress__green"><i class="icon--cd-progress_green"></i></span>
+                                            <span>78%</span>
+                                        </div>
+                                        <div class="row__cell row__cell--date">
+                                            <span><i class="icon--clock"></i>{{openApplication.ApplyDate | amUtc | amLocal | amDateFormat:'DD MMM YYYY' }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-list__tag" ng-if="candidate.IsLoading === false">
+                                    <div class="table-list__tag-icon">
+                                        <i class="icon--cd-tag"></i>
+                                    </div>
+                                    <div class="table-list__tag-tags">
+                                        <a ng-if="candidate.Tags.length > 0" class="tag" ng-repeat="tag in candidate.Tags">{{tag.label}}<i ng-confirm-click="removeSingleTagForCandidate(candidate,tag)" ng-confirm-message="Do want to delete this tag?" class="icon--cross"></i></a>
+                                        <span ng-if="candidate.Tags.length === 0" class="table-list__tag-tags__label">0 tag</span>
+                                        <span class="table-list__add-new-tag">
+                                            <a href="#" ng-click="openModalAddTag(candidate)" tooltip="Add new tag" tooltip-placement="bottom">
+                                                <i class="icon--plus"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <!--DO NOT REMOVE THIS BLOCK-->
+                                    <!--<div class="table-list__tag-new">
+                                    <a href="#" ng-click="openModalAddTag(candidate)" tooltip="Add new tag" tooltip-placement="bottom">
+                                        <i class="icon--plus"></i>
+                                    </a>
+                                    </div>-->
+                                    <!--DO NOT REMOVE THIS BLOCK-->
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="align-center" ng-if="candidateListSumary && candidateListSumary.Candidates.length !== 0" ng-class="{'is--loading': isLoadingMore === true}">
+                <a href=""
+                   ng-if="isShowSearchResult === false && isLoadingMore === false && candidateListSumary.Candidates.length !== candidateListSumary.Pagination.TotalCount"
+                   class="link loadmore"
+                   ng-click="getMoreCandidate()">Load more</a>
+                <a href=""
+                   ng-if="isShowSearchResult === true && isLoadingMore === false && candidateListSumary.Candidates.length !== candidateListSumary.Pagination.TotalCount"
+                   class="link loadmore"
+                   ng-click="getMoreResult()">Load more</a>
+
+                <br ng-if="isLoadingMore === false" />
+                <small ng-if="isLoadingMore === false && filterMode === false">Showing {{candidateListSumary.Candidates.length}}/ {{candidateListSumary.Pagination.TotalCount}}</small>
+                <small ng-if="isLoadingMore === false && filterMode === true">{{(candidateListSumary.Candidates | filter:tableFilter).length}}/{{candidateListSumary.Candidates.length}} displayed candidates</small>
+            </div>
+            <div ng-click="resetResult()" ng-if="candidateListSumary.Candidates.length === 0" class="message message--retry"><p>Candidate not found<br><a ng-click="reload()"><span class="icon--clockwise"></span> Back</a></p></div>
+            <!--End Table Candidate List -->
+
+        </div>
+        <!--End Page Content-->
+
+    </div>
+    <!--End Page Wrapper-->
+</div>

@@ -1,0 +1,37 @@
+<table class="table-form">
+
+    <tr ng-repeat="element in formData.elements track by element.label | orderBy: 'label'"
+        ng-class="{ 'is--editing' : parentData.$editing === '{{element.label}}' || parentData.$editing === 'all' }">
+
+        <th>{{element.label}}</th>
+        
+        <td>
+            
+            <!--<span class="table-form__form-value">{{ parentData.$permissionNames[element.name][element.children[1].val] }}</span>-->
+            <span class="table-form__form-value">{{ parentData.$currentDescriptions[element.name] }}</span>
+            
+            <table-form-edit edit-name="{{element.label}}" ng-if="parentData.$userCan[element.name].caneditpermission"></table-form-edit>
+            
+            <div class="table-form__form-field" ng-class="{'is--blocked': parentData.$submitting}">
+                
+                <form-element element="element.children[0]" form="form" form-data="formData"></form-element>
+                
+                <hr ng-show="element.children[0].val" />
+                
+                <div ng-show="element.children[0].val">                    
+                    <form-element element="element.children[1]" form="form" form-data="formData"></form-element>
+                </div>
+                
+            </div>
+
+            <table-form-buttons 
+                edit-name="{{element.label}}" 
+                save-action="parentData.$save({element: element, capabilityIds: parentData.$capabilityIds})"
+                loading="parentData.$submitting">
+            </table-form-buttons>
+            
+        </td>
+        
+    </tr>
+
+</table>

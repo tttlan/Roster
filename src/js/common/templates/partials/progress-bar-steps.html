@@ -1,0 +1,21 @@
+<div class="progress__wrapper">
+    <!-- Duplication of the codes -->
+    <div class="progress__steps" ng-if="headerPosition === 'top'">
+        <div class="progress__step align-center" style="width: {{headerTitleInWidth}}%" ng-repeat="headerTitle in headerTitles() track by $index">
+            <small ng-class="{'progress__step--is-active': $index === (currentStep-1)}">{{headerTitle | uppercase}}</small>
+        </div>
+    </div>
+    <!-- Duplication of the codes -->
+
+    <div class="progress__bar progress-bar {{progressBarStyle}}">
+        <div class="progress-bar__range" ng-style="currentStepInWidth()"></div>
+    </div>
+
+    <!-- Duplication of the codes -->
+    <div class="progress__steps" ng-if="headerPosition === 'bottom'">
+        <div class="progress__step align-center" style="width: {{headerTitleInWidth}}%" ng-repeat="headerTitle in headerTitles() track by $index">
+            <small ng-class="{'progress__step--is-active': $index === (currentStep-1)}">{{headerTitle | uppercase}}</small>
+        </div>
+    </div>
+    <!-- Duplication of the codes -->
+</div>

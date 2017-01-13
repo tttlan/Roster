@@ -1,0 +1,7 @@
+<div class="post__content">
+    <div class="post__name">
+        <a href="" target="_self" path="network.profile" path-params="post.owner.MemberId">{{ post.owner.FirstName }} {{ post.owner.Surname }}</a>
+        <div class="post__details"> @ <a href="#" target="_self" path="groups.group" path-params="post.content.PostGroupId">{{ post.content.PostGroupName }}</a></div>
+    </div>
+    <p ng-show="post.content.Message" class="post__html" ng-bind-html="post.content.ContentText || post.content.Message"></p>
+</div>

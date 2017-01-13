@@ -1,0 +1,941 @@
+
+input_border_radius = 0.2em;
+
+input()
+    display: inline-block;
+    font-size: 14px;
+    line-height: normal;
+    padding: 0.7em 0.8em;
+    color: base-font-color;
+    border: 1px solid input-border-color;
+    background-color: input-bg-color;
+
+    border-radius: input_border_radius;
+
+    transition: all 100ms linear;
+
+    &.is--focused,
+    &:focus,
+    &:active
+        input-active-state();
+        
+
+input-active-state()
+    outline: none;
+    border-color: input-focus-color;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.075);
+    color: base-font-color;
+
+// Inputs
+// ------------------------------------------------
+
+.ui
+    
+    // Text inputs
+    //
+    // Markup:
+    // <input type="{{modifier_class}}" placeholder="Placeholder text" />
+    //
+    // Weight: -1
+    //
+    // text - Input type text
+    // password - Input type password
+    // datetime - Input type datetime
+    // datetime-local - Input type datetime-local
+    // date - Input type date
+    // month - Input type month
+    // time - Input type time
+    // week - Input type week
+    // number - Input type number
+    // email - Input type email
+    // url - Input type url
+    // search - Input type search
+    // tel - Input type tel
+    // color - Input type color
+    //
+    // Styleguide elements.inputs.inputtext
+
+    select,
+    textarea,
+    .textarea,
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"] {
+        input();
+    }
+    
+    // Compact text input
+    //
+    // Markup:
+    // <input class="input--compact" type="text" placeholder="Placeholder text" />
+    //
+    // Styleguide elements.inputs.inputtextcompact
+    
+    // Compact input
+    input.input--compact {
+        padding: 0.4em 0.6em;
+    }
+    
+    // Input with loading indicator
+    //
+    // Markup:
+    // <input type="text" placeholder="Placeholder text" input-loading="true" />
+    //
+    // Styleguide elements.inputs.loading
+    
+    // Compact input
+    .input--loading {
+        
+        position: relative;
+        
+        .loading-spinner__container--inline {
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            right: 13px;
+            height: 20px;
+        }
+    }
+
+    // Optgroup sizing
+    optgroup {
+        font-size: inherit;
+        font-style: inherit;
+        font-family: inherit;
+    }
+
+    // Reset appearance properties for textual inputs and textarea
+    input,
+    select,
+    textarea ,
+    .textarea {
+        width: 100%;
+
+        // Custom validation for FF error showing on page load
+        &:invalid {
+            box-shadow: none;
+        }
+    
+    }
+    
+    // Textarea element
+    //
+    // Markup: <textarea></textarea>
+    //
+    // Styleguide elements.inputs.textarea
+    
+    
+    // Rich text
+    //
+    // Markup:
+    // <div class="textarea">
+    //     <text-angular 
+    //         ng-model="richtext"
+    //         id="richtext"
+    //         placeholder="Enter text here" 
+    //         ta-toolbar="" 
+    //         name="input"
+    //     ></text-angular>
+    // </div>
+    //
+    // Styleguide elements.inputs.richtext
+    
+    textarea ,
+    .textarea {
+        line-height: 1.6;
+        position: relative
+    }
+    
+    // Select element
+    //
+    // If you wish to have a model for the select box, place the ng-model attribute on both the select and select-box attributes.  Have removed ng-model on the select element here to stop a nasty error from appearing in the docs pages.
+    //
+    // Markup: 
+    // <select-box ng-model="c">
+    //     <select ng-model="c" ng-options="c.title for c in [{title: 'First option', val: 1},{title: 'Second option', val: 2},{title: 'Third option', val: 3}] track by c.val"></select>
+    // </select-box>
+    //
+    // Styleguide elements.inputs.select
+
+    // Reduce padding to account for border on selects
+    select {
+        padding-top: 0.65em;
+        padding-bottom: 0.65em;
+    }
+
+    // We wrap all span elements with this markup to acheive consistent stying across devices and browsers
+    .select-wrapper {
+
+        position: relative; 
+        width: 100%;
+        display: inline-block;
+       
+        select { // Original element
+
+            position: relative; 
+            display: block; 
+            z-index: 2; 
+            opacity: 0;
+            margin-bottom: 0;
+            width: 100%;
+
+            &:focus + .select, 
+            &:active + .select,
+            &.is--focused + .select {
+                input-active-state();
+            }
+        }
+
+        .select { // Replacement span element
+
+            input();
+            position: absolute !important; 
+            top: 0; 
+            left: 0; 
+            z-index: 1;
+            width: 100%;            
+            padding-right: 1.8em !important;
+            min-height: 2.9em;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            // Icon
+            &:after {
+
+                triangle(5px, grey4, down);
+                position: absolute; 
+                top: 50%; 
+                right: 0.8em;
+                margin-top: -2px; 
+            }
+        }
+    }
+    
+    .select-wrapper--compact {
+        
+        .select {
+            min-height: 2.2em;
+            padding-top: 0.3em;
+            padding-bottom: 0.3em;
+            font-size: 0.8em;
+        }
+        
+        select {
+            padding-top: 0.25em;
+            padding-bottom: 0.25em;
+            min-height: 2.2em;
+            font-size: 0.8em;
+        }
+    }
+
+    .select-wrapper--compact {
+            
+        .select {
+            min-height: 2.2em;
+            padding-top: 0.3em;
+            padding-bottom: 0.3em;
+            font-size: 0.8em;
+        }
+        
+        select {
+            padding-top: 0.25em;
+            padding-bottom: 0.25em;
+            min-height: 2.2em;
+            font-size: 0.8em;
+        }
+    }
+
+    // Reset width of input images, buttons, radios, checkboxes
+    input[type="file"],
+    input[type="image"],
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"],
+    input[type="radio"],
+    input[type="checkbox"] {
+        width: auto; // Override of generic input selector
+    }
+
+
+    // Input Overrides
+
+    input[type="checkbox"] ,
+    input[type="radio"] {
+        vertical-align: bottom;
+        height: 16px;
+        width: 16px;
+        margin-top: 2px;
+    }
+
+
+    // Disabled
+
+    input[disabled],
+    textarea[disabled] {
+        background-color: grey7;
+    }
+
+    input[disabled],
+    select[disabled],
+    textarea[disabled] {
+        cursor: not-allowed;
+    }
+
+
+    // Errors
+    .submitted .ng-invalid,
+    input.ng-dirty.ng-invalid ,
+    textarea.ng-dirty.ng-invalid ,
+    select.ng-dirty.ng-invalid ,
+    textarea.ng-dirty.ng-invalid,
+    .submitted .ng-invalid + .select,
+    .submitted .fake-input.error,
+    .submitted .ng-invalid > input,
+    .submitted .ng-invalid > textarea,
+    .ng-invalid.ng-dirty > input,
+    .ng-invalid.ng-dirty > textarea {
+        background-color: lighten(negative, 95%);
+        border-color: lighten(negative, 50%) !important;
+        color: negative !important;
+    }
+
+    .form__errors {
+        margin-top: 0.1em;
+    }
+
+
+    // PLaceholder text
+
+    *::-webkit-input-placeholder { color: grey6; } 
+    *::-moz-input-placeholder { color: grey6; } 
+
+    input:-ms-input-placeholder ,
+    textarea:-ms-input-placeholder {
+        color: grey6;
+        font-weight: light;
+    }
+
+    
+    // Fake input
+    //
+    // Currently used with the tag manager but could also be adapted elsewhere
+    //
+    // Markup: 
+    // <div class="fake-input">
+    //     <div class="tags">
+    //         <a class="tag">Tag 1<i class="icon--cross"></i></a>
+    //         <a class="tag">Tag 2<i class="icon--cross"></i></a>
+    //     </div>
+    //     <input type="text" />
+    // </div>
+    //
+    // Styleguide elements.inputs.fakeinput
+
+
+    .fake-input {
+        input();
+
+        width: 100%;
+        //padding: 8px 10px 4px 10px;
+        padding: .4em .8em .2em .6em;
+        position:relative;
+        cursor: text;
+
+        input[type="text"] {
+            border: none;
+            padding: 0;
+            max-width: 210px;
+            height: 25px;
+            margin: 0 0 4px 4px;
+            background: transparent;
+            &:focus {
+                box-shadow: inset 1px 1px 2px rgba(0,0,0,0);
+            }
+        }
+    }
+
+
+    // Editable heading
+    //
+    // Not currently in use
+    //
+    // Markup: 
+    // <input type="text" class="h1" />
+    // <textarea class="h1"></textarea>
+    //
+    // Styleguide elements.inputs.editableheading
+
+    input.h1,
+    textarea.h1 {
+        padding: 0;
+        border: 0;
+        height: 50px;
+        max-width:630px;
+        margin: 0 !important;
+        resize: none;
+        border-radius:0;
+        font-size: 40px;
+        /*border-bottom: 1px dashed grey8;*/
+        background-color: transparent;
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        @media minTablet {
+            margin: 0 0 0 0;
+        }
+
+        &.autogrow { min-height: 74px; }
+    }
+    
+    .submitted {
+        input.h1.ng-invalid,
+        textarea.h1.ng-invalid {
+            background-color:transparent !important;
+            
+            &::-webkit-input-placeholder {
+                color:negative;
+            }
+            &:-moz-placeholder {
+                color:negative;
+            }
+            &::-moz-placeholder {
+                color:negative;
+            }
+            &:-ms-input-placeholder {
+                color:negative;
+            }
+        }
+    }
+    
+    // Invisible input
+    //
+    // Markup: 
+    // <input type="text" class="invisible-input" />
+    //
+    // Styleguide elements.inputs.invisibleinput
+    
+    input.invisible-input {
+        
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    
+    // Radio list
+    //
+    // Styled select boxes are crap so use this if you need to present complex select options.  The filter at the top of the list is optional.  If you do use it, set an ng-repeat for the radios and add a filter link this:  ng-repeat="option in element.options | filter:{Label: filterText}"  where 'Label' is the property where the text for the radio option is defined
+    //
+    // Markup: 
+    // <div class="radio-list" radio-list--filter">
+    //     <div class="form__field radio-list__filter">
+    //         <label 
+    //             for="radioListFilterBox"
+    //             class="icon--search field__before field__before--filter">
+    //             <span class="is-visually-hidden">Type to filter</span>
+    //         </label>
+    //         <input 
+    //             type="text" 
+    //             id="radioListFilterBox"
+    //             placeholder="Type to filter"
+    //             ng-model="filterText"
+    //             class="invisible-input" />
+    //     </div>
+    //     <div class="field__radio">          
+    //         <input type="radio"
+    //             id="radio-1"
+    //             name="radios"
+    //         />
+    //         <label for="radio-1" class="form__label">Long option 1 text with <strong>various</strong> other <em>tags</em></label>
+    //     </div>
+    //     <div class="field__radio">          
+    //         <input type="radio"
+    //             id="radio-2"
+    //             name="radios"
+    //         />
+    //         <label for="radio-2" class="form__label">Long option 2 text with <strong>various</strong> other <em>tags</em></label>
+    //     </div>
+    //     <div class="field__radio">          
+    //         <input type="radio"
+    //             id="radio-3"
+    //             name="radios"
+    //         />
+    //         <label for="radio-3" class="form__label">Long option 3 text with <strong>various</strong> other <em>tags</em></label>
+    //     </div>
+    // </div>
+    //
+    // Styleguide elements.inputs.radiolist
+
+    .radio-list {
+
+        input();
+        max-height: 150px;
+        overflow-y: scroll;
+        position: relative;
+        background: #fff;
+        width: 100%;
+        
+        .field__radio label {
+            left: 0;   
+        }
+        
+        &--filter {
+            padding-top: 0;
+        }
+        
+        &__filter {
+            
+            border-bottom: solid 1px grey8;
+            margin-bottom: 10px !important; // Overrides a style used by the table-form class
+            padding: 2px 0;
+        }
+    }
+
+    // Multiple Select
+    // ----------------------------------------------
+    .select--multiple {
+        
+        min-height:240px;
+
+        &:disabled {
+            background-color: grey8;
+            cursor: wait;
+        }
+    }
+    
+    // Pop-out module - used by some of the inputs with poput boxes
+    .popout {
+        position:absolute;
+        z-index:15;
+        
+        margin:3px 0 0;
+        padding:0;
+        border:1px solid grey7;
+        border-radius:3px;
+        box-shadow:0 2px 5px rgba(0,0,0,0.1);
+        list-style:none;
+        background:#fff;
+        overflow:hidden;
+    }
+    
+    // Datepicker
+    // 
+    // Markup:
+    // <div class="relative">
+    //     <input type="text"
+    //         id="datepicker"
+    //         placeholder="Date picker"
+    //         name="date"
+    //         ng-model="date"
+    //         datepick datepicker-popup="d MMM yyyy" />
+    //     <span class="icon--calendar field__after"></span>
+    // </div>  
+    //
+    // Styleguide elements.inputs.datepicker
+
+    datepicker-grid-size = 30px;
+
+    .datepicker {
+        width: 260px;
+    }
+
+    .datepicker__calendar {}
+    .datepicker__calendar-inner {}
+    .datepick__month-selection {
+        background: grey9;
+        text-align: center;
+        padding: 0 10px;
+
+        button {
+            border: none;
+            background: none;
+            padding: 10px;
+            margin: 0;
+        }
+    }
+    
+    .datepick__month-selection .select-wrapper {
+        
+        width: 82px;
+        margin: 11px 2px;
+        
+        .select {
+            text-align: left;
+        }
+    }
+    
+    .datepicker__prev-month {
+        float: left;
+        width: datepicker-grid-size;
+        height: 44px;
+    }
+    .datepicker__curr-month {
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .datepicker__next-month {
+        float: right;
+        width: datepicker-grid-size;
+        height: 44px;
+
+    }
+
+    .datepicker__table {
+        margin: 10px;
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        th {
+            width: datepicker-grid-size;
+            overflow: hidden;
+            color: grey5;
+            font-weight: light;
+            text-align: center;
+            line-height: datepicker-grid-size;
+            height: datepicker-grid-size; 
+            font-size: 14px;
+        }
+
+        button {
+            background:none;
+            border:none;
+            margin:0;
+            padding:0;
+            line-height: 1;
+
+            &:disabled {
+                color:grey6;
+
+                &:hover, 
+                &:focus {
+                    background:none;
+                }
+            }
+        }
+
+        td {
+            width: datepicker-grid-size;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+
+            button {
+                background: none;
+                border: none;
+                height: datepicker-grid-size;
+                max-width: datepicker-grid-size;
+                margin: 0 auto;
+                font-size: 14px;
+                border-radius: 50%;
+
+                transition: background 150ms ease-in;
+
+                &:hover {
+                    background: grey8;
+                }
+                &.is--active {
+                    background: primary;
+                    color: white;
+                }
+            }
+
+        }
+    }
+
+    // Time picker 
+    // 
+    // Markup:
+    // <div class="form__field">
+    //     <label
+    //         class="icon--clock field__after" 
+    //         for="datepicker">
+    //         <span class="is-visually-hidden">Time</span>
+    //     </label>
+    //     <input
+    //     type="text"
+    //     id="timepicker"
+    //     placeholder="Time"
+    //     ng-model="element.val"
+    //     timepicker
+    //     />
+    // </div>
+    //
+    // Styleguide elements.inputs.timepicker
+
+    .timepicker {
+        width: 170px;
+        padding: 0 10px;
+    }
+
+    .timepicker__table {
+        table-layout:fixed;
+        text-align:center;
+
+        tbody {}
+        tr {}
+        td {text-align:center; width:50px; padding:0 4px;}
+        input {
+            height:26px;
+            line-height: 26px;
+            padding: 0;
+            border-radius: 3px;
+
+            border:0;
+            background: primary;
+            color: white;
+            text-align: center;
+            transition: opacity 150ms ease-in-out;
+
+            &:hover,
+            &:focus {
+                opacity:0.8;
+                color:white;
+            }
+        }
+        button {}
+    }
+
+    .timepicker__button {
+        font-size: 14px;
+        line-height: 1.8;
+        padding: 5px;
+        display: block;
+        color: black;
+    }
+
+    .timepicker__toggle {
+        border: none;
+        border-radius: 3px;
+
+        background: primary;
+        color: white;
+        text-align: center;
+
+        transition: opacity 150ms ease-in-out;
+
+        &:hover,
+        &:focus { 
+            opacity:0.8; 
+        }
+    }
+
+    // Label before / after input
+    //
+    // Use this style to place an icon before or after an input.  Ignore the default styling, it's broken and a class must be added for this to work 
+    //
+    // Markup:
+    // <div class="form__field">   
+    //     <label 
+    //         for="beforeAfterInput"
+    //         class="icon--search {{modifier_class}}">
+    //         <span class="is-visually-hidden">Enter your name here</span>
+    //     </label>   
+    //     <input 
+    //         type="text" 
+    //         id="beforeAfterInput"
+    //         placeholder="Enter your name here"
+    //         class="{input-invisible}" />
+    // </div>
+    // 
+    // .field__before - Place an icon before an input
+    // .field__before.field__before--filter - Place an icon before an input at the top of a filtered list.  Use in conjunction with an input-invisible class on the input
+    // .field__after - Place an icon after an input
+    // .field__after.field__after--filter - place an icon after an input at the top of a filtered list.  Use in conjunction with an input-invisible class on the input
+    //
+    // Styleguide elements.inputs.labelbeforeafter
+
+    .field__before,
+    .field__after {
+        display:inline-block;
+        position: absolute;
+        top: 50%;
+        left: 4px;
+        width: 2em;
+        height: 1em;
+        margin-top: -0.5em; 
+        text-align: center;
+        color: grey5;
+        line-height: 1;
+        z-index: 4;
+        pointer-events: none;
+        cursor: pointer;
+
+        &[class*="icon--"] {
+            margin-right: 0;
+            font-size: 16px;
+        }
+        
+        &--filter {
+            
+            width: 1em;            
+            color: grey6;
+            left: 1px;
+            
+            + input {
+                font-size: 13px;
+            }
+            
+            &[class*="icon--"] {
+                font-size: 14px;
+            }       
+        }
+    }
+    
+    a.field__before,
+    a.field__after {
+        pointer-events: auto;
+    }
+
+    .field__before {
+        
+        + input {
+            padding-left: gutter;
+        }
+        
+        &--filter + input {
+            padding-left: gutter - 15;
+        }
+    }
+
+    .field__after {
+        
+        left: auto;
+        right: 4px;
+    
+        + input {
+            padding-right: gutter;
+        }
+        
+        &--filter + input {
+            padding-right: gutter - 15;
+        }
+    }
+
+    // Field Button to the right of an input
+    .field-button--after {
+        position: absolute;
+        z-index: 10;
+        right: 0px;
+        top: 0px;
+        padding: 10px 8px;
+        color: grey6;
+        cursor: pointer;
+
+        &:hover {
+            color: primary;
+        }
+    }
+    
+    // Search field
+    //
+    // Deprecated: See label before / after input for an example of another way to achieve a search field style
+    //
+    // Styleguide elements.inputs.searchfield
+
+    .field--search {
+        min-width: 170px;
+
+        .search__icon {
+            font-size: 26px;
+            width: 42px;
+            padding-top: 0;
+            color: #dadada;
+            vertical-align: top;
+        }
+
+        .search__input {
+            font-size: 18px;
+            border: none;
+            border-radius: 0;
+
+            &:focus {
+                box-shadow: inset 1px 1px 2px rgba(0,0,0,0.0);
+            }
+        }
+
+        .field__before + .search__input {
+            padding: 2px 0px 2px 55px;
+        }
+
+        @media minTablet {
+            
+            .search__icon {
+                width: 32px;
+                font-size: 24px;
+            }
+
+            .search__input {
+                font-size: 16px;
+            }
+
+            .field__before + .search__input {
+                padding-left: 45px;
+            }
+
+        }
+
+    }
+
+    // Typeahead
+    //
+    // See forms in the styleguide for examples of typeahead controls
+    // ------------------------------------------------
+
+    .typeahead {
+        position:relative;
+    }
+
+    .typeahead__loading {
+        position:absolute;
+        top:13px;
+        right:16px;
+    }
+
+    .typeahead__list {
+        width:100%;
+        max-height:240px;
+        overflow-y:auto;
+        left:0;
+    }
+
+    .typeahead__item {}
+
+    .typeahead__link {
+        padding:6px 20px;
+        display:block;
+        color: grey3;
+
+        &:hover,
+        &:focus {
+            background: grey9;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    }
+
+    .is--active > .typeahead__link { 
+        color: white; 
+        background: primary; 
+    }

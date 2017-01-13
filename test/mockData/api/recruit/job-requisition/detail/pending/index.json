@@ -1,0 +1,104 @@
+﻿{
+  "data": {
+    "$id": "1",
+    "JobRequisitionDetail": {
+      "$id": "2",
+      "JobAdRequisitionId": 1917,
+      "CreatedDateTime": "2016-05-18T04:25:28.43",
+      "LastModifiedDateTime": "2016-05-18T04:25:28.43",
+      "ContactPerson": null,
+      "ContactNumber": null,
+      "State": "Pending",
+      "SubState": "",
+      "NetworkGroup": {
+        "$id": "3",
+        "NetworkGroupId": 11062,
+        "GroupName": "Elsternwick",
+        "Type": null,
+        "LookupUrl": "http://localhost:56828/Api/",
+        "IsTrainingLocation": null
+      },
+      "Role": {
+        "$id": "4",
+        "RoleId": 644,
+        "Description": "ADMIN - Executive Assistant - Managing Director",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "Owner": {
+        "$id": "5",
+        "MemberId": 247682,
+        "FirstName": "Sherpa",
+        "Surname": "Admin",
+        "PreferredName": null,
+        "Title": "FIN - Systems Administrator",
+        "PhotoLarge": "/networkrepository/957/member/247682/profile_large.png",
+        "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.png",
+        "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+        "RoleTitle": "FIN - Systems Administrator",
+        "DefaultNetworkGroupId": 11038,
+        "Birthday": null,
+        "Sex": "m",
+        "Salutation": null
+      }
+    },
+    "EntityActions": [
+      {
+        "$id": "6",
+        "Id": "1917",
+        "Code": 3708,
+        "Caption": "CanEditJobAdRequisition",
+        "Description": "CanEditJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1917",
+        "Children": null
+      },
+      {
+        "$id": "7",
+        "Id": "1917",
+        "Code": 3704,
+        "Caption": "CanCancelJobAdRequisition",
+        "Description": "CanCancelJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1917/process/4",
+        "Children": null
+      },
+      {
+        "$id": "8",
+        "Id": "1917",
+        "Code": 3708,
+        "Caption": "CanEditJobAdRequisition",
+        "Description": "CanEditJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1917",
+        "Children": null
+      },
+      {
+        "$id": "9",
+        "Id": "1917",
+        "Code": 3706,
+        "Caption": "CanApproveJobRequisition",
+        "Description": "CanApproveJobRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1917/process/1",
+        "Children": null
+      },
+      {
+        "$id": "10",
+        "Id": "1917",
+        "Code": 3707,
+        "Caption": "CanRejectJobRequisition",
+        "Description": "CanRejectJobRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1917/process/3",
+        "Children": null
+      },
+      {
+        "$id": "11",
+        "Id": "1917",
+        "Code": 3701,
+        "Caption": "CanDeleteJobAdRequisition",
+        "Description": "CanDeleteJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1917",
+        "Children": null
+      }
+    ],
+    "Status": 0
+  },
+  "status": 200,
+  "config": {}
+}

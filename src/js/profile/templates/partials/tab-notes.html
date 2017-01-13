@@ -1,0 +1,42 @@
+<div class="segment" ng-controller="profileNotes" ng-init="Feedback = 0">
+    <div class="segment__fieldset" disable-paging="true" paginate="loadNotes" page-size="10" buffer-size="1" filter-by=""
+         page-model="documentation.note" paginate-on-manual-scroll="true" collection-name="documents" auto-update="true">
+        <div class="segment__fieldset-heading table-form__edit-parent">
+            <h2><i class="icon--notebook"></i>Profile Notes</h2>
+            <div class="table-form__toolbar table-form__toolbar-note">
+                <div class="table-form__toolbar-icon table-form__toolbar-link" ng-show="documentation.note.refreshError || documentation.note.refreshing">
+                    <a href="" dropdown-toggle><i ng-class="{'icon--warning':  !documentation.note.refreshing && documentation.note.refreshError, 'loading-spinner__icon': documentation.note.refreshing}" class=''></i></a>
+                    <ul class="submenu submenu--compact dropdown-menu" ng-show="documentation.note.refreshError">
+                        <li class="submenu__item">
+                            <a href="" ng-click="documentation.note.refresh();">Reloaded failed, try again</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="" ng-click="documentation.note.reloadEntirePage();">Refresh entire page</a>
+                        </li>
+                    </ul>
+                </div>
+                <span ng-class="{'is--active': documentation.note.Feedback === 1 || documentation.note.Feedback === 2 || documentation.note.Feedback === 0}">Filter:</span>
+                <a ng-class="{'is--active': documentation.note.Feedback === 1}" href="" class="table-form__toolbar-link"><i class="icon--smiling" ng-click="documentation.note.Feedback === 1 ? documentation.note.Feedback = -1 : documentation.note.Feedback = 1"></i></a>
+                <a ng-class="{'is--active': documentation.note.Feedback === 0}" href="" class="table-form__toolbar-link"><i class="icon--neutral" ng-click="documentation.note.Feedback === 0 ? documentation.note.Feedback = -1 : documentation.note.Feedback = 0"></i></a>
+                <a ng-class="{'is--active': documentation.note.Feedback === 2}" class="table-form__toolbar-link"><i class="icon--sad" ng-click="documentation.note.Feedback === 2 ? (documentation.note.Feedback = -1) : (documentation.note.Feedback = 2);"></i></a>
+                <a href="" class="table-form__toolbar-link" ng-if="documentation.note.userCan.cancreateprofilecontent" ng-click="openModalCreateEditNote();"> <i class="icon--edit"></i>&nbsp;&nbsp;<span>New note</span></a>
+            </div>
+        </div>
+        <div class="form__field">
+            <label for="auto_complete" class="icon--search field__before"></label>
+            <input type="text" id="auto_complete" placeholder="Search..." ng-model="documentation.note.filter" ng-change="documentation.note.search()">
+        </div>
+        <div ng-show="documentation.note.loaded && (documentation.note.documents | limitTo:documentation.note.showing | feedBack:documentation.note.Feedback).length === 0" class="message message--small">
+            <p>No profile notes are available</p>
+        </div>
+        <hr ng-repeat-start="document in documentation.note.documents | limitTo:documentation.note.showing | feedBack:documentation.note.Feedback" ng-if="$index > 0" />
+        <note-item ng-model="document" delete-fn="delete" update-fn="openModalCreateEditNote" ng-repeat-end></note-item>
+        <div class="note__footer-wrapper" ng-show="!documentation.note.loading && !documentation.note.finished && (documentation.note.documents | limitTo:documentation.note.showing | feedBack:documentation.note.Feedback).length > 0" ng-click="documentation.note.next();">
+            <footer class="note__footer">
+                <div class="note__footer-item">
+                    <a href=""><i class="icon--ellipsis"></i></a>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

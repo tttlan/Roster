@@ -1,0 +1,148 @@
+/**
+ * Line Graph Styles
+ */
+
+// color stuff
+lineChartBaseColour      = #333;
+lineChartBorderColour           = #eee;
+lineChartBorderColourBright = alpha( lineChartBaseColour, 0.3 );
+
+lineChartColourGreen = #94b86e;
+
+// sizes
+lineChartBaseFontSize               = 14px;
+
+lineChartBubbleLabelFontSize   = 0.6 * lineChartBaseFontSize;
+lineChartBubbleValueFontSize   = 1 * lineChartBaseFontSize;
+
+lineChartXAxisFontSize         = 0.8 * lineChartBaseFontSize;
+
+
+// weights
+lineChartFontWeight            = 100;
+
+
+.lineChart {
+  position:relative;
+  
+  &.is--loading:before {
+    background:white;
+  }
+}
+
+.lineChart__container {
+  width:100%;
+  margin-top:20px;
+  padding-bottom:20%;
+  position:relative;
+}
+
+.lineChart__chart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.lineChart__title {
+  font-size:1em !important;
+  font-weight: 400 !important;
+  margin-left:20px !important;
+}
+
+.lineChart--area {
+  fill: none;
+}
+
+.lineChart__rangeSelect.select-wrapper {
+  position:absolute;
+  top:0px;
+  right:10px;
+  width: auto;
+}
+
+.lineChart--areaLine {
+  fill   : none;
+  stroke : lineChartColourGreen;
+  stroke-width: 3;
+}
+
+.lineChart--bubble--label {
+  fill: none;
+  stroke: lineChartColourGreen;
+  
+  font-size: lineChartBubbleLabelFontSize;
+  font-style: italic;
+  font-weight: lineChartFontWeight;
+}
+
+.lineChart--bubble--value {
+  fill: #fff;
+  stroke: #fff;
+  
+  font-size: lineChartBubbleValueFontSize;
+  font-weight: lineChartFontWeight;
+}
+.lineChart--circle {
+  fill: lineChartColourGreen;
+  stroke: #fff;
+  stroke-width: 3;
+}
+
+.lineChart--circle__highlighted {
+  fill: #fff;
+  stroke: alpha( lineChartColourGreen, 0.5 );
+}
+
+.lineChart--gradientBackgroundArea--top {
+  stop-color   : lineChartColourGreen;
+  stop-opacity : 0.1;
+}
+
+.lineChart--gradientBackgroundArea--bottom {
+  stop-color   : lineChartColourGreen;
+  stop-opacity : 0.6;
+}
+
+.lineChart--svg {
+  border: 1px solid lineChartBorderColour;
+}
+
+// d3.js doesn't let me BEM it. :(
+.lineChart--xAxisTicks, .lineChart--xAxis, .lineChart--yAxisTicks, .lineChart--yAxis {
+  .domain {
+    display: none;
+  }
+}
+
+.lineChart--xAxis {
+  .tick {
+    line {
+      display: none;
+    }
+  }
+  text {
+    font-size:lineChartXAxisFontSize;
+  }
+}
+
+.lineChart--yAxis {
+  .tick {
+    line {
+      display: none;
+    }
+  }
+  text {
+    font-size:lineChartXAxisFontSize;
+  }
+}
+.lineChart--xAxisTicks, .lineChart--yAxisTicks {
+  .tick {
+    line {
+      fill: none;
+      stroke: lineChartBorderColourBright;
+      stroke-width: 1;
+      stroke-dasharray: 2,2;
+    }
+  }
+}

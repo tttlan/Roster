@@ -1,0 +1,78 @@
+<div class="directive__phone">
+    <form class="form" name="$phoneForm">
+        
+        <div class="form__field" ng-repeat="number in phoneNumbers">
+
+            <div class="form__field">
+
+                <a href="" class="field__after button--icon"
+                   ng-confirm-click="onRemove($index)"
+                   ng-confirm-message="Are you sure you want to remove this phone number?"
+                   ng-show="phone.allowRemove">
+                    <i class="icon--round-minus"
+                       tooltip="REMOVE"
+                       tooltip-placement="right"></i>
+                </a>
+
+                <!--<label for="phoneNumber{{$index}}" class="off-screen">Phone number</label>-->
+
+                <input id="phoneNumber{{$index}}"
+                       type="tel"
+                       placeholder="Enter a phone number"
+                       ng-model="number.value"
+                       maxlength="20"
+                       ng-pattern="/^\+?(\(\d\d\))?(\d? ?)*$/"
+                       ng-required="true" />
+
+            </div>
+            
+            <div class="form__field--inline">
+
+                <div class="field__checkbox field__checkbox--small">
+                    <input type="checkbox"
+                        id="isPublic_{{ phone.id }}_{{ $index }}"
+                        ng-model="number.isPublic">
+                    <label class="form__label_public" for="isPublic_{{ phone.id }}_{{ $index }}"></label>
+                    <!--<label class="form__label" for="isPublic_{{ phone.id }}_{{ $index }}">-->
+                        Public
+                    </label>
+                </div>
+
+                <div class="field__radio field__radio--small">
+                    <input type="radio"
+                        id="isNotified_{{ phone.id }}_{{ $index }}"
+                        ng-model="number.isPrimary"
+                        ng-value="$index"
+                        ng-attr-name="selectedPrimary"
+                        ng-change="setPrimary($index)">
+                    <label class="form__label_receive" for="isNotified_{{ phone.id }}_{{ $index }}"></label>
+                    <label class="form__label" for="isNotified_{{ phone.id }}_{{ $index }}">
+                        Receive SMS notifications
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+        
+        <a href="" ng-show="phone.allowAdd" ng-click="phone.$add()" class="button-text">+ add phone number</a>
+
+        <input type="hidden" name="phoneModel" ng-model="phoneNumbers" />
+
+        <div class="form__errors" ng-show="!$phoneForm.phoneModel.$valid && $phoneForm.phoneModel.$viewValue.length">
+            <error ng-show="$phoneForm.phoneModel.$error.hasPrimary">
+                You need to select a phone number to recieve SMS notifications.
+            </error>
+            <error ng-show="$phoneForm.phoneModel.$error.overMin">
+                You need to have at least {{ phone.min }} phone numbers.
+            </error>
+            <error ng-show="$phoneForm.phoneModel.$error.underMax">
+                You can't have more than {{ phone.max }} phone numbers.
+            </error>
+            <error ng-show="$phoneForm.phoneModel.$error.duplication">
+                You can't have a duplication phone numbers.
+            </error>
+        </div>
+        
+    </form>
+</div>

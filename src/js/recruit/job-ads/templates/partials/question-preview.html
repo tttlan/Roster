@@ -1,0 +1,66 @@
+<div class="job-ads-create-section">
+    <h4 class="is--bold">QUESTIONS</h4>
+    <label class="form__label is--bold"><h4>Job Questions</h4></label>
+    <div ng-if="!question.selectedCustomQuestions.length" class="aligned--center"><small>No Questionnaire</small></div>
+    <div class="recruit segment margin-preview" ng-repeat="jobQuestion in question.selectedCustomQuestions">
+        <div>
+            <div class="col-1-3">
+                <label class="form__label" ng-show="isShowEligibility">{{jobQuestion.templateTitle}}</label>
+            </div>
+            <div class="col-2-3 aligned--right">
+                <span><i ng-class="{'icon--arrow-down': isShowEligibility, 'icon--arrow-up': !isShowEligibility}" ng-click="isShowEligibility=!isShowEligibility"></i></span>
+            </div>
+        </div>
+        <div ng-show="!isShowEligibility">
+            <tabs>
+                <div>
+                    <div class="tab-group [modifier class]">
+                        <div class="question-group-item ">
+                            <div class="question-group-title">
+                                <span class="group-name">{{jobQuestion.templateTitle}}</span>
+                            </div>
+                            <fieldset class="segment">
+                                <div ng-repeat="question in jobQuestion.questions">
+                                    <question-details model="question"></question-details>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </tabs>
+        </div>
+    </div>
+
+    <label class="form__label is--bold"><h4>Phone interview questions</h4></label>
+
+    <div ng-if="!question.selectedPhoneQuestions.length" class="aligned--center"><small>No Questionnaire</small></div>
+
+    <div class="recruit segment margin-preview" ng-repeat="phoneQuestion in question.selectedPhoneQuestions">
+        <div>
+            <div class="col-1-3">
+                <label class="form__label" ng-show="isShowEligibility">{{phoneQuestion.templateTitle}}</label>
+            </div>
+            <div class="col-2-3 aligned--right">
+                <span><i ng-class="{'icon--arrow-down': isShowEligibility, 'icon--arrow-up': !isShowEligibility}" ng-click="isShowEligibility=!isShowEligibility"></i></span>
+            </div>
+        </div>
+        <div ng-show="!isShowEligibility">
+            <tabs>
+                <div>
+                    <div class="tab-group [modifier class]">
+                        <div class="question-group-item ">
+                            <div class="question-group-title">
+                                <span class="group-name">{{phoneQuestion.templateTitle}}</span>
+                            </div>
+                            <fieldset class="segment">
+                                <div ng-repeat="question in phoneQuestion.questions">
+                                    <question-details model="question"></question-details>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </tabs>
+        </div>
+    </div>
+</div>

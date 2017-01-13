@@ -1,0 +1,175 @@
+// =============================================================================
+// Sherpa Config
+// =============================================================================
+
+// IE version variables
+// ------------------------------------------------
+
+ie8 ?= false
+ie9 ?= false
+
+
+// Paths
+// ------------------------------------------------
+fonts-path = '../fonts'
+svg-path = '../svg'
+
+mobile = 1px
+phablet = 321px
+smallTablet = 480px
+tablet = 700px
+desktop = 900px
+widescreen = 1300px
+
+navDesktop = 1160px;
+
+// Colour palette
+//
+// Global colour pallette.  Try and use these colours first before introducing a new colour.  Note that the names below can be used as stylus variables
+//
+// Markup:
+// <div class="docs-swatch" style="background-color: {{modifier_class}}"></div>
+//
+// .#292724 - black
+// .#1f1f1f - grey1
+// .#393939 - grey2
+// .#5a5a5a - grey3
+// .#7b7b7b - grey4
+// .#a2a2a2 - grey5
+// .#c7c7c7 - grey6
+// .#e3e3e3 - grey7
+// .#f1f1f1 - grey8
+// .#fafafa - grey9
+// .#fdfdfd - grey10
+// .#ffffff - white
+// .#94b86e - positive
+// .#e25856 - negative
+// .#f0ad4e - caution
+// .#2774b1 - info
+// .#c7c7c7 - disabled
+// .#848ca1 - notify
+//
+// Styleguide configuration.colours
+
+
+// Standard Colours
+black = #292724
+grey1 = #1f1f1f
+grey2 = #393939
+grey3 = #5a5a5a
+grey4 = #7b7b7b
+grey5 = #a2a2a2
+grey6 = #c7c7c7
+grey7 = #e3e3e3
+grey8 = #f1f1f1
+grey9 = #fafafa
+grey10 = #fdfdfd
+white = #ffffff
+
+// Emotive colours
+positive = #94b86e 
+negative = #e25856
+caution = #f0ad4e
+info = #2774b1
+disabled = grey6
+notify = #848ca1
+
+
+// Theme Colours
+//
+// Theme colours for the platform
+//
+// Markup:
+// <div class="docs-swatch block {{modifier_class}}"></div>
+//
+// .theme--teal - Teal
+// .theme--purple - Purple
+// .theme--red - Red
+// .theme--crimson - Crimson
+// .theme--pink - Pink
+// .theme--orange - Orange
+// .theme--black - Black
+// .theme--green - Green
+// .theme--lime - Lime
+// .theme--pink - Pink
+//
+// Styleguide configuration.themecolours
+
+theme = {
+    teal: #45acad,
+    blue: #0072bc,
+    purple: #6460aa,
+    red: #cd2944,
+    orange: #f3642b,
+    crimson: #b16c88,
+    black: #231f20,
+    green: #7fb16c,
+    lime: #a0bb60,
+    pink: #db5993
+}
+
+
+// Element Colours
+// ------------------------------------------------
+
+primary ?= theme.blue
+quiet-color = #dde1ed
+loud-color = #848ca1
+soft-grey = #f5f4f4
+
+// Body
+default-body-color = #f3f4f5
+default-border-color = #dfe0e1
+
+// links
+link-color = #4377b2
+link-color-hover = primary
+link-color-visited = darken(link-color, 10%)
+link-color-outline = lighten(link-color, 90%)
+
+
+// Fonts
+// ------------------------------------------------
+
+// Base font size
+base-font-pixel-size = 16px
+
+// Weighting
+light = 300
+regular = 400
+bold = 600
+
+// Stack
+font-icon = 'sherpa'
+
+base-font-family = 'Open Sans', Helvetica, sans-serif
+base-font-size = 1em
+base-line-height = 1.5
+base-font-color = black
+base-font-weight = regular
+
+// Headings
+heading-font-family = base-font-family
+heading-font-weight = light
+
+
+// Spacing
+// ------------------------------------------------
+
+
+page-width = 1000px;
+gutter = 40px
+base-spacing = (gutter/2)
+indent-amount = gutter
+base-border-radius = 3px;
+header-height = 66px;
+header-fixed-height = 48px;
+subnav-height = 48px;
+
+
+// Forms
+// ------------------------------------------------
+
+input-border-color = #d9d9d9;
+input-focus-color = #a0c3e9;
+input-bg-color = grey10

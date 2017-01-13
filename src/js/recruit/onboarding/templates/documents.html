@@ -1,0 +1,97 @@
+﻿
+<div class="page page--1-c-wide recruit">
+    <div class="page__wrapper">
+
+        <div class="page__content onboarding" ng-class="{'is--loading': isLoading}">
+            <div class="segment">
+                <div class="align__center">
+                    <h1>Accept documentation</h1>
+                    <p><small>Please confirm your acceptance of the role and the following terms and conditions of employment</small></p>
+                </div>
+                <div class="onboarding__docsWrapper">
+
+                    <div class="segment segment--outline" ng-repeat="document in onboarding.documents">
+
+                        <div class="document-listing">
+                            <div class="document-listing__image"></div>
+
+                            <div>
+                                <a href="" title="Read document" ng-click="onboarding_openModal(document.OnboardDocumentRecord, $index)" ng-disabled="metadata[$index].isOpen">
+                                    <span class="document-listing__desc">DOCUMENT ({{metadata[$index].fileExtension | uppercase}})</span>
+                                    <h4 class="document-listing__title">{{document.OnboardDocumentRecord.FileName}}</h4>
+                                </a>
+
+                            <a href="" ng-show="!metadata[$index].isOpen && !metadata[$index].isAccepted" 
+                                ng-if="document.OnboardDocumentRecord.FileExt === 'img' || document.OnboardDocumentRecord.FileExt === 'doc'
+                                || document.OnboardDocumentRecord.FileExt === 'docx' || document.OnboardDocumentRecord.FileExt === 'pdf'"
+                                ng-click="onboarding_openModal(document.OnboardDocumentRecord, $index)" 
+                                class="button button--small button--primary">Read Document</a>
+                                
+                            <a href="" ng-show="!metadata[$index].isOpen && !metadata[$index].isAccepted" 
+                                ng-if="document.OnboardDocumentRecord.FileExt !== 'img' && document.OnboardDocumentRecord.FileExt !== 'doc'
+                                && document.OnboardDocumentRecord.FileExt !== 'docx' && document.OnboardDocumentRecord.FileExt !== 'pdf'"
+                                ng-click="DownloadDocument(document.OnboardDocumentRecord, $index)" 
+                                class="button button--small button--primary">Download Document</a>
+                        </div>
+                        
+                        <div class="onboarding__accept-form" ng-show="metadata[$index].isOpen">
+
+                            <div class="field__checkbox field__checkbox--small">
+
+                                    <input type="checkbox" name="chkAccept" id="chkAccept_{{$index}}" ng-model="metadata[$index].isRead" ng-click="!metadata[$index].isRead" />
+                                    <label class="form__label" for="chkAccept_{{$index}}">I have read and agree to the terms of this document</label>
+                                    <span class="form__note form__note--error" ng-hide="metadata[$index].isRead">Please check the box to confirm you agree to the terms and conditions</span>
+
+                                </div>
+
+                                <div>
+                                    <a id="docAccptbtn" 
+                                        ng-disabled="!metadata[$index].isRead"
+                                        class="button button--small button--positive onboarding-button-accept-doc" 
+                                        ng-hide="metadata[$index].isRead && metadata[$index].isAccepted"
+                                        ng-click="metadata[$index].isRead && acceptDoc(document.OnboardDocumentRecord.OnboardDocumentId, $index)">
+                                        Accept Document</a>
+                                </div>
+
+                            </div>
+
+                            <span class="label label--icon label--positive label--document-accepted" ng-show="metadata[$index].isRead && metadata[$index].isAccepted"><i class="icon--check"></i> Accepted</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="recruit button-footer">
+    <i ng-hide="hasAllDocumentsRead" class="next-step-disclaimer">
+    You will need to read, agree and accept all documents before moving onto the next step.
+    </i>
+    <div class="button-withtext">
+        <button class="button button--positive button--icon-right toggle-loading" 
+            ng-disabled="hasAllDocumentsRead === false"
+            ng-click="onboarding_documents()()">Continue <i class="icon--right"></i></button>
+    </div>
+</div>
+
+<script type="text/ng-template" id="modal-open-document.html">
+         <div class="drawer__wrapper">
+
+        <div class="drawer__content" ng-class="{'is--loading': isLoading}">
+
+            <div id="docContent" class="onboarding__docs" ng-bind-html="trustedHtml" ng-if="FieldType === 'doc'"></div>
+            <div id="docContent" class="onboarding__docs" ng-if="FieldType === 'img'">
+                <img ng-src="{{trustedHtml}}">
+            </div>
+            <div id="docContent" class="onboarding__docs" ng-if="FieldType === 'pdf'">
+                <iframe class="" ng-src="{{trustedHtml}}" style="width: 100%; min-height: 500px;"></iframe>
+            </div>
+        </div>
+        <div class="align-center">
+            <a href="#" class="button button--positive drawer__button" ng-click="close()">Close document</a>
+        </div>
+
+    </div>
+</script>

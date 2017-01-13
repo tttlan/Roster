@@ -1,0 +1,39 @@
+@import '../core/material-colors'
+
+.ui
+  .applicant-search
+    background-color: white
+    padding: 0 0 20px
+
+    label.icon--cross
+      cursor: pointer
+      pointer-events: all
+
+    &__results
+      cursor: pointer
+      list-style: none
+      padding: 0
+
+      &--selected
+        background-color: #F0F3FA
+
+      li
+        padding: 5px 0 5px 10px
+
+        &:not(:first-child)
+          border-width: 1px 0 0
+          border-color: #F3F4F5
+          border-style: solid
+          
+        .remove-icon
+          color: red
+          float: right
+          margin-right: 20px
+    
+    &__limit-reached
+      color: md-grey-900
+      font-style: italic
+      padding-left: 10px
+
+    .loading-spinner
+      color: #999

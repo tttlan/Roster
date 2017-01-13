@@ -1,0 +1,474 @@
+{
+  "api/candidate/1/comments":{
+    "$id": "1",
+    "CandidatePoolCommentSummaryItemResults": [
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2016-05-10T06:46:29.8275733Z",
+          "Comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Dan",
+            "Surname": "Brown",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Store Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 1
+        },
+        "EntityActions": [
+          {
+            "$id": "5",
+            "Id": "2249",
+            "Code": 3814,
+            "Caption": "Edit comment",
+            "Description": "EDIT",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          }
+        ],
+        "Status": 0
+      },
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2016-10-10T06:46:29.8275733Z",
+          "Comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Christian",
+            "Surname": "Sesta",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 2
+        },
+        "EntityActions": [
+          {
+            "$id": "5",
+            "Id": "2249",
+            "Code": 3814,
+            "Caption": "Edit comment",
+            "Description": "EDIT",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          },
+          {
+            "$id": "11",
+            "Id": "2250",
+            "Code": 3813,
+            "Caption": "Delete comment",
+            "Description": "DELETE",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          }
+        ],
+        "Status": 0
+      },
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2013-04-10T06:46:29.8275733Z",
+          "Comment": "I like this application !",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Lauren",
+            "Surname": "Muhar",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 3
+        },
+        "EntityActions": [],
+        "Status": 0
+      }
+    ],
+    "EntityActions": [
+      {
+        "Id": null,
+        "Code": 2503,
+        "Caption": "Can add comment",
+        "Description": "Can add comment",
+        "ActionUrl": "/recruitments/jobs/comments",
+        "Children": null
+      }
+    ],
+    "Pagination": {
+      "$id": "12",
+      "TotalCount": 0,
+      "TotalPages": 0,
+      "PageSize": null,
+      "Page": null
+    },
+    "Status": 0
+  },
+  "api/candidate/2/comments":{
+    "$id": "1",
+    "CandidatePoolCommentSummaryItemResults": [
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2016-05-10T06:46:29.8275733Z",
+          "Comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Dan",
+            "Surname": "Brown",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Store Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 1
+        },
+        "EntityActions": [
+          {
+            "$id": "5",
+            "Id": "2249",
+            "Code": 3814,
+            "Caption": "Edit comment",
+            "Description": "EDIT",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          }
+        ],
+        "Status": 0
+      },
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2016-10-10T06:46:29.8275733Z",
+          "Comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Christian",
+            "Surname": "Sesta",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 2
+        },
+        "EntityActions": [
+          {
+            "$id": "5",
+            "Id": "2249",
+            "Code": 3814,
+            "Caption": "Edit comment",
+            "Description": "EDIT",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          },
+          {
+            "$id": "11",
+            "Id": "2250",
+            "Code": 3813,
+            "Caption": "Delete comment",
+            "Description": "DELETE",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          }
+        ],
+        "Status": 0
+      },
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2013-04-10T06:46:29.8275733Z",
+          "Comment": "I like this application !",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Lauren",
+            "Surname": "Muhar",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 3
+        },
+        "EntityActions": [],
+        "Status": 0
+      }
+    ],
+    "EntityActions": [
+      {
+        "Id": null,
+        "Code": 2503,
+        "Caption": "Can add comment",
+        "Description": "Can add comment",
+        "ActionUrl": "/recruitments/jobs/comments",
+        "Children": null
+      }
+    ],
+    "Pagination": {
+      "$id": "12",
+      "TotalCount": 0,
+      "TotalPages": 0,
+      "PageSize": null,
+      "Page": null
+    },
+    "Status": 0
+  },
+  "api/candidate/3/comments":{
+    "$id": "1",
+    "CandidatePoolCommentSummaryItemResults": [
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2016-05-10T06:46:29.8275733Z",
+          "Comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Dan",
+            "Surname": "Brown",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Store Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 1
+        },
+        "EntityActions": [
+          {
+            "$id": "5",
+            "Id": "2249",
+            "Code": 3814,
+            "Caption": "Edit comment",
+            "Description": "EDIT",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          }
+        ],
+        "Status": 0
+      },
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2016-10-10T06:46:29.8275733Z",
+          "Comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Christian",
+            "Surname": "Sesta",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 2
+        },
+        "EntityActions": [
+          {
+            "$id": "5",
+            "Id": "2249",
+            "Code": 3814,
+            "Caption": "Edit comment",
+            "Description": "EDIT",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          },
+          {
+            "$id": "11",
+            "Id": "2250",
+            "Code": 3813,
+            "Caption": "Delete comment",
+            "Description": "DELETE",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          }
+        ],
+        "Status": 0
+      },
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2013-04-10T06:46:29.8275733Z",
+          "Comment": "I like this application !",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Lauren",
+            "Surname": "Muhar",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 3
+        },
+        "EntityActions": [],
+        "Status": 0
+      }
+    ],
+    "EntityActions": [
+      {
+        "Id": null,
+        "Code": 2503,
+        "Caption": "Can add comment",
+        "Description": "Can add comment",
+        "ActionUrl": "/recruitments/jobs/comments",
+        "Children": null
+      }
+    ],
+    "Pagination": {
+      "$id": "12",
+      "TotalCount": 0,
+      "TotalPages": 0,
+      "PageSize": null,
+      "Page": null
+    },
+    "Status": 0
+  },
+  "api/candidate/4/comments":{
+    "$id": "1",
+    "CandidatePoolCommentSummaryItemResults": [
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2016-05-10T06:46:29.8275733Z",
+          "Comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Dan",
+            "Surname": "Brown",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Store Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 1
+        },
+        "EntityActions": [
+          {
+            "$id": "5",
+            "Id": "2249",
+            "Code": 3814,
+            "Caption": "Edit comment",
+            "Description": "EDIT",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          }
+        ],
+        "Status": 0
+      },
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2016-10-10T06:46:29.8275733Z",
+          "Comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Christian",
+            "Surname": "Sesta",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 2
+        },
+        "EntityActions": [
+          {
+            "$id": "5",
+            "Id": "2249",
+            "Code": 3814,
+            "Caption": "Edit comment",
+            "Description": "EDIT",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          },
+          {
+            "$id": "11",
+            "Id": "2250",
+            "Code": 3813,
+            "Caption": "Delete comment",
+            "Description": "DELETE",
+            "ActionUrl": "/recruitments/jobs/comments/2249",
+            "Children": null
+          }
+        ],
+        "Status": 0
+      },
+      {
+        "$id": "2",
+        "CandidatePoolCommentSummary": {
+          "$id": "3",
+          "CommentDate": "2013-04-10T06:46:29.8275733Z",
+          "Comment": "I like this application !",
+          "Author": {
+            "$id": "4",
+            "MemberId": 1,
+            "FirstName": "Lauren",
+            "Surname": "Muhar",
+            "PhotoLarge": "sample string 4",
+            "PhotoThumb": "sample string 5",
+            "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+            "RoleTitle": "Manager",
+            "DefaultNetworkGroupId": 8
+          },
+          "Reaction": 3
+        },
+        "EntityActions": [],
+        "Status": 0
+      }
+    ],
+    "EntityActions": [
+      {
+        "Id": null,
+        "Code": 2503,
+        "Caption": "Can add comment",
+        "Description": "Can add comment",
+        "ActionUrl": "/recruitments/jobs/comments",
+        "Children": null
+      }
+    ],
+    "Pagination": {
+      "$id": "12",
+      "TotalCount": 0,
+      "TotalPages": 0,
+      "PageSize": null,
+      "Page": null
+    },
+    "Status": 0
+  }
+}

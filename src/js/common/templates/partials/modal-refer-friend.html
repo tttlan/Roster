@@ -1,0 +1,41 @@
+<ng-form name="friendForm" validate-form ng-disabled='loading'>
+    <header class="modal__header">
+        <h2 class="modal__title">Refer a friend - {{ job.JobTitle }} <span ng-if="job.JobLocation">in {{ job.JobLocation }}</span></h2>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+    </header>
+    <div class="modal__content">
+        
+        <fieldset class="form segment">
+            <p>Is there someone you know that you think is a great fit for our organisation? Invite them to access future job opportunities by filling out the form below.</p>
+            <div class="form__fields">
+                <div class="form__field col-1-2">
+                    <label class="form__label" for="FirstName">First name:</label>
+                    <input type="text" ng-model="friend.FirstName" name="FirstName" required />
+                </div>
+                <div class="form__field col-1-2">
+                    <label class="form__label" for="Surname">Last name:</label>
+                    <input type="text" ng-model="friend.Surname" name="Surname" required />
+                </div>
+            </div>
+            <div class="form__fields">
+                <div class="form__field col-1-2">
+                    <label class="form__label" for="Email">Email:</label>
+                    <input type="text" ng-model="friend.Email" name="Email" required />
+                </div>
+                <div class="form__field col-1-2">
+                    <label class="form__label" for="MobilePhone">Mobile:</label>
+                    <input type="text" ng-model="friend.MobilePhone" name="MobilePhone" required />
+                </div>
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="Message">Message:</label>
+                <textarea ng-model="friend.Message" name="Message" required ></textarea>
+            </div>
+        </fieldset>
+    </div>
+    <footer class="modal__footer">
+        <a href="" class="button" ng-click="cancel()">Cancel</a>
+        <a href="" class="button button--positive" ng-click="save(isFormValid(friendForm.$valid), friend)" disable-toggle="loading">Send</a>
+        <p class="form__note form__note--error" ng-show="serverError">{{ serverError }}</p>
+    </footer>
+</ng-form>

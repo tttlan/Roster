@@ -1,0 +1,111 @@
+{
+    "data":
+    {
+    "MemberId": 1,
+    "NetworkId": 1,
+    "MemberProfile": {
+        "$id": "2",
+        "PhotoLarge": "sample string 1",
+        "PhotoThumb": "sample string 2",
+        "PhotoThumbMini": "sample string 3",
+        "RoleId": 1,
+        "AustralianResident": true,
+        "OnlineResume": true,
+        "UploadedResume": true,
+        "MinSalaryId": 1,
+        "MaxSalaryId": 1,
+        "JobTitle": "sample string 7",
+        "ResumeViews": 8,
+        "CareerObjectives": "sample string 9",
+        "BirthDay": "2016-04-05T20:18:08.0658004+10:00",
+        "NotificationSubscriptionId": 1,
+        "BaseGroupNotificationSubscriptionId": 1,
+        "PermissionSetId": 1,
+        "HoursPerWeek": 1.1,
+        "EmploymentStartDate": "2016-04-05T20:18:08.0658004+10:00",
+        "RegisterKey": true,
+        "CustomFormID": 1,
+        "EmploymentClassificationID": 1,
+        "AlarmCodeRequired": true,
+        "StoreKeyRequired": true,
+        "SalaryClassificationID": 1,
+        "PerformanceMetrics": "sample string 12",
+        "AccountRecruitmentId": 13,
+        "ExitFormLastDay": "2016-04-05T20:18:08.0658004+10:00",
+        "ExitFormConfirmer": "sample string 14"
+    },
+    "MemberLogin": {
+        "$id": "3",
+        "LoginName": "sample string 1",
+        "MemberId": 2,
+        "LoginCount": 3,
+        "Password": "sample string 4",
+        "BankPassword": "sample string 5"
+    },
+    "Sex": "sample string 3",
+    "Active": true,
+    "HasFedSite": true,
+    "UseFedLogin": true,
+    "SalutationId": 1,
+    "Deleted": true,
+    "Roaming": true,
+    "DefaultPermission": 8,
+    "IsSystemAccount": true,
+    "NetworkAdmin": true,
+    "FirstName": "sample string 9",
+    "Surname": "sample string 10",
+    "PreferredName": "sample string 11",
+    "DefaultNetworkGroupId": 1,
+    "DefaultNetworkGroup": {
+        "$id": "4",
+        "NetworkGroupId": 1,
+        "GroupName": "sample string 2",
+        "Type": "sample string 3",
+        "LookupUrl": "sample string 4",
+        "IsTrainingLocation": true
+    },
+    "ClockInPin": "sample string 12",
+    "Bankings": [
+        {
+        "$id": "5",
+        "AccountName": "sample string 1",
+        "BSB": "sample string 2",
+        "AccountNo": "sample string 3",
+        "MemberId": 4,
+        "SuperFund": "sample string 5",
+        "SuperNo": "sample string 6",
+        "BankName": "sample string 7",
+        "TaxFileNumber": "sample string 8"
+        }
+    ],
+    "MemberContactInfoes": [
+        {
+        "$id": "6",
+        "MemberId": 1,
+        "ContactInfoId": 2,
+        "ContactType": "sample string 3",
+        "Member": {
+
+        },
+        "ContactDetail": {
+            "$id": "7",
+            "ContactInfoId": 1,
+            "Address": "sample string 2",
+            "City": "sample string 3",
+            "Suburb": "sample string 4",
+            "Postcode": "sample string 5",
+            "LinePhone1": "sample string 6",
+            "LinePhone2": "sample string 7",
+            "MobilePhone": "sample string 8",
+            "Fax": "sample string 9",
+            "Email": "sample string 10",
+            "WebAddress": "sample string 11",
+            "StateRegionId": 1,
+            "StateName": "sample string 12",
+            "CountryId": 1,
+            "Type": "sample string 13"
+        }
+        }
+    ]
+    }
+}

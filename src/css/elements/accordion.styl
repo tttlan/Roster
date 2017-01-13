@@ -1,0 +1,190 @@
+// Standard accordion
+//
+// Markup:
+// <accordion>
+//     <accordion-group>
+//         <accordion-heading>How do I begin a training subject?</accordion-heading>
+//         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+//     </accordion-group>
+//     <accordion-group>
+//         <accordion-heading>How do I begin a training subject?</accordion-heading>
+//         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+//     </accordion-group>
+// </accordion>
+//
+// Styleguide elements.accordion.standard
+
+.ui 
+
+    .accordion {
+
+        list-style-type: none;
+        padding-left: 0;
+
+        > li {
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            margin-top: 1em;
+
+            > h3 [class*="icon--"] {
+                margin-right: 0.5em;
+            }
+
+            h3 {
+                font-size: 1em;
+                letter-spacing: normal;
+                font-weight: 400;
+                margin: 0;
+            }
+
+            a {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .description {
+            padding-left: 1.55em;
+            overflow: hidden;
+            transition: height 0.3s ease-in-out;
+        }
+    }
+    .accordion--segment {
+        > li {
+            padding: gutter;
+            background: white;
+            > h3 {
+                font-size: 1.2em;
+                text-transform: uppercase;
+                > a > [class*="icon--"] {
+                    float:right;
+                    margin-right: 0;
+                }
+                [class*="icon--"] {
+                    vertical-align: middle;
+                }
+            }
+        }
+        .description {
+            .des-divider {
+                border-top: 1px solid default-border-color;
+                position: absolute;
+                width: 100%;
+                left: 0;
+            }
+            overflow: inherit;
+            margin-top: (3*gutter/4);
+            padding-left: 0;
+        }
+        .description__inner {
+            padding-top: (3*gutter/4);
+        }
+    }
+    .recruit.recruit--add-new-employee {
+        .page__content > h2 {
+            text-transform: uppercase;
+        }
+    }
+
+    .accordion--segment-job-add {
+        .right-toggle{
+            float:right;
+        }
+        .form__field {
+              margin-bottom: 20px !important;
+        }
+        .form__field > label {
+            font-size :15px !important;
+        }
+        > li {
+            //padding: gutter;
+            background: white;
+            //border: 1px solid;
+            border-top: 1px solid grey5;
+            margin-top :0px;
+            padding :20px !important;
+            > h3 {
+                font-size: 1em;
+                margin-bottom: -20px;
+                margin-top: -15px;
+                > a > [class*="icon--"] {
+                    float:right;
+                    margin-right:20px;
+                    top: 30px;
+                    position: relative;
+                    line-height : 0;
+                }
+                [class*="right-toggle"] {
+                    float: right;
+                    top: -5px;
+                    right: 70px;
+                    input {
+                        &:checked ~ label:after {
+                            margin-left: 27px;
+                        }
+                        &:checked ~ label:before {
+                            background-color: positive;
+                        }
+                    }
+
+                    input ~ .form__label {
+
+                        &:before {
+                            position: absolute;
+                            display: block;
+                            top: 0;
+                            left: 0;
+                            content: 'OFF';
+                            width: 55px;
+                            height: 27.5px;
+                            background-color: #c7c7c7;
+                            border-radius: 22px;
+                            -webkit-transition: all .1s ease-in;
+                            transition: all .1s ease-in;
+                            text-align: center;
+                            line-height: 22px;
+                            text-indent: 18px;
+                            padding-top: 2px;
+                            padding-left: 9px;
+                            font-size: 12px;
+                            padding-right: 12px;
+                            color: #fff;
+                        }
+
+                        &:after {
+                            width: 28px;
+                            height: 25px;
+                            margin-left: 1px;
+                            background-color: #fff;
+                            border-radius: 20px;
+                            box-shadow: 1px 2px 5px rgba(0,0,0,.2);
+                            content: 'ON';
+                            text-indent: -40px;
+                            font-size: 12px;
+                            padding-top: 2px;
+                            padding-right: 12px;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        .description {
+            .des-divider {
+                border-top: 1px solid default-border-color;
+                position: absolute;
+                width: 92.5%;
+                left: 29px;
+            }
+            overflow: inherit;
+            padding-left: 0;
+        }
+        .description__inner {
+            padding-top: (3*gutter/4);
+        }
+    }

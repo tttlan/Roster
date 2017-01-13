@@ -1,0 +1,508 @@
+﻿<form name="tfnForm" novalidate>
+    <div class="page page--1-c-wide recruit">
+        <div class="page__wrapper">
+            <div class="page__content onboarding" ng-class="{'is--loading': isLoading}">
+                 <div class="segment">
+                
+                <div class="align__center">
+                    <h1>Tax File Declaration Form</h1>
+                    <p style="border-bottom:solid 1px black">
+                        Information you provide in this declaration will allow your payer to work out how much tax to withhold from payments made to you. <a href="" ng-click="openTfnDeclarationHelp('modal-tfn-help-introduction.html')"><i class="icon--round-info is--info"></i></a>
+                    </p>
+
+                    <p><i class="icon--warning is--caution"></i>This declaration is <strong>NOT</strong> an application for a tax file number</p>
+
+                    <h4><strong>To be signed by the PAYEE and returned to the PAYER</strong></h4>
+
+                    <p>Read all the instructions provided by the payer before you complete this declaration</p>
+                </div>
+                <table class="table-form table-form--full-width table--striped">
+                    <tr>
+                        <td class="declaration-form__number"><h2>1</h2></td>
+                        <td>
+                                <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                    <tr>
+                                        <td colspan="3" class="declaration-form__subtitle bottom-border">
+                                            <h4>
+                                                <strong>What is your tax file number?</strong>
+                                                <a href="" ng-click="openTfnDeclarationHelp('modal-tfn-help-tfn.html')"><i class="icon--round-info is--info"></i></a>
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td ng-form="declarationForm" name="declarationForm">
+                                            <div class="tfnNumbers">
+                                                <input-single-number ng-required="true" name="txtTfnNumber1" ng-model="details.tfnNumber1"></input-single-number>
+                                                <input-single-number ng-required="true" name="txtTfnNumber2" ng-model="details.tfnNumber2"></input-single-number>
+                                                <input-single-number ng-required="true" name="txtTfnNumber3" ng-model="details.tfnNumber3"></input-single-number>
+                                                <input-single-number ng-required="true" name="txtTfnNumber4" ng-model="details.tfnNumber4"></input-single-number>
+                                                <input-single-number ng-required="true" name="txtTfnNumber5" ng-model="details.tfnNumber5"></input-single-number>
+                                                <input-single-number ng-required="true" name="txtTfnNumber6" ng-model="details.tfnNumber6"></input-single-number>
+                                                <input-single-number ng-required="true" name="txtTfnNumber7" ng-model="details.tfnNumber7"></input-single-number>
+                                                <input-single-number ng-required="true" name="txtTfnNumber8" ng-model="details.tfnNumber8"></input-single-number>
+                                                <input-single-number ng-required="true" name="txtTfnNumber9" ng-model="details.tfnNumber9"></input-single-number>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <input type="checkbox" name="tfnSeparate" id="tfnSeparate" class="form-control" ng-model="details.HasMadeSeparateEnquiry" />
+                                            <label for="tfnSeparate" class="form-label"><strong>OR</strong> I have made a separate application/enquiry to the tax office for a new or existing TFN</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <input type="checkbox" name="tfnYouth" id="tfnYouth" class="form-control" ng-model="details.IsExemption" />
+                                            <label for="tfnYouth" class="form-label"><strong>OR</strong> I am claiming an exemption because I am below 18 years of age and do not earn enough to pay tax</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <input type="checkbox" name="tfnPensioner" id="tfnPensioner" class="form-control" ng-model="details.IsPensionerExemption" />
+                                            <label for="tfnPensioner" class="form-label"><strong>OR</strong> I am claiming an exemption because I am a pensioner</label>
+                                        </td>
+                                    </tr>
+                                    <error ng-if="submitTtfnForm && declarationForm.$invalid || declarationForm.$dirty && declarationForm.$invalid" class="form__note">
+                                        <span ng-if="declarationForm.$invalid-pattern">
+                                            Each Tax file number box must be a single digit numer
+                                        </span>
+                                        </br>
+                                        <span ng-if="declarationForm.$invalid-required">
+                                            Tax file number is required.
+                                        </span>
+                                    </error>
+                                </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="declaration-form__number"><h2>2</h2></td>
+                        <td>
+                            <table class="declaration-row clear" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="2" class="declaration-form__subtitle bottom-border"><h4><strong>What is your name?</strong></h4></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="declaration-two-row table-cell__middle is--required">
+                                        <label class="declaration-display-block is--required">Title<span style="color:#e25856">*</span></label>
+                                        <input-salutation name="txtSalutation" ng-model="details.SalutationId" ng-required="true"></input-salutation>
+                                        <form-errors input="tfnForm.txtSalutation">
+                                            <form-error error-key="required"
+                                                        error-text="Salutation is required."></form-error>
+                                        </form-errors>
+                                    </td>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block is--required">Surname and family name<span style="color:#e25856">*</span></label>
+                                        <input type="text" name="txtTfnSurname" class="declaration-input" ng-model="details.Surname" required>
+                                        <form-errors input="tfnForm.txtTfnSurname">
+                                            <form-error error-key="required" error-text="Surname is required"></form-error>
+                                        </form-errors>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block is--required">First given name<span style="color:#e25856">*</span></label>
+                                        <input type="text" name="txtTfnFirstname" class="declaration-input" ng-model="details.FirstGivenName" required>
+                                        <form-errors input="tfnForm.txtTfnFirstname">
+                                            <form-error error-key="required" error-text="First name is required"></form-error>
+                                        </form-errors>
+                                    </td>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block">Other given name</label>
+                                        <input type="text" name="txtTfnOtherGivenName" class="declaration-input" ng-model="details.OtherName">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="declaration-form__number"><h2>3</h2></td>
+                        <td>
+                            <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="2" class="declaration-form__subtitle bottom-border"><h4><strong>If you have changed your name since you last dealt with ATO, show your previous name details</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block">Name</label>
+                                        <input type="text" name="txtTfnName" class="declaration-input" ng-model="details.PreviousName">
+                                    </td>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block">Surname</label>
+                                        <input type="text" name="txtTfnPreSurname" class="declaration-input" ng-model="details.PreviousSurname">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block">Other given names</label>
+                                        <input type="text" name="txtTfnOtherPreGivenName" class="declaration-input" ng-model="details.PreviousOtherName">
+                                    </td>
+                                    <td class="declaration-two-row table-cell__middle"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="declaration-form__number"><h2>4</h2></td>
+                        <td>
+                            <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="2" class="declaration-form__subtitle bottom-border"><h4><strong>What is your birthday?</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block is--required">Day of Birth<span style="color:#e25856">*</span></label>
+                                        <div class="relative">
+                                            <input type="text" class="declaration-input"
+                                                   id="txtTfnBirthday"
+                                                   name="txtTfnBirthday"
+                                                   ng-model="details.BirthDay"
+                                                   required
+                                                   datepick datepicker-popup="d MMM yyyy">
+                                            <span class="icon--calendar field__after"></span>
+                                        </div>
+                                        <form-errors input="tfnForm.txtTfnBirthday">
+                                            <form-error error-key="required" error-text="Birthday is required"></form-error>
+                                        </form-errors>
+                                    </td>
+                                    <td class="declaration-two-row table-cell__middle"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="declaration-form__number"><h2>5</h2></td>
+                        <td>
+                            <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="2" class="declaration-form__subtitle bottom-border"><h4><strong>What is your address?</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block is--required">Address<span style="color:#e25856">*</span></label>
+                                        <input type="text" name="txtTfnAddress" class="declaration-input" ng-model="details.Address" required>
+                                        <form-errors input="tfnForm.txtTfnAddress">
+                                            <form-error error-key="required" error-text="Address is required"></form-error>
+                                        </form-errors>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block is--required">Country<span style="color:#e25856">*</span></label>
+                                        <input-country name="onboarding__Country-declaration" ng-model="details.CountryId" ng-required="true"></input-country>
+                                        <form-errors input="tfnForm.ddlTfnCountry">
+                                            <form-error error-key="required" error-text="Country is required"></form-error>
+                                        </form-errors>
+                                    </td>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block is--required">Post code<span style="color:#e25856">*</span></label>
+                                        <div class="input--loading">
+                                            <input type="text" 
+                                                id="txtTfnPostode"
+                                                name="txtTfnPostode" 
+                                                class="declaration-input" 
+                                                ng-model="details.Postcode" required
+                                                pattern="\d+"
+                                                ng-disabled="!allowInputPostCode">
+                                            <loader ng-show="isBusy"></loader>
+                                        </div>
+                                        <form-errors input="tfnForm.txtTfnPostode">
+                                            <form-error error-key="required" error-text="Postcode is required"></form-error>
+                                        </form-errors>
+                                        
+                                        <form-errors input="tfnForm.txtTfnPostode">
+                                            <form-error error-key="pattern" error-text="Postcode is number"></form-error>
+                                        </form-errors>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <div ng-if="locationMatches === true">
+                                            <label class="declaration-display-block is--required">Suburb<span style="color:#e25856">*</span></label>
+                                            <input type="text" 
+                                                name="txtTfnSuburb" 
+                                                id="txtTfnSuburb"
+                                                class="declaration-input" 
+                                                ng-model="details.Suburb" 
+                                                required 
+                                                ng-disabled="!allowCustomAddressEntry">
+                                                
+                                            <form-errors input="tfnForm.txtTfnSuburb">
+                                                <form-error error-key="required" error-text="Suburb is required"></form-error>
+                                            </form-errors>
+                                        </div>
+                                        
+                                        <div ng-if="locationMatches === false">
+                                            <label class="form__label" for="txtTfnSuburb">Suburb<span style="color:#e25856">*</span></label>
+                                            <select-box ng-model="details.Suburb">
+                                                <select id="txtTfnSuburb"
+                                                        ng-model="details.Suburb"
+                                                        ng-change="changeSuburb(details.Suburb)"
+                                                        ng-options="location as location.label for location in suburbData track by location.id"></select>
+                                            </select-box>
+                                            
+                                            <div class="field__checkbox">
+                                                <input id="noSuburbMatches" type="checkbox" ng-model="noMatches" ng-change="allowInputAddress()">
+                                                <label for="noSuburbMatches" class="form__label">None of these suburbs are correct</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block is--required">State<span style="color:#e25856">*</span></label>
+                                        <input type="text"
+                                            id="ddlTfnState"
+                                            name="ddlTfnState"
+                                            ng-model="details.AddressUsageCode"
+                                            ng-required="ngRequired"
+                                            ng-disabled="!allowCustomAddressEntry && !allowInputState">
+                                            
+                                        <form-errors input="tfnForm.ddlTfnState">
+                                            <form-error error-key="required" error-text="State is required"></form-error>
+                                        </form-errors>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="declaration-form__number"><h2>6</h2></td>
+                        <td>
+                            <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="2" class="declaration-form__subtitle bottom-border">
+                                        <h4>
+                                            <strong>On what basis are you paid?</strong>
+                                            <a href="" ng-click="openTfnDeclarationHelp('modal-tfn-help-pay.html')"><i class="icon--round-info is--info"></i></a>
+                                        </h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="declaration-two-row table-cell__middle">
+                                        <label class="declaration-display-block is--required">Employment basis<span style="color:#e25856">*</span></label>
+                                        <select id="ddlTfnEmploymentType" class="CountryList"
+                                                name="ddlTfnEmploymentType"
+                                                ng-model="details.BasisOfPaymentCode"
+                                                required>
+                                            <option value="F">Full time</option>
+                                            <option value="P">Part time</option>
+                                            <option value="C">Casual</option>
+                                            <option value="L">Labour hire</option>
+                                            <option value="s">Superannuation Pension/annuity</option>
+                                        </select>
+                                        <form-errors input="tfnForm.ddlTfnEmploymentType">
+                                            <form-error error-key="required" error-text="Employment basis is required"></form-error>
+                                        </form-errors>
+                                    </td>
+                                    <td class="declaration-two-row table-cell__middle"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="declaration-form__number"><h2>7</h2></td>
+                        <td>
+                            <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="3" class="declaration-form__subtitle bottom-border">
+                                        <h4>
+                                            <strong>Are you an australian resident for tax purpose?</strong>
+                                            (Visit <a href="https://www.ato.gov.au/residency" target="blank">ato.gov.au/residency</a> to check)
+                                        </h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="radPRYes">Yes</label>
+                                        <input id="radPRYes" type="radio" name="radPRYes" ng-model="details.Resident" value="Yes" />
+                                    </td>
+                                    <td>
+                                        <label for="radPRNo">No</label>
+                                        <input id="radPRNo" type="radio" name="radPRNo" ng-model="details.Resident" value="No" />
+                                    </td>
+                                    <td>If No you must answer No in question 8</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="declaration-form__number"><h2>8</h2></td>
+                        <td>
+                            <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="3" class="declaration-form__subtitle bottom-border">
+                                        <h4>
+                                            <strong>Do you want to claim the tax-free threshold from the payer?</strong>
+                                            <a href="" ng-click="openTfnDeclarationHelp('modal-tfn-help-threshold.html')"><i class="icon--round-info is--info"></i></a>
+                                        </h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="radThresYes">Yes</label>
+                                        <input id="radThresYes" type="radio" name="radThresYes" ng-model="details.Threshold" value="Yes" />
+                                    </td>
+                                    <td>
+                                        <label for="radThresNo">No</label>
+                                        <input id="radThresNo" type="radio" name="radThresNo" ng-model="details.Threshold" value="No" />
+                                    </td>
+                                    <td style="width:481px;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <p>
+                                            Only claim the tax-free threshold from one payer at one time, unless your total income from all sources for the financial year will be less
+                                            than the tax-free threshold. If No answer No if question 9 and question 10 unless you are a forein-resident claiming a senior and
+                                            pensioners Australia, zone or overseas forces tax offset.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="declaration-form__number"><h2>9</h2></td>
+                        <td>
+                            <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="3" class="declaration-form__subtitle bottom-border">
+                                        <h4>
+                                            <strong>Do you want to claim the senior and pensioners tax offset by reducing amount withheld from payments made to you?</strong>
+                                            <a href="" ng-click="openTfnDeclarationHelp('modal-tfn-help-senior.html')"><i class="icon--round-info is--info"></i></a>
+                                        </h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="radSeniorYes">Yes</label>
+                                        <input id="radSeniorYes" type="radio" name="radSeniorYes" ng-model="details.senior" value="Yes" />
+                                    </td>
+                                    <td>
+                                        <label for="radSeniorNo">No</label>
+                                        <input id="radSeniorNo" type="radio" name="radSeniorNo" ng-model="details.senior" value="No" />
+                                    </td>
+                                    <td style="width:481px;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div style="text-align:left;">
+                                            Do you want to claim the senior and pensioners tax offset by reducing amount withheld from payments made to you?
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="declaration-form__number"><h2>10</h2></td>
+                        <td>
+                            <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="3" class="declaration-form__subtitle bottom-border">
+                                        <h4>
+                                            <strong>Do you want to claim a zone, overseas forces, dependent (invalid or carer) tax offset by reducing amount withheld from payments made to you?</strong>
+                                            <a href="" ng-click="openTfnDeclarationHelp('modal-tfn-help-offset.html')"><i class="icon--round-info is--info"></i></a>
+                                        </h4>
+                                    </td>
+                                </tr>
+                                <tr><td>
+                                        <label for="radZoneYes">Yes</label>
+                                        <input id="radZoneYes" type="radio" name="radZoneYes" ng-model="details.zone" value="Yes" />
+                                    </td>
+                                    <td>
+                                        <label for="radZoneNo">No</label>
+                                        <input id="radZoneNo" type="radio" name="radZoneNo" ng-model="details.zone" value="No" />
+                                    </td>
+                                    <td style="width:481px;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <p>
+                                            If Yes please complete a withholding declaration (NAT 3093)
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="declaration-form__number"><h2>11</h2></td>
+                        <td>
+                            <table class="declaration-row" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="3" class="declaration-form__subtitle bottom-border">
+                                        <h4>
+                                            <strong>(a) Do you have an accumulated Higher Education Loan Program (HELP) and/or Trade Support Loan (TSL) debt?</strong>
+                                            <a href="" ng-click="openTfnDeclarationHelp('modal-tfn-help-help.html')"><i class="icon--round-info is--info"></i></a>
+                                        </h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="radHelpYes">Yes</label>
+                                        <input id="radHelpYes" type="radio" name="radHelpYes" ng-model="details.Help" value="Yes" />
+                                    </td>
+                                    <td>
+                                        <label for="radHelpNo">No</label>
+                                        <input id="radHelpNo" type="radio" name="radHelpNo" ng-model="details.Help" value="No" />
+                                    </td>
+                                    <td style="width:481px;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <p>
+                                            If Yes your payer will withhold additional amounts to cover any compulsory repayment that may be raised on your notice of assessment.
+                                        </p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3" class="declaration-form__subtitle bottom-border"><h4><strong>(b) Do you have an accumulated Financial Supplement (SFSS) debt?</strong></h4></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="radSfssYes">Yes</label>
+                                        <input id="radSfssYes" type="radio" name="radSfssYes" ng-model="details.Sfss" value="Yes" />
+                                    </td>
+                                    <td>
+                                        <label for="radSfssNo">No</label>
+                                        <input id="radSfssNo" type="radio" name="radSfssNo" ng-model="details.Sfss" value="No" />
+                                    </td>
+                                    <td style="width:481px;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <p>
+                                            If Yes your payer will withhold additional amounts to cover any compulsory repayment that may be raised on your notice of assessment.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="align__center">
+                            <div style="border:solid 1px red; padding: 5px 0px;"><i class="icon--round-minus is--negative"></i> There are penalties for deliberately making a false or misleading statement</div>
+                        </td>
+                    </tr>
+                </table>
+
+                <br />
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="recruit button-footer">
+        <div class="button-withtext">
+            <button class="button button--positive button--icon-right toggle-loading" 
+                ng-disabled="isLoading"
+                ng-click="submitTtfnForm = true; onboarding_tfnDeclaration()">Continue <i class="icon--right"></i></button>
+        </div>
+        
+        <div class="button-withtext">
+            <button class="button button--negative button--icon-right toggle-loading" 
+                ng-disabled="isLoading"
+                ng-click="skip_tfnDeclaration()">Skip TFN <i class="icon--right"></i></button>
+        </div>
+    </div>
+</form>

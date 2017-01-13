@@ -1,0 +1,194 @@
+<div class="modal__content" ng-init="GetListTags(1,10)">
+    <form name="questionForm" ng-class="{'form--unsubmitted': !formState.submitted}" validate-form>
+        <div class="form__field">
+            <label class="form__label">Question text</label>
+            <input type="text" name="txtQuestionText" ng-model="question.content" required>
+            <span ng-show="(questionForm.txtQuestionText.$dirty || submitted) &amp;&amp; questionForm.txtQuestionText.$invalid" class="form__note form__note--error ng-hide">Question text is required</span>
+        </div>
+
+        <div class="form__field">
+            <label class="form__label">Help text</label>
+            <input type="text" ng-model="question.note">
+        </div>
+        <div class="form-field col-1-3">
+            <label class="form__label">Group</label>
+        </div> <br />
+        <div class="form__field col-1-3">
+            <label for="auto_complete" class="field__before"></label>
+            <input type="text" id="auto_complete" required="required" name="txtGroupName" placeholder="Select group ..." ng-model="question.tag" ng-keyup="$event.keyCode == 13 ? addGroup(question.tag) : null;"
+                   typeahead="t as t.name for t in questionTags | filter:$viewValue | limitTo:10" class="ng-pristine ng-valid ng-invalid-required">
+            <span ng-show="(questionForm.txtGroupName.$dirty || submitted) &amp;&amp; questionForm.txtGroupName.$invalid" class="form__note form__note--error ng-hide">Group name is required</span>
+        </div>
+
+        <div ng-switch on="question.typeOfQuestion">
+            <div ng-switch-when="1">
+                <div class="field__checkbox">
+                    <input id="ckboxMandatory1" type="checkbox" ng-model="question.isMandatory">
+                    <label for="ckboxMandatory1" class="form__label">Mandatory Response</label>
+                    <input id="ckboxMultiLine1" type="checkbox" ng-model="question.hasMultilineSupport">
+                    <label for="ckboxMultiLine1" class="form__label">Show textbox with multiple lines</label>
+                    <input id="ckboxDisplayTask1" type="checkbox" ng-model="question.displayStack">
+                    <label for="ckboxDisplayTask1" class="form__label">Show as same row as previous question</label>
+                </div>
+            </div>
+
+            <div ng-switch-when="2">
+
+                <div class="field__checkbox">
+                    <input id="ckboxMandatory2" type="checkbox" ng-model="question.isMandatory">
+                    <label for="ckboxMandatory2" class="form__label">Mandatory Response</label>
+
+                    <input id="ckboxAutoReject" ng-model="question.autoRejectCandidates" type="checkbox">
+                    <label for="ckboxAutoReject" class="form__label">Automatically reject cadidates based on their selection?</label>
+                    <div ng-show="question.autoRejectCandidates">
+                        <div class="field__radio survey-padding-left">
+                            <input type="radio" name="AutomaticallyRadio" id="radioSelectYes" ng-model="question.yesNoAutoReject" value="yes">
+                            <label for="radioSelectYes" class="form__label">Reject candidates who select yes</label>
+                            <input type="radio" name="AutomaticallyRadio" id="radioSelectNo" ng-model="question.yesNoAutoReject" value="no">
+                            <label for="radioSelectNo" class="form__label">Reject candidates who select no</label>
+                        </div>
+                    </div>
+                    <input id="ckboxEnableFilter" type="checkbox" ng-model="question.filter">
+                    <label for="ckboxEnableFilter" class="form__label">Enable as filter?</label>
+                    <div class="col-1-3 survey-padding-bottom" ng-show="question.filter">
+                        <input type="text" ng-model="question.filterText" name="txtFilterText" ng-required="question.filter" required="required" class="ng-pristine ng-invalid ng-invalid-required" />
+                        <span ng-show="(questionForm.txtFilterText.$dirty || submitted) &amp;&amp; questionForm.txtFilterText.$invalid" class="form__note form__note--error ng-hide">Filter text is required</span>
+                    </div>
+                    <input id="ckboxAttachOptional" type="checkbox" ng-model="ckboxAttachOptional"
+                           ng-init="ckboxAttachOptional = question.subQuestion.content ? true : false">
+                    <label for="ckboxAttachOptional" class="form__label">Attach Optional Question</label>
+                    <div>
+                        <div class="survey-padding-left" ng-show="ckboxAttachOptional">
+                            <div class="survey-padding-bottom ">OPTIONAL QUESTION TEXT</div>
+                            <div class="col-1-3">
+                                <input type="text" ng-model="question.subQuestion.content" name="txtOptionalQuestion" ng-required="ckboxAttachOptional" required="required" />
+                                <span ng-show="(questionForm.txtOptionalQuestion.$dirty || submitted) &amp;&amp; questionForm.txtOptionalQuestion.$invalid" class="survey-required">Optional question text is required</span>
+                            </div>
+                            <div class="field__radio survey-padding-top">
+                                <input checked="checked" type="radio" ng-model="question.displayOptionalOnYesNo" name="displayOptional" id="radioDisplayOptionalYes" value="yes">
+                                <label for="radioDisplayOptionalYes" class="form__label">Display optional question only on "Yes"</label>
+                                <input type="radio" ng-model="question.displayOptionalOnYesNo" name="displayOptional" id="radioDisplayOptionalNo" value="no">
+                                <label for="radioDisplayOptionalNo" class="form__label">Display optional question only on "No"</label>
+                                <input type="radio" ng-model="question.displayOptionalOnYesNo" name="displayOptional" id="radioDisplayOptionalYesNo" value="all">
+                                <label for="radioDisplayOptionalYesNo" class="form__label">Display optional question only either "Yes" or "No"</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input id="ckboxShowSameRow" type="checkbox" ng-model="question.displayStack">
+                    <label for="ckboxShowSameRow" class="form__label">Show as same row as previous question</label>
+                </div>
+            </div>
+
+            <div ng-switch-when="4">
+                <div class="grid">
+                    <div class="col-1-4 survey-padding-bottom ">
+                        <a class="button ng-scope" ng-click="addResponseChoice()">Add a new answer</a>
+                    </div>
+                    <div class="col-1-2"></div>
+                    <div class="col-1-8 docs">
+                        <label class="form__label">Selected</label>
+                    </div>
+                    <div class="col-1-8 docs">
+                        <label class="form__label">Answer</label>
+                    </div>
+
+                    <div ng-repeat="c in question.responseChoices">
+                        <div class="col-1-8 docs icon--cross docs survey-padding-bottom " ng-click="question.responseChoices.splice($index,1)"></div>
+                        <div class="col-1-4">
+                            <select ng-options="t.responseChoiceType as t.value for t in choiceTypes" ng-model="c.choiceTypeId"></select>
+                        </div>
+                        <div class="col-1-8 docs" ng-show="c.choiceTypeId==6"></div>
+                        <div class="col-1-4 docs" ng-show="c.choiceTypeId==6">
+                            <input type="text" placeholder="Type text ..." ng-model="c.choiceValue" name="txtAnswer" ng-required="c.choiceTypeId==6" required="required" />
+                        </div>
+                        <div class="col-1-8 survey-padding-bottom " ng-show="c.ResponseChoiceTypeId==6">
+                            <div class="field__radio docs">
+                                <input type="radio" name="radioSelected" id="SelectedChoice{{$index}}" ng-model="c.isDefaultSelected" value="Selected">
+                                <label for="SelectedChoice{{$index}}"></label>
+                            </div>
+                        </div>
+                        <div class="col-1-8" ng-show="c.ResponseChoiceTypeId==6">
+                            <div class="field__radio docs">
+                                <input type="radio" name="radioAnswer" id="AnswerChoice{{$index}}" ng-model="c.isRightAnswer" value="Answer">
+                                <label for="AnswerChoice{{$index}}"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field__checkbox">
+                    <input id="ckboxMandatory3" type="checkbox" ng-model="question.isMandatory">
+                    <label for="ckboxMandatory3" class="form__label">Mandatory Response</label>
+                    <input id="ckboxMultiChoice" type="checkbox" ng-model="question.multichoiceAsList">
+                    <label for="ckboxMultiChoice" class="form__label">Show as a list</label>
+                    <input id="ckboxShowSameRow3" type="checkbox" ng-model="question.displayStack">
+                    <label for="ckboxShowSameRow3" class="form__label">Show as same row as previous question</label>
+                </div>
+            </div>
+            <div ng-switch-when="3">
+                <div class="grid">
+                    <div class="col-1-4 survey-padding-bottom ">
+                        <a class="button ng-scope" ng-click="addResponseChoice()">Add a new answer</a>
+                    </div>
+                    <div class="col-1-2"></div>
+                    <div class="col-1-8 docs">
+                    </div>
+                    <div class="col-1-8 docs">
+                        <label class="form__label">Answer</label>
+                    </div>
+
+                    <div ng-repeat="c in question.responseChoices">
+                        <div class="col-1-8 docs icon--cross docs survey-padding-bottom " ng-click="question.responseChoices.splice($index,1)"></div>
+                        <div class="col-1-4">
+                            <select ng-options="t.responseChoiceType as t.value for t in choiceTypes" ng-model="c.choiceTypeId"></select>
+                        </div>
+                        <div class="col-1-8 docs" ng-show="c.choiceTypeId==6"></div>
+                        <div class="col-1-4 docs" ng-show="c.choiceTypeId==6">
+                            <input type="text" placeholder="Type text ..." ng-model="c.choiceValue" ng-required="c.choiceTypeId==6" required="required" />
+                        </div>
+                        <div class="col-1-8 docs survey-padding-bottom " ng-show="c.choiceTypeId==6">
+                        </div>
+                        <div class="col-1-8" ng-show="c.choiceTypeId==6">
+                            <div class="field__radio docs">
+                                <input type="radio" name="optionsRadios" id="ResponseChoice{{$index}}" ng-model="c.isRightAnswer" value="Answer">
+                                <label for="ResponseChoice{{$index}}"></label>
+                            </div>
+                        </div> <br />
+                    </div>
+                </div>
+
+                <div class="field__checkbox">
+                    <input id="ckboxMandatory4" type="checkbox" ng-model="question.isMandatory">
+                    <label for="ckboxMandatory4" class="form__label">Mandatory Response</label>
+                    <input id="ckboxMultiChoice4" type="checkbox" ng-model="question.multichoiceAsList">
+                    <label for="ckboxMultiChoice4" class="form__label">Show as a list</label>
+                    <input id="ckboxShowSameRow4" type="checkbox" ng-model="question.displayStack">
+                    <label for="ckboxShowSameRow4" class="form__label">Show as same row as previous questions</label>
+                </div>
+            </div>
+
+            <div ng-switch-when="5">
+                <div class="field__checkbox">
+                    <input id="checkbox41" type="checkbox">
+                    <label for="checkbox41" class="form__label">Mandatory Response</label>
+                    <input id="checkbox42" type="checkbox">
+                    <label for="checkbox42" class="form__label">Show as same row as previous questions</label>
+                </div>
+            </div>
+            <div ng-switch-when="6">
+                <div class="field__checkbox">
+                    <input id="checkbox51" type="checkbox">
+                    <label for="checkbox51" class="form__label">Mandatory Response</label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer class="modal__footer">
+    <div class="button-group">
+        <button class="button" ng-click="cancel()">CANCEL</button>
+        <button class="button button--negative" ng-click="ok(isFormValid(questionForm.$valid))" ng-style="{'button--disabled' : !questionForm.$valid }">SAVE</button>
+    </div>
+</footer>

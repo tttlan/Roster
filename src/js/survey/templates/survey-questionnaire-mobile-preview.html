@@ -1,0 +1,26 @@
+﻿<div class="page survey">
+    <div class="page__wrapper page-1--2--survey">
+        <!-- content component -->
+        <div class="page__content">
+            <div class="button-group align-center word-break">
+                <div>
+                    <h3 class="survey-question-title">{{questionnaireInfo.name||questionnaireInfo.Name }}</h3>
+                </div>
+                <div><h4 class="surver-question-label">Description: </h4></div>
+                <div><h4 class="surver-question-description">{{questionnaireInfo.description||questionnaireInfo.Description}}</h4></div>
+                <div><h4 class="surver-question-label">Instruction: </h4></div>
+                <div><h4 class="surver-question-description">{{questionnaireInfo.instructions||questionnaireInfo.Instructions}}</h4></div>
+            </div>
+
+            <div style="pointer-events: none;">
+                <div ng-repeat="item in questionnaireInfo.questions">
+                    <question-item
+                            item="item" index="{{$index}}"
+                            question-prefix="question-{{$index}}"
+                            group="group">
+                    </question-item>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

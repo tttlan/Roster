@@ -1,0 +1,13 @@
+<div class="select-wrapper">
+
+    <select
+        ng-model="ngModel"
+        ng-options="country as country.Label for country in countries.data track by country.Value"
+        ng-disabled="countries.loading || isDisabled"
+    >
+        <option selected value="">Please select a Country</option>
+    </select>
+    <span class="select">{{ val ? val : ngModel.Label}}</span>
+    <span class="select" ng-if='ngModel.Label'>{{ ngModel.Label }}</span>
+    <span class="select" ng-if='!ngModel.Label'>Please select a Country</span>
+</div>

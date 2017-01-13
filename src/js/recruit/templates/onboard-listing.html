@@ -1,0 +1,274 @@
+<div class="page recruit" ng-init="getOnboardingSetting()">
+    <div class="page__wrapper">
+        <h1>Onboarding</h1>
+        <div class="search-onboard-form__actions">
+            <ul class="nav nav--filter align-left">
+                <li class="icon__onboarding">
+                    <a href="" path="recruit.onboards.index" ng-class="{'is--active': isSingle}">
+                        Single
+                    </a>
+                </li>
+                <li>
+                    <a href="" path="recruit.onboards.bulk" ng-class="{'is--active': isSingle === false}">
+                        Multiple
+                    </a>
+                </li>
+            </ul>
+             <span class="submenu__filter--status">
+                <label class="label icon__submenu is--uppercase label__icon" dropdown-toggle ng-click="toggleStatusMenu()">
+                    {{currentFilterCollection === 'All' ? 'All Status' : currentFilterCollection}}
+                    <i class="icon--arrow-down align-right"></i>
+                </label>
+                <ul class="submenu dropdown-menu" ng-include="'/interface/views/recruit/partials/submenu-filter-status.html'"></ul>
+            </span>
+        </div>
+        <form name="searchOnboardForm" class="search-onboard-form">
+            <div class="form__field directory-search">
+                <label for="searchOnboard"
+                       class="icon--search directory-search__label">
+                    <span class="is-visually-hidden">Search query</span>
+                </label>
+                <input type="text"
+                       id="searchOnboard"
+                       name="searchOnboard"
+                       class="directory-search__input"
+                       placeholder="Search"
+                       ng-model="data.searchQuery"
+                       ng-model-options="{debounce: 250}"
+                       autocomplete="off"
+                       maxlength="50" />
+            </div>
+        </form>
+        <div class="page__content"
+             paginate="getOnboards"
+             page-size="10"
+             ng-class="{'is--loading': page.loading}">
+
+            <table class="table table--responsive-stacked onboard-listing" ng-if="isSingle">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" ng-change="checkAll()" id="selectAll" ng-model="page.items.SelectedAll"/>
+                        </th>
+                        <th ng-if="onboardingSelect.length" colspan="6">
+                            <ng-pluralize count="onboardingSelect.length"
+                                          when="{
+                                                'one': '{} Onboard selected',
+                                                'other': '{} Onboards selected',
+                                                }">
+                            </ng-pluralize>
+                        </th>
+                        <th ng-if="onboardingSelect.length">
+                            <a ng-confirm-click="deleteOnboarding(onboardingSelect)"
+                               ng-confirm-message="Are you sure you want to remove this list single onboarding?"
+                               class="icon__delete--onboarding"><i class="icon--bin"></i></a>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <a href="" type="button" ng-click="order('name')">
+                                Name
+                                <i class="icon-only-right" ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'name'"></i>
+                            </a>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <a href="" type="button" ng-click="order('role')">Role</a>
+                            <i class="icon-only-right" ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'role'"></i>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <a href="" ng-click="order('type')">Type</a>
+                            <i class="icon-only-right" ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'type'"></i>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <a href="" type="button" ng-click="order('elapsed')">Elapsed</a>
+                            <i class="icon-only-right" ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'elapsed'"></i>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <a href="" type="button" ng-click="order('created')">Created</a>
+                            <i class="icon-only-right" ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'created'"></i>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <a href="" type="button" ng-click="order('effective')">Effective</a>
+                            <i class="icon-only-right" ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'effective'"></i>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="page.items.OnboardingSummaryItemResults.length" ng-repeat="onboard in page.items.OnboardingSummaryItemResults">
+                        <td>
+                            <input type="checkbox"
+                                   ng-change="selected(onboard)"
+                                   ng-model="onboard.selected"
+                                   ng-checked="onboard.selected"
+                                   ng-disabled="!onboard.permissions.deleteonboard"
+                                   id="onboarding_{{$index}}"/>
+                        </td>
+                        <td data-title="Name" width="30%">
+                            <a class="onboard-listing__candidate-name"
+                               path="recruit.onboards.details"
+                               path-params="onboard.OnboardingSummary.OnboardId">
+                                <div class="onboard-listing__candidate-name-wrapper">
+                                    <div class="onboard-listing__candidate-name-img">
+                                        <avatar size="small"></avatar>
+                                    </div>
+                                    <div class="onboard-listing__candidate-name-info">
+                                        <span>
+                                            {{::onboard.OnboardingSummary.CandidatePersonalInfo.FirstName}}
+                                            {{::onboard.OnboardingSummary.CandidatePersonalInfo.Surname}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td data-title="Role">
+                            {{::onboard.OnboardingSummary.OnboardRole.Description}}
+                        </td>
+                        <td data-title="Type">
+                            <span ng-if="onboard.OnboardingSummary.IsPromotion">Changing role</span>
+                            <span ng-if="!onboard.OnboardingSummary.IsPromotion">New Employee</span>
+                        </td>
+                        <td data-title="Elapsed">
+                            {{::onboard.OnboardingSummary.CreatedDate | utcToLocal | fromNow: true}}
+                        </td>
+                        <td data-title="Created">
+                            {{::onboard.OnboardingSummary.CreatedDate | utcToLocal | dateShort}}
+                        </td>
+                        <td data-title="Effective">
+                            <span ng-if="onboard.OnboardingSummary.CommencementDate !== null">{{::onboard.OnboardingSummary.CommencementDate | utcToLocal | dateShort}}</span>
+                            <span ng-if="onboard.OnboardingSummary.CommencementDate === null">-</span>
+                        </td>
+                        <td data-title="Status">
+                            <div class="progress-bar"
+                                 ng-class="{
+                                        'is--positive': !isProgressBarNegative(onboard.OnboardingSummary),
+                                        'is--negative': isProgressBarNegative(onboard.OnboardingSummary)
+                                    }">
+                                <div class="progress-bar__range"
+                                     ng-style="getProgressBarPercentage(onboard.OnboardingSummary)"></div>
+                            </div>
+                            <span class="progress-bar-label" ng-if="!isProbation(onboard.OnboardingSummary.Status,onboard.OnboardingSummary.ProbationEndDate )">
+                                {{::onboard.OnboardingSummary.Status}}
+                            </span>
+                            <span class="progress-bar-label" ng-if="isProbation(onboard.OnboardingSummary.Status,onboard.OnboardingSummary.ProbationEndDate )">
+                                Probation
+                            </span>
+                        </td>
+                    </tr>
+                    <tr ng-if="!page.items.OnboardingSummaryItemResults.length">
+                        <td colspan="8">
+                            <h3 class="message" ng-if="!page.items.OnboardingSummaryItemResults.length && currentFilterCollection !== 'All'">No Records was found with <u><i>status</i></u> <em>'{{currentFilterCollection}}'</em></h3>
+                            <h3 class="message" ng-if="!page.items.OnboardingSummaryItemResults.length  && currentFilterCollection === 'All'">No Records</h3>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table--responsive-stacked onboard-listing" ng-if="!isSingle">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" ng-change="checkAll()" id="selectAll" ng-model="page.items.SelectedAll"/>
+                        </th>
+                        <th ng-if="onboardingSelect.length" colspan="5">
+                            <ng-pluralize count="onboardingSelect.length"
+                                          when="{
+                                                'one': '{} Bulk onboard selected',
+                                                'other': '{} Bulk onboards selected',
+                                                }">
+                            </ng-pluralize>
+                        </th>
+                        <th ng-if="onboardingSelect.length">
+                            <a ng-confirm-click="deleteOnboarding(onboardingSelect)"
+                               ng-confirm-message="Are you sure you want to remove this list bulk onboarding?"
+                               class="icon__delete--onboarding"><i class="icon--bin"></i></a>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <a href="" ng-click="order('role')">Name</a>
+                            <i ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'role'"></i>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <a href="" ng-click="order('candidates')">Candidates</a>
+                            <i ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'candidates'"></i>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <a href="" type="button" ng-click="order('elapsed')">Elapsed</a>
+                            <i ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'elapsed'"></i>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <a href="" type="button" ng-click="order('created')">created</a>
+                            <i ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'created'"></i>
+                        </th>
+                        <th ng-if="!onboardingSelect.length" class="hide-in-mobile-view">
+                            <div class="submenu__filter--status">
+                                Status
+                            </div>
+                        </th>
+                    </tr>
+                    <tr ng-if="!page.items.BulkOnboardingSummaryItemResult.length">
+                        <td colspan="8">
+                            <h3 class="message" ng-if="!page.items.BulkOnboardingSummaryItemResult.length && currentFilterCollection !== 'All'">No Records was found with <u><i>status</i></u> <em>'{{currentFilterCollection}}'</em></h3>
+                            <h3 class="message" ng-if="!page.items.BulkOnboardingSummaryItemResult.length  && currentFilterCollection === 'All'">No Records</h3>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="bulkOnboard in page.items.BulkOnboardingSummaryItemResult ">
+                        <td>
+                            <input type="checkbox"
+                                   ng-change="selected(bulkOnboard)"
+                                   ng-model="bulkOnboard.selected"
+                                   ng-checked="bulkOnboard.selected"
+                                   ng-disabled="!bulkOnboard.permissions.deleteonboard"
+                                   id="bulkOnboard_{{$index}}"/>
+                        </td>
+                        <td data-title="Name" width="30%">
+                            <a class="onboard-listing__candidate-name"
+                               path="recruit.onboards.bulkDetails"
+                               path-params="bulkOnboard.BulkOnboardingSummary.BulkOnboardingId">
+                                <div class="onboard-listing__candidate-name-wrapper">
+                                    <div class="onboard-listing__candidate-name-info">
+                                            <span>
+                                                {{::bulkOnboard.BulkOnboardingSummary.OnboardRole.Description}}
+                                            </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td data-title="Candidates">
+                            {{::bulkOnboard.BulkOnboardingSummary.NumberOfOnboard}}
+                        </td>
+                        <td data-title="Elapsed">
+                            {{bulkOnboard.BulkOnboardingSummary.CreatedDate | utcToLocal | fromNow: true}}
+                        </td>
+                        <td data-title="Effective">
+                            {{bulkOnboard.BulkOnboardingSummary.CreatedDate | utcToLocal | dateShort}}
+                        </td>
+                        <td data-title="Status">
+                            <div class="progress-bar"
+                                 ng-class="{
+                                        'is--positive': !isProgressBarNegative(bulkOnboard.BulkOnboardingSummary),
+                                        'is--negative': isProgressBarNegative(bulkOnboard.BulkOnboardingSummary)
+                                    }">
+                                <div class="progress-bar__range"
+                                     ng-style="getProgressBarPercentage(bulkOnboard.BulkOnboardingSummary)"></div>
+                            </div>
+                                <span class="progress-bar-label  is--uppercase">
+                                    {{::bulkOnboard.BulkOnboardingSummary.Status}}
+                                </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <nav mfb-menu position="br"
+         effect="slidein-spring"
+         active-icon="icon--minus icon--line-height icon-is-large"
+         id="addFolderIcon"
+         resting-icon="icon--plus icon--line-height icon-is-large"
+         toggling-method="click">
+        <button mfb-button icon="icon--person-single" label="Single Onboard" ng-click="createOnboard()"></button>
+        <button mfb-button icon="icon--person-group" label="Multiple Onboard" ng-click="createBulkOnboard()"></button>
+    </nav>
+</div>

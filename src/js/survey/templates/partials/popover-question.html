@@ -1,0 +1,13 @@
+<div class="popover {{placement}} popover-question"
+     ng-class="{ in: isOpen(), fade: animation() }">
+    <div class="arrow"></div>
+    <div class="popover-inner">
+        <h3 class="popover-title" ng-bind="title" ng-if="title"></h3>
+        <div class="popover-content">
+            <question model="model" ng-show="[1,2,3,4,5,6].indexOf(model.questionType) >= 0"></question>
+            <div class="message message--empty" ng-show="[1,2,3,4,5,6].indexOf(model.questionType) < 0">
+                <p>No question found</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿{
+  "data": {
+    "$id": "1",
+    "JobRequisitionDetail": {
+      "$id": "2",
+      "JobAdRequisitionId": 1958,
+      "CreatedDateTime": "2016-05-20T08:16:32.123",
+      "LastModifiedDateTime": "2016-05-20T10:30:16.137",
+      "ContactPerson": null,
+      "ContactNumber": null,
+      "State": "Rejected",
+      "SubState": "",
+      "NetworkGroup": {
+        "$id": "3",
+        "NetworkGroupId": 11036,
+        "GroupName": "Hawthorn",
+        "Type": null,
+        "LookupUrl": "http://localhost:56828/Api/",
+        "IsTrainingLocation": null
+      },
+      "Role": {
+        "$id": "4",
+        "RoleId": 890,
+        "Description": "My Test Role",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "Owner": {
+        "$id": "5",
+        "MemberId": 247682,
+        "FirstName": "Sherpa",
+        "Surname": "Admin",
+        "PreferredName": null,
+        "Title": "FIN - Systems Administrator",
+        "PhotoLarge": "/networkrepository/957/member/247682/profile_large.png",
+        "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.png",
+        "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+        "RoleTitle": "FIN - Systems Administrator",
+        "DefaultNetworkGroupId": 11038,
+        "Birthday": null,
+        "Sex": "m",
+        "Salutation": null
+      }
+    },
+    "EntityActions": [
+      {
+        "$id": "6",
+        "Id": "1958",
+        "Code": 3712,
+        "Caption": "CanArchiveJobAdRequisition",
+        "Description": "CanArchiveJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1958/archive",
+        "Children": null
+      },
+      {
+        "$id": "7",
+        "Id": "1958",
+        "Code": 3701,
+        "Caption": "CanDeleteJobAdRequisition",
+        "Description": "CanDeleteJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1958",
+        "Children": null
+      },
+      {
+        "$id": "8",
+        "Id": "1958",
+        "Code": 3712,
+        "Caption": "CanArchiveJobAdRequisition",
+        "Description": "CanArchiveJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1958/archive",
+        "Children": null
+      },
+      {
+        "$id": "9",
+        "Id": "1958",
+        "Code": 3701,
+        "Caption": "CanDeleteJobAdRequisition",
+        "Description": "CanDeleteJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1958",
+        "Children": null
+      }
+    ],
+    "Status": 0
+  },
+  "status": 200,
+  "config": {}
+}

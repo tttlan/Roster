@@ -1,0 +1,84 @@
+
+
+// vcard
+// ------------------------------------------------
+
+.ui 
+
+    .vcard {
+        position: relative;
+
+        
+
+        a {
+            word-wrap: break-word;
+        }
+    }
+
+    .vcard__role, 
+    .vcard__phone,
+    .vcard__email {
+        padding-right: 30px;
+        position: relative;
+
+        @media minTablet {
+            padding-right: 0;
+        }
+
+        [class*="icon--"] {
+
+            color: primary;
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 18px;
+        }
+    }
+
+    .vcard__avatar {
+        text-align: center;
+        margin-bottom: gutter;
+    }
+
+    .drawer {
+        .vcard__avatar {
+            margin: -40px (gutter/2 * -1) gutter (gutter/2 * -1);
+        }
+        .vcard__avatar--align-left {
+            margin-left: 0;
+        }
+    }
+
+    .vcard__title {
+
+        color: grey3;
+
+        &:hover {
+            h2, p {
+                color: primary;
+            }
+        }
+        
+        h2 {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: black;
+            margin: 0;
+            position: relative;
+        }
+
+        .status {
+            position: absolute;
+            margin-left: 4px;
+            display: inline-block;
+        }
+
+        p {
+            text-transform: uppercase;
+            margin: 0.4em 0 0 0;
+            font-size: 0.813em;
+        }
+    }
+
+
+    

@@ -1,0 +1,12 @@
+<div ng-hide="allToggle">
+    <!--//TODO: this directive is duplicated it may be removed, pls don't use it-->
+    <tag-manager ng-model="ngModel"
+                 select-data="groups.data"
+                 ng-class="{'error': !ngModel.length}">
+        <input type="text" placeholder="Enter a group/location"
+               ng-model="typeAheadTag"
+               typeahead="group as group.label for group in selectData | filter:{label:$viewValue}"
+               typeahead-on-select="addTag($item, $model, $label)"
+               ng-disabled="groups.loading" />
+    </tag-manager>
+</div>

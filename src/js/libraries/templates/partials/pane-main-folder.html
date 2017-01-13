@@ -1,0 +1,122 @@
+<div id="mainPane" style="height:90%">
+    <div id="navigationPane">
+        <div class="align-right">
+            <ul class="list--inline">
+                <li ng-show="isListView">
+                    <div class="form__field">
+                        <div class="field__checkbox">
+                            <input type="checkbox" id="showAddTagCheckbox" value="true" ng-model="showTag" />
+                            <label for="showAddTagCheckbox" class="form__label">Show tags</label>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button ng-click="changeViewMode('listView')" class="button button--icon" ng-class="{'button--positive': isListView }">
+                        <i class="icon--list-ul"></i>
+                    </button>
+                </li>
+                <li>
+                    <button ng-click="changeViewMode('')" class="button button--icon" ng-class="{'button--positive': !isListView }">
+                        <i class="icon--grid-view icon-is-large"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <h3>My Space</h3>
+    </div>
+    <div class="" ng-show="isListView">
+
+        <table class="table table--striped" style="width:84%">
+            <thead>
+                <tr>
+                    <th>
+                        <a href="" type="button" ng-click="order('name')">
+                            Name
+                        </a>&nbsp;
+                        <i ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'name'"></i>
+                    </th>
+                    <th>
+                        <a href="" type="button" ng-click="order('owner')">
+                            Owner
+                            <span class="padding10" ng-show="predicate === 'owner'"><i ng-class="reverse == true && predicate === 'owner'? 'icon--arrow-down' : 'icon--arrow-up'"></i></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="" type="button" ng-click="order('createdAt')">
+                            Last Modified
+                            <span class="padding10" ng-show="predicate === 'createdAt'"><i ng-class="reverse == true && predicate === 'createdAt' ? 'icon--arrow-down' : 'icon--arrow-up'"></i></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="" type="button" ng-click="order('fileSize')">
+                            File size
+                            <span class="padding10" ng-show="predicate === 'fileSize'"><i ng-class="reverse == true && predicate === 'fileSize'? 'icon--arrow-up' : 'icon--arrow-down'"></i></span>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in folders | orderBy:predicate:reverse" style="cursor: pointer">
+                    <td data-title="Name">
+                        <i ng-if="item.type == 'doc'" class="svg-icon--doc"></i>
+                        <i ng-if="item.type == 'pdf'" class="svg-icon--pdf"></i>
+                        <i ng-if="item.type == 'ppt'" class="svg-icon--ppt"></i>
+                        <i ng-if="item.type == 'zip'" class="svg-icon--zip"></i>
+                        <i ng-if="item.type == 'image'" class="svg-icon--img"></i>
+                        <i ng-if="item.type == 'folder'" class="svg-icon--folder1"></i>
+                        <i ng-if="item.type == 'txt'" class="svg-icon--txt"></i>
+                        <i ng-if="item.type == 'video'" class="svg-icon--video"></i>
+                        <i ng-if="item.type == 'xls'" class="svg-icon--xls"></i>
+                        {{item.name}} <br />
+                        <ul ng-show="showTag == true && item.type != 'folder'" class="list--inline" style="margin-left: 30px;">
+                            <li ng-repeat="tag in item.tags">
+                                <span class="label label--badge label--positive">{{tag.label}}</span>
+                            </li>
+                            <li ng-show="item.owner == 'Me'">
+                                <a class="click" ng-click="addTags(item)">Add tag</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td data-title="Owner">{{item.owner}}</td>
+                    <td data-title="Last Modified">{{item.createdAt}}</td>
+                    <td data-title="File size">{{item.fileSize}}M</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="" ng-show="!isListView">
+        <div class="grid">
+            <div ng-repeat="item in folders" class="col-1-8">
+
+                <div ng-if="item.type != 'image'" class="aligned--center thumbnail-border file-icon">
+                    <a ng-if="item.type == 'folder'" class=""><i class="svg-icon--folder1 margin-top-file-icon"></i></a>
+                    <a ng-if="item.type == 'ppt'"><i class="svg-icon--ppt margin-top-file-icon"></i></a>
+                    <a ng-if="item.type == 'pdf'"><i class="svg-icon--pdf margin-top-file-icon"></i></a>
+                    <a ng-if="item.type == 'txt'"><i class="svg-icon--txt margin-top-file-icon"></i></a>
+                    <a ng-if="item.type == 'xls'"><i class="svg-icon--xls margin-top-file-icon"></i></a>
+                    <a ng-if="item.type == 'zip'"><i class="svg-icon--zip margin-top-file-icon"></i></a>
+                    <a ng-if="item.type == 'doc'"><i class="svg-icon--doc margin-top-file-icon"></i></a>
+                    <a ng-if="item.type == 'video'"><i class="svg-icon--video margin-top-file-icon"></i></a>
+                </div>    
+                            
+                <div class="thumbnail" ng-if="item.type == 'image'">
+                    <div class="image-icon">
+                        <img alt="No image" src="interface/images/avatar3.jpg" class="aligned--center thumbnail-border" />
+                    </div>
+                </div>
+                
+                
+                <div class="aligned--center">{{item.name}}</div>
+            </div>
+        </div>
+    </div>
+
+    <nav mfb-menu position="br" effect="slidein-spring"
+         active-icon="icon--minus icon-is-large floatingIcon" id="addFolderIcon" resting-icon="icon--plus icon-is-large floatingIcon"
+         toggling-method="click">
+        <button mfb-button icon="icon--upload floatingIcon"></button>
+        <button mfb-button icon="icon--new-folder floatingIcon" ng-click="createFolder()"> </button>
+    </nav>
+
+</div>

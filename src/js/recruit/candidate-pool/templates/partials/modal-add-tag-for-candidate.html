@@ -1,0 +1,21 @@
+﻿<header class="modal__header">
+    <h3 class="modal__title">Add tag for candidate</h3>
+</header>
+
+<div class="modal__content">
+    <div class="form__fields">
+        <div class="form__field">
+            <tag-manager ng-model="allTag" select-data="jobTagsSumary.JobTagItemResults">
+                <input type="text" id="auto_complete" placeholder="Search tag..." ng-model="selectedTag" typeahead="result as result.label for result in selectData | filter:$viewValue"
+                       typeahead-on-select="$parent.addTag(selectedTag); selectedTag = ''" />
+            </tag-manager>
+        </div>
+    </div>
+    
+    <div class="button-group text-center">
+        <a href="" class="button" ng-click="cancel()">Cancel</a>
+        <a href="" class="button button--positive" ng-click="ok()">Save</a>
+    </div>
+</div>
+
+

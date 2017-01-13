@@ -1,0 +1,28 @@
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+
+    <label
+    ng-if="element.label"
+    class="form__label"
+    for="{{ element.formName + '__' + element.name }}"
+    >{{ element.label }}</label>
+
+    <div ng-class="{'input--loading': element.loader}">
+        <input type="text"
+               id="{{ element.formName + '__' + element.name }}"
+               placeholder="{{ element.placeholder }}"
+               name="{{element.name}}"
+               ng-model="element.val"
+               ng-change="{{element.onchange}}"
+               ng-required="element.validation.required"
+               ng-minlength="{{element.validation.minLength || 0}}"
+               ng-maxlength="{{element.validation.maxLength || 999}}"
+               ng-pattern="element.validation.pattern"
+               ng-disabled="form[element.name].$disabled"/>
+        <loader ng-if="element.loader" ng-show="form[element.name].$loading"></loader>
+    </div>
+    
+    <p ng-if="element.note"><small>{{ element.note }}</small></p>
+
+    <error-builder></error-builder>
+
+</div>

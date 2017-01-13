@@ -1,0 +1,9 @@
+<div class="select-wrapper">    
+    {{group}}
+    <select ng-model="ngModel"
+            ng-options="group as group.Label for group in groups.data track by group.Id"
+            ng-disabled="groups.$loading">
+        <option selected value="">Please select a group</option>
+    </select>
+    <span class="select">{{ val }}</span>
+</div>

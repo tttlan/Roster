@@ -1,0 +1,82 @@
+<table class="table-form" ng-class="{'table-form__edit-all' : parentData.$editing === 'all'}">
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'loginName' || parentData.$editing === 'all' }">
+        <th>Login name</th>
+        <td>
+            <span class="table-form__form-value">{{form.LoginName.$viewValue}}</span>
+
+            <table-form-edit edit-name="loginName" ng-if="parentData.$globalPermission.caneditsysteminformation"></table-form-edit>
+            <div class="table-form__form-field">
+                [[LoginName]]
+            </div>
+            <table-form-buttons edit-name="loginName"></table-form-buttons>
+        </td>
+    </tr>
+    <tr ng-if="parentData.$staticValues.primaryGroup">
+        <th>Primary group</th>
+        <td>
+            <span class="label label--solid">{{parentData.$staticValues.primaryGroup}}</span>
+        </td>
+    </tr>
+
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'otherGroups' || parentData.$editing === 'all' }">
+        <th>Other groups</th>
+        <td>
+            <span class="table-form__form-value" ng-show="form.OtherNetworkGroups.$viewValue.length">            
+                <a target="_self" href="" path="groups.group" path-params="group.value" class="label label--basic" ng-repeat="group in form.OtherNetworkGroups.$viewValue | limitTo: parentData.groups.groupLimit track by $index">{{group.label}}</a><!-- this comment removes whitespace to help inline block styling
+                --><a href="" ng-click="parentData.groups.showAllGroups()" class="button button--basic button--tiny button--icon" ng-hide="form.OtherNetworkGroups.$viewValue.length <= 3 || parentData.groups.groupLimit !== 3"><i class="icon--ellipsis"></i></a>
+            </span>
+            <table-form-edit edit-name="otherGroups" ng-if="parentData.$globalPermission.caneditsysteminformation"></table-form-edit>
+            <div class="table-form__form-field">
+                [[OtherNetworkGroups]]
+            </div>
+            <table-form-buttons edit-name="otherGroups"></table-form-buttons>
+        </td>
+    </tr>
+    
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'otherStores' || parentData.$editing === 'all' }">
+        <th>Other stores</th>
+        <td>
+            <span class="table-form__form-value" ng-show="form.StoreNetworkGroups.$viewValue.length">
+                <a target="_self" href="" path="groups.group" path-params="store.value" class="label label--basic" ng-repeat="store in form.StoreNetworkGroups.$viewValue | limitTo: parentData.groups.storeLimit track by $index">{{store.label}}</a><!-- this comment removes whitespace to help inline block styling
+                --><a href="" ng-click="parentData.groups.showAllStores()" class="button button--basic button--tiny button--icon" ng-hide="form.StoreNetworkGroups.$viewValue.length <= 3 || parentData.groups.storeLimit !== 3"><i class="icon--ellipsis"></i></a>
+            </span>
+            <table-form-edit edit-name="otherStores" ng-if="parentData.$globalPermission.caneditsysteminformation"></table-form-edit>
+            <div class="table-form__form-field">
+                [[StoreNetworkGroups]]
+            </div>
+            <table-form-buttons edit-name="otherStores"></table-form-buttons>
+        </td>
+    </tr>
+    
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'recruitmentAccount' || parentData.$editing === 'all' }">
+        <th>Recruitment account</th>
+        <td>
+            <span class="table-form__form-value">{{ parentData.selectData.AccountRecruitmentObj[form.AccountRecruitment.$viewValue] }}</span>
+            <table-form-edit edit-name="recruitmentAccount" ng-if="parentData.$globalPermission.caneditsysteminformation"></table-form-edit>
+            <div class="table-form__form-field">
+                [[AccountRecruitment]]
+            </div>
+            <table-form-buttons edit-name="recruitmentAccount"></table-form-buttons>
+        </td>
+    </tr>
+    
+    <tr ng-class="{ 'is--editing' : parentData.$editing === 'accessAllGroups' || parentData.$editing === 'all' }">
+        <th>Access all groups</th>
+        <td>
+            <span class="table-form__form-value">{{form.IsRoaming.$viewValue ? 'Yes' : 'No'}}</span>
+            <table-form-edit edit-name="accessAllGroups" ng-if="parentData.$globalPermission.caneditsysteminformation"></table-form-edit>
+            <div class="table-form__form-field">
+                [[IsRoaming]]
+            </div>
+            <table-form-buttons edit-name="accessAllGroups"></table-form-buttons>
+        </td>
+    </tr>
+    
+    <tr ng-show="parentData.$editing === 'all'">
+        <th></th>
+        <td>
+            <table-form-buttons edit-name="all"></table-form-buttons>
+        </td>
+    </tr>
+    
+</table>

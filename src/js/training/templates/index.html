@@ -1,0 +1,80 @@
+<div class="page">
+
+    <div class="page__wrapper">
+
+        <h1>My Training</h1>
+        <!-- content component -->
+        <div class="page__content"
+            paginate="getCourses"
+            order-by="EndDate"
+            page-size="12">
+            
+            <div class="page__options">
+                <tabs><ul class="nav nav--filter">
+                    <li tab-link active><a ng-click="page.setFilter('Open')" class="is--active" href="">Open</a></li>
+                    <li tab-link><a ng-click="page.setFilter('Compulsory')" href="">Compulsory</a></li>
+                    <li tab-link><a ng-click="page.setFilter('Optional')" href="">Optional</a></li>
+                    <li tab-link><a ng-click="page.setFilter('Completed')" href="">Completed</a></li>
+                </ul></tabs>
+            </div>
+
+            <div class="training-courses" ng-class="{'is--loading': page.loading}">
+
+                <div class="document-collection">
+
+                    <div class="document-container" ng-repeat="course in page.items">
+                        <div class="document">
+                            <a href="" path="training.course" path-params="course.TrainingCourseId" class="document__block">
+                                <div class="document__header">
+                                    <span ng-if="!course.overdue" class="document__date">{{ course.EndDate | date:'d MMM yyyy' }}</span>
+                                    <span ng-if="course.overdue" class="label label--badge label--negative" tooltip="{{ course.EndDate | fromNow }}" tooltip-placement="right">Overdue</span>
+                                </div>
+                                <h3 class="document__title">{{ course.Title }}</h3>
+                                <div class="document__meta">
+                                    <span class="document__meta-text">Completed: {{ course.SubjectsCompletedCount }}/{{ course.SubjectCount }}</span>
+                                    <progress-bar value="course.SubjectsCompletedCount / course.SubjectCount * 100"></progress-bar>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="message message--empty" ng-hide="page.items.length || page.loading || page.error">
+                    <i class="icon--mnuTraining icon-is-huge"></i>
+                    <p>No training courses</p>
+                </div>
+
+            </div>
+
+            <!--div class="book-list" ng-class="{'is--loading': page.loading}">
+
+                <a href="" path="training.course" path-params="course.TrainingCourseId" class="book-list__book"
+                    ng-repeat="course in page.items">
+                    <div ng-if="!course.Compulsory" class="book__note" tooltip="Optional"><i class="icon--help"></i></div>
+                    <div class="book__block">
+
+                        <span ng-if="!course.overdue" class="book__date">{{ course.EndDate | date:'d MMM yyyy' }}</span>
+                        <span ng-if="course.overdue" class="label label--badge label--negative" tooltip="{{ course.EndDate | fromNow }}" tooltip-placement="right">Overdue</span>
+                        
+                        <h3 class="book__title">{{ course.Title }}</h3>
+                    </div>
+                    <div class="book__meta">
+                        <span class="book__progress">Completed: {{ course.SubjectsCompletedCount }}/{{ course.SubjectCount }}</span>
+                        <progress-bar value="course.SubjectsCompletedCount / course.SubjectCount * 100"></progress-bar>
+                    </div>
+                </a>
+
+                <div class="message message--empty" ng-hide="page.items.length || page.loading || page.error">
+                    <i class="icon--mnuTraining icon-is-huge"></i>
+                    <p>No training courses</p>
+                </div>
+
+            </div-->
+
+        </div>
+
+        <!-- END content component -->
+
+    </div>
+</div>

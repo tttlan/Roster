@@ -1,0 +1,129 @@
+﻿<div class="page page--1-2 profile-new" ng-controller="profileCommon">
+    <div class="page__wrapper" ng-if="((profile.Deleted === false && profile.Active === true) || profile.$userCan.isadmin) && !profile.$noPermission">
+        <div class="page__header profile-cover__wrapper">
+            <img ng-src="{{profile.CoverPic}}" class="profile__cover-image" />
+            <div class="profile__cover-panel"></div>
+            <div class="profile__cover-image-ovelay" ng-if="profile.$ownProfile || profile.$userCan.isadmin">
+                <a href="/Network/CoverImage.aspx?id=u{{profile.MemberId}}&returnUrl=/profile/new/{{profile.returnUrl}}" target="_self" title="Upload or change cover photo">
+                    <i class="icon--profile-camera"></i>
+                </a>
+            </div>
+        </div>
+        <div class="page__aside profile-page__aside">
+            <div class="profile__avatar">
+                <img ng-src="{{profile.AvatarPhotoLarge || '../images/profile/avatar_default.png'}}" />
+                <div ng-if="profile.$ownProfile || profile.$userCan.isadmin">
+                    <a href="/Network/ProfileAvatar.aspx?id=u{{profile.MemberId}}&returnUrl=/profile/new/{{profile.returnUrl}}" target="_self" title="Upload or change profile photo">
+                        <i class="icon--profile-camera"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile__status">
+                <span class="profile__status-time">On @ 9AM</span>
+                <span class="profile__status-date">today</span>
+            </div>
+
+            <div class="profile-card__details">
+                <dl ng-if="profile.Phone || profile.OtherPhones">
+                    <dt>Phone number</dt>
+                    <dd>
+                        <span ng-if="false">
+                            <!-- display a mobile first and if it doesn't exist, phoneline1 and if that doesn't exist, phoneline2
+                            also only display the phone numbers as a link on mobiles -->
+                        </span>
+
+                        <a href="tel:{{profile.Phone}}" ng-if="isMobile">{{profile.Phone | tel}}</a>
+                        <span ng-if="!isMobile">{{profile.Phone | tel}}</span>
+                    </dd>
+                    <dd ng-repeat="phone in profile.OtherPhones">
+                        <span>{{phone}}</span>
+                    </dd>
+                </dl>
+
+                <dl ng-if="profile.Email || profile.OtherEmails">
+                    <dt>Email</dt>
+                    <dd><a href="mailto:{{profile.Email}}">{{profile.Email}}</a></dd>
+                    <dd ng-repeat="email in profile.OtherEmails">
+                        <a href="mailto:{{email}}">{{email}}</a>
+                    </dd>
+                </dl>
+
+                <dl ng-if="(profile.Address || profile.Suburb || profile.City || profile.State || profile.CountryName || profile.Postcode) && profile.$userCan.canviewcontact">
+                    <dt>Address</dt>
+                    <dd>
+                        <span ng-if="profile.Address">{{profile.Address}}, </span>
+                        <span ng-if="profile.Suburb">{{profile.Suburb}}, </span>
+                        <span ng-if="profile.City">{{profile.City}}, </span>
+                        <span ng-if="profile.CountryName">{{profile.CountryName}}, </span>
+                        <span ng-if="profile.Postcode">{{profile.Postcode}}.</span>
+                    </dd>
+                </dl>
+
+                <dl ng-if="profile.$userCan.canviewsysteminformation">
+                    <dt ng-show="profile.GroupsList">Other groups</dt>
+                    <dd ng-show="profile.GroupsList">
+
+                        <a target="_self" href="" path="groups.group" path-params="group.NetworkGroupId" class="label label--basic" ng-repeat="group in profile.GroupsList | limitTo: profile.groupLimit">{{group.GroupName}}</a>
+                        <!-- this comment removes whitespace to help inline block styling
+                        -->
+                        <a href="" ng-click="profile.showAllGroups()" class="button button--basic button--tiny button--icon" ng-hide="profile.GroupsList.length <= 3 || profile.$hideGroupToggle"><i class="icon--ellipsis"></i></a>
+
+                    </dd>
+                </dl>
+                <dl ng-if="profile.$userCan.canviewchangepassword || profile.$ownProfile || profile.$userCan.canviewexitformlink">
+                    <dt>Other links</dt>
+                    <dd>
+                        <ul class="list-of-links--small list-of-links">
+                            <li ng-if="profile.$userCan.canviewchangepassword"><a href="" path="{{ profile.$ownProfile ? 'profile.changeOwnPassword' : 'profile.changePassword' }}" path-params="profile.MemberId">Change password</a></li>
+                            <li ng-if="profile.$ownProfile"><a target="_self" href="/network/Notifications2.aspx">Notification settings</a></li>
+                            <li ng-if="profile.$userCan.canviewexitformlink"><a target="_self" href="{{profile.$userCan.canviewexitformlink}}">Exit form</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+
+            </div>
+        </div>
+        <div class="page__content profile-page__content">
+            <div class="profile__title">
+                <div class="profile__username">
+                    <h1 class="h2">
+                        {{profile.FirstName}} {{profile.Surname}}
+                        <span class="status"
+                              ng-class="{'status--offline' : !profile.IsOnline, 'status--online' : profile.IsOnline }"
+                              tooltip="{{ profile.IsOnline ? 'Online' : 'Offline' }}"
+                              tooltip-placement="right" style="display: inline-block"></span>
+                        <span style="display: block;">
+                            <span class="profile__role">{{profile.RoleDescription}}</span>
+                            <a class="profile__groupdefault" target="_self" href="" path="groups.group" path-params="profile.DefaultGroupID" ng-if="profile.DefaultGroupName"> &middot; {{profile.DefaultGroupName}}</a>
+                        </span>
+                        <span class="profile__memberstatus" style="display: block" ng-if="profile.MemberStatus!==''">{{profile.MemberStatus}}</span>
+                    </h1>
+                </div>
+                <div class="profile__navbar">
+                    <ul class="nav">
+                        <li><a href="#" ng-class="{'is--active': tab === 'wall' }" ng-click="changeTab('wall')" tooltip="Wall"><i class="icon--profile-wall icon-is-large"></i></a></li>
+                        <li ng-if="profile.$userCan.canviewcontact"><a href="#" ng-class="{'is--active': tab === 'about' }" ng-click="changeTab('about')" tooltip="About"><i class="icon--profile-about icon-is-large"></i></a></li>
+                        <li ng-if="profile.$userCan.viewprofileemploymentdetail"><a href="#" ng-class="{'is--active': tab === 'employment-details' }" ng-click="changeTab('employment-details')" tooltip="Employee info"><i class="icon--profile-info icon-is-large"></i></a></li>
+                        <li ng-if="profile.$userCan.canviewemploymenthistory || profile.$userCan.canviewtraining || profile.$userCan.viewperformanceassessments"><a href="#" ng-class="{'is--active': tab === 'history' }" ng-click="changeTab('history')" tooltip="History"><i class="icon--profile-history icon-is-large"></i></a></li>
+                        <li ng-if="profile.$userCan.canviewdocumentation"><a href="#" ng-class="{'is--active': tab === 'documentation' }" ng-click="changeTab('documentation')" tooltip="Documentation"><i class="icon--profile-document icon-is-large"></i></a></li>
+                        <li ng-if="profile.$userCan.canviewnotes"><a href="#" ng-class="{'is--active': tab === 'notes' }" ng-click="changeTab('notes')" tooltip="Notes"><i class="icon--profile-note icon-is-large"></i></a></li>
+                        <li ng-if="profile.$userCan.viewonboardworkflow || profile.$userCan.viewjobadworkflow"><a href="#" ng-class="{'is--active': tab === 'workflows' }" ng-click="changeTab('workflows')" tooltip=" workflows"><i class="icon--profile-workflow icon-is-large"></i></a></li>
+                        <li ng-if="profile.$userCan.canviewsysteminformation"><a href="#" ng-class="{'is--active': tab === 'system-settings' }" ng-click="changeTab('system-settings')" tooltip="System setting"><i class="icon--profile-setting icon-is-large"></i></a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="profile profile-details profile__content">
+                <ng-include ng-if="tab === 'wall'" src="'/interface/views/profile/partials/tab-wall.html'"></ng-include>
+                <ng-include ng-if="tab === 'about'" src="'/interface/views/profile/partials/tab-about.html'"></ng-include>
+                <ng-include ng-if="tab === 'documentation'" src="'/interface/views/profile/partials/tab-documentation.html'"></ng-include>
+                <ng-include ng-if="tab === 'employment-details'" src="'/interface/views/profile/partials/tab-employment-details.html'"></ng-include>
+                <ng-include ng-if="tab === 'history'" src="'/interface/views/profile/partials/tab-history.html'"></ng-include>
+                <ng-include ng-if="tab === 'notes'" src="'/interface/views/profile/partials/tab-notes.html'"></ng-include>
+                <ng-include ng-if="tab === 'system-settings'" src="'/interface/views/profile/partials/tab-system-settings.html'"></ng-include>
+                <ng-include ng-if="tab === 'workflows'" src="'/interface/views/profile/partials/tab-workflows.html'"></ng-include>
+            </div>
+        </div>
+    </div>
+</div>

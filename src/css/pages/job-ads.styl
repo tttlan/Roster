@@ -1,0 +1,551 @@
+.ui {
+
+  .job-ads-create {
+
+    step_bg = #f6f6f6;
+    step_bg_active = positive;
+    step_height = gutter;
+    step_border_color = rgba(0, 0, 0, 0.08)
+
+    .cus-last-field {
+      padding-right: 20px !important;
+    }
+    .refNumber {
+      float: right;
+    }
+    .label-ricktext {
+      float: left;
+    }
+    .icon-view-ricktext {
+      float: right;
+      cursor: pointer;
+    }
+    .checkAdd {
+      margin-top: 15px;
+    }
+    .rangeOrAmount {
+      margin-bottom: 10px;
+    }
+    .form__job--editor-content {
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .form__job--editor-content > .ta-bind {
+      height: auto;
+      min-height: 150px;
+    }
+    .job-progress-steps {
+      clearfix();
+      list-style: none;
+      padding: 0;
+      margin: 0 0 gutter 0;
+      position: relative;
+      z-index: 2;
+      border-radius: base-border-radius;
+
+      .progress__step {
+        float: left;
+        height: step_height;
+
+        &:last-child .step__item:before,
+        &:last-child .step__item span.step__number:after {
+          display: none;
+          content: none;
+        }
+
+      }
+
+      .step__item {
+        text-align: center;
+        line-height: 24px;
+        display: block;
+        font-size: 14px;
+        color: grey4;
+        position: relative;
+        padding: 8px 0;
+        height: step_height;
+        opacity: 0.4;
+        &:hover {
+          text-decoration: none;
+        }
+
+        &:before,
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          //border-top: 20px solid transparent;
+          //border-bottom: 20px solid transparent;
+          border-left: 15px solid;
+          right: -7px;
+        }
+
+        &:after {
+          z-index: 2;
+          border-left-color: step_bg;
+        }
+
+        //&:before{
+        //  border-left-color: step_border_color;
+        //  right: -8px;
+        //  z-index: 1;
+        //}
+
+      }
+      .step__description {
+        display: none;
+      }
+      //.step__number:last-child > :after {content: "aaaa"}
+      //li:last-child > a:after {content: ""}
+      .step__number {
+        margin: auto;
+        display: block;
+        text-align: center;
+        border-radius 35px;
+        //border: solid 2px ;
+        //border-color :#a7a6a6;
+        //background-color: rgba(0,0,0,0.05);
+        width: 35px;
+        height: 35px;
+        line-height: 24px;
+        font-size: 15px;
+        padding: 3px;
+        background-color: #A9A9A9;
+        color: #F0FFFF;
+        &:before {
+          content: attr(data-text);
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          display: inline;
+        }
+        &:not(:last-child):after {
+          position: absolute;
+          display: inline;
+          content: "";
+          background: rgba(25, 20, 25, 0.2);
+          width: 115px;
+          height: 10px;
+          top: 21px;
+          left: 90px;
+        }
+
+        &:last-child:after {
+          background: #180407;
+          height: 20px;
+          width: 100px;
+        }
+
+      }
+    }
+    .progress-steps--5 {
+      .progress__step {
+        width: 20%;
+      }
+    }
+
+    .job-progress-steps {
+      width: 742px;
+      margin: auto;
+      padding-bottom: 60px;
+      .progress__step--active {
+        .step__item {
+          color: #94b86e;
+          opacity: .8;
+        }
+        .step__number {
+          background-color transparent;
+          border: 2px solid #A2C280;
+          color: #A2C280;
+          &:after {
+
+          }
+        }
+      }
+      .progress__step--complete {
+        .step__item {
+          opacity: 1;
+          color: #94b86e;
+          .step__number {
+            background-color: #94b86e;
+            border-color: #6abd45;
+            &:not(:last-child):after {
+              background: #94b86e;
+            }
+          }
+        }
+      }
+      .progress__step--previous {
+        .step__item {
+          opacity: 1;
+          color: #94b86e;
+          .step__number {
+            border-color: #6abd45;
+            background-color: #94b86e;
+            &:not(:last-child):after {
+              background: #94b86e;
+            }
+          }
+        }
+      }
+    }
+
+    .field-add-questionaire {
+      margin-top: 20px;
+
+      .icon--plus {
+        color: #2D5DB3;
+      }
+    }
+
+    .question-group-item {
+      border: 2px solid #e5e5e5;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      min-height: 150px;
+
+      .question-group-title {
+        border-bottom: 1px solid #e5e5e5;
+        height: 40px;
+        padding: 10px 15px;
+
+        .group-name {
+          margin-left: 20px;
+          font-weight: bold;
+        }
+
+        .icon--trash {
+          float: right;
+          color: #c7c7c7;
+        }
+
+        .icon--grid {
+          color: #c7c7c7;
+        }
+      }
+    }
+
+    .wizard__actions {
+
+      .icon--trash {
+        font-size: 20px;
+      }
+    }
+
+    .job-ads-image {
+      max-width: 150px;
+      min-height: 58px;
+    }
+    .ad-note {
+      display: inline;
+      background-color: grey4;
+      padding: 2px 10px 2px 10px;
+      border-radius: 49px;
+      color: grey8;
+      font-size: 11px;
+    }
+    .toggle-button {
+      float: right;
+      top: 20px;
+      right: 70px;
+    }
+    .expired-date-val {
+      margin-left: 20px;
+      opacity: 0.5;
+    }
+
+    .seek-expired-date > span.expired-date-val {
+      font-size: 14px;
+      margin-left: 0px !important;
+    }
+
+    .non-required {
+      &:after {
+        content: '' !important;
+      }
+    }
+
+    .seek-list-input-content > input {
+      margin: 10px 0px 10px 0px;
+    }
+
+    &-section {
+      margin-bottom: 10%;
+    }
+
+    &-preview- {
+      &info {
+        display: inline-block;
+        width: 100%;
+
+        &-title {
+          float: left;
+          padding-right: 2%;
+
+          h4 {
+            margin-top: 0%;
+          }
+        }
+
+        &-subtitle {
+          float: left;
+          padding-left: 2%;
+        }
+      }
+
+      &subinfo-location {
+        margin-bottom: -1%;
+      }
+
+      &post {
+        margin-top: 0.5%;
+        &-date {
+          margin-bottom: -1.2%;
+        }
+      }
+
+      &boards {
+        border-top: 1px solid grey6;
+
+        div:first-child {
+          margin: 0% 3% 0% 3%;
+        }
+      }
+
+      &boards:last-child {
+        border-bottom: 1px solid grey6;
+      }
+    }
+
+    .table--no-outside-borders {
+      .icon--cross{
+        position: absolute !important;
+        top:-5px !important;
+        right: -10px !important;
+      }
+
+      .toggle-button {
+        top: 0;
+        right: 0;
+      }
+
+      tbody {
+        tr {
+          &:first-child {
+            td {
+              &:last-child {
+                text-align: right;
+              }
+            }
+          }
+          &:nth-child(2) {
+            td {
+              border-bottom: none;
+              .relative {
+                [class*="icon--"] {
+                  margin-right: 0;
+                }
+                .icon--calendar {
+                  position: absolute;
+                  top: 12px;
+                }
+                .datepicker__calendar {
+                  .datepicker__table {
+                    th {
+                      padding: 0 14px;
+                    }
+                    td {
+                      border-bottom: none;
+                      padding: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .icon-down-internal-board{
+      position: absolute !important;
+      top: 12px !important;
+    }
+
+  }
+  /*
+  * ALL job-ads-list styles
+  */
+  .job-ads-list {
+    .table--responsive-stacked {
+      tbody {
+        tr {
+          td {
+            &:first-child {
+              a {
+                color: primary;
+                font-weight: bold;
+                &:hover {
+                  border-bottom: 1px dashed default-border-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .job-ads-list__column-icon {
+      padding-left: 10px;
+      vertical-align: text-top !important; //Have to force this one
+    }
+
+    &-submenu {
+      float: left;
+      margin-top: 4px;
+      margin-left: 10px;
+      position: relative;
+    }
+
+    .is--active {
+      color: primary !important;
+    }
+
+    .mfb-component--br{
+        margin: 0.5em  1em;
+    }
+  }
+  .modal--create__job {
+    .modal__title {
+      @extends .page h1;
+      font-size: 150%;
+      text-transform: uppercase;
+      color: grey3;
+      padding: 30px;
+    }
+    .modal__close {
+      position: inherit;
+      float: right;
+      padding: 50px;
+    }
+    .modal__header {
+      border-bottom: 0;
+      padding: 0;
+    }
+    .modal__dialog {
+      width: 100%;
+      height: 100%;
+      margin-top: 0;
+      top: 0;
+      position: fixed;
+      .modal__main {
+        border-radius: 0;
+        height: 100%;
+      }
+      margin: 0 !important;
+    }
+  }
+  .wizard__actions {
+    padding-top: 20px;
+    .col-1-4 {
+      a {
+        margin-right: 15px;
+        padding: 15px;
+      }
+      button {
+        margin-bottom: 10px;
+      }
+    }
+    .col-3-4 {
+      button {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .modal--create__full {
+    overflow-y: auto;
+    height: 100%;
+    background-color: grey8;
+    .modal--create__content {
+      width: 80%;
+      margin: auto;
+      background-color: white;
+      margin-bottom: 100px;
+    }
+  }
+
+  .search__job {
+    .search__job__input {
+      font-size: larger;
+      border: none;
+      border-bottom: 1px solid grey6;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0);
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    input.search__job__input:focus {
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      border-bottom: 1px solid grey6;
+    }
+  }
+
+  .job-ads__custom-questions {
+    .submenu {
+      left: 0;
+    }
+
+    .select-template {
+      width: 100%;
+      max-height: 300px;
+      overflow: auto;
+    }
+  }
+  .assessor-list {
+    overflow-y: auto;
+    max-height: 234px;
+    .assessor-item {
+      border: 1px solid grey7;
+      border-radius: 5px;
+      padding: 10px;
+      min-height: 50px;
+      width: 95%;
+      margin: 10px auto;
+      position: relative;
+
+      .media--user {
+        margin: 0px;
+      }
+
+      .media__body {
+        label {
+          color: primary;
+          font-size: 14px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        span {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+      .icon--cross {
+        position: absolute;
+        top: 0px;
+        right: 1px;
+        color: grey6;
+        cursor : pointer;
+        &:hover{
+            color: negative;
+        }
+      }
+    }
+  }
+}
+

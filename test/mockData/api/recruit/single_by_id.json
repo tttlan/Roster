@@ -1,0 +1,330 @@
+﻿{
+  "$id": "1",
+  "Onboarding": {
+    "$id": "2",
+    "OnboardId": 7628,
+    "Status": "New",
+    "StatusCode": "n",
+    "OnboardRole": {
+      "$id": "3",
+      "RoleId": 738,
+      "Description": "ADMIN - Director",
+      "LookupUrl": "onboarding/roles/"
+    },
+    "OnboardStore": {
+      "$id": "4",
+      "NetworkGroupId": 11038,
+      "GroupName": "Support Office",
+      "Type": null,
+      "LookupUrl": "onboarding/groups/",
+      "IsTrainingLocation": null
+    },
+    "CurrentStore": null,
+    "SalaryType": {
+      "$id": "5",
+      "SalaryTypeId": 1,
+      "Description": "Hourly - FT/PT",
+      "IsPermanent": true,
+      "MiniumHours": 0,
+      "PaymentType": null,
+      "LookupUrl": "http://localhost:56828/Api/onboarding/salarytypes/"
+    },
+    "CurrentSalaryType": null,
+    "SalaryPayRate": {
+      "$id": "6",
+      "SalaryPayRateId": null,
+      "Description": null,
+      "Allowence": null,
+      "Discount": null,
+      "ProbationAllowence": null,
+      "ProbationDiscount": null,
+      "IsPermanent": false,
+      "MiniumHours": null,
+      "PaymentType": null,
+      "LookupUrl": "http://localhost:56828/Api/onboarding/member/rolepayrates/306364"
+    },
+    "HoursPerWeek": 3,
+    "EmploymentType": {
+      "$id": "7",
+      "EmploymentTypeId": 22,
+      "Description": "Part time",
+      "LookupUrl": "http://localhost:56828/Api/onboarding/employmenttypes/"
+    },
+    "CurrentEmploymentType": null,
+    "Option": {
+      "$id": "8",
+      "IsBypassAcceptance": false,
+      "IsSuppressEmail": false,
+      "FinalInstruction": null,
+      "Comments": ""
+    },
+    "EmploymentClassification": {
+      "$id": "9",
+      "EmploymentClassificationId": 0,
+      "Description": null,
+      "LookupUrl": "http://localhost:56828/Api/onboarding/employmentclassifications/"
+    },
+    "CurrentEmploymentClassification": null,
+    "DesiredSalary": null,
+    "EffectiveDate": "2016-04-21T17:00:00",
+    "CandidatePersonalInfo": {
+      "$id": "10",
+      "MemberId": 306364,
+      "Salutation": 3,
+      "FirstName": "gdsg",
+      "Surname": "gdsg",
+      "PreferredName": "gds",
+      "Sex": "m",
+      "BirthDay": "2016-03-29T17:00:00",
+      "LastModified": "2016-04-05T13:52:04.567",
+      "MemberType": "j",
+      "Title": "Mrs",
+      "Active": false,
+      "DateRegistered": null,
+      "PhotoThumb": null
+    },
+    "CandidateContacts": [
+      {
+        "$id": "11",
+        "MemberId": 0,
+        "ContactInfoId": 1205511,
+        "DateCreated": "2016-04-05T06:52:06.087",
+        "DateModified": "2016-04-05T06:52:06.087",
+        "IsPrimary": true,
+        "IsPrivate": false,
+        "Type": "p",
+        "Address": "",
+        "City": "",
+        "Suburb": "",
+        "Postcode": "",
+        "MobilePhone": "6546",
+        "Phone": "6546",
+        "Fax": "",
+        "Email": "",
+        "WebAddress": "",
+        "StateName": "",
+        "StateRegionId": null,
+        "StateRegion": null,
+        "CountryId": null,
+        "Country": null,
+        "CanAcceptSms": false,
+        "CanAcceptVoiceCall": false,
+        "CanAcceptFax": false,
+        "CanAcceptHtml": false
+      },
+      {
+        "$id": "12",
+        "MemberId": 0,
+        "ContactInfoId": 1205512,
+        "DateCreated": "2016-04-05T06:52:06.27",
+        "DateModified": "2016-04-05T06:52:06.27",
+        "IsPrimary": true,
+        "IsPrivate": false,
+        "Type": "e",
+        "Address": "",
+        "City": "",
+        "Suburb": "",
+        "Postcode": "",
+        "MobilePhone": "",
+        "Phone": "",
+        "Fax": "",
+        "Email": "fdg@dgfhd.com",
+        "WebAddress": "",
+        "StateName": "",
+        "StateRegionId": null,
+        "StateRegion": null,
+        "CountryId": null,
+        "Country": null,
+        "CanAcceptSms": false,
+        "CanAcceptVoiceCall": false,
+        "CanAcceptFax": false,
+        "CanAcceptHtml": false
+      },
+      {
+        "$id": "13",
+        "MemberId": 0,
+        "ContactInfoId": 1205510,
+        "DateCreated": "2016-04-05T06:52:05.62",
+        "DateModified": "2016-04-05T06:52:06.883",
+        "IsPrimary": true,
+        "IsPrivate": false,
+        "Type": "ad",
+        "Address": "hdfh",
+        "City": null,
+        "Suburb": "ABBA RIVER",
+        "Postcode": "6",
+        "MobilePhone": "6546",
+        "Phone": "6546",
+        "Fax": null,
+        "Email": "fdg@dgfhd.com",
+        "WebAddress": null,
+        "StateName": "WA",
+        "StateRegionId": null,
+        "StateRegion": null,
+        "CountryId": 13,
+        "Country": {
+          "$id": "14",
+          "LookupUrl": "http://localhost:56828/Api//api/profilemanagement/countries",
+          "Value": 13,
+          "Label": "Australia"
+        },
+        "CanAcceptSms": false,
+        "CanAcceptVoiceCall": false,
+        "CanAcceptFax": false,
+        "CanAcceptHtml": false
+      }
+    ],
+    "SourceDetail": {
+      "$id": "15",
+      "Source": "w",
+      "AgencyName": null,
+      "ReferalMembers": [],
+      "IsReferenceChecked": true,
+      "OnboardingTrialsInfoDetail": null,
+      "MemberBankingDetail": null,
+      "SourceName": "Walkin"
+    },
+    "Payroll": {
+      "$id": "16",
+      "OperatorId": null,
+      "DebtorId": null
+    },
+    "IsPromotion": false,
+    "ProbationEndDate": null,
+    "OutboundDocuments": {
+      "$id": "17",
+      "OnboardDocumentItemResults": [],
+      "EntityActions": [],
+      "Pagination": null,
+      "Status": 0
+    },
+    "Comments": "",
+    "InboundRequirementListResult": {
+      "$id": "18",
+      "OnboardDocumentItemResults": [],
+      "EntityActions": [],
+      "Pagination": null,
+      "Status": 0
+    },
+    "Activities": [
+      {
+        "$id": "19",
+        "Description": "Onboard Created",
+        "Comments": "Onboard Created",
+        "OccurredAt": "2016-04-05T06:52:08.997",
+        "IsCompleted": null,
+        "IsCanceled": null,
+        "Member": {
+          "$id": "20",
+          "MemberId": 247682,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PhotoLarge": "/networkrepository/957/member/247682/profile_large.png",
+          "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.png",
+          "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+          "RoleTitle": "FIN - Systems Administrator",
+          "DefaultNetworkGroupId": 11038
+        },
+        "DonedByGroup": {
+          "$id": "21",
+          "NetworkGroupId": 11038,
+          "GroupName": "Support Office",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/",
+          "IsTrainingLocation": null
+        },
+        "NextApprovalGroup": {
+          "$ref": "21"
+        }
+      }
+    ],
+    "RegisterKey": {
+      "$id": "22",
+      "IsKeyRegister": false,
+      "IsStoreKeyRequired": false,
+      "IsAlarmCodeRequired": false,
+      "IsTabletRequired": false
+    },
+    "Creator": {
+      "$id": "23",
+      "MemberId": 0,
+      "FirstName": "Sherpa",
+      "Surname": "Admin",
+      "PhotoLarge": "profile_large.png",
+      "PhotoThumb": "profile_mid.png",
+      "PhotoThumbMini": "profile_small.png",
+      "RoleTitle": "FIN - Systems Administrator",
+      "DefaultNetworkGroupId": 11038
+    },
+    "DocumentationAdmin": null,
+    "Confirmer": null,
+    "LastApproval": null,
+    "CommentCount": 0
+  },
+  "EntityActions": [
+    {
+      "$id": "24",
+      "Id": "64592d95-3002-4501-aa62-b6a05d5157bb",
+      "Code": 3620,
+      "Caption": "Send To Approval",
+      "Description": "Send To Approval",
+      "ActionUrl": "http://localhost:56828/Api/onboarding/7628/process",
+      "Children": null
+    },
+    {
+      "$id": "25",
+      "Id": "b85de523-04b8-4672-ba12-f5899751d4af",
+      "Code": 3600,
+      "Caption": "Update Employee Personal Information",
+      "Description": "PUT",
+      "ActionUrl": "http://localhost:56828/Api/7628/candidatepersonalInfo",
+      "Children": null
+    },
+    {
+      "$id": "26",
+      "Id": "c334a03a-db0e-46f0-ae2b-1c357f901366",
+      "Code": 3606,
+      "Caption": "UpdateCandidateContacts",
+      "Description": "PUT",
+      "ActionUrl": "http://localhost:56828/Api/7628/candidatecontacts",
+      "Children": null
+    },
+    {
+      "$id": "27",
+      "Id": "5185e5db-f8e5-49dc-9c24-4dc2a6c16080",
+      "Code": 3601,
+      "Caption": "Update Proposed Role",
+      "Description": "PUT",
+      "ActionUrl": "http://localhost:56828/Api/onboarding/7628/proposedrole",
+      "Children": null
+    },
+    {
+      "$id": "28",
+      "Id": "e72f46f0-9abd-4fbf-b5ac-17e01fd646f2",
+      "Code": 3609,
+      "Caption": "ViewOutboundDocument",
+      "Description": "GET",
+      "ActionUrl": "http://localhost:56828/Api/onboarding/7628/outbounddocuments",
+      "Children": null
+    },
+    {
+      "$id": "29",
+      "Id": "bb19527c-e21d-47d4-a6c0-3692e00509b0",
+      "Code": 3610,
+      "Caption": "GetInboundRequirementDocument",
+      "Description": "GetInboundRequirementDocument",
+      "ActionUrl": "http://localhost:56828/Api/onboarding/7628/inboundrequirements",
+      "Children": null
+    },
+    {
+      "$id": "30",
+      "Id": "ddc37156-ec9f-44d6-9985-14ef5dcb317a",
+      "Code": 2608,
+      "Caption": "Delete Onboard",
+      "Description": "DELETE",
+      "ActionUrl": "http://localhost:56828/Api/onboarding/7628",
+      "Children": null
+    }
+  ],
+  "Status": 0
+}

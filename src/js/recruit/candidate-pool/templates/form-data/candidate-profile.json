@@ -1,0 +1,167 @@
+﻿[
+    {
+        "id": "candidateProfileForm",
+        "name": "candidateProfileForm",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "EmploymentTypeId",
+                "label": "Employment type",
+                "placeholder": "",
+                "value": "",
+                "type": "select",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "CommencementDate",
+                "label": "Commencement date",
+                "placeholder": "",
+                "value": "",
+                "class": "form__label--invisible",
+                "type": "date",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "FirstName",
+                "label": "First name",
+                "placeholder": "",
+                "value": "",
+                "class": "",
+                "type": "input",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "SurName",
+                "label": "Surname",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "MobilePhone",
+                "label": "Phone numbers",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 50,
+                    "onlyNumber": true
+                }
+            },
+            {
+                "name": "Email",
+                "label": "Email address",
+                "placeholder": "",
+                "value": "",
+                "type": "email",
+                "class": "form__label--invisible",
+                "validation": {
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 100,
+                    "pattern": "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+                }
+            },
+            {
+                "name": "Address",
+                "label": "Street address",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "Suburb",
+                "label": "Suburb",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "City",
+                "label": "City",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "StateName",
+                "label": "State",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 1000
+                }
+            },
+            {
+                "name": "Postcode",
+                "label": "Postcode",
+                "placeholder": "",
+                "value": "",
+                "type": "input",
+                "class": "",
+                "note": "Enter a postcode to prefill this address",
+                "validation": {
+                    "required": true,
+                    "maxLength": 5,
+                    "minLength": 0,
+                    "onlyNumber": true
+                },
+                "loader": true
+            },
+            {
+                "name": "CountryId",
+                "label": "Country",
+                "placeholder": "",
+                "value": "",
+                "type": "select-country",
+                "class": "",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "submitForm",
+                "value": "Save changes",
+                "type": "submit-button",
+                "class": "button--small"
+            }
+        ]
+    }
+]

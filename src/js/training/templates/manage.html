@@ -1,0 +1,103 @@
+<div class="page">
+
+    <div class="page__wrapper"
+        paginate="getCourses"
+        page-size="20"
+        filter-by="Published"
+        order-by="Title">
+
+        <h1>Manage Courses</h1>
+
+        <!-- content component -->
+
+        <div class="page__content">
+
+
+            <div class="page__options">
+
+                <ul tabs class="nav nav--filter">
+                    <li tab-link active><a href="" ng-click="page.setFilter('Published')">Published</a></li>
+                    <li tab-link><a href="" ng-click="page.setFilter('Drafts')">Drafts</a></li>
+                    <li tab-link><a href="" ng-click="page.setFilter('Closed')">Closed</a></li>
+                </ul>
+                <a href="" ng-if="userCan.add" path="training.manage.courses.create" class="button button--positive"><i class="icon--folder"></i> New course</a>
+            </div>
+
+            <div ng-class="{'is--loading': page.loading}">
+                <table class="table-large">
+
+                    <thead toggle-set>
+                        <tr>
+                            <th><a href="" toggle-active="page.setOrderBy('Title')">Course Name</a></th>
+                            <th><a href="" toggle-active="page.setOrderBy('MemberCompletionPercentage')">% Complete</th>
+                            <th><a href="" toggle-active="page.setOrderBy('MemberCount')">Published to</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+
+                    <tbody ng-class="{'is--open': course.isOpen}" ng-repeat="course in page.items">
+                        <tr ng-click="course.$getSubjects(); course.isOpen = !course.isOpen">
+                            <td><i class="icon--folder"></i>{{ course.Title }}</td>
+                            <!-- <a class="link" href="{{ BASE_URL }}/training/manage/{{ course.TrainingCourseId }}/stats"  -->
+                            <td>
+                                <a class="link" href="" path="training.manage.courses.stats" path-params="course.TrainingCourseId"
+                                tooltip="{{ course.MemberCompletionCount }}/{{ course.MemberCount }} staff completed" tooltip-append-to-body="true">
+                                    <i class="icon--bars"></i> {{ course.MemberCompletionPercentage / 100 | percentage }}
+                                    <span class="lt-tablet-hide">completed</span>
+                                </a>
+                            </td>
+                            <td><a class="link" href="" path="training.manage.courses.stats" path-params="course.TrainingCourseId"><i class="icon--users"></i> {{ course.MemberCount }} <span class="lt-tablet-hide">staff</span></a></td>
+                            <td>
+                               <span ng-if="userCan.edit" tooltip="Edit Course"><a class="link-icon" href="" path="training.manage.courses.edit" path-params="course.TrainingCourseId"><i class="icon--edit"></i></a></span>
+                               <span tooltip="More info"><a class="link-icon" href=""><i class="icon-is-circular" ng-class="course.isOpen ? 'icon--block-minus' : 'icon--block-plus' " ></i></a></span>
+                            </td>
+                        </tr>
+                        <tr class="expandable">
+                            <td colspan="4">
+
+                                <div class="table-list__expandable">
+
+                                    <loader ng-show="course.$subjectsLoading" align="center"></loader>
+
+                                    <div class="table-list__row"
+                                        ng-repeat="subject in course.TrainingSubjects">
+                                        <div class="row__cell">
+                                            <i class="icon--document"></i>
+                                            <p>{{ subject.Title }}</p>
+                                        </div>
+                                        <div class="row__cell">
+                                            <a href="" path="training.manage.subjects.stats" path-params="course.TrainingCourseId,subject.TrainingSubjectId">
+                                                <progress-bar value="subject.completedPercentage" label="{{ subject.MemberCompletionCount }}/{{ course.MemberCount }} staff completed"></progress-bar>
+                                            </a>
+                                        </div>
+                                        <div class="row__cell lt-tablet-hide">
+                                            Edited <strong>{{ subject.LastUpdatedDate | date:'dd/MM/yyyy' }}</strong>
+                                        </div>
+                                        <div class="row__cell lt-tablet-hide">
+                                            <a ng-if="userCan.edit" class="link-icon" href="" path="training.manage.subjects.edit" path-params="subject.TrainingSubjectId" tooltip="Edit Subject" tooltip-placement="top"><i class="icon--edit"></i></a>
+                                            <a class="link-icon" href="" path="training.manage.subjects.stats" path-params="course.TrainingCourseId,subject.TrainingSubjectId" tooltip="View Stats" tooltip-placement="top"><i class="icon--bars"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="">
+                                        <div class="row__cell">
+                                            <a href="" path="training.manage.courses.addSubjects" path-params="course.TrainingCourseId" class="row__link"><i class="icon--plus"></i>Add / Remove a subject</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="message message--empty" ng-show="!page.items.length && !page.loading">
+                    <i class="icon--mnuTraining icon-is-huge"></i>
+                    <p>There are no matching courses,<br />
+                        you can <a href="" path="training.manage.courses.create">create a course</a> now</p>
+                </div>
+            </div>
+        </div>
+        <!-- END content component -->
+
+    </div>
+</div>

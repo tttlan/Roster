@@ -1,0 +1,27 @@
+﻿<div class="form__field">
+    <div class="form__field">
+        <tag-manager ng-model="allTag" select-data="jobTagsSumary.JobTagItemResults">
+            <input type="text" id="auto_complete" placeholder="Search tag..."
+                   ng-model="selectedTag"
+                   typeahead="result as result.label for result in selectData | filter:$viewValue"
+                   typeahead-on-select="$parent.addTagManual(selectedTag); selectedTag = ''" />
+        </tag-manager>
+        <br />
+        <div style="margin-top: 20px">
+            <p style="color: #7b7b7b; font-size: 14px; display: block; margin-bottom: 10px">Selected tags: </p>
+            <a class="tag" ng-repeat="tag in addedTags">{{tag.label}}<i class="icon--cross" ng-click="removeTag($index)"></i></a>
+        </div>
+    </div>
+
+    <br />
+    <a ng-if="selectedOption.Selected.length === 0"
+       style="margin-top: 20px"
+       ng-class="{'button--disabled' : addedTags.length === 0}"
+       href="#" class="button button--positive button--more"
+       ng-click="addedTags.length > 0 ? close() : ''">Add Filter</a>
+
+    <a ng-if="selectedOption.Selected.length > 0" href="#"
+       style="margin-top: 20px"
+       class="button button--positive button--more"
+       ng-click="removeFilter()">Remove Filter</a>
+</div>

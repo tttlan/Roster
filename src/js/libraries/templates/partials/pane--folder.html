@@ -1,0 +1,55 @@
+<div class="pane__wrapper">
+            
+    <div class="pane__header" ng-class="{ 'is--first' : paneindex == 0  }">
+
+        <a href="" class="pane__back" ng-click="closePane( paneindex )"><i class="icon--left"></i></a>
+
+        <h5>{{ pane.Name }}</h5>
+
+        <div class="pane__options">
+            <a href="" dropdown-toggle><i class="icon--ellipsis"></i></a>
+            <ul class="submenu submenu--compact dropdown-menu">
+                <li class="submenu__item">
+                    <a href="" ng-click="sortOrder('Name')">Sort A-Z</a>
+                </li>
+                <li class="submenu__item">
+                    <a href="" ng-click="sortOrder('DateCreated')">Sort by Date</a>
+                </li>
+                <li class="submenu__item">
+                    <a href="" ng-click="createFolder()">New folder</a>
+                </li>
+                <li class="submenu__item">
+                    <a href="" ng-click="uploadFiles()">Upload files</a>
+                </li>
+            </ul>
+            <a href="" ng-click="uploadFiles()"><i class="icon--plus"></i></a>
+        </div>
+
+
+    </div>
+    
+    <div class="pane__loader" ng-show="pane.loading">
+        <loader align="center"></loader>
+    </div>
+
+    <!-- listing start -->
+
+    <div class="pane__listing" as-sortable="dragControlListeners" ng-model="pane.Items">
+    
+        <pane-item 
+            index="{{ $index }}" 
+            paneindex="{{ paneindex }}" 
+            ng-repeat="item in pane.Items | orderBy: pane.sortOrder"
+            as-sortable-item 
+        ></pane-item>
+
+    </div>
+
+    <a href="" class="pane__empty" ng-click="uploadFiles()" ng-hide="pane.Items.length || pane.loading">
+        <i class="svg-icon--folder1"></i>
+        <p>This folder is empty.<small>Click <strong>+</strong> to add some files</small></p>
+    </a>
+
+    <!-- listing end -->
+
+</div>

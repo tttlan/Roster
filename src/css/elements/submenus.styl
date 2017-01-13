@@ -1,0 +1,439 @@
+
+// Submenus
+// ------------------------------------------------
+
+.ui
+
+    // Class toggled to trigger navigation
+    .dropdown.open,
+    .open > {
+            
+        .dropdown-menu,
+        .dropdown-menu .submenu {
+            opacity: 1;    
+        }
+    }
+
+    // Class toggled to change off-screen position
+    .dropdown.on-screen,
+    .on-screen > {
+            
+        .dropdown-menu {
+            top: 100%; 
+            visibility: visible;   
+        }
+        .submenu--top {
+            bottom:100%;
+            top:auto;
+        }
+    }
+    
+    // Submenu
+    //
+    // Markup:
+    // <ul class="submenu {{modifier_class}}" style="visibility: visible; position:relative;top:0;opacity:1">
+    //     <li class="submenu__item is--active"><a href="#"><i class="icon--mnuInbox"></i>Inbox</a></li>
+    //     <li class="submenu__item"><a href="#"><i class="icon--mnuMyProfile"></i>My Profile</a>
+    //         <ul>
+    //             <li class="submenu__item"><a href="#">Onboarding</a></li>
+    //             <li class="submenu__item"><a href="#">Performance</a></li>
+    //             <li class="submenu__item"><a href="#">Training</a></li>
+    //         </ul>
+    //     </li>
+    //     <li class="submenu__item"><a href="#"><i class="icon--mnuSettings"></i>Settings</a></li>
+    //     <li class="submenu__item"><a href="#"><i class="icon--mnuLogout"></i>Logout</a></li>
+    // </ul>
+    // 
+    // .submenu--tail - add a tail to the menu
+    // .submenu--tail.submenu--left - place the tail on the left
+    // .submenu--compact - a more compact submenu.  This will have auto width when used with absolute positioning
+    //
+    // Styleguide elements.submenus.standard
+
+
+    // For keyboard navigation
+    /*.dropdown-toggle:focus + {
+        .dropdown-menu 
+        .dropdown-menu .submenu {
+            opacity: 1;
+            visibility: visible;
+            top: 100%; 
+        }  
+    } */       
+
+    .submenu {
+        margin: 0;
+        padding: 0;
+        visibility: hidden;
+        position: absolute;
+        top: -900px;
+        right: 1px;
+        width: 180px;
+        background-color: white;
+        list-style: none;
+        z-index: 100;
+        opacity: 0;
+        transition: opacity linear 200ms;
+
+        border: solid 1px grey7;
+        border-radius: base-border-radius;
+        box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.06);
+        transform: translate3d(0,0,0);
+
+        &.is--open {
+            opacity:1;
+            top:100%;
+            visibility: visible;
+        }
+
+        .submenu__item {
+            font-size: 16px;
+            border-bottom: solid 1px rgba(0,0,0,0.03);
+            margin: 0;
+            text-transform: capitalize;
+            text-align: left;
+            display: block;
+
+            &:last-child {
+                border-bottom-width: 0px;
+            }
+
+            &.is--active {
+                a { color: primary; }
+            }
+
+            a {
+                display: block;
+                padding: .5em 1em;
+                color: grey3;
+                transition: color linear 150ms;
+
+                &:hover ,
+                &:focus ,
+                &:active {
+                    color: primary;
+                    text-decoration: none;
+                }
+
+                [class*="icon--"] {
+                    margin-right: 0.35em;
+                    font-size: 14px;
+                }
+            }
+
+            // label
+
+            .label {
+                display: block;
+                float: right;
+                margin: 4px 0 0 0;
+            }
+
+            // Nested
+            
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                border-top: solid 1px rgba(0,0,0,0.03);
+            }
+
+            .submenu__item {
+
+                a {
+                    padding: 0.35em 1em 0.35em 2em;
+                    position: relative;
+
+                    &:before {
+                        content: '';
+                        border-top: dotted 1px grey6;
+                        position: absolute;
+                        top: 50%;
+                        left: 1em;
+                        width: 7px;
+                    }
+                }
+            }
+
+        }
+
+        .submenu__profile {
+            background-color: grey2;
+            color: #fff;
+            border-radius: 3px 0 0 0;
+            padding: .6em 1em;
+            margin-bottom: 5px;
+
+            a {
+                color: #fff;
+                display: block;
+                line-height: normal;
+
+                &:after {
+                    content: 'My profile';
+                    display: block;
+                    font-size: 11px;
+                    text-transform: uppercase;   
+                    line-height: normal; 
+                    margin-bottom: 0.3em;
+                    color: grey5;
+                }
+
+                &:hover {
+                    text-decoration: none;
+                }
+
+                [class*="icon--"] {
+                    display: none;
+                }
+            }
+        }
+
+        @media minTablet {
+            width: 160px;
+
+            .submenu__item {
+                font-size: 14px;
+            }
+        }
+    }
+
+    // Tail addition
+
+    .submenu--tail {
+        // arrow
+        &:before ,
+        &:after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: 0px;
+            border: 10px solid;
+            border-color: transparent white transparent transparent;
+            z-index: 101;
+        }
+
+        &:after {
+            border-color: transparent grey7 transparent transparent;
+            z-index: 99;
+            right: -1px;
+            top: -12px;
+        }
+    }
+
+    // Left
+
+    .submenu--left {
+        right: auto;
+        left: 1px;
+
+        //arrow alignment
+        &:before ,
+        &:after {
+            right: auto;
+            left: 0px;
+            border-color: transparent transparent transparent white;
+        }
+
+        &:after {
+            border-color: transparent transparent transparent grey7;
+            right: auto;
+            left: -1px;
+        }
+    }
+
+    @media maxTablet {
+        li:last-child .submenu--left {
+            left: auto;
+            right: 1px;
+        }
+    }
+
+    .submenu--top {
+        top: auto;
+        bottom: 100%;
+    }
+
+    // Compact
+
+    .submenu--compact {
+        width: auto;
+        white-space: nowrap;
+
+        .submenu__item {
+            font-size: 13px;
+
+            a {
+                padding: .3em 1em;
+            }
+
+            .submenu__item {
+
+                a {
+                    padding: 0.2em .75em 0.2em 2em;
+                }
+            }
+
+        }
+    }
+
+    // User nav
+
+    .user__nav {
+        z-index: 210;
+        
+        &:before {
+            border-right-color: grey2;
+        }
+
+        &:after {
+            display: none;
+        }
+
+        .submenu__item {
+            font-size: 12px;
+            text-transform: uppercase;
+            line-height: 18px;
+            border-bottom: none;
+
+            a {
+                padding: .65em .75em .65em 1.3em;
+
+                [class*="icon--"] {
+                    float: right;
+                    font-size: 16px;
+                }
+            }
+
+            &:last-child {
+                margin-top: 5px;
+                border-top: solid 1px rgba(0,0,0,0.03);
+
+                a {
+                    padding-top: .75em;
+                    padding-bottom: .75em;
+                }
+            }
+        }
+    }
+
+
+    // Icon menus
+
+    .submenu--grid {
+        padding: 10px;
+        width: 262px;
+        font-size: 0;
+
+        .submenu__item {
+            display: inline-block;
+            text-align: center;
+            font-size: 11px;
+            text-transform: uppercase;
+            border: none;
+
+            a {
+                width: 80px;
+                height: 80px;
+                padding: 0;
+
+                [class*="icon--"] {
+                    font-size: 32px;
+                    line-height: 1;
+                    width: 100%;
+                    text-align: center;
+                    height: 50px;
+                    padding-top: 15px;
+                    margin: 0;
+                }
+
+                &:hover ,
+                &:focus ,
+                &:active {
+                    color: primary;
+                    background: white;
+                }
+            }
+        }
+
+    }
+
+    // Submenu strip
+
+    .submenu--strip {
+
+        width: 100%;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        text-align: center;
+        
+        .submenu__item {
+
+            display: inline-block;
+            width: 120px;
+            min-width: 105px;
+            max-width: 12.5%;
+            text-transform: uppercase;
+            font-size: 12px;
+            text-align: center;
+            margin: 17px 0 17px -4px; // -4 to remove space created by inline block elements
+            border: 0;
+            position: relative;
+
+            &:last-child:after {
+                
+                display: none;
+            }
+
+            &:after {
+                
+                content: '';
+                height: 50%;
+                position: absolute;
+                top: 25%;
+                right: 0;
+                border-right: solid 1px #f2f2f2;
+            }
+
+            a {
+
+                padding: 0;
+
+                [class*="icon--"] {
+
+                    width: 100%;
+                    margin: 0 0 0.5em 0;
+                    height: auto;
+                    display: block;
+
+                    &:before {font-size: 43px;}
+                }
+            }
+        }
+    }
+
+    .singleRow .submenu--strip {
+        text-align: left;
+    }
+
+
+    // colours sub menus
+    .colours__container {
+        position:relative;
+    }
+    .colours__menu {
+        max-width:140px;
+        padding:10px 7px 7px 10px
+    }
+    .colours__item {
+        display:inline-block;
+        width:20px;
+        height:20px;
+        margin:0 3px 3px 0;
+    }
+    .colours__link {
+        display:inline-block;
+        width:100%;
+        height:100%;
+    }

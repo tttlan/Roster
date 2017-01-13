@@ -1,0 +1,118 @@
+<div class="pdf__toolbar lightbox__labraries">
+    <div title="" class="pdf__doc-name">
+        <span class="filename is--positive">{{ items[currentIndex].FileName }}</span>
+        <br />
+        <span class="ng-binding">Uploaded by <b class="is--primary">{{items[currentIndex].Author}}</b></span>
+    </div>
+
+    <div class="pdf__tools">
+        <a id="icon__comment" href="" class="lightbox__icon pdf__tools-icon" ng-class="{'is--active' : selectedSlide.showComments}" ng-click="openLightboxComment(items[currentIndex], selectedSlide.showComments)">
+            <i class="icon--comment"><span ng-if="activityObj.CommentCount > 0" class="badge__lightbox">{{activityObj.CommentCount}}</span></i>
+        </a>
+
+        <a id="icon__links" href="" class="lightbox__icon pdf__tools-icon" ng-class="{'is--active' : selectedSlide.showRelatedFile}" ng-click="openLightboxRelatedFile(items[currentIndex], selectedSlide.showRelatedFile)">
+            <i class="icon--link-2"><span ng-if="relatedObj.numRelatedFiles > 0" class="badge__lightbox">{{relatedObj.numRelatedFiles}}</span></i>
+        </a>
+
+        <div class="option-lightbox">
+            <a id="icon__submenu" href="" dropdown-toggle class="lightbox__icon pdf__tools-icon" ng-class="{'is--active' : selectedSlide.showShareFile, 'is--active' : selectedSlide.showFileInfo}">
+                <i class="icon--ellipsis"></i>
+            </a>
+
+            <ul class="submenu submenu--compact dropdown-menu" id="option__lightbox--menu">
+                <li class="submenu__item" ng-class="{'is--active' : selectedSlide.showShareFile}">
+                    <a ng-click="shareFile(items[currentIndex])" href="">Share</a>
+                </li>
+                <li class="submenu__item" ng-if="items[currentIndex].Permissions.downloadartifactfile">
+                    <a href="" ng-click="downloadFile(items[currentIndex])">Download</a>
+                </li>
+                <li class="submenu__item" ng-class="{'is--active' : selectedSlide.showFileInfo}">
+                    <a href="" ng-click="showFileInfo(items[currentIndex].ArtifactId, selectedSlide.showFileInfo)">Info</a>
+                </li>
+                <li class="submenu__item" ng-if="items[currentIndex].Permissions.deleteartifact">
+                    <a href="" ng-click="deleteFile(items[currentIndex].ArtifactId)">Delete</a>
+                </li>
+            </ul>
+        </div>
+
+        <a href="" id="icon__cancel" class="lightbox__icon lightbox__icon--close pdf__tools-icon" ng-click="cancel()">
+            <i class="icon--cross"></i>
+        </a>
+    </div>
+</div>
+
+<div class="lightbox__wrapper lightbox__wrapper--libraries lightbox__viewing--{{ items[currentIndex].ArtifactTypeName }}" ng-class="{'section--open' : selectedSlide.showComments || selectedSlide.showRelatedFile || selectedSlide.showFileInfo}">
+    <div class="lightbox__main">
+        <div class="lightbox__slider">
+            <ul slider-panel class="slide__file">
+                <li ng-class="{ 'slide--selected': selectedSlide.indx == $index && selectedSlide.loaded }"
+                    slide="slide"
+                    ng-repeat="slide in slides"
+                    slide-resize="selectedSlide.showComments || selectedSlide.showRelatedFile || selectedSlide.showFileInfo"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="lightbox__nav" ng-if="(numberItems > 1) && (items[currentIndex].ArtifactTypeName === 'Image')">
+        <a href="" class="nav--prev" ng-click="prevSlide()">
+            <div class="nav__icon">
+                <i class="icon--arrow-left"></i>
+            </div>
+        </a>
+        <a href="" class="nav--next" ng-click="nextSlide()">
+            <div class="nav__icon">
+                <i class="icon--arrow-right"></i>
+            </div>
+        </a>
+    </div>
+
+    <div class="lightbox__comments" ng-if="selectedSlide.showComments">
+        <div class="lightbox__comments-header" style="overflow-y: auto">
+            <div class="title__comment">Comment</div>
+            <div class="body__comment" ng-scrollbars ng-scrollbars-config="scrollbarCommentsConfig">
+                <post-comments ng-if="true"
+                               resource-type="news"
+                               resource-id="activityObj.ActivityItemId"
+                               comment-count="activityObj.CommentCount"
+                               current-user="currentUser"
+                               show-add-comment="true">
+                </post-comments>
+            </div>
+        </div>
+    </div>
+
+    <div class="lightbox__relatedfile" ng-if="selectedSlide.showRelatedFile">
+        <div class="lightbox__relatedfile--header">
+            <div class="title__related--files">Related Files </div>
+        </div>
+        <div class="list__related--files" ng-class="{'is--loading': isLoading}" ng-scrollbars ng-scrollbars-config="scrollbarFileInfoConfig">
+            <div class="related__file--item" ng-repeat="item in relatedObj.RelatedFiles">
+                <div ng-click="viewRelatedFile(item)">
+                    <div class="media__image" ng-switch on="item.ArtifactTypeName">
+                        <i ng-switch-when="Compress" class="svg-icon--zip"></i>
+                        <i ng-switch-when="Video" class="svg-icon--video"></i>
+                        <i ng-switch-when="Audio" class="svg-icon--video"></i>
+                        <img ng-switch-when="Image" class="image__related--files" ng-src="{{item.Thumbnail}}">
+                        <i ng-switch-default class="svg-icon--doc"></i>
+                    </div>
+                    <div class="media__body">
+                        <a href="">
+                            <span class="related__file--name">{{item.FileName}}</span>
+                            <br />
+                            <span>{{item.Author}}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lightbox__fileInfo" ng-if="selectedSlide.showFileInfo">
+        <div class="lightbox__relatedfile--header">
+            <div class="title__related--files">File Infomation </div>
+        </div>
+        <div class="fileInfo" ng-class="{'is--loading': isLoading}">
+            <ng-include src="'/interface/views/libraries/partials/_file-info--lightbox.html'"></ng-include>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,14 @@
+<span class="table-form__form-value">            
+    <span ng-if="form.TargetMemberId.$viewValue">Delegated to <strong>{{ parentData.selectData.TargetMemberIdObj[form.TargetMemberId.$viewValue] }}</strong> from {{ form.StartDate.$viewValue | date }} - {{ form.EndDate.$viewValue | date }}</span>
+    <span ng-if="!form.TargetMemberId.$viewValue">Workflow not set</span>
+</span>
+
+<table-form-edit edit-name="workflow{{$parent.$index}}"></table-form-edit>
+    
+<div class="table-form__form-field">
+
+    <form-element element="element" ng-repeat="element in formData.elements" form="form" form-data="formData"></form-element>
+
+</div>
+
+<table-form-buttons edit-name="workflow{{$parent.$index}}"></table-form-buttons>

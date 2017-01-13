@@ -1,0 +1,41 @@
+{
+    "data": [
+        {
+            "$id": "1",
+            "KeyValue": 12088,
+            "SearchType": "NetworkGroup",
+            "Value": 0,
+            "Label": "Administrators"
+        },
+        {
+            "$id": "2",
+            "KeyValue": 14589,
+            "SearchType": "NetworkGroup",
+            "Value": 1,
+            "Label": "WorkflowA"
+        },
+        {
+            "$id": "3",
+            "KeyValue": 14596,
+            "SearchType": "NetworkGroup",
+            "Value": 2,
+            "Label": "group A"
+        },
+        {
+            "$id": "4",
+            "KeyValue": 14598,
+            "SearchType": "NetworkGroup",
+            "Value": 3,
+            "Label": "RAgroup_1"
+        },
+        {
+            "$id": "5",
+            "KeyValue": 14599,
+            "SearchType": "NetworkGroup",
+            "Value": 4,
+            "Label": "RAgroup_2"
+        }
+    ],
+    "status": 200,
+    "config": {}
+}

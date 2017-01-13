@@ -1,0 +1,40 @@
+﻿<div class="page page--1-c recruit">
+
+    <div class="page__wrapper">
+
+        <div class="page__content onboarding">
+
+            <div class="segment" ng-class="{'is--loading': isLoading}">
+                
+                <div class="align-center">
+                    <img ng-src="" src="/interface/images/avatar.png" alt="User profile image" class="onboarding__profile-pic" />
+                    <h3>Thank you,<br>{{member.FirstName}}</h3>
+                </div>
+                <div class="CompHolder" ng-show="details.IsCandidateActivate === false">
+                    <div>
+                        <p>
+                            <label name="customMessage" for="">{{details.WelcomeMessage}}</label>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="align-center btn__activate" ng-show="details.IsCandidateActivate === true">
+                    <button id="lnkTrainingDone" ng-click="onboarding_completion()" class="button button--positive button--large toggle-loading">Activate</button>
+                </div>
+
+                <div ng-show="details.isSsoNewMember">
+                    <ul class="notifications">
+                        <li class="notification">
+                            <div class="notification__icon"><i class="icon--check icon--circular"></i></div>
+                            <p class="notification__message">Your username and password will be emailed to you. This may take a few minutes.</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

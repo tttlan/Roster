@@ -1,0 +1,379 @@
+//  Depends on table.styl
+//  Form table, used to wrap a tabular style form
+// ------------------------------------------------
+
+table-highlight-color = #fcfcfc
+
+.ui
+
+    .table-form {
+
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        margin: (gutter/2) 0;
+        background: white;
+        border: none;
+
+        &:last-child {
+            margin-bottom: 10px;
+        }
+
+        td em {
+            color: loud-color;
+            font-size: 12px;
+
+            @media minTablet {
+                display: block;
+            }
+
+        }
+
+        > tbody.noborder {
+            > tr {
+                border-top: none;
+            } 
+        }
+
+        // Direcect descendent so the styles don't spill over to the datepicker
+        > tbody {
+
+            > tr {
+                border-top: solid 1px table-border-color;
+                position: relative;
+
+                &:first-child {
+                    border-top: none;
+                }
+
+                &.is--editing {
+                    background-color: table-highlight-color;
+                }
+
+                > th {
+
+                    text-align: left;
+                    color: grey5;
+                    font-weight: normal;
+                    width: 33%;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    line-height: 21px;
+                }
+
+                > td, > th {
+                    padding: 12px 12px 12px 12px;
+                    vertical-align: top;
+                }
+
+                > td > span:first-child:not(:empty) {
+                    margin-right: 1em;
+                }
+            }
+        }
+
+        .form__field {
+            margin-bottom: 0;
+
+            + .form__field {
+                margin-top: 1em;
+            }
+
+            + hr {
+                margin: 1em 0;
+            }
+        }
+
+        .form__fields .form__field {
+            margin-top: 1em;
+        }
+
+        .button-group {
+            margin-top: 1em;
+        }
+
+        .button {
+            margin-bottom: 0;
+        }
+
+        &.table-form__edit-all {
+
+            tr:last-child .button-group {
+                margin-top: 0;
+            }
+
+            .table-form__single-field th {
+                vertical-align: middle;
+            }
+        }
+
+
+        // SHOW HIDE field on edit
+        // Show form field value on load
+        .table-form__form-value {
+
+            display: block;
+            margin-right: 2em;
+
+            .icon--like {
+                font-size: 10px;
+                color: theme.blue;
+            }
+
+            .icon--lock {
+                font-size: 10px;
+                color: grey5;
+            }
+
+            &--disabled {
+                color: grey5;
+            }
+
+            .form-value + .form-value {
+                margin-top: 5px;
+            }
+
+            small {
+                display: block;
+            }
+        }
+
+        // Hide form field value on load
+        .table-form__form-field {
+            display: none;
+        }
+
+        .is--editing {
+            // Hide form field value on edit
+            .table-form__form-value {
+                display: none;
+            }
+
+            // Show form field value on edit
+            .table-form__form-field {
+                display: block;
+            }
+
+            // change input bg color to offset cell highligh
+            .select-wrapper .select ,
+            .form__field input { background-color: white; }
+        }
+
+
+        @media maxTablet {
+
+            > tbody {
+
+                > tr {
+                    > td, > th {
+                        width: 100%;
+                        display: block;
+                        padding: 12px 20px;
+                    }
+                    > td {
+                        padding-top: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .table-form.table-form--full-width {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: -(gutter/2);
+        margin-right: -(gutter/2);
+        width: "calc(100% + %s)" % gutter;
+
+        // Some crazy stuff to clip the ends of borders on these tables
+        > tbody > tr {
+
+            @media maxTablet {
+                display: block;
+            }
+
+            > td, > th {
+
+                &:first-child,
+                &:last-child {
+
+                    @media minTablet {
+                        position: relative;
+                    }
+
+                    // Cover up 20px of the row border on the lhs and rhs of rows
+                    &:before {
+                        border-block();
+                        background-color: #fff;
+                        bottom: -1px;
+                    }
+                }
+
+                &:first-child {
+                    padding-left: 20px;
+
+                    &:before {
+                        left: 0;
+                        bottom: auto;
+                        top: -1px;
+                    }
+                }
+
+                &:last-child {
+                    padding-right: 20px;
+
+                    &:before {
+                        right: 0;
+                    }
+                }
+            }
+        }
+
+        @media maxTablet {
+
+            > tbody {
+
+                > tr {
+
+                    > th {
+
+                        padding-right: 50px;
+                        padding-bottom: 0;
+                        font-size: 0.8em;
+                        text-transform: uppercase;
+
+                        &:before {
+                            bottom: auto;
+                            top: -1px;
+                        }
+                    }
+
+                    > td {
+
+                        .form__label {
+                            font-size: 0.95em;
+                        }
+
+                        .form__field {
+                            margin-top: 0.5em;
+
+                            + {
+                                .form__field {
+                                    margin-top: 0.8em;
+                                }
+                            }
+                        }
+
+                        &:after {
+                            border-block();
+                            background-color: #fff;
+                            bottom: -1px;
+                            left: 0px;
+                        }
+                    }
+                }
+            }
+        }
+
+        > tbody {
+
+            > tr.is--editing ,
+            > tr.is--highlighted {
+                > td, > th {
+                    &:before ,
+                    &:after {
+                        border-block();
+
+                        width: 100%;
+                        background-color: #eee;
+                        position: absolute;
+                        top: -1px;
+                        z-index: 2;
+                    }
+                }
+                > th:after {
+                    left: 0;
+                }
+                > td:after {
+                    right: 0;
+                }
+
+                > td, > th {
+                    &:before {
+                        top: auto;
+                        bottom: -1px;
+                    }
+                }
+            }
+        }
+    }
+
+    h2 + .table-form > tbody > tr:first-child {
+
+        border-top: solid 1px table-border-color;
+    }
+
+    // Link to toggle editing of the form fields in the table
+    .table-form__edit {
+        color: grey6;
+        position: absolute;
+        top: 16px;
+        right: 22px;
+        font-size: 11px;
+
+        @media minTablet {
+            color: grey7;
+            text-indent: 0;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .table-form__edit--cancel {
+        color: primary;
+
+        @media minTablet {
+            display: inline;
+        }
+    }
+
+    .segment__fieldset-heading {
+
+        &.table-form__edit-parent {
+            padding-right: 100px !important;
+        }
+
+        .table-form__edit {
+
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -0.75em;
+
+            @media maxTablet {
+
+                span {
+                    display: inline;
+                }
+            }
+        }
+    }
+
+    @media minTablet {
+
+        // Show hide the edit links
+        *:hover > .table-form__edit,
+        tr:hover .table-form__edit {
+            color: primary;
+            //display: inline-block;
+        }
+
+        // Allow rooms for absolutely positioned edit links
+        .table-form__edit-parent {
+            padding-right: 100px !important;
+        }
+    }

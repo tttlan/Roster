@@ -1,0 +1,13 @@
+<div class="overflow__container" on-container-blur="showOverflow = false" is-active="showOverflow" overflow-container>
+    
+    <ul overflow-list class="overflow__excess submenu submenu--tail dropdown-menu">
+
+        <li overflow-item class="submenu__item" ng-show="showFrom < $index" ng-click="toggleTab($index);" ng-repeat="item in overflowNavItems">
+            <span compile-overflow="item"></span>
+        </li>
+
+    </ul>
+
+    <a ng-show="showToggle" dropdown-toggle class="overflow__toggle"><i class="icon--ellipsis"></i></a>
+
+</div>

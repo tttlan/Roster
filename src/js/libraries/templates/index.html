@@ -1,0 +1,347 @@
+<div class="page page&#45;&#45;1-2">
+    <div class="panes libraries" ng-init="getUserContainer(1, false)">
+        <div class="pane pane--intro" id="leftPane">
+            <h1 style="padding-left: 30px;">Libraries</h1>
+
+            <ul class="pane__navigation">
+                <!--<li class="padding__left pane__navigation-title">TYPES</li>-->
+                <li class="padding__left"><a class="another__catagories" href="" ng-class="{'is--active': isActive(1,1)}" ng-click="getUserContainer(1, false);setRootTabActive(1)">My Media</a></li>
+                <li class="padding__left"><a class="another__catagories" ng-class="{'is--active': isActive(2,1)}" href="" ng-click="getUserContainer(1, true);setRootTabActive(2)">Shared Documents</a></li>
+                <li class="padding__left"><a class="another__catagories" ng-class="{'is--active': isActive(3,1)}" href="" ng-click="getRecentArtifact();setRootTabActive(3)">Recent</a></li>
+                <li class="padding__left"><a class="another__catagories" ng-class="{'is--active': isActive(4,1)}" href="" ng-click="showContainerDetail(13, 'Communication Templates', true);setRootTabActive(4)">Communication Templates</a></li>
+                <li class="padding__left" id="systemCategories">
+                    <ul class="explorer">
+                        <li class="explorer__padding">
+                            <a class="another__catagories" href="" ng-click="showCategories()">
+                                <span>
+                                    <span>
+                                        System Catagories
+                                    </span>
+                                </span>
+                                <i ng-class="isOpen === true ? 'icon--up' : 'icon--down'" class="icon--down" style=""></i>
+                            </a>
+                            <div ng-hide="isOpen === false" ng-scrollbars ng-scrollbars-config="scrollbarConfig" class="left-pane-category" ng-style="collapse">
+                                <ul>
+                                    <li ng-class="{'is--active': isActive($index +1,2)}" ng-repeat="systemContainer in listSystemContainer.items | limitTo:systemContainerLimited" ng-click="showContainerDetail(systemContainer.ContainerId, systemContainer.Name, true); setTabActiveInSystemCatagories($index+1)">
+                                        <label for="system__catagories"><a id="system__catagories" class="system__catagories" href="" ng-class="{'is--active': isActive($index +1,2)}" ng-click="showContainerDetail(systemContainer.ContainerId, systemContainer.Name, true); setTabActiveInSystemCatagories($index+1)">{{systemContainer.Name}}</a></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!--main--pane-->
+        <div id="main--pane">
+            <!-- search area -->
+        <div id="searchArtifactArea">
+            <div class="form__field col-1-3">
+                <div class="option__gallery" ng-if="containers.length > 0">
+                    <ul class="list--inline">
+                        <li ng-show="isListView">
+                            <div class="form__field">
+                                <div class="field__checkbox">
+                                    <input type="checkbox" id="showAddTagCheckbox" value="true" ng-model="showTag" ng-change="changeShowTag(showTag)" />
+                                    <label for="showAddTagCheckbox" class="form__label">Show tags</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li ng-if="currentFilterCollection == 'all'">
+                            <button ng-click="changeViewMode('listView')" class="button--view button button--icon" ng-class="{'button--positive': isListView }" tooltip="List view" tooltip-placement="bottom">
+                                <i class="icon--list-ul"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button ng-click="changeViewMode('gridView')" class="button--view button button--icon" ng-class="{'button--positive': !isListView }" tooltip="Grid view" tooltip-placement="bottom">
+                                <i class="icon--grid-view icon-is-large"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form__field col-1-2" ng-class="ResultSearchArifact.length > 0 ? 'open on-screen' : ''">
+                <label for="auto_complete" class="icon--search field__before"></label>
+
+                <input ng-keyup="$event.keyCode == 13 && onChangeSearchArtifact(true)"
+                       class="input__search--libraries"
+                       type="text"
+                       id="auto_complete"
+                       placeholder="Type your keyword"
+                       dropdown-toggle ng-model="searchString"
+                       ng-change="onChangeSearchArtifact()"/>
+
+                <loader ng-if="isSearchingArtifact" class="typeahead__loading" style="top: 3px" />
+
+                <ul ng-scrollbars ng-scrollbars-config="scrollbarConfig" class="autocompleteSearchArtifact search__box--top submenu submenu--compact dropdown-menu">
+                    <li class="submenu__item" ng-repeat="artifact in ResultSearchArifact" ng-click="openLightbox(artifact)">
+                        <div class="media" style="padding: 5px; margin: 0px;">
+                            <div class="media__body">
+                                <p>
+                                    <strong>{{artifact.FileName}}</strong>
+                                    <span class="filePath align-right">in {{artifact.FilePath}}</span>
+                                </p>
+                                <small>{{artifact.Author}}</small>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="form__field col-1-7">
+                <span class="option__search">
+                    <a tooltip="Search Options" tooltip-placement="right" id="btn-search--options" class="button--icon" ng-click="showFilter()">
+                        <i class="icon--ellipsis"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+
+        <!-- end search area -->
+            <!-- navigation bar -->
+        <div id="navigationPane">
+            <div class="align-right" ng-if="permissions.createartifact && tabPosition === 1">
+                <ul class="list--inline">
+                    <li>
+                        <a ng-class="{'is--active': currentFilterCollection == 'all'}" href="" tooltip="All" tooltip-placement="bottom" ng-click="ActiveFilter('all')"><i class="icon--mnuDocuments"></i></a>
+                    </li>
+                    <li>
+                        <a ng-class="{'is--active': currentFilterCollection == 'video'}" href="" tooltip="Video" tooltip-placement="bottom" ng-click="ActiveFilter('video')"><i class="icon--video"></i></a>
+                    </li>
+                    <li>
+                        <a ng-class="{'is--active': currentFilterCollection == 'img'}" href="" tooltip="Image" tooltip-placement="bottom" ng-click="ActiveFilter('img')"><i class="icon--picture"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="editor-breadcrumbs">
+                <ul class="nav nav--breadcrumb">
+                    <li ng-repeat="path in pathDisplay">
+                        <a href="" ng-click="goTo(path)">
+                            {{path.name}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+            <!-- end navigation bar -->
+            <!-- gallery -->
+            <div class="gallery" id="gallery" ng-class="{'is--active' : isShowFileInfo || isShowLinkedFiles, 'is--loading' : loading}" ng-scrollbars ng-scrollbars-config="scrollbarGalleryConfig">
+
+                <a ng-if="loading == false && containers.length == 0" href="#" class="empty--folder--area">
+                    <i class="icon--empty-folder" style="font-size: 125px"></i>
+                    <h3>This folder is empty</h3>
+                </a>
+                <!-- List View -->
+                <table class="table table-responsive table--striped" id="itemsContainer" ng-if="isListView && containers.length> 0">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a href="" type="button" ng-click="order('Name')">
+                                    Name
+                                </a>&nbsp;
+                                <i ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'Name'"></i>
+                            </th>
+                            <th width="15%">
+                                <a href="" type="button" ng-click="order('Author')">
+                                    Owner
+                                </a>&nbsp;
+                                <i ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'Author'"></i>
+                            </th>
+                            <th width="15%">
+                                <a href="" type="button" ng-click="order('LastModified')">
+                                    Last Modified
+                                </a>&nbsp;
+                                <i ng-class="{'icon--arrow-down' : reverse, 'icon--arrow-up': !reverse}" ng-if="predicate === 'LastModified'"></i>
+                            </th>
+                            <th width="15%">
+                                <a href="" type="button" ng-click="order('FileSize')">
+                                    File size
+                                </a>&nbsp;
+                                <i ng-class="{'icon--arrow-up' : reverse, 'icon--arrow-down': !reverse}" ng-if="predicate === 'FileSize'"></i>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in containers | orderBy:predicate:reverse | filter: myFilter" style="cursor: pointer"
+                            open-context-menu context="{{$index}}"
+                            id="iconItem{{$index}}"
+                            ng-class="{'item--active--list--view': $index == selecting}" ng-click="activeItem($index)" ng-dblclick="(item.ContainerId) ? showContainerDetail(item.ContainerId, item.Name) : openLightbox(item)">
+                            <td data-title="Name">
+                                <i style="font-size: 22px" ng-if="item.ArtifactTypeId == 1 || item.ArtifactTypeId == 7" class="svg-icon--{{item.Extension}}"></i>
+                                <i style="font-size: 22px" ng-if="item.ArtifactTypeId == 10" class="svg-icon--zip"></i>
+                                <i style="font-size: 22px" ng-if="item.ArtifactTypeId == 2" class="svg-icon--img"></i>
+                                <i style="font-size: 22px" ng-if="item.ArtifactTypeId == null" class="svg-icon--folder1"></i>
+                                <i style="font-size: 22px" ng-if="item.ArtifactTypeId == 9 || item.ArtifactTypeId == 8" class="svg-icon--video"></i>
+                                {{item.Name || item.FileName | limitTo: 70}}{{item.Name.length > 70 || item.FileName.length > 70 ? '...' : ''}}
+                                <ul ng-if="showTag == true && item.TagNames.length" class="list--inline" style="margin-left: 30px;">
+                                    <li ng-repeat="tag in item.TagNames">
+                                        <span class="label label--badge label--positive">{{tag.label}}</span>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td data-title="Owner">{{item.Author}}</td>
+                            <td data-title="Last Modified">{{item.LastModified | date: 'MMM d'}}</td>
+                            <td data-title="File size">
+                                <!-- context menu will appear when user do right click on file-->
+                                {{item.FormatedFileSize}}
+                                <context-menu></context-menu>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- end List View-->
+                <!-- Grid View-->
+                <div class="grid" id="itemsContainer" ng-if="!isListView && containers.length > 0">
+                    <div ng-repeat="item in containers | filter: myFilter" class="item-collection" ng-class="itemWidth" open-context-menu context="{{$index}}">
+                        <div class="aligned--center thumbnail-border file-icon" ng-switch on="item.ArtifactTypeId || item.IsContainer" ng-class="{'item--active': $index == selecting}" id="iconItem{{$index}}" ng-click="activeItem($index)" ng-dblclick="(item.IsContainer) ? showContainerDetail(item.ContainerId, item.Name) : openLightbox(item)">
+
+                            <a ng-switch-when="1"><i class="svg-icon--{{item.Extension}}" style="height: 73px"></i></a>
+                            <a ng-switch-when="true"><i class="svg-icon--folder1" style="height: 73px"></i></a>
+                            <a ng-switch-when="10"><i class="svg-icon--zip" style="height: 73px"></i></a>
+                            <a ng-switch-when="9">
+                                <i ng-if="item.Thumbnail === null" class="svg-icon--video" style="height: 73px"></i>
+                                <img ng-if="item.Thumbnail !== null" ng-src="{{item.Thumbnail}}" style="height: 100%;">
+                            </a>
+                            <a ng-switch-when="8"><i class="svg-icon--video" style="height: 73px"></i></a>
+                            <a ng-switch-when="2">
+                                <i ng-if="item.Thumbnail === null" class="svg-icon--img" style="height: 73px"></i>
+                                <img ng-if="item.Thumbnail !== null" ng-src="{{item.Thumbnail}}" style="height: 100%;">
+                            </a>
+                            <a ng-switch-default><i class="svg-icon--doc"></i></a>
+
+                            <!--<div tooltip-placement="bottom" tooltip="{{item.Name.length > 25  || item.FileName.length > 25 ? item.Name || item.FileName : ''}}" class="aligned--center caption">{{item.Name || item.FileName | limitTo: 25}}{{item.Name.length > 25 || item.FileName.length > 25 ? '...' : ''}}</div>-->
+
+                            <div title="{{item.Name || item.FileName}}" class="aligned--center caption">{{item.Name || item.FileName | limitTo: 25}}{{item.Name.length > 25 || item.FileName.length > 25 ? '...' : ''}}</div>
+                        </div>
+
+                        <!-- context menu will appear when user do right click on file-->
+                        <context-menu></context-menu>
+                    </div>
+                </div>
+                <!--end Grid View-->
+                <!-- file-info-wrapper -->
+                <div id="fileInfoWrapper" class="file-info-wrapper" ng-style="isShowRightPane === true ? { 'height' : finalfileInfoWrapperHeight + 'px'} : {'transform': 'translateX(100%)'}">
+                    <div ng-scrollbars ng-scrollbars-config="scrollbarFileInfoConfig" ng-style="isShowRightPane === true ? { 'height' : finalfileInfoWrapperHeight + 'px'} : {}" class="file-info" ng-if="isShowFileInfo" ng-class="{'is--loading': isLoading}">
+                        <div class="media media--user">
+                            <a class="align-right" href="" tooltip="hide" tooltip-placement="bottom" ng-click="showFileInfo('')"><i class="icon--cross"></i></a>
+                            <div class="media__image">
+                                <img alt="Avatar" class="avatar" ng-src="{{CurrentFileInfo.Thumbnail}}">
+                            </div>
+                            <div class="media__body">
+                                <a tooltip-placement="top" tooltip="{{CurrentFileInfo.FileName.length > 22 ? CurrentFileInfo.FileName :''}}" href="">{{CurrentFileInfo.FileName | limitTo: 22}}{{CurrentFileInfo.FileName.length > 22 ? '...' : ''}}</a>
+                                <span>uploaded by <b>{{CurrentFileInfo.Author}}</b></span>
+                            </div>
+                            <div class="group__icon">
+                                <span>{{CurrentFileInfo.ViewCount || 0}} &nbsp;<i class="icon--views"></i></span>&nbsp;&nbsp;
+                                <span>{{CurrentFileInfo.DownloadCount || 0}} &nbsp;<i class="icon--download"></i></span>
+                            </div>
+                        </div>
+                        <hr />
+                        <table class="table table--noborders table--cozy table--file-info">
+                            <tr>
+                                <td>File size</td>
+                                <td>{{CurrentFileInfo.FormatedFileSize}}</td>
+                            </tr>
+                            <tr> <td>Lasted Update</td> <td>{{CurrentFileInfo.LastModified | date: 'MMM d, yyyy'}}</td> </tr>
+                            <tr>
+                                <td colspan="2">Tags</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="tags">
+                                        <a style="float: right" class="tag" ng-repeat="tag in CurrentFileInfo.TagNames">{{tag.TagName}}</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="100">
+                                    <a class="align-right" ng-click="addTags(CurrentFileInfo)">{{CurrentFileInfo.TagNames.length? 'Edit tag' : 'Add tag'}}</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 0" />
+
+                        <span style="text-transform: uppercase" ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 0">share with</span>
+                        <ul class="avatars" ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 0">
+                            <li ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 4" ng-repeat="item in CurrentFileInfo.sharedUnitsPaneInfo | limitTo: expanseAll ? Number.MAX_VALUE : 4">
+                                <a tooltip={{item.Name}} tooltip-placement="bottom">
+                                    <img ng-if="item.Type == 'u'" alt="Avatar" class="avatar " src="">
+                                    <img ng-if="item.Type == 'g'" ng-src="/interface/images/default-group.png" alt="Avatar" class="avatar " src="/interface/images/default-group.png">
+                                    <img ng-if="item.Type == 'r'" ng-src="/interface/images/default-role.png" alt="Avatar" class="avatar " src="/interface/images/default-role.png">
+                                </a>
+                            </li>
+                            <li ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 0 && CurrentFileInfo.sharedUnitsPaneInfo.length <= 4" ng-repeat="item in CurrentFileInfo.sharedUnitsPaneInfo">
+                                <a tooltip={{item.Name}} tooltip-placement="bottom">
+                                    <img ng-if="item.Type == 'u'" alt="Avatar" class="avatar">
+                                    <img ng-if="item.Type == 'g'" ng-src="/interface/images/default-group.png" alt="Avatar" class="avatar " src="/interface/images/default-group.png">
+                                    <img ng-if="item.Type == 'r'" ng-src="/interface/images/default-role.png" alt="Avatar" class="avatar " src="/interface/images/default-role.png">
+                                </a>
+                            </li>
+                            <li ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 4 && !expanseAll" ng-click="$parent.$parent.expanseAll = true"><a href="" class="avatar additional-members">{{expanseAll? '' : '+' + (CurrentFileInfo.sharedUnitsPaneInfo.length - 4)}}</a></li>
+                        </ul>
+                        <hr ng-if="CurrentFileInfo.sharedUnitsPaneInfo.length > 0" />
+
+                        <!--Need for furture-->
+                        <!--<span style="text-transform: uppercase">relatived</span>
+                <div ng-repeat="item in artifact.relatived" style="padding: 10px 0">
+                    <a style="color: #2774b1; " href="">{{item.fileName}}</a><br/>
+                    <span><small>{{item.uploader}}</small></span>
+                </div>-->
+
+
+                    </div>
+                    <div ng-scrollbars ng-scrollbars-config="scrollbarFileInfoConfig" ng-style="isShowRightPane === true ? { 'height' : finalfileInfoWrapperHeight + 'px'} : {}" class="file-info" ng-if="isShowLinkedFiles" ng-class="{'is--loading': isLoading}">
+                        <a class="align-right" href="" ng-click="showRelatedFilePanel(null)" tooltip="hide" tooltip-placement="bottom"><i class="icon--cross"></i></a>
+                        <div class="fileTitle">
+                            <i style="font-size: 22px" ng-if="CurrentRelatedFile.MainArtifact.ArtifactTypeId == 1" class="svg-icon--{{CurrentRelatedFile.MainArtifact.Extension}}"></></i>
+                            <i style="font-size: 22px" ng-if="CurrentRelatedFile.MainArtifact.ArtifactTypeId == 10" class="svg-icon--zip"></i>
+                            <i style="font-size: 22px" ng-if="CurrentRelatedFile.MainArtifact.ArtifactTypeId == 2" class="svg-icon--img"></i>
+                            <i style="font-size: 22px" ng-if="CurrentRelatedFile.MainArtifact.ArtifactTypeId == null" class="svg-icon--folder1"></i>
+                            <i style="font-size: 22px" ng-if="CurrentRelatedFile.MainArtifact.ArtifactTypeId == 9" class="svg-icon--video"></i>
+                            <span style="vertical-align: top" tooltip-placement="top">{{CurrentRelatedFile.MainArtifact.FileName | limitTo: 22}}{{CurrentRelatedFile.MainArtifact.FileName.length > 22 ? '...' : ''}}</span>
+                        </div>
+                        <div class="form__field">
+                            <label for="auto_complete" class="icon--search field__before"></label>
+                            <input type="text" id="auto_complete_related" placeholder="Search file to link" dropdown-toggle ng-model="searchLinkKeyword" ng-change="onChangeSearchRelatedArtifact(searchLinkKeyword)" />
+                            <loader ng-if="isSearchingRelatedArtifact" class="typeahead__loading" style="top: 8px" />
+                            <ul class="autocompleteSearchArtifact submenu submenu--compact dropdown-menu" style="width: 99.8%; max-height: 250px; overflow-y: auto">
+                                <li class="submenu__item" ng-repeat="file in RelatedFileList" ng-click="addLinkedFile(file)">
+                                    <div class="media" style="padding: 5px; margin: 0px;">
+                                        <div class="media__body">
+                                            <p>
+                                                <strong>{{file.FileName}}</strong>
+                                            </p>
+                                            <small>{{file.Author}}</small>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--<span><small>or drag to following list</small></span><br/> <br/>-->
+                        <br />
+                        <span style="text-transform: uppercase">linked with</span>
+                        <div style="min-height: 250px">
+                            <div ng-repeat="item in CurrentRelatedFile.RelatedFiles" style="padding: 10px 0" ng-mouseover="showRemoveLink($index)" ng-mouseout="hideRemoveLink($index)">
+                                <a style="color: #2774b1;" href="">{{item.FileName}}</a>
+                                <a href="" ng-if="item.Permissions.deleterelatedartifact == true" ng-show="removeLink && $index === removeLinkIndex" class="table-form__edit item--remove--related" ng-click="deleteLinkedArtifact(item)">remove</a><br />
+                                <span><small>{{item.Author}}</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end file-info- wrapper -->
+            </div>
+                    <!-- end gallery -->
+            </div>
+        <!-- end main-pane -->
+        <!-- bottom action buttons -->
+        <nav ng-if="permissions.createartifact || permissions.createusercontainer" mfb-menu position="br" effect="slidein"
+                active-icon="icon--minus  icon-is-large floatingIcon" id="btn-actions--bottom" ng-style="StyleForBottomAction" resting-icon="icon--plus icon-is-large floatingIcon"
+                toggling-method="click">
+            <button mfb-button ng-if="permissions.createartifact" icon="icon--upload floatingIcon" ng-click="uploadFiles()"></button>
+            <button mfb-button ng-if="permissions.createusercontainer" icon="icon--new-folder floatingIcon" ng-click="createFolder()"> </button>
+        </nav>
+        <!-- end bottom action buttons -->
+    </div>
+</div>

@@ -1,0 +1,98 @@
+
+<div class="page survey">
+    <div class="page__wrapper page-1--3--survey">
+        <!-- Header link -->
+        <header class="page__header" hidden>
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="">Recruit</a></li>
+                <li><a href="" path="">Communication</a></li>
+                <li><a href="" path="" id="colorPrimary">Job Application</a></li>
+            </ul>
+        </header>
+        <div class="top--right--button" style="text-align:right;margin-bottom:15px">
+            <a ng-show="canCreateQuestionnaireTemplate" href="survey/manage/questionnairestemplate/create" class="button button--primary"><i class="icon--plus"></i> ADD QUESTIONNAIRE TEMPLATE </a>
+        </div>
+        <!-- Left page aside-->
+        <div class="page__aside">
+            <div class="blog blog--sidebar survey--sidebar" style="text-align:left;">
+                <span ng-click="showCats = !showCats" class="blog__toggle">Change category <i class="icon--down"></i></span>
+                <ul class="blog-categories" ng-show="showCats">
+                    <li><a href="survey/manage">QUESTIONNAIRE <i class="icon--right"></i></a></li>
+                    <li><a class="is--active" href="survey/manage/questionnairestemplate">QUESTIONNAIRE TEMPLATE <i class="icon--right"></i></a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- content component -->
+        <div class="page__content"
+             paginate="getQuestionnaireTemplateList"
+             page-size="10">
+            <!-- Add new questionnaire template button -->
+            <table class="table table-questionnaire word-break" ng-class="{'is--loading': page.loading}">
+                <tbody>
+                    <tr ng-repeat="question in page.items">
+                        <td>{{question.SurveyQuestionnaireTemplateInfo.Name}}</td>
+                        <td>{{question.SurveyQuestionnaireTemplateInfo.CreatedDate | date}}</td>
+                        <td class="cell--edit--icon" ng-show="canCreateQuestionnaireTemplate">
+                            <a href="" ng-click="createQuestionnaireFromTemplate(question.SurveyQuestionnaireTemplateInfo.QuestionnaireTemplateId, question.SurveyQuestionnaireTemplateInfo.Name)">
+                                <i class="icon--copy" tooltip="Copy" tooltip-animation="false" tooltip-placement="bottom"></i>
+                            </a>
+                        </td>
+                        <td class="cell--edit--icon" ng-show="question.EntityActions[1].Code == 2812">
+                            <a path="survey.questionnairesTemplate.edit" path-params="question.SurveyQuestionnaireTemplateInfo.QuestionnaireId" tooltip="Edit" tooltip-animation="false" tooltip-placement="bottom"><i class="icon--edit"></i></a>
+                        </td>
+                        <td class="cell--edit--icon" ng-show="question.EntityActions[0].Code == 2814">
+                            <a href="" ng-click="previewQuestionnaire(question.SurveyQuestionnaireTemplateInfo.QuestionnaireId)" tooltip="View" tooltip-animation="false" tooltip-placement="bottom"><i class="icon--views"></i></a>
+                        </td>
+                        <td class="cell--edit--icon" ng-show="question.EntityActions[2].Code == 2813">
+                            <a tooltip="Delete" tooltip-animation="false" tooltip-placement="bottom" 
+                               ng-confirm-click="deleteQuestionnaireTemplate(question.SurveyQuestionnaireTemplateInfo.QuestionnaireTemplateId, question.SurveyQuestionnaireTemplateInfo.Name)" 
+                               ng-confirm-message="Are you sure you want to delete this questionnaire template?" href="">
+                                <i class="icon--bin"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <div class="header__actions dropdown">
+                                <a class="dropdown-toggle" title="Open user menu" href="javascript:void(0)">
+                                    <i class="icon--ellipsis"></i>
+                                </a>
+                                <ul class="submenu submenu--right submenu--compact dropdown-menu">
+                                    <li class="submenu__item" ng-show="canCreateQuestionnaireTemplate">
+                                        <a href="" ng-click="createQuestionnaireFromTemplate(question.SurveyQuestionnaireTemplateInfo.QuestionnaireTemplateId, question.SurveyQuestionnaireTemplateInfo.Name)">
+                                            <i class="icon--copy"></i>
+                                            Copy
+                                        </a>
+                                    </li>
+                                    <li class="submenu__item" ng-show="question.EntityActions[1].Code == 2812">
+                                        <a path="survey.questionnairesTemplate.edit" path-params="question.SurveyQuestionnaireTemplateInfo.QuestionnaireId">
+                                            <i class="icon--edit"></i>
+                                            Edit
+                                        </a>
+                                    </li>
+                                    <li class="submenu__item" ng-show="question.EntityActions[0].Code == 2814">
+                                        <a href="" ng-click="previewQuestionnaire(question.SurveyQuestionnaireTemplateInfo.QuestionnaireId)" >
+                                            <i class="icon--views">
+                                            </i>
+                                            View
+                                        </a>
+                                    </li>
+                                    <li class="submenu__item" ng-show="question.EntityActions[2].Code == 2813">
+                                        <a href="" ng-confirm-click="deleteQuestionnaireTemplate(question.SurveyQuestionnaireInfo.QuestionnaireId, question.SurveyQuestionnaireInfo.Name)" ng-confirm-message="Are you sure you want to delete this questionnaire template?">
+                                            <i class="icon--bin"></i>Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="message message--empty" ng-hide="page.loading || page.items.length || page.error">
+                <i class="icon--mnuDashboard icon-is-huge"></i>
+                <p>No questionnaire Template</p>
+            </div>
+        </div>
+    </div>
+</div>

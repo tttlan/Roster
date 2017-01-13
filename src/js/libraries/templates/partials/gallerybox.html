@@ -1,0 +1,219 @@
+﻿<div class="gallerybox" ng-class="{'is--expanded': fullscreen === true}">
+    <div class="overlay"></div>
+    <div class="gallerybox__main">
+        <div class="gallerybox__content">
+            <a href="" class="icon__cancel" ng-click="cancel()">
+                <i class="icon--cross"></i>
+            </a>
+            <div class="gallerybox__slider" ng-class="{'section--open' : selectedSlide.showComments || selectedSlide.showFileInfo, 'resize__height' : relatedObj.numRelatedFiles === 0}">
+                <div class="current__slide gallerybox__slides--item">
+                    <div class="gallerybox__title" ng-if="fullscreen === false">
+                        <div class="gallerybox__author">
+                            <a class="avatar">
+                                <img ng-src="{{items[currentIndex].OwnerAvatar}}" alt="Avatar" class="avatar">
+                            </a>
+
+                            <div class="author__name">
+                                <div>
+                                    <div>
+                                        <span class="author">{{items[currentIndex].Author}}</span>
+                                    </div>
+                                    {{items[currentIndex].LastModified | date: 'mediumDate'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery__file--name">
+                            <div class="file__name">
+                                <span>{{ items[currentIndex].FileName }}</span>
+                            </div>
+                        </div>
+                        <div class="gallerybox__feature">
+                            <div class="option-lightbox" ng-if="fullscreen === false">
+                                <a id="icon__submenu" href="" dropdown-toggle class="lightbox__icon pdf__tools-icon" ng-class="{'is--active' : selectedSlide.showFileInfo}">
+                                    <i class="icon--ellipsis"></i>
+                                </a>
+
+                                <ul class="submenu submenu--compact dropdown-menu" id="option__lightbox--menu">
+                                    <li class="submenu__item" ng-if="items[currentIndex].Permissions.downloadartifactfile === true">
+                                        <a href="" ng-click="downloadFile(items[currentIndex])">Download</a>
+                                    </li>
+                                    <li class="submenu__item" ng-if="items[currentIndex].Permissions.viewartifactinfo === true" ng-class="{'is--active' : selectedSlide.showFileInfo}">
+                                        <a href="" ng-click="showFileInfo(items[currentIndex].ArtifactId, selectedSlide.showFileInfo)">Info</a>
+                                    </li>
+                                    <li class="submenu__item" ng-if="items[currentIndex].Permissions.deleteartifact === true">
+                                        <a href="" ng-click="deleteFile(items[currentIndex].ArtifactId)">Delete</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallerybox__slide--show">
+                        <a href="" class="nav--prev" ng-click="prevSlide()" ng-if="(numberItems > 1) && items[currentIndex].ArtifactTypeName === 'Image'">
+                            <i class="icon--arrow-left"></i>
+                        </a>
+                        <div class="gallerybox__slide--active lightbox__wrapper">
+                            <div class="slide__frame lightbox__main">
+                                <ul slider-panel>
+                                    <li ng-class="{ 'slide--selected': selectedSlide.indx == $index && selectedSlide.loaded }"
+                                        slide="slide"
+                                        ng-repeat="slide in slides"
+                                        slide-resize="selectedSlide.showComments || selectedSlide.showFileInfo"></li>
+                                </ul>
+                            </div>
+                            <div class="slide__related" ng-if="items[currentIndex].ArtifactTypeName === 'Video'">
+                                <div class="gb__list--title">Related Videos</div>
+                                <div class="gb__list--file">
+                                    <div class="gb__related--item gb_item" ng-init="getRelated(items[currentIndex].ArtifactId)">
+                                        <div class="paging__related">
+                                            <div ng-repeat="related in listData">
+                                                <div class="related__file--info" ng-repeat="item in related">
+                                                    <div class="related__file--1">
+                                                        <span>
+                                                            <a class="related__file--2" href="#" ng-click="viewRelatedFile(item)">
+                                                                <span class="related__file--3">
+                                                                    <div ng-switch on="item.ArtifactTypeName">
+                                                                        <i ng-switch-when="Compress" class="svg-icon--zip" tooltip="{{item.FileName}}"></i>
+                                                                        <i ng-switch-when="Video" ng-if="item.Thumbnail === null" class="svg-icon--img"></i>
+                                                                        <img ng-switch-when="Video" ng-if="item.Thumbnail !== null" ng-src="{{item.Thumbnail}}">
+                                                                        <i ng-switch-when="Audio" class="svg-icon--video" title="{{item.FileName}}"></i>
+                                                                        <img ng-switch-when="Image" ng-src="{{item.Thumbnail}}" title="{{item.FileName}}">
+                                                                        <i ng-switch-default class="svg-icon--doc" tooltip="{{item.FileName}}"></i>
+                                                                    </div>
+
+                                                                    <!--<div class="related__file--5">
+                                    <div>
+                                        <div class="related__file--6">
+                                            <div class="_38a5 _2yu">{{item.FileName}}</div>
+                                            <div class="_38a4 _2yu">
+                                                User name and time
+                                            </div>
+                                        </div>
+                                        <span class="_2y_">6:47</span>
+                                    </div>
+                                </div>-->
+                                                                </span>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="left" ng-click="prev()" ng-if="relatedObj.numRelatedFiles > 6">
+                                            <i class="icon--arrow-left"></i>
+                                        </div>
+                                        <div class="right" ng-click="next()" ng-if="relatedObj.numRelatedFiles > 6">
+                                            <i class="icon--arrow-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="nav--next" ng-click="nextSlide()" ng-if="(numberItems > 1) && items[currentIndex].ArtifactTypeName === 'Image'">
+                            <i class="icon--arrow-right"></i>
+                        </a>
+
+                        <a ng-if="items[currentIndex].ArtifactTypeName !== 'Video'" class="nav--resize" href="" ng-click="expanded()" tooltip="{{fullscreen === false ? 'Fullscreen' : 'Exit fullscreen'}}" tooltip-placement="top">
+                            <i ng-show="fullscreen" class="icon--minimise"></i>
+                            <i ng-hide="fullscreen" class="icon--maximise"></i>
+                        </a>
+                    </div>
+                    <div class="gallerybox__function" ng-if="fullscreen === false">
+                        <div class="gb__function">
+                            <div class="gb__function--1">
+                                <likes resource-type="news"
+                                       resource-id="activityObj.ActivityItemId"
+                                       like-count="activityObj.LikeCount"
+                                       liked="activityObj.HasLiked">
+                                </likes>
+                                <a class="icon__comment" href="#" ng-class="{'is--active' : selectedSlide.showComments}" ng-click="openLightboxComment(items[currentIndex], selectedSlide.showComments)">
+                                    <span>Comment</span>
+                                </a>
+                                <a class="icon__share" href="#" ng-click="shareFile(items[currentIndex])">
+                                    <span>Share</span>
+                                </a>
+                            </div>
+                            <a class="gb__info" href="#">
+                                <span class="gb__info--1">{{ items[currentIndex].ShareCount }} Shares</span>
+                                <span class="gb__info--1">{{activityObj.CommentCount}} Comments</span>
+                                <span class="gb__info--1">{{ items[currentIndex].ViewCount }} Views</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="gallerybox__activity" ng-if="fullscreen === false">
+                        <div class="lightbox__comments" ng-if="selectedSlide.showComments" ng-scrollbars ng-scrollbars-config="scrollbarCommentsConfig">
+                            <div class="lightbox__comments-header">
+                                <div class="title__comment">Comment</div>
+                                <div class="body__comment">
+                                    <post-comments ng-if="true"
+                                                   resource-type="news"
+                                                   resource-id="activityObj.ActivityItemId"
+                                                   comment-count="activityObj.CommentCount"
+                                                   current-user="currentUser"
+                                                   show-add-comment="true">
+                                    </post-comments>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lightbox__fileInfo" ng-if="selectedSlide.showFileInfo" ng-scrollbars ng-scrollbars-config="scrollbarFileInfoConfig">
+                            <div class="lightbox__relatedfile--header">
+                                <div class="title__related--files">File Infomation </div>
+                            </div>
+                            <div class="fileInfo" ng-class="{'is--loading': isLoading}">
+                                <ng-include src="'/interface/views/libraries/partials/_file-info--lightbox.html'"></ng-include>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallerybox__related" ng-if="(relatedObj.numRelatedFiles > 0) && (fullscreen === false)">
+                <div class="gb__list--title" id="gb__list--title">
+                    {{items[currentIndex].ArtifactTypeName === 'Video' ? 'More Videos' : 'related content'}}
+                </div>
+
+                <div class="gb__list--file">
+                    <div class="gb__list--1">
+                        <ul>
+                            <li ng-repeat="item in relatedObj.RelatedFiles">
+                                <div class="box">
+                                    <span>
+                                        <a href="#" ng-click="viewRelatedFile(item)">
+                                            <span>
+                                                <div ng-switch on="item.ArtifactTypeName">
+                                                    <i ng-switch-when="Compress" class="svg-icon--zip" tooltip="{{item.FileName}}"></i>
+                                                    <i ng-switch-when="Video" ng-if="item.Thumbnail === null" class="svg-icon--img"></i>
+                                                    <img ng-switch-when="Video" ng-if="item.Thumbnail !== null" ng-src="{{item.Thumbnail}}">
+                                                    <i ng-switch-when="Audio" class="svg-icon--video" title="{{item.FileName}}"></i>
+                                                    <img ng-switch-when="Image" ng-src="{{item.Thumbnail}}" title="{{item.FileName}}">
+                                                    <i ng-switch-default class="svg-icon--doc" tooltip="{{item.FileName}}"></i>
+                                                </div>
+
+                                                <!--<div class="related__file--5">
+                                    <div>
+                                        <div class="related__file--6">
+                                            <div class="_38a5 _2yu">{{item.FileName}}</div>
+                                            <div class="_38a4 _2yu">
+                                                User name and time
+                                            </div>
+                                        </div>
+                                        <span class="_2y_">6:47</span>
+                                    </div>
+                                </div>-->
+                                            </span>
+                                        </a>
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="left" ng-click="prevRelatedFile()">
+                        <i class="icon--arrow-left"></i>
+                    </div>
+                    <div class="right" ng-click="nextRelatedFile()">
+                        <i class="icon--arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

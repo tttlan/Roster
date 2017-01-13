@@ -1,0 +1,80 @@
+<div class="history-tab">
+   <!-- Not in the MVP.
+   <p>Applied for {{ candidateHistory.appliedJobApplications.length }} positions, <strong>previously employed {{ previouslyEmployed.length }}
+      time
+      (last roles <span ng-repeat="job in previouslyEmployed">{{ job.jobTitle }}{{ $last ? '' : ', ' }}</span>)</strong>
+   </p>
+   -->
+   <div ng-class="{'is--loading': historyLoading}">
+      <b class="is--positive">OPEN JOBS <span> {{openJobs.length }} </span></b>
+      <hr class="solid"/>
+      <p ng-show="!openJobs.length">
+         No open jobs found
+      </p>
+      <table class="table table--no-outside-borders table--responsive-stacked table__applicant-history" ng-if="openJobs.length">
+         <tbody>
+            <tr ng-repeat="job in openJobs" ng-class="{'applicant__history__job-selected' : ApplicantHistoryControls.uriParams.jobId === job.jobId}">
+               <td class="table__tick-icon"><i ng-show="ApplicantHistoryControls.uriParams.jobId === job.jobId" class="icon--check is--primary"></i></td>
+               <td class="table__applicant-history-job-title"><b>{{ job.jobTitle }}</b><br/><small class="text--is-grey">{{ job.jobTypeId | jobTypeName }}, {{ job.jobLocation }}</small></td>
+               <td class="table__applicant-history-status-section">
+                  <round-badge name-color-hash-race="candidateHistory.hashedEmail" size="tiny">{{ candidateHistory.initials }}</round-badge>
+                  <label class="label label--{{ job.applicationStatusName.currentStatusColor }}">{{ job.applicationStatusName.currentStatus }}</label>
+                  <span class="label label--pill">{{ job.applicationStatusChangeCount }}</span>
+               </td>
+               <td class="table__applicant-history-apply-date">
+                  <i class="icon-is-disabled icon--clock"></i>
+                  <label class="table-cell__middle text--is-grey">{{ job.applyDate | dateOnly }}</label>
+               </td>
+               <td class="table__applicant-history-menu-section">
+                   <div class="applicant__history__menu" ng-show="job.userCan(EntityActionType.CanViewJobApplication) && ApplicantHistoryControls.uriParams.jobId !== job.jobId">
+                       <a href="#" dropdown-toggle>
+                          <i class="icon--ellipsis icon-is-disabled"></i>
+                       </a>
+                       <ul class="submenu submenu--compact dropdown-menu">
+                          <li class="submenu__item">
+                             <a ng-click="goToPath(job)">View this application <br/><small>Note: You will navigate away from this job.</small></a>
+                          </li>
+                      </ul>
+                   </div>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   <div ng-class="{'is--loading': historyLoading}">
+      <b class="text--is-grey">CLOSED JOBS <span> {{ closedJobs.length }} </span></b>
+      <hr class="solid"/>
+      <p ng-show="!closedJobs.length">
+         No closed jobs found
+      </p>
+      <table class="table table--no-outside-borders table--responsive-stacked table__applicant-history" ng-if="closedJobs.length">
+         <tbody>
+            <tr ng-repeat="job in closedJobs" ng-class="{'applicant__history__job-selected' : ApplicantHistoryControls.uriParams.jobId === job.jobId}">
+               <td class="table__tick-icon"><i ng-show="ApplicantHistoryControls.uriParams.jobId === job.jobId" class="icon--check is--primary"></i></td>
+               <td class="table__applicant-history-job-title"><b>{{ job.jobTitle }}</b><br/><small class="text--is-grey">{{ job.jobTypeId | jobTypeName }}, {{ job.jobLocation }}</small></td>
+               <td class="table__applicant-history-status-section">
+                  <round-badge name-color-hash-race="candidateHistory.hashedEmail" size="tiny">{{ candidateHistory.initials }}</round-badge>
+                  <label class="label label--{{ job.applicationStatusName.currentStatusColor }}">{{ job.applicationStatusName.currentStatus }}</label>
+                  <span class="label label--pill">{{ job.applicationStatusChangeCount }}</span>
+               </td>
+               <td class="table__applicant-history-apply-date">
+                  <i class="icon-is-disabled icon--clock"></i>
+                  <label class="table-cell__middle text--is-grey">{{ job.applyDate | dateOnly }}</label>
+               </td>
+               <td class="table__applicant-history-menu-section">
+                  <div class="applicant__history__menu" ng-show="job.userCan(EntityActionType.CanViewJobApplication) && ApplicantHistoryControls.uriParams.jobId !== job.jobId">
+                     <a href="#" dropdown-toggle>
+                        <i class="icon--ellipsis icon-is-disabled"></i>
+                     </a>
+                     <ul class="submenu submenu--compact dropdown-menu">
+                        <li class="submenu__item">
+                           <a ng-click="goToPath(job)">View this application <br/><small>Note: You will navigate away from this job.</small></a>
+                        </li>
+                     </ul>
+                  </div>
+               </td>
+            </tr>
+        </tbody>
+      </table>
+   </div>
+</div>

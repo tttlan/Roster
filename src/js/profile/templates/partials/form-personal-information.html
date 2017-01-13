@@ -1,0 +1,88 @@
+<table class="table-form table-form--full-width"
+    ng-class="{'table-form__edit-all' :  parentData.$editing === 'all'}">
+
+    <tbody>
+        <tr class="table-form__single-field" ng-class="{ 'is--editing' : parentData.$editing === 'salutation' || parentData.$editing === 'all' }">
+            <th>Salutation</th>
+            <td>
+                <span class="table-form__form-value">
+                    <span ng-repeat="item in parentData.selectData.SalutationId" ng-if="item.Value === form.SalutationId.$viewValue">{{item.Label}}</span>
+                </span>
+
+                <table-form-edit edit-name="salutation" ng-if="parentData.$globalPermission.caneditcontact"></table-form-edit>
+                <div class="table-form__form-field">
+                    [[SalutationId]]
+                </div>
+                <table-form-buttons edit-name="salutation"></table-form-buttons>
+            </td>
+        </tr>
+
+        <tr ng-class="{ 'is--editing' : parentData.$editing === 'name' || parentData.$editing === 'all' }">
+            <th>Full name</th>
+            <td>
+                <span class="table-form__form-value">{{form.FirstName.$viewValue}} {{form.Surname.$viewValue}}</span>
+
+                <table-form-edit edit-name="name" ng-if="parentData.$globalPermission.caneditcontact"></table-form-edit>
+                <div class="table-form__form-field">
+                    [[FirstName]]
+                    [[Surname]]
+                </div>
+                <table-form-buttons edit-name="name"></table-form-buttons>
+            </td>
+        </tr>
+
+        <tr class="table-form__single-field" ng-class="{ 'is--editing' : parentData.$editing === 'preferredName' || parentData.$editing === 'all' }">
+            <th>Preferred name</th>
+            <td>
+                <span class="table-form__form-value">
+                        {{form.PreferredName.$viewValue}}
+                    </span>
+
+                <table-form-edit edit-name="preferredName" ng-if="parentData.$globalPermission.caneditcontact"></table-form-edit>
+                <div class="table-form__form-field">
+                    [[PreferredName]]
+                </div>
+                <table-form-buttons edit-name="preferredName"></table-form-buttons>
+            </td>
+        </tr>
+
+        <tr class="table-form__single-field" ng-class="{ 'is--editing' : (parentData.$editing === 'birthday' || parentData.$editing === 'all') && parentData.$globalPermission.caneditdob }">
+            <th>Date of birth</th>
+            <td>
+
+                <span class="table-form__form-value" ng-if="form.BirthDay.$viewValue !== ''">
+                    {{form.BirthDay.$viewValue | dateOnly}}
+                    <small>{{form.BirthDay.$viewValue | fromNow | replace:'ago':'old'}}</small>
+                </span>
+
+                <table-form-edit edit-name="birthday" ng-if="parentData.$globalPermission.caneditdob"></table-form-edit>
+                <div class="table-form__form-field">
+                    [[BirthDay]]
+                </div>
+                <table-form-buttons edit-name="birthday"></table-form-buttons>
+
+            </td>
+        </tr>
+
+        <tr class="table-form__single-field" ng-class="{ 'is--editing' : parentData.$editing === 'sex' || parentData.$editing === 'all' }">
+            <th>Sex</th>
+            <td>
+                <span class="table-form__form-value">
+                        {{form.Sex.$viewValue === 'm' ? 'Male' : 'Female'}}
+                    </span>
+
+                <table-form-edit edit-name="sex" ng-if="parentData.$globalPermission.caneditcontact"></table-form-edit>
+                <div class="table-form__form-field">
+                    [[Sex]]
+                </div>
+                <table-form-buttons edit-name="sex"></table-form-buttons>
+            </td>
+        </tr>
+        <tr ng-show="parentData.$editing === 'all'">
+            <th></th>
+            <td>
+                <table-form-buttons edit-name="all"></table-form-buttons>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,425 @@
+.ui
+    
+    // Page wrapper for events edit / event-tile--create
+    .events-form {
+        
+        .googleMap {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 0.5em;
+        }
+    }
+
+    .events-form__image {
+
+        background: #f8f8f8;
+        border-bottom: solid 1px default-border-color;
+        border-radius: base-border-radius base-border-radius 0 0;
+        min-height: 185px;
+        position: relative;
+
+        // We use a text input, not a hidden as the angular model is hard to update with a hidden input
+        input[type=text] {
+            position: absolute;
+            left: -999em;
+        } 
+
+        img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            max-width: 100%;
+        }
+
+        .button {
+            position: absolute;
+            top: 20px;
+            z-index: 5;
+        }
+
+        .events-form__editImage {
+            right: 20px;
+        }
+
+        .events-form__removeImage {
+            right: 64px;
+        }
+
+        &.events-form__image--has-image {
+            min-height: 0;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+        }
+    }
+
+    .events-form__image-upload-link {
+        width: 100%;
+        min-height: 185px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        color: grey6;
+
+        .icon--camera {
+            font-size: 4em;
+            display: block;
+            margin: 46px 0 0 0;                
+        }
+
+        p {
+            font-size: 1.1em;
+            font-weight: 400;
+            margin: 10px 0 0 0;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        &:hover {
+            color: darken(grey6, 10%);
+        }
+    }
+
+    // Page wrapper for events listing
+    .events {
+
+    }
+    
+    .events__create {
+        
+        margin-top: (gutter / 2);
+        
+        .button {
+            @media betweenTabletDesktop {
+                font-size: 0.8em;
+            }
+        }        
+        
+        @media maxTablet {
+            margin: 0 0 (gutter / 2) 0;
+        }
+    }
+    
+    event-card-gutter = 4%;
+
+    .cards--events {
+        
+        margin-top: 40px;
+        
+        .card {
+            
+            .tooltip__inner {
+               
+                background-color: #f3f4f5;
+                color: grey3;
+            }
+       
+            .tooltip.right .tooltip__arrow {
+                border-right-color: #f3f4f5;
+            }
+            
+            .tooltip.left .tooltip__arrow {
+                border-left-color: #f3f4f5;
+            }
+        }
+    }
+
+    
+    
+    /*
+     * Single event page
+    */    
+    .event {
+
+        .page__aside {
+
+            .tabs {
+
+                margin-top: gutter;
+                display: block;
+
+                p {
+                    margin: 0;
+                }
+            }
+
+            .tab-group__tab--overflow-hidden {
+                max-height: 510px;
+                overflow-y: scroll;
+            }
+            
+            .tab-group {
+                
+                padding: 15px;
+            }
+            
+            .segment > p {
+                
+                margin: 1em 15px;
+                font-size: 0.9em;
+            }
+        }
+        
+        .comments-grey-bg {
+            padding-top: 0;
+        }
+
+    }
+    
+    .event__inner {
+        
+        padding: (gutter/2);
+        position: relative;
+        
+        &--extra-padding {
+            padding-top: gutter;
+            
+            .page-return {
+                top: (gutter/2) + 17px;
+            }
+        }
+        
+        li {
+            font-size: 0.9em;
+        }
+
+        h2.h5 {
+            margin: 2.5em 0 1em 0;
+        }
+        
+        > p {            
+            font-size: 0.9em;
+            margin: 0.6em 0;
+        }
+        
+        .notifications {
+            margin: 0.5em 0 0 0;
+        }
+    }
+
+    // This style is used both on the view an event page and on the dashboard
+    .event__rsvp {
+
+        margin-top: 0.5em;   
+        
+        + hr {
+            margin: 1.5em 0;
+        }
+        
+        + .notifications {
+            margin-top: 1em;
+        }
+    }
+
+    .event__add-to-cal {
+        margin-top: 1em;
+        margin-bottom: 2em;
+        
+        [class^="icon--"] {
+            font-size: 12px;
+            position: relative;
+            top: 1px;
+        }
+
+        @media minDesktop {
+            margin: 0;
+            float: right;
+            margin-top: 0;
+        }
+    }
+    
+    .event__image {
+    
+        position: relative;
+        padding-bottom: 56.25%;
+        border-radius: base-border-radius base-border-radius 0 0;
+    }
+    
+    .event__image-content {
+        
+        position: absolute;
+        z-index: 5;
+        margin: (gutter/2) 0 0 (gutter/2);
+        
+        h1 {
+            color: #fff;
+        }
+        
+        .page-return {
+            left: -70px;
+            top: -5px;
+            
+            @media maxDesktop {
+                color: #fff;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .event__image-wrapper {
+        
+        padding-bottom: 56.25%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        
+        &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to bottom, rgba(96,96,96,1) 0%,rgba(40,40,40,0) 40%,rgba(0,0,0,0) 100%)
+            z-index: 2;
+            
+            @media maxDesktop {
+                background: linear-gradient(to bottom, rgba(96,96,96,1) 0%,rgba(40,40,40,0) 50%,rgba(0,0,0,0) 100%)
+            }
+            
+            @media maxDesktop {
+                background: linear-gradient(to bottom, rgba(96,96,96,1) 0%,rgba(40,40,40,0) 70%,rgba(0,0,0,0) 100%)
+            }
+        }
+        
+        img {
+            position: absolute;
+            max-width: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            z-index: 1;
+        } 
+    }
+
+    .event__details {
+        
+        margin-bottom: 1em;
+    }
+
+    .event__detail {
+
+        display: inline-block;
+        margin: 0 8% 0 0;
+        width: 32%;
+        vertical-align: top;
+        
+        @media maxTablet {
+            width: 100%;
+            margin-right: 0;
+        }
+        
+        // When there are exactly 3 .event__detail elements
+        &:nth-last-child(3):first-child, 
+        &:nth-last-child(3):first-child ~ dl {
+            
+            width: 30%;
+            margin-right: 5%;
+            
+            @media maxTablet {
+                width: 100%;
+                margin-right: 0;
+            }
+            
+            &:last-child {
+                width: auto;
+                margin-right: 0;
+            }
+        }
+        
+        // When there are exactly 4 .event__detail elements, add margin to the last two of them
+        &:nth-last-child(4):first-child, 
+        &:nth-last-child(4):first-child ~ dl {
+            
+            &:nth-last-child(1)
+            &:nth-last-child(2) {
+                margin-top: 1em;
+            }
+        }
+    }
+    
+    .event__description {
+        
+        p {
+            font-size: 0.9em;
+            margin: 0.6em 0;
+        }
+    }
+    
+    .event__edit,
+    .event__delete,
+    .event__cancel {
+        
+        position: absolute;
+        top: 5px;
+    }
+    
+    .event__edit {
+        
+        right: 5px;
+        width: 7.5em;
+    }
+
+    .event__delete {
+        
+        right: 5px;
+        width: 9em;
+    }
+    
+    .event__cancel {
+        
+        right: 8.55em;
+        width: 9em;
+    }
+    
+    .event__confirm-attendance {
+        
+        margin-bottom: 10px;
+        text-align: center;    
+    }
+    
+    .event__attendance-list {
+
+        th:last-child {
+            text-align: center;
+        }
+
+        .media {
+            margin: 0;
+        }
+        
+        .button {
+            display: inline-block;
+        }
+                        
+        @media maxTablet {
+            .people-list__person {
+                
+                small {
+                    display: none;
+                }
+                
+                p {
+                    margin-top: 0.4em;
+                }   
+            }
+        }
+        
+        @media (max-width: 360px) {
+            
+            .people-list__person {
+                
+                img {
+                    display: none;
+                }
+            }
+        }
+    }

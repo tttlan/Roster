@@ -1,0 +1,9 @@
+{
+  "NetworkGroupId": 1,
+  "GroupName": "sample string 2",
+  "Type": "sample string 3",
+  "LookupUrl": "sample string 4",
+  "IsTrainingLocation": true,
+  "NetworkName":"NetworkName",
+  "CompanyDescription": "CompanyDescription"
+}

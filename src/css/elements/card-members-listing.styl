@@ -1,0 +1,52 @@
+.ui
+  div.parent__wrapper {
+    position : absolute;
+    z-index : 5;
+
+
+    .card__members__listing_wrapper {
+      width :100%;
+      background-color : white;
+      border-radius : 5px;
+      border : 1px solid grey8;
+
+      .card__members__listing__info, .card__members__listing__user__details {
+        display : table;
+        width : 100%;
+        padding : 0% 5% 0% 5%;
+
+        > div {
+          display : table-cell;
+        }
+      }
+
+      .card__members__listing__info {
+        .card__members__listing__date {
+          text-align : right;
+        }
+      }
+
+      .card__members__listing__user__details {
+        margin-bottom: 3%;
+        margin-top: 2%;
+
+        .card__members__listing__avatar {
+          width : 19%;
+        }
+
+          .card__members__listing__details {
+            width : 81%;
+          }
+
+        .card__members__listing__card__action {
+          width : 10%;
+          text-align : right;
+
+          i {
+            vertical-align : text-bottom;
+            cursor : pointer;
+          }
+        }
+      }
+    }
+  }

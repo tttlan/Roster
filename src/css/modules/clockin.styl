@@ -1,0 +1,333 @@
+
+// Clockin Application
+// ------------------------------------------------
+
+
+.clockin {
+    width: 100%;
+    background: white;
+    overflow: hidden;
+}
+
+.clockin__head {
+    background: primary;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: rgba(0,0,0,0.1);
+    }
+
+    .clockin__head__label {
+        color: white;
+        font-size: 14px;
+        line-height: 30px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        @media minPhablet {
+            top: 0;
+            bottom: auto;
+            border-bottom: 1px dashed rgba(255,255,255,0.15)
+        }
+    }
+}
+
+.clockin__body {
+    background: white;
+    text-align: center;   
+
+    .clockin__title {
+        color: black;
+        font-size: 42px;
+        line-height: 54px;
+        margin: 30px;
+            
+        small {
+            font-size: 26px;
+            display: block;
+            margin-top: 15px;
+        }
+    }
+
+    .clockin__select {
+        max-width: 260px;
+        margin: 0 auto 30px auto;
+        text-align: center;
+    }
+
+    @media minPhablet {
+        padding-top: 26px;
+    }
+}
+
+.clockin__success {
+    background: url(../images/tick_large.png) center no-repeat;
+    margin: 30px auto;
+    width: 130px;
+    height: 130px;
+    background-size: 100%;
+
+    @media minTablet {
+        margin: 5% auto;
+        width: 190px;
+        height: 190px;
+    }
+
+    if ie8 {
+        background-image: url(../images/tick_large.png);
+    }
+
+    &.clockin__success--no-bg {
+        background-image: none !important;
+    }
+}
+
+.clockin__time {
+
+    .time {
+        color: black;
+        opacity: 0.5;
+        font-size: 50px;
+        line-height: 1;
+        padding-top: 5%;
+
+        span {
+            font-size: 80%;
+        }
+
+        @media minPhablet {
+            font-size: 60px;
+            padding-top: 10%;
+        }
+
+    }
+}
+
+.clockin__message {
+    font-size: 14px;
+    padding: 0 30px;
+    margin-bottom: 26px;
+
+    .message {
+        margin: 0 auto;
+        padding: 0;
+        color: black;
+    }
+
+    .button {
+        margin-bottom: 30px;
+    }
+
+}
+
+.clockin__pin-display {
+    margin: 0 auto;
+    padding: 30px;
+    max-width: 320px;
+
+    .fieldset {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .field--digit {
+        
+        background: white;
+        width: 90%;
+        padding-bottom: 90%;
+        margin: 0 auto;
+        position: relative;
+        
+        box-shadow: 3px 3px 0px rgba(0,0,0,0.2)
+
+        input {
+            position: absolute;
+            top: 0;
+            left: -900em;
+            right: 0;
+            bottom: 0;
+            font-size: 50px;
+            text-align: center;
+            border: none;
+            background: transparent;
+        }
+    }
+
+    .field--password {
+
+        input {
+        }
+    }
+
+    .field--password:after {
+        content: '';
+        position: absolute;
+        z-index: 11;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        margin-left: -10px;
+        border-radius: 20px;
+        background: grey5;
+    }
+
+}
+
+
+
+// Pinpad
+// ------------------------------------------------
+
+.clockin__pin-pad {
+    text-align: center;
+    border: solid 1px grey7;
+    border-width: 0 1px 1px 0;
+    margin: 0 auto 26px auto;
+    max-width: 320px;
+
+    .num {
+        cursor: pointer;
+        font-size: 40px;
+        line-height: 1;
+        padding: 0.4em 0;
+        width: 100%;
+        display: block;
+        border: solid 1px grey7;
+        border-width: 1px 0 0 1px;
+        text-decoration: none;
+
+        transition: all 100ms linear;
+    }
+
+    .num--primary {
+        color: positive;
+    }
+
+    .num--disabled {
+        color: disabled;
+    }
+
+    .num--backspace {
+        text-indent: -900em;
+        background: url(../images/backspace.png) center no-repeat;
+        background-size: 40%;
+
+        if ie8 {
+            background-image: url(../images/backspace.png);
+        }
+
+    }
+
+    .num--active ,
+    .num:active {
+        background-color: primary;
+        color: white !important;
+    }
+
+    .no-js & {
+        display: none;
+    }
+}
+
+
+.clockin__shift {
+    color: grey6;
+    margin-bottom: 50px;
+
+    .shift__item {
+        display: inline-block;
+        padding: 0.7em 1.5em;
+        color: black;
+        font-weight: bold;
+        background: grey8;
+        box-shadow: inset -1px -1px 0px rgba(0,0,0,0.1);
+        border-radius: 2px;
+    }
+
+    .shift__item--current {
+        color: white;
+        /*background: #4ccc4b;*/
+        background: lighten(positive, 10%);
+    }
+}
+
+
+
+// Choose Screen
+// ------------------------------------------------
+
+.clockin__choose {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    position: relative;
+
+    &.clockin__choose--start {
+        background-color: grey8;
+    }
+
+    .choose__table {
+        display: table;
+        width: 100%;
+        height: 100%;
+    }
+
+    .choose__table__cell {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0 30px;
+
+        h2 {
+            font-size: 80px;
+            margin: 0 0 30px 0;
+
+            span {
+                font-size: 40px;
+                display: block;
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .choose__or {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        background-color: grey7;
+        width: 40px;
+        height: 40px;
+        line-height: 37px;
+        margin-left: -20px;
+        text-align: center;
+        border-radius: 50%;
+        border: solid 2px #fff;
+        font-size: 16px;
+        z-index: 20;
+    }
+}
+
+
+// Themes
+// ------------------------------------------------
+
+.ui-bounce .clockin__head {
+    background: black url(../images/bounce.jpg) center no-repeat;
+    background-size: cover;
+
+    .clockin__time .time {
+        color: white;
+    }
+}

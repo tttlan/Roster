@@ -1,0 +1,23 @@
+<!-- input type hidden values do not get updated in angular's models which is why we use a type text here -->
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+    
+    <label 
+    ng-if="element.label"
+    class="form__label is-visually-hiddennnnn"
+    for="{{ element.formName + '__' + element.name }}"
+    >{{ element.label }}</label>
+
+    <input 
+    type="text" 
+    id="{{ element.formName + '__' + element.name }}" 
+    name="{{ element.name }}" 
+    ng-model="element.val"
+    class=""
+    ng-required="element.validation.required"
+    ng-minLength="{{element.validation.minLength || 0}}"
+    ng-maxLength="{{element.validation.maxLength || 999}}"
+    ng-pattern="{{element.validation.pattern}}" />
+    
+    <error-builder></error-builder>
+    
+</div>

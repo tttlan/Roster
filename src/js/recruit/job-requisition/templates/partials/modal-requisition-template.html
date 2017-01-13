@@ -1,0 +1,62 @@
+<div class="panel-requisition--template">
+
+    <div class="form__field">
+        <label for="auto_complete" class="icon--search field__before"></label>
+        <input ng-model="filterString" type="text" id="auto_complete" placeholder="Type template name..." />
+    </div>
+    <br/>
+
+    <table class="table table__candidate">
+        <thead>
+            <tr>
+                <th style="width:5%">
+                </th>
+                <th>
+                    Job name
+                    <i class="icon--down"></i>
+                </th>
+                <!--<th>
+                    Location
+                    <i class="icon--down"></i>
+                </th>-->
+                <th style="width:5%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="job in ListTemplates | filter:filterString">
+                <td>
+                    <a href="#">
+                        <i class="icon--views"></i>
+                    </a>
+                </td>
+                <td class="table__candidate-name">
+                    <a href="#">
+                        {{job.Name}}
+                    </a>
+                    <span>{{job.Location}}</span>
+                </td>
+                <!--<td class="table__candidate-email">
+                    <div class="media media--user">
+                        <div class="media__image">
+                            <a href="#">
+                                <i class="icon--views"></i>
+                            </a>
+                        </div>
+                        <div class="media__body">
+                            <a href="">{{job.Name}}</a>
+                            <span>{{job.Location}}</span>
+                        </div>
+                    </div>
+                </td>-->
+                <td>
+                    <a href="#"><i class="icon--ellipsis"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/>
+    <div class="placeholder">
+        <a href="#">New  Requisition Templates</a>
+    </div>
+</div>

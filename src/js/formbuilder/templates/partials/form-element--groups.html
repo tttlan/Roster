@@ -1,0 +1,22 @@
+<div class="form__field {{ element.class }}" ng-class="{'is--required': element.validation.required}">
+
+    <label 
+    ng-if="element.label"
+    class="form__label"
+    for="{{ formData.name + '__' + element.name }}"
+    >{{ element.label }}</label>
+    
+    <network-groups
+        all-toggle=""
+        name="{{element.name}}"
+        ng-model="element.val"
+        id="{{ formData.name + '__' + element.name }}"
+        placeholder="{{ element.placeholder }}"
+        ng-change="{{element.onchange}}"
+        ng-required="element.validation.required"
+    ></network-groups>
+
+    <p ng-if="element.note"><small>* {{ element.note }}</small></p>
+    <error-builder></error-builder>
+
+</div>

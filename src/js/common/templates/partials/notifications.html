@@ -1,0 +1,7 @@
+<ul class="notifications notifications--fixed">
+    <li ng-repeat="notification in notifications | reverse" class="notification notification--{{ notification.type }}" ng-show="notification.visible">
+        <a ng-click="notification.visible = false" class="notification__close"><i class="icon--cross"></i></a>
+        <div class="notification__icon"><i class="icon--{{ notification.icon }} icon--circular"></i></div>
+        <p class="notification__message">{{ notification.message }}</p>
+    </li>
+</ul>

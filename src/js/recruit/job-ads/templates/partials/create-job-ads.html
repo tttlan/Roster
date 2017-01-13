@@ -1,0 +1,30 @@
+<header class="modal__header">
+    <h2 class="modal__title align-left"><b>{{jobAdDetailsFormModel.jobId ? "EDIT JOB " : "NEW JOB"}}</b></h2>
+    <a href="" class="modal__close"  ng-confirm-click="cancel()" ng-confirm-message="Do you want to close this step without saving?"></a>
+</header>
+<div class="job-ads-create modal__content job-create" ng-class="{'is--loading': loading}">
+    <form name="formJobAd" action="">
+        <wizard start-step-number="0" submit="saveJob()" submit-button-text="{{editing ? 'Update Job' : 'Create Job'}}" template-url ="/interface/views/recruit/job-ads/partials/wizard-create-job.html">
+            <wizard-step title="Job Details" name="jobDetails">
+                <job-ads-details job-ad-details-form-model="jobAdDetailsFormModel" form="formJobAd"></job-ads-details>
+            </wizard-step>
+
+            <wizard-step title="Questions " name="questionnaire">
+                <job-ads-questionnaire job-ad-questionnaire-model="jobAdQuestionnaireModel" form="formJobAd"></job-ads-questionnaire>
+            </wizard-step>
+
+            <wizard-step title="Boards" name="boards">
+                <job-ads-boards ng-if="isLoaded" boards="jobAdsBoardsModel" form="formJobAd"></job-ads-boards>
+            </wizard-step>
+
+            <wizard-step title="Assessors" name="assessors" class='create-roster-confirmation'>
+                <h4><b>ASSESSMENT TEAM</b></h4>
+                <job-ads-assessors selected-assessor="jobAdsAssessorModels" editable="true"></job-ads-assessors>
+            </wizard-step>
+
+            <wizard-step title="Job Preview" name="Preview">
+                <job-ads-preview job-detail="jobAdDetailsFormModel" boards="jobAdsBoardsModel" question="jobAdQuestionnaireModel" assessors="jobAdsAssessorModels"></job-ads-preview>
+            </wizard-step>
+        </wizard>
+    </form>
+</div>

@@ -1,0 +1,130 @@
+tooltip-max-width = 200px;
+tooltip-color = white;
+tooltip-bg = black;
+tooltip-opacity = 0.9;
+tooltip-arrow-width = 5px;
+tooltip-arrow-color = tooltip-bg;
+
+
+// Tooltip placement
+//
+// Markup: 
+// <p>Pellentesque, sit amet venenatis urna cursus eget 
+//     <a href="#" tooltip-placement="{{modifier_class}}" tooltip="I'm a tooltip">hover on me for a tooltip</a>
+// eget arcu dictum varius duis at consectetur lorem. Vitae elementum curabitur</p>
+//
+// top - Place a tooltip on the top
+// left - Place a tooltip on the left
+// right - Place a tooltip on the right
+// bottom - Place a tooltip on the bottom
+//
+// Styleguide elements.tooltip.placement
+
+
+// Other tooltip styles
+//
+// Markup: 
+// <p>Pellentesque, sit amet venenatis urna cursus eget 
+//     <a href="#" tooltip-animation="false" tooltip="I don't fade. :-(">no fade</a>
+// eget arcu dictum varius duis at consectetur lorem. Vitae elementum curabitur</p>
+// <p>Pellentesque, sit amet venenatis urna cursus eget 
+//     <a href="#"tooltip-popup-delay="1000" tooltip="appears with delay">delayed 1000ms</a>
+// eget arcu dictum varius duis at consectetur lorem. Vitae elementum curabitur</p>
+//
+// Styleguide elements.tooltip.variations
+
+.ui 
+
+    .tooltip {
+        position: absolute;
+        z-index: 1000
+        display: block;
+        visibility: visible;
+        font-size: 12px
+        line-height: 1.4;
+        opacity: 0;
+
+        &.in     { opacity: tooltip-opacity; }
+        &.top    { margin-top:  -3px; padding: tooltip-arrow-width 0; }
+        &.right  { margin-left:  3px; padding: 0 tooltip-arrow-width; }
+        &.bottom { margin-top:   3px; padding: tooltip-arrow-width 0; }
+        &.left   { margin-left: -3px; padding: 0 tooltip-arrow-width; }
+
+    }
+
+    // Wrapper for the tooltip content
+
+    .tooltip__inner {
+        max-width: tooltip-max-width;
+        padding: 3px 8px;
+        color: tooltip-color;
+        text-align: center;
+        text-decoration: none;
+        background-color: tooltip-bg;
+        border-radius: 0.2em;
+    }
+
+    // Arrows
+
+    .tooltip__arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+
+    .tooltip {
+        &.top .tooltip__arrow {
+            bottom: 0;
+            left: 50%;
+            margin-left: -(tooltip-arrow-width);
+            border-width: tooltip-arrow-width tooltip-arrow-width 0;
+            border-top-color: tooltip-arrow-color;
+        }
+        &.top-left .tooltip__arrow {
+            bottom: 0;
+            left: tooltip-arrow-width;
+            border-width: tooltip-arrow-width tooltip-arrow-width 0;
+            border-top-color: tooltip-arrow-color;
+        }
+        &.top-right .tooltip__arrow {
+            bottom: 0;
+            right: tooltip-arrow-width;
+            border-width: tooltip-arrow-width tooltip-arrow-width 0;
+            border-top-color: tooltip-arrow-color;
+        }
+        &.right .tooltip__arrow {
+            top: 50%;
+            left: 0;
+            margin-top: -(tooltip-arrow-width);
+            border-width: tooltip-arrow-width tooltip-arrow-width tooltip-arrow-width 0;
+            border-right-color: tooltip-arrow-color;
+        }
+        &.left .tooltip__arrow {
+            top: 50%;
+            right: 0;
+            margin-top: -(tooltip-arrow-width);
+            border-width: tooltip-arrow-width 0 tooltip-arrow-width tooltip-arrow-width;
+            border-left-color: tooltip-arrow-color;
+        }
+        &.bottom .tooltip__arrow {
+            top: 0;
+            left: 50%;
+            margin-left: -(tooltip-arrow-width);
+            border-width: 0 tooltip-arrow-width tooltip-arrow-width;
+            border-bottom-color: tooltip-arrow-color;
+        }
+        &.bottom-left .tooltip__arrow {
+            top: 0;
+            left: tooltip-arrow-width;
+            border-width: 0 tooltip-arrow-width tooltip-arrow-width;
+            border-bottom-color: tooltip-arrow-color;
+        }
+        &.bottom-right .tooltip__arrow {
+            top: 0;
+            right: tooltip-arrow-width;
+            border-width: 0 tooltip-arrow-width tooltip-arrow-width;
+            border-bottom-color: tooltip-arrow-color;
+        }
+    }

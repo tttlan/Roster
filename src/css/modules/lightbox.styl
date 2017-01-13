@@ -1,0 +1,316 @@
+// Variables
+
+comment_width = 280px;
+
+// Standard lightbox
+//
+// Markup:
+// <div ng-controller="lightboxCtrl">
+//     <a href="" ng-click="openLightbox()" class="button">Open lightbox</a>
+// </div>
+//
+// Styleguide modules.lightbox.standard
+
+.lightbox {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    position: fixed;
+    z-index: 850;
+    backface-visibility: hidden;
+}
+
+
+.lightbox__dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.75);
+}
+
+
+.lightbox__wrapper {
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+}
+
+.lightbox__main {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:201;
+}
+
+
+// Gallery
+// ------------------------------------------------
+
+.lightbox__slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 202;
+    height: 100%;
+
+    ul {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        padding: 10px;
+
+        @media minTablet {
+            padding: 40px;
+        }
+
+        @media minDesktop {
+            padding: 80px;
+        }
+    }
+
+    // never give pdf type slide padding.
+    .slide--pdf { padding:0; }
+
+}
+
+// Image
+
+.lightbox__image {
+    width: 100%;
+    height: 100%;
+
+    img {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+}
+
+// Gallery with PDF selected
+// changes around z-index so user can interact with the pdf canvas
+// ------------------------------------------------
+
+.lightbox__viewing--pdf {
+
+    .lightbox__nav {
+        .nav--prev,
+        .nav--next {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            bottom: auto;
+            margin-top: -60px;
+            width: 80px;
+            height: 120px;
+
+            .nav__icon {
+                right: auto;
+                left: 20px;
+            }
+        }
+        .nav--next {
+            right: 0;
+            left: auto;
+
+            .nav__icon {
+                left: auto;
+                right: 20px;
+            }
+        }
+        .lightbox__close {
+            z-index: 208;
+            top: 0px;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+        }
+    }
+}
+
+// Navigation
+// ------------------------------------------------
+
+
+.lightbox__nav {
+    display:inline;
+
+    [class*="nav--"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 30%;
+        cursor: default;
+        z-index: 204;
+        cursor: pointer;
+
+        &:hover {
+            .nav__icon {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .nav--next {
+        right: 0;
+        left: auto;
+        width: 70%;
+
+        .nav__icon {
+            left: auto;
+            right: 20px;
+        }
+    }
+
+    .nav__icon {
+        opacity: 0.2;
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        margin-top: -30px;
+        color: white;
+        text-align: center;
+        font-size: 32px;
+    }
+}
+
+
+// Close
+// ------------------------------------------------
+
+.lightbox__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 208;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+
+    [class*="icon--"] {
+        color: white;
+        position: relative;
+        top: 2px;
+    }
+}
+
+
+
+// Comments
+// ------------------------------------------------
+
+
+.lightbox__comments {
+    width: comment_width;
+    height: 100%;
+    z-index: 204;
+    background: white;
+    position: absolute;
+    top: 0;
+    right: - comment_width;
+    transition: right ease-out 150ms;
+    padding: 15px;
+
+    .comments {
+        margin: 0;
+    }
+
+    .comment--write .media__image {
+        display: none;
+    }
+}
+
+.lightbox__comments-header {
+    margin-bottom: 20px;
+    position: relative;
+
+    .media {
+        margin: 0;
+    }
+}
+
+.lightbox__comments-close {
+    position: absolute;
+    top: 2px;
+    right: -5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+
+    i {
+        color: grey5;
+    }
+
+    &:hover i {
+        color: primary;
+    }
+}
+
+// Comments toggle 
+.lightbox__comment-count {
+    @extends .lightbox__close
+
+    top: 70px;
+    font-size: 16px;
+    line-height: 20px;
+
+    span {
+        color: white;
+        display: block;
+        font-size: 13px;
+    }
+}
+
+
+
+// open / closed
+// ------------------------------------------------
+
+.comments--open {
+
+    .lightbox__main {
+        // comments above slide
+        right: 0;
+
+        // Comments lined up next to slide
+        @media minDesktop {
+            right: comment_width;
+        }
+    }
+
+    .lightbox__comments {
+        right: 0;
+    }
+
+    // Hide toggle if comments are visible
+    .lightbox__comment-count {
+        display: none;
+    }
+}

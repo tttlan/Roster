@@ -1,0 +1,948 @@
+{
+  "api/recruitments/jobapplications/1": {
+    "JobApplicationDetail": {
+      "JobApplicationId": 1,
+      "ApplicationStatus": "Applied",
+      "ApplicationStatusColor": "yellow",
+      "ApplicationStatusDescription": "Applied",
+      "ApplyDate": "2011-08-15T09:37:48.1",
+      "JobApplicationStatusSummaries": [
+        {
+          "JobApplicationId": 1,
+          "ChangedWhen": "2011-08-15T09:37:48.1",
+          "ApplicationStatus": "Applied",
+          "ApplicationStatusColor": "yellow",
+          "ApplicationStatusDescription": "Applied"
+        },
+        {
+          "JobApplicationId": 1,
+          "ChangedWhen": "2011-08-15T17:29:56.45",
+          "ApplicationStatus": "Offer",
+          "ApplicationStatusColor": "blue",
+          "ApplicationStatusDescription": "Offer"
+        }
+      ],
+      "UploadedBy": null,
+      "ApplicantInformation": {
+        "MemberId": 1,
+        "FirstName": "Christian",
+        "Surname": "Sesta",
+        "PreferredName": "Contanas",
+        "Title": "",
+        "PhotoLarge": "",
+        "PhotoThumb": "",
+        "PhotoThumbMini": "",
+        "RoleTitle": "OPS - Business Manager  (Company)",
+        "DefaultNetworkGroupId": 11036,
+        "Birthday": "1989-05-12T15:14:06.703",
+        "Sex": "m",
+        "Salutation": null
+      },
+      "ApplicantContacts": [
+        {
+          "ContactInfoId": 1559672,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "0425451201",
+          "Fax": "",
+          "Email": "",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "p",
+          "IsPrimary": true,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 1559673,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "0111111111",
+          "Fax": "",
+          "Email": "",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "p",
+          "IsPrimary": false,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 88677,
+          "Address": "13 Sherpa Lane",
+          "City": null,
+          "Suburb": "Melbourne",
+          "Postcode": 3000,
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "09999999",
+          "Fax": null,
+          "Email": "",
+          "WebAddress": null,
+          "StateRegionId": null,
+          "StateName": "Vic",
+          "CountryId": 7,
+          "Type": "ad",
+          "IsPrimary": true,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 1559673,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "0111111111",
+          "Fax": "",
+          "Email": "test1@email.com",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "e",
+          "IsPrimary": false,
+          "IsPrivate": false
+        }
+      ],
+      "JobSummary": {
+        "JobId": 1,
+        "JobTitle": "IT Hardware",
+        "Summary": "",
+        "OwnerId": 247682,
+        "NetworkId": 957,
+        "JobReference": "",
+        "JobStatusCode": "APPROVED",
+        "IsTemplate": null,
+        "AmountType": "r",
+        "SalaryRate": 0,
+        "SalaryType": "a",
+        "Currencytype": "AUD",
+        "AdditionalSalaryInfo": "",
+        "ExternalId": null,
+        "ExternalSource": null,
+        "IsDeleted": false,
+        "IsDisplayOnYourSite": null,
+        "SalaryMinId": 0,
+        "JobTypeId": -1
+      },
+      "JobPostSummary": {
+        "JobPostId": 0,
+        "JobId": 1,
+        "JobPostSubscriptionId": 0,
+        "UpdatedDate": null,
+        "ExpiredDate": null,
+        "JobBoardSummary": {
+          "JobBoardId": 6,
+          "JobBoardName": "Seek",
+          "Logo": "/interface/images/seek-left.png",
+          "CanReNew": true,
+          "CanSetExpiry": true,
+          "SortOrder": 1
+        }
+      },
+      "ApplicationAttachments": {
+        "ResumeType": "UPLOAD_RESUME",
+        "ResumeFile": "Adrian Cini Resume.docx",
+        "ResumeUrl": null,
+        "CoverLetterType": null,
+        "CoverLetterFile": null,
+        "CoverLetterUrl": null,
+        "ResumeDocumentId": null,
+        "CoverLetterDocumentId": null
+      },
+      "IsArchived": false,
+      "Notes": "sample string 2",
+      "ResumeFileStorageId": null,
+      "CoverLetterFileStorageId": null,
+      "IsFromSeek": false,
+      "SeekJobApplicationId": null,
+      "JobApplicationDocuments": [],
+      "JobApplicationStatusChangedCount": 13,
+      "CommentCount": 3
+    },
+    "EntityActions": [
+      {
+        "Id": "1",
+        "Code": 3801,
+        "Caption": "Delete Job Application",
+        "Description": "DELETE",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/1",
+        "Children": null
+      },
+      {
+        "Id": "1",
+        "Code": 3802,
+        "Caption": "Send email",
+        "Description": "Send email",
+        "ActionUrl": "http://localhost:83/api/candidate/1/EmailInfo",
+        "Children": null
+      },
+      {
+        "Id": "1",
+        "Code": 3803,
+        "Caption": "Copy to another job",
+        "Description": "PUT",
+        "ActionUrl": "http://localhost:83/api/candidate",
+        "Children": null
+      },
+      {
+        "Id": "1",
+        "Code": 3804,
+        "Caption": "Create Interview",
+        "Description": "Create Interview",
+        "ActionUrl": "http://localhost:83/api/",
+        "Children": null
+      },
+      {
+        "Id": "1",
+        "Code": 3805,
+        "Caption": "Onboard candidate",
+        "Description": "Onboard candidate",
+        "ActionUrl": "http://localhost:83/api/onboarding",
+        "Children": null
+      },
+      {
+        "Id": "1",
+        "Code": 3806,
+        "Caption": "Change status job application",
+        "Description": "Change status job application",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/status/jobapplication",
+        "Children": null
+      },
+      {
+        "Id": "1",
+        "Code": 3819,
+        "Caption": "View histories of Candidate",
+        "Description": "View histories of Candidate",
+        "ActionUrl": "http://localhost:83/api/candidate/3/jobhistories",
+        "Children": null
+      },
+      {
+        "Id": "1",
+        "Code": 3820,
+        "Caption": "Update personal detail",
+        "Description": "Update personal detail",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/1/updateaplicantinformation",
+        "Children": null
+      }
+    ],
+    "Status": 0
+  },
+  "api/recruitments/jobapplications/2": {
+    "JobApplicationDetail": {
+      "JobApplicationId": 2,
+      "ApplicationStatus": "NEW",
+      "ApplyDate": "2011-08-15T09:37:48.1",
+      "JobApplicationStatusSummaries": [
+        {
+          "JobApplicationId": 2,
+          "ChangedWhen": "2011-08-15T09:37:48.1",
+          "ApplicationStatus": "NEW"
+        },
+        {
+          "JobApplicationId": 2,
+          "ChangedWhen": "2011-08-15T17:29:56.45",
+          "ApplicationStatus": "OFFERMADE"
+        }
+      ],
+      "UploadedBy": null,
+      "ApplicantInformation": {
+        "MemberId": 2,
+        "FirstName": "Yusei",
+        "Surname": "Fudo",
+        "PreferredName": "",
+        "Title": "",
+        "PhotoLarge": "",
+        "PhotoThumb": "",
+        "PhotoThumbMini": "",
+        "RoleTitle": "OPS - Business Manager  (Company)",
+        "DefaultNetworkGroupId": 11036,
+        "Birthday": "1989-05-12T15:14:06.703",
+        "Sex": "m",
+        "Salutation": null
+      },
+      "ApplicantContacts": [
+        {
+          "ContactInfoId": 1559672,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "0425451201",
+          "Fax": "",
+          "Email": "",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "p",
+          "IsPrimary": true,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 1559673,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "0111111111",
+          "Fax": "",
+          "Email": "",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "p",
+          "IsPrimary": false,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 88677,
+          "Address": "333 Sydney Road",
+          "City": null,
+          "Suburb": "Melbourne",
+          "Postcode": 3000,
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "09999999",
+          "Fax": null,
+          "Email": "",
+          "WebAddress": null,
+          "StateRegionId": null,
+          "StateName": "Vic",
+          "CountryId": 13,
+          "Type": "ad",
+          "IsPrimary": true,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 1559673,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "0111111111",
+          "Fax": "",
+          "Email": "sherpasysystems1@email.com",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "e",
+          "IsPrimary": false,
+          "IsPrivate": false
+        }
+      ],
+      "JobSummary": {
+        "JobId": 1,
+        "JobTitle": "IT Hardware",
+        "Summary": "",
+        "OwnerId": 247682,
+        "NetworkId": 957,
+        "JobReference": "",
+        "JobStatusCode": "APPROVED",
+        "IsTemplate": null,
+        "AmountType": "r",
+        "SalaryRate": 0,
+        "SalaryType": "a",
+        "Currencytype": "AUD",
+        "AdditionalSalaryInfo": "",
+        "ExternalId": null,
+        "ExternalSource": null,
+        "IsDeleted": false,
+        "IsDisplayOnYourSite": null,
+        "SalaryMinId": 0,
+        "JobTypeId": -1
+      },
+      "JobPostSummary": {
+        "JobPostId": 0,
+        "JobId": 1,
+        "JobPostSubscriptionId": 0,
+        "UpdatedDate": null,
+        "ExpiredDate": null,
+        "JobBoardSummary": {
+          "JobBoardId": 6,
+          "JobBoardName": "Seek",
+          "Logo": "/interface/images/seek-left.png",
+          "CanReNew": true,
+          "CanSetExpiry": true,
+          "SortOrder": 1
+        }
+      },
+      "ApplicationAttachments": {
+        "ResumeType": "UPLOAD_RESUME",
+        "ResumeFile": "Adrian Cini Resume.docx",
+        "ResumeUrl": null,
+        "CoverLetterType": null,
+        "CoverLetterFile": null,
+        "CoverLetterUrl": null,
+        "ResumeDocumentId": null,
+        "CoverLetterDocumentId": null
+      },
+      "IsArchived": false,
+      "Notes": "sample string 2",
+      "ResumeFileStorageId": null,
+      "CoverLetterFileStorageId": null,
+      "IsFromSeek": false,
+      "SeekJobApplicationId": null,
+      "JobApplicationDocuments": [],
+      "JobApplicationStatusChangedCount": 3,
+      "CommentCount": 3
+    },
+    "EntityActions": [
+      {
+        "Id": "2",
+        "Code": 3801,
+        "Caption": "Delete Job Application",
+        "Description": "DELETE",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/1",
+        "Children": null
+      },
+      {
+        "Id": "2",
+        "Code": 3802,
+        "Caption": "Send email",
+        "Description": "Send email",
+        "ActionUrl": "http://localhost:83/api/candidate/2/EmailInfo",
+        "Children": null
+      },
+      {
+        "Id": "2",
+        "Code": 3803,
+        "Caption": "Copy to another job",
+        "Description": "PUT",
+        "ActionUrl": "http://localhost:83/api/candidate",
+        "Children": null
+      },
+      {
+        "Id": "2",
+        "Code": 3804,
+        "Caption": "Create Interview",
+        "Description": "Create Interview",
+        "ActionUrl": "http://localhost:83/api/",
+        "Children": null
+      },
+      {
+        "Id": "2",
+        "Code": 3805,
+        "Caption": "Onboard candidate",
+        "Description": "Onboard candidate",
+        "ActionUrl": "http://localhost:83/api/onboarding",
+        "Children": null
+      },
+      {
+        "Id": "2",
+        "Code": 3806,
+        "Caption": "Change status job application",
+        "Description": "Change status job application",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/status/jobapplication",
+        "Children": null
+      },
+      {
+        "Id": "2",
+        "Code": 3819,
+        "Caption": "View histories of Candidate",
+        "Description": "View histories of Candidate",
+        "ActionUrl": "http://localhost:83/api/candidate/2/jobhistories",
+        "Children": null
+      },
+      {
+        "Id": "2",
+        "Code": 3820,
+        "Caption": "Update personal detail",
+        "Description": "Update personal detail",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/2/updateaplicantinformation",
+        "Children": null
+      }
+    ],
+    "Status": 0
+  },
+  "api/recruitments/jobapplications/3": {
+    "JobApplicationDetail": {
+      "JobApplicationId": 3,
+      "ApplicationStatus": "NEW",
+      "ApplyDate": "2011-08-15T09:37:48.1",
+      "JobApplicationStatusSummaries": [
+        {
+          "JobApplicationId": 3,
+          "ChangedWhen": "2011-08-15T09:37:48.1",
+          "ApplicationStatus": "NEW"
+        },
+        {
+          "JobApplicationId": 3,
+          "ChangedWhen": "2011-08-15T17:29:56.45",
+          "ApplicationStatus": "OFFERMADE"
+        }
+      ],
+      "UploadedBy": null,
+      "ApplicantInformation": {
+        "MemberId": 3,
+        "FirstName": "Jack",
+        "Surname": "Atlas",
+        "PreferredName": "Contanas",
+        "Title": "",
+        "PhotoLarge": "",
+        "PhotoThumb": "",
+        "PhotoThumbMini": "",
+        "RoleTitle": "OPS - Business Manager  (Company)",
+        "DefaultNetworkGroupId": 11036,
+        "Birthday": "1989-05-12T15:14:06.703",
+        "Sex": "m",
+        "Salutation": null
+      },
+      "ApplicantContacts": [
+        {
+          "ContactInfoId": 1559672,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "09999999",
+          "Fax": "",
+          "Email": "",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "p",
+          "IsPrimary": true,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 1559673,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "0111111111",
+          "Fax": "",
+          "Email": "",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "p",
+          "IsPrimary": false,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 88677,
+          "Address": "12 Vo An Angu",
+          "City": null,
+          "Suburb": null,
+          "Postcode": null,
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "09999999",
+          "Fax": null,
+          "Email": "",
+          "WebAddress": null,
+          "StateRegionId": null,
+          "StateName": "Vic",
+          "CountryId": 20,
+          "Type": "ad",
+          "IsPrimary": true,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 1559673,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "0111111111",
+          "Fax": "",
+          "Email": "test@email.com",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "e",
+          "IsPrimary": false,
+          "IsPrivate": false
+        }
+      ],
+      "JobSummary": {
+        "JobId": 1,
+        "JobTitle": "IT Hardware",
+        "Summary": "",
+        "OwnerId": 247682,
+        "NetworkId": 957,
+        "JobReference": "",
+        "JobStatusCode": "APPROVED",
+        "IsTemplate": null,
+        "AmountType": "r",
+        "SalaryRate": 0,
+        "SalaryType": "a",
+        "Currencytype": "AUD",
+        "AdditionalSalaryInfo": "",
+        "ExternalId": null,
+        "ExternalSource": null,
+        "IsDeleted": false,
+        "IsDisplayOnYourSite": null,
+        "SalaryMinId": 0,
+        "JobTypeId": -1
+      },
+      "JobPostSummary": {
+        "JobPostId": 0,
+        "JobId": 1,
+        "JobPostSubscriptionId": 0,
+        "UpdatedDate": null,
+        "ExpiredDate": null,
+        "JobBoardSummary": {
+          "JobBoardId": 6,
+          "JobBoardName": "Seek",
+          "Logo": "/interface/images/seek-left.png",
+          "CanReNew": true,
+          "CanSetExpiry": true,
+          "SortOrder": 1
+        }
+      },
+      "ApplicationAttachments": {
+        "ResumeType": "UPLOAD_RESUME",
+        "ResumeFile": "Adrian Cini Resume.docx",
+        "ResumeUrl": null,
+        "CoverLetterType": null,
+        "CoverLetterFile": null,
+        "CoverLetterUrl": null,
+        "ResumeDocumentId": null,
+        "CoverLetterDocumentId": null
+      },
+      "IsArchived": false,
+      "Notes": "sample string 2",
+      "ResumeFileStorageId": null,
+      "CoverLetterFileStorageId": null,
+      "IsFromSeek": false,
+      "SeekJobApplicationId": null,
+      "JobApplicationDocuments": [],
+      "JobApplicationStatusChangedCount": 13,
+      "CommentCount": 3
+    },
+    "EntityActions": [
+      {
+        "Id": "3",
+        "Code": 3801,
+        "Caption": "Delete Job Application",
+        "Description": "DELETE",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/3",
+        "Children": null
+      },
+      {
+        "Id": "3",
+        "Code": 3802,
+        "Caption": "Send email",
+        "Description": "Send email",
+        "ActionUrl": "http://localhost:83/api/candidate/3/EmailInfo",
+        "Children": null
+      },
+      {
+        "Id": "3",
+        "Code": 3803,
+        "Caption": "Copy to another job",
+        "Description": "PUT",
+        "ActionUrl": "http://localhost:83/api/candidate",
+        "Children": null
+      },
+      {
+        "Id": "3",
+        "Code": 3804,
+        "Caption": "Create Interview",
+        "Description": "Create Interview",
+        "ActionUrl": "http://localhost:83/api/",
+        "Children": null
+      },
+      {
+        "Id": "3",
+        "Code": 3805,
+        "Caption": "Onboard candidate",
+        "Description": "Onboard candidate",
+        "ActionUrl": "http://localhost:83/api/onboarding",
+        "Children": null
+      },
+      {
+        "Id": "3",
+        "Code": 3806,
+        "Caption": "Change status job application",
+        "Description": "Change status job application",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/status/jobapplication",
+        "Children": null
+      },
+      {
+        "Id": "3",
+        "Code": 3819,
+        "Caption": "View histories of Candidate",
+        "Description": "View histories of Candidate",
+        "ActionUrl": "http://localhost:83/api/candidate/3/jobhistories",
+        "Children": null
+      },
+      {
+        "Id": "3",
+        "Code": 3820,
+        "Caption": "Update personal detail",
+        "Description": "Update personal detail",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/3/updateaplicantinformation",
+        "Children": null
+      }
+    ],
+    "Status": 0
+  },
+  "api/recruitments/jobapplications/4": {
+    "JobApplicationDetail": {
+      "JobApplicationId": 4,
+      "ApplicationStatus": "NEW",
+      "ApplyDate": "2011-08-15T09:37:48.1",
+      "JobApplicationStatusSummaries": [
+        {
+          "JobApplicationId": 4,
+          "ChangedWhen": "2011-08-15T09:37:48.1",
+          "ApplicationStatus": "NEW"
+        },
+        {
+          "JobApplicationId": 4,
+          "ChangedWhen": "2011-08-15T17:29:56.45",
+          "ApplicationStatus": "OFFERMADE"
+        }
+      ],
+      "UploadedBy": null,
+      "ApplicantInformation": {
+        "MemberId": 4,
+        "FirstName": "Mark",
+        "Surname": "Hamil",
+        "PreferredName": "Skywalker",
+        "Title": "",
+        "PhotoLarge": "",
+        "PhotoThumb": "",
+        "PhotoThumbMini": "",
+        "RoleTitle": "OPS - Business Manager  (Company)",
+        "DefaultNetworkGroupId": 11036,
+        "Birthday": "1989-05-12T15:14:06.703",
+        "Sex": "m",
+        "Salutation": null
+      },
+      "ApplicantContacts": [
+        {
+          "ContactInfoId": 1559672,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "09999999",
+          "Fax": "",
+          "Email": "",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "p",
+          "IsPrimary": true,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 1559673,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "0111111111",
+          "Fax": "",
+          "Email": "",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "p",
+          "IsPrimary": false,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 88677,
+          "Address": "17 Swamp Lane",
+          "City": null,
+          "Suburb": "Dagobar",
+          "Postcode": 3020,
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "09999999",
+          "Fax": null,
+          "Email": "",
+          "WebAddress": null,
+          "StateRegionId": null,
+          "StateName": "Vic",
+          "CountryId": 1,
+          "Type": "ad",
+          "IsPrimary": true,
+          "IsPrivate": false
+        },
+        {
+          "ContactInfoId": 1559673,
+          "Address": "",
+          "City": "",
+          "Suburb": "",
+          "Postcode": "",
+          "LinePhone1": null,
+          "LinePhone2": null,
+          "MobilePhone": "0111111111",
+          "Fax": "",
+          "Email": "test@email.com",
+          "WebAddress": "",
+          "StateRegionId": null,
+          "StateName": "",
+          "CountryId": null,
+          "Type": "e",
+          "IsPrimary": false,
+          "IsPrivate": false
+        }
+      ],
+      "JobSummary": {
+        "JobId": 1,
+        "JobTitle": "IT Hardware",
+        "Summary": "",
+        "OwnerId": 247682,
+        "NetworkId": 957,
+        "JobReference": "",
+        "JobStatusCode": "APPROVED",
+        "IsTemplate": null,
+        "AmountType": "r",
+        "SalaryRate": 0,
+        "SalaryType": "a",
+        "Currencytype": "AUD",
+        "AdditionalSalaryInfo": "",
+        "ExternalId": null,
+        "ExternalSource": null,
+        "IsDeleted": false,
+        "IsDisplayOnYourSite": null,
+        "SalaryMinId": 0,
+        "JobTypeId": -1
+      },
+      "JobPostSummary": {
+        "JobPostId": 0,
+        "JobId": 1,
+        "JobPostSubscriptionId": 0,
+        "UpdatedDate": null,
+        "ExpiredDate": null,
+        "JobBoardSummary": {
+          "JobBoardId": 6,
+          "JobBoardName": "Seek",
+          "Logo": "/interface/images/seek-left.png",
+          "CanReNew": true,
+          "CanSetExpiry": true,
+          "SortOrder": 1
+        }
+      },
+      "ApplicationAttachments": {
+        "ResumeType": "UPLOAD_RESUME",
+        "ResumeFile": "Adrian Cini Resume.docx",
+        "ResumeUrl": null,
+        "CoverLetterType": null,
+        "CoverLetterFile": null,
+        "CoverLetterUrl": null,
+        "ResumeDocumentId": null,
+        "CoverLetterDocumentId": null
+      },
+      "IsArchived": false,
+      "Notes": "sample string 2",
+      "ResumeFileStorageId": null,
+      "CoverLetterFileStorageId": null,
+      "IsFromSeek": false,
+      "SeekJobApplicationId": null,
+      "JobApplicationDocuments": [],
+      "JobApplicationStatusChangedCount": 4,
+      "CommentCount": 3
+    },
+    "EntityActions": [
+      {
+        "Id": "4",
+        "Code": 3801,
+        "Caption": "Delete Job Application",
+        "Description": "DELETE",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/4",
+        "Children": null
+      },
+      {
+        "Id": "4",
+        "Code": 3802,
+        "Caption": "Send email",
+        "Description": "Send email",
+        "ActionUrl": "http://localhost:83/api/candidate/4/EmailInfo",
+        "Children": null
+      },
+      {
+        "Id": "4",
+        "Code": 3803,
+        "Caption": "Copy to another job",
+        "Description": "PUT",
+        "ActionUrl": "http://localhost:83/api/candidate",
+        "Children": null
+      },
+      {
+        "Id": "4",
+        "Code": 3804,
+        "Caption": "Create Interview",
+        "Description": "Create Interview",
+        "ActionUrl": "http://localhost:83/api/",
+        "Children": null
+      },
+      {
+        "Id": "4",
+        "Code": 3805,
+        "Caption": "Onboard candidate",
+        "Description": "Onboard candidate",
+        "ActionUrl": "http://localhost:83/api/onboarding",
+        "Children": null
+      },
+      {
+        "Id": "4",
+        "Code": 3806,
+        "Caption": "Change status job application",
+        "Description": "Change status job application",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/status/jobapplication",
+        "Children": null
+      },
+      {
+        "Id": "4",
+        "Code": 3819,
+        "Caption": "View histories of Candidate",
+        "Description": "View histories of Candidate",
+        "ActionUrl": "http://localhost:83/api/candidate/4/jobhistories",
+        "Children": null
+      },
+      {
+        "Id": "4",
+        "Code": 3820,
+        "Caption": "Update personal detail",
+        "Description": "Update personal detail",
+        "ActionUrl": "http://localhost:83/api/recruitments/jobapplications/4/updateaplicantinformation",
+        "Children": null
+      }
+    ],
+    "Status": 0
+  }
+}

@@ -1,0 +1,316 @@
+
+.ui
+
+    // Basic checkboxes and radio buttons
+    //
+    // Markup:
+    // <fieldset class="form">
+    //     <div class="form__field">
+    //         <div class="field__checkbox">
+    //             <input id="optionsCheck1" type="checkbox"> 
+    //             <label for="optionsCheck1" class="form__label">Checkbox</label>
+    //         </div>
+    //         <div class="field__checkbox">
+    //             <input id="optionsCheck2" checked="checked" type="checkbox"> 
+    //             <label for="optionsCheck2" class="form__label">Checkbox (Checked)</label>
+    //         </div>
+    //         <div class="field__checkbox">
+    //             <input id="optionsCheck3" checked="checked" disabled="true" type="checkbox"> 
+    //             <label for="optionsCheck3" class="form__label">Checkbox checked (Disabled)</label>
+    //         </div>
+    //         <div class="field__checkbox">
+    //             <input id="optionsCheck4" type="checkbox" disabled="true"> 
+    //             <label for="optionsCheck4" class="form__label">Checkbox (Disabled)</label>
+    //         </div>
+    //     </div>
+    //     <div class="form__field">
+    //         <p class="form-label">Label for radios or checkboxes</p>
+    //         <div class="field__radio">
+    //             <input type="radio" name="optionsRadios" checked="checked" id="optionsRadios1" value="option1">
+    //             <label for="optionsRadios1" class="form__label">Radio Option 1</label>
+    //         </div>
+    //         <div class="field__radio">
+    //             <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    //             <label for="optionsRadios2" class="form__label">Radio Option 2</label>
+    //         </div>
+    //         <div class="field__radio">
+    //             <input type="radio" name="optionsRadios2" checked="checked" id="optionsRadios8" disabled="true" value="option3">
+    //             <label for="optionsRadios8" class="form__label">Radio Option 1</label>
+    //         </div>
+    //         <div class="field__radio">
+    //             <input type="radio" name="optionsRadios2" id="optionsRadios9" disabled="true" value="option4">
+    //             <label for="optionsRadios9" class="form__label">Radio Option 2</label>
+    //         </div>
+    //     </div>
+    // </fieldset>
+    //
+    // Styleguide elements.checkboxesradios.basic
+
+    .field__radio ,
+    .field__checkbox {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 0.5em;
+
+        // Base for label styling
+        input[type="checkbox"],
+        input[type="radio"] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        input[type="checkbox"] + label,
+        input[type="radio"] + label {
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+        }
+
+        // checkbox aspect 
+        // ------------------------
+
+        input[type="checkbox"] + label:before ,
+        input[type="radio"] + label:before {
+            content: '';
+            position: absolute;
+            left: 0; 
+            top: 2px;
+            width: 16px; 
+            height: 16px;
+            border: 1px solid grey6;
+            background: grey9;
+            border-radius: base-border-radius;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,.1)
+        }
+
+        input[type="checkbox"]:checked + label:before ,
+        input[type="radio"]:checked + label:before {
+            background-color: primary;
+            border-color: primary;
+        }
+
+        // checked mark aspect
+
+        input[type="checkbox"] + label:after {
+            content: icon-check;
+            font-family: font-icon;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            font-size: 12px;
+            color: white;
+            transition: all 0.2s;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+            border-radius: base-border-radius;
+        }
+
+
+        // Radio aspect 
+        // ------------------------
+
+        input[type="radio"] + label:before {
+            border-radius: 100%;
+        }
+
+        // radio mark aspect
+
+        input[type="radio"] + label:after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 4px;
+            background-color: white;
+            transition: all 0.2s;
+            width: 8px;
+            height: 8px;
+            border-radius: 100%;
+        }
+
+        // mark aspect changes 
+
+        input[type="checkbox"]:not(:checked) + label:after ,
+        input[type="radio"]:not(:checked) + label:after {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        input[type="checkbox"]:checked + label:after ,
+        input[type="radio"]:checked + label:after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        // disabled  
+
+        input[type="checkbox"]:disabled + label:before ,
+        input[type="radio"]:disabled + label:before {
+            box-shadow: none;
+            border-color: grey7;
+            background-color: grey7;
+        }
+        
+        input[type="checkbox"]:disabled:checked + label:after {
+            color: grey5;
+        }
+
+        input[type="radio"]:disabled:checked + label:after {
+            background-color: grey5;
+        }
+
+        input[type="checkbox"]:disabled + label ,
+        input[type="radio"]:disabled + label {
+            color: grey5;
+        }
+
+        // accessibility
+
+        input[type="checkbox"]:focus + label:before ,
+        input[type="radio"]:focus + label:before {
+            border: dotted 1px primary;
+        }
+
+        // hover style just for information
+
+        input[type="checkbox"]:not(:disabled) + label:hover:before ,
+        input[type="radio"]:not(:disabled) + label:hover:before {
+            border: 1px solid primary !important;
+        }
+
+ 
+    }
+
+    
+    // Error styles for invalid checkboxes
+
+    .submitted {
+        .ng-invalid[type="checkbox"]:not(:disabled) + label:before ,
+        .ng-invalid[type="radio"]:not(:disabled) + label:before {
+            border-color: negative;
+            background-color: lighten(negative, 95%);
+        }
+    }
+
+
+    // Toggles
+    //
+    // Markup:
+    // <fieldset class="form">
+    //     <div class="form__field">
+    //         <div class="field__toggle">
+    //             <input type="checkbox" name="" id="optionsCheckToggle1">
+    //             <label class="form__label" for="optionsCheckToggle1">Checkbox option</label>
+    //         </div>
+    //     </div>
+    //     <div class="form__field">
+    //         <div class="field__toggle">
+    //             <input type="radio" name="optionsRadiosToggles" id="optionsRadios3" value="option3" checked="">
+    //             <label class="form__label" for="optionsRadios3">Radio Option</label>
+    //         </div>
+    //         <div class="field__toggle">
+    //             <input type="radio" name="optionsRadiosToggles" id="optionsRadios4" value="option4">
+    //             <label class="form__label" for="optionsRadios4">Radio Option</label>
+    //         </div>
+    //     </div>
+    //     <div class="form__field" style="width: 200px">
+    //         <div class="field__toggle field__toggle--align-right">
+    //             <input type="checkbox" name="" id="optionsCheckToggle5">
+    //             <label class="form__label" for="optionsCheckToggle5">Checkbox option</label>
+    //         </div>
+    //     </div>
+    // </fieldset>
+    //
+    // Styleguide elements.checkboxesradios.toggles
+
+    .field__toggle {
+        display: block;
+        min-height: 26px;
+        min-width: 44px;
+
+        input {
+            position: absolute;
+            left: -999em;
+
+            &:checked ~ label:before {
+                background-color: positive;
+            }
+
+            &:checked ~ label:after {
+                margin-left: 23px;
+            }
+        }
+
+        input ~ .form__label {
+            position: relative;
+            line-height: 1.6em;
+            text-indent: 4em;
+            margin: 0.2em 0;
+            cursor: pointer;
+            user-select: none;
+
+            &:before ,
+            &:after {
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                content: 'OFF';
+                width: 44px;
+                height: 22px;
+                background-color: grey6;
+                border-radius: 22px;
+                transition: all 100ms ease-in;
+
+                // experimental text
+                text-align: center;
+                line-height: 22px;
+                text-indent: 18px;
+                font-size: 8px;
+                color: white;
+            }
+
+            &:after {
+                width: 20px;
+                height: 20px;
+                top: 1px;
+                margin-left: 1px;
+                background-color: white;
+                border-radius: 20px;
+                box-shadow: 1px 2px 5px rgba(0,0,0,0.2);
+
+                // experimental text
+                content: 'ON';
+                line-height: 20px;
+                text-indent: -40px;
+            }
+
+        }
+    }
+
+    .field__toggle--align-right {
+
+        input ~ .form__label {
+            
+            text-indent: 0;
+
+            &:before, 
+            &:after {
+                left: auto;
+                right: 0;
+            }
+        }
+
+        input {
+
+            ~ label:after {
+                margin-right: 23px;
+                content: 'OFF';
+            }
+
+            &:checked ~ label:after {
+                margin-right: 0;
+            }
+        }
+    }

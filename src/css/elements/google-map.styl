@@ -1,0 +1,34 @@
+.ui    
+    
+    // Map
+    // 
+    // This directive generates a google map for the inputted address
+    //
+    // Markup:
+    // <google-map address="nyc" zoom="14"></google-map>
+    //
+    // Styleguide elements.googlemap.map
+    
+    .googleMap {
+        width: 100%;
+        height: 500px;
+
+        // This helps elements within the google map not inherit css we've applied to all <img> tags
+        img {
+            max-width: none;
+        }
+        
+        @media maxTablet {
+            height: 320px;
+        }
+    }
+
+    // 
+    // Static map
+    // 
+    // This directive calls the google static maps api which returns an image of a map with the inputted address
+    //
+    // Markup:
+    // <static-map address="325 fliders lane melbourne" zoom="18" width="500" height="500" class="anyClass"></static-map>
+    //
+    // Styleguide elements.googlemap.staticmap

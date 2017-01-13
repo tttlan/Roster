@@ -1,0 +1,12 @@
+<div class="select-wrapper">
+    <select
+            ng-model="ngModel"
+            ng-options="area as area.Label for area in areas.data track by area.Value"
+            ng-disabled="areas.loading || isDisabled"
+            >
+        <option selected value="">Please select a Area</option>
+    </select>
+    <span class="select">{{ val }}</span>
+    <span class="select" ng-if='ngModel.Label'>{{ ngModel.Label }}</span>
+    <span class="select" ng-if='!ngModel.Label'>Please select a Area</span>
+</div>

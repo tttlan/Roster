@@ -1,0 +1,68 @@
+<div class="uploader uploader--list" 
+    ng-hide="hideUploader" 
+    ng-class="{ 'is--open' : files.showDropArea && !files.items.length, 'is--dragging' : isDragging , 'is--upload--csv' : files.uploadCsv === true }">
+    <div>
+    <ul class="uploader__files" ng-class="{'forCsv': files.uploadCsv === true}" ng-if="files.items.length || errors.length">
+        <li ng-repeat="file in files.items" ng-class="['file', {'file--large':large, 'file--success' : file.success, 'file--started': file.started, 'file--error': file.error}]">
+            <div class="file__content">
+                <canvas class="file__thumb" uploader-thumb></canvas>
+                <i file-icon="{{file.name}}"></i>
+                <p class="file__name">{{file.name}}</p>
+                <ul class="file__meta">
+                    <li>{{file.size}}</li>
+                    <li ng-show="file.success"> - <a href="" ng-click="uploader.removeFile($index, file, 'complete')">remove</a></li>
+                    <li ng-show="!file.success"> - <a href="" ng-click="uploader.removeFile($index, file)">cancel</a></li>
+                    <li ng-show="file.error"> - <a href="" ng-click="uploader.sendFile($index)" tooltip="Upload failed" tooltip-placement="left">try again</a></li>
+                </ul>
+                <a href="" class="file__cancel" ng-click="uploader.removeFile($index)" tooltip="Remove" tooltip-append-to-body="true"><i class="icon--cross"></i></a>
+                <div class="file__status" ng-show="file.isNew">
+                    <loader ng-hide="file.success || file.error || file.progress < 99"></loader>
+                    <i ng-hide="!file.success" class="icon--round-check"></i>
+                    <i ng-hide="!file.error" class="icon--round-cross"></i>
+                </div>
+
+            </div> 
+            <div class="file__progress">
+                <progress-bar type="white" value="file.progress"></progress-bar> 
+            </div>
+        </li>
+
+    </ul>
+
+    <a trigger-browse ng-class="['uploader__action', {'uploader--large':large}]" ng-hide="files.reachedLimit || files.uploadCsv === true">
+        <i class="icon--attachment"></i>
+        <span ng-if="files.items.length">Add another file</span>
+        <span ng-if="!files.items.length">{{files.ctaMessage}}</span>
+    </a>
+
+    <a trigger-browse href="" class="uploader__drop" ng-show="files.uploadCsv === false" style="width: auto">
+        
+        <div class="uploader__drop-message">
+            <div class="uploader__drop-cell">
+                <img src="/interface/images/add_file.svg" />
+                <h2>ADD FILES</h2>
+                <p>You can drag and drop files here to upload.</p>
+            </div>
+        </div>
+    </a>
+        <!--For uploading CSV File in add new employee-->
+        <a trigger-browse href="" class="uploader__drop uploader--csv--frame" ng-show="files.uploadCsv === true && files.items.length < 1"  >
+            <div class="uploader__drop-message" >
+                <div class="uploader__drop-cell uploadCsv">
+                    <i class="icon--upload icon-is-huge"></i>
+                    <p style="width: 300px">Drag and drop CSV file or click upload.</p>
+                </div>
+            </div>
+        </a>
+    <input type="file" class="is-visually-hidden" multiple name="upload-file">
+    </div>
+    <!--For uploading CSV File in add new employee -->
+    <div class="uploader--csv--submit" ng-show="files.items.length > 0 && files.uploadCsv === true">
+        <div class="field__checkbox">
+            <input id="makeMemberActive" type="checkbox" ng-model="activeMember">
+            <label for="makeMemberActive" class="form__label">Make members active</label>
+        </div>
+        <a href="" class="button button--primary" ng-click="completeUpload()">COMPLETE
+            UPLOAD</a>
+    </div>
+</div>

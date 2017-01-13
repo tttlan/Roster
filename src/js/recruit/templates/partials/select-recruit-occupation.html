@@ -1,0 +1,11 @@
+<div class="select-wrapper">
+    <select ng-model="selectModel"
+            ng-options="occupation as occupation.Label for occupation in occupations.data track by occupation.Value"
+            ng-disabled="occupations.loading || isDisabled"
+            ng-change="updateModel(selectModel)">
+        <option selected value="">Please select a Occupation</option>
+    </select>
+    <span class="select">{{ val ? val : ngModel.Label}}</span>
+    <span class="select" ng-if='selectModel.Label'>{{ selectModel.Label}}</span>
+    <span class="select" ng-if='!selectModel.Label'>Please select a Occupation</span>
+</div>

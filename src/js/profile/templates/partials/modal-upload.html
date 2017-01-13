@@ -1,0 +1,19 @@
+<header class="modal__header">
+    <h3 class="modal__title">Insert an document</h3>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+
+<div class="modal__uploader">
+    <uploader
+        maxsize="10 * 1000 * 1024"
+        maxfiles="5"
+        ng-model="items"
+        container-id="1"
+        start-open="true"
+    ></uploader>
+</div>
+
+<footer class="modal__footer">
+    <button href="" class="button button--small" ng-click="cancel()">Cancel</button>
+    <button class="button button--positive button--small" ng-click="ok()" ng-disabled="!items.length">Insert document</button>
+</footer>

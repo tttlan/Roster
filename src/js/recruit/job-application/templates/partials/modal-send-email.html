@@ -1,0 +1,79 @@
+<form name="sendEmailForm" class="sendEmailForm" ng-class="{'is--loading': isLoading}" novalidate ng-submit="sendEmail()">
+
+    <header class="modal__header">
+        <h2 class="modal__title">Send email</h2>
+        <a href="" class="modal__close" ng-click="cancel()"></a>
+    </header>
+
+    <div class="modal__content modal__send-email">
+        <div class="well">
+            <i class="icon--round-info well__icon"></i>
+        <span class="well__content">
+            An email will be sent to each applicant independently.
+        </span>
+        </div>
+
+        <accordion-segment>
+
+            <accordion-segment-group ng-show="showApplicantSearch">
+                <accordion-heading>Applicants <small>{{email.recipients.length}}</small></accordion-heading>
+                <div ng-show="(email.recipients.length < 1 ) && submitted" class="message--error">
+                    Please select applicant(s).
+                </div>
+                <div class="form__field col-1-2">
+                    <applicant-search-select job-id="jobId" selected-list="email.recipients"></applicant-search-select>
+                </div>
+            </accordion-segment-group>
+
+            <!--Template dropDown-->
+            <span style="position: relative" class="align-right">
+                    <a href="#" class="dropdown-toggle link">Load template...</a>
+                    <ul class="submenu submenu--compact dropdown-menu" >
+
+                        <div class="well email-template-dropdown">
+                            <i class="icon--round-info well__icon"></i>
+                            <span class="well__content"> Loading a template will override</br>current subject and message</span>
+                        </div>
+                        <li class="submenu__item">
+                            <input type="text" id="search_templates" placeholder="Search templates" ng-model="filterText" ng-click="$event.stopPropagation()">
+                        </li>
+
+                       <li ng-repeat="template in email.templates  | filter:template.userCan(EntityActionType.GetContentOfEmail) | filter:{ Title : filterText}" class="submenu__item" >
+                            <a href="" ng-click="getEmailTemplate(template)"> {{template.Title}}</a>
+                        </li>
+
+                    </ul>
+                </span>
+
+            <!--Subject Field-->
+            <div class="form-email-subject__padding">
+                <input type="text" id="Subject" name="subject" placeholder="Subject" ng-model="email.subject" required autocomplete="off">
+                <div ng-show="(sendEmailForm.subject.$dirty || submitted) && sendEmailForm.subject.$error.required" class="message--error">
+                    Subject field is required
+                </div>
+            </div>
+
+            <!--Body Text-->
+            <div class="textarea">
+                <text-angular
+                        ng-model="email.body"
+                        id="richtext"
+                        data-placeholder="Enter text here"
+                        ta-toolbar="[['bold', 'italics', 'underline'],['ul', 'ol'], ['quote']]"
+                        ta-text-editor-class="form__job--editor-content"
+                        ta-html-editor-class="form__job--editor-content"
+                        name="body"
+                ></text-angular>
+            </div>
+
+        </accordion-segment>
+    </div>
+
+    <footer class="modal__footer">
+        <div class="button-group text-right">
+            <button class="button" type="button" ng-click="cancel()">Cancel</button>
+            <button class="button button--primary" ng-class="{'is--btn-loading': false}">Send Email</button>
+        </div>
+    </footer>
+
+</form>

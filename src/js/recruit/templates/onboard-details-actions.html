@@ -1,0 +1,130 @@
+<footer-onboarding class="footer__onboarding">
+     <div class="footer__wrapper">
+         <div class="footer__onboarding--left buttons" ng-if="!isOnboardPhaseUndefined(data.onboards[0])">  
+            <a class="button button--icon" href="" dropdown-toggle ng-if="!isOnboardPhaseComplete(data.onboards[0])"><i class="icon--ellipsis"></i></a>
+            <ul class="submenu dropdown-menu">
+                <li class="submenu__item" ng-if="data.onboards[0].ActionPermissions.welcomecandidate">
+                    <div class="field__checkbox">
+                        <input type="checkbox" class="form-control"
+                            id="onboarding__SuppressEmailNotification"
+                            name="onboarding__SuppressEmailNotification"
+                            ng-model="data.onboards[0].Option.IsSuppressEmail">
+
+                        <label for="onboarding__SuppressEmailNotification" class="form-label">
+                            Supress candidate email notification
+                        </label>
+                    </div>
+                </li>
+                <li class="submenu__item" ng-class="{'is--active' : isMenuEditActive(0)}"
+                    ng-if="data.onboards[0].ActionPermissions.bypasscandidateacceptance">
+                    <div class="form__field">
+                        <div class="field__checkbox bypass__candidate">
+                            <input id="bypass__candidate" type="checkbox" ng-click="doExecuteToComplete(data.onboards)">
+                            <label for="bypass__candidate" class="form__label">Bypass candidate acceptance</label>
+                        </div>
+                    </div>
+                </li>
+                <li class="submenu__item" ng-class="{'is--active' : isMenuEditActive(0)}"
+                    ng-if="data.onboards[0].ActionPermissions.editproposedrole || data.onboards[0].ActionPermissions.editpersonalinformation || data.onboards[0].ActionPermissions.editcandidatecontacts">
+                    <a href="" ng-click="toggleEditable()">Edit</a>
+                </li>
+                <li class="submenu__item" ng-class="{'is--active' : isMenuRollbackActive(0)}"
+                    ng-if="data.onboards[0].ActionPermissions.rollbackonboard">
+                    <a href="" ng-confirm-click="rollback(data.onboards[0])" ng-disabled="data.onboards[0].isSubmitting">Roll back</a>
+                </li>
+                <li class="submenu__item" ng-class="{'is--active' : isMenuDeleteActive(0)}"
+                    ng-if="data.onboards[0].ActionPermissions.deleteonboard">
+                    <a href="" ng-disabled="data.onboards[0].isSubmitting" ng-confirm-click="delete(data.onboards[0])">Delete</a>
+                </li>
+            </ul>
+             <a ng-click="openOnboardNotes()" class="button button--icon" href=""
+                ng-if="data.onboards[0].ActionPermissions.postonboardnote">
+                 <i class="icon--comment-2"></i>
+             </a>
+         </div>
+                        
+         <div class="button-group aligned--right footer__onboarding--right">
+             
+            <loader ng-if="data.onboards[0].isSubmitting"></loader>
+
+            <button type="button"
+                    class="button"
+                    ng-if="isOnboardPhaseUndefined(data.onboards[0]) || isOnboardPhaseNew(data.onboards[0])"
+                    ng-click="goBackToList()">
+                CANCEL
+            </button>
+            
+            <button class="button button--positive"
+                    type="button"
+                    ng-if="isOnboardPhaseUndefined(data.onboards[0]) || isOnboardPhaseNew(data.onboards[0])"
+                    ng-disabled="data.onboards[0].isSubmitting || (!isSingle && commonOnboard.state.isEditable) || isGetOnboardDetail || onboardingDetailsForm.$invalid || (data.onboards.length === 1 && !data.uploadCsvBulkOnboard.length && isSingle === false)"
+                    ng-click="save(data.onboards)">
+                SAVE
+            </button>
+
+             <button class="button button--positive button--icon-right"
+                     ng-if="isOnboardPhaseUndefined(data.onboards[0]) || data.onboards[0].ActionPermissions.sendtoapproval"
+                     ng-click="createOnboardAndSendToApproval(data.onboards)"
+                     ng-disabled="data.onboards[0].isSubmitting || (!isSingle && commonOnboard.state.isEditable) || isGetOnboardDetail || onboardingDetailsForm.$invalid || (data.onboards.length === 1 && !data.uploadCsvBulkOnboard.length && isSingle === false)">
+                 SUBMIT
+             </button>
+            
+             <button type="button"
+                     class="button button--negative"
+                     ng-if="data.onboards[0].ActionPermissions.rejectonboardforchanges || data.onboards[0].ActionPermissions.rejectonboard || data.onboards[0].ActionPermissions.rejectonboardpermanent"
+                     ng-disabled="data.onboards[0].isSubmitting"
+                     ng-click="reject(data.onboards[0])">
+                 REJECT
+             </button>
+
+             <button type="button"
+                     class="button button--positive"
+                     ng-if="data.onboards[0].ActionPermissions.approveonboard"
+                     ng-disabled="data.onboards[0].isSubmitting || (!isSingle && commonOnboard.state.isEditable) || isGetOnboardDetail || onboardingDetailsForm.$invalid"
+                     ng-click="doProgress(data.onboards)">
+                 APPROVE
+             </button>
+
+             <button type="button"
+                     class="button button--positive"
+                     ng-if="isTrialOnboard(0) && data.onboards[0].ActionPermissions.completeonboard"
+                     ng-disabled="data.onboards[0].isSubmitting || (!isSingle && commonOnboard.state.isEditable) || (onboardingDetailsForm.$invalid && commonOnboard.state.isEditable)"
+                     ng-click="doProgress(data.onboards)">
+                 COMPLETE
+             </button>
+
+            <!--<button type="button"
+                    class="button button--positive"
+                    ng-if="isOnboardPhaseDocumentation(data.onboards[0])"
+                    ng-disabled="data.onboards[0].isSubmitting || (onboardingDetailsForm.$invalid && commonOnboard.state.isEditable)"
+                    ng-click="doExecuteToComplete(data.onboards)">
+                BYPASS ACCEPTANCE
+            </button>-->
+
+             <button type="button"
+                     class="button button--positive"
+                     ng-if="data.onboards[0].ActionPermissions.welcomecandidate"
+                     ng-disabled="data.onboards[0].isSubmitting || (!isSingle && commonOnboard.state.isEditable) || isGetOnboardDetail || onboardingDetailsForm.$invalid"
+                     ng-click="doExecute(data.onboards)">
+                 WELCOME CANDIDATES
+             </button>
+
+             <button type="button"
+                     class="button button--positive"
+                     ng-if="!data.onboards[0].isResendDocRequired && data.onboards[0].ActionPermissions.confirmonboard"
+                     ng-disabled="data.onboards[0].isSubmitting || isGetOnboardDetail || onboardingDetailsForm.confirmDocumentSingleForm.$invalid"
+                     ng-click="doProgress(data.onboards)">
+                 CONFIRM DOCUMENTS
+             </button>
+
+            <button type="button"
+                    class="button button--positive"
+                    ng-if="isOnboardPhaseAwaitingConfirmation(data.onboards[0]) && data.onboards[0].isResendDocRequired"
+                    ng-disabled="data.onboards[0].isSubmitting || isGetOnboardDetail || onboardingDetailsForm.$invalid"
+                    ng-click="doProgress(data.onboards)">
+                RESEND DOCUMENTS
+            </button>
+        </div>
+     </div>      
+</footer-onboarding>
+ 

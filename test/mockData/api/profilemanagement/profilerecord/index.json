@@ -1,0 +1,223 @@
+{
+  "$id": "1",
+  "ProfileRecord": {
+    "$id": "2",
+    "MemberId": "247682",
+    "UserStatus": "test my profile delete1",
+    "Active": true,
+    "Deleted": false,
+    "FirstName": "Sherpa",
+    "Surname": "Admin",
+    "RoleDescription": "HR - Office / Training Coordinator",
+    "RoleId": "618",
+    "Address": "324 Flinders Lane",
+    "Address2": null,
+    "City": "",
+    "Suburb": "MELBOURNE",
+    "Postcode": "3000",
+    "LocationState": "VIC",
+    "CountryName": "Australia",
+    "LinePhone1": "0388882911",
+    "LinePhone2": "",
+    "MobilePhone": "",
+    "IsOnline": false,
+    "Email": "test2@test.com",
+    "Fax": null,
+    "WebAddress": null,
+    "IsPrimary": true,
+    "IsPrivate": false,
+    "GroupsList": [
+      {
+        "$id": "3",
+        "NetworkGroupId": 11042,
+        "GroupName": "VIC - Company "
+      },
+      {
+        "$id": "4",
+        "NetworkGroupId": 11043,
+        "GroupName": "VIC - Franchise Recruitment "
+      },
+      {
+        "$id": "5",
+        "NetworkGroupId": 11044,
+        "GroupName": "QLD - Recruitment "
+      },
+      {
+        "$id": "6",
+        "NetworkGroupId": 11050,
+        "GroupName": "ACT - Company "
+      },
+      {
+        "$id": "7",
+        "NetworkGroupId": 11067,
+        "GroupName": "Malvern"
+      },
+      {
+        "$id": "8",
+        "NetworkGroupId": 11071,
+        "GroupName": "Chermside"
+      },
+      {
+        "$id": "9",
+        "NetworkGroupId": 11076,
+        "GroupName": "Newcastle (The Junction)"
+      },
+      {
+        "$id": "10",
+        "NetworkGroupId": 11082,
+        "GroupName": "South Melbourne"
+      },
+      {
+        "$id": "11",
+        "NetworkGroupId": 11088,
+        "GroupName": "Degraves Street"
+      },
+      {
+        "$id": "12",
+        "NetworkGroupId": 11107,
+        "GroupName": "Joondalup"
+      },
+      {
+        "$id": "13",
+        "NetworkGroupId": 11129,
+        "GroupName": "Operations - ABM/BM Recruitment"
+      },
+      {
+        "$id": "14",
+        "NetworkGroupId": 11142,
+        "GroupName": "NSW - Company Recruitment "
+      },
+      {
+        "$id": "15",
+        "NetworkGroupId": 11156,
+        "GroupName": "Burke Franchise "
+      }
+    ],
+    "DefaultGroupName": null,
+    "DefaultGroupID": "0",
+    "NetworkId": "957",
+    "AvatarPhotoThumb": "/networkrepository/957/member/247682/profile_mid.jpg",
+    "AvatarPhotoLarge": "/networkrepository/957/member/247682/profile_large.jpg",
+    "AvatarPhotoThumbMini": "/networkrepository/957/member/247682/profile_small.jpg"
+  },
+  "EntityActions": [
+    {
+      "$id": "23",
+      "Id": null,
+      "Code": 2702,
+      "Caption": "ViewProfileEmploymentDetail",
+      "Description": "ViewProfileEmploymentDetail",
+      "ActionUrl": null,
+      "Children": null
+    },
+    {
+      "$id": "24",
+      "Id": null,
+      "Code": 2701,
+      "Caption": "CanEditProfileEmployeeDetail",
+      "Description": "CanEditProfileEmployeeDetail",
+      "ActionUrl": null,
+      "Children": null
+    },
+    {
+      "$id": "25",
+      "Id": null,
+      "Code": 2716,
+      "Caption": "CanViewBankingDetails",
+      "Description": "CanViewBankingDetails",
+      "ActionUrl": null,
+      "Children": null
+    },
+    {
+      "$id": "26",
+      "Id": null,
+      "Code": 2714,
+      "Caption": "CanEditBanking",
+      "Description": "CanEditBanking",
+      "ActionUrl": null,
+      "Children": null
+    },
+    {
+      "$id": "27",
+      "Id": null,
+      "Code": 2720,
+      "Caption": "CanViewEmploymentHistory",
+      "Description": "CanViewEmploymentHistory",
+      "ActionUrl": null,
+      "Children": null
+    },
+    {
+      "$id": "28",
+      "Id": null,
+      "Code": 2734,
+      "Caption": "CanViewSystemInformation",
+      "Description": "CanViewSystemInformation",
+      "ActionUrl": null,
+      "Children": null
+    },
+    {
+      "$id": "29",
+      "Id": null,
+      "Code": 2738,
+      "Caption": "CanViewDocumentation",
+      "Description": "CanViewDocumentation",
+      "ActionUrl": null,
+      "Children": null
+    },
+    {
+      "$id": "30",
+      "Id": null,
+      "Code": 2740,
+      "Caption": "CanViewChangePassword",
+      "Description": "CanViewChangePassword",
+      "ActionUrl": null,
+      "Children": null
+    },
+    {
+      "$id": "31",
+      "Id": null,
+      "Code": 2724,
+      "Caption": "CanEditContact",
+      "Description": "CanEditContact",
+      "ActionUrl": null,
+      "Children": null
+    },
+    {
+      "$id": "32",
+      "Id": null,
+      "Code": 2722,
+      "Caption": "CanViewContact",
+      "Description": "CanViewContact",
+      "ActionUrl": null,
+      "Children": null
+    },
+    {
+      "$id": "33",
+      "Id": "180665",
+      "Code": 2708,
+      "Caption": "CanViewExitFormLink",
+      "Description": "CanViewExitFormLink",
+      "ActionUrl": "/network/ProfileExitForm.aspx?id=180665&frm=profile",
+      "Children": null
+    },
+    {
+      "$id": "34",
+      "Id": null,
+      "Code": 2736,
+      "Caption": "CanEditSystemInformation",
+      "Description": "CanEditSystemInformation",
+      "ActionUrl": "/profilemanagement/systeminfo/",
+      "Children": null
+    },
+    {
+      "$id": "35",
+      "Id": null,
+      "Code": 4002,
+      "Caption": "ViewOnboardWorkflow",
+      "Description": "ViewOnboardWorkflow",
+      "ActionUrl": null,
+      "Children": null
+    }
+  ],
+  "Status": 0
+}

@@ -1,0 +1,95 @@
+<div class="page page--2-1">
+
+    <div class="page__wrapper">
+
+        <header class="page__header">
+            <ul class="nav nav--breadcrumb">
+                <li><a href="" path="training.manage.index">Manage Courses</a></li>
+            </ul>
+            <h1>Publish the course</h1>
+        </header>
+
+        <!-- content component -->
+
+        <div class="page__content">
+
+            <fieldset class="form segment" ng-class="{'submitted': submitted}" groups-and-roles>
+
+                <p>Who will receive this course once it is published?</p>
+                <p>Type some users or groups into the boxes below. Only once the course is published and contains subjects will these members get the course assigned to them.</p>
+
+                <div class="form__field">
+                    <div class="field__checkbox">
+                        <input type="checkbox" id="form_checkbox_groups" ng-model="course.allGroups" /> 
+                        <label for="form_checkbox_groups">Publish to all groups</label>
+                    </div>
+                    <network-groups
+                        ng-model="course.selectedTagGroups"
+                        all-toggle="course.allGroups"
+                        ng-class="{'error': !course.selectedTagGroups.length}"
+                    ></network-groups>
+                </div>
+                
+                <div class="form__field">
+
+                    <div class="field__checkbox">
+                        <input type="checkbox" id="form_checkbox_roles" ng-model="course.allRoles" /> 
+                        <label for="form_checkbox_roles">Publish to all roles within selected groups</label>
+                    </div>
+                    <network-roles
+                        ng-model="course.selectedTagRoles"
+                        all-toggle="course.allRoles"
+                        ng-class="{'error': !course.selectedTagRoles.length}"
+                    ></network-roles>
+                </div>
+            </fieldset>
+            
+            <p class="form__note form__note--error" ng-show="serverError">
+                {{ serverError }}
+            </p>
+
+            <div class="button-group">
+                <a back class="button">Back</a>
+                <button class="button button--caution button--icon-right" ng-click="saveGroups()" disable-toggle="course.loading">Save &amp; Publish</button>
+            </div>
+        </div>
+
+        <!-- END content component -->
+
+        <!-- nav component -->
+
+        <div class="page__aside lt-tablet-hide">
+
+            <div class="panel panel--noPadding">
+                <ul class="progress-list">
+                    <li class="progress__title">Create a new course</li>
+                    <li class="progress__step progress__step--complete">
+                        <a href="" path="training.manage.courses.edit" path-params="course.TrainingCourseId" class="step__item">
+                            <div class="step__number" data-text="1"></div>
+                            <div class="step__title">Edit</div>
+                            <div class="step__description">Edit your course</div>
+                        </a>
+                    </li>
+                    <li class="progress__step progress__step--complete">
+                        <a href="" path="training.manage.courses.addSubjects" path-params="course.TrainingCourseId" class="step__item">
+                            <div class="step__number" data-text="2"></div>
+                            <div class="step__title">Add Subjects</div>
+                            <div class="step__description">Choose from or create a new subject</div>
+                        </a>
+                    </li>
+                    <li class="progress__step progress__step--active">
+                        <span class="step__item">
+                            <div class="step__number" data-text="3"></div>
+                            <div class="step__title">Publish</div>
+                            <div class="step__description">Who has to do this course?</div>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+
+        <!-- END nav component -->
+
+    </div>
+</div>

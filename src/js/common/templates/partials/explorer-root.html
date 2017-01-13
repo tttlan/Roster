@@ -1,0 +1,9 @@
+<li>
+    <h3>
+        <a href="" ng-click="isOpen = !isOpen">
+            <span explorer-transclude="heading"></span>
+            <i ng-class="(isOpen) ? 'icon--up' : 'icon--down'"></i>
+        </a>
+    </h3>
+    <div class="description" collapse="!isOpen" ng-transclude></div>
+</li>

@@ -1,0 +1,164 @@
+[
+    {
+        "id": "event",
+        "name": "event",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "PhotoLrgId",
+                "type": "input",
+                "class": "",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "Title",
+                "label": "Name",
+                "placeholder": "Give your event a name",
+                "val": "",
+                "class": "",
+                "type": "input",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "StartDate",
+                "label": "When does it start?",
+                "placeholder": "",
+                "val": "",
+                "type": "date-time",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "dateFuture": true,
+                    "dateBefore": "EndDate",
+                    "dateAfter": "RsvpDate",
+                    "customErrorMessage": "The start date and time of the event must be before the end date and time of the event"
+                }
+            },
+            {
+                "name": "EndDate",
+                "label": "Ending at",
+                "placeholder": "",
+                "val": "",
+                "type": "date-time",
+                "class": "",
+                "validation": {
+                    "required": true,
+                    "dateFuture": true,
+                    "dateAfter": "StartDate",
+                    "dateMin": "form.StartDate.$modelValue",
+                    "customErrorMessage": "The end date and time of the event must be after the start date and time of the event"
+                }
+            },
+            {
+                "name": "locationAddress",
+                "type": "form-fields",
+                "children": [
+                    {
+                        "name": "Location",
+                        "label": "Location",
+                        "placeholder": "Describe the location",
+                        "val": "",
+                        "type": "input",
+                        "class": "",
+                        "validation": {
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "Address",
+                        "label": "Address",
+                        "placeholder": "The street address of the event",
+                        "val": "",
+                        "type": "autocomplete",
+                        "class": "",
+                        "autocompleteValues": "",
+                        "typeahead": "result.description as result.description for result in element.autocompleteValues | limitTo:5",
+                        "validation": {
+                            "required": true
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Description",
+                "label": "Description",
+                "val": "",
+                "type": "richtext",
+                "richTextConfig": "simple",
+                "class": "",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "ShowComments",
+                "label": "Allow event comments",
+                "placeholder": "",
+                "val": false,
+                "type": "toggle",
+                "class": "field__toggle--align-right",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "ShowGuestList",
+                "label": "Show the guest list",
+                "placeholder": "",
+                "val": true,
+                "type": "toggle",
+                "class": "field__toggle--align-right",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "RsvpDate",
+                "label": "Final RSVP date",
+                "val": "",
+                "type": "date-time",
+                "class": "field__edit",
+                "validation": {
+                    "required": false,
+                    "dateFuture": true,
+                    "dateBefore": "StartDate",
+                    "customErrorMessage": "The RSVP date and time must be before the start date and time of the event"
+                }
+            },
+            {
+                "name": "MaxAttending",
+                "label": "Limited spots available",
+                "val": "",
+                "type": "number",
+                "class": "",
+                "validation": {
+                    "required": false,
+                    "pattern": "^[1-9][0-9]*$",
+                    "customErrorMessage": "You must set a value higher than 0"
+                }
+            },
+            {
+                "name": "Invitees",
+                "label": "Invitees",
+                "placeholder": "",
+                "val": "",
+                "type": "checkbox",
+                "class": "event-form__field-invitees",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "submitForm",
+                "placeholder": "",
+                "value": "Submit",
+                "type": "submit-button"
+            }
+        ]
+    }
+]

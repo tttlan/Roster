@@ -1,0 +1,11 @@
+<div class="select-wrapper">
+    <select ng-model="selectModel"
+            ng-options="industry as industry.Label for industry in industrys.data track by industry.Value"
+            ng-disabled="industrys.loading"
+            ng-change="updateModel(selectModel)">
+        <option selected value="">Please select an Industry</option>
+    </select>
+    <span class="select">{{ val}}</span>
+    <span class="select" ng-if='selectModel.Label'>{{ selectModel.Label}}</span>
+    <span class="select" ng-if='!selectModel.Label'>Please select an Industry</span>
+</div>

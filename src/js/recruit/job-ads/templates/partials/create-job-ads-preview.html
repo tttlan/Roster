@@ -1,0 +1,93 @@
+<section class="job-ads-create modal__content job-create" ng-class="{'is--loading': loading}">
+    <!-- Information -->
+    <job-details-information job-detail="jobDetail"></job-details-information>
+
+    <!-- Advertisement -->
+    <job-details-advertisement job-detail="jobDetail"></job-details-advertisement>
+
+    <!-- Questions -->
+    <job-question-preview question="question"></job-question-preview>
+
+    <!--BOARDS-->
+    <div class="job-ads-create-section">
+        <h4 class="is--bold">BOARDS</h4>
+
+        <!-- Sherpa Internal -->
+        <div class="job-ads-create-preview-boards" ng-if="boards.hasSherpaInternal">
+            <div>
+                <img ng-src="{{internalLogoUrl}}"
+                     alt="Description" class="job-ads-image"/>
+                <div class="ad-note"> Internal </div>
+                <p class="align-right is--disabled" ng-show="!boards.siActive">Inactive</p>
+                <p class="align-right is--positive" ng-show="boards.siActive">ACTIVE</p>
+            </div>
+        </div>
+
+        <!-- Sherpa Website -->
+        <div class="job-ads-create-preview-boards" ng-if="boards.hasSherpaWebSite">
+            <div>
+                <img ng-src="{{internalLogoUrl}}"
+                     alt="Description" class="job-ads-image"/>
+                <div class="ad-note"> Website </div>
+                <p class="align-right is--disabled" ng-show="!boards.swActive">Inactive</p>
+                <p class="align-right is--positive" ng-show="boards.swActive">ACTIVE</p>
+            </div>
+        </div>
+
+        <!-- Seek -->
+        <div class="job-ads-create-preview-boards" ng-if="boards.hasSeek">
+            <div>
+                <img ng-src="/interface/images/seek-left.png"
+                     alt="Description" class="job-ads-image"/>
+                <p class="align-right is--disabled" ng-show="!boards.seActive">Inactive</p>
+                <p class="align-right is--positive" ng-show="boards.seActive">ACTIVE</p>
+            </div>
+        </div>
+
+        <!-- Career One -->
+        <div class="job-ads-create-preview-boards" ng-if="boards.hasCareerOne">
+            <div>
+                <img ng-src="/interface/images/careerone-left.png"
+                     alt="Description" class="job-ads-image"/>
+                <p class="align-right is--disabled" ng-show="!boards.caActive">Inactive</p>
+                <p class="align-right is--positive" ng-show="boards.caActive">ACTIVE</p>
+            </div>
+        </div>
+
+        <!-- One Shift -->
+        <div class="job-ads-create-preview-boards" ng-if="boards.hasOneShift">
+            <div>
+                <img ng-src="/interface/images/oneshift-left.png"
+                     alt="Description" class="job-ads-image"/>
+                <p class="align-right is--disabled" ng-show="!boards.onActive">Inactive</p>
+                <p class="align-right is--positive" ng-show="boards.onActive">ACTIVE</p>
+            </div>
+        </div>
+
+        <!-- Twitter -->
+        <div class="job-ads-create-preview-boards" ng-if="boards.hasTwitter">
+            <div>
+                <img ng-src="/interface/images/twitter-left.png"
+                     alt="Description" class="job-ads-image"/>
+                <p class="align-right is--disabled" ng-show="!boards.twActive">Inactive</p>
+                <p class="align-right is--positive" ng-show="boards.twActive">ACTIVE</p>
+            </div>
+        </div>
+
+        <!-- Facebook -->
+        <div class="job-ads-create-preview-boards" ng-if="boards.hasFacebook">
+            <div>
+                <img ng-src="/interface/images/facebook-left.png"
+                     alt="Description" class="job-ads-image"/>
+                <p class="align-right is--disabled" ng-show="!boards.fbActive">Inactive</p>
+                <p class="align-right is--positive" ng-show="boards.fbActive">ACTIVE</p>
+            </div>
+        </div>
+    </div>
+
+    <!--ASSESSMENT-->
+    <div>
+        <h4 class="is--bold">ASSESSMENT TEAM</h4>
+        <job-ads-assessors selected-assessor="assessors" editable="false"></job-ads-assessors>
+    </div>
+</section>

@@ -1,0 +1,70 @@
+﻿<form name="inboundDocumentsForm" id="inboundDocumentsForm" novalidate>
+    <div class="page page--1-c-wide recruit">
+        <div class="page__wrapper">
+            <div class="page__content onboarding" ng-class="{'is--loading': isLoading}">
+              <div class="segment">
+                <div class="page__header" style="text-align: center">
+                    <h1>Candidate documents</h1>
+                    Please provide us with the following documents and their expiry date
+                </div>
+                <div>
+                    <div id="onboarding-inboundDocuments-form">
+                        <div ng-repeat="document in onboarding.inboundDocuments | filter: {InboundRequirement : {IsRejected : null} && {IsLodged : false} || {IsRejected : true}} track by $index">
+                            <!--<hr class="solid"/>-->
+                            <fieldset class="form" ng-form name="documentForm">
+                                <div class="form__field">
+                                    <label class="form__label is--required is--uppercase">{{::document.InboundRequirement.PaperDocType.Description}}</label>
+                                    <strong class="message--error reject__reason--title" ng-if="document.InboundRequirement.IsRejected === true">
+                                        {{document.InboundRequirement.RejectReason}}
+                                    </strong>
+                            
+                                    <ng-form name="uploadCsvForm" id="uploadCsvForm" enctype="multipart/form-data">
+                                            <uploader maxfiles="1"
+                                                    cta="Drag and drop document or click to upload"
+                                                    ng-model="document.libraries"
+                                                    container-id="document.containerId"
+                                                    name="filestore"
+                                                    file-name="document.FileName"
+                                                    large="true" 
+                                                    ng-required="true">
+                                            </uploader>
+                                            <span class="form__note form__note--error" ng-show="!uploadCsvForm.filestore.$viewValue.length">
+                                                An uploaded file is required
+                                            </span>
+                                    </ng-form>
+                                </div>
+                                <ng-form name="ExpireDateForm" id="ExpireDateForm">
+                                    <div class="form__field col-1-2" ng-if="document.InboundRequirement.IsExpiredDateRequired === true">
+                                        <input type="text"
+                                            id="txtExpiryday"
+                                            name="txtExpiryday"
+                                            ng-model="document.InboundRequirement.ExpireDate"
+                                            required 
+                                            placeholder="Expiry date"
+                                            datepick datepicker-popup="d MMM yyyy"
+                                            validate-date-future="true">
+                                        <span class="icon--calendar field__after"></span>
+                                    </div>
+                                    <span class="form__note form__note--error" ng-show="ExpireDateForm.txtExpiryday.$invalid-validate-date-future || ExpireDateForm.txtExpiryday.$viewValue.length">
+                                        <span>
+                                            You must select a date that is either today or is after today
+                                        </span>
+                                    </span>
+                                </ng-form>
+                            </fieldset>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="recruit button-footer">
+        <div class="button-withtext">
+            <button class="button button--positive button--icon-right toggle-loading" 
+                ng-disabled="inboundDocumentsForm.$invalid || !inboundDocumentsForm.documentForm.$dirty 
+                || !inboundDocumentsForm.documentForm.uploadCsvForm.$dirty"
+                ng-click="save()">Continue <i class="icon--right"></i></button>
+        </div>
+    </div>
+</form>

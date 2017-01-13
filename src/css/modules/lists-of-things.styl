@@ -1,0 +1,91 @@
+
+.ui
+    
+    // People
+    // -------------------------------------
+
+    .people-list {
+        // placeholder
+    }
+
+    .people-list__search {
+        
+        border-top: solid 1px grey8;
+        border-bottom: solid 1px grey8;
+        position: relative;
+        
+        [class*="icon--"] {
+            color: grey6;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+        }
+        
+        input {
+            margin: 10px 0 10px 20px;
+        }
+    }
+    
+    .people-list__title {
+        margin-bottom: 30px;
+        margin-top: 0;
+
+        strong {
+            font-size: 110%;
+            display: block;
+        }
+    }
+
+    .people-list__person {
+        font-size: 14px;
+        border-bottom: solid 1px grey8;
+
+        a {
+            display: block;
+        }
+
+        small {
+            color: grey5;
+            display: block;
+            line-height: 1;
+        }
+
+        &:last-of-type {
+            border: 0;
+        }
+    }
+
+    .people-list__load-more {
+        text-align:center;
+        margin: 10px auto;
+    }
+
+
+    // List with ctas
+    // -------------------------------------
+
+    .action-list {
+        // placeholder
+    }
+
+    .action-list__title {
+        margin-bottom: 30px;
+        margin-top: 0;
+    }
+
+    .action-list__items {
+        margin-bottom: (gutter/2);
+        list-style: none;
+        padding: 0;
+    }
+
+    .action-list__item {
+        border-top: solid 1px grey8;
+
+        small {
+            color: grey5;
+            display: block;
+            line-height: 1;
+        }
+    }

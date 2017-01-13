@@ -1,0 +1,71 @@
+[
+    {
+        "id": "form",
+        "name": "formbuilder",
+        "action": "/get/",
+        "method": "post",
+        "elements": [
+            {
+                "name": "input",
+                "label": "Standard input",
+                "placeholder": "Enter text",
+                "val": "Text from the json",
+                "classes": "",
+                "type": "input",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "email",
+                "label": "Email Address",
+                "placeholder": "Enter email Address",
+                "val": "",
+                "classes": "",
+                "type": "email",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "url",
+                "label": "Url",
+                "placeholder": "Enter url",
+                "val": "",
+                "classes": "",
+                "type": "url",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "password",
+                "label": "Password",
+                "placeholder": "",
+                "val": "",
+                "classes": "",
+                "type": "password",
+                "validation": {
+                    "required": true
+                }
+            },
+            {
+                "name": "toggle",
+                "label": "Toggle me",
+                "placeholder": "",
+                "val": false,
+                "type": "toggle",
+                "class": "",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "submit",
+                "placeholder": "",
+                "val": "Submit",
+                "type": "submit-button"
+            }
+        ]
+    }
+]

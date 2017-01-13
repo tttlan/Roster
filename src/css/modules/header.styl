@@ -1,0 +1,547 @@
+// Site Header
+// ------------------------------------------------
+// !!!!! Note - Changes here may need to be reflected in the bottom block of CSS, that block resets styles for old pages that aren't responsive
+// Before commiting code please test the header on an old page eg. /network/roster.aspx
+
+.ui 
+
+    // Add padding to add space where the fixed header is positioned
+    body {
+        padding-top: 0;
+
+        @media minTablet {
+            padding-top: subnav-height + header-height;
+        }
+        
+        @media betweenTabletDesktop {
+            
+            padding-top: header-height;
+            
+            // The subnav displays only within this media query, add some padding to allow room for it
+            &.has-subnav {
+                padding-top: subnav-height + header-height;   
+            }
+        }
+
+        @media minDesktop {
+            padding-top: header-height;
+        }        
+    }
+
+    // Reset body padding on header with no navbar as it's not a fixed header
+    .header--noNav {
+        margin-top: 0;
+
+        @media minTablet {
+            margin-top: -(subnav-height + header-height);
+        }
+
+        @media minDesktop {
+            margin-top: -(header-height);
+        }        
+    }
+
+    .hgroup {
+        width: 100%;
+        z-index: 199;
+        padding-top: 0;
+    }
+
+    .header {
+        position: relative;
+        width: 100%;
+        background-color: white;
+        height: header-height;
+        z-index: 201;
+        box-shadow: 0px 0px 7px rgba(100,100,100,0.3);
+        
+        &:after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            border-bottom: solid 2px primary;
+            z-index: -1;
+
+            @media print {
+                border-bottom-color: #000;
+            }
+        }
+
+        .header__wrapper {
+            wrapper();
+            clearfix();
+
+            @media print {
+                text-align: center;
+            }
+        }
+
+        @media minTablet {
+            position: fixed;
+            top: 0; 
+            left: 0;
+        }
+    }
+    
+    @media maxTablet {
+        
+        .has-subnav .header {
+            margin-bottom: subnav-height;
+        }
+    }
+
+    .body--header-compact .header .submenu--tail {
+        margin-top: -1px;
+    }
+
+    .header--noNav {
+
+        height: header-height + 30;
+        position: relative;
+        text-align: center;
+
+        @media maxTablet {
+            height: auto; 
+            margin-bottom: 0; // Remove margin that takes up subnav space           
+        }
+
+        &:after {
+            display: none;
+        }
+
+        .header__logo {
+            
+            height: header-height + 30; 
+            width: 190px;
+            display: inline-block;
+            float: none;
+            position: static;
+            margin-left: 0;
+
+            @media maxTablet {
+
+                height: header-height; 
+            }
+
+            &.header__logo--left {
+                
+                @media minTablet {
+                    float: left;
+                }
+            }         
+        }
+    }
+
+    // Logo
+    // ------------------------------------------------
+
+    .header__logo {
+        position: absolute;
+        left: 50%;
+        margin-left: -77px;
+        width: 155px;
+        text-align: center;
+        height: header-height - 2;
+
+        a, .header__logoWrapper {
+            verticalAlignContent()
+            display: inline;
+        }
+
+        img {
+            display: inline-block;
+            vertical-align: middle;
+            max-height: 58px;
+            width: auto;
+        }
+
+        @media print {
+            transition: none; // Transition introduces a delay which breaks print layout
+        }
+
+        @media minDesktop {
+            &:not(.header-logo__onboarding) {
+                margin-left: 0;
+                margin-right: 15px;
+                max-width: 200px;
+                position: static;
+                float: left;
+                text-align: left;
+            }
+        }
+    }
+
+
+    // Menu
+    // ------------------------------------------------
+     
+    .header__navToggle { // Todo - unbind .header__nav class once it's deleted
+        float: left;
+
+        @media minTablet {
+            padding: 19px 0px;
+        }
+
+        @media print {
+            display: none;
+        }
+
+        .nav__button {
+            display: block;
+            line-height: 20px;
+            overflow: hidden;
+            padding: 22px 10px;
+            margin-left: -10px;
+            cursor: pointer;
+            color: grey3;
+            height: header-height - 2;
+        
+
+            .nav__button-text {
+                font-size: 11px;
+                display: none;
+                float: left;
+                text-transform: uppercase;
+            }
+
+            .nav__button-icon {
+                font-size: 28px;
+                display: block;
+                float: left
+                height: 20px;
+                line-height: 20px;
+                margin-right: 0;
+            }
+
+            @media minTablet {
+                padding-right: 6px;
+                border: solid 1px grey7;
+                border-radius: base-border-radius;
+                box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.05);
+                background-color: white;
+                padding: 2px 4px;
+                height: auto;
+                margin-left: 0;
+
+                .nav__button-icon {
+                    font-size: 14px;
+                    height: 20px;
+                    line-height: 20px;
+                }
+
+                .nav__button-text {
+                    display: block;
+                }
+
+                .nav__button-icon {
+                    margin-right: 0.35em;
+                }
+            }
+
+        }
+
+        // item active class
+        &:hover ,
+        &:focus {
+            .nav__button {
+                color: black;
+            }
+        }
+
+        // Sub menu
+        .submenu--left {
+            left: 10px;
+        }
+
+    }
+    
+
+    // User
+    // ------------------------------------------------
+
+    .header__user {
+        float: right;
+        position: relative;
+
+        @media print {
+            display: none;
+        }
+
+        .user__avatar {
+            display: block;
+            padding: 10px 0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .user__icon {
+            font-size: 14px;
+            line-height: 12px;
+            vertical-align: top;
+            opacity: 0.8;
+            transition: opacity 100ms linear;
+            position: absolute;
+            top: 26px;
+            right: -7px;
+
+            @media minTablet {
+                display: inline-block;
+                position: static;
+                margin-top: 16px;
+            }
+        }
+
+        .user__label {
+            position: absolute;
+            top: 12px;
+            right: 35px;
+
+            @media minTablet {
+                right: 60px;
+            }
+        }
+
+        // item active class
+        &:hover ,
+        &:focus {
+            .user__icon {
+                opacity: 1;
+            }
+        }
+
+        @media minTablet {
+            display: block;
+        }
+
+    }
+
+    // Set z-index of this stacking context
+    .header__mainNav {
+        position: relative;
+        z-index: 200;
+    }
+
+    .header__mainNavInner {
+        width: 100%;
+        right: 0;
+        border: none;
+        border-top: solid 2px primary;
+        border-radius: 0;
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        top: -900px;
+        background: #fff;
+        box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.06);
+
+        .menu-arrow {
+            triangle(6px, primary, down);
+            position: absolute;
+            top: 0;
+            left: -10px;
+            transition: left 0.4s;
+            z-index: 1000;
+            margin-left: -8px; // Half the width of the arrow minus half the negative margin of submenu item
+            display: none;
+        }       
+
+        .submenu {
+            max-width: 960px;
+            opacity: 1;
+            top: 100%;            
+            position: static;
+            margin: 0 auto;
+            box-shadow: none;
+        }
+
+        &.singleRow .menu-arrow {
+            display: block;
+        }
+    }
+
+    .body--header-compact .header__mainNavInner {
+        margin-top: -2px;
+    }
+
+    .on-screen .header__mainNavInner .submenu {
+        visibility: visible;
+    }
+
+
+    // Sticky header logic
+    // ------------------------------------------------
+
+    @media minTablet {
+    
+        .body--header-compact {
+
+            .header {
+                height: header-fixed-height;
+                
+                .header__logo {
+                    display: none !important;
+                }
+            }
+            
+            .header__navToggle {
+                padding-top: 11px;
+                padding-bottom: 11px;
+            }
+
+            .header .submenu--tail {
+                margin-top: -1px;
+            }
+
+            .navbar {
+                top: 0;
+            }
+                        
+            .header__user {
+
+                .avatar {
+                    width: 34px;
+                    height: 34px;
+                }
+
+                .user__avatar {                    
+                    padding-top: 7px;
+                    padding-bottom: 7px;
+                }
+
+                .user__icon {
+                    margin-top: 11px;
+                }
+            }
+
+        }
+    }
+    
+    // Aniamtions for swtich to fixed header 
+    .user__avatar,
+    .header__user .avatar,
+    .header__user .user__icon,
+    .header,
+    .header__logo,
+    .header__navToggle,
+    .navbar {
+        transition-duration: 125ms;
+        transition-timing-function: ease;
+        transform: translateZ(0);
+        will-change: transform;
+    }
+
+    .header__user .avatar {
+        transition-property: width, height;
+    }
+
+    .user__avatar {
+        transition-property: padding;
+    }
+
+    .header__user .user__icon {
+        transition-property: margin;   
+    }
+
+    .header {
+        transition-property: height;
+    }
+            
+    .header__navToggle {
+        transition-property: padding;
+    }
+
+    .navbar {
+        transition-property: margin, top;
+    }
+    
+
+    // More tweaks for switch to fixed header at different screen resolutions
+    @media minDesktop {
+        
+        .header__logo {
+            transition-property: width, height, margin;
+        }
+        .body--header-compact .header__logo {
+            width: auto;
+            margin-right: 0;
+            height: header-fixed-height;
+        }
+    }
+
+    @media betweenTabletDesktop {
+        
+        .header__logo {
+            transition-property: opacity;
+        }
+        .body--header-compact .header__logo {
+            opacity: 0;
+        }
+
+        .navbar {
+            transition-property: top, left, background-color;
+        }
+    }
+
+
+// Reset reponsive styles on old pages so the header stays fixed width.  These pages have the class fixedWidthPage
+// To update - copy all the minTablet media queries for the header and paste them down here, this will ensure these media query styles work on the fixed width pages
+// TODO - Remove this when all pages are responsive so the header can be fluid
+
+.fixedWidthPage .header {
+    min-width: 962px;
+    position: relative;
+
+    .header__navToggle { // Todo - unbind .header__nav class once it's deleted
+        padding: 19px 0;
+
+        .nav__button {
+            padding-right: 6px;
+            border: solid 1px grey7;
+            border-radius: base-border-radius;
+            box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.05);
+            background-color: white;
+            padding: 2px 4px;
+            height: auto;
+            margin-left: 0;
+
+            .nav__button-icon {
+                font-size: 16px;
+                height: 20px;
+                line-height: 20px;
+            }
+
+            .nav__button-text {
+                display: block;
+            }
+
+            .nav__button-icon {
+                margin-right: 0.35em;
+            }
+        }
+    }
+
+    .header__wrapper {
+        min-width: 962px;
+    }
+
+    .header__logo {
+        margin-left: 0;
+        margin-right: 15px;
+        max-width: 200px;
+        position: static;
+        float: left;
+    }
+
+    .header__user .user__icon {
+        display: inline-block;
+        position: static;
+        margin-top: 15px;
+    }
+
+    .submenu--strip {
+        text-align: left;
+    }
+
+}

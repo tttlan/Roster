@@ -1,0 +1,61 @@
+<div class="segment" ng-controller="profileSystemSettings">
+
+    <div class="segment__fieldset" ng-class="{'is--loading': systemInfo.$submitting}">
+        
+        <div class="segment__fieldset-heading">
+            
+            <h2><i class="icon--slider"></i>System information</h2>
+            
+            <table-form-edit edit-name="all" parent-data="systemInfo" ng-if="profile.$userCan.caneditsysteminformation"></table-form-edit>
+
+            <a href="" class="table-form__edit table-form__edit--cancel"
+                ng-click="systemInfo.$cancelEdit(); resetForm();"
+                ng-show="systemInfo.$editing === 'all'"
+            >
+                <span>Cancel</span>
+            </a>
+            
+        </div>
+
+        <loading-placeholder ng-hide="systemInfo.$loaded"></loading-placeholder>
+        
+        <div ng-show="systemInfo.$loaded && !profile.$userCan.canviewsysteminformation" class="message message--small">
+            <p>You do not have permission to view the system information</p>
+        </div>
+        
+        <form-builder
+            form-id="systemInfoForm"
+            form-data-url="/interface/views/profile/form-data/system-info.json"
+            template="/interface/views/profile/partials/form-system-info.html"
+            submit="systemInfoSave"
+            model-data="systemInfo.$promise"
+            parent-data="systemInfo"
+            ng-show="profile.$userCan.canviewsysteminformation">
+        </form-builder>
+        
+    </div>
+
+    <div class="segment__fieldset">
+        
+        <div class="segment__fieldset-heading">
+            <h2><i class="icon--key"></i>Permissions</h2>
+        </div>
+
+        <loading-placeholder ng-hide="permissions.$loaded"></loading-placeholder>
+
+        <div ng-show="systemInfo.$loaded && !profile.$userCan.canviewsysteminformation" class="message message--small">
+            <p>You do not have permission to view permissions of other users</p>
+        </div>
+
+        <form-builder
+            form-id="permissionsForm"
+            form-data-promise="permissionsFactory.$formDataPromise"
+            template="/interface/views/profile/partials/form-permissions.html"
+            model-data="permissions.$promise"
+            parent-data="permissions"
+            ng-show="profile.$userCan.canviewsysteminformation">
+        </form-builder>
+
+    </div>
+
+</div>

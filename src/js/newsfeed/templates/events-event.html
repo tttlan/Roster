@@ -1,0 +1,117 @@
+<div class="page page--2-1 event">
+
+    <div class="page__wrapper">
+
+        <a href="/interfaceTemplates/dashboard.html#dashboard/news" path="events.index" class="page__return" ng-hide="blackout"><i class="icon--arrow-left icon-is-huge"></i></a>
+
+        <div class="page__content">
+        
+            <div class="segment segment--no-padding">
+
+                <img ng-if="event.Image" class="event__featureImage" file-link="{{event.Image[0].FileStoreId}}" alt="{{event.Name}}" />
+
+                <div class="event__inner">
+
+                    <h1>{{event.Name}}</h1>
+
+                    <dl class="event__time">
+                        <dt>Starting at</dt>
+                        <dd>{{event.EventStart | dateTime}}</dd>
+                    </dl>
+
+                    <dl class="event__time" ng-if="event.EventEnd">
+                        <dt>Ending at</dt>
+                        <dd>{{event.EventEnd | dateTime}}</dd>
+                    </dl>
+
+                    <div class="event__rsvp" ng-show="event">
+                        <a ng-click="setRsvp('Yes')" ng-class="event.Attendance === 'Yes' ? 'button--positive' : 'button--basic'" href="" class="button button--small"><i class="icon--check" ng-if="event.Attendance === 'Yes'"></i>{{event.Attendance === 'Yes' ? 'Attending' : 'Join Event'}}</a>
+                        <a ng-click="setRsvp('Maybe')" ng-class="event.Attendance === 'Maybe' ? 'button--caution' : 'button--basic'" href="" class="button button--basic button--small">{{event.Attendance === 'Maybe' ? 'Might be attending' : 'Maybe'}}</a>
+                        <a ng-click="setRsvp('No')" ng-class="event.Attendance === 'No' ? 'button--negative' : 'button--basic'" href="" class="button button--basic button--small"><i class="icon--cross" ng-if="event.Attendance === 'No'"></i>{{event.Attendance === 'No' ? 'Not attending' : 'No'}}</a>
+                    </div>
+
+                    <hr class="solid" />
+
+                    <h2 class="h5">Location</h2>
+                    <p>{{event.Location}}<br />
+                        {{event.Address}}</p>
+
+                    <h2 class="h5">Details</h2>
+
+                    <div class="event__description" ng-bind-html="event.Description">
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="page__aside">
+
+            <a href="" ng-click="showMap()" title="View interactive map">
+                <static-map address="{{ event.Address }}" width="{{ mapWidth }}" height="205"></static-map>
+            </a>
+
+            <tabs>
+
+                <ul class="nav nav--tabs" overflow>
+                    <li tab-link active><a href="">Attending</a></li>
+                    <li tab-link><a href="">Maybe</a></li>
+                    <li tab-link><a href="">Not</a></li>
+                </ul>
+
+
+                <div class="tab-group segment">
+                    
+                    <div tab-content class="tab-group__tab" ng-class="{'tab-group__tab--overflow-hidden' : (event.attendees | filter: {Attendance: 'Yes'}).length > 8 && !isMobile}">
+
+                        <p><strong>
+                        <ng-pluralize ng-if="event.attendees" count="{{(event.attendees | filter: {Attendance: 'Yes'}).length}}"
+                            when="{'0': 'No one is are attending',
+                                   'one': '1 person will be attending',
+                                   'other': '{} people will be attending'}">
+                        </ng-pluralize></strong></p>
+
+                        <div class="people-list__person" ng-repeat="person in event.attendees | filter: { Attendance: 'Yes' } | limitTo: 10" ng-include src="'/interface/views/common/partials/person.html'" onload="person=person.MemberSummary"></div>
+
+                        <a ng-hide="loading || !canLoadMore" href="" class="button button--tiny button--basic" ng-click="getItems()">Load more</a>
+
+                    </div>
+                    
+                    <div tab-content class="tab-group__tab" ng-class="{'tab-group__tab--overflow-hidden' : (event.attendees | filter: {Attendance: 'Maybe'}).length > 8 && !isMobile}">
+
+                        <p><strong>
+                        <ng-pluralize ng-if="event.attendees" count="{{(event.attendees | filter: {Attendance: 'Maybe'}).length}}"
+                            when="{'0': '0 people may be attending',
+                                   'one': '1 person may be attending',
+                                   'other': '{} people may be attending'}">
+                        </ng-pluralize></strong></p>
+
+                        <div class="people-list__person" ng-repeat="person in event.attendees | filter: { Attendance: 'Maybe' }" ng-include src="'/interface/views/common/partials/person.html'" onload="person=person.MemberSummary"></div>
+
+                    </div>
+
+                    <div tab-content class="tab-group__tab" ng-class="{'tab-group__tab--overflow-hidden' : (event.attendees | filter: {Attendance: 'No'}).length > 8} && !isMobile">
+
+                        <p><strong>
+                        <ng-pluralize ng-if="event.attendees" count="{{(event.attendees | filter: {Attendance: 'No'}).length}}"
+                            when="{'0': '0 people are not attending',
+                                   'one': '1 person is not attending',
+                                   'other': '{} people are not attending'}">
+                        </ng-pluralize></strong></p>
+                        
+                        <div class="people-list__person" ng-repeat="person in event.attendees | filter: { Attendance: 'No' }" ng-include src="'/interface/views/common/partials/person.html'" onload="person=person.MemberSummary"></div>
+
+                    </div>
+
+                </div>
+
+            </tabs>
+
+        </div>
+
+    </div>
+
+</div>

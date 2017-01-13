@@ -1,0 +1,249 @@
+<div class="survey modal__content">
+    <form name="questionForm" ng-class="{'form--unsubmitted': !formState.submitted}" validate-form>
+        <div class="form__field">
+            <label class="form__label">Question text</label>
+            <input type="text" name="txtQuestionText" ng-model="question.QuestionContent" required>
+            <span ng-show="(questionForm.txtQuestionText.$dirty || submitted) &amp;&amp; questionForm.txtQuestionText.$invalid" class="form__note form__note--error ng-hide">Question text is required</span>
+        </div>
+
+        <div class="form__field">
+            <label class="form__label">Help text</label>
+            <input type="text" ng-model="question.Note" ng-maxlength="500" name="txtHelpText">
+            <span ng-show="questionForm.txtHelpText.$error.maxlength" class="form__note form__note--error">Help text too long</span>
+        </div>
+
+        <div class="form-field col-1-3">
+            <label class="form__label">Group</label>
+        </div> <br />
+        <div class="form__field form_group">
+            <div class="col-1-3">
+                <input type="text" id="auto_complete" name="txtGroupName" placeholder="Select group ..." ng-model="question.Tag" required
+                       typeahead="t as t.name for t in listTags | filter:$viewValue | limitTo:10" class="ng-pristine">
+                <span ng-show="(questionForm.txtGroupName.$dirty || submitted) && questionForm.txtGroupName.$invalid" class="form__note form__note--error">Group is required</span>
+
+            </div>
+        </div>
+        <div ng-switch on="question.typeOfQuestion || type" class="question">
+            <div ng-switch-when="1">
+                <div class="field__checkbox">
+                    <input id="ckboxMandatory1" type="checkbox" ng-model="question.IsMandatory">
+                    <label for="ckboxMandatory1" class="form__label">Mandatory Response</label>
+                </div>
+            </div>
+
+            <div ng-switch-when="2">
+
+                <div class="field__checkbox">
+                    <input id="ckboxMandatory2" type="checkbox" ng-model="question.IsMandatory">
+                    <label for="ckboxMandatory2" class="form__label">Mandatory Response</label>
+
+                    <input id="ckboxAutoReject" ng-model="question.AutoRejectCandidates" type="checkbox">
+                    <label for="ckboxAutoReject" class="form__label">Automatically reject cadidates based on their selection?</label>
+                    <div ng-show="question.AutoRejectCandidates">
+                        <div class="field__radio margin-left-20">
+                            <input type="radio" name="AutomaticallyRadio" id="radioSelectYes" ng-model="question.YesNoAutoReject" value="yes">
+                            <label for="radioSelectYes" class="form__label">Reject candidates who select yes</label>
+                            <input type="radio" name="AutomaticallyRadio" id="radioSelectNo" ng-model="question.YesNoAutoReject" value="no">
+                            <label for="radioSelectNo" class="form__label">Reject candidates who select no</label>
+                        </div>
+                    </div>
+                    <input id="ckboxEnableFilter" type="checkbox" ng-model="question.Filter">
+                    <label for="ckboxEnableFilter" class="form__label">Enable as filter?</label>
+                    <div class="form_group">
+                        <div class="col-1-3 margin-10" ng-show="question.Filter">
+                            <input type="text" ng-model="question.FilterText" name="txtFilterText" ng-required="question.Filter" />
+                            <span ng-show="(questionForm.txtFilterText.$dirty || submitted) &amp;&amp; questionForm.txtFilterText.$invalid" class="form__note form__note--error ng-hide">Filter text is required</span>
+                        </div>
+                    </div>
+                    <input id="ckboxAttachOptional" type="checkbox" ng-model="ckboxAttachOptional"
+                           ng-init="ckboxAttachOptional = question.QuestionOption.QuestionContent ? true : false">
+                    <label for="ckboxAttachOptional" class="form__label">Attach Optional Question</label>
+                    <div>
+                        <div class="margin-left-20 form_group" ng-show="ckboxAttachOptional">
+                            <div class="margin-10">OPTIONAL QUESTION TEXT</div>
+                            <div class="col-1-3 margin-10">
+                                <input type="text" ng-model="question.QuestionOption.QuestionContent" name="txtOptionalQuestion" ng-required="ckboxAttachOptional"/>
+                                <span ng-show="(questionForm.txtOptionalQuestion.$dirty || submitted) &amp;&amp; questionForm.txtOptionalQuestion.$invalid" class="survey-required">Optional question text is required</span>
+                            </div>
+                            <div class="field__radio">
+                                <input checked="checked" type="radio" ng-model="question.DisplayOptionalOnYesNo" name="displayOptional" id="radioDisplayOptionalYes" value="yes">
+                                <label for="radioDisplayOptionalYes" class="form__label">Display optional question only on "Yes"</label>
+                                <input type="radio" ng-model="question.DisplayOptionalOnYesNo" name="displayOptional" id="radioDisplayOptionalNo" value="no">
+                                <label for="radioDisplayOptionalNo" class="form__label">Display optional question only on "No"</label>
+                                <input type="radio" ng-model="question.DisplayOptionalOnYesNo" name="displayOptional" id="radioDisplayOptionalYesNo" value="all">
+                                <label for="radioDisplayOptionalYesNo" class="form__label">Display optional question only either "Yes" or "No"</label>
+                            </div>
+                        </div>
+                    </div>
+
+                     </div>
+            </div>
+
+            <div ng-switch-when="4">
+                <div class="grid grid--q">
+                    <div class="col-3-4" style="">
+                        <a style="margin-left: -30px;" class="button ng-scope" ng-click="addNewResponseChoice()">Add a new answer</a> <br />
+                        <input ng-show="false" type="text" name="ResponseChoices" ng-model="item.ResponseChoices" ng-required="!question.ResponseChoices.length">
+                        <span style="margin-left: -30px" ng-show="(questionForm.ResponseChoices.$dirty || submitted) &amp;&amp; questionForm.ResponseChoices.$invalid" class="form__note form__note--error">At least one response is required</span>
+                    </div>
+                    <div class="col-1-8 align-center lt-tablet-hide" ng-show="question.ResponseChoices.length > 0">
+                        <label class="form__label">Selected</label>
+                    </div>
+                    <div class="col-1-8 align-center lt-tablet-hide" ng-show="question.ResponseChoices.length > 0">
+                        <label class="form__label">Answer</label>
+                    </div>
+                </div>
+                <div class="grid grid--q question-choice" ng-repeat="item in question.ResponseChoices">
+                    <div class="question-choice__close">
+                        <a class="icon--cross" title="Delete" ng-click="question.ResponseChoices.splice($index,1)"></a>
+                    </div>
+                    <div class="col-3-4 col-xs">
+                        <div class="grid grid--q grid--no-lr">
+                            <div class="col-1-2">
+                                <select-box ng-model="item.ResponseChoiceType">
+                                    <select ng-model="item.ResponseChoiceType"
+                                            ng-change="item.ResponseChoiceTypeId = item.ResponseChoiceType.responseChoiceType"
+                                            ng-options="t as t.label for t in types track by t.responseChoiceType"
+                                            ng-init="item.ResponseChoiceType = item.ResponseChoiceType? item.ResponseChoiceType : types[0];item.ResponseChoiceTypeId = item.ResponseChoiceType.responseChoiceType;"></select>
+                                </select-box>
+                            </div>
+                            <div class="col-1-2 align-center" ng-show="item.ResponseChoiceTypeId==1">
+                                <input type="text" placeholder="Type text ..." ng-model="item.ChoiceValue" name="txtAnswer" ng-required="item.ResponseChoiceTypeId==1" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1-8 lt-tablet-hide" ng-show="item.ResponseChoiceTypeId==1">
+                        <div class="field__radio align-center">
+                            <input type="radio" name="radioSelected" id="SelectedChoice{{$index}}"
+                                   ng-model="question.ResponseChoices.IsDefaultSelected"
+                                   value="{{$index}}"
+                                   ng-change="storedResponse.singleChoiceSelectedIndex = $index"
+                                   ng-checked="item.IsDefaultSelected">
+                            <label for="SelectedChoice{{$index}}" style="padding-left: 16px;"></label>
+                        </div>
+                    </div>
+                    <div class="col-1-8 lt-tablet-hide" ng-show="item.ResponseChoiceTypeId==1">
+                        <div class="field__radio align-center">
+                            <input type="radio" name="radioAnswer" id="AnswerChoice{{$index}}"
+                                   ng-model="question.ResponseChoices.IsRightAnswer"
+                                   value="{{$index}}"
+                                   ng-change="storedResponse.singleChoiceAnswerIndex = $index"
+                                   ng-checked="item.IsRightAnswer">
+                            <label for="AnswerChoice{{$index}}"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lt-tablet-show grid grid--q" ng-show="question.ResponseChoices.length > 0">
+                    <div class="form-field col-1-2">
+                        <label class="form__label">Selected</label>
+                        <select-box ng-model="storedResponse.singleChoiceSelectedIndex">
+                            <select ng-model="storedResponse.singleChoiceSelectedIndex"
+                                    ng-change="question.ResponseChoices.IsDefaultSelected = storedResponse.singleChoiceSelectedIndex"
+                                    ng-options="(question.ResponseChoices.indexOf(t)) as 'Choice ' + (question.ResponseChoices.indexOf(t)+1) for t in question.ResponseChoices"
+                                    ng-init="storedResponse.singleChoiceSelectedIndex = storedResponse.singleChoiceSelectedIndex ? storedResponse.singleChoiceSelectedIndex : question.ResponseChoices.indexOfObject('IsDefaultSelected' , '' , true)"></select>
+                        </select-box>
+                    </div>
+                    <div class="form-field col-1-2">
+                        <label class="form__label">Answer</label>
+                        <select-box ng-model="storedResponse.singleChoiceAnswerIndex">
+                            <select ng-model="storedResponse.singleChoiceAnswerIndex"
+                                    ng-change="question.ResponseChoices.IsRightAnswer = storedResponse.singleChoiceAnswerIndex"
+                                    ng-options="(question.ResponseChoices.indexOf(t)) as 'Choice ' + (question.ResponseChoices.indexOf(t)+1) for t in question.ResponseChoices"
+                                    ng-init="storedResponse.singleChoiceAnswerIndex = storedResponse.singleChoiceAnswerIndex ? storedResponse.singleChoiceAnswerIndex : question.ResponseChoices.indexOfObject('IsRightAnswer' , '' , true)"></select>
+                        </select-box>
+                    </div>
+                </div>
+
+                <div class="grid--q grid--no-lr">
+                    <div class="col-1-1 field__checkbox">
+                        <input id="ckboxMandatory3" type="checkbox" ng-model="question.IsMandatory">
+                        <label for="ckboxMandatory3" class="form__label">Mandatory Response</label>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="3">
+                <div class="grid grid--q">
+                    <div class="col-3-4" style="">
+                        <a style="margin-left: -30px;" class="button ng-scope" ng-click="addNewResponseChoice()">Add a new answer</a>
+                        <input ng-show="false" type="text" name="ResponseChoices" ng-model="item.ResponseChoices" ng-required="!question.ResponseChoices.length">
+                        <span style="margin-left: -30px" ng-show="(questionForm.ResponseChoices.$dirty || submitted) &amp;&amp; questionForm.ResponseChoices.$invalid" class="form__note form__note--error">At least one response is required</span>
+                    </div>
+                    <div class="col-1-4 align-center lt-tablet-hide" ng-show="question.ResponseChoices.length > 0">
+                        <label class="form__label">Answer</label>
+                    </div>
+                </div>
+
+                <div class="grid grid--q question-choice" ng-repeat="item in question.ResponseChoices">
+                    <div class="question-choice__close">
+                        <a class="icon--cross" title="Delete" ng-click="question.ResponseChoices.splice($index,1)"></a>
+                    </div>
+                    <div class="col-3-4 col-xs">
+                        <div class="grid grid--q grid--no-lr">
+                            <div class="col-1-2">
+                                <select-box ng-model="item.ResponseChoiceType">
+                                    <select ng-model="item.ResponseChoiceType"
+                                            ng-change="item.ResponseChoiceTypeId = item.ResponseChoiceType.responseChoiceType"
+                                            ng-options="t as t.label for t in types track by t.responseChoiceType"
+                                            ng-init="item.ResponseChoiceType = item.ResponseChoiceType? item.ResponseChoiceType : types[0];item.ResponseChoiceTypeId = item.ResponseChoiceType.responseChoiceType;"></select>
+                                </select-box>
+                            </div>
+                            <div class="col-1-2 align-center" ng-show="item.ResponseChoiceTypeId==1">
+                                <input type="text" placeholder="Type text ..." ng-model="item.ChoiceValue" name="txtAnswer" ng-required="item.ResponseChoiceTypeId==1"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1-4 lt-tablet-hide" ng-show="item.ResponseChoiceTypeId==1">
+                        <div class="field__radio align-center">
+                            <input type="radio" name="radioAnswer" id="AnswerChoice{{$index}}"
+                                   ng-model="question.ResponseChoices.IsRightAnswer"
+                                   value="{{$index}}"
+                                   ng-change="storedResponse.multiChoiceAnswerIndex = $index"
+                                   ng-checked="item.IsRightAnswer">
+                            <label for="AnswerChoice{{$index}}"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lt-tablet-show grid grid--q" ng-show="question.ResponseChoices.length > 0">
+                    <div class="form-field col-1-2">
+                        <label class="form__label">Answer</label>
+                        <select-box ng-model="storedResponse.multiChoiceAnswerIndex">
+                            <select ng-model="storedResponse.multiChoiceAnswerIndex"
+                                    ng-change="question.ResponseChoices.IsRightAnswer = storedResponse.multiChoiceAnswerIndex"
+                                    ng-options="(question.ResponseChoices.indexOf(t)) as 'Choice ' + (question.ResponseChoices.indexOf(t)+1) for t in question.ResponseChoices"
+                                    ng-init="storedResponse.multiChoiceAnswerIndex = storedResponse.multiChoiceAnswerIndex ? storedResponse.multiChoiceAnswerIndex : question.ResponseChoices.indexOfObject('IsRightAnswer' , '' , true)"></select>
+                        </select-box>
+                    </div>
+                </div>
+
+                <div class="grid--q grid--no-lr">
+                    <div class="col-1-1 field__checkbox">
+                        <input id="ckboxMandatory4" type="checkbox" ng-model="question.IsMandatory">
+                        <label for="ckboxMandatory4" class="form__label">Mandatory Response</label>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-switch-when="5">
+                <div class="field__checkbox">
+                    <input id="ckboxMandatory5" ng-model="question.IsMandatory" type="checkbox">
+                    <label for="ckboxMandatory5" class="form__label">Mandatory Response</label>
+                </div>
+            </div>
+            <div ng-switch-when="6">
+                <div class="field__checkbox">
+                    <input id="ckboxMandatory6" type="checkbox" ng-model="question.IsMandatory">
+                    <label for="ckboxMandatory6" class="form__label">Mandatory Response</label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer class="modal__footer">
+    <div class="button-group">
+        <button class="button" ng-click="cancel()" ng-discard>CANCEL</button>
+        <button class="button button--negative" ng-click="ok(isFormValid(questionForm.$valid), question)" ng-style="{'button--disabled' : !questionForm.$valid }">SAVE</button>
+    </div>
+</footer>

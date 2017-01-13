@@ -1,0 +1,60 @@
+<header class="modal__header">
+    <h2 class="modal__title">Preview Questionnaire</h2>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+<div class="modal__content">
+    <fieldset class="segment" style="margin-bottom: 20px;">
+        <accordion>
+            <accordion-group>
+                <accordion-heading>Questionnaire Teamplate Details</accordion-heading>
+                <p>
+                    <div class="form__field ">
+                        <label class="form__label" for="questionTeamplateTitle">Questionnaire Teamplate Title</label>
+                        <input type="text" id="questionTeamplateTitle" name="questionnaireTeamplateTitle" ng-model="previewQuestionnaireModel.name" class="ng-pristine ng-valid">
+                    </div>
+                    <div class="form__field">
+                        <label class="form__label" for="questionnaireTeamplateDescription">Please write description for this questionnaire</label>
+                        <textarea name="questionnaireTeamplateDescription" ng-model="data.description" class="ng-pristine ng-valid"></textarea>
+                    </div>
+                    <div class="form__field">
+                        <label class="form__label" for="questionnaireTeamplateInstruction">Instruction for responding to questionnaire</label>
+                        <textarea name="questionnaireTeamplateInstruction" ng-model="data.instruction" class="ng-pristine ng-valid"></textarea>
+                    </div>
+                    <div class="field__checkbox">
+                        <input type="checkbox" id="autoAttach" name="input" ng-model="data.autoAttach" required="required" class="ng-pristine ng-invalid ng-invalid-required">
+                        <label class="form__label is--required" for="autoAttach" ng-class="{'is--required': element.validation.required}">
+                            Automatically attach to all jobs
+                        </label>
+                    </div>
+                    <div class="field__checkbox">
+                        <input type="checkbox" id="showOnExternal" name="input" ng-model="data.showOnExternal" required="required" class="ng-pristine ng-invalid ng-invalid-required">
+                        <label class="form__label is--required" for="showOnExternal" ng-class="{'is--required': element.validation.required}">
+                            Only show this teamplate on external applications
+                        </label>
+                    </div>
+                    <div class="field__checkbox">
+                        <input type="checkbox" id="showOnInternal" name="input" ng-model="data.showOnInternal" required="required" class="ng-pristine ng-invalid ng-invalid-required">
+                        <label class="form__label is--required" for="showOnInternal" ng-class="{'is--required': element.validation.required}">
+                            Only show this teamplate on internal applications
+                        </label>
+                    </div>
+                    <div class="field__checkbox">
+                        <input type="checkbox" id="tickToDelete" name="input" ng-model="data.tickToDelete" required="required" class="ng-pristine ng-invalid ng-invalid-required">
+                        <label class="form__label is--required" for="tickToDelete" ng-class="{'is--required': element.validation.required}">
+                            Tick this box to delete responses to question if application applicant is unsuccessful and job ad is closed
+                        </label>
+                    </div>
+                </p>
+            </accordion-group>
+        </accordion>
+    </fieldset>
+    <fieldset class="segment" style="margin-top: 20px;">
+        <div class="grid" ng-repeat="q in previewQuestionnaireModel.questions">
+            <div class="col col-1-9 form__field"><span class="questionNumber"> {{$index + 1}} </span></div>
+            <div class="col col-8-9	"><question model="q"></question></div>
+        </div>
+        <div class="message message--empty" ng-hide="previewQuestionnaireModel.questions.length > 0">
+            <p>No questions found</p>
+        </div>
+    </fieldset>
+</div>

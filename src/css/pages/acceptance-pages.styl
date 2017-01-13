@@ -1,0 +1,130 @@
+.ui
+  .recruit
+    &.page
+      //padding: 0 //TODO Check this is not affecting anything and remove it after testing
+
+      .page__wrapper
+        @media maxTablet
+          //padding: 0 //TODO Check this is not affecting anything and remove it after testing
+          margin-bottom: 0
+        
+      .page__content.onboarding
+          width: 100%
+
+          h1,h2,h3,h4
+            margin: 0
+            a
+              color: #4377b2
+            ~ p
+              margin-top: 2px
+          h1
+            font-size: 26px
+          h2
+            font-size: 22px
+
+          li, p, label
+            font-size: 14px
+
+          @media maxTablet
+            h1
+              font-size: 20px
+            h2
+              font-size: 16px
+            h4
+              font-size: 14px
+            li, p, label
+              font-size: 12px
+      
+      iframe.onboarding__t-and-c
+        width: 100%
+        border: none
+        overflow-y: scroll
+        min-height: 400px
+
+      p.welcome
+        margin-bottom: 0
+        @media maxTablet {
+          font-size: 12px
+        }
+
+      .tfnNumbers
+        input.tfnNumber
+          display: inline-block;
+          width: 50px;
+          border: 1px black solid
+          text-align: center;
+          margin-bottom: 1em
+  
+          @media minSmallTablet {
+            &:nth-child(3n) {
+              margin-right: 1em
+            }
+          }
+
+          @media maxSmallTablet {
+            float: left
+            margin-right: 0
+
+            &:nth-child(3n+1) {
+              clear: left
+            }
+          }
+
+    &.button-footer
+      width: 100%
+      text-align: center
+      margin-top: 10px
+
+      i.next-step-disclaimer
+        display: block
+        color: #999
+        margin: 9px
+        @media maxTablet {
+          font-size: 10px
+        }
+
+
+    .onboarding__welcome
+      .align__center
+        text-align: center
+        margin: 0 auto
+        
+        .user__avatar
+          img
+            max-height: 120px
+          
+        .welcome__conditions
+          margin-top: 1em
+        
+        .welcome__general ul
+          padding-left: 2em
+          padding-bottom: 2em
+          margin: 0 auto
+          list-style: none
+          
+          li
+            text-align: left
+            
+            &:before
+              content: '• '
+              color: primary
+
+    //this should be in forms.styl and more general
+    //but im afraid it will break other appearances
+    .declaration-two-row
+      @media maxTablet {
+        width: 100%;
+        display: block;
+      }
+    
+    .declaration-form__number h2
+      padding-top: 10px
+    .declaration-row .declaration-form__subtitle.bottom-border
+        border-bottom: 1px solid #D6D6D6
+
+    .signature
+      min-height: 200px
+      width: 100%
+
+      canvas
+        height: 100%

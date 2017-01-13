@@ -1,0 +1,9 @@
+<div class="select-wrapper">
+    <select
+            ng-model="ngModel"
+            ng-options="currency as currency.Label for currency in currencys.data track by currency.Value"
+            ng-disabled="currencys.loading"
+            >
+    </select>
+    <span class="select" ng-if='ngModel.Label'>{{ ngModel.Label }}</span>
+</div>

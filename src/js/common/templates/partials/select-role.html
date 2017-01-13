@@ -1,0 +1,10 @@
+<div class="select-wrapper">    
+    <select
+        ng-model="ngModel"
+        ng-options="role as role.label for role in roles.data track by role.id"
+        ng-disabled="roles.$loading"
+    >
+        <option selected value="">Please select a role</option>
+    </select>
+    <span class="select">{{ val }}</span>
+</div>

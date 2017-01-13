@@ -1,0 +1,569 @@
+﻿<div class="page page--1-2 candidate-pool" ng-init="initPage()">
+
+    <div class="page__wrapper" ng-class="{'is--loading' : !currentCandidate}">
+
+        <div class="page__aside profile-card" ng-if="currentCandidate">
+
+            <div class="profile-card__picture">
+
+                <div class="profile-card__avatar">
+                    <span class="status" ng-class="{'status--offline' : !profile.IsOnline, 'status--online' : profile.IsOnline }" tooltip="{{ profile.IsOnline ? 'Online' : 'Offline' }}"
+                          tooltip-placement="right"></span>
+                    <avatar size="large" img-src="'/interface/images/avatar2.jpg'"></avatar>
+                    <a ng-if="currentCandidate.IsStarredByCurrentManager" href="#" class="profile-card__star">
+                        <i class="icon--cd-star_full icon-is-large"></i>
+                    </a>
+                </div>
+
+                <div class="profile-card__description">
+                    <h1>
+                        {{currentCandidate.FullName}}
+                    </h1>
+                    <p>Sales Associate (Full time)</p>
+                </div>
+            </div>
+
+            <div class="profile-card__navigation">
+                <dl>
+                    <dt>General</dt>
+                    <dd>
+                        <ul class="nav nav--vert">
+                            <li><a href="#" class="is--active">Candidate Profile and Preferences</a></li>
+                            <li><a href="#">Assessment and Notes</a></li>
+                            <li><a href="#">Chat</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+
+            <div class="profile-card__recently--job">
+                <dl>
+                    <dt>Opeb Jobs</dt>
+                    <dd>
+                        <div class="segment">
+                            <p class="job--name">Test Analyst <span class="triangle"></span></p>
+                            <p class="job--description">Full time, South Yarra VIC</p>
+                            <div class="job--info">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <avatar size="tiny" img-src="'/interface/images/avatar2.jpg'"></avatar>
+                                            </td>
+                                            <td style="vertical-align:bottom">
+                                                <span class="labels">
+                                                    <span class="label label--caution ng-binding ng-scope">new</span>
+                                                    <span class="label ng-binding">1</span>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <span style="color: #94b86e"><i class="icon--cd-progress_green"></i></span>
+                                                <span class="job--percent-complete">89%</span>
+                                            </td>
+                                            <td style="text-align:right">
+                                                <span style="vertical-align:middle"><i class="icon--clock"></i></span>
+                                                <span style="color:#a2a2a2">1 Oct 2015</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                                <!--<avatar size="small" img-src="'/interface/images/avatar2.jpg'"></avatar>
+                                <span class="labels">
+                                    <span class="label label--caution ng-binding ng-scope">new</span>
+                                    <span class="label ng-binding">1</span>
+                                </span>
+                                <span style="color: #94b86e"><i class="icon--cd-progress_green"></i></span>
+                                <span class="job--percent-complete">89%</span>-->
+                            </div>
+                        </div>
+
+                        <div class="segment">
+                            <p class="job--name">A really really long job title because why not?</p>
+                            <p class="job--description">Full time, Chadstone Center VIC</p>
+                            <div class="job--info">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <avatar size="tiny" img-src="'/interface/images/avatar3.jpg'"></avatar>
+                                            </td>
+                                            <td style="vertical-align:bottom">
+                                                <span class="labels">
+                                                    <span class="label label--info ng-binding ng-scope">Assessing</span>
+                                                    <span class="label ng-binding">5</span>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <span style="color: #f0ad4e"><i class="icon--cd-progress_yellow"></i></span>
+                                                <span class="job--percent-complete">69%</span>
+                                            </td>
+                                            <td style="text-align:right">
+                                                <span style="vertical-align:middle"><i class="icon--clock"></i></span>
+                                                <span style="color:#a2a2a2">29 Sep 2015</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <br />
+                <dl>
+                    <dt>Closded Jobs</dt>
+                    <dd>
+                        <div class="segment">
+                            <p class="job--name">Assistant Manager</p>
+                            <p class="job--description">Full time, South Yarra VIC</p>
+                            <div class="job--info">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <avatar size="tiny" img-src="'/interface/images/avatar.jpg'"></avatar>
+                                            </td>
+                                            <td style="vertical-align:bottom">
+                                                <span class="labels">
+                                                    <span class="label label--positive ng-binding ng-scope">Onboarded</span>
+                                                    <span class="label ng-binding">8</span>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <span style="color: #94b86e"><i class="icon--cd-progress_green"></i></span>
+                                                <span class="job--percent-complete">82%</span>
+                                            </td>
+                                            <td style="text-align:right">
+                                                <span style="vertical-align:middle"><i class="icon--clock"></i></span>
+                                                <span style="color:#a2a2a2">15 Jan 2015</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="segment">
+                            <p class="job--name">Test Analyst (External)</p>
+                            <p class="job--description">Full time, Brisbane QLD</p>
+                            <div class="job--info">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <avatar size="tiny" img-src="'/interface/images/avatar3.jpg'"></avatar>
+                                            </td>
+                                            <td style="vertical-align:bottom">
+                                                <span class="labels">
+                                                    <span class="label label--dark ng-binding ng-scope">Rejected</span>
+                                                    <span class="label ng-binding">5</span>
+                                                </span>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <span style="color: #e25856"><i class="icon--cd-progress_red"></i></span>
+                                                <span class="job--percent-complete">39%</span>
+                                            </td>
+                                            <td style="text-align:right">
+                                                <span style="vertical-align:middle"><i class="icon--clock"></i></span>
+                                                <span style="color:#a2a2a2">8 Nov 2015</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+
+        </div>
+
+        <div class="page__content" ng-if="currentCandidate">
+            <div class="segment">
+                <div class="segment__fieldset">
+
+                    <div class="segment__fieldset-heading">
+
+                        <h2>Job Interests</h2>
+                        <a ng-show="jobInterest.$editing === ''"
+                           title="Edit all"
+                           ng-click="jobInterest.$edit('jobInterest')"
+                           class="table-form__edit" href="">
+                            <span>Edit All</span>
+                        </a>
+
+                        <a ng-show="jobInterest.$editing === 'jobInterest'"
+                           href=""
+                           ng-click="jobInterest.$cancelEdit()"
+                           class="table-form__edit table-form__edit--cancel">
+                            <span>Cancel</span>
+                        </a>
+                    </div>
+
+                    <table ng-class="{'table-form__edit-all' : jobInterest.$editing === 'jobInterest'}" class="table-form">
+                        <!-- Roles -->
+                        <tr ng-class="{ 'is--editing' : jobInterest.$editing === 'role' || jobInterest.$editing === 'jobInterest' }">
+                            <th>Roles</th>
+                            <td class="table-form__edit-parent">
+                                <span ng-hide="currentCandidate.$editing === 'role' || currentCandidate.$editing === 'jobInterest'" class="table-form__form-value">
+                                    <span class="label label--active">Analyst</span>
+                                    <span class="label label--active">Management</span>
+                                    <span class="label label--active">Really long job title</span>
+                                </span>
+                                <a ng-hide="jobInterest.$editing === 'role' || jobInterest.$editing === 'jobInterest'" ng-click="jobInterest.$edit('role')" title="Edit role" class="table-form__edit ng-scope" href="">
+                                    <span>Edit</span>
+                                </a>
+                                <div ng-show="jobInterest.$editing === 'role' || jobInterest.$editing === 'jobInterest'">
+                                    <div class="form__field form__label--invisible">
+                                        <label class="form__label">Role</label>
+                                        <div ng-class="{'input--loading': element.loader}">
+                                            <input type="text" ng-model="element.val" name="Role">
+                                        </div>
+                                    </div>
+                                    <div ng-hide="jobInterest.$editing === 'jobInterest'" class="button-group">
+                                        <a ng-click="jobInterest.$cancelEdit();" href="" class="button button--small">Cancel</a>
+                                        <button ng-click="undefined" disable-toggle="undefined" class="button button--positive button--small disable-toggle" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End Roles -->
+                        <!-- Notifications -->
+                        <tr ng-class="{ 'is--editing' : jobInterest.$editing === 'notification' || jobInterest.$editing === 'jobInterest' }">
+                            <th>Notifications</th>
+                            <td class="table-form__edit-parent">
+                                <span ng-hide="jobInterest.$editing === 'notification' || jobInterest.$editing === 'jobInterest'" class="table-form__form-value">Send via Email</span>
+                                <a ng-hide="jobInterest.$editing === 'notification' || jobInterest.$editing === 'jobInterest'" ng-click="jobInterest.$edit('notification');" title="Edit role" class="table-form__edit" href="">
+                                    <span>Edit</span>
+                                </a>
+                                <div ng-show="jobInterest.$editing === 'notification' || jobInterest.$editing === 'jobInterest'">
+                                    <div class="form__field form__label--invisible">
+                                        <label class="form__label">Notifications</label>
+                                        <div class="form__field">
+                                            <div class="field__checkbox">
+                                                <input id="optionsCheck1" checked="checked" type="checkbox">
+                                                <label for="optionsCheck1" class="form__label">Send via Email</label>
+                                            </div>
+                                            <div class="field__checkbox">
+                                                <input id="optionsCheck2" type="checkbox">
+                                                <label for="optionsCheck2" class="form__label">Send via SMS</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-hide="jobInterest.$editing === 'jobInterest'" class="button-group">
+                                        <a ng-click="jobInterest.$cancelEdit();" href="" class="button button--small">Cancel</a>
+                                        <button ng-click="undefined" disable-toggle="undefined" class="button button--positive button--small disable-toggle" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End Notifications -->
+                        <tr ng-show="jobInterest.$editing === 'jobInterest'">
+                            <th></th>
+                            <td>
+                                <div class="button-group">
+                                    <a ng-click="parentData.$cancelEdit(); resetLookup ? resetLookup() : null; resetForm();" href="" class="button button--small">Cancel</a>
+                                    <button ng-click="undefined" disable-toggle="undefined" class="button button--positive button--small disable-toggle" type="submit">Save</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="segment__fieldset">
+                    <div class="segment__fieldset-heading">
+
+                        <h2>Candidate Profile</h2>
+
+                        <a ng-show="currentCandidate.$editing === ''" title="Edit all" class="table-form__edit" href=""
+                           ng-click="currentCandidate.$edit('candidateProfile')">
+                            <span>Edit All</span>
+                        </a>
+
+                        <a ng-show="currentCandidate.$editing === 'candidateProfile'"
+                           href=""
+                           ng-click="currentCandidate.$cancelEdit()"
+                           class="table-form__edit table-form__edit--cancel">
+                            <span>Cancel</span>
+                        </a>
+
+                    </div>
+
+                    <table ng-class="{'table-form__edit-all' : currentCandidate.$editing === 'candidateProfile'}" class="table-form">
+                        <!-- Roles -->
+                        <tr ng-class="{ 'is--editing' : currentCandidate.$editing === 'role' || currentCandidate.$editing === 'all' }">
+                            <th>Type</th>
+                            <td style="position: relative" class="table-form__edit-parent">
+                                <span class="table-form__form-value">
+                                    <span class="label label--active">{{currentCandidate.MemberType === "j" ? 'External' : 'Internal'}}</span>
+                                </span>
+                            </td>
+                        </tr>
+                        <!-- End Roles -->
+                        <!-- Commencement Date< -->
+                        <tr ng-class="{ 'is--editing' : currentCandidate.$editing === 'commentcementDate' || currentCandidate.$editing === 'candidateProfile' }">
+                            <th>Commencement Date</th>
+                            <td style="position: relative" class="table-form__edit-parent">
+                                <span ng-hide="currentCandidate.$editing === 'commentcementDate' || currentCandidate.$editing === 'candidateProfile'" class="table-form__form-value">Aug 20 2013</span>
+                                <a ng-hide="currentCandidate.$editing === 'commentcementDate' || currentCandidate.$editing === 'candidateProfile'" ng-click="currentCandidate.$edit('commentcementDate');" title="Edit role" class="table-form__edit ng-scope" href="">
+                                    <span>Edit</span>
+                                </a>
+                                <div ng-show="currentCandidate.$editing === 'commentcementDate' || currentCandidate.$editing === 'candidateProfile'">
+                                    <div class="form__field form__label--invisible" ng-class="{'is--required': element.validation.required}">
+                                        <label for="commencementDate" ng-if="element.label" class="form__label">Commencement Date</label>
+                                        <div class="relative">
+                                            <input type="text" id="commencementDate" name="{{element.name}}" ng-model="element.val" ng-model-options="{ allowInvalid: true }"
+                                                   ng-change="{{element.onchange}}" ng-required="true" validate-date="{{element.validation.date}}"
+                                                   datepick datepicker-popup="MMM d yyyy" />
+                                            <span class="icon--calendar field__after"></span>
+                                        </div>
+                                    </div>
+                                    <div ng-hide="currentCandidate.$editing === 'candidateProfile'" class="button-group">
+                                        <a ng-click="currentCandidate.$cancelEdit();" href="" class="button button--small">Cancel</a>
+                                        <button ng-click="undefined" disable-toggle="undefined" class="button button--positive button--small disable-toggle" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End Commencement Date< -->
+                        <!-- Full name< -->
+                        <tr ng-class="{ 'is--editing' : currentCandidate.$editing === 'fullname' || currentCandidate.$editing === 'candidateProfile' }">
+                            <th>Full name</th>
+                            <td class="table-form__edit-parent">
+                                <span ng-hide="currentCandidate.$editing === 'fullname' || currentCandidate.$editing === 'candidateProfile'" class="table-form__form-value">{{currentCandidate.FullName}}</span>
+                                <a ng-hide="currentCandidate.$editing === 'fullname' || currentCandidate.$editing === 'candidateProfile'" ng-click="currentCandidate.$edit('fullname');" title="Edit role" class="table-form__edit ng-scope" href="">
+                                    <span>Edit</span>
+                                </a>
+                                <div ng-show="currentCandidate.$editing === 'fullname' || currentCandidate.$editing === 'candidateProfile'">
+
+                                    <div class="form__field is--required">
+                                        <label class="form__label" for="firstName">FirstName</label>
+                                        <input type="text" ng-model="currentCandidate.FirstName" id="firstName" placeholder="FirstName">
+                                    </div>
+
+                                    <div class="form__field is--required">
+                                        <label class="form__label" for="surName">SurName</label>
+                                        <input type="text" ng-model="currentCandidate.Surname" id="surName" placeholder="SurName">
+                                    </div>
+
+                                    <div ng-hide="currentCandidate.$editing === 'candidateProfile'" class="button-group">
+                                        <a ng-click="currentCandidate.$cancelEdit()" href="" class="button button--small">Cancel</a>
+                                        <button ng-click="undefined" disable-toggle="undefined" class="button button--positive button--small disable-toggle" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End Full name< -->
+                        <!-- Phone Numbers -->
+                        <tr ng-class="{ 'is--editing' : currentCandidate.$editing === 'phone' || currentCandidate.$editing === 'candidateProfile' }">
+                            <th>Phone Numbers</th>
+                            <td style="position: relative" class="table-form__edit-parent">
+                                <div ng-hide="currentCandidate.$editing === 'phone' || currentCandidate.$editing === 'candidateProfile'" class="table-form__form-value">
+                                    <div ng-repeat="phone in currentCandidate.ContactInfo.MobilePhones" class="form__value">
+                                        {{phone.value}}
+                                    </div>
+                                </div>
+                                <a ng-hide="currentCandidate.$editing === 'phone' || currentCandidate.$editing === 'candidateProfile'" ng-click="currentCandidate.$edit('phone');" title="Edit phone" class="table-form__edit ng-scope" href="">
+                                    <span>Edit</span>
+                                </a>
+                                <div ng-show="currentCandidate.$editing === 'phone' || currentCandidate.$editing === 'candidateProfile'">
+                                    <div class="form__field form__label--invisible" ng-class="{'is--required': element.validation.required}">
+                                        <label class="form__label" for="phoneNumber">
+                                            Phone Numbers
+                                        </label>
+
+                                        <phone-numbers max="5" allow-duplicate="false" min="0" ng-required="true" ng-model="currentCandidate.ContactInfo.MobilePhones" name="phoneNumber"></phone-numbers>
+                                    </div>
+
+                                    <div ng-hide="currentCandidate.$editing === 'candidateProfile'" class="button-group">
+                                        <a ng-click="currentCandidate.$cancelEdit();" href="" class="button button--small">Cancel</a>
+                                        <button ng-click="undefined" disable-toggle="undefined" class="button button--positive button--small disable-toggle" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End Phone-->
+                        <!-- Email -->
+                        <tr ng-class="{ 'is--editing' : currentCandidate.$editing === 'email' || currentCandidate.$editing === 'candidateProfile' }">
+                            <th>Email</th>
+                            <td class="table-form__edit-parent">
+                                <div ng-hide="currentCandidate.$editing === 'email' || currentCandidate.$editing === 'candidateProfile'" class="table-form__form-value">
+                                    <div ng-repeat="email in currentCandidate.ContactInfo.Emails" class="form__value">
+                                        <a href="mailto:{{email.value}}">{{email.value}}</a>
+                                    </div>
+                                </div>
+                                <a ng-hide="currentCandidate.$editing === 'email' || currentCandidate.$editing === 'candidateProfile'" ng-click="currentCandidate.$edit('email');" title="Edit role" class="table-form__edit ng-scope" href="">
+                                    <span>Edit</span>
+                                </a>
+                                <div ng-show="currentCandidate.$editing === 'email' || currentCandidate.$editing === 'candidateProfile'">
+                                    <div class="form__field form__label--invisible" ng-class="{'is--required': element.validation.required}">
+                                        <label class="form__label" for="Email">
+                                            Emails
+                                        </label>
+
+                                        <emails max="5" min="0" ng-required="true" ng-model="currentCandidate.ContactInfo.Emails" name="Email"></emails>
+                                    </div>
+
+                                    <div ng-hide="currentCandidate.$editing === 'candidateProfile'" class="button-group">
+                                        <a ng-click="currentCandidate.$cancelEdit();" href="" class="button button--small">Cancel</a>
+                                        <button ng-click="undefined" disable-toggle="undefined" class="button button--positive button--small disable-toggle" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End Email -->
+                        <!-- Address -->
+                        <tr ng-class="{ 'is--editing' : currentCandidate.$editing === 'address' || currentCandidate.$editing === 'candidateProfile' }">
+                            <th>Address</th>
+                            <td style="position: relative" class="table-form__edit-parent">
+                                <span ng-hide="currentCandidate.$editing === 'address' || currentCandidate.$editing === 'candidateProfile'" class="table-form__form-value">
+                                    <div>
+                                        <span>{{currentCandidate.ContactInfo.Address}}, </span>
+                                        <span>{{currentCandidate.ContactInfo.Suburb}} </span>
+                                        <span>{{currentCandidate.ContactInfo.StateName}} </span>
+                                        <span>{{currentCandidate.ContactInfo.Postcode}}</span>
+                                    </div>
+                                    <div ng-show="currentCandidate.ContactInfo.CountryId">
+                                        {{ currentCandidate.ContactInfo.CountryId }}
+                                    </div>
+                                </span>
+
+                                <a ng-hide="currentCandidate.$editing === 'address' || currentCandidate.$editing === 'candidateProfile'" ng-click="currentCandidate.$edit('address');" title="Edit role" class="table-form__edit ng-scope" href="">
+                                    <span>Edit</span>
+                                </a>
+                                <div ng-show="currentCandidate.$editing === 'address' || currentCandidate.$editing === 'candidateProfile'">
+                                    <form name="form" ng-class="{'is--blocked': currentCandidate.$submitting}">
+                                        <address-lookup>
+                                            <div class="form__field is--required">
+                                                <label class="form__label" for="Postcode">Postcode</label>
+                                                <div>
+                                                    <input type="text" ng-model="currentCandidate.ContactInfo.Postcode" id="Postcode" placeholder="Postcode" name="Postcode"
+                                                           ng-required="true" ng-minlength="0" ng-maxlength="5" ng-disabled="form[element.name].$disabled" />
+                                                </div>
+                                                <p><small>Enter a postcode to prefill this address</small></p>
+                                            </div>
+                                            <address-lookup-suburb></address-lookup-suburb>
+                                            <div class="form__field" ng-class="{'is--blocked' : !form.$locationLookupResolved}">
+                                                <div class="form__field is--required">
+                                                    <label class="form__label" for="Address">Street Address</label>
+                                                    <div>
+                                                        <input type="text"
+                                                               id="Address"
+                                                               placeholder="Street Address"
+                                                               name="Address"
+                                                               ng-required="true"
+                                                               ng-minlength="0"
+                                                               ng-maxlength="1000"
+                                                               ng-model="currentCandidate.ContactInfo.Address"
+                                                               ng-disabled="form[element.name].$disabled" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form__field is--required" ng-show="form.$locationLookupResolved">
+                                                    <label class="form__label" for="Suburb">Suburb</label>
+                                                    <div>
+                                                        <input ng-model="currentCandidate.ContactInfo.Suburb"
+                                                               type="text" id="Suburb"
+                                                               placeholder="Suburb"
+                                                               name="Suburb"
+                                                               ng-required="true"
+                                                               ng-minlength="0"
+                                                               ng-maxlength="1000"
+                                                               ng-disabled="form[element.name].$disabled" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form__field is--required">
+                                                    <label class="form__label" for="StateName">State</label>
+                                                    <div>
+                                                        <input ng-model="currentCandidate.ContactInfo.StateName"
+                                                               type="text"
+                                                               id="StateName"
+                                                               placeholder="State Name"
+                                                               name="StateName"
+                                                               ng-required="true"
+                                                               ng-minlength="0"
+                                                               ng-maxlength="1000"
+                                                               ng-disabled="form[element.name].$disabled" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form__field is--required" ng-show="form.$noLocationMatches">
+                                                    <label class="form__label" for="City">City</label>
+                                                    <div>
+                                                        <input type="text"
+                                                               ng-model="currentCandidate.ContactInfo.City"
+                                                               id="City" placeholder="City"
+                                                               name="City"
+                                                               ng-required="true"
+                                                               ng-minlength="0"
+                                                               ng-maxlength="1000"
+                                                               ng-disabled="form[element.name].$disabled" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form__field is--required">
+
+                                                    <label class="form__label" for="CountryId">Country</label>
+                                                    <select-country id="CountryId" ng-model="currentCandidate.ContactInfo.CountryId" name="CountryId" ng-required="element.validation.required"
+                                                                    ng-disabled="form[element.name].$disabled">
+                                                    </select-country>
+                                                </div>
+
+                                            </div>
+                                        </address-lookup>
+                                    </form>
+                                    <!--</div>-->
+
+                                    <div ng-hide="currentCandidate.$editing === 'candidateProfile'" class="button-group">
+                                        <a ng-click="currentCandidate.$cancelEdit(); resetLookup ? resetLookup() : null; resetForm();" href="" class="button button--small">Cancel</a>
+                                        <button ng-click="undefined" disable-toggle="undefined" class="button button--positive button--small disable-toggle" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- End Address -->
+                        <tr ng-show="currentCandidate.$editing === 'candidateProfile'">
+                            <th></th>
+                            <td>
+                                <div class="button-group">
+                                    <a ng-click="currentCandidate.$cancelEdit(); resetLookup ? resetLookup() : null; resetForm();" href="" class="button button--small">Cancel</a>
+                                    <button ng-click="undefined" disable-toggle="undefined" class="button button--positive button--small disable-toggle" type="submit">Save</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div class="segment__fieldset" ng-class="{'is--loading': banking.bankingInformation.$submitting}">
+                    <div class="segment__fieldset-heading">
+                        <h2>Uploads</h2>
+                        <a href="#" class="table-form__edit table-form__edit--cancel" dropdown-toggle>
+                            <span><i class="icon--ellipsis"></i></span>
+                        </a>
+                        <ul class="submenu submenu--compact dropdown-menu" style="top:65%;right:0;">
+                            <li class="submenu__item">
+                                <a ng-click="" href="">Edit</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" ng-click="">Cancel</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" ng-click="">Delete task</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style="color:#a2a2a2">
+                        <i class="icon--round-info"></i> Refer job for more specific documents.
+                    </p>
+
+                    <file-viewer file="{'$id':'4','FileStoreId':2268,'FileName':'the_hub.pdf','FileSize':109605,'FileExtension':'pdf'}" inline-images="true"
+                                 block="true"></file-viewer>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

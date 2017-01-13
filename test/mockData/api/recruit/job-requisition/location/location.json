@@ -1,0 +1,644 @@
+{
+  "$id": "1",
+  "Locations": [
+    {
+      "GroupName":"Hawthorn",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11036,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Support Office",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11038,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"x",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11051,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"X",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11052,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Mt Lawley",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11056,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"St Kilda",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11059,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Elsternwick",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11062,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Fitzroy",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11064,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Richmond",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11065,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Malvern",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11067,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Windsor",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11068,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Highpoint",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11069,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Chermside",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11071,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Bulimba",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11072,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Fountain Gate",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11073,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Coolangatta",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11074,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Fortitude Valley",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11075,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Newcastle (The Junction)",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11076,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"QV",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11077,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Doncaster",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11079,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Carlton",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11080,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Melbourne Central",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11081,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"South Melbourne",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11082,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Ascot",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11083,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Crows Nest",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11084,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Robina",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11086,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Watergardens",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11087,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Degraves Street",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11088,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Sthbank (QLD)",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11089,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Garden City",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11090,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"ZZ Sherpa To Delete",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11092,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Airstream",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11093,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Harbourside",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11094,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Darlinghurst Vic St",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11095,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Darlinghurst (Crown St)",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11096,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Bendigo",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11098,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Subiaco",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11099,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Eagle Street ",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11100,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Claremont",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11103,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Belconnen",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11105,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Southgate",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11106,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Joondalup",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11107,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"x",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11108,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Newmarket",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11109,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Hillarys Boat Harbour",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11110,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Chatswood",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11112,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Burwood",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11113,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Carindale",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11115,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Parramatta",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11116,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Wintergarden",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11117,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Emporium",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11118,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Manuka",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11119,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Camp Hill",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11131,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"World Square",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11132,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Southbank",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11143,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Brookfield Place ",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11150,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"SWAT Team",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11168,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"SWAT - Applications",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11176,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"VIC Metro ",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11179,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"Test Group ",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11329,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"SRINI Test Group",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11651,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"automation",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11653,
+      "Type":null,
+      "Permissions":{
+
+      }
+    },
+    {
+      "GroupName":"SRoster",
+      "IsTrainingLocation":null,
+      "LookupUrl":"http://localhost:56828/Api/",
+      "NetworkGroupId":11730,
+      "Type":null,
+      "Permissions":{
+
+      }
+    }
+  ],
+  "Permission": [],
+  "Pagination": {
+    "$id": "128",
+    "TotalCount": 0,
+    "TotalPages": 0,
+    "PageSize": null,
+    "Page": null
+  },
+  "Status": 0
+}

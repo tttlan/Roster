@@ -1,0 +1,15 @@
+<div class="recruit">
+    <header class="modal__header header-employees-modal">
+        <h2 class="modal__title" ng-hide="isCompleted">ADD NEW EMPLOYEES</h2>
+        <a href="" class="modal__close" ng-click="cancel()"></a>
+    </header>
+    <div class="upload--csv">
+        <uploader  maxsize="5000 * 1024" start-open="true" maxfiles="1" 
+                   ng-model="fileCSVUpload" delayed-upload="true" 
+                   container-id="2"
+                   file-types="['csv']"
+                   upload-csv="true"></uploader>
+    </div>
+    <footer>
+    </footer>
+</div>

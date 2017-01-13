@@ -1,0 +1,133 @@
+/* Icons from directory "" */
+.ui 
+    
+    sprite-width = 1455; // Current width of the sprite file
+    sprite-height = 64; // Current height of the sprite file
+    sprite-base-pixel-size = 64; // Get the base pixel size 16px without the 'px'
+
+    [class*="svg-icon--"] {
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-image: url('/interface/svg/sprite.svg');
+        background-size: (sprite-width/sprite-base-pixel-size)em (sprite-height/sprite-base-pixel-size)em; // Scale to 100% height of sprite
+        width: 10em;
+        height: (sprite-height/sprite-base-pixel-size)em;
+        font-size: (sprite-base-pixel-size)px;
+    }
+    
+    // Figure out the em position within the sprite
+    get-sprite-bg-position(sprite-position) {
+        value = (sprite-position / sprite-base-pixel-size)
+        value = -(value)em
+    }
+    
+    /*get-shape-width(currWidth, nextWidth) {
+        value = nextWidth - currWidth
+        value = value - 16
+        value = value / 16
+        value = (value)em
+    }*/
+    
+    get-shape-em(value) {
+        value = value / sprite-base-pixel-size
+        value = (value)em
+    }   
+
+    // Default is text file
+    [class*="svg-icon--"] {
+        // To figure out what to pass in here, open up the SVG in a text editor and find the translate value in the SVG eg.  <g transform="translate(104 0)">
+        background-position: get-sprite-bg-position(480) 0;
+        
+        // Pass in the x position of the next shape and the position of the current shape to get the width of this shape
+        width: get-shape-em(48);
+    }
+    
+    // SVG sprite icons
+    //
+    // Tag a look at svg-sprite.styl for class variations eg. .svg-icon--jpg ,.svg-icon--jpeg, .svg-icon--gif, .svg-icon--png, .svg-icon--img all load the image icon
+    //
+    // Default icon is the text file
+    //
+    // Markup: <i class="svg-icon--{{modifier_class}}"></i>
+    //
+    // doc - Document
+    // folder1 - Folder 1
+    // folder2 - Folder 2
+    // img - Image
+    // pdf - .pdf
+    // ppt - .ppt
+    // txt - .txt
+    // video - video
+    // xls - .xls
+    // zip - .zip
+    // sherpa-logo-white - Sherpa logo
+    //
+    // Styleguide elements.svgsprite.icons
+
+    // File Icon
+    //
+    // You can use the 'fileIcon' directive to build the correct icon from a filename
+    //
+    // Markup:
+    // <span file-icon="something.pdf" ></span>
+    // <i file-icon="/something/under/a/path.gif" ></i>
+    // <span file-icon ></span> <!-- default -->
+    //
+    // Styleguide elements.svgsprite.icons.file-icon
+
+    
+    .svg-icon--folder1 {
+        background-position: 0 0;
+        width: get-shape-em(70); 
+    }
+    .svg-icon--folder2 {
+        background-position: get-sprite-bg-position(80) 0;
+        width: get-shape-em(70);
+    }
+    .svg-icon--doc ,
+    .svg-icon--docx {
+        background-position: get-sprite-bg-position(160) 0;
+        width: get-shape-em(48);
+    }
+    .svg-icon--jpg ,
+    .svg-icon--jpeg ,
+    .svg-icon--gif ,
+    .svg-icon--png ,
+    .svg-icon--img {
+        //436
+        background-position: get-sprite-bg-position(240) 0;
+        width: get-shape-em(48);
+    }
+    .svg-icon--pdf {
+        background-position: get-sprite-bg-position(320) 0;
+        width: get-shape-em(48);
+    }
+    .svg-icon--ppsx ,
+    .svg-icon--pptx ,
+    .svg-icon--ppt {
+        background-position: get-sprite-bg-position(400) 0;
+        width: get-shape-em(48);
+    }
+    .svg-icon--txt {
+        background-position: get-sprite-bg-position(480) 0;
+        width: get-shape-em(48);
+    }
+    .svg-icon--video {
+        background-position: get-sprite-bg-position(560) 0;
+        width: get-shape-em(48);
+    }
+    .svg-icon--xml ,
+    .svg-icon--xls ,
+    .svg-icon--xlsx ,
+    .svg-icon--csv {
+        background-position: get-sprite-bg-position(640) 0;
+        width: get-shape-em(48);
+    }
+    .svg-icon--zip {
+        background-position: get-sprite-bg-position(720) 0;
+        width: get-shape-em(48);
+    }
+    .svg-icon--sherpa-logo-white {
+        background-position: get-sprite-bg-position(800) 0;
+        width: get-shape-em(335);
+    }

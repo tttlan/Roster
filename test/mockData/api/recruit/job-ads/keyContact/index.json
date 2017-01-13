@@ -1,0 +1,384 @@
+{
+    "data": [
+        {
+            "$id": "1",
+            "KeyValue": 306171,
+            "SearchType": "Employee",
+            "Value": 0,
+            "Label": "jq_approver1 group A"
+        },
+        {
+            "$id": "2",
+            "KeyValue": 306188,
+            "SearchType": "Employee",
+            "Value": 1,
+            "Label": "otherboard otherboard"
+        },
+        {
+            "$id": "3",
+            "KeyValue": 306193,
+            "SearchType": "Employee",
+            "Value": 2,
+            "Label": "Thai1 Thai1"
+        },
+        {
+            "$id": "4",
+            "KeyValue": 306197,
+            "SearchType": "Employee",
+            "Value": 3,
+            "Label": "approvejr approvejr"
+        },
+        {
+            "$id": "5",
+            "KeyValue": 306198,
+            "SearchType": "Employee",
+            "Value": 4,
+            "Label": "adminjr adminjr"
+        },
+        {
+            "$id": "6",
+            "KeyValue": 306200,
+            "SearchType": "Employee",
+            "Value": 5,
+            "Label": "requestjrA requestjrA"
+        },
+        {
+            "$id": "7",
+            "KeyValue": 306172,
+            "SearchType": "Employee",
+            "Value": 6,
+            "Label": "jq_admin1 group A"
+        },
+        {
+            "$id": "8",
+            "KeyValue": 306209,
+            "SearchType": "Employee",
+            "Value": 7,
+            "Label": "approvejrC approvejrC"
+        },
+        {
+            "$id": "9",
+            "KeyValue": 306210,
+            "SearchType": "Employee",
+            "Value": 8,
+            "Label": "adminjrC adminjrC"
+        },
+        {
+            "$id": "10",
+            "KeyValue": 306241,
+            "SearchType": "Employee",
+            "Value": 9,
+            "Label": "autoapproval autoapproval"
+        },
+        {
+            "$id": "11",
+            "KeyValue": 306252,
+            "SearchType": "Employee",
+            "Value": 10,
+            "Label": "manager5 manager5"
+        },
+        {
+            "$id": "12",
+            "KeyValue": 306174,
+            "SearchType": "Employee",
+            "Value": 11,
+            "Label": "jq_approver2 group B"
+        },
+        {
+            "$id": "13",
+            "KeyValue": 306175,
+            "SearchType": "Employee",
+            "Value": 12,
+            "Label": "jq_admin2 group B"
+        },
+        {
+            "$id": "14",
+            "KeyValue": 306177,
+            "SearchType": "Employee",
+            "Value": 13,
+            "Label": "jq_approver3 group C"
+        },
+        {
+            "$id": "15",
+            "KeyValue": 306047,
+            "SearchType": "Employee",
+            "Value": 14,
+            "Label": "Sherpa Admin"
+        },
+        {
+            "$id": "16",
+            "KeyValue": 306201,
+            "SearchType": "Employee",
+            "Value": 15,
+            "Label": "approvejrA approvejrA"
+        },
+        {
+            "$id": "17",
+            "KeyValue": 306202,
+            "SearchType": "Employee",
+            "Value": 16,
+            "Label": "adminjrA adminjrA"
+        },
+        {
+            "$id": "18",
+            "KeyValue": 306203,
+            "SearchType": "Employee",
+            "Value": 17,
+            "Label": "orequestjrA orequestjrA"
+        },
+        {
+            "$id": "19",
+            "KeyValue": 306205,
+            "SearchType": "Employee",
+            "Value": 18,
+            "Label": "approvejrB approvejrB"
+        },
+        {
+            "$id": "20",
+            "KeyValue": 306206,
+            "SearchType": "Employee",
+            "Value": 19,
+            "Label": "adminjrB adminjrB"
+        },
+        {
+            "$id": "21",
+            "KeyValue": 306260,
+            "SearchType": "Employee",
+            "Value": 20,
+            "Label": "creator01 creator01"
+        },
+        {
+            "$id": "22",
+            "KeyValue": 306189,
+            "SearchType": "Employee",
+            "Value": 21,
+            "Label": "JobAdCreator2552016 JobAdCreator2552016"
+        },
+        {
+            "$id": "23",
+            "KeyValue": 306190,
+            "SearchType": "Employee",
+            "Value": 22,
+            "Label": "AssessmentMember2552016 AssessmentMember2552016"
+        },
+        {
+            "$id": "24",
+            "KeyValue": 306191,
+            "SearchType": "Employee",
+            "Value": 23,
+            "Label": "Candidate2552016 Candidate2552016"
+        },
+        {
+            "$id": "25",
+            "KeyValue": 306342,
+            "SearchType": "Employee",
+            "Value": 24,
+            "Label": "creator03 creator03"
+        },
+        {
+            "$id": "26",
+            "KeyValue": 306259,
+            "SearchType": "Employee",
+            "Value": 25,
+            "Label": "stranger stranger"
+        },
+        {
+            "$id": "27",
+            "KeyValue": 306270,
+            "SearchType": "Employee",
+            "Value": 26,
+            "Label": "network_admin network_admin"
+        },
+        {
+            "$id": "28",
+            "KeyValue": 306279,
+            "SearchType": "Employee",
+            "Value": 27,
+            "Label": "creator02 creator02"
+        },
+        {
+            "$id": "29",
+            "KeyValue": 306213,
+            "SearchType": "Employee",
+            "Value": 28,
+            "Label": "approvejrD approvejrD"
+        },
+        {
+            "$id": "30",
+            "KeyValue": 306214,
+            "SearchType": "Employee",
+            "Value": 29,
+            "Label": "adminjrD adminjrD"
+        },
+        {
+            "$id": "31",
+            "KeyValue": 306372,
+            "SearchType": "Employee",
+            "Value": 30,
+            "Label": "creator_tl1 creator_tl1"
+        },
+        {
+            "$id": "32",
+            "KeyValue": 306218,
+            "SearchType": "Employee",
+            "Value": 31,
+            "Label": "manager1 manager1"
+        },
+        {
+            "$id": "33",
+            "KeyValue": 306221,
+            "SearchType": "Employee",
+            "Value": 32,
+            "Label": "manager4 manager4"
+        },
+        {
+            "$id": "34",
+            "KeyValue": 306219,
+            "SearchType": "Employee",
+            "Value": 33,
+            "Label": "manager2 manager2"
+        },
+        {
+            "$id": "35",
+            "KeyValue": 306220,
+            "SearchType": "Employee",
+            "Value": 34,
+            "Label": "manager3 manager3"
+        },
+        {
+            "$id": "36",
+            "KeyValue": 306261,
+            "SearchType": "Employee",
+            "Value": 35,
+            "Label": "assessor01same assessor01same"
+        },
+        {
+            "$id": "37",
+            "KeyValue": 306262,
+            "SearchType": "Employee",
+            "Value": 36,
+            "Label": "assessor02same assessor02same"
+        },
+        {
+            "$id": "38",
+            "KeyValue": 306359,
+            "SearchType": "Employee",
+            "Value": 37,
+            "Label": "AssessmentMember06092016 AssessmentMember06092016"
+        },
+        {
+            "$id": "39",
+            "KeyValue": 306178,
+            "SearchType": "Employee",
+            "Value": 38,
+            "Label": "jq_admin3 group C"
+        },
+        {
+            "$id": "40",
+            "KeyValue": 306185,
+            "SearchType": "Employee",
+            "Value": 39,
+            "Label": "applicant1 applicant1"
+        },
+        {
+            "$id": "41",
+            "KeyValue": 306263,
+            "SearchType": "Employee",
+            "Value": 40,
+            "Label": "assessor03sameRA assessor03sameRA"
+        },
+        {
+            "$id": "42",
+            "KeyValue": 306264,
+            "SearchType": "Employee",
+            "Value": 41,
+            "Label": "assessor04notsame assessor04notsame"
+        },
+        {
+            "$id": "43",
+            "KeyValue": 306373,
+            "SearchType": "Employee",
+            "Value": 42,
+            "Label": "assessor_tl1 assessor_tl1"
+        },
+        {
+            "$id": "44",
+            "KeyValue": 306170,
+            "SearchType": "Employee",
+            "Value": 43,
+            "Label": "jq_requestor1 group A"
+        },
+        {
+            "$id": "45",
+            "KeyValue": 12088,
+            "SearchType": "NetworkGroup",
+            "Value": 44,
+            "Label": "Administrators"
+        },
+        {
+            "$id": "46",
+            "KeyValue": 14589,
+            "SearchType": "NetworkGroup",
+            "Value": 45,
+            "Label": "WorkflowA"
+        },
+        {
+            "$id": "47",
+            "KeyValue": 14590,
+            "SearchType": "NetworkGroup",
+            "Value": 46,
+            "Label": "Test application"
+        },
+        {
+            "$id": "48",
+            "KeyValue": 14591,
+            "SearchType": "NetworkGroup",
+            "Value": 47,
+            "Label": "Test board"
+        },
+        {
+            "$id": "49",
+            "KeyValue": 14594,
+            "SearchType": "NetworkGroup",
+            "Value": 48,
+            "Label": "applicant1"
+        },
+        {
+            "$id": "50",
+            "KeyValue": 14595,
+            "SearchType": "NetworkGroup",
+            "Value": 49,
+            "Label": "nguyenphanRA"
+        },
+        {
+            "$id": "51",
+            "KeyValue": 14596,
+            "SearchType": "NetworkGroup",
+            "Value": 50,
+            "Label": "group A"
+        },
+        {
+            "$id": "52",
+            "KeyValue": 14597,
+            "SearchType": "NetworkGroup",
+            "Value": 51,
+            "Label": "tloanRA"
+        },
+        {
+            "$id": "53",
+            "KeyValue": 14598,
+            "SearchType": "NetworkGroup",
+            "Value": 52,
+            "Label": "RAgroup_1"
+        },
+        {
+            "$id": "54",
+            "KeyValue": 14599,
+            "SearchType": "NetworkGroup",
+            "Value": 53,
+            "Label": "RAgroup_2"
+        }
+    ],
+    "status": 200,
+    "config": {}
+}

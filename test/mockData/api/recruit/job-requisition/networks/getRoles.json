@@ -1,0 +1,2709 @@
+{
+  "$id": "1",
+  "RoleSummaryItemResults": [
+    {
+      "$id": "2",
+      "RoleSummary": {
+        "$id": "3",
+        "RoleId": 775,
+        "Description": "3rd Party Agency",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "4",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/775",
+          "Children": null
+        },
+        {
+          "$id": "5",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/775",
+          "Children": null
+        },
+        {
+          "$id": "6",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/775",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "7",
+      "RoleSummary": {
+        "$id": "8",
+        "RoleId": 776,
+        "Description": "3rd Party Supplier",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "9",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/776",
+          "Children": null
+        },
+        {
+          "$id": "10",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/776",
+          "Children": null
+        },
+        {
+          "$id": "11",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/776",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "12",
+      "RoleSummary": {
+        "$id": "13",
+        "RoleId": 738,
+        "Description": "ADMIN - Director",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "14",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/738",
+          "Children": null
+        },
+        {
+          "$id": "15",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/738",
+          "Children": null
+        },
+        {
+          "$id": "16",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/738",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "17",
+      "RoleSummary": {
+        "$id": "18",
+        "RoleId": 644,
+        "Description": "ADMIN - Executive Assistant - Managing Director",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "19",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/644",
+          "Children": null
+        },
+        {
+          "$id": "20",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/644",
+          "Children": null
+        },
+        {
+          "$id": "21",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/644",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "22",
+      "RoleSummary": {
+        "$id": "23",
+        "RoleId": 625,
+        "Description": "ADMIN - External Contractor",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "24",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/625",
+          "Children": null
+        },
+        {
+          "$id": "25",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/625",
+          "Children": null
+        },
+        {
+          "$id": "26",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/625",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "27",
+      "RoleSummary": {
+        "$id": "28",
+        "RoleId": 620,
+        "Description": "ADMIN - Managing Director",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "29",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/620",
+          "Children": null
+        },
+        {
+          "$id": "30",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/620",
+          "Children": null
+        },
+        {
+          "$id": "31",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/620",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "32",
+      "RoleSummary": {
+        "$id": "33",
+        "RoleId": 649,
+        "Description": "D&D - Development Coordinator",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "34",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/649",
+          "Children": null
+        },
+        {
+          "$id": "35",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/649",
+          "Children": null
+        },
+        {
+          "$id": "36",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/649",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "37",
+      "RoleSummary": {
+        "$id": "38",
+        "RoleId": 648,
+        "Description": "D&D - National Development Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "39",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/648",
+          "Children": null
+        },
+        {
+          "$id": "40",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/648",
+          "Children": null
+        },
+        {
+          "$id": "41",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/648",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "42",
+      "RoleSummary": {
+        "$id": "43",
+        "RoleId": 659,
+        "Description": "D&D - Project Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "44",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/659",
+          "Children": null
+        },
+        {
+          "$id": "45",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/659",
+          "Children": null
+        },
+        {
+          "$id": "46",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/659",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "47",
+      "RoleSummary": {
+        "$id": "48",
+        "RoleId": 665,
+        "Description": "FIN - Accounts Assistant",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "49",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/665",
+          "Children": null
+        },
+        {
+          "$id": "50",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/665",
+          "Children": null
+        },
+        {
+          "$id": "51",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/665",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "52",
+      "RoleSummary": {
+        "$id": "53",
+        "RoleId": 617,
+        "Description": "FIN - Assistant Accountant",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "54",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/617",
+          "Children": null
+        },
+        {
+          "$id": "55",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/617",
+          "Children": null
+        },
+        {
+          "$id": "56",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/617",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "57",
+      "RoleSummary": {
+        "$id": "58",
+        "RoleId": 621,
+        "Description": "FIN - Chief Financial Officer",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "59",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/621",
+          "Children": null
+        },
+        {
+          "$id": "60",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/621",
+          "Children": null
+        },
+        {
+          "$id": "61",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/621",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "62",
+      "RoleSummary": {
+        "$id": "63",
+        "RoleId": 643,
+        "Description": "FIN - Finance Administrator",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "64",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/643",
+          "Children": null
+        },
+        {
+          "$id": "65",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/643",
+          "Children": null
+        },
+        {
+          "$id": "66",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/643",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "67",
+      "RoleSummary": {
+        "$id": "68",
+        "RoleId": 646,
+        "Description": "FIN - Financial Analyst",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "69",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/646",
+          "Children": null
+        },
+        {
+          "$id": "70",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/646",
+          "Children": null
+        },
+        {
+          "$id": "71",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/646",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "72",
+      "RoleSummary": {
+        "$id": "73",
+        "RoleId": 638,
+        "Description": "FIN - Financial Controller",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "74",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/638",
+          "Children": null
+        },
+        {
+          "$id": "75",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/638",
+          "Children": null
+        },
+        {
+          "$id": "76",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/638",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "77",
+      "RoleSummary": {
+        "$id": "78",
+        "RoleId": 613,
+        "Description": "FIN - Payroll Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "79",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/613",
+          "Children": null
+        },
+        {
+          "$id": "80",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/613",
+          "Children": null
+        },
+        {
+          "$id": "81",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/613",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "82",
+      "RoleSummary": {
+        "$id": "83",
+        "RoleId": 626,
+        "Description": "FIN - Systems Administrator",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "84",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/626",
+          "Children": null
+        },
+        {
+          "$id": "85",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/626",
+          "Children": null
+        },
+        {
+          "$id": "86",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/626",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "87",
+      "RoleSummary": {
+        "$id": "88",
+        "RoleId": 657,
+        "Description": "HR - Franchise Recruitment & HR Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "89",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/657",
+          "Children": null
+        },
+        {
+          "$id": "90",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/657",
+          "Children": null
+        },
+        {
+          "$id": "91",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/657",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "92",
+      "RoleSummary": {
+        "$id": "93",
+        "RoleId": 609,
+        "Description": "HR - General Manager, Human Resources",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "94",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/609",
+          "Children": null
+        },
+        {
+          "$id": "95",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/609",
+          "Children": null
+        },
+        {
+          "$id": "96",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/609",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "97",
+      "RoleSummary": {
+        "$id": "98",
+        "RoleId": 618,
+        "Description": "HR - Office / Training Coordinator",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "99",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/618",
+          "Children": null
+        },
+        {
+          "$id": "100",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/618",
+          "Children": null
+        },
+        {
+          "$id": "101",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/618",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "102",
+      "RoleSummary": {
+        "$id": "103",
+        "RoleId": 651,
+        "Description": "L&D - Learning & Development Consultant",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "104",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/651",
+          "Children": null
+        },
+        {
+          "$id": "105",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/651",
+          "Children": null
+        },
+        {
+          "$id": "106",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/651",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "107",
+      "RoleSummary": {
+        "$id": "108",
+        "RoleId": 650,
+        "Description": "L&D - Learning & Development Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "109",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/650",
+          "Children": null
+        },
+        {
+          "$id": "110",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/650",
+          "Children": null
+        },
+        {
+          "$id": "111",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/650",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "112",
+      "RoleSummary": {
+        "$id": "113",
+        "RoleId": 656,
+        "Description": "L&D - National Learning & Development Trainer ",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "114",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/656",
+          "Children": null
+        },
+        {
+          "$id": "115",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/656",
+          "Children": null
+        },
+        {
+          "$id": "116",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/656",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "117",
+      "RoleSummary": {
+        "$id": "118",
+        "RoleId": 612,
+        "Description": "L&D - SME - Business Manager Trainer",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "119",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/612",
+          "Children": null
+        },
+        {
+          "$id": "120",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/612",
+          "Children": null
+        },
+        {
+          "$id": "121",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/612",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "122",
+      "RoleSummary": {
+        "$id": "123",
+        "RoleId": 1255,
+        "Description": "Libraries Role",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "124",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/1255",
+          "Children": null
+        },
+        {
+          "$id": "125",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/1255",
+          "Children": null
+        },
+        {
+          "$id": "126",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/1255",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "127",
+      "RoleSummary": {
+        "$id": "128",
+        "RoleId": 1252,
+        "Description": "Links Role",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "129",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/1252",
+          "Children": null
+        },
+        {
+          "$id": "130",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/1252",
+          "Children": null
+        },
+        {
+          "$id": "131",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/1252",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "132",
+      "RoleSummary": {
+        "$id": "133",
+        "RoleId": 664,
+        "Description": "MKT - Brand Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "134",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/664",
+          "Children": null
+        },
+        {
+          "$id": "135",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/664",
+          "Children": null
+        },
+        {
+          "$id": "136",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/664",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "137",
+      "RoleSummary": {
+        "$id": "138",
+        "RoleId": 666,
+        "Description": "MKT - Event & Brand Activation Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "139",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/666",
+          "Children": null
+        },
+        {
+          "$id": "140",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/666",
+          "Children": null
+        },
+        {
+          "$id": "141",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/666",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "142",
+      "RoleSummary": {
+        "$id": "143",
+        "RoleId": 614,
+        "Description": "MKT - Graphic Designer",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "144",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/614",
+          "Children": null
+        },
+        {
+          "$id": "145",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/614",
+          "Children": null
+        },
+        {
+          "$id": "146",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/614",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "147",
+      "RoleSummary": {
+        "$id": "148",
+        "RoleId": 662,
+        "Description": "MKT - Local Marketing Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "149",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/662",
+          "Children": null
+        },
+        {
+          "$id": "150",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/662",
+          "Children": null
+        },
+        {
+          "$id": "151",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/662",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "152",
+      "RoleSummary": {
+        "$id": "153",
+        "RoleId": 663,
+        "Description": "MKT - Marketing Asisstant",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "154",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/663",
+          "Children": null
+        },
+        {
+          "$id": "155",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/663",
+          "Children": null
+        },
+        {
+          "$id": "156",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/663",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "157",
+      "RoleSummary": {
+        "$id": "158",
+        "RoleId": 622,
+        "Description": "MKT - Marketing Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "159",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/622",
+          "Children": null
+        },
+        {
+          "$id": "160",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/622",
+          "Children": null
+        },
+        {
+          "$id": "161",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/622",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "162",
+      "RoleSummary": {
+        "$id": "163",
+        "RoleId": 744,
+        "Description": "MKT - Marketing Projects Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "164",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/744",
+          "Children": null
+        },
+        {
+          "$id": "165",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/744",
+          "Children": null
+        },
+        {
+          "$id": "166",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/744",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "167",
+      "RoleSummary": {
+        "$id": "168",
+        "RoleId": 890,
+        "Description": "My Test Role",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "169",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/890",
+          "Children": null
+        },
+        {
+          "$id": "170",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/890",
+          "Children": null
+        },
+        {
+          "$id": "171",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/890",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "172",
+      "RoleSummary": {
+        "$id": "173",
+        "RoleId": 655,
+        "Description": "OPS -  Team Leader (Franchise)",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "174",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/655",
+          "Children": null
+        },
+        {
+          "$id": "175",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/655",
+          "Children": null
+        },
+        {
+          "$id": "176",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/655",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "177",
+      "RoleSummary": {
+        "$id": "178",
+        "RoleId": 745,
+        "Description": "OPS - Area Manager - ACT",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "179",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/745",
+          "Children": null
+        },
+        {
+          "$id": "180",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/745",
+          "Children": null
+        },
+        {
+          "$id": "181",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/745",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "182",
+      "RoleSummary": {
+        "$id": "183",
+        "RoleId": 740,
+        "Description": "OPS - Area Manager - NSW",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "184",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/740",
+          "Children": null
+        },
+        {
+          "$id": "185",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/740",
+          "Children": null
+        },
+        {
+          "$id": "186",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/740",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "187",
+      "RoleSummary": {
+        "$id": "188",
+        "RoleId": 743,
+        "Description": "OPS - Area Manager - QLD",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "189",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/743",
+          "Children": null
+        },
+        {
+          "$id": "190",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/743",
+          "Children": null
+        },
+        {
+          "$id": "191",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/743",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "192",
+      "RoleSummary": {
+        "$id": "193",
+        "RoleId": 619,
+        "Description": "OPS - Area Manager - SA",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "194",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/619",
+          "Children": null
+        },
+        {
+          "$id": "195",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/619",
+          "Children": null
+        },
+        {
+          "$id": "196",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/619",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "197",
+      "RoleSummary": {
+        "$id": "198",
+        "RoleId": 742,
+        "Description": "OPS - Area Manager - VIC",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "199",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/742",
+          "Children": null
+        },
+        {
+          "$id": "200",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/742",
+          "Children": null
+        },
+        {
+          "$id": "201",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/742",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "202",
+      "RoleSummary": {
+        "$id": "203",
+        "RoleId": 741,
+        "Description": "OPS - Area Manager - WA",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "204",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/741",
+          "Children": null
+        },
+        {
+          "$id": "205",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/741",
+          "Children": null
+        },
+        {
+          "$id": "206",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/741",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "207",
+      "RoleSummary": {
+        "$id": "208",
+        "RoleId": 608,
+        "Description": "OPS - Assistant Business Manager (Company)",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "209",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/608",
+          "Children": null
+        },
+        {
+          "$id": "210",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/608",
+          "Children": null
+        },
+        {
+          "$id": "211",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/608",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "212",
+      "RoleSummary": {
+        "$id": "213",
+        "RoleId": 647,
+        "Description": "OPS - Assistant Business Manager (Franchise)",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "214",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/647",
+          "Children": null
+        },
+        {
+          "$id": "215",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/647",
+          "Children": null
+        },
+        {
+          "$id": "216",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/647",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "217",
+      "RoleSummary": {
+        "$id": "218",
+        "RoleId": 607,
+        "Description": "OPS - Business Manager  (Company)",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "219",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/607",
+          "Children": null
+        },
+        {
+          "$id": "220",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/607",
+          "Children": null
+        },
+        {
+          "$id": "221",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/607",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "222",
+      "RoleSummary": {
+        "$id": "223",
+        "RoleId": 653,
+        "Description": "OPS - Business Manager (Franchise)",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "224",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/653",
+          "Children": null
+        },
+        {
+          "$id": "225",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/653",
+          "Children": null
+        },
+        {
+          "$id": "226",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/653",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "227",
+      "RoleSummary": {
+        "$id": "228",
+        "RoleId": 667,
+        "Description": "OPS - Franchise Partner",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "229",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/667",
+          "Children": null
+        },
+        {
+          "$id": "230",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/667",
+          "Children": null
+        },
+        {
+          "$id": "231",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/667",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "232",
+      "RoleSummary": {
+        "$id": "233",
+        "RoleId": 610,
+        "Description": "OPS - General Manager - Operations",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "234",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/610",
+          "Children": null
+        },
+        {
+          "$id": "235",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/610",
+          "Children": null
+        },
+        {
+          "$id": "236",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/610",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "237",
+      "RoleSummary": {
+        "$id": "238",
+        "RoleId": 660,
+        "Description": "OPS - Operations Manager - Activations",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "239",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/660",
+          "Children": null
+        },
+        {
+          "$id": "240",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/660",
+          "Children": null
+        },
+        {
+          "$id": "241",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/660",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "242",
+      "RoleSummary": {
+        "$id": "243",
+        "RoleId": 640,
+        "Description": "OPS - State Operations Manager - NSW",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "244",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/640",
+          "Children": null
+        },
+        {
+          "$id": "245",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/640",
+          "Children": null
+        },
+        {
+          "$id": "246",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/640",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "247",
+      "RoleSummary": {
+        "$id": "248",
+        "RoleId": 611,
+        "Description": "OPS - State Operations Manager - QLD/ACT",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "249",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/611",
+          "Children": null
+        },
+        {
+          "$id": "250",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/611",
+          "Children": null
+        },
+        {
+          "$id": "251",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/611",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "252",
+      "RoleSummary": {
+        "$id": "253",
+        "RoleId": 739,
+        "Description": "OPS - State Operations Manager - SA",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "254",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/739",
+          "Children": null
+        },
+        {
+          "$id": "255",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/739",
+          "Children": null
+        },
+        {
+          "$id": "256",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/739",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "257",
+      "RoleSummary": {
+        "$id": "258",
+        "RoleId": 639,
+        "Description": "OPS - State Operations Manager - VIC",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "259",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/639",
+          "Children": null
+        },
+        {
+          "$id": "260",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/639",
+          "Children": null
+        },
+        {
+          "$id": "261",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/639",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "262",
+      "RoleSummary": {
+        "$id": "263",
+        "RoleId": 641,
+        "Description": "OPS - State Operations Manager - WA",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "264",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/641",
+          "Children": null
+        },
+        {
+          "$id": "265",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/641",
+          "Children": null
+        },
+        {
+          "$id": "266",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/641",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "267",
+      "RoleSummary": {
+        "$id": "268",
+        "RoleId": 768,
+        "Description": "OPS - SWAT Manager (Company)",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "269",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/768",
+          "Children": null
+        },
+        {
+          "$id": "270",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/768",
+          "Children": null
+        },
+        {
+          "$id": "271",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/768",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "272",
+      "RoleSummary": {
+        "$id": "273",
+        "RoleId": 616,
+        "Description": "OPS - Team Leader (Company)",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "274",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/616",
+          "Children": null
+        },
+        {
+          "$id": "275",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/616",
+          "Children": null
+        },
+        {
+          "$id": "276",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/616",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "277",
+      "RoleSummary": {
+        "$id": "278",
+        "RoleId": 615,
+        "Description": "OPS - Team Member (Company)",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "279",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/615",
+          "Children": null
+        },
+        {
+          "$id": "280",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/615",
+          "Children": null
+        },
+        {
+          "$id": "281",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/615",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "282",
+      "RoleSummary": {
+        "$id": "283",
+        "RoleId": 654,
+        "Description": "OPS - Team Member (Franchise)",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "284",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/654",
+          "Children": null
+        },
+        {
+          "$id": "285",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/654",
+          "Children": null
+        },
+        {
+          "$id": "286",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/654",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "287",
+      "RoleSummary": {
+        "$id": "288",
+        "RoleId": 652,
+        "Description": "PRP - Senior Property Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "289",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/652",
+          "Children": null
+        },
+        {
+          "$id": "290",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/652",
+          "Children": null
+        },
+        {
+          "$id": "291",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/652",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "292",
+      "RoleSummary": {
+        "$id": "293",
+        "RoleId": 661,
+        "Description": "REC - Recruitment Assistant",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "294",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/661",
+          "Children": null
+        },
+        {
+          "$id": "295",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/661",
+          "Children": null
+        },
+        {
+          "$id": "296",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/661",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "297",
+      "RoleSummary": {
+        "$id": "298",
+        "RoleId": 624,
+        "Description": "REC - Recruitment Coordinator",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "299",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/624",
+          "Children": null
+        },
+        {
+          "$id": "300",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/624",
+          "Children": null
+        },
+        {
+          "$id": "301",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/624",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "302",
+      "RoleSummary": {
+        "$id": "303",
+        "RoleId": 623,
+        "Description": "REC - Recruitment Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "304",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/623",
+          "Children": null
+        },
+        {
+          "$id": "305",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/623",
+          "Children": null
+        },
+        {
+          "$id": "306",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/623",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "307",
+      "RoleSummary": {
+        "$id": "308",
+        "RoleId": 1251,
+        "Description": "Recruit Role",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "309",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/1251",
+          "Children": null
+        },
+        {
+          "$id": "310",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/1251",
+          "Children": null
+        },
+        {
+          "$id": "311",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/1251",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "312",
+      "RoleSummary": {
+        "$id": "313",
+        "RoleId": 1254,
+        "Description": "Requests Role",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "314",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/1254",
+          "Children": null
+        },
+        {
+          "$id": "315",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/1254",
+          "Children": null
+        },
+        {
+          "$id": "316",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/1254",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "317",
+      "RoleSummary": {
+        "$id": "318",
+        "RoleId": 1249,
+        "Description": "Roster Role",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "319",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/1249",
+          "Children": null
+        },
+        {
+          "$id": "320",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/1249",
+          "Children": null
+        },
+        {
+          "$id": "321",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/1249",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "322",
+      "RoleSummary": {
+        "$id": "323",
+        "RoleId": 1248,
+        "Description": "SRINI Test Role with No Permissions",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "324",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/1248",
+          "Children": null
+        },
+        {
+          "$id": "325",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/1248",
+          "Children": null
+        },
+        {
+          "$id": "326",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/1248",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "327",
+      "RoleSummary": {
+        "$id": "328",
+        "RoleId": 642,
+        "Description": "SUP - National Supply Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "329",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/642",
+          "Children": null
+        },
+        {
+          "$id": "330",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/642",
+          "Children": null
+        },
+        {
+          "$id": "331",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/642",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "332",
+      "RoleSummary": {
+        "$id": "333",
+        "RoleId": 645,
+        "Description": "SUP - Supply Chain Quality Manager",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "334",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/645",
+          "Children": null
+        },
+        {
+          "$id": "335",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/645",
+          "Children": null
+        },
+        {
+          "$id": "336",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/645",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "337",
+      "RoleSummary": {
+        "$id": "338",
+        "RoleId": 1250,
+        "Description": "Tasks Role",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "339",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/1250",
+          "Children": null
+        },
+        {
+          "$id": "340",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/1250",
+          "Children": null
+        },
+        {
+          "$id": "341",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/1250",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "342",
+      "RoleSummary": {
+        "$id": "343",
+        "RoleId": 1253,
+        "Description": "Training Role",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "EntityActions": [
+        {
+          "$id": "344",
+          "Id": null,
+          "Code": 3501,
+          "Caption": "ViewDetailRole",
+          "Description": "ViewDetailRole",
+          "ActionUrl": "api/roles/1253",
+          "Children": null
+        },
+        {
+          "$id": "345",
+          "Id": null,
+          "Code": 3503,
+          "Caption": "DeleteRole",
+          "Description": "DeleteRole",
+          "ActionUrl": "api/roles/1253",
+          "Children": null
+        },
+        {
+          "$id": "346",
+          "Id": null,
+          "Code": 3502,
+          "Caption": "UpdateRole",
+          "Description": "UpdateRole",
+          "ActionUrl": "api/roles/1253",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    }
+  ],
+  "EntityActions": [
+    {
+      "$id": "347",
+      "Id": null,
+      "Code": 3500,
+      "Caption": "CreateRole",
+      "Description": "CreateRole",
+      "ActionUrl": "api/roles/",
+      "Children": null
+    }
+  ],
+  "Pagination": null,
+  "Status": 0
+}

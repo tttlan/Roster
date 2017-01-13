@@ -1,0 +1,14 @@
+<div class="status-tooltip">
+    <div class="status-tooltip__up-arrow"></div>
+    <div class="status-tooltip__content">
+        <div class="status-tooltip__content__history-text--padding-bottom">
+            <strong>
+                {{statusChangeCount}} {{statusChangeCount > 1 ? 'status changes' : 'status change'}}
+            </strong>
+        </div>
+        <div class="status-tooltip__thin-title">Latest change:</div>
+        <span class="label label--{{status.previousStatusColor}} status-tooltip__previous-status" ng-hide="status.previousStatus == null">{{status.previousStatus}}</span>
+        <span class="icon--right status-tooltip__right-arrow" ng-hide="status.previousStatus == null"></span>
+        <span class="label label--{{status.currentStatusColor}} status-tooltip__current-status">{{status.currentStatus}}</span>
+    </div>
+</div>

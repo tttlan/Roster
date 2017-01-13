@@ -1,0 +1,40 @@
+<header class="modal__header">
+    <h3 class="modal__title">Upload your Profile photo</h3>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+
+<div class="profile-photo-upload">
+
+    <!-- <div class="profile-photo-upload__uploader" ng-hide="items.url"> -->
+    <div class="profile-photo-upload__uploader" ng-hide="showCanvas">
+        <!-- <uploader
+            maxsize="20 * 1000 * 1024" 
+            maxfiles="1" 
+            ng-model="items.url" 
+            start-open="true"
+        ></uploader> -->
+
+        <a href="" ng-click="showCanvas = true" class="uploader__drop">
+            
+            <div class="uploader__drop-message">
+                <div class="uploader__drop-cell">
+                    <img src="/interface/images/add_file.svg" />
+                    <h2>CHOOSE A PHOTO</h2>
+                    <p>You can drag and drop images here to upload.</p>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+    <!-- <div class="profile-photo-upload__editor" ng-if="items.url"> -->
+    <div class="profile-photo-upload__editor" ng-if="showCanvas">
+        <profile-photo-canvas photoUrl="{{items.url}}"></profile-photo-canvas>
+    </div>
+
+</div>
+
+<footer class="modal__footer">
+    <a class="button button--small" href="" ng-click="cancel()">Cancel</a>
+    <a class="button button--small button--primary" href="" ng-click="saveSelection()">Save photo</a>
+</footer>

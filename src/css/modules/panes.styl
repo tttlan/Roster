@@ -1,0 +1,378 @@
+
+.panes {
+    width: 100%;
+    position: absolute;
+    top: 66px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.panes__scroller {
+    height: 100%;
+
+    @media maxTablet {
+        width: 100% !important;
+    }
+}
+
+
+// Individual Pane
+
+.pane {
+
+    width: 100%;
+    border: solid 1px #e9e9e9;
+    border-width: 0px 1px;
+    background: white;
+    height: 100%;
+    float: left;
+    opacity: 1;
+    transform: translate(0, 0);
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @media minTablet {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 320px;
+    }
+
+    // Pane animations
+
+    &.ng-enter {
+        transition: all 200ms ease-out;
+        opacity: 0;
+        transform: translate(-50px, 0);
+    }
+
+    &.ng-enter-active {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+
+// Intro pane modifer
+
+.pane--intro {
+    width: 200px;
+    border-left: 0px;
+    padding: 30px;
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 20px;
+        margin-bottom: 30px;
+    }
+
+}
+
+// Primary Pane (turns it blue)
+
+.pane--primary {
+    background: primary;
+    color: white;
+
+    .pane__navigation {
+        
+        .pane__navigation-title {
+            color: rgba(255,255,255,0.5)
+        }
+
+        li a {
+            color: white;
+        }
+
+        li.is--active a {
+            color: white;
+            font-weight: bold;
+        }
+    }
+}
+
+
+// pane navigation
+
+.pane__navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1em 0;
+
+    .pane__navigation-title {
+        font-size: 11px;
+        color: grey5;
+        text-transform: uppercase;
+    }
+
+    li {
+        font-size: 13px;
+        line-height: 24px;
+
+        a {
+            color: black;
+        }
+
+        .is--active a {
+            color: primary;
+            font-weight: bold;
+        }
+    }
+}
+
+
+// pane header
+
+.pane__header {
+    height: 60px;
+    padding: 15px 20px 15px 52px;
+    border-bottom: solid 2px grey8;
+    position: relative;
+
+    @media minTablet {
+        height: 77px;
+        padding: 15px 20px;
+    }
+
+    h5 {
+        position: relative;
+        top: 7px;
+        color: loud-color;
+
+        @media minTablet {
+            top: 32px;
+        }
+    }
+
+    &.is--first{
+        padding-left: 20px;
+    }
+}
+
+
+// Header back button
+
+.pane__back {
+    position: absolute;
+    top: 10px;
+    left: 7px;
+    display: none;
+    font-size: 40px;
+    line-height: 40px;
+    z-index: 2;
+
+    i {
+        color: rgba(0,0,0,0.1);
+    }
+
+    &:hover {
+        color: primary;
+    }
+
+    @media maxTablet {
+        display: block;
+    }
+
+    .is--first & {
+        display: none;
+    }
+}
+
+
+// pane options
+
+.pane__options {
+    position: absolute;
+    bottom: 14px;
+    right: 10px;
+    width: 64px;
+
+    @media minTablet {
+        bottom: 6px;
+    }
+
+    > a {
+        float: right;
+        display: block;
+        padding: 0 8px;
+        line-height: 30px;
+        height: 30px;
+        text-align: center;
+
+        &:hover {
+            [class*="icon--"] {
+                color: primary;
+            }
+        }
+
+        [class*="icon--"] {
+            font-size: 16px;
+            margin-right: 0;
+            position: relative;
+            color: grey5;
+            top: 2px;
+            transition: color 125ms linear;
+        }
+
+    }
+}
+
+
+// Pane loading
+
+.pane__loader {
+    margin: gutter 0;
+}
+
+
+// Pane is empty message
+
+.pane__empty {
+    display: block;
+    color: grey4;
+    text-align: center;
+    padding: gutter 30px;
+    font-size: 14px;
+
+    p {
+        color: grey4
+    }
+
+    small {
+        display: block;
+    }
+
+    [class*="svg-icon--"] {
+        font-size: 42px;
+        margin: 0 auto;
+    }
+
+}
+
+
+// Pane Items - Folder listing
+
+.pane__item {
+    border-bottom: solid 1px grey8;
+    line-height: 16px;
+    position: relative;
+
+    .pane__block {
+        display: block;
+        padding: 13px 20px 13px 52px;
+        position: relative;
+        z-index: 4;
+    }
+
+    a.pane__block {
+
+        &:hover {
+            background: grey9;
+        }
+
+        &.is--active {
+            background: grey9;
+            box-shadow: inset 2px 2px 2px rgba(0,0,0,.02);
+        }
+    }
+
+    [class*="svg-icon--"] {
+        position: absolute;
+        font-size: 20px;
+        top: 20px;
+        left: 20px;
+    }
+
+    .svg-icon--folder1,
+    .svg-icon--folder2, {
+        font-size: 18px;
+        top: 20px;
+        left: 18px;
+    }
+
+}
+
+.pane__item-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100%;
+    background: transparent;
+    z-index: 2;
+}
+
+.pane__item-title {
+    display: block;
+    font-size: 13px;
+}
+
+.pane__item-subtitle {
+    display: block;
+    font-size: 11px;
+    color: grey5;
+}
+
+
+// TODO: Library only styles to be moved
+
+.pane__file {
+    padding: 10px 20px;
+    position: relative;
+    border-bottom: solid 1px grey8;
+    background: grey9;
+
+    .pane__options {
+        bottom: 20px;
+        z-index: 102
+    }
+}
+
+.pane__file-preview {
+    display: block;
+    background: grey9;
+    min-height: 223px;
+    position: relative;
+    border-bottom: solid 1px grey8;
+
+    [class*="svg-icon--"] {
+        font-size: 132px;
+        top: 45px;
+        left: 50%;
+        margin-left: -50px;
+        position: absolute;
+    }
+}
+
+// pane content area
+
+.pane__content {
+    padding: 20px 20px;
+    position: relative;
+
+    & > :first-child {
+        margin-top: 0;
+    }
+
+    .pane__options {
+        top: 57px;
+        bottom: auto;
+        background: white;
+        width: auto;
+        right: 15px;
+    }
+
+    .media {
+        border-bottom: solid 1px grey8;
+        padding-bottom: 18px;
+    }
+}

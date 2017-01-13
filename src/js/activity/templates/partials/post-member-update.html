@@ -1,0 +1,7 @@
+<div class="post__content">
+    <div class="post__name">
+        <a href="" target="_self" path="network.profile" path-params="post.content.Owner.MemberId">{{ post.content.Owner.FirstName }} {{ post.content.Owner.Surname }}</a>
+        <div class="post__details">@ network</div>
+    </div>
+    <p ng-show="post.content.ContentText" class="post__html" ng-bind-html="post.content.ContentText | unsafe"></p>
+</div>

@@ -1,0 +1,38 @@
+<div >
+    <fieldset class="form">
+        <div class="form__field">
+            <p class="form-label">SEARCH BY</p>
+            <div class="field__radio">
+                <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="searchBy.option" value="1">
+                <label for="optionsRadios1" class="form__label">Title/file name</label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="searchBy.option" value="2">
+                <label for="optionsRadios2" class="form__label">Group</label>
+                <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="searchBy.option" value="3">
+                <label for="optionsRadios3" class="form__label">Role</label>
+                <input type="radio" name="optionsRadios" id="optionsRadios4" ng-model="searchBy.option" value="4">
+                <label for="optionsRadios4" class="form__label">Tag</label>
+            </div>
+        </div>
+        <div>
+            <div class="form__field">
+                <p class="form-label">FILTER BY</p>
+                <div class="field__checkbox">
+                    <input id="optionsCheck1" type="checkbox" ng-model="checkFilter.searchDocument">
+                    <label for="optionsCheck1" class="form__label">Document</label>
+                </div>
+                <div class="field__checkbox">
+                    <input id="optionsCheck2" type="checkbox" ng-model="checkFilter.searchImage">
+                    <label for="optionsCheck2" class="form__label">Image</label>
+                </div>
+                <div class="field__checkbox">
+                    <input id="optionsCheck3" type="checkbox" ng-model="checkFilter.searchVideo">
+                    <label for="optionsCheck3" class="form__label">Video</label>
+                </div>
+                <div class="field__checkbox">
+                    <input id="optionsCheck4" type="checkbox" ng-model="checkFilter.searchOtherType">
+                    <label for="optionsCheck4" class="form__label">Other types</label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,77 @@
+.ui
+    .table.table--1-8 {
+        > thead > tr > th {
+            width: 12.5%;
+        }
+    }
+    .table.table--1-4 {
+        > thead > tr > th {
+            width: 25%;
+        }
+    }
+    .table.table--1-2 {
+        > thead > tr > th {
+            width: 50%;
+        }
+    }
+    .table.table--headlines {
+        &.table--headlines-bottom, &.table--headlines-top {
+            > thead > tr > th:after {
+                height: 5px;
+            }
+        }
+        &.table--headlines-no-bottom-borders {
+            > thead > tr > th:after {
+                height: 0px;
+            }
+        }
+        > thead > tr > th {
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                background: table-border-color;
+                height: 1px;
+                left: 0;
+                bottom: 0;
+            }          
+        }
+        &.table--headlines-bottom {
+            headlineSide(bottom, top);
+        }
+        &.table--headlines-top {
+            headlineSide(top, bottom);
+        }
+    }
+    .table.table--data {
+        margin-bottom: 0;
+        > thead {
+            background: grey9;
+            th { 
+                vertical-align: middle
+                padding-top: 6px;
+                padding-bottom: 6px;
+                text-transform: none;
+            }
+        }
+        > tbody tr {
+            height: 55px; 
+        }
+        > tbody {
+            tr.group {
+                border-top: 2px solid table-border-color;
+                > td:first-child, > th:first-child {
+                    text-transform: uppercase;
+                }
+                > td {
+                    font-weight: bold;
+                }
+            }
+            tr.group-element {
+                > td:first-child {
+                    padding-left: (3*table-cell-padding[0]);
+                }
+            }
+        }
+    }

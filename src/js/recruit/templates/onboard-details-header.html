@@ -1,0 +1,110 @@
+<div><a href="#" ng-click="goBackToList()"><i class="icon--arrow-left icon-is-small icon-is-disabled"></i><small class="onboard__detail__back is--disabled">Back to Onboarding</small></a></div>
+<h1 ng-if="isSingle">Single onboard</h1>
+<h1 ng-if="!isSingle">Multiple onboard</h1>
+<section ng-if="!isOnboardPhaseNew(data.onboards[0]) && !isOnboardPhaseUndefined(data.onboards[0])" class="onboarding__applicant__process segment">
+    <div class="onboarding__applicant">
+        <div ng-if="isSingle" class="onboard__display__header">
+            <avatar img-src="data.onboards[0].CandidatePersonalInfo.PhotoThumb"></avatar>
+            <h3>{{data.onboards[0].CandidatePersonalInfo.PreferredName || data.onboards[0].CandidatePersonalInfo.FirstName + ' ' + data.onboards[0].CandidatePersonalInfo.Surname}}</h3>
+            <small>{{data.onboards[0].OnboardRole.Description}} - </small>
+            <small>{{data.onboards[0].OnboardStore.GroupName}}</small>
+        </div>
+        <div ng-if="!isSingle" class="onboard__display__header">
+            <h3><i class="icon--person-group"></i> {{commonOnboard.OnboardRole.Description}}</h3>
+            <small class="onboard__display__header__subtext">{{commonOnboard.Count}} Candidates - </small>
+            <small>{{commonOnboard.OnboardStore.GroupName}}</small>
+        </div>
+    </div>
+    <div class="onboarding__applicant_progress_mobile">
+        <div class="progress-bar"
+             ng-class="{'is--positive': !isProgressBarNegative(data.onboards[0]),
+                        'is--negative': isProgressBarNegative(data.onboards[0])
+                       }">
+            <div class="progress-bar__range"
+                 ng-style="getProgressBarPercentage(data.onboards[0])"></div>
+        </div>
+        <span class="progress-bar-label">
+            {{::data.onboards[0].Status}}
+        </span>
+    </div>
+    <div class="onboarding__applicant__progress" ng-class="{'align_for_progress_bar--steps': isSingle === false}">
+        <progress-bar-steps
+                total-steps="6"
+                current-step="{{getCurrentProgressStage()}}"
+                progress-bar-style="{{getProgressBarStyle(data.onboards[0])}}"
+                header-titles="stagesList"
+                header-position="bottom">
+        </progress-bar-steps>
+    </div>
+    <div class="onboarding__applicant__progress__members">
+        <card-members-listing members="panelForOnboarding"></card-members-listing>
+    </div>
+    <div class="well" ng-if="data.onboards[0].Status == 'New'">
+        <i class="icon--round-info well__icon"></i>
+        <span class="well__content">
+            <b>New Onboard</b>
+            <p>Provide role and candidate information to progress the onboard to the next step.</p>
+        </span>
+    </div>
+    <div class="well" ng-if="data.onboards[0].Status == 'Approval'">
+        <i class="icon--round-info well__icon"></i>
+        <span class="well__content">
+            <b>Approval Step</b>
+            <p>Review all information provided and complete missing information (if any).</p>
+            <p>
+                You may <i>Approve</i> the onboard to progress it further. If changes are required <i>Reject</i>
+                the onboard, sending it back to the previous step.
+            </p>
+        </span>
+    </div>
+    <div class="well" ng-if="data.onboards[0].Status == 'Documentation'">
+        <i class="icon--round-info well__icon"></i>
+        <span class="well__content">
+            <b>Documentation Step</b>
+            <p>
+                Review all information including documents to be sent to the candidate and those you require
+                from the candidate.
+            </p>
+            <p>
+                Once ready, select <i>Welcome Candidates</i> to send candidates a job offer and prompt them to complete
+                the Member Acceptance process. If changes are required <i>Reject</i> the onboard, sending back to the previous step.
+            </p>
+        </span>
+    </div>
+    <div class="well" ng-if="data.onboards[0].Status == 'Acceptance'">
+        <i class="icon--round-info well__icon"></i>
+        <span class="well__content">
+            <b>Acceptance Step</b>
+            <p>
+                Candidates have been emailed a job offer (including documentation) and asked to complete the Member Acceptance process.
+                Once complete, this onboard will move to the Confirmation step.
+            </p>
+            <p>
+                Should you wish to retract the job offer or make changes you must <i>Roll Back</i> the onboard, this will stop the Acceptance
+                step and send the onboard back to the initial Approval step.
+            </p>
+        </span>
+    </div>
+    <div class="well" ng-if="data.onboards[0].Status == 'Confirmation'">
+        <i class="icon--round-info well__icon"></i>
+        <span class="well__content">
+            <b>Confirmation Step</b>
+            <p>
+                Candidates have completed the Member Acceptance process and may have provided you with documents to review.
+            </p>
+            <p>
+                If all documents are satisfactory you may <i>Complete</i> the onboard. Should any documents be incorrect candidates mut be prompted
+                to <i>Resend documents</i> doing so will send the onboard back to the Acceptance step.
+            </p>
+        </span>
+    </div>
+    <div class="well" ng-if="data.onboards[0].Status == 'Complete'">
+        <i class="icon--round-info well__icon"></i>
+        <span class="well__content">
+            <b>Onboard Complete!</b>
+            <p>
+                Congratulations on hiring a new employee!
+            </p>
+        </span>
+    </div>
+</section>

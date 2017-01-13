@@ -1,0 +1,25 @@
+<div class="panes">
+    <div class="panes__scroller" ng-style="getWidths()">
+
+        <div class="pane pane--intro">
+
+            <h1>{{ title }}</h1>
+
+            <ul class="pane__navigation">
+                <li class="pane__navigation-title">TYPES</li>
+                <li class="is--active"><a href="">All</a></li>
+                <li><a href="">Documents</a></li>
+                <li><a href="">Images</a></li>
+                <li><a href=""> Videos</a></li>
+            </ul>
+
+        </div>
+
+        <pane
+            pane="pane" 
+            ng-repeat="pane in panes"
+            paneindex="$index"  
+        ></pane>
+
+    </div>
+</div>

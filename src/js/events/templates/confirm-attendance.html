@@ -1,0 +1,61 @@
+<div class="page page--1-c">
+
+    <div class="page__wrapper">
+    
+        <div class="page__content">
+            
+            <header class="page__header">
+
+                <ul class="nav nav--breadcrumb">
+                    <li><a href="" path="events.index">Events</a></li>
+                    <li><a href="" path="events.details" path-params="::attendance.eventId">{{attendance.Title}}</a></li>
+                    <li><a href="" path="events.attendance" path-params="::attendance.eventId">Confirm attendance</a></li>
+                </ul>
+                
+                <h1>Confirm event attendance</h1>
+                
+            </header>
+            
+            <p>To create a record of people that attended "{{attendance.Title}}", check people off from the list below once you know if they attended the event.</p>
+
+            <table class="table event__attendance-list">
+                <thead>
+                    <tr>
+                        <th>
+                            <a href="" ng-click="attendance.orderBy('person')">Person<i class="icon--down is-visually-hidden"></i></a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="attendance.orderBy('rsvp')">RSVP<i class="icon--down is-visually-hidden"></i></a>
+                        </th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody class="people-list__person">
+                    <tr ng-repeat="person in attendance.invitees | orderBy:attendance.sortItems() | inviteStatusSort:attendance.sortOrder">
+                        <td event-invitee="person"></td>
+                        <td ng-switch="person.EventInviteMember.InviteStatus">
+                            <span ng-switch-when="0">Invited</span>
+                            <span ng-switch-when="1">Attending</span>
+                            <span ng-switch-when="2">Maybe</span>
+                            <span ng-switch-when="3">Not attending</span>
+                        </td>
+                        <td>
+                            <div class="field__checkbox field__checkbox--align-center">
+                                <input ng-model="person.EventInviteMember.Attendance" ng-change="attendance.setAttendance(person.EventInviteMember)" type="checkbox" id="checkbox{{$index}}">
+                                <label for="checkbox{{$index}}" class="form__label"><span class="is-visually-hidden">Attended the event</span></label>
+                            </div>
+                            <!--<a href="" class="button button--basic button--tiny">Attended</a>-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="align-left">
+                <a class="button" href="" path="events.details" path-params="::attendance.eventId"><i class="icon--left"></i>Back</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

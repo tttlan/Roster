@@ -1,0 +1,44 @@
+<div class="action-list" ng-form name="myform">
+
+    <p>Here you can create new categories or edit/delete existing ones.</p>
+
+    <table class="table table--noborders">
+        <thead>
+            <tr>
+                <th>Categories</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="category in items">
+                <td>
+                    <span ng-show="!category.edit">
+                        {{category.BlogCategorySummary.CategoryName}}
+                    </span>
+                    <span ng-show="category.edit">
+                        <input type="text" value="" ng-model="category.BlogCategorySummary.CategoryName" ng-enter="updateCategory(category, $index)" />
+                    </span>
+                </td>
+                <td class="cell--icon">
+                    <div ng-hide="category.edit" class="table__options dropdown">
+                        <a class="a--icon dropdown-toggle" href=""><i class="icon--ellipsis"></i></a>
+                        <ul class="submenu submenu--compact dropdown-menu">
+                            <li class="submenu__item"><a href="" ng-click="category.edit = !category.edit"><i class="icon--pencil"></i> Edit</a></li>
+                            <li class="submenu__item"><a href="" ng-click="deleteCategory(category, $index)"><i class="icon--round-cross"></i> Delete</a></li>
+                        </ul>
+                    </div>
+                    <a class="a--icon" ng-show="category.edit" href="" ng-click="updateCategory(category, $index)"><i class="icon--round-check"></i></a>
+                </td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    <input placeholder="Type new category &amp; press enter" type="text" ng-enter="addCategory(newCategory)" ng-model="newCategory">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="" class="button button--positive" ng-click="ok()">Finish &amp; Close</a>
+
+</div>

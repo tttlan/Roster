@@ -1,0 +1,185 @@
+{
+  "$id":"1",
+  "NetworkGroupDetailItemResults":[
+    {
+      "$id":"2",
+      "NetworkGroupDetail":{
+        "$id":"3",
+        "NetworkGroupId":11042,
+        "GroupName":"VIC - Company ",
+        "Type":"d"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"4",
+      "NetworkGroupDetail":{
+        "$id":"5",
+        "NetworkGroupId":11043,
+        "GroupName":"VIC - Franchise Recruitment ",
+        "Type":"d"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"6",
+      "NetworkGroupDetail":{
+        "$id":"7",
+        "NetworkGroupId":11044,
+        "GroupName":"QLD - Recruitment ",
+        "Type":"d"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"8",
+      "NetworkGroupDetail":{
+        "$id":"9",
+        "NetworkGroupId":11050,
+        "GroupName":"ACT - Company ",
+        "Type":"d"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"10",
+      "NetworkGroupDetail":{
+        "$id":"11",
+        "NetworkGroupId":11067,
+        "GroupName":"Malvern",
+        "Type":"s"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"12",
+      "NetworkGroupDetail":{
+        "$id":"13",
+        "NetworkGroupId":11071,
+        "GroupName":"Chermside",
+        "Type":"s"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"14",
+      "NetworkGroupDetail":{
+        "$id":"15",
+        "NetworkGroupId":11076,
+        "GroupName":"Newcastle (The Junction)",
+        "Type":"s"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"16",
+      "NetworkGroupDetail":{
+        "$id":"17",
+        "NetworkGroupId":11082,
+        "GroupName":"South Melbourne",
+        "Type":"s"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"18",
+      "NetworkGroupDetail":{
+        "$id":"19",
+        "NetworkGroupId":11088,
+        "GroupName":"Degraves Street",
+        "Type":"s"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"20",
+      "NetworkGroupDetail":{
+        "$id":"21",
+        "NetworkGroupId":11107,
+        "GroupName":"Joondalup",
+        "Type":"s"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"22",
+      "NetworkGroupDetail":{
+        "$id":"23",
+        "NetworkGroupId":11129,
+        "GroupName":"Operations - ABM/BM Recruitment",
+        "Type":"d"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"24",
+      "NetworkGroupDetail":{
+        "$id":"25",
+        "NetworkGroupId":11142,
+        "GroupName":"NSW - Company Recruitment ",
+        "Type":"d"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    },
+    {
+      "$id":"26",
+      "NetworkGroupDetail":{
+        "$id":"27",
+        "NetworkGroupId":11156,
+        "GroupName":"Burke Franchise ",
+        "Type":"d"
+      },
+      "EntityActions":[
+
+      ],
+      "Status":0
+    }
+  ],
+  "EntityActions":[
+
+  ],
+  "Pagination":{
+    "$id":"28",
+    "TotalCount":0,
+    "TotalPages":0,
+    "PageSize":null,
+    "Page":null
+  },
+  "Status":0
+}

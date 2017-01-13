@@ -1,0 +1,61 @@
+<!--TODO: this directive is base on the data from the old api, it may be change when we have the new api-->
+<div>
+    <div>
+        <label ng-bind="model.content"></label>
+    </div>
+    <div ng-if="model.questionType === QuestionType.TEXT">
+        <textarea placeholder="Type here" name="input" ng-required="element.validation.required" ng-minlength="0" ng-maxlength="9999"
+                  class="ng-pristine ng-animate ng-valid-maxlength ng-valid-minlength ng-valid ng-valid-required"></textarea>
+    </div>
+    <div ng-if="model.questionType === QuestionType.YESNO">
+
+        <!--//TODO: currently the api does not return responseChoices for yes/no quesion
+                    when they fix it we will use the code bellow-->
+        <!--<div class="field__radio" ng-repeat="responseChoice in model.responseChoices">
+            <input type="radio" name="yesno-{{model.id}}" value="responseChoice.value">
+            <label class="form__label">{{responseChoice.value}}</label>
+        </div>-->
+        
+        <div class="field__radio">
+            <input type="radio" id="Yes" value="yes" name="YesNoQuestion">
+            <label for="Yes" class="form__label">Yes</label>
+        </div>
+        
+        <div class="field__radio">
+            <input type="radio" id="No" value="no" name="YesNoQuestion">
+            <label for="No" class="form__label">No</label>
+        </div>
+        
+        <div class="QuestionOption" ng-show="model.displayOptionalOnYesNo">
+            <div class="questionContent"> <label ng-bind="model.subQuestion.content"></label></div>
+            <div class="questionValueChoice">
+                <textarea placeholder="Type here"
+                          ng-required="element.validation.required" ng-minlength="0" ng-maxlength="9999"
+                          class="ng-pristine ng-animate ng-valid-maxlength ng-valid-minlength ng-valid ng-valid-required"></textarea>
+            </div>
+        </div>
+    </div>
+    <div  ng-if="model.questionType === QuestionType.MULTICHOICES"> 
+        <div class="field__radio" ng-repeat="responseChoice in model.responseChoices">
+            <input type="checkbox" id="{{responseChoice.id}}" ng-value="responseChoice.id" name="MultiChoices">
+            <label for="{{responseChoice.id}}" class="form__label">{{responseChoice.value}}</label>
+        </div> 
+    </div>
+    <div ng-if="model.questionType === QuestionType.SINGLECHOICE">
+       <div class="field__radio" ng-repeat="responseChoice in model.responseChoices">
+            <input type="radio" id="{{responseChoice.id}}" ng-value="responseChoice.id" name="SingleChoice">
+            <label for="{{responseChoice.id}}" class="form__label">{{responseChoice.value}}</label>
+        </div> 
+    </div>
+    <div ng-if="model.questionType === QuestionType.DATEPICKER">
+        <div class="form__field">
+            <label class="icon--calendar field__after"></label>
+            <input type="text" placeholder="Date picker"
+                   ng-model="date" datepick="" datepicker-popup="d MMM yyyy"
+                   date-disabled="disabled(date, mode)">
+        </div>
+    </div>
+    <div ng-if="model.questionType === QuestionType.DOCUMENT">
+        <uploader maxsize="5000 * 1024"  ng-model="upload"></uploader>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<li>
+    <h3>
+        <a href="" ng-click="isClose= !isClose" ng-class="{'is--active' : isClose}">
+            <i ng-class="{'icon--arrow-up' : isClose, 'icon--arrow-down': !isClose}"></i>
+        </a>
+        <span accordion-transclude="heading"></span>
+        <div class="description" collapse="!isClose">
+            <div class="des-divider"></div>
+            <div class="description__inner" ng-transclude></div>
+        </div>
+    </h3>
+</li>

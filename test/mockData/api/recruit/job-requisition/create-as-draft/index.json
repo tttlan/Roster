@@ -1,0 +1,79 @@
+{
+  "data": {
+    "$id": "1",
+    "JobRequisitionDetail": {
+      "$id": "2",
+      "JobAdRequisitionId": 1970,
+      "CreatedDateTime": "2016-05-23T07:24:13.976762Z",
+      "LastModifiedDateTime": "2016-05-23T07:24:13.976762Z",
+      "ExecutedJobId": null,
+      "ContactPerson": null,
+      "ContactNumber": null,
+      "State": "Draft",
+      "SubState": "",
+      "NetworkGroup": {
+        "$id": "3",
+        "NetworkGroupId": 11059,
+        "GroupName": "St Kilda",
+        "Type": null,
+        "LookupUrl": "http://localhost:56828/Api/",
+        "IsTrainingLocation": null
+      },
+      "Role": {
+        "$id": "4",
+        "RoleId": 621,
+        "Description": "FIN - Chief Financial Officer",
+        "LookupUrl": "http://localhost:56828/Api/"
+      },
+      "Owner": {
+        "$id": "5",
+        "MemberId": 247682,
+        "FirstName": "Sherpa",
+        "Surname": "Admin",
+        "PreferredName": null,
+        "Title": "FIN - Systems Administrator",
+        "PhotoLarge": "/networkrepository/957/member/247682/profile_large.png",
+        "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.png",
+        "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+        "RoleTitle": "FIN - Systems Administrator",
+        "DefaultNetworkGroupId": 11038,
+        "Birthday": null,
+        "Sex": "m",
+        "Salutation": null
+      }
+    },
+    "EntityActions": [
+      {
+        "$id": "6",
+        "Id": "1970",
+        "Code": 3702,
+        "Caption": "CanSendToApprovalJobAdRequisition",
+        "Description": "CanSendToApprovalJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/submit",
+        "Children": null
+      },
+      {
+        "$id": "7",
+        "Id": "1970",
+        "Code": 3708,
+        "Caption": "CanEditJobAdRequisition",
+        "Description": "CanEditJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1970",
+        "Children": null
+      },
+      {
+        "$id": "8",
+        "Id": "1970",
+        "Code": 3701,
+        "Caption": "CanDeleteJobAdRequisition",
+        "Description": "CanDeleteJobAdRequisition",
+        "ActionUrl": "/recruitments/JobRequisitions/1970",
+        "Children": null
+      }
+    ],
+    "Status": 0
+  },
+  "status": 200,
+  "config": {
+  }
+}

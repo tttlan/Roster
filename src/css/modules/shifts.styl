@@ -1,0 +1,461 @@
+
+shift_details_padding = 25px;
+shift_border_color = #eee;
+grid_height = 20px;
+
+// Shifts Widget
+// --------------------------------------------
+
+.ui
+
+    .panel--shift {
+        padding: 0px;
+
+        .message {
+            margin: 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+    }
+
+
+    .shift__widget {
+        clearfix();
+        margin: 0;
+        padding: 0;
+    
+        .shift {
+            border: solid 1px shift_border_color;
+            border-width: 0 1px 0 0;
+            margin: 0;
+            position: relative;
+            padding: 0;
+            width: 33.3%;
+            padding-bottom: 33.3%;
+            float: left;
+            position: relative;
+
+            &:nth-child(4) {
+                border-right-width: 0px;
+            }
+
+            @media minTablet {
+                border-width: 1px 1px 0 0;
+
+                &:nth-child(4) {
+                    border-right-width: 1px;
+                }
+
+                &:nth-child(5) ,
+                &:nth-child(8) {
+                    border-right: 0px;
+                }
+            }
+
+            &:nth-child(2) {
+                @media minTablet{
+                    display:none;
+                }
+            }
+            &:nth-last-child(-n+4) {
+                display:none;
+
+                @media minTablet{
+                    display:block;
+                }
+            }
+
+            .shift__block {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: block;
+                verticalAlignContent();
+                box-shadow: 0px 0px 4px rgba(0,0,0,0);
+                transition: all ease 200ms;
+
+                &:hover {
+                    box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
+                    z-index: 20;
+                }
+            }
+
+            .panel__heading {
+                margin-bottom: 5px;
+            }
+
+
+            // Shift content
+
+            .shift__content {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .shift__date {
+                font-size: 25px;
+                text-transform: uppercase;
+                line-height: 30px;
+                color: black;
+                font-weight: bold;
+            }
+
+            .shift__day {
+                color: grey4;
+                text-transform: uppercase;
+                line-height: 1;
+                font-size: 10px;
+            }
+
+            .shift__time {
+                color: grey4;
+                font-size: 12px;
+                margin: 8px 0 0 0;
+            }
+
+
+            // Status
+
+            .shift__status {
+                position: absolute;
+                top: 0;
+                right: 0;
+                border: solid 6px;
+                border-color: notify notify transparent transparent;
+
+                &.shift__status--confirmed {
+                    border-color: positive positive transparent transparent;
+                }
+
+                &.shift__status--rejected {
+                    border-color: negative negative transparent transparent;
+                }
+
+                &.shift__status--partial {
+                    border-color: caution caution transparent transparent;
+                }
+            }
+
+
+            // How many shift today
+
+            .label {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                margin: 0;
+            }
+
+
+            // No Shifts today
+
+            .shift__block--off {
+                background-color: grey9;
+
+                .shift__date ,
+                .shift__day {
+                    color: grey6;
+                }
+
+                .shift__time {
+                    display: none;
+                }
+
+                .shift__status {
+                    display: none;
+                }
+            }
+
+        }
+
+        // Variations
+        // --------------------------------------------
+
+
+        .shift--hero {
+            width: 100%;
+            padding: 0;
+            border: none;
+            display:none;
+
+            @media minTablet {
+                display:block;
+            }
+
+            .shift__hero {
+                text-align: left;
+                padding: 15px (gutter/2);
+                display: block;
+                position: relative;
+                box-shadow: 0px 0px 4px rgba(0,0,0,0);
+                transition: all ease 200ms;
+
+                &:hover {
+                    box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
+                    z-index: 20;
+                }
+            }
+            
+            .shift__content {
+                position: relative;
+            }
+
+            .shift__date {
+                font-size: 11px;
+                font-weight: regular;
+                text-align: center;
+                line-height: 1;
+                width: 64px;
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                span {
+                    font-size: 50px;
+                    font-weight: bold;
+                    display: block;
+                }
+            }
+
+            .shift__details {
+                color: grey5;
+                line-height: 20px;
+                font-weight: light;
+                padding: 25px 0 0px 80px;
+
+                span {
+                    text-transform: uppercase;
+                    font-size: 18px;
+                    display: block;
+                    color: black;
+                }
+            }
+
+            .label {
+                top: 12px;
+                right: 12px;
+                left: auto;
+            }
+
+        }
+
+    }
+
+
+    // Shift drawer panel
+    // --------------------------------------------
+
+
+    .drawer--shift {
+
+        .drawer__dialog {
+            border-top: 0px;
+            background-color: grey9;
+        }
+
+        .drawer__wrapper{
+            padding: 0;
+        }
+
+        .drawer__close  {
+            color: white;
+        }
+    }
+
+
+    .roster-mini {
+
+        // header
+
+        .roster__header {
+            background-color: primary;
+            color: white;
+            padding: 0 shift_details_padding gutter shift_details_padding;
+
+            font-weight: light;
+            text-align: center;
+            position: relative;
+
+            span {
+                display: block;
+                font-size: 70px;
+                line-height: 70px;
+            }
+        }
+
+        .roster__nav {
+            position: absolute;
+            bottom: 67px;
+            left: 15px;
+
+            i {
+                font-size: 34px;
+                color: rgba(255,255,255,0.35)
+            }
+
+            &.roster__nav--next {
+                left: auto;
+                right: 15px;
+            }
+        }
+
+        // shift items
+
+        .roster__shifts {
+            padding: shift_details_padding;
+        }
+
+        .roster__shifts-container {
+            position: relative;
+            height:100%;
+        }
+
+        .shift {
+            position:absolute;
+            top:0;
+            left: gutter;
+            right:0;
+            /*bottom:0;*/
+
+            &.shift--confirmed {
+                .shift__duration {
+                    background-color: positive;
+                }
+            }
+
+            &.shift--rejected {
+                .shift__duration {
+                    background-color: negative;
+                }
+            }
+        }
+
+        .shift__duration {
+            border-top-left-radius:2px;
+            border-bottom-left-radius:2px;
+            position:absolute;
+            top:0;
+            left:0;
+            width: 4px;
+            background:notify;
+            display:block;
+            z-index:30;
+        }
+
+        .shift__detail {
+            height: 100%;
+            background: white;
+            color: grey3;
+            padding: 10px 15px;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+            border: solid 1px #ddd;
+            border-radius: base-border-radius;
+            overflow: hidden;
+
+            .shift__location ,
+            .shift__hour {
+                font-size: 14px;
+            }
+
+            .shift__times {
+                font-weight: bold;
+                font-size: 18px;
+                text-transform: lowercase;
+                margin-bottom: 10px;
+            }
+
+            .shift__meta {
+                margin-top: 10px;
+            }
+        }
+
+        .shift__additional-content {
+            margin: (gutter / 2) 0;
+        }
+
+        .shift__content { position:relative; z-index:2; }
+
+        .shift__break {
+            position: absolute;
+            z-index:35;
+            left: -5px;
+            width: 13px;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 5px;
+                display: block;
+                background: #f0ad4e url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAL/gYARxgdzQAAkAOOA2IzIHJAAACAGEAFjDBirAAAAAElFTkSuQmCC");
+                width: 4px;
+            }
+        }
+
+        .shift__comments {
+            p { font-size:0.8em; margin-top:0;}
+        }
+
+        .shift__co-workers {
+            margin-top:4px; 
+        }
+        
+        .shift__toggle { 
+            display:none; 
+        }
+
+        //Compact shift
+        .shift--compact {
+            z-index:2;
+
+            &.is--active {
+                z-index:5;
+                height:auto !important;
+
+                .shift__duration {
+                    border-bottom-left-radius:0;
+                }
+            }
+
+            
+            .shift__toggle {
+                position: absolute;
+                bottom: 1px;
+                left: 3px;
+                right: 1px;
+                line-height:15px;
+                text-align: center;
+                height: 20px;
+                font-size: .8em;
+                display:block;
+                background: url('/interface/images/bg--fade.png') repeat-x 0 0;
+                color: grey2;
+                z-index: 20;
+
+                &:hover {
+                    background:grey9;
+                }
+            }
+        }
+
+        // Roster grid background
+
+        .roster__grid {
+
+            .grid__hour {
+                border: solid 1px grey7;
+                border-width: 1px 0;
+                height: grid_height;
+                margin-bottom: grid_height;
+                border-bottom: solid 1px grey8;
+                font-size: 11px;
+                color: grey6;
+            }
+
+        }
+
+
+    }

@@ -1,0 +1,487 @@
+<div class="segment__fieldset recruit">
+    <a href=""
+       ng-click="commonOnboard.state.isCollapsedSourcingInformation = !commonOnboard.state.isCollapsedSourcingInformation">
+        <div class="segment__fieldset-heading">
+            <h2><i class="icon--document"></i>Source Information</h2>
+                <i class="align-right" ng-class="{
+                    'icon--arrow-down': commonOnboard.state.isCollapsedSourcingInformation,
+                    'icon--arrow-up': !commonOnboard.state.isCollapsedSourcingInformation
+                }"></i>
+        </div>
+    </a>
+
+    <div collapse="commonOnboard.state.isCollapsedSourcingInformation" class="source__information padding__35" ng-form="onboardingSourceForm">
+        <table class="table-form table-form--full-width">
+            <tbody ng-class="{'is--editing': isOnboardPhaseNew(data.onboards[0]) || isOnboardPhaseUndefined(data.onboards[0]) || commonOnboard.state.isEditable}">
+                <tr>
+                    <td class="table-form__edit-parent" style="padding-top: 6px;">
+                        <div class="table-form__form-value">
+                            <div class="form__field">
+                                <div class="field__checkbox">
+                                    <input type="checkbox"
+                                           id="IsReferenceChecked"
+                                           name="IsReferenceChecked"
+                                           disabled
+                                           ng-model="data.onboards[0].SourceDetail.IsReferenceChecked">
+                                    <label for="IsReferenceChecked" class="form__label">References checked</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-form__form-field">
+                            <div class="form__field">
+                                <div class="field__checkbox">
+                                    <input type="checkbox"
+                                           id="onboarding__IsReferenceChecked"
+                                           name="onboarding__IsReferenceChecked"
+                                           ng-model="commonOnboard.SourceDetail.IsReferenceChecked">
+                                    <label for="onboarding__IsReferenceChecked" class="form__label">References checked</label>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-show="isSingle">
+                    <td colspan="2" class="table-form__edit-parent">
+                        <p class="source__info is--uppercase">Documents</p>
+                        <p class="source__info is--disabled">Upload the person resume and reference checks and/or other relevant documentations</p>
+                        
+                        <div class="references__documents show__document--onboard">
+                            <div class="col-1-2" ng-repeat="doc in data.onboards[0].referencedocuments">
+                                <div class="file file--block aligned--left">
+                                    <div class="file__content aligned--left">
+                                        <div class="icon__extra--document">
+                                            <i class="svg-icon--{{doc.OnboardDocumentRecord.FileExt}}"></i>
+                                        </div>
+                                        <div class="info__extra--document">
+                                            <p class="file__name">{{::doc.OnboardDocumentRecord.FileName}}</p>
+                                            <ul class="file__meta">
+                                                <li ng-if="(doc.OnboardDocumentRecord.FileExt === 'pdf'
+                                                    || doc.OnboardDocumentRecord.FileExt === 'img'
+                                                    || doc.OnboardDocumentRecord.FileExt === 'doc'
+                                                    || doc.OnboardDocumentRecord.FileExt === 'docx') && data.onboards[0].ActionPermissions.viewreferencedocument">
+                                                    <a href="" ng-click="viewDocument(doc)">view</a>
+                                                </li>
+                                                
+                                                <li ng-if="(doc.OnboardDocumentRecord.FileExt !== 'pdf'
+                                                    && doc.OnboardDocumentRecord.FileExt !== 'img'
+                                                    && doc.OnboardDocumentRecord.FileExt !== 'doc'
+                                                    && doc.OnboardDocumentRecord.FileExt !== 'docx') && data.onboards[0].ActionPermissions.viewreferencedocument">
+                                                    <a href="" ng-click="DownloadDocument(doc)">download</a>
+                                                </li>
+                                                
+                                                <li class="align-right" ng-show="(isOnboardPhaseNew(data.onboards[0]) || data.onboards[0].state.isEditable) && data.onboards[0].ActionPermissions.deletereferencedocument">
+                                                    <a href="" class="field__after button--icon"
+                                                       ng-confirm-click="removeReferenceDocuments(data.onboards[0], doc)"
+                                                       ng-confirm-message="Are you sure you want to remove this document?">
+                                                        <i class="icon--round-minus"
+                                                           tooltip="REMOVE"
+                                                           tooltip-placement="top"></i>
+                                                    </a>
+                                                </li>
+                                                
+                                                <li class="align-right" ng-show="isOnboardPhaseUndefined(data.onboards[0])">
+                                                    <a href="" class="field__after button--icon"
+                                                       ng-click="removeReference($index)">
+                                                        <i class="icon--round-minus"
+                                                           tooltip="REMOVE"
+                                                           tooltip-placement="top"></i>
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-form__form-field button__upload--document" ng-show="isOnboardPhaseUndefined(data.onboards[0]) || data.onboards[0].ActionPermissions.postreferencedocument">
+                            <uploader maxfiles="1"
+                                      cta="DRAG AND DROP or CLICK TO UPLOAD DOCUMENT"
+                                      attachment-list="data.referenceDocuments"
+                                      module-upload="onboard-referencedocuments"
+                                      ng-model="data.onboards[0].referencedocuments.OnboardDocumentRecord.LibraryDocumentId"
+                                      container-id="data.containerId">
+                            </uploader>
+                        </div>
+                    </td> 
+                </tr>
+                
+                <tr>
+
+                    <td class="table-form__edit-parent" colspan="2">
+                        <p class="source__info is--uppercase">Source</p>
+                        <div class="table-form__form-value" ng-if="!isOnboardPhaseUndefined(data.onboards[0]) && !isOnboardPhaseNew(data.onboards[0]) && !commonOnboard.state.isEditable">
+                            <div class="form__field">
+                                <div class="field__radio">
+                                    <input type="radio"
+                                           id="Source__1"
+                                           name="onboarding__Source__1"
+                                           value="w" 
+                                           disabled
+                                           ng-model="commonOnboard.SourceDetail.Source">
+                                    <label for="Source__1"
+                                           class="form__label">Walk In</label>
+                                </div>
+                                <div class="field__radio">
+                                    <input type="radio"
+                                           id="Source__2"
+                                           name="onboarding__Source__2"
+                                           value="r"
+                                           disabled 
+                                           ng-model="commonOnboard.SourceDetail.Source">
+                                    <label for="Source__2"
+                                           class="form__label">Friend</label>
+                                </div>
+                                <div class="field__radio">
+                                    <input type="radio"
+                                           id="Source__3"
+                                           name="onboarding__Source__3"
+                                           value="t"
+                                           disabled 
+                                           ng-model="commonOnboard.SourceDetail.Source">
+                                    <label for="Source__3"
+                                           class="form__label">Trial</label>
+                                </div>
+                                <div class="field__radio">
+                                    <input type="radio"
+                                           id="Source__4"
+                                           name="onboarding__Source__4"
+                                           value="a"
+                                           disabled 
+                                           ng-model="commonOnboard.SourceDetail.Source">
+                                    <label for="Source__4"
+                                           class="form__label">Agency</label>
+                                </div>
+                                <div class="field__radio">
+                                    <input type="radio"
+                                           id="Source__5"
+                                           name="onboarding__Source__5"
+                                           value="s" 
+                                           disabled
+                                           ng-model="commonOnboard.SourceDetail.Source">
+                                    <label for="Source__5"
+                                           class="form__label">{{currentNetwork.NetworkName}}</label>
+                                </div>
+                            </div>
+   
+                            <div class="form__field" ng-class="{'is--required': isOnboardSourceMember()}"
+                                 ng-if="isOnboardSourceMember()"
+                                 style="pointer-events: none;"
+                                 ng-form="memberSubFormView">
+                                <label for="Source__Member" class="form__label">Referring Member</label>
+                                
+                                <span class="table-form__form-value">
+                                    <a class="label label--solid" ng-repeat="member in commonOnboard.referringMemberId">
+                                        {{member.FirstName}} {{member.Surname}}
+                                    </a>
+                                </span>
+                            </div>
+
+                            <div class="form__field" ng-if="isOnboardSourceTrial()">
+                                 <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+                                    <label for="Source__Trial__BankName" class="form__label">Bank Name</label>
+
+                                    <input type="text"
+                                           disabled
+                                           id="Source__Trial__BankName"
+                                           name="Source__Trial__BankName"
+                                           ng-model="commonOnboard.SourceDetail.MemberBankingDetail.BankName">
+                                </div>
+
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+                                    <label for="Source__Trial__AccountName" class="form__label">Account Name</label>
+
+                                    <input type="text"
+                                           disabled
+                                           id="Source__Trial__AccountName"
+                                           name="Source__Trial__AccountName"
+                                           ng-model="commonOnboard.SourceDetail.MemberBankingDetail.AccountName">
+                                </div>
+
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+                                    <label for="Source__Trial__BSB" class="form__label">BSB</label>
+
+                                    <input type="text"
+                                           id="Source__Trial__BSB"
+                                           name="Source__Trial__BSB"
+                                           disabled
+                                           ng-model="commonOnboard.SourceDetail.MemberBankingDetail.BSB">
+                                </div>
+
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+
+                                    <label for="Source__Trial__AccountNumber" class="form__label">Account Number</label>
+
+                                    <input type="text"
+                                           id="Source__Trial__AccountNumber"
+                                           name="Source__Trial__AccountNumber"
+                                           disabled
+                                           ng-model="commonOnboard.SourceDetail.MemberBankingDetail.AccountNo">
+                                </div>
+
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+                                    <label for="Source__Trial__StartDate" class="form__label">Trial Start Date</label>
+
+                                    <div class="relative">
+                                        <input type="text"
+                                               disabled
+                                               id="Source__Trial__StartDate"
+                                               name="Source__Trial__StartDate"
+                                               ng-model="commonOnboard.SourceDetail.OnboardingTrialsInfoDetail.TrialStart"
+                                               datepick
+                                               datepicker-popup="d MMM yyyy">
+                                        <span class="icon--calendar field__after"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+                                    <label for="Source__Trial__EndDate" class="form__label">Trial End Date</label>
+
+                                    <div class="relative">
+                                        <input type="text"
+                                               id="Source__Trial__EndDate"
+                                               name="Source__Trial__EndDate"
+                                               disabled
+                                               ng-model="commonOnboard.SourceDetail.OnboardingTrialsInfoDetail.TrialEnd"
+                                               datepick
+                                               datepicker-popup="d MMM yyyy">
+                                        <span class="icon--calendar field__after"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+                                    <label for="Source__Trial__Hours"
+                                           class="form__label">Trial Hours Worked</label>
+
+                                    <input type="number"
+                                           id="Source__Trial__Hours"
+                                           name="Source__Trial__Hours"
+                                           disabled
+                                           min="0"
+                                           ng-model="commonOnboard.SourceDetail.OnboardingTrialsInfoDetail.Hours">
+                                </div>
+                            </div>
+
+                            <div class="form__field" ng-if="isOnboardSourceAgency()" ng-class="{'is--required': isOnboardSourceAgency()}">
+                                <label for="Source__Agency" class="form__label">Agency Name</label>
+
+                                <input type="text"
+                                       id="Source__Agency"
+                                       name="Source__Agency"
+                                       disabled
+                                       ng-model="commonOnboard.SourceDetail.AgencyName">
+                            </div>
+                        </div>
+                        <div class="table-form__form-field">
+                            <div class="form__field">
+                                <div class="field__radio">
+                                    <input type="radio"
+                                           id="onboarding__Source__1"
+                                           name="Source__1"
+                                           value="w" 
+                                           ng-model="commonOnboard.SourceDetail.Source">
+                                    <label for="onboarding__Source__1"
+                                           class="form__label">Walk In</label>
+                                </div>
+                                <div class="field__radio">
+                                    <input type="radio"
+                                           id="onboarding__Source__2"
+                                           name="Source__2"
+                                           value="r" 
+                                           ng-model="commonOnboard.SourceDetail.Source">
+                                    <label for="onboarding__Source__2"
+                                           class="form__label">Friend</label>
+                                </div>
+                                <div class="field__radio" ng-if="isSingle">
+                                    <input type="radio"
+                                           id="onboarding__Source__3"
+                                           name="Source__3"
+                                           value="t" 
+                                           ng-model="commonOnboard.SourceDetail.Source">
+                                    <label for="onboarding__Source__3"
+                                           class="form__label">Trial</label>
+                                </div>
+                                <div class="field__radio">
+                                    <input type="radio"
+                                           id="onboarding__Source__4"
+                                           name="Source__4"
+                                           value="a" 
+                                           ng-model="commonOnboard.SourceDetail.Source">
+                                    <label for="onboarding__Source__4"
+                                           class="form__label">Agency</label>
+                                </div>
+                                <div class="field__radio">
+                                    <input type="radio"
+                                           id="onboarding__Source__5"
+                                           name="Source__5"
+                                           value="s" 
+                                           ng-model="commonOnboard.SourceDetail.Source">
+                                    <label for="onboarding__Source__5"
+                                           class="form__label">{{currentNetwork.NetworkName}}</label>
+                                </div>
+                            </div>
+   
+                            <div class="form__field hide__label space__margin--bottom" ng-class="{'is--required': isOnboardSourceMember()}"
+                                 ng-if="isOnboardSourceMember()"
+                                 ng-form="memberSubForm">
+                                <label for="onboarding__Source__Member"
+                                       class="form__label">Referring Member</label>
+
+                                <input-member object="data.referringMemberId"
+                                              ng-model="commonOnboard.referringMemberId">
+                                </input-member>
+                            </div>
+
+                            <div class="form__field" ng-if="isOnboardSourceTrial() && isSingle">
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+                                    <label for="Source__Trial__BankName" class="form__label">Bank Name</label>
+
+                                    <input type="text"
+                                           id="Source__Trial__BankName"
+                                           name="Source__Trial__BankName"
+                                           ng-model="commonOnboard.SourceDetail.MemberBankingDetail.BankName">
+                                           
+                                    <form-errors input="onboardingSourceForm.Source__Trial__BankName">
+                                        <form-error error-key="required" error-text="'Bank Name' is required."></form-error>
+                                    </form-errors>
+                                </div>
+                                
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+
+                                    <label for="onboarding__Source__Trial__AccountName"
+                                           class="form__label">Account Name</label>
+
+                                    <input type="text"
+                                           id="onboarding__Source__Trial__AccountName"
+                                           name="onboarding__Source__Trial__AccountName"
+                                           ng-model="commonOnboard.SourceDetail.MemberBankingDetail.AccountName"
+                                           ng-required="isOnboardSourceTrial()">
+
+                                    <form-errors input="onboardingSourceForm.onboarding__Source__Trial__AccountName">
+                                        <form-error error-key="required"
+                                                    error-text="'Account Name' is required."></form-error>
+                                    </form-errors>
+                                </div>
+
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+
+                                    <label for="onboarding__Source__Trial__BSB"
+                                           class="form__label">BSB</label>
+
+                                    <input type="text"
+                                           id="onboarding__Source__Trial__BSB"
+                                           name="onboarding__Source__Trial__BSB"
+                                           maxlength="6"
+                                           ng-model="commonOnboard.SourceDetail.MemberBankingDetail.BSB"
+                                           ng-required="isOnboardSourceTrial()">
+
+                                    <form-errors input="onboardingSourceForm.onboarding__Source__Trial__BSB">
+                                        <form-error error-key="required"
+                                                    error-text="'BSB' is required."></form-error>
+                                    </form-errors>
+                                </div>
+
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+
+                                    <label for="onboarding__Source__Trial__AccountNumber"
+                                           class="form__label">Account Number</label>
+
+                                    <input type="text"
+                                           id="onboarding__Source__Trial__AccountNumber"
+                                           name="onboarding__Source__Trial__AccountNumber"
+                                           ng-model="commonOnboard.SourceDetail.MemberBankingDetail.AccountNo"
+                                           ng-required="isOnboardSourceTrial()">
+
+                                    <form-errors input="onboardingSourceForm.onboarding__Source__Trial__AccountNumber">
+                                        <form-error error-key="required"
+                                                    error-text="'Account Number' is required."></form-error>
+                                    </form-errors>
+                                </div>
+
+                                <div class="form__field space__margin--bottom" ng-class="{'is--required': isOnboardSourceTrial()}">
+                                    <label for="onboarding__Source__Trial__StartDate"
+                                           class="form__label">Trial Start Date</label>
+
+                                    <div class="relative">
+                                        <input type="text"
+                                               id="onboarding__Source__Trial__StartDate"
+                                               name="onboarding__Source__Trial__StartDate"
+                                               ng-model="commonOnboard.SourceDetail.OnboardingTrialsInfoDetail.TrialStart"
+                                               ng-required="isOnboardSourceTrial()"
+                                               datepick
+                                               datepicker-popup="d MMM yyyy">
+                                        <span class="icon--calendar field__after"></span>
+                                    </div>
+
+                                    <form-errors input="onboardingSourceForm.onboarding__Source__Trial__StartDate">
+                                        <form-error error-key="required"
+                                                    error-text="'Trial Start Date' is required."></form-error>
+                                    </form-errors>
+                                </div>
+
+                                <div class="form__field space__margin--bottom" ng-class="{'is--required': isOnboardSourceTrial()}">
+                                    <label for="onboarding__Source__Trial__EndDate"
+                                           class="form__label">Trial End Date</label>
+
+                                    <div class="relative">
+                                        <input type="text"
+                                               min="0"
+                                               id="onboarding__Source__Trial__EndDate"
+                                               name="onboarding__Source__Trial__EndDate"
+                                               ng-model="commonOnboard.SourceDetail.OnboardingTrialsInfoDetail.TrialEnd"
+                                               ng-required="isOnboardSourceTrial()"
+                                               datepick
+                                               datepicker-popup="d MMM yyyy">
+                                        <span class="icon--calendar field__after"></span>
+                                    </div>
+
+                                    <form-errors input="onboardingSourceForm.onboarding__Source__Trial__EndDate">
+                                        <form-error error-key="required"
+                                                    error-text="'Trial End Date' is required."></form-error>
+                                    </form-errors>
+                                </div>
+
+                                <div class="form__field" ng-class="{'is--required': isOnboardSourceTrial()}">
+
+                                    <label for="onboarding__Source__Trial__Hours"
+                                           class="form__label">Trial Hours Worked</label>
+
+                                    <input type="number"
+                                           id="onboarding__Source__Trial__Hours"
+                                           min="0"
+                                           name="onboarding__Source__Trial__Hours"
+                                           ng-model="commonOnboard.SourceDetail.OnboardingTrialsInfoDetail.Hours"
+                                           ng-required="isOnboardSourceTrial()">
+
+                                    <form-errors input="onboardingSourceForm.onboarding__Source__Trial__Hours">
+                                        <form-error error-key="required"
+                                                    error-text="'Trial Hours Worked' is required."></form-error>
+                                    </form-errors>
+                                </div>
+
+                            </div>
+
+                            <div class="form__field"
+                                 ng-class="{'is--required': isOnboardSourceAgency()}"
+                                 ng-if="isOnboardSourceAgency()">
+                                <label for="onboarding__Source__Agency"
+                                       class="form__label">Agency Name</label>
+
+                                <input type="text"
+                                       id="onboarding__Source__Agency"
+                                       name="onboarding__Source__Agency"
+                                       ng-model="commonOnboard.SourceDetail.AgencyName"
+                                       ng-required="isOnboardSourceAgency()">
+
+                                <form-errors input="onboardingSourceForm.onboarding__Source__Agency">
+                                    <form-error error-key="required"
+                                                error-text="'Agency Name' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

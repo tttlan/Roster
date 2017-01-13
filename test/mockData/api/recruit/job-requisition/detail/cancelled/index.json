@@ -1,0 +1,87 @@
+﻿{
+    "data":{
+        "$id": "1",
+        "JobRequisitionDetail": {
+            "$id": "2",
+            "JobAdRequisitionId": 1922,
+            "CreatedDateTime": "2016-05-18T04:31:42.303",
+            "LastModifiedDateTime": "2016-05-20T10:41:36.193",
+            "ContactPerson": null,
+            "ContactNumber": null,
+            "State": "Cancelled",
+            "SubState": "",
+            "NetworkGroup": {
+                "$id": "3",
+                "NetworkGroupId": 11059,
+                "GroupName": "St Kilda",
+                "Type": null,
+                "LookupUrl": "http://localhost:56828/Api/",
+                "IsTrainingLocation": null
+            },
+            "Role": {
+                "$id": "4",
+                "RoleId": 621,
+                "Description": "FIN - Chief Financial Officer",
+                "LookupUrl": "http://localhost:56828/Api/"
+            },
+            "Owner": {
+                "$id": "5",
+                "MemberId": 247682,
+                "FirstName": "Sherpa",
+                "Surname": "Admin",
+                "PreferredName": null,
+                "Title": "FIN - Systems Administrator",
+                "PhotoLarge": "/networkrepository/957/member/247682/profile_large.png",
+                "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.png",
+                "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+                "RoleTitle": "FIN - Systems Administrator",
+                "DefaultNetworkGroupId": 11038,
+                "Birthday": null,
+                "Sex": "m",
+                "Salutation": null
+            }
+        },
+        "EntityActions": [
+            {
+                "$id": "6",
+                "Id": "1922",
+                "Code": 3712,
+                "Caption": "CanArchiveJobAdRequisition",
+                "Description": "CanArchiveJobAdRequisition",
+                "ActionUrl": "/recruitments/JobRequisitions/1922/archive",
+                "Children": null
+            },
+            {
+                "$id": "7",
+                "Id": "1922",
+                "Code": 3701,
+                "Caption": "CanDeleteJobAdRequisition",
+                "Description": "CanDeleteJobAdRequisition",
+                "ActionUrl": "/recruitments/JobRequisitions/1922",
+                "Children": null
+            },
+            {
+                "$id": "8",
+                "Id": "1922",
+                "Code": 3712,
+                "Caption": "CanArchiveJobAdRequisition",
+                "Description": "CanArchiveJobAdRequisition",
+                "ActionUrl": "/recruitments/JobRequisitions/1922/archive",
+                "Children": null
+            },
+            {
+                "$id": "9",
+                "Id": "1922",
+                "Code": 3701,
+                "Caption": "CanDeleteJobAdRequisition",
+                "Description": "CanDeleteJobAdRequisition",
+                "ActionUrl": "/recruitments/JobRequisitions/1922",
+                "Children": null
+            }
+        ],
+        "Status": 0
+    },
+    "status":200,
+    "config":{}
+}
+

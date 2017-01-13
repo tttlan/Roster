@@ -1,0 +1,88 @@
+<div class="page page--1-2 application-detail">
+    <!-- Page Wrapper -->
+    <div class="page__wrapper">
+        <div class="page__header">
+            <div class="applicant-summary-bar">
+                <div><a class="align-left application-details--back-button__margin-bottom icon-back" ng-class="{'application-details--back-button__margin-right': !showNavPill}" href="" path="recruit.jobs.view" path-params="{{uriParams.jobId}}, 'applicants'"><i class="icon--arrow-left"></i></a></div>
+                <span ng-show="{{showNavPill}}" class="user-switcher--margin-left user-switcher align-right label label--pill">
+                    <a href="" path="recruit.jobs.applications.detail" path-params="{{uriParams.jobId}}, {{backId}}"><i class="align-left icon--arrow-left"></i></a>
+                    <span class="user-switcher--vertical-alignment">
+                        <input type="text" class="user-switcher--input__size" ng-model="displayCount" ng-change="changeApplicant(displayCount)"/>/{{searchResultsList.length}}</span>
+                    <a href="" path="recruit.jobs.applications.detail" path-params="{{uriParams.jobId}}, {{forwardId}}"><i class="align-right icon--arrow-right icon--arrow-right__padding"></i></a>
+                </span>
+                <div class="align-left applicant-summary-bar__applicant-info--margin-left">
+                    <span class="align-left applicant-summary-bar__avatar applicant-summary-bar__avatar--margin-left" >
+                        <div class="application-rounded-badge--size" ng-class="{'avatar-loader is': isUpdatingStatus}">
+                            <round-badge name-color-hash-race="applicantDetails.hashedEmail" size="med">{{applicantDetails.initials}}</round-badge>
+                        </div>
+                    </span>
+                    <span class="applicant-summary-bar__applicant-name applicant-summary-bar__applicant-name--margin">{{applicantDetails.Information.FirstName}} {{applicantDetails.Information.Surname}}</span>
+                    <span class="applicant-summary-bar__job-position">applying for {{applicantDetails.JobTitle}}</span>
+                    <div class="application-change-status--padding">
+                        <span class="change-status-bar__menu">
+                            <a href="#" dropdown-toggle>
+                                <label class="label label--{{applicantDetails.JobStatusColor}}">{{applicantDetails.JobStatusDescription}} <span class="icon--down"></span></label>
+                                <span class="label label--pill">{{applicantDetails.StatusChangeCount}}</span>
+                            </a>
+                            <ul class="change-status-bar__menu__submenu submenu submenu--compact dropdown-menu">
+                                <li class="submenu__item status-list__menu"  ng-repeat="statusItem in applicantDetails.StatusList" ng-class="{'selected-item' : applicantDetails.JobStatusDescription == statusItem.ApplicationStatusDescription}" ng-show="applicantDetails.userCan(EntityActionType.CanChangeStatusApplication)" >
+                                    <span class="clickable-label label label--{{statusItem.ApplicationStatusColor}}" ng-click="changeStatus( applicantDetails, statusItem.ApplicationStatus)">{{statusItem.ApplicationStatusDescription}}</span>
+                                </li>
+                                <li class="submenu__item align-left status-history__item">
+                                    <div class="status-history__div">
+                                        <div class="status-history__status-changed-text">
+                                            <strong>
+                                                {{applicantDetails.StatusChangeCount}} {{applicantDetails.StatusChangeCount > 1 ? 'status changes' : 'status change'}}
+                                            </strong>
+                                        </div>
+                                        <div class="status-history__thin-title">Latest change:</div>
+                                        <div ng-if="applicantDetails.StatusHistory.previousStatus" class="label label--{{applicantDetails.StatusHistory.previousStatusColor}} status-history__previousStatus">{{applicantDetails.StatusHistory.previousStatus}}</div>
+                                        <div ng-if="applicantDetails.StatusHistory.previousStatus" class="icon--right align-left status-history__right-arrow"></div>
+                                        <div class="label label--{{applicantDetails.StatusHistory.currentStatusColor}} status-history__currentStatus">{{applicantDetails.StatusHistory.currentStatus}}</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+                <span class="align-right applicant-summary-bar--padding">
+                    <a href="#" dropdown-toggle>
+                        <span><i class="icon--ellipsis"></i></span>
+                    </a>
+                    <ul class="applicant-summary-bar__menu-dropdown submenu submenu--compact dropdown-menu" ng-class="{'applicant-summary-bar__menu-dropdown--reposition': showNavPill}">
+                        <li class="submenu__item" ng-show="applicantDetails.userCan(EntityActionType.CanSendEmail)">
+                            <a ng-click="openModalSendEmail()" href="">Send email ...</a>
+                        </li>
+                        <!-- <li class="submenu__item" ng-show="applicantDetails.userCan(EntityActionType.CanOnboardCandidate)">
+                            <a href="" path="recruit.onboards.create.single">Onboard ... </a>
+                        </li> -->
+                    </ul>
+                </span>
+            </div>
+        </div>
+        <div class="page__aside profile-card application-details__notes--tablet__size">
+            <div class="card__inner applicant-notes--viewport">
+                <div class="card__content">
+                    <applicant-notes member-id="memberId"></applicant-notes>
+                </div>
+            </div>
+        </div>
+        <div class="page__content profile-details application-details__tab-view--tablet__size">
+            <tabs selected="activeTabIndex">
+                <ul class="nav nav--tabs nav--tabs-flush" overflow>
+                    <li tab-link ng-repeat="tab in $tabData"><a ng-click="updateUrl($index)" href="">{{ tab.title }}</a></li>
+                </ul>
+                <div class="tab-group segment tab-group--viewport" ng-class="{'is--loading': isLoading}">
+                    <div tab-content class="tab-group__tab">
+                        <applicant-details-tab applicant-details="applicantDetails"></applicant-details-tab>
+                    </div>
+                    <div tab-content class="tab-group__tab">
+                        <applicant-logs-tab></applicant-logs-tab>
+                    </div>
+                    <div tab-content class="tab-group__tab">
+                        <applicant-history-tab member-id="memberId"></applicant-history-tab>
+                    </div>
+            </tabs>
+        </div>
+    </div>
+</div>

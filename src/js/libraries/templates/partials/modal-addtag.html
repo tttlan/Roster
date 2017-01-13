@@ -1,0 +1,22 @@
+<header class="modal__header" ng-init="getAllTag()">
+    <h3 class="modal__title">ADD TAG</h3>
+    <a href="" class="modal__close" ng-click="cancel()"></a>
+</header>
+
+<div class="modal__content libraries" style="overflow-y: visible">
+    <tag-manager ng-model="tag.addedTags" select-data="tag.tags">
+        <input type="text" id="auto_complete" placeholder="Type keyword and press Enter..."
+               ng-model="tagClone.newTag"
+               typeahead="result as result.label for result in selectData | filter:{label: $viewValue} | limitTo:15"
+               typeahead-on-select="$parent.addTagManual(tagClone)" />
+    </tag-manager>
+    <a href="" ng-click="closeAndOpenAllTagsModal()" class="show-all-tags-link">Show all tags</a>
+</div>
+
+<footer class="modal__footer aligned--center">
+    <div class="button-group">
+        <a href="" class="button" ng-click="cancel()">Cancel</a>
+        <a href="" class="button button--positive" ng-click="ok()">Done</a>
+        <!--<button-loading btn-class="button--positive" ng-click="ok()" ng-disabled=" " ng-class=" {'is--btn-loading': isLoading}">Done</button-loading>-->
+    </div>
+</footer>

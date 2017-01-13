@@ -1,0 +1,183 @@
+
+drawer_header_height = 66px;
+
+// Drawer
+// ------------------------------------------------
+
+.ui
+
+    .backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)" !important; // Used on modal that says IE8 is not supported
+        background-color: #000;
+        background-color: rgba(0,0,0,0.35);
+        z-index: 840;
+
+        .loading-spinner__icon--large {
+            border-left-color: #fff;
+            border-top-color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -18px;
+            margin-top: -18px;
+        }
+
+        &:not(.in) .loading-spinner__icon--large {
+            display: none !important;
+        }
+
+        &.drawer .loading-spinner__icon--large {
+            left: auto;
+            right: 160px;
+            margin-left: 0;
+            margin-right: -18px;
+        }
+    }
+
+    .drawer {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 850;
+        backface-visibility: hidden;
+
+        @media minTablet {
+            padding-left: 0;  
+        }
+
+        @media print {
+            position: absolute;
+        }
+    }
+
+    .drawer__dialog {
+        overflow: auto;
+        background: white;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 40px;
+        height: 100%;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        z-index: 852;
+
+        @media minTablet {
+            width: 320px;  
+            left: auto;
+        }
+
+        @media print {
+            background: #fff !important;
+            border-left: solid 2px grey7;
+        }
+
+        &.drawer--lg {
+
+            @media minMobile {
+                left: 0;
+                width: 100%;
+            }
+            @media minTablet {
+                left: 40px
+                width: auto;
+            }
+            @media minDesktop {
+                left: auto;
+                width: 880px;
+            }
+        }
+    }
+
+    .drawer__wrapper {
+        padding: (gutter/2);
+        position: relative;
+    }
+
+    .drawer__close {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: drawer_header_height;
+        height: drawer_header_height;
+        line-height: 60px;
+        text-align: center;
+        cursor: pointer;
+        z-index: 10;
+        font-size: 36px;
+        color: rgba(255,255,255,0.35);
+
+        transition: color linear 125ms;
+
+        &:hover {
+            color: rgba(255,255,255,0.75);
+        }
+
+        @media maxTablet {
+            font-size: 28px;
+            width: auto;
+            height: auto;
+        }
+    }
+
+    .drawer__cover {
+        position: absolute;
+        z-index: 851;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0);
+        cursor: pointer;
+    }
+
+
+    // Content area 
+    // ------------------------------------------------
+
+    .drawer__header {
+        height: drawer_header_height;
+        background-color: primary;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .drawer__title {
+        font-size: 23px;
+        line-height: 46px;
+        margin: 10px;
+        font-weight: light;
+
+        @media maxTablet {
+            font-size: 16px;
+        }
+    }
+
+
+    // Animations
+    // ------------------------------------------------
+
+    .fade {
+        .drawer__dialog {
+            transform: translate3D(30%,0,0);
+            transition: all .25s ease;
+
+            &.drawer--lg {
+                transition-duration: 0.5s;
+            }
+        }
+    }
+
+    .fade.in {
+        .drawer__dialog {
+            transform: translate3D(0,0,0);
+        }
+    }

@@ -1,0 +1,137 @@
+/**
+ * Variable power
+ */
+
+// color stuff
+PieChartColour      = #333;
+PieChartColourBright= #666;
+
+PieChartBorderColourBright     = adjust-lightness( $PieChartColour, 30 );
+PieChartBorderColourBrightPlus = adjust-lightness( $PieChartColour, 50 );
+
+PieChartBorderColourDevider = $PieChartBorderColourBright;
+
+PieChartColourGreen = #94b86e;
+PieChartColourOrange = #f0ad4e;
+PieChartColourRed  = #e25856;
+PieChartColourGrey = #cdcdcd;
+
+// sizes
+PieChartBaseFontSize               = 14px;
+
+PieChartFontSizePercentage = 3.5 * PieChartBaseFontSize;
+PieChartFontSizePercentageSymbol = PieChartBaseFontSize;
+PieChartFontSizeText       = 2 * PieChartBaseFontSize;
+PieChartFontSizeLabel      = 0.7 * PieChartBaseFontSize;
+
+// weights
+PieChartFontWeightPercentage = 400;
+PieChartFontWeightLabel = 700;
+
+.pieChart {
+  padding-bottom:20%;
+  position:relative;
+
+  &.is--loading:before {
+    background:white;
+  }
+}
+
+.pieChart__chart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.pieChart--center--innerCircle {
+  fill: #fff;
+}
+
+.pieChart--center--text {
+  font-size: PieChartFontSizeText;
+}
+
+.pieChart--center--outerCircle {
+  fill: rgba( 255, 255, 255, 0.75 );
+}
+
+.pieChart--detail--divider {
+  stroke: PieChartBorderColourDevider;
+  stroke-width: 1;
+}
+
+.pieChart--detail--percentage {
+  // font-size: PieChartFontSizePercentage;
+  font-weight: PieChartFontWeightPercentage;
+  fill: PieChartColour;
+  stroke-width: 1px;
+}
+
+.pieChart--detail--percentageSymbol {
+  font-size: PieChartFontSizePercentageSymbol;
+  font-weight: PieChartFontWeightPercentage;
+  fill: PieChartColour;
+  stroke-width: 1px;
+}
+
+.pieChart--detail--label {
+  font-size: PieChartFontSizeLabel;
+  font-weight: PieChartFontWeightLabel;
+  fill: PieChartColour;
+  stroke-width: 1px;
+}
+
+.pieChart--detail--textContainer {
+  background-color: transparent;
+  padding: 10px 0 0 0;
+  margin: 0;
+  
+  color: PieChartColourBright;
+  font-style: italic;
+}
+
+.pieChart--detail__left {
+  text-align: left;
+}
+
+.pieChart--detail__right {
+  text-align: right;
+}
+
+.pieChart__green {
+  fill: PieChartColourGreen;
+}
+.pieChart__orange {
+  fill: PieChartColourOrange;
+}
+.pieChart__red {
+  fill: PieChartColourRed;
+}
+.pieChart__grey {
+  fill: PieChartColourGrey;
+}
+
+.pieChart--detail--label {
+  stroke-width:2;
+}
+
+.pieChart--detail--label__green {
+  @extend .pieChart--detail--label
+  stroke: PieChartColourGreen;
+}
+
+.pieChart--detail--label__orange {
+  @extend .pieChart--detail--label
+  stroke: PieChartColourOrange;
+}
+
+.pieChart--detail--label__red {
+  @extend .pieChart--detail--label
+  stroke: PieChartColourRed;
+}
+
+.pieChart--detail--label__grey {
+  @extend .pieChart--detail--label
+  stroke: PieChartColourGrey;
+}

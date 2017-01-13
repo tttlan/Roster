@@ -1,0 +1,40 @@
+[
+    {
+        "id": "profileNoteForm",
+        "name": "profileNoteForm",
+        "elements": [
+            {
+                "name": "Feedback",
+                "placeholder": "Positive/Negative",
+                "val": 0,
+                "valuePropertyName": "Feedback",
+                "valueLabelName": "Label",
+                "blankValue": 0,
+                "options": [ { "Feedback": 0, "Label": "Positive / Negative" }, { "Feedback": 1, "Label": "Positive" }, { "Feedback": 2, "Label": "Negative" } ],
+                "type": "select",
+                "class": ""
+            },
+            {
+                "name": "separator",
+                "type": "hr"
+            },
+            {
+                "name": "Description",
+                "type": "textarea",
+                "placeholder": "Start writing here...",
+                "class": "new-note__input-wrapper",
+                "validation": {
+                    "required": false
+                }
+            },
+            {
+                "name": "DocumentIds",
+                "val": [ ],
+                "containerId": 1,
+                "maxsize": 5242880,
+                "maxfiles": 5,
+                "type": "file"
+            }
+        ]
+    }
+]

@@ -1,0 +1,29 @@
+// triangle(@size, @colour, @direction)
+//
+// Creates a CSS triangle.  To be used with psuedo elements
+//
+// @size - size of the triangle as a pixel value.
+// @colour - colour of the triangle.
+// @direction - direction of the triangle, can be 'up', 'down', 'left' or 'right'.
+//
+// Styleguide mixins.common.triangle
+
+triangle(size, colour, direction)
+    width: 0;
+    height: 0;
+    content: '';
+    border-style: solid;
+
+    if (direction == down) 
+        border-width: size size 0 size;
+        border-color: colour transparent transparent transparent;
+    else if (direction == up)
+        border-width: 0 size size size;
+        border-color: transparent transparent colour transparent;
+    else if (direction == left)
+        border-width: size size size 0;
+        border-color: transparent colour transparent transparent;
+    else if (direction == right)
+        border-width: size 0 size size;
+        border-color: transparent transparent transparent colour;
+    

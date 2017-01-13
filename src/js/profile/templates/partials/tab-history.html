@@ -1,0 +1,313 @@
+<div ng-controller="profileHistory">
+
+    <!-- Employment History -->
+    <div class="segment" ng-if="profile.$userCan.canviewemploymenthistory">
+
+        <div class="segment__fieldset">
+
+            <div class="segment__fieldset-heading">
+                <h2><i class="icon--clipboard"></i>Employment history</h2>
+            </div>
+
+            <loading-placeholder ng-hide="history.employmentHistory.$loaded"></loading-placeholder>
+
+            <div ng-show="history.employmentHistory.$loaded && history.employmentHistory.$isEmpty" class="message message--small">
+                <p>No employment history is available</p>
+            </div>
+
+            <div ng-show="history.employmentHistory.$loaded && !profile.$userCan.canviewemploymenthistory" class="message message--small">
+                <p>You do not have permission to view this information</p>
+            </div>
+
+            <table class="table-form" ng-if="profile.$userCan.canviewemploymenthistory" ng-show="history.employmentHistory.$loaded">
+
+                <tr ng-if="history.employmentHistory.Source">
+                    <th>Source</th>
+                    <td>{{history.employmentHistory.Source}}</td>
+                </tr>
+
+                <tr ng-if="history.employmentHistory.RequestedBy">
+                    <th>Requested by</th>
+                    <td>{{history.employmentHistory.RequestedBy}}</td>
+                </tr>
+
+                <tr ng-if="history.employmentHistory.HiredBy">
+                    <th>Hired by</th>
+                    <td>{{history.employmentHistory.HiredBy}}</td>
+                </tr>
+
+                <tr ng-if="history.employmentHistory.ProbationEndDate">
+                    <th>Probation end</th>
+                    <td>
+                        {{history.employmentHistory.ProbationEndDate | date}}
+                        <em>{{history.employmentHistory.ProbationEndDate | fromNow}}</em>
+                    </td>
+                </tr>
+
+                <tr ng-if="history.employmentHistory.PromotionHistoryEntries">
+                    <th>Role details</th>
+                    <td>
+                        <div class="profile-details__role" ng-if="history.employmentHistory.PromotionHistoryEntries.length === 1">
+                            {{ history.employmentHistory.PromotionHistoryEntries[0].RoleTitle }}<br />
+                            <small>{{ history.employmentHistory.PromotionHistoryEntries[0].CommencementDate | date }} to present</small>
+                        </div>
+                        <ul class="profile-details__timeline" ng-if="history.employmentHistory.PromotionHistoryEntries.length > 1">
+                            <li ng-repeat="role in history.employmentHistory.PromotionHistoryEntries">
+                                {{role.RoleTitle}}
+                                <small>{{role.CommencementDate | date}} to {{role.EndDate ? role.EndDate : 'present' | date}}</small>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr ng-if="history.employmentHistory.RecruitmentNotes">
+                    <th>Recruitment notes</th>
+                    <td>
+                        <ul class="profile-details__timeline">
+                            <li ng-repeat="note in history.employmentHistory.RecruitmentNotes">
+                                {{note.Comment}}
+                                <small>By {{note.CreatedUserFirstName}} {{note.CreatedUserSurname}} on {{note.CreatedDate | date}}</small>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr ng-if="history.employmentHistory.ExitFormLastDay">
+                    <th>Exit Date</th>
+                    <td>
+                        {{history.employmentHistory.ExitFormLastDay | date}}
+                    </td>
+                </tr>
+
+                <tr ng-if="history.employmentHistory.ExitFormConfirmer && history.employmentHistory.ExitFormConfirmer !== ''">
+                    <th>Exit Confirmed By</th>
+                    <td>
+                        {{history.employmentHistory.ExitFormConfirmer}}
+                    </td>
+                </tr>
+            </table>
+
+            <h3 class="profile-details__compact-heading" ng-show="history.employmentHistory.$loaded && history.employmentHistory.MemberProfileHistories.length">Change history</h3>
+
+            <div class="table-responsive" ng-show="history.employmentHistory.$loaded && history.employmentHistory.MemberProfileHistories.length">
+                <table class="table table--cozy">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Changed</th>
+                            <th>Changed by</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-init="history.employmentHistory.$changeHistoryLimit = 3">
+                        <tr ng-repeat="change in history.employmentHistory.MemberProfileHistories | limitTo:history.employmentHistory.$changeHistoryLimit">
+                            <td>{{change.Type | camelToRegular}}</td>
+                            <td>{{change.OldTxt ? change.OldTxt : 'Not set'}} &#8594; {{change.NewTxt}}</td>
+                            <td>{{change.ModifierFirstName}} {{change.ModifierSurname}}</td>
+                            <td>{{change.DateCreated | date}}</td>
+                        </tr>
+                        <tr ng-if="history.employmentHistory.MemberProfileHistories.length > 3 && history.employmentHistory.$changeHistoryLimit == 3">
+                            <td class="no-padding" colspan="4"><a href="" ng-click="history.employmentHistory.$changeHistoryLimit = 50" class="table__show-more"><i class="icon--ellipsis"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="profile-details__compact-heading" ng-show="history.employmentHistory.$loaded && history.employmentHistory.MemberExportHistories">Export history</h3>
+
+            <div class="table-responsive" ng-show="history.employmentHistory.$loaded && history.employmentHistory.MemberExportHistories">
+                <table class="table table--cozy">
+                    <thead>
+                        <tr>
+                            <th>Export date</th>
+                            <th>Provider</th>
+                            <th>Response</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-init="history.employmentHistory.$exportHistoryLimit = 3">
+                        <tr ng-repeat="export in history.employmentHistory.MemberExportHistories | limitTo:history.employmentHistory.$exportHistoryLimit">
+                            <td>{{export.ExportDate ? export.ExportDate : 'Date not available' | date}}</td>
+                            <td>{{export.Provider}}</td>
+                            <td>{{export.Response}}</td>
+                        </tr>
+                        <tr ng-if="history.employmentHistory.MemberExportHistories.length > 3 && history.employmentHistory.$exportHistoryLimit == 3">
+                            <td class="no-padding" colspan="3"><a href="" ng-click="history.employmentHistory.$exportHistoryLimit = 50" class="table__show-more"><i class="icon--ellipsis"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- End of Employment History -->
+    <!-- Performance Assessments -->
+    <div class="segment">
+        <div class="segment__fieldset">
+            <div class="segment__fieldset-heading" ng-if="history.employmentHistory.PerformanceLinkLabel">
+                <h2><i class="icon--notebook"></i>Performance Assessments</h2>
+                <a target="_self" href="{{history.employmentHistory.PerformanceLink}}" class="segment__fieldset-heading-cta align-right"><i class="icon--manage"></i><small class="is--uppercase">{{history.employmentHistory.PerformanceLinkLabel}}</small></a>
+            </div>
+            
+            <div class="segment__fieldset-heading" ng-if="history.employmentHistory.PerformanceLinkLabel === '' || !history.employmentHistory.PerformanceLinkLabel || !profile.$userCan.viewperformanceassessments">
+                <h2><i class="icon--notebook"></i>Performance Assessments</h2>
+                <a ng-if="!profile.$ownProfile" target="_self" href="/network/EditAssessmentFormTemplates.aspx" class="segment__fieldset-heading-cta align-right"><i class="icon--manage"></i><small class="is--uppercase">New assessment</small></a>
+            </div>
+
+            <loading-placeholder ng-hide="history.performanceAssessments.$loaded"></loading-placeholder>
+
+            <div ng-show="history.performanceAssessments.$loaded && !history.performanceAssessments.PerformanceItemResults.length" class="message message--small">
+                <p>No performance assessments are available</p>
+            </div>
+
+            <div class="table-responsive" ng-show="history.performanceAssessments.$loaded && history.performanceAssessments.PerformanceItemResults.length">
+                <table class="table table--cozy table--no-outside-borders">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-init="history.performanceAssessments.assessmentLimit = 3">
+                        <tr ng-repeat="assessment in history.performanceAssessments.PerformanceItemResults | limitTo:history.performanceAssessments.assessmentLimit">
+                            <td>{{assessment.Performance.StartDate | date}} - {{assessment.Performance.EndDate | date}}</td>
+                            <td>
+                                <a href="" path="performanceAssessments.edit" path-params="assessment.Performance.PerformanceAssessmentId">{{assessment.Performance.CustomFormSummary.Title}}</a>
+                                <!--<span>{{assessment.Performance.CustomFormSummary.Title}}</span>-->
+                            </td>
+                            <td>
+                                <span class="label label--positive">{{assessment.Performance.StatusLabel}}</span>
+                            </td>
+                        </tr>
+                        <tr ng-if="history.performanceAssessments.PerformanceItemResults.length > 3 && history.performanceAssessments.assessmentLimit == 3">
+                            <td class="no-padding" colspan="3"><a href="" ng-click="history.performanceAssessments.assessmentLimit = 50" class="table__show-more"><i class="icon--ellipsis"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- End perofmrance assessments -->
+    <!-- Training History -->
+    <div class="segment" ng-if="profile.$userCan.canviewtraining">
+
+        <tabs>
+            <div class="nav--horz__container">
+                <h4 class="nav--horz__heading">
+                    <i class="icon--training" />
+                    Training History
+                </h4>
+                <ul class="nav nav--horz">
+                    <li tab-link active><a href="">Courses</a></li>
+                    <li tab-link><a href="">Subjects</a></li>
+                </ul>
+            </div>
+
+            <div class="tab-group">
+                <div tab-content class="tab-group__tab">
+
+                    <loading-placeholder ng-show="history.trainingHistory.courses.$loading"></loading-placeholder>
+
+                    <div ng-show="!history.trainingHistory.courses.$loading && !history.trainingHistory.courses.data.length" class="message message--small">
+                        <p>No course history is currently available</p>
+                    </div>
+
+                    <div class="table-responsive profile-training-history" ng-show="history.trainingHistory.courses.$loaded">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Course Title</th>
+                                    <th>Completed</th>
+                                </tr>
+                            </thead>
+
+                            <tbody ng-repeat="course in history.trainingHistory.courses.data">
+                                <!-- Course: -->
+                                <tr ng-click="history.openCourse($index)">
+                                    <td data-title="Course Title">
+                                        <i ng-class="{ 'icon--block-plus': !course.$isOpen, 'icon--block-minus': course.$isOpen}"></i>
+                                        {{ course.TrainingCourseForMemberSummary.Title }}
+                                    </td>
+                                    <td data-title="Status">
+                                        <div class="progress-bar is--positive">
+                                            <div class="progress-bar__range" style="width: {{ course.TrainingCourseForMemberSummary.PercentageComplete }}%"></div>
+                                        </div>
+                                        <span class="progress-bar-label">{{ course.TrainingCourseForMemberSummary.PercentageComplete }}% Complete</span>
+                                    </td>
+                                </tr>
+                                <!-- End of Course -->
+                                <!-- Subject: -->
+                                <tr class="stats-subject"
+                                    ng-if="course.$loadedSubjects && course.$isOpen"
+                                    ng-repeat="subject in course.subjects">
+                                    <td data-title="Subject Title">
+                                        {{ subject.TrainingSubjectForMemberSummary.Title }}
+                                    </td>
+                                    <td data-title="Status">
+                                        <h5 ng-show="subject.TrainingSubjectForMemberSummary.TrainingSubjectMemberProgressStatusId === 'Passed'">
+                                            <i class="icon--check is--positive" style="margin-right:0;" /> Complete
+                                        </h5>
+                                        <h5 ng-hide="subject.TrainingSubjectForMemberSummary.TrainingSubjectMemberProgressStatusId === 'Passed'">No Progress</h5>
+                                    </td>
+                                </tr>
+
+                                <!-- Subject Loader -->
+                                <tr class="stats-subject"
+                                    ng-if="course.$loadingSubjects && course.$isOpen">
+                                    <td colspan="2">
+                                        <loader align="center" />
+                                    </td>
+                                </tr>
+
+                                <!-- End of Subject -->
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div tab-content class="tab-group__tab">
+
+                    <loading-placeholder ng-show="history.trainingHistory.subjects.$loading"></loading-placeholder>
+
+                    <div ng-show="!history.trainingHistory.subjects.$loading && !history.trainingHistory.subjects.data.length" class="message message--small">
+                        <p>No subject history is currently available</p>
+                    </div>
+
+                    <div class="table-responsive profile-training-history" ng-show="history.trainingHistory.subjects.$loaded">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Subject Title</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Subject: -->
+                                <tr class="stats-subject" ng-repeat="subject in history.trainingHistory.subjects.data">
+                                    <td data-title="Subject Title">
+                                        {{ subject.TrainingSubjectForMemberSummary.Title }}
+                                    </td>
+                                    <td data-title="Status">
+                                        <h5 ng-show="subject.TrainingSubjectForMemberSummary.TrainingSubjectMemberProgressStatusId === 'Passed'">
+                                            <i class="icon--check is--positive" style="margin-right:0;" /> Complete
+                                        </h5>
+                                        <h5 ng-hide="subject.TrainingSubjectForMemberSummary.TrainingSubjectMemberProgressStatusId === 'Passed'">No Progress</h5>
+                                    </td>
+                                </tr>
+                                <!-- End of Subject -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </tabs>
+
+    </div>
+    <!-- End of Training History -->
+
+</div>

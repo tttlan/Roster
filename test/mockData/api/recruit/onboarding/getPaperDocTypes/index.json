@@ -1,0 +1,12 @@
+[
+      {
+        "$id": "2",
+        "PaperDocTypeSummary": {
+          "$id": "3",
+          "PaperDocTypeId": 1,
+          "Description": "sample string 2"
+        },
+        "EntityActions": null,
+        "Status": 0
+      }
+]

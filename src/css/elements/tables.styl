@@ -1,0 +1,487 @@
+
+// Tables
+// ------------------------------------------------
+
+table-border-color = #eeeeee
+table-cell-padding = 12px 14px
+table-highlight-color = #f2f6f9;
+
+// Table Styles
+// ------------------------------------------------
+
+.ui
+
+
+    // Simple tables
+    //
+    // Classes to apply to single cells
+    //
+    // Weight: -1
+    //
+    // .row--xlarge - 50% width
+    //
+    // .row--xsmall - 3em width
+    //
+    // .row--align-right - Align the text to the right
+    //
+    // Markup: markup/tables/basic.hbs
+    //
+    // .table--striped - Striped table
+    // .table--noborders - No borders
+    // .table--no-outside-borders - No outside borders
+    // .table--borders - With borders
+    // .table--cozy - Cozy spacing
+    // .table--responsive-stacked - Stacked cells in mobile screen sizes
+    //
+    // Styleguide elements.tables.simple
+
+    // Table with icons
+    //
+    // Markup: markup/tables/icons-body.hbs
+    //
+    // Styleguide elements.tables.icons
+
+    // Table with icons in the header
+    //
+    // Markup: markup/tables/icons-header.hbs
+    //
+    // Styleguide elements.tables.iconsheader
+
+    // Table with progress bars
+    //
+    // Markup: markup/tables/progress.hbs
+    //
+    // Styleguide elements.tables.progress
+
+    // Table with inputs
+    //
+    // Markup: markup/tables/inputs.hbs
+    //
+    // Styleguide elements.tables.inputs
+
+    // Table with custom inputs
+    //
+    // Markup: markup/tables/custom-inputs.hbs
+    //
+    // Styleguide elements.tables.custominputs
+
+    // Table with labels
+    //
+    // Markup: markup/tables/labels.hbs
+    //
+    // Styleguide elements.tables.labels
+
+    .table {
+
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875em;
+        margin-bottom: (gutter/2);
+        border-radius: base-border-radius;
+        overflow: hidden;
+        background: white;
+        border: solid 1px table-border-color;
+
+        // Heading and footing
+
+        th {
+            cursor: auto;
+            text-align: left;
+            padding: 14px 14px;
+            font-size: 11px;
+            line-height: 20px;
+            text-transform: uppercase;
+            vertical-align: bottom;
+
+            /*border-top: 1px solid table-border-color;
+            border-bottom: 1px solid table-border-color;*/
+
+            color: loud-color;
+            font-weight: bold;
+        }
+
+        // header only
+
+        thead th {
+            border-bottom: 1px solid table-border-color;
+
+            // Table Header Icons
+            [class*="icon--"] {
+                margin: 0;
+                font-size: 1.1em;
+                vertical-align: baseline;
+            }
+
+            .icon--up ,
+            .icon--down {
+                margin-left: 4px;
+                font-size: 1em;
+                top: 1px;
+                position: relative;
+            }
+
+        }
+
+        //Toggle Styles for sortable headings
+        .toggleLink {
+            cursor:pointer;
+            border:none;
+            i {
+                margin-right:.2em;
+                visibility:hidden;
+            }
+        }
+        .toggleLink--active {
+            i { visibility:visible; }
+        }
+        .toggleLink--active-desc {
+            i { outline:1px solid red; }
+        }
+
+        // Footer only
+
+        tfoot th {
+            font-weight: normal;
+            font-style: italic;
+            border-bottom: 0px;
+        }
+
+        // Table body
+
+        tbody {
+
+            // Table Row
+
+            tr {
+                background: transparent;
+
+                &.is--highlighted {
+
+                    background-color: table-highlight-color;
+                }
+            }
+
+            // Table cells
+
+            td {
+                padding: table-cell-padding;
+                vertical-align: middle;
+                border-bottom: 1px solid table-border-color;
+                //border-right: 1px solid table-border-color;
+
+                &:last-child {
+                    border-right: none;
+                }
+
+                [class*="icon--"]:not([class*="svg-icon--"]) {
+                    font-size: 16px;
+                    vertical-align: middle;
+                    position: relative;
+                    top: -1px;
+                    margin-right: 0.8em;
+                }
+            }
+
+			td.noborder {
+				border-bottom:none;
+			}
+            
+			td, th {
+                &.no-padding {
+                    padding: 0;
+                }
+            }
+
+        }
+
+
+        // Labels
+
+        .label {
+            margin: 0;
+        }
+
+        // inputs
+
+        td input,
+        td select {
+            padding: .35em .6em;
+            min-width: 100px;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 0;
+            min-width: 0px;
+            padding: 0;
+        }
+
+        .field__before + input {
+            padding-left: 1.8em;
+        }
+
+        .field__after + input {
+            padding-right: 1.8em;
+        }
+
+        // Table Progress
+
+        .progress-bar {
+            margin-top: 4px;
+        }
+
+        // Sizes
+        // ------------------------------------------------
+
+        .row--xlarge {
+            width: 50%;
+        }
+
+        .row--xsmall {
+            width: 3em;
+        }
+
+        .row--progress {
+            min-width: 5em;
+        }
+
+        .row--align-right {
+            text-align: right;
+        }
+
+        .cell--icon {
+            width: 44px;
+            padding: 0;
+            text-align: center;
+
+            [class*="icon--"] {
+                margin-right: 0px;
+            }
+
+            a {
+                color: inherit;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            > a {
+                width: 44px;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        // Cell widths - Use this to bring two tables into line with each other
+
+        @media minTablet {
+            .cell-width-50 {
+                width: 50%;
+            }
+        }
+
+        // CTA
+        // ------------------------------------------------
+
+        .table__cta {
+            background: default-body-color;
+
+            td {
+                text-align: center;
+            }
+        }
+
+        .table__options {
+            position: relative;
+            color: grey6;
+            font-size: 14px;
+        }
+    }
+
+
+    // Table modifiers
+    // ------------------------------------------------
+
+    .table--striped {
+
+        >tbody {
+            >tr:nth-child(odd) {
+                background-color: #fbfbfb;
+            }
+        }
+    }
+
+    .table--noborders {
+
+        th ,
+        tbody td {
+            border: 0px;
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+
+    .table--no-outside-borders {
+
+        border: 0;
+        border-radius: 0;
+    }
+
+    .table--borders {
+
+        th ,
+        tbody td, tfoot td {
+            border-left: 1px solid table-border-color;
+
+            &:first-child {
+                border-left: none;
+            }
+        }
+    }
+
+
+    .table--cozy {
+
+        th ,
+        tbody td {
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+    }
+
+    .table--responsive-stacked {
+
+        @media maxTablet {
+            thead {
+        		display: none;
+        	}
+        	tr,
+        	th,
+        	td {
+        		display: block;
+        	}
+        	tbody td {
+        		border-bottom: none;
+                padding-top: 8px;
+                padding-bottom: 8px;
+        	}
+            td + td {
+                padding-top: 0;
+            }
+        	tr:not(:first-child) td:first-child {
+        		border-top: 1px solid table-border-color;
+        	}
+        	td:before {
+        		display: block;
+        		font-weight: bold;
+                content: attr(data-title);
+            }
+        }
+    }
+
+    .table--responsive-stacked--show-header {
+
+        @media maxTablet {
+            .hide-in-mobile-view {
+              display: none;
+            }
+
+            a {
+              width: 100%;
+            }
+
+            tr,
+            th,
+            td {
+                display: block;
+                min-height: 49px;
+                text-align: left;
+            }
+            tbody td {
+                border-bottom: none;
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+            td + td {
+                padding-top: 0;
+            }
+            tr:not(:first-child) td:first-child {
+                border-top: 1px solid table-border-color;
+            }
+            td:before {
+                display: block;
+                font-weight: bold;
+                content: attr(data-title);
+            }
+        }
+    }
+
+    // Optional table styles to sit within a table
+
+    .table__show-more {
+
+        background-color: grey9;
+        display: block;
+        text-align: center;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        [class*="icon--"] {
+            color: grey5;
+        }
+    }
+
+
+    // Responsive - makes the table scrollable in an overflow container
+    // and displays an element (.overflow-indicator) on the right on the scrollable
+    // area to indicate there's more content
+    // ------------------------------------------------
+
+    @media maxTablet {
+        background: transparent;
+
+        .row--optional {
+            display: none !important;
+        }
+
+        .table-responsive {
+
+            width: 100%;
+            margin-bottom: (gutter/2);
+            overflow-y: hidden;
+            overflow-x: scroll;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+
+
+            .overflow-indicator {
+
+                width: 80px;
+                height: 4000px;
+                content: '';
+                background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 100%)
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+
+
+            .table {
+                margin: 0;
+
+                td,
+                th {
+                    white-space: nowrap;
+                    border-top: 0px;
+                }
+
+            }
+        }
+
+    }

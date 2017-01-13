@@ -1,0 +1,78 @@
+<div class="page page--2-1 job-details">
+   <div class="page__aside fixed-menu">
+      <div class="page-info page-info--{{jobDetail.statusCode.statusTitle | lowercase}}"
+         ng-if="jobDetail.statusCode.statusTitle !== JOB_STATUS_CONSTANTS.JOB_STATUS_DRAFT">
+         <div class="page-info-header">
+            <span class="label {{jobDetail.statusCode.statusStyle}}">{{jobDetail.statusCode.statusTitle}}</span>
+            <small ng-show="jobDetail.statusCode.statusTitle !== JOB_STATUS_CONSTANTS.JOB_STATUS_CLOSED" 
+               class="align-right">{{jobDetail.lastJobHistory.DateCreated | date:'dd MMMM yyyy'}}</small>
+            <small ng-show="jobDetail.statusCode.statusTitle === JOB_STATUS_CONSTANTS.JOB_STATUS_CLOSED" 
+               class="align-right small-color">{{jobDetail.lastJobHistory.DateCreated | date:'dd MMMM yyyy'}}</small>
+         </div>
+         <div class="page-info-content">
+            <p ng-show="jobDetail.statusCode.statusTitle === JOB_STATUS_CONSTANTS.JOB_STATUS_ACTIVE">This job can only be seen by administration staff.</p>
+            <p ng-show="jobDetail.statusCode.statusTitle === JOB_STATUS_CONSTANTS.JOB_STATUS_PUBLISHED">This job is opened to applications as per Board settings.</p>
+            <p ng-show="jobDetail.statusCode.statusTitle === JOB_STATUS_CONSTANTS.JOB_STATUS_CLOSED">This job is closed (read-only) and can no longer be modified.</p>
+         </div>
+         <div class="page-info-footer" ng-if="jobDetail.statusCode.statusTitle === JOB_STATUS_CONSTANTS.JOB_STATUS_ACTIVE || jobDetail.statusCode.statusTitle === JOB_STATUS_CONSTANTS.JOB_STATUS_PUBLISHED">
+            <div class="button-group">
+               <button class="button button--tiny button--primary" ng-click="editJob()" ng-if="jobDetail.userCan(EntityActionType.CanEditJob).ActionUrl">Edit Job</button>
+               <button class="button button--tiny button--basic button--positive align-right" 
+                  ng-click="permanentlyClose(jobDetail.userCan(EntityActionType.CanCloseJob).ActionUrl)"
+                  ng-if="jobDetail.userCan(EntityActionType.CanCloseJob).ActionUrl">Permanently closed</button>                    
+            </div>
+         </div>
+         <div class="page-info-footer align-center"
+            ng-if="jobDetail.userCan(EntityActionType.CanDuplicateJob).ActionUrl && jobDetail.statusCode.statusTitle === JOB_STATUS_CONSTANTS.JOB_STATUS_CLOSED">
+            <button class="button button--positive"
+               ng-click="duplicateJob(jobDetail.jobId)"
+               type="button">
+            Duplicate job
+            </button>
+         </div>
+      </div>
+      <ul class="nav nav--vert">
+         <li><a href="#" id="id_nav_boards" class="page_navigation is--active" ng-click="navigateTo('boards')">Boards 
+            <span class="label" 
+               ng-if="jobDetail.jobPostsInfo.countActiveBoards()">{{jobDetail.statusCode.statusTitle !== JOB_STATUS_CONSTANTS.JOB_STATUS_CLOSED ?jobDetail.jobPostsInfo.countActiveBoards() : 0}}</span></a>
+         </li>
+         <li><a href="#" id="id_nav_assessment" class="page_navigation" ng-click="navigateTo('assessment')">Assessment team</a></li>
+         <li><a href="#" id="id_nav_information" class="page_navigation" ng-click="navigateTo('information')">Job information</a></li>
+         <li><a href="#" id="id_nav_advertisement" class="page_navigation" ng-click="navigateTo('advertisement')">Advertisement</a></li>
+         <li><a href="#" id="id_nav_questionnaire" class="page_navigation" ng-click="navigateTo('questionnaire')">Application questionnaire</a></li>
+      </ul>
+   </div>
+   <div class="page__content">
+      <fieldset class="form segment" id="id_section_boards">
+         <job-details-boards boards="jobDetail.jobPostsInfo" 
+            form="formJobAd" id="jobId"
+            network-id="jobDetail.networkId" 
+            status-code="jobDetail.statusCode">
+         </job-details-boards>
+      </fieldset>
+      <fieldset class="form segment" id="id_section_assessment">
+         <div class="col-1-2 align-left aligned--left">
+            <h4><b>ASSESSMENT TEAM</b></h4>
+         </div>
+         <div class="col-1-2 aligned--right">
+            <button class="button button--positive button--icon-right"
+               ng-show="jobDetail.statusCode.statusTitle !== JOB_STATUS_CONSTANTS.JOB_STATUS_CLOSED"
+               ng-click="saveAssessor(jobDetail.listDefaultAssessor,jobId)"
+               type="button">
+            Save Changes
+            </button>
+         </div>
+         <job-ads-assessors selected-assessor="jobDetail.listDefaultAssessor"
+            editable="jobDetail.statusCode.statusTitle !== JOB_STATUS_CONSTANTS.JOB_STATUS_CLOSED"></job-ads-assessors>
+      </fieldset>
+      <fieldset class="form segment" id="id_section_information">
+         <job-details-information job-detail="jobDetail"></job-details-information>
+      </fieldset>
+      <fieldset class="form segment" id="id_section_advertisement">
+         <job-details-advertisement job-detail="jobDetail"></job-details-advertisement>
+      </fieldset>
+      <fieldset class="segment job-ads-create modal__content job-create" id="id_section_questionnaire">
+         <job-question-preview question="jobDetail.customQuestionTemplateDetails"></job-question-preview>
+      </fieldset>
+   </div>
+</div>

@@ -1,0 +1,49 @@
+{
+  "data": {
+    "Owner": {
+      "$id": "5",
+      "MemberId": 247682,
+      "FirstName": "Sherpa",
+      "Surname": "Admin",
+      "PreferredName": null,
+      "Title": "FIN - Systems Administrator",
+      "PhotoLarge": "/networkrepository/957/member/247682/profile_large.png",
+      "PhotoThumb": "/networkrepository/957/member/247682/profile_mid.png",
+      "PhotoThumbMini": "/networkrepository/957/member/247682/profile_small.png",
+      "RoleTitle": "FIN - Systems Administrator",
+      "DefaultNetworkGroupId": 11038,
+      "Birthday": null,
+      "Sex": "m",
+      "Salutation": null
+    },
+    "Role": {
+      "RoleId": 621,
+      "Description": "FIN - Chief Financial Officer"
+    },
+    "Group": {
+      "NetworkGroupId": 11059,
+      "GroupName": "St Kilda",
+      "Type": "s"
+    },
+    "ContactPerson": null,
+    "ContactNumber": null,
+    "JobAdRequisitionId": 1913,
+    "CreatedDateTime": "2016-05-23T07:24:13.977",
+    "LastModifiedDateTime": "2016-05-23T07:24:13.977",
+    "State": "Draft",
+    "ExecutedJobId": null,
+    "Permissions": {
+      "cansendtoapprovaljobadrequisition": "/recruitments/JobRequisitions/submit",
+      "caneditjobadrequisition": "/recruitments/JobRequisitions/1913",
+      "candeletejobadrequisition": "/recruitments/JobRequisitions/1913",
+      "canapprovejobrequisition": "/recruitments/JobRequisitions/1913/process/1",
+      "canrejectjobrequisition": "/recruitments/JobRequisitions/1913/process/3",
+      "cancanceljobadrequisition": "/recruitments/JobRequisitions/1913/process/4",
+      "canarchivejobadrequisition": "/recruitments/JobRequisitions/1913/archive",
+      "canexecutejobrequisition": "/recruitments/JobRequisitions/1508/execute"
+
+    }
+  },
+  "status": 200,
+  "config": {}
+}

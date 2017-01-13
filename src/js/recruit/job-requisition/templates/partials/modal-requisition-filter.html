@@ -1,0 +1,40 @@
+﻿<div class="panel-search--filter">
+    <div class="form__field">
+        <label class="form__label title">Status</label>
+        <span ng-repeat="filter in listFilter" class="label" ng-class="filter.IsActive === true ? 'label--filter--active':'label--disabled'"
+        ng-click="activeFilter($index)">{{filter.Type}}</span>
+    </div>
+
+    <br />
+
+    <div class="form__field">
+        <label class="form__label title" for="input_courseName">Group</label>
+        <tag-manager ng-model="coolTag" select-data="selectedGroup">
+            <input type="text" id="auto_complete" placeholder="Search group" ng-model="typeAheadTag" typeahead="result as result.name for result in selectData | filter:{name: $viewValue} | limitTo:6"
+            typeahead-on-select="addTag($item, $model, $label)" />
+        </tag-manager>
+    </div>
+
+    <br />
+
+
+    <div class="form__fields">
+        <div class="form__field col-1-2">
+            <label class="form__label title" for="fromDate">Date</label>
+            <input type="text" id="fromDate" placeholder="FROM" name="input" ng-model="fromDate" datepick datepicker-popup="MM/dd/yyyy"
+            />
+        </div>
+
+        <div class="form__field col-1-2">
+            <label style="visibility: collapse" class="form__label title" for="fromDate"> To </label>
+            <input type="text" placeholder="TO" name="input" ng-model="toDate" datepick datepicker-popup="MM/dd/yyyy" />
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="button-group align-center">
+        <button class="button">Reset</button>
+        <button class="button button--positive">Apply</button>
+    </div>
+</div>

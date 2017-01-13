@@ -1,0 +1,418 @@
+<div class="segment__fieldset">
+    <div class="segment__fieldset-heading">
+        <h2><i class="icon--lock"></i>Role</h2>
+
+        <a href=""
+           class="align-right"
+           ng-click="onboard.state.isCollapsedProposedRole = !onboard.state.isCollapsedProposedRole">
+            <i ng-class="{
+                'icon--arrow-down': onboard.state.isCollapsedProposedRole,
+                'icon--arrow-up': !onboard.state.isCollapsedProposedRole
+            }"></i>
+        </a>
+    </div>
+
+    <div collapse="onboard.state.isCollapsedProposedRole" ng-form="onboardingRoleForm__{{onboard.OnboardId}}">
+        <table class="table-form table-form--full-width">
+            <tbody class="noborder" ng-class="{'is--editing': isOnboardPhaseNew(onboard) || isOnboardPhaseUndefined(onboard) || onboard.state.isEditable}">
+                <tr>
+                    <td class="table-form__edit-parent" width="50%">
+                        <span class="table-form__form-value">
+                            <b>Role</b>&nbsp;&nbsp; {{onboard.role.Description}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__Role"
+                                       class="form__label">Role</label>
+                                <input-role name="onboarding__Role"
+                                            object="onboard.role"
+                                            ng-model="onboard.OnboardRole.RoleId"
+                                            ng-required="true">
+                                </input-role>
+
+                                <form-errors input="onboardingRoleForm__onboard.OnboardId.onboarding__Role">
+                                    <form-error error-key="required"
+                                                error-text="'Role' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-form__edit-parent" colspan="2">
+                        <span class="table-form__form-value">
+                            <b>Location</b>&nbsp;&nbsp; {{onboard.storeGroup.GroupName}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__StoreGroup"
+                                       class="form__label">Location</label>
+                                <input-store-group-onboarding name="onboarding__StoreGroup"
+                                                              object="onboard.storeGroup"
+                                                              ng-model="onboard.OnboardStore.NetworkGroupId"
+                                                              ng-required="true">
+                                </input-store-group-onboarding>
+                                
+                                <form-errors input="onboardingRoleForm__onboard.OnboardId.onboarding__StoreGroup">
+                                    <form-error error-key="required"
+                                                error-text="'Store/Group' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="table-form__edit-parent" width="50%">
+                        <span class="table-form__form-value">
+                            <b>Other Groups</b>&nbsp;&nbsp;
+                            <a class="label label--solid" ng-repeat="group in onboard.OtherNetworkGroups">
+                                {{group.GroupName}}
+                            </a>
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field">
+                                <label for="onboarding__Role__Common"
+                                       class="form__label is--uppercase">Other Groups</label>
+
+                                <div class="fake-input" focus-input>
+                                    <div class="tags">
+                                        <a ng-repeat="tag in onboard.OtherNetworkGroups" class="tag" ng-click="removeSubTag($index, 'group', onboard)">{{tag.GroupName}}<i class="icon--cross"></i></a>
+                                        <input type="text"
+                                               placeholder="Search orther groups..."
+                                               ng-model="otherGroups.searchString"
+                                               typeahead="i as i.GroupName for i in otherGroups.source | filter:{GroupName:$viewValue}"
+                                               ng-disabled="ngDisabled"
+                                               typeahead-on-select="selectSubOtherGroup(otherGroups.searchString, onboard)"
+                                               typeahead-min-length="1">
+                                    </div>
+                                </div>
+
+                                <form-errors input="onboardingCommonRoleForm.onboarding__Role__Common">
+                                    <form-error error-key="required"
+                                                error-text="'Role' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-form__edit-parent" colspan="2">
+                        <span class="table-form__form-value">
+                            <b>Other Stores</b>&nbsp;&nbsp;
+                            <a class="label label--solid" ng-repeat="group in onboard.StoreNetworkGroups">
+                                {{group.StoreGroupName}}
+                            </a>
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field">
+                                <label for="onboarding__Role__Common"
+                                       class="form__label is--uppercase">Other Stores</label>
+                                <div class="fake-input">
+                                    <div class="tags">
+                                        <a ng-repeat="tag in onboard.StoreNetworkGroups" class="tag" ng-click="removeSubTag($index, 'store', onboard)">{{tag.StoreGroupName}}<i class="icon--cross"></i></a>
+                                        <input type="text"
+                                               placeholder="Search orther store..."
+                                               ng-model="otherStores.searchString"
+                                               typeahead="i as i.StoreGroupName for i in otherStores.source | filter:{StoreGroupName:$viewValue}"
+                                               ng-disabled="ngDisabled"
+                                               typeahead-on-select="selectSubOtherStore(otherStores.searchString, onboard)"
+                                               typeahead-min-length="1">
+                                    </div>
+                                </div>
+
+                                <form-errors input="onboardingCommonRoleForm.onboarding__Role__Common">
+                                    <form-error error-key="required"
+                                                error-text="'Role' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="table-form__edit-parent">
+                        <span class="table-form__form-value">
+                            <b>Salary type</b>&nbsp;&nbsp; {{onboard.SalaryType.Description}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__SalaryType"
+                                       class="form__label">Salary Type</label>
+                                <input-salary-type name="onboarding__SalaryType"
+                                                   object="onboard.salaryType"
+                                                   ng-model="onboard.SalaryType.SalaryTypeId"
+                                                   get-salary-and-index="getSalaryAndIndex"
+                                                   ng-if="isOnboardPhaseNew(subItems[$index]) || isOnboardPhaseUndefined(subItems[$index]) || onboard.state.isEditable"
+                                                   index="$index"
+                                                   ng-required="true">
+                                </input-salary-type>
+
+                                <form-errors input="onboardingRoleForm__onboard.OnboardId.onboarding__SalaryType">
+                                    <form-error error-key="required"
+                                                error-text="'Salary Type' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-form__edit-parent">
+                        <span class="table-form__form-value">
+                            <b>Hours per week</b>&nbsp;&nbsp; {{onboard.HoursPerWeek}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__HoursPerWeek"
+                                       class="form__label">Hours per week</label>
+                                <input type="number"
+                                       id="onboarding__HoursPerWeek"
+                                       name="onboarding__HoursPerWeek"
+                                       ng-required="true"
+                                       ng-disabled="onboard.hasSalaryTypeDefault"
+                                       ng-model="onboard.HoursPerWeek">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="table-form__edit-parent" ng-if="OnSettings.IsEmploymentTypeVisible === true">
+                        <span class="table-form__form-value">
+                            <b>Employment type</b>&nbsp;&nbsp; {{onboard.EmploymentType.Description}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__EmploymentType"
+                                       class="form__label">Employment Type</label>
+                                <input-employment-type name="onboarding__EmploymentType"
+                                                       object="onboard.employmentType"
+                                                       ng-model="onboard.EmploymentType.EmploymentTypeId"
+                                                       ng-required="true">
+                                </input-employment-type>
+
+                                <form-errors input="onboardingRoleForm__onboard.OnboardId.onboarding__EmploymentType">
+                                    <form-error error-key="required"
+                                                error-text="'Employment Type' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-form__edit-parent no__padding--right" ng-if="OnSettings.IsEmploymentClassificationFieldVisible === true">
+                        <span class="table-form__form-value">
+                            <b>Employment classifications</b>&nbsp;&nbsp; {{onboard.EmploymentClassification.Description}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__EmploymentClassification"
+                                       class="form__label is--uppercase">Employment Classifications</label>
+                                <input-employment-classifications name="onboarding__EmploymentClassification"
+                                        object="onboard.employmentClassification"
+                                        ng-model="onboard.EmploymentClassification.EmploymentClassificationId"
+                                        ng-required="true">
+                                </input-employment-classifications>
+
+                                <form-errors input="onboardingRoleForm__onboard.OnboardId.onboarding__EmploymentClassification">
+                                    <form-error error-key="required"
+                                                error-text="'Employment Type' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!--<tr ng-if="OnSettings.IsPayrollRequired === true">
+                    <td class="table-form__edit-parent no__padding--right">
+                        <span class="table-form__form-value">
+                            <b>Operator Id</b>&nbsp;&nbsp; {{onboard.Payroll.OperatorId}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__OperatorId"
+                                       class="form__label is--uppercase">Operator Id</label>
+
+                                <input type="text"
+                                        id="onboarding__OperatorId"
+                                        name="onboarding__OperatorId"
+                                        ng-model="onboard.Payroll.OperatorId"
+                                        ng-required="true">
+                               <form-errors input="onboardingRoleForm__onboard.OnboardId.onboarding__OperatorId">
+                                    <form-error error-key="required" error-text="'Operator Id' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-form__edit-parent no__padding--right">
+                        <span class="table-form__form-value">
+                            <b>Debtor ID</b>&nbsp;&nbsp; {{onboard.Payroll.DebtorId}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__DebtorId"
+                                       class="form__label is--uppercase">Debtor ID</label>
+
+                                <input type="text"
+                                        id="onboarding__DebtorId"
+                                        name="onboarding__DebtorId"
+                                        ng-model="onboard.Payroll.DebtorId"
+                                        ng-required="true">
+                               <form-errors input="onboardingRoleForm__onboard.OnboardId.onboarding__DebtorId">
+                                    <form-error error-key="required" error-text="'Debtor ID' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                </tr>-->
+                <tr ng-if="!isCreateNew($index) && !isOnboardPhaseNew(subItems[$index])">
+                    <td class="table-form__edit-parent" ng-if="OnSettings.IsTaxCodeFieldVisible === true">
+                        <span class="table-form__form-value">
+                            <b>Tax code</b>&nbsp;&nbsp; {{onboard.TaxCodeSummary.Description}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__TaxCode"
+                                       class="form__label is--uppercase">Tax Code</label>
+
+                                <input-tax-code name="onboarding__TaxCode"
+                                                object="onboard.taxCode"
+                                                ng-model="onboard.TaxCodeSummary.TaxCodeId"
+                                                ng-required="true">
+                                </input-tax-code>
+                                <form-errors input="onboardingRoleForm__onboard.OnboardId.onboarding__TaxCode">
+                                    <form-error error-key="required" error-text="'Tax Code' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-form__edit-parent">
+                        <div class="table-form__form-value">
+                            <b>Pay rate</b>&nbsp;&nbsp; <div ng-bind-html="onboard.PayRate.Description" 
+                            ng-if="onboard.PayRate.SalaryPayRateId !== null"></div>
+                        </div>
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__PayRate_{{$index}}" class="form__label is--uppercase">Pay rate</label>
+                                <input-pay-rate name="onboarding__PayRate_{{$index}}"
+                                                member-id="onboard.CandidatePersonalInfo.MemberId"
+                                                ng-model="onboard.PayRate.SalaryPayRateId"
+                                                object="onboard.payRate"
+                                                index="{{::$index}}"
+                                                ng-required="!isCreateNew($index) && !isOnboardPhaseNew(subItems[$index])"></input-pay-rate>
+
+                                <form-errors input="onboardingRoleForm__onboard.OnboardId.onboarding__PayRate_$index">
+                                    <form-error error-key="required" error-text="'Pay Rate' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-form__edit-parent" ng-if="OnSettings.IsDesiredSalaryFieldShow === true">
+                        <span class="table-form__form-value">
+                            <b>Desired Base Salary (Excluding Super)</b>&nbsp;&nbsp; {{onboard.DesiredSalary}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__DesiredBaseSalary"
+                                       class="form__label is--uppercase">Desired Base Salary (Excluding Super)</label>
+                                <input type="text"
+                                       id="onboarding__DesiredBaseSalary"
+                                       name="onboarding__DesiredBaseSalary"
+                                       ng-required="true"
+                                       ng-model="onboard.DesiredSalary">
+                               <form-errors input="onboardingRoleForm__onboard.OnboardId.onboarding__DesiredBaseSalary">
+                                    <form-error error-key="required" error-text="'Desired Base Salary (Excluding Super)' is required."></form-error>
+                                </form-errors>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-form__edit-parent">
+                        <span class="table-form__form-value">
+                            <b>Starting date</b>&nbsp;&nbsp; {{onboard.CommencementDate | dateOnly}}
+                        </span>
+
+                        <div class="table-form__form-field">
+                            <div class="form__field is--required">
+                                <label for="onboarding__StartingDate"
+                                       class="form__label">Starting date</label>
+
+                                <div class="relative">
+                                    <input type="text"
+                                           id="onboarding__StartingDate"
+                                           name="onboarding__StartingDate"
+                                           ng-model="onboard.CommencementDate"
+                                           required
+                                           datepick
+                                           datepicker-popup="d MMM yyyy">
+                                    <span class="icon--calendar field__after"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="role__required" 
+                    ng-hide="OnSettings.IsStoreKeyFieldVisible === false && OnSettings.IsAlarmCodeFieldVisible === false && 
+                             OnSettings.IsTabletRequiredFieldVisible === false">
+                    <td colspan="2" class="table-form__edit-parent">
+                        <span class="is--uppercase">for this role is required</span>
+                        
+                        <div style="margin-top: 20px;">
+                            <div class="table-form__form-value">
+                                <span class="registerKey" ng-if="onboard.RegisterKey.IsStoreKeyRequired">
+                                    Store Key
+                                </span>
+                                
+                                <span class="registerKey" ng-if="onboard.RegisterKey.IsAlarmCodeRequired">
+                                    Alarm Password
+                                </span>
+                                
+                                <span class="registerKey" ng-if="onboard.RegisterKey.IsTabletRequired">
+                                    Tablet
+                                </span>
+                            </div>
+                            <div class="table-form__form-field" ng-if="onboard.Permissions.editproposedrole">
+                                <div class="form__field" ng-if="OnSettings.IsStoreKeyFieldVisible === true">
+                                    <div class="field__checkbox">
+                                        <input id="storeKey_{{$index}}" 
+                                        type="checkbox"
+                                        ng-model="onboard.RegisterKey.IsStoreKeyRequired">
+                                        <label for="storeKey_{{$index}}" class="form__label">Store Key</label>
+                                    </div>
+                                </div>
+                                <div class="form__field" ng-if="OnSettings.IsAlarmCodeFieldVisible === true">
+                                    <div class="field__checkbox">
+                                        <input id="alarmPassword_{{$index}}" type="checkbox"
+                                        ng-model="onboard.RegisterKey.IsAlarmCodeRequired">
+                                        <label for="alarmPassword_{{$index}}" class="form__label">Alarm Password</label>
+                                    </div>
+                                </div>
+                                <div class="form__field" ng-if="OnSettings.IsTabletRequiredFieldVisible === true">
+                                    <div class="field__checkbox">
+                                        <input id="tablet_{{$index}}" type="checkbox" ng-model="onboard.RegisterKey.IsTabletRequired">
+                                        <label for="tablet_{{$index}}" class="form__label">Tablet</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="button-withtext align-right" ng-if="onboard.Permissions.editproposedrole && onboard.state.isEditable">
+            <a ng-click="cancelUpdateCandidate($index)"
+               class="button">Cancel</a>
+            <button class="button button--positive"
+                    type="button"
+                    ng-disabled="onboard.isSubmitting || onboardingForm{{onboard.OnboardId}}.$invalid"
+                    ng-click="saveCandidate(onboard)">
+                Save
+            </button>
+        </div>
+    </div>
+    <hr />
+</div>

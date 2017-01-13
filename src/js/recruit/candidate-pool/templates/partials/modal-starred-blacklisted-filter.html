@@ -1,0 +1,20 @@
+﻿<div class="form__field">
+     <div class="field__radio">
+        <input type="radio" ng-click="myValue = 'Starred'" name="optionsRadios" id="optionsRadios1" ng-model="myValue" ng-value="'Starred'" ng-disabled="selectedOption.Selected.length > 0">
+        <label for="optionsRadios1" class="form__label">Starred</label>
+    </div>
+    <div class="field__radio">
+        <input type="radio" name="optionsRadios" id="optionsRadios2" ng-click="myValue = 'Blacklisted'" ng-model="myValue" ng-value="'Blacklisted'" ng-disabled="selectedOption.Selected.length > 0">
+        <label for="optionsRadios2" class="form__label">Blacklisted</label>
+    </div>
+    <br/>
+  
+    <a ng-if="selectedOption.Selected.length === 0" 
+    ng-class="{'button--disabled' : myValue === ''}" 
+    href="#" class="button button--positive button--more" 
+    ng-click="myValue != '' ? close() : ''">Add Filter</a>
+    
+    <a ng-if="selectedOption.Selected.length > 0" href="#"
+         class="button button--positive button--more" 
+         ng-click="removeFilter()">Remove Filter</a>
+</div>

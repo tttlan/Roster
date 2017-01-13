@@ -1,0 +1,71 @@
+<div class="segment" ng-controller="profileDocumentation">
+
+    <div class="segment__fieldset">
+
+        <div class="segment__fieldset-heading">
+            <h2><i class="icon--document-arrow"></i>Onboarding documents</h2>
+        </div>
+
+        <loading-placeholder ng-show="!documentation.onboarding.$loaded || !documentation.paper.$loaded"></loading-placeholder>
+
+        <h3 ng-show="documentation.onboarding.$loaded" class="profile-details__compact-heading">Online documents</h3>
+
+        <div ng-show="documentation.onboarding.$loaded && documentation.onboarding.documents.length === 0" class="message message--small">
+            <p>No online documents are available</p>
+        </div>
+
+        <table class="table table--no-outside-borders table--cozy table--responsive-stacked" ng-show="documentation.onboarding.$loaded && documentation.onboarding.documents.length">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date sent</th>
+                    <th>Signed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="document in documentation.onboarding.documents">
+                    <td ng-init="extension = (document.OnboardDocument.FileName | fileExtension)" data-title="Name" class="cell-width-50">
+                        <a class="online__document--profile" href="" file-viewer file="{FileExtension: 'pdf', DocumentUrl: document.OnboardDocument.Url, FileName: document.OnboardDocument.FileName}">
+                            <div class="icon__online--document"><i class="svg-icon--{{extension}}"></i></div>
+                            <div class="file__name__online--document">{{document.OnboardDocument.FileName}}</div>
+                        </a>
+                    </td>
+                    <td data-title="Date sent">
+                        <small ng-if="document.OnboardDocument.SentDate" class="is--uppercase">{{ document.OnboardDocument.SentDate | dateOnly }}</small>
+                        <small ng-if="!document.OnboardDocument.SentDate" class="is--uppercase">Not sent</small>
+                    </td>
+                    <td data-title="Signed">
+                        <small ng-if="document.OnboardDocument.AcceptedDate" class="is--uppercase">{{ document.OnboardDocument.AcceptedDate | dateOnly }}</small>
+                        <small ng-if="!document.OnboardDocument.AcceptedDate" class="is--uppercase">Not signed</small>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 ng-show="documentation.paper.$loaded" class="profile-details__compact-heading">Hardcopy documents to be lodged by employee</h3>
+
+
+        <div ng-show="documentation.paper.$loaded && documentation.paper.documents.length === 0" class="message message--small">
+            <p>No hard copy documents are available</p>
+        </div>
+
+        <table class="table table--no-outside-borders table--cozy table--responsive-stacked" ng-show="documentation.paper.$loaded && documentation.paper.documents.length">
+            <thead>
+                <tr>
+                    <th>Document type</th>
+                    <th>Due date</th>
+                    <th>Is lodged?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="document in documentation.paper.documents">
+                    <td data-title="Document type" class="cell-width-50">{{ document.MemberPaperDoc.PaperDocTypeLabel }}</td>
+                    <td data-title="Due date"><small class="is--uppercase">{{ document.MemberPaperDoc.DueDate | dateOnly }}</small></td>
+                    <td data-title="Is lodged?"><small class="is--uppercase">{{ document.MemberPaperDoc.IsLodged ? 'Yes' : 'No' }}</small></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

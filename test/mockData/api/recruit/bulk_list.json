@@ -1,0 +1,1203 @@
+﻿{
+  "$id": "1",
+  "BulkOnboardingSummaryItemResult": [
+    {
+      "$id": "2",
+      "BulkOnboardingSummary": {
+        "$id": "3",
+        "BulkOnboardingId": "9464b031-0b5d-4d4a-91aa-806f0deeccef",
+        "CreatedDate": "2016-03-17T19:03:14.88",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "4",
+          "RoleId": 648,
+          "Description": "D&D - National Development Manager",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "5",
+          "NetworkGroupId": 11065,
+          "GroupName": "Richmond",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 4,
+        "Creator": {
+          "$id": "6",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 1,
+        "OnboardIds": [
+          7556
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "7",
+          "Id": "9464b031-0b5d-4d4a-91aa-806f0deeccef",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/9464b031-0b5d-4d4a-91aa-806f0deeccef",
+          "Children": null
+        },
+        {
+          "$id": "8",
+          "Id": "9464b031-0b5d-4d4a-91aa-806f0deeccef",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/9464b031-0b5d-4d4a-91aa-806f0deeccef/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "9",
+          "Id": "9464b031-0b5d-4d4a-91aa-806f0deeccef",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/9464b031-0b5d-4d4a-91aa-806f0deeccef/process",
+          "Children": null
+        },
+        {
+          "$id": "10",
+          "Id": "9464b031-0b5d-4d4a-91aa-806f0deeccef",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/9464b031-0b5d-4d4a-91aa-806f0deeccef",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "11",
+      "BulkOnboardingSummary": {
+        "$id": "12",
+        "BulkOnboardingId": "f41e734d-65d0-4fe9-a6e2-916db7d5e7db",
+        "CreatedDate": "2016-03-17T19:00:51.09",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "13",
+          "RoleId": 613,
+          "Description": "FIN - Payroll Manager",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "14",
+          "NetworkGroupId": 11073,
+          "GroupName": "Fountain Gate",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 4,
+        "Creator": {
+          "$id": "15",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 3,
+        "OnboardIds": [
+          7553,
+          7554,
+          7555
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "16",
+          "Id": "f41e734d-65d0-4fe9-a6e2-916db7d5e7db",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/f41e734d-65d0-4fe9-a6e2-916db7d5e7db",
+          "Children": null
+        },
+        {
+          "$id": "17",
+          "Id": "f41e734d-65d0-4fe9-a6e2-916db7d5e7db",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/f41e734d-65d0-4fe9-a6e2-916db7d5e7db/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "18",
+          "Id": "f41e734d-65d0-4fe9-a6e2-916db7d5e7db",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/f41e734d-65d0-4fe9-a6e2-916db7d5e7db/process",
+          "Children": null
+        },
+        {
+          "$id": "19",
+          "Id": "f41e734d-65d0-4fe9-a6e2-916db7d5e7db",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/f41e734d-65d0-4fe9-a6e2-916db7d5e7db",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "20",
+      "BulkOnboardingSummary": {
+        "$id": "21",
+        "BulkOnboardingId": "72b6bc74-072d-4fa8-86d9-2563327c2952",
+        "CreatedDate": "2016-03-16T12:28:35.557",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "22",
+          "RoleId": 626,
+          "Description": "FIN - Systems Administrator",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "23",
+          "NetworkGroupId": 11073,
+          "GroupName": "Fountain Gate",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 4,
+        "Creator": {
+          "$id": "24",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 3,
+        "OnboardIds": [
+          7544,
+          7545,
+          7546
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "25",
+          "Id": "72b6bc74-072d-4fa8-86d9-2563327c2952",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/72b6bc74-072d-4fa8-86d9-2563327c2952",
+          "Children": null
+        },
+        {
+          "$id": "26",
+          "Id": "72b6bc74-072d-4fa8-86d9-2563327c2952",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/72b6bc74-072d-4fa8-86d9-2563327c2952/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "27",
+          "Id": "72b6bc74-072d-4fa8-86d9-2563327c2952",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/72b6bc74-072d-4fa8-86d9-2563327c2952/process",
+          "Children": null
+        },
+        {
+          "$id": "28",
+          "Id": "72b6bc74-072d-4fa8-86d9-2563327c2952",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/72b6bc74-072d-4fa8-86d9-2563327c2952",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "29",
+      "BulkOnboardingSummary": {
+        "$id": "30",
+        "BulkOnboardingId": "72444fb3-e313-4190-a98d-a3ff960ef917",
+        "CreatedDate": "2016-03-16T12:20:27.233",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "31",
+          "RoleId": 620,
+          "Description": "ADMIN - Managing Director",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "32",
+          "NetworkGroupId": 11038,
+          "GroupName": "Support Office",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 0,
+        "Creator": {
+          "$id": "33",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 2,
+        "OnboardIds": [
+          7539,
+          7540
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "34",
+          "Id": "72444fb3-e313-4190-a98d-a3ff960ef917",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/72444fb3-e313-4190-a98d-a3ff960ef917",
+          "Children": null
+        },
+        {
+          "$id": "35",
+          "Id": "72444fb3-e313-4190-a98d-a3ff960ef917",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/72444fb3-e313-4190-a98d-a3ff960ef917/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "36",
+          "Id": "72444fb3-e313-4190-a98d-a3ff960ef917",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/72444fb3-e313-4190-a98d-a3ff960ef917/process",
+          "Children": null
+        },
+        {
+          "$id": "37",
+          "Id": "72444fb3-e313-4190-a98d-a3ff960ef917",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/72444fb3-e313-4190-a98d-a3ff960ef917",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "38",
+      "BulkOnboardingSummary": {
+        "$id": "39",
+        "BulkOnboardingId": "b9f85ed1-4fdb-4baf-b13d-082ab4a97988",
+        "CreatedDate": "2016-03-15T18:39:29.617",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "40",
+          "RoleId": 667,
+          "Description": "OPS - Franchise Partner",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "41",
+          "NetworkGroupId": 11064,
+          "GroupName": "Fitzroy",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 3,
+        "Creator": {
+          "$id": "42",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 3,
+        "OnboardIds": [
+          7525,
+          7526,
+          7527
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "43",
+          "Id": "b9f85ed1-4fdb-4baf-b13d-082ab4a97988",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/b9f85ed1-4fdb-4baf-b13d-082ab4a97988",
+          "Children": null
+        },
+        {
+          "$id": "44",
+          "Id": "b9f85ed1-4fdb-4baf-b13d-082ab4a97988",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/b9f85ed1-4fdb-4baf-b13d-082ab4a97988/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "45",
+          "Id": "b9f85ed1-4fdb-4baf-b13d-082ab4a97988",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/b9f85ed1-4fdb-4baf-b13d-082ab4a97988/process",
+          "Children": null
+        },
+        {
+          "$id": "46",
+          "Id": "b9f85ed1-4fdb-4baf-b13d-082ab4a97988",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/b9f85ed1-4fdb-4baf-b13d-082ab4a97988",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "47",
+      "BulkOnboardingSummary": {
+        "$id": "48",
+        "BulkOnboardingId": "ad2524ea-9d39-4b8a-8ac8-7154fa7239cf",
+        "CreatedDate": "2016-03-15T18:22:55.953",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "49",
+          "RoleId": 626,
+          "Description": "FIN - Systems Administrator",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "50",
+          "NetworkGroupId": 11073,
+          "GroupName": "Fountain Gate",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 0,
+        "Creator": {
+          "$id": "51",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 2,
+        "OnboardIds": [
+          7523,
+          7524
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "52",
+          "Id": "ad2524ea-9d39-4b8a-8ac8-7154fa7239cf",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/ad2524ea-9d39-4b8a-8ac8-7154fa7239cf",
+          "Children": null
+        },
+        {
+          "$id": "53",
+          "Id": "ad2524ea-9d39-4b8a-8ac8-7154fa7239cf",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/ad2524ea-9d39-4b8a-8ac8-7154fa7239cf/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "54",
+          "Id": "ad2524ea-9d39-4b8a-8ac8-7154fa7239cf",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/ad2524ea-9d39-4b8a-8ac8-7154fa7239cf/process",
+          "Children": null
+        },
+        {
+          "$id": "55",
+          "Id": "ad2524ea-9d39-4b8a-8ac8-7154fa7239cf",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/ad2524ea-9d39-4b8a-8ac8-7154fa7239cf",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "56",
+      "BulkOnboardingSummary": {
+        "$id": "57",
+        "BulkOnboardingId": "e36da14c-11b2-46fb-9740-e903d3838782",
+        "CreatedDate": "2016-03-15T18:15:57.833",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "58",
+          "RoleId": 616,
+          "Description": "OPS - Team Leader (Company)",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "59",
+          "NetworkGroupId": 11072,
+          "GroupName": "Bulimba",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 0,
+        "Creator": {
+          "$id": "60",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 2,
+        "OnboardIds": [
+          7521,
+          7522
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "61",
+          "Id": "e36da14c-11b2-46fb-9740-e903d3838782",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/e36da14c-11b2-46fb-9740-e903d3838782",
+          "Children": null
+        },
+        {
+          "$id": "62",
+          "Id": "e36da14c-11b2-46fb-9740-e903d3838782",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/e36da14c-11b2-46fb-9740-e903d3838782/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "63",
+          "Id": "e36da14c-11b2-46fb-9740-e903d3838782",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/e36da14c-11b2-46fb-9740-e903d3838782/process",
+          "Children": null
+        },
+        {
+          "$id": "64",
+          "Id": "e36da14c-11b2-46fb-9740-e903d3838782",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/e36da14c-11b2-46fb-9740-e903d3838782",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "65",
+      "BulkOnboardingSummary": {
+        "$id": "66",
+        "BulkOnboardingId": "d537f441-46d2-4509-8bad-334361340358",
+        "CreatedDate": "2016-03-15T18:05:29.867",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "67",
+          "RoleId": 620,
+          "Description": "ADMIN - Managing Director",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "68",
+          "NetworkGroupId": 11061,
+          "GroupName": "Knox",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 0,
+        "Creator": {
+          "$id": "69",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 2,
+        "OnboardIds": [
+          7519,
+          7520
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "70",
+          "Id": "d537f441-46d2-4509-8bad-334361340358",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/d537f441-46d2-4509-8bad-334361340358",
+          "Children": null
+        },
+        {
+          "$id": "71",
+          "Id": "d537f441-46d2-4509-8bad-334361340358",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/d537f441-46d2-4509-8bad-334361340358/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "72",
+          "Id": "d537f441-46d2-4509-8bad-334361340358",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/d537f441-46d2-4509-8bad-334361340358/process",
+          "Children": null
+        },
+        {
+          "$id": "73",
+          "Id": "d537f441-46d2-4509-8bad-334361340358",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/d537f441-46d2-4509-8bad-334361340358",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "74",
+      "BulkOnboardingSummary": {
+        "$id": "75",
+        "BulkOnboardingId": "1c6ec883-6c41-40ea-a802-fd71655c620d",
+        "CreatedDate": "2016-03-15T18:01:26.587",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "76",
+          "RoleId": 645,
+          "Description": "SUP - Supply Chain Quality Manager",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "77",
+          "NetworkGroupId": 11073,
+          "GroupName": "Fountain Gate",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 0,
+        "Creator": {
+          "$id": "78",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 2,
+        "OnboardIds": [
+          7517,
+          7518
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "79",
+          "Id": "1c6ec883-6c41-40ea-a802-fd71655c620d",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/1c6ec883-6c41-40ea-a802-fd71655c620d",
+          "Children": null
+        },
+        {
+          "$id": "80",
+          "Id": "1c6ec883-6c41-40ea-a802-fd71655c620d",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/1c6ec883-6c41-40ea-a802-fd71655c620d/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "81",
+          "Id": "1c6ec883-6c41-40ea-a802-fd71655c620d",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/1c6ec883-6c41-40ea-a802-fd71655c620d/process",
+          "Children": null
+        },
+        {
+          "$id": "82",
+          "Id": "1c6ec883-6c41-40ea-a802-fd71655c620d",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/1c6ec883-6c41-40ea-a802-fd71655c620d",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "83",
+      "BulkOnboardingSummary": {
+        "$id": "84",
+        "BulkOnboardingId": "0f522d1b-1c90-4bde-9c71-0ad735ee14bd",
+        "CreatedDate": "2016-03-15T11:23:21.297",
+        "Status": "New",
+        "StatusCode": "n",
+        "OnboardRole": {
+          "$id": "85",
+          "RoleId": 613,
+          "Description": "FIN - Payroll Manager",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "86",
+          "NetworkGroupId": 11073,
+          "GroupName": "Fountain Gate",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 3,
+        "Creator": {
+          "$id": "87",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 3,
+        "OnboardIds": [
+          7495,
+          7496,
+          7497
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "88",
+          "Id": "0f522d1b-1c90-4bde-9c71-0ad735ee14bd",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/0f522d1b-1c90-4bde-9c71-0ad735ee14bd",
+          "Children": null
+        },
+        {
+          "$id": "89",
+          "Id": "0f522d1b-1c90-4bde-9c71-0ad735ee14bd",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/0f522d1b-1c90-4bde-9c71-0ad735ee14bd/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "90",
+          "Id": "0f522d1b-1c90-4bde-9c71-0ad735ee14bd",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/0f522d1b-1c90-4bde-9c71-0ad735ee14bd/process",
+          "Children": null
+        },
+        {
+          "$id": "91",
+          "Id": "0f522d1b-1c90-4bde-9c71-0ad735ee14bd",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/0f522d1b-1c90-4bde-9c71-0ad735ee14bd",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "92",
+      "BulkOnboardingSummary": {
+        "$id": "93",
+        "BulkOnboardingId": "2fca3b90-e459-4be1-aac0-dcd9d9114403",
+        "CreatedDate": "2016-03-15T11:14:21.347",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "94",
+          "RoleId": 613,
+          "Description": "FIN - Payroll Manager",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "95",
+          "NetworkGroupId": 11072,
+          "GroupName": "Bulimba",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 1,
+        "Creator": {
+          "$id": "96",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 3,
+        "OnboardIds": [
+          7492,
+          7493,
+          7494
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "97",
+          "Id": "2fca3b90-e459-4be1-aac0-dcd9d9114403",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/2fca3b90-e459-4be1-aac0-dcd9d9114403",
+          "Children": null
+        },
+        {
+          "$id": "98",
+          "Id": "2fca3b90-e459-4be1-aac0-dcd9d9114403",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/2fca3b90-e459-4be1-aac0-dcd9d9114403/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "99",
+          "Id": "2fca3b90-e459-4be1-aac0-dcd9d9114403",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/2fca3b90-e459-4be1-aac0-dcd9d9114403/process",
+          "Children": null
+        },
+        {
+          "$id": "100",
+          "Id": "2fca3b90-e459-4be1-aac0-dcd9d9114403",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/2fca3b90-e459-4be1-aac0-dcd9d9114403",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "101",
+      "BulkOnboardingSummary": {
+        "$id": "102",
+        "BulkOnboardingId": "7f7dda8c-92a3-45cb-8c83-9f20e5917915",
+        "CreatedDate": "2016-03-15T10:47:01.437",
+        "Status": "Approval",
+        "StatusCode": "a",
+        "OnboardRole": {
+          "$id": "103",
+          "RoleId": 665,
+          "Description": "FIN - Accounts Assistant",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "104",
+          "NetworkGroupId": 11075,
+          "GroupName": "Fortitude Valley",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 3,
+        "Creator": {
+          "$id": "105",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 2,
+        "OnboardIds": [
+          7490,
+          7491
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "106",
+          "Id": "7f7dda8c-92a3-45cb-8c83-9f20e5917915",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/7f7dda8c-92a3-45cb-8c83-9f20e5917915",
+          "Children": null
+        },
+        {
+          "$id": "107",
+          "Id": "7f7dda8c-92a3-45cb-8c83-9f20e5917915",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/7f7dda8c-92a3-45cb-8c83-9f20e5917915/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "108",
+          "Id": "7f7dda8c-92a3-45cb-8c83-9f20e5917915",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/7f7dda8c-92a3-45cb-8c83-9f20e5917915/process",
+          "Children": null
+        },
+        {
+          "$id": "109",
+          "Id": "7f7dda8c-92a3-45cb-8c83-9f20e5917915",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/7f7dda8c-92a3-45cb-8c83-9f20e5917915",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "110",
+      "BulkOnboardingSummary": {
+        "$id": "111",
+        "BulkOnboardingId": "37de4e0b-c9c9-47ed-baec-e8cf08e7bf15",
+        "CreatedDate": "2016-03-15T10:44:55.067",
+        "Status": "New",
+        "StatusCode": "n",
+        "OnboardRole": {
+          "$id": "112",
+          "RoleId": 625,
+          "Description": "ADMIN - External Contractor",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "113",
+          "NetworkGroupId": 11061,
+          "GroupName": "Knox",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 4,
+        "Creator": {
+          "$id": "114",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 2,
+        "OnboardIds": [
+          7488,
+          7489
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "115",
+          "Id": "37de4e0b-c9c9-47ed-baec-e8cf08e7bf15",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/37de4e0b-c9c9-47ed-baec-e8cf08e7bf15",
+          "Children": null
+        },
+        {
+          "$id": "116",
+          "Id": "37de4e0b-c9c9-47ed-baec-e8cf08e7bf15",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/37de4e0b-c9c9-47ed-baec-e8cf08e7bf15/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "117",
+          "Id": "37de4e0b-c9c9-47ed-baec-e8cf08e7bf15",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/37de4e0b-c9c9-47ed-baec-e8cf08e7bf15/process",
+          "Children": null
+        },
+        {
+          "$id": "118",
+          "Id": "37de4e0b-c9c9-47ed-baec-e8cf08e7bf15",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/37de4e0b-c9c9-47ed-baec-e8cf08e7bf15",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "119",
+      "BulkOnboardingSummary": {
+        "$id": "120",
+        "BulkOnboardingId": "ae84938e-9af1-4855-92b2-768b5fb7cd95",
+        "CreatedDate": "2016-03-15T10:42:02.99",
+        "Status": "New",
+        "StatusCode": "n",
+        "OnboardRole": {
+          "$id": "121",
+          "RoleId": 776,
+          "Description": "3rd Party Supplier",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "122",
+          "NetworkGroupId": 11038,
+          "GroupName": "Support Office",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 4,
+        "Creator": {
+          "$id": "123",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 2,
+        "OnboardIds": [
+          7486,
+          7487
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "124",
+          "Id": "ae84938e-9af1-4855-92b2-768b5fb7cd95",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/ae84938e-9af1-4855-92b2-768b5fb7cd95",
+          "Children": null
+        },
+        {
+          "$id": "125",
+          "Id": "ae84938e-9af1-4855-92b2-768b5fb7cd95",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/ae84938e-9af1-4855-92b2-768b5fb7cd95/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "126",
+          "Id": "ae84938e-9af1-4855-92b2-768b5fb7cd95",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/ae84938e-9af1-4855-92b2-768b5fb7cd95/process",
+          "Children": null
+        },
+        {
+          "$id": "127",
+          "Id": "ae84938e-9af1-4855-92b2-768b5fb7cd95",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/ae84938e-9af1-4855-92b2-768b5fb7cd95",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    },
+    {
+      "$id": "128",
+      "BulkOnboardingSummary": {
+        "$id": "129",
+        "BulkOnboardingId": "c1290d33-55d8-4f9a-b086-130a3f1aee7e",
+        "CreatedDate": "2016-03-15T10:12:51.567",
+        "Status": "New",
+        "StatusCode": "n",
+        "OnboardRole": {
+          "$id": "130",
+          "RoleId": 776,
+          "Description": "3rd Party Supplier",
+          "LookupUrl": "http://localhost:56828/Api/onboarding/roles/"
+        },
+        "OnboardStore": {
+          "$id": "131",
+          "NetworkGroupId": 11038,
+          "GroupName": "Support Office",
+          "Type": null,
+          "LookupUrl": "http://localhost:56828/Api/onboarding/groups/",
+          "IsTrainingLocation": null
+        },
+        "HoursPerWeek": 1,
+        "Creator": {
+          "$id": "132",
+          "SalutationId": 5,
+          "FirstName": "Sherpa",
+          "Surname": "Admin",
+          "PreferredName": null,
+          "Sex": "m",
+          "BirthDay": null,
+          "Title": "FIN - Systems Administrator"
+        },
+        "NumberOfOnboard": 2,
+        "OnboardIds": [
+          7484,
+          7485
+        ]
+      },
+      "EntityActions": [
+        {
+          "$id": "133",
+          "Id": "c1290d33-55d8-4f9a-b086-130a3f1aee7e",
+          "Code": 2650,
+          "Caption": "CanDeleteBulkOnboard",
+          "Description": "CanDeleteBulkOnboard",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/c1290d33-55d8-4f9a-b086-130a3f1aee7e",
+          "Children": null
+        },
+        {
+          "$id": "134",
+          "Id": "c1290d33-55d8-4f9a-b086-130a3f1aee7e",
+          "Code": 2661,
+          "Caption": "CanGetOnboardingBelongBulkOnboarding",
+          "Description": "CanGetOnboardingBelongBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/c1290d33-55d8-4f9a-b086-130a3f1aee7e/onboardings",
+          "Children": null
+        },
+        {
+          "$id": "135",
+          "Id": "c1290d33-55d8-4f9a-b086-130a3f1aee7e",
+          "Code": 2662,
+          "Caption": "CanProcessBulkOnboarding",
+          "Description": "CanProcessBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/c1290d33-55d8-4f9a-b086-130a3f1aee7e/process",
+          "Children": null
+        },
+        {
+          "$id": "136",
+          "Id": "c1290d33-55d8-4f9a-b086-130a3f1aee7e",
+          "Code": 2663,
+          "Caption": "CanGetDetailOfBulkOnboarding",
+          "Description": "CanGetDetailOfBulkOnboarding",
+          "ActionUrl": "http://localhost:56828/Api/onboarding/bulk/c1290d33-55d8-4f9a-b086-130a3f1aee7e",
+          "Children": null
+        }
+      ],
+      "Status": 0
+    }
+  ],
+  "EntityActions": [],
+  "Pagination": {
+    "$id": "137",
+    "TotalCount": 20,
+    "TotalPages": 2,
+    "PageSize": 15,
+    "Page": 1
+  },
+  "Status": 0
+}

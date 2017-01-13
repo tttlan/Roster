@@ -1,0 +1,8 @@
+<span class="likes" ng-class="{'likes--button' : button}">
+    <a href="" ng-click="addLike()" ng-class="{ 'is--active' : liked }">
+        <i class="icon--like"></i><ng-pluralize count="likeCount" when="{'0': 'Like',
+            'one': '1 like',
+            'other': '{} likes'}">
+        </ng-pluralize>
+    </a>
+</span>
